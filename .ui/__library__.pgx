@@ -9,7 +9,7 @@
 			},
 			"userProps": {},
 			"className": ".page",
-			"version": "6.4.4-rc.8",
+			"version": "6.4.4-rc.9",
 			"props": {
 				"backgroundColor": "#EEEEEE",
 				"orientation": "PORTRAIT",
@@ -87,8 +87,8 @@
 				"Calendar": "Default"
 			},
 			"userProps": {
-				"left": 40.095654339857504,
-				"top": 147.16080141739107,
+				"left": 61.22241490323779,
+				"top": 166.879111276546,
 				"width": 245.73490039722338,
 				"height": 186.67901528848185
 			},
@@ -103,8 +103,8 @@
 				"borderColor": "rgba(0,0,0,1)",
 				"borderWidth": 0,
 				"right": 0,
-				"left": 40.095654339857504,
-				"top": 147.16080141739107,
+				"left": 61.22241490323779,
+				"top": 166.879111276546,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",
@@ -1927,15 +1927,15 @@
 				"name": "navbar",
 				"parent": "940ab35f",
 				"children": [
-					"605e-6fe3-6493-35c1",
-					"067e-5c5f-f7b0-1fe2",
-					"2d49-6b8f-0401-4234"
+					"9d7c-3eee-5aa2-a82c",
+					"b975-c13e-3938-ab8f",
+					"9c07-88d5-cbe1-cae2"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "605e-6fe3-6493-35c1",
+			"id": "9d7c-3eee-5aa2-a82c",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1982,14 +1982,14 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button2",
+				"name": "button4",
 				"parent": "cf78-2304-1947-1383",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "067e-5c5f-f7b0-1fe2",
+			"id": "b975-c13e-3938-ab8f",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2037,7 +2037,7 @@
 		},
 		{
 			"type": "Button",
-			"id": "2d49-6b8f-0401-4234",
+			"id": "9c07-88d5-cbe1-cae2",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2084,7 +2084,7 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button3",
+				"name": "button5",
 				"parent": "cf78-2304-1947-1383",
 				"children": []
 			}
@@ -2106,6 +2106,7 @@
 				"top": 0,
 				"width": null,
 				"height": null,
+				"paddingBottom": 6,
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 5
@@ -2127,6 +2128,7 @@
 				"right": 0,
 				"left": 0,
 				"top": 0,
+				"paddingBottom": 6,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",

@@ -1,5 +1,5 @@
-import * as DateWrapper from "../src/application/DateWrapper";
-import * as CalendarService from "../src/application/CalendarService";
+import * as DateWrapper from "../src/services/DateWrapper";
+import * as CalendarService from "../src/services/CalendarService";
 import {expect} from "chai";
 
 describe("Calendar Service", function() {
@@ -7,7 +7,7 @@ describe("Calendar Service", function() {
     it("should return all needed calendar data a month", function() {
       const data = CalendarService.getMonth(1);
       expect(data).to.eql(
-        { 
+        {
           longName: 'January',
           shortName: 'Jan',
           daysInMonth: 31,

@@ -1,4 +1,4 @@
-import * as DateWrapper from "../src/application/DateWrapper";
+import * as DateWrapper from "../src/services/DateWrapper";
 import {expect} from "chai";
 
 describe("Week", function() {
@@ -7,6 +7,17 @@ describe("Week", function() {
     expect(DateWrapper.dateLang()).to.eql("en");
   });
   
+  it("should return the starting weekday of the months", function() {
+    let day = DateWrapper.startDayOfMonth(DateWrapper.date("2017-09-28"));
+    expect(day).to.eql(4);
+    
+    day = DateWrapper.startDayOfMonth(DateWrapper.date("2017-08-28"));
+    expect(day).to.eql(1);
+
+    day = DateWrapper.startDayOfMonth(DateWrapper.date("2017-10-28"));
+    expect(day).to.eql(6);
+  });
+
   it("should return all weekdays short in English", function() {
     const names = DateWrapper.weekdaysShort();
     expect(names).to.eql([ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ]);

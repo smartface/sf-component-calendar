@@ -18,6 +18,14 @@ export function date(str=null){
   return str ? moment(str) : moment();
 }
 
+export function month(num, date){
+  return date !== undefined ? moment(date).month(num) : moment().month(num);
+}
+
+export function startDayOfMonth(date){
+  return date.weekday();
+}
+
 export function monthsShort(date){
   return date ? moment.monthsShort(date.month()) : moment.monthsShort();
 }

@@ -7,6 +7,7 @@
     "test": "mocha --compilers js:babel-core/register ./test/**/*.test.js",
     "test:watch": "mocha --watch --compilers js:babel-core/register ./test/**/*.test.js",
     "build": "babel ./src/ --out-dir -d ./lib/.",
+    "dev": "babel ./src/services --out-dir -d ./scripts/services",
     "docs:create": "jsdox ./src -o docs",
     "jase": "jase"
   },

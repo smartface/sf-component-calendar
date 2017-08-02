@@ -16,4 +16,3 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 );
 
 module && (module.exports = CalendarWeekRow);
-

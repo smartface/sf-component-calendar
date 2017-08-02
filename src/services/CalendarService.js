@@ -9,6 +9,7 @@ export function getMonth(num=1){
     daysInMonth: DateWrapper.daysInMonth(month),
     daysLong: DateWrapper.weekdaysLong(),
     daysShort: DateWrapper.weekdaysShort(),
+    startDayOfMonth: DateWrapper.startDayOfMonth(),
   };
 }
 
