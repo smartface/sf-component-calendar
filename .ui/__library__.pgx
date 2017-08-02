@@ -87,8 +87,8 @@
 				"Calendar": "Default"
 			},
 			"userProps": {
-				"left": 61.22241490323779,
-				"top": 166.879111276546,
+				"left": 48.54635856520962,
+				"top": 149.9777028258418,
 				"width": 245.73490039722338,
 				"height": 186.67901528848185
 			},
@@ -103,8 +103,8 @@
 				"borderColor": "rgba(0,0,0,1)",
 				"borderWidth": 0,
 				"right": 0,
-				"left": 61.22241490323779,
-				"top": 166.879111276546,
+				"left": 48.54635856520962,
+				"top": 149.9777028258418,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",
@@ -118,8 +118,8 @@
 				"name": "calendar",
 				"parent": "3365675e",
 				"children": [
-					"ef76084f",
 					"cf78-2304-1947-1383",
+					"ef76084f",
 					"acb1-8636-d8ae-5237"
 				]
 			}
@@ -261,30 +261,34 @@
 				"borderRadius": 20,
 				"width": 62.93594772751267,
 				"height": 64.32432741732211,
-				"text": "",
+				"text": "0",
 				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"borderWidth": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )"
+				"borderColor": "rgba( 185, 185, 185, 1 )",
+				"textColor": "rgba( 71, 71, 71, 1 )",
+				"font": {
+					"bold": true
+				}
 			},
 			"className": ".button",
 			"props": {
 				"width": 62.93594772751267,
 				"height": 64.32432741732211,
 				"touchEnabled": true,
-				"text": "",
+				"text": "0",
 				"visible": true,
 				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 71, 71, 71, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": 37.07812541239971,
 				"top": 417.85418536211995,
 				"borderRadius": 20,
 				"font": {
 					"size": 16,
-					"bold": false,
+					"bold": true,
 					"italic": false,
 					"family": "Arial"
 				},
@@ -1235,6 +1239,7 @@
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"marginLeft": 3,
 				"marginRight": 3,
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1
@@ -1254,7 +1259,7 @@
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": null,
 				"top": null,
@@ -1301,6 +1306,7 @@
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"marginLeft": 3,
 				"marginRight": 3,
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1
@@ -1320,7 +1326,7 @@
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": null,
 				"top": null,
@@ -1367,6 +1373,7 @@
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"marginLeft": 3,
 				"marginRight": 3,
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1
@@ -1386,7 +1393,7 @@
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": null,
 				"top": null,
@@ -1433,6 +1440,7 @@
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"marginLeft": 3,
 				"marginRight": 3,
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1
@@ -1452,7 +1460,7 @@
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": null,
 				"top": null,
@@ -1499,6 +1507,7 @@
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"marginLeft": 3,
 				"marginRight": 3,
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1
@@ -1518,7 +1527,7 @@
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": null,
 				"top": null,
@@ -1565,6 +1574,7 @@
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"marginLeft": 3,
 				"marginRight": 3,
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1
@@ -1584,7 +1594,7 @@
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": null,
 				"top": null,
@@ -1631,6 +1641,7 @@
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"marginLeft": 3,
 				"marginRight": 3,
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1
@@ -1650,7 +1661,7 @@
 				"alpha": 1,
 				"borderColor": "rgba( 185, 185, 185, 1 )",
 				"borderWidth": 1,
-				"textColor": "#FFFFFF",
+				"textColor": "rgba( 155, 155, 155, 1 )",
 				"textAlignment": "MIDCENTER",
 				"left": null,
 				"top": null,
@@ -1927,15 +1938,15 @@
 				"name": "navbar",
 				"parent": "940ab35f",
 				"children": [
-					"9d7c-3eee-5aa2-a82c",
-					"b975-c13e-3938-ab8f",
-					"9c07-88d5-cbe1-cae2"
+					"b98e-1fa6-f774-ef9e",
+					"28fd-fd49-5f75-e600",
+					"4c2f-eea9-8e3c-d98d"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "9d7c-3eee-5aa2-a82c",
+			"id": "b98e-1fa6-f774-ef9e",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1982,14 +1993,14 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button4",
+				"name": "button13",
 				"parent": "cf78-2304-1947-1383",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "b975-c13e-3938-ab8f",
+			"id": "28fd-fd49-5f75-e600",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2037,7 +2048,7 @@
 		},
 		{
 			"type": "Button",
-			"id": "9c07-88d5-cbe1-cae2",
+			"id": "4c2f-eea9-8e3c-d98d",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2084,7 +2095,7 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button5",
+				"name": "button14",
 				"parent": "cf78-2304-1947-1383",
 				"children": []
 			}
