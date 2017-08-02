@@ -1,1 +1,15 @@
+.c9/*
+.smf/*
+.npm/*
+.tmp/*
+output/*
+plugin/*
+!output/Android/README.md
+!output/iOS/README.md
+!plugin/Android/README.md
+!plugin/iOS/README.md
+scripts/node_modules
+scripts/ui
+scripts/settings.json
+scripts/themes
 node_modules

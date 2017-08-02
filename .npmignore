@@ -7,3 +7,8 @@ __MakeFile
 .travis.yml
 .cz-config.js
 .gitignore
+scripts
+images
+config
+.c9
+themes
