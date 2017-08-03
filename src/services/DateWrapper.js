@@ -20,10 +20,20 @@ export function date(dt=null){
       ? moment(dt)
       : clone(dt)
     : moment();
+    
+  const dateObject = _date.toObject();
   
   class DateWrapper {
     month(num){
-      return month(num, _date)
+      return num ? month(num, _date) : dateObject.months;
+    }
+    
+    day(num){
+      return num ? day(num, _date) : dateObject.dates;
+    }
+    
+    year(num){
+      return num ? year(num, _date) : dateObject.years;
     }
     
     startDayOfMonth(){
@@ -52,6 +62,14 @@ export function date(dt=null){
     
     toString(){
       return _date.toString();
+    }
+    
+    toObject(){
+      return {
+        year: dateObject.years,
+        day: dateObject.date,
+        month: dateObject.months
+      }
     }
   }
   

@@ -49,7 +49,27 @@ describe("Calendar Service", function() {
                   [ 14, 15, 16, 17, 18, 19, 20 ],
                   [ 21, 22, 23, 24, 25, 26, 27 ],
                   [ 28, 29, 1, 2, 3, 4, 5 ],
-               ]
+               ],
+          previousMonth: {
+            daysCount: 31,
+            longName: "January",
+            shortName: "Jan",
+            date: {
+              day: 1,
+              month: 0,
+              year: 2016
+            }
+          },
+          nextMonth: {
+            daysCount: 31,
+            longName: "March",
+            shortName: "Mar",
+            date: {
+              day: 1,
+              month: 2,
+              year: 2016
+            }
+          }
       });
       
       data = CalendarService.getCalendarMonth({year: 2017, month: 0});
@@ -75,7 +95,27 @@ describe("Calendar Service", function() {
                   [ 15, 16, 17, 18, 19, 20, 21 ],
                   [ 22, 23, 24, 25, 26, 27, 28 ],
                   [ 29, 30, 31, 32, 1, 2, 3 ]
-               ]
+               ],
+          previousMonth: {
+            daysCount: 31,
+            longName: "December",
+            shortName: "Dec",
+            date: {
+              day: 1,
+              month: 11,
+              year: 2016
+            }
+          },
+          nextMonth: {
+            daysCount: 28,
+            longName: "February",
+            shortName: "Feb",
+            date: {
+              day: 1,
+              month: 1,
+              year: 2017
+            }
+          }
       });
     });
   });

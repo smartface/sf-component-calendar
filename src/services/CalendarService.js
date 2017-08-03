@@ -14,7 +14,7 @@ export function getMonth(dt) {
 export function getCalendarMonth(dt){
   const currentMonth = DateWrapper.date(dt);
   const prevMonth = currentMonth.prevMonth();
-  const nexMonth = currentMonth.nextMonth();
+  const nextMonth = currentMonth.nextMonth();
   
 	const days = [];
 	var prev = prevMonth.daysCount() - currentMonth.startDayOfMonth() + 1;
@@ -49,6 +49,18 @@ export function getCalendarMonth(dt){
     daysLong: DateWrapper.weekdaysLong(),
     daysShort: DateWrapper.weekdaysShort(),
 	  days,
+    previousMonth: {
+      longName: prevMonth.monthLong(),
+      shortName: prevMonth.monthShort(),
+      daysCount: prevMonth.daysCount(),
+      date: prevMonth.toObject()
+    },
+    nextMonth: {
+      longName: nextMonth.monthLong(),
+      shortName: nextMonth.monthShort(),
+      daysCount: nextMonth.daysCount(),
+      date: nextMonth.toObject()
+    },
 	}
 }
 
