@@ -10,11 +10,15 @@ export function weekOfYear(date){
   return date.week();
 }
 
+export function clone(date){
+  return date.clone();
+}
+
 export function date(dt=null){
   const _date = dt !== null 
-    ? dt instanceof String || dt instanceof Object 
-      ? moment(dt) 
-      : dt
+    ? typeof dt === "string" || dt instanceof Object
+      ? moment(dt)
+      : clone(dt)
     : moment();
   
   class DateWrapper {

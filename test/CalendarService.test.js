@@ -53,7 +53,6 @@ describe("Calendar Service", function() {
       });
       
       data = CalendarService.getCalendarMonth({year: 2017, month: 0});
-      console.log(data.days);
 
       expect(data).to.eql(
         {
