@@ -8,13 +8,13 @@ describe("Week", function() {
   });
   
   it("should return the starting weekday of the months", function() {
-    let day = DateWrapper.startDayOfMonth(DateWrapper.date("2017-09-28"));
+    let day = DateWrapper.date("2017-09-28").startDayOfMonth();
     expect(day).to.eql(4);
     
-    day = DateWrapper.startDayOfMonth(DateWrapper.date("2017-08-28"));
+    day = DateWrapper.date("2017-08-28").startDayOfMonth();
     expect(day).to.eql(1);
 
-    day = DateWrapper.startDayOfMonth(DateWrapper.date("2017-10-28"));
+    day = DateWrapper.date("2017-10-28").startDayOfMonth();
     expect(day).to.eql(6);
   });
 
@@ -39,9 +39,9 @@ describe("Week", function() {
 
 describe("Month", function() {
   it("should return endof a month", function() {
-    expect(DateWrapper.daysInMonth(DateWrapper.date("1"))).to.eql(31);
-    expect(DateWrapper.daysInMonth(DateWrapper.date("6"))).to.eql(30);
-    expect(DateWrapper.daysInMonth(DateWrapper.date("7"))).to.eql(31);
-    expect(DateWrapper.daysInMonth(DateWrapper.date("12"))).to.eql(31);
+    expect(DateWrapper.daysCount(DateWrapper.date("1"))).to.eql(31);
+    expect(DateWrapper.daysCount(DateWrapper.date("6"))).to.eql(30);
+    expect(DateWrapper.daysCount(DateWrapper.date("7"))).to.eql(31);
+    expect(DateWrapper.daysCount(DateWrapper.date("12"))).to.eql(31);
   });
 });

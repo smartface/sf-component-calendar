@@ -6,20 +6,64 @@ function notValidDateThrowanError(date){
   }
 }
 
-export function day(date){
-  return date.week();
-}
-
 export function weekOfYear(date){
   return date.week();
 }
 
-export function date(str=null){
-  return str ? moment(str) : moment();
+export function date(dt=null){
+  const _date = dt !== null 
+    ? dt instanceof String || dt instanceof Object 
+      ? moment(dt) 
+      : dt
+    : moment();
+  
+  class DateWrapper {
+    month(num){
+      return month(num, _date)
+    }
+    
+    startDayOfMonth(){
+      return startDayOfMonth(_date);
+    }
+    
+    monthShort(){
+      return monthsShort(_date);
+    }
+    
+    monthLong(){
+      return monthsLong(_date);
+    }
+    
+    daysCount(){
+      return daysCount(_date);
+    }
+    
+    nextMonth(){
+      return date(nextMonth(_date))
+    }
+    
+    prevMonth(){
+      return date(prevMonth(_date))
+    }
+    
+    toString(){
+      return _date.toString();
+    }
+  }
+  
+  return new DateWrapper();
 }
 
-export function month(num, date){
-  return date !== undefined ? moment(date).month(num) : moment().month(num);
+export function month(month, date){
+  return date !== undefined ? date.month(month) : moment().month(month);
+}
+
+export function year(year, date){
+  return date !== undefined ? date.year(year) : moment().year(year);
+}
+
+export function day(year, date){
+  return date !== undefined ? date.day(year) : moment().day(year);
 }
 
 export function startDayOfMonth(date){
@@ -42,15 +86,16 @@ export function weekdaysLong(date) {
   return date ? moment.weekdays(date.weekday()) : moment.weekdays();
 }
 
-export function daysInMonth(date) {
+export function daysCount(date) {
   return date.daysInMonth();
 }
 
 export function nextMonth(date){
-  return moment();
+  return date.clone().add(1, 'month');
 }
 
 export function prevMonth(date){
+  return date.clone().subtract(1, 'month');
 }
 
 export function prevYear(date){
@@ -62,5 +107,3 @@ export function nextYear(date){
 export function dateLang(sh="en"){
   return moment.locale(sh);
 }
-
-

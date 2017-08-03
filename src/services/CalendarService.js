@@ -1,16 +1,55 @@
 import * as DateWrapper from './DateWrapper';
 
-export function getMonth(num=1){
-  const month = DateWrapper.date(num);
+export function getMonth(dt) {
+  var date = DateWrapper.date(dt);
   
   return {
-    longName: DateWrapper.monthsLong(month),
-    shortName: DateWrapper.monthsShort(month),
-    daysInMonth: DateWrapper.daysInMonth(month),
+    longName: date.monthLong(),
+    shortName: date.monthShort(),
+    daysCount: date.daysCount(),
+    startDayOfMonth: date.startDayOfMonth(),
+  };
+}
+
+export function getCalendarMonth(dt){
+  const currentMonth = DateWrapper.date(dt);
+  const prevMonth = currentMonth.prevMonth();
+  const nexMonth = currentMonth.nextMonth();
+  
+	const days = [];
+	var prev = prevMonth.daysCount() - currentMonth.startDayOfMonth() + 1;
+	var next = 1;
+	var row = [];
+	days.push(row);
+	
+	var maxCol = 7;
+	var maxRow = 5;
+	var cellCount = maxRow*maxCol;
+	
+	for(var i = 1; i <= cellCount; i++){
+		if(i <= currentMonth.startDayOfMonth()){
+			row.push(prev++);
+		} else if(i > currentMonth.daysCount()+1){
+			row.push(next++);
+		} else {
+			row.push(i - currentMonth.startDayOfMonth());
+		}
+
+		if(i % 7 == 0 && cellCount !== i){
+			row = [];
+			days.push(row);
+		}
+	}
+	
+	return {
+    longName: currentMonth.monthLong(),
+    shortName: currentMonth.monthShort(),
+    daysCount: currentMonth.daysCount(),
+    startDayOfMonth: currentMonth.startDayOfMonth(),
     daysLong: DateWrapper.weekdaysLong(),
     daysShort: DateWrapper.weekdaysShort(),
-    startDayOfMonth: DateWrapper.startDayOfMonth(),
-  };
+	  days,
+	}
 }
 
 export function getWeek(){

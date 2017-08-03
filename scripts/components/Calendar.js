@@ -19,7 +19,6 @@ const Calendar = extend(CalendarDesign)(
 	function(_super, props, options){
 		// initalizes super class for this scope
 		_super(this, props || CalendarDesign.defaults );
-		alert();
 		this.weeks = [];
 		
 		this.weeks.push(new WeekDaysRow(weekRowStyle));
@@ -35,39 +34,15 @@ const Calendar = extend(CalendarDesign)(
 		this.updateCalendar();
 	}, function(proto){
 		proto.updateCalendar = function(){
-			const month = CalendarService.getMonth(8);
-			const days = []
-			var prev = 32 - month.startDayOfMonth;
-			var next = 1;
-			var row = [];
-			days.push(row);
-			
-			for(var i=1; i <= 35; i++){
-				if(i <= month.startDayOfMonth){
-					row.push(prev++);
-				} else if(i > month.daysInMonth){
-					row.push(next++);
-				} else {
-					row.push(i - month.startDayOfMonth);
-				}
-
-				if(i%7 == 0){
-					row = [];
-					days.push(row);
-				}
-			}
-			
 			this.weeks.forEach(function(row, index){
 				row.setDays(days[index]);
 			}.bind(this));
 		}
 		
 		proto.nextMonth = function(){
-			
 		}
 		
 		proto.prevMonth = function(){
-			
 		}
 	}
 );

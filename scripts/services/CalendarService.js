@@ -39,19 +39,46 @@
     }
   }
 
-  function getMonth() {
-    var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-
-    var month = DateWrapper.date(num);
+  function getMonth(month, year) {
+    var date = DateWrapper.date(month, year);
 
     return {
       longName: DateWrapper.monthsLong(month),
       shortName: DateWrapper.monthsShort(month),
       daysInMonth: DateWrapper.daysInMonth(month),
-      daysLong: DateWrapper.weekdaysLong(),
-      daysShort: DateWrapper.weekdaysShort(),
       startDayOfMonth: DateWrapper.startDayOfMonth(month)
     };
+  }
+  
+  function getCalendarMonth(month){
+    const prevMonth = getMonth(month-1);
+    const month = getMonth(month);
+		const days = []
+		var prev = 32 - month.startDayOfMonth;
+		var next = 1;
+		var row = [];
+		days.push(row);
+		
+		for(var i=1; i <= 35; i++){
+			if(i <= month.startDayOfMonth){
+				row.push(prev++);
+			} else if(i > month.daysInMonth){
+				row.push(next++);
+			} else {
+				row.push(i - month.startDayOfMonth);
+			}
+
+			if(i%7 == 0){
+				row = [];
+				days.push(row);
+			}
+		}
+		
+		return {
+      daysLong: DateWrapper.weekdaysLong(),
+      daysShort: DateWrapper.weekdaysShort(),
+		  
+		}
   }
 
   function getWeek() {}
