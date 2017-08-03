@@ -30,22 +30,37 @@ const Calendar = extend(CalendarDesign)(
 		this.weeks.forEach(function(row){
 			this.children.body.addChild(row);
 		}.bind(this));
+
+		this.updateCalendar(CalendarService.getCalendarMonth());
 		
-		this.updateCalendar();
+		this.children.navbar.onNext = function(){
+			this.nextMonth();
+		}.bind(this)
+		
+		this.children.navbar.onPrev = function(){
+			this.prevMonth();
+		}.bind(this);
+		
 	}, function(proto){
-		proto.updateCalendar = function(){
+		var currentMonth;
+		
+		proto.updateCalendar = function(month){
+			currentMonth = month;
 			this.weeks.forEach(function(row, index){
-				row.setDays(days[index]);
+				row.setDays(month.days[index]);
 			}.bind(this));
+			
+			this.children.navbar.setLabel(currentMonth.longName +" "+currentMonth.date.year);
 		}
 		
 		proto.nextMonth = function(){
+			this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.nextMonth.date));
 		}
 		
 		proto.prevMonth = function(){
+			this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.previousMonth.date));
 		}
 	}
 );
 
 module && (module.exports = Calendar);
-

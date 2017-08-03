@@ -49,6 +49,7 @@ export function getCalendarMonth(dt){
     daysLong: DateWrapper.weekdaysLong(),
     daysShort: DateWrapper.weekdaysShort(),
 	  days,
+    date: currentMonth.toObject(),
     previousMonth: {
       longName: prevMonth.monthLong(),
       shortName: prevMonth.monthShort(),
@@ -60,7 +61,7 @@ export function getCalendarMonth(dt){
       shortName: nextMonth.monthShort(),
       daysCount: nextMonth.daysCount(),
       date: nextMonth.toObject()
-    },
+    }
 	}
 }
 

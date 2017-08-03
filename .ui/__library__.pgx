@@ -9,7 +9,7 @@
 			},
 			"userProps": {},
 			"className": ".page",
-			"version": "6.4.4-rc.9",
+			"version": "6.4.4-rc.11",
 			"props": {
 				"backgroundColor": "#EEEEEE",
 				"orientation": "PORTRAIT",
@@ -1938,15 +1938,15 @@
 				"name": "navbar",
 				"parent": "940ab35f",
 				"children": [
-					"f509-2b23-f17d-8ff1",
-					"88ae-1c9e-a9fd-774c",
-					"aa4c-7a50-2d45-c1d6"
+					"5374-aec6-a6c3-51dc",
+					"206e-ebd7-1059-4ad2",
+					"e0c6-b605-1b38-34f9"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "f509-2b23-f17d-8ff1",
+			"id": "5374-aec6-a6c3-51dc",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1993,14 +1993,14 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button17",
+				"name": "button4",
 				"parent": "cf78-2304-1947-1383",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "88ae-1c9e-a9fd-774c",
+			"id": "206e-ebd7-1059-4ad2",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2048,7 +2048,7 @@
 		},
 		{
 			"type": "Button",
-			"id": "aa4c-7a50-2d45-c1d6",
+			"id": "e0c6-b605-1b38-34f9",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2095,7 +2095,7 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button18",
+				"name": "button5",
 				"parent": "cf78-2304-1947-1383",
 				"children": []
 			}

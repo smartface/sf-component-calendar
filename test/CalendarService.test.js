@@ -50,6 +50,11 @@ describe("Calendar Service", function() {
                   [ 21, 22, 23, 24, 25, 26, 27 ],
                   [ 28, 29, 1, 2, 3, 4, 5 ],
                ],
+          date: {
+            day: 1,
+            month: 1,
+            year: 2016
+          },
           previousMonth: {
             daysCount: 31,
             longName: "January",
@@ -96,6 +101,11 @@ describe("Calendar Service", function() {
                   [ 22, 23, 24, 25, 26, 27, 28 ],
                   [ 29, 30, 31, 32, 1, 2, 3 ]
                ],
+          date: {
+            day: 1,
+            month: 0,
+            year: 2017
+          },
           previousMonth: {
             daysCount: 31,
             longName: "December",

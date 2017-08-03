@@ -16,22 +16,22 @@
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.day = day;
   exports.weekOfYear = weekOfYear;
+  exports.clone = clone;
   exports.date = date;
-  exports.month = month;
-  exports.startDayOfMonth = startDayOfMonth;
   exports.monthsShort = monthsShort;
   exports.monthsLong = monthsLong;
   exports.weekdaysShort = weekdaysShort;
   exports.weekdaysLong = weekdaysLong;
-  exports.daysInMonth = daysInMonth;
-  exports.nextMonth = nextMonth;
-  exports.prevMonth = prevMonth;
   exports.prevYear = prevYear;
   exports.nextYear = nextYear;
   exports.dateLang = dateLang;
 
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   function notValidDateThrowanError(date) {
     if (moment(date).isValid()) {
@@ -39,28 +39,100 @@
     }
   }
 
-  function day(date) {
-    return date.week();
-  }
-
   function weekOfYear(date) {
     return date.week();
   }
 
+  function clone(date) {
+    return date.clone();
+  }
+
   function date() {
-    var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var dt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-    return str ? moment(str) : moment();
+    var _date = dt !== null ? typeof dt === "string" || dt instanceof Object ? moment(dt) : clone(dt) : moment();
+
+    var dateObject = _date.toObject();
+
+    var DateWrapper = function () {
+      function DateWrapper() {
+        _classCallCheck(this, DateWrapper);
+      }
+
+      DateWrapper.prototype.month = function month(num) {
+        return num ? _month(num, _date) : dateObject.months;
+      };
+
+      DateWrapper.prototype.day = function day(num) {
+        return num ? _day(num, _date) : dateObject.dates;
+      };
+
+      DateWrapper.prototype.year = function year(num) {
+        return num ? _year(num, _date) : dateObject.years;
+      };
+
+      DateWrapper.prototype.startDayOfMonth = function startDayOfMonth() {
+        return _startDayOfMonth(_date);
+      };
+
+      DateWrapper.prototype.monthShort = function monthShort() {
+        return monthsShort(_date);
+      };
+
+      DateWrapper.prototype.monthLong = function monthLong() {
+        return monthsLong(_date);
+      };
+
+      DateWrapper.prototype.daysCount = function daysCount() {
+        return _daysCount(_date);
+      };
+
+      DateWrapper.prototype.nextMonth = function nextMonth() {
+        return date(_nextMonth(_date));
+      };
+
+      DateWrapper.prototype.prevMonth = function prevMonth() {
+        return date(_prevMonth(_date));
+      };
+
+      DateWrapper.prototype.toString = function toString() {
+        return _date.toString();
+      };
+
+      DateWrapper.prototype.toObject = function toObject() {
+        return {
+          year: dateObject.years,
+          day: dateObject.date,
+          month: dateObject.months
+        };
+      };
+
+      return DateWrapper;
+    }();
+
+    return new DateWrapper();
   }
 
-  function month(num, date) {
-    return date !== undefined ? moment(date).month(num) : moment().month(num);
+  function _month(month, date) {
+    return date !== undefined ? date.month(month) : moment().month(month);
   }
 
-  function startDayOfMonth(date) {
+  exports.month = _month;
+  function _year(year, date) {
+    return date !== undefined ? date.year(year) : moment().year(year);
+  }
+
+  exports.year = _year;
+  function _day(year, date) {
+    return date !== undefined ? date.day(year) : moment().day(year);
+  }
+
+  exports.day = _day;
+  function _startDayOfMonth(date) {
     return date.weekday();
   }
 
+  exports.startDayOfMonth = _startDayOfMonth;
   function monthsShort(date) {
     return date ? moment.monthsShort(date.month()) : moment.monthsShort();
   }
@@ -77,16 +149,21 @@
     return date ? moment.weekdays(date.weekday()) : moment.weekdays();
   }
 
-  function daysInMonth(date) {
+  function _daysCount(date) {
     return date.daysInMonth();
   }
 
-  function nextMonth(date) {
-    return moment();
+  exports.daysCount = _daysCount;
+  function _nextMonth(date) {
+    return date.clone().add(1, 'month');
   }
 
-  function prevMonth(date) {}
+  exports.nextMonth = _nextMonth;
+  function _prevMonth(date) {
+    return date.clone().subtract(1, 'month');
+  }
 
+  exports.prevMonth = _prevMonth;
   function prevYear(date) {}
 
   function nextYear(date) {}
