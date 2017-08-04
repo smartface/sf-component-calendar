@@ -14,7 +14,7 @@ const weekRowStyle = {
 	flexGrow: 1
 };
 
-function createRow(){
+function createWeekRow(){
 	return new WeekDaysRow(weekRowStyle);
 }
 
@@ -50,11 +50,11 @@ const Calendar = extend(CalendarDesign)(
 		}
 		
 		proto.buildRows = function(){
-			weeks.push(createRow());
-			weeks.push(createRow());
-			weeks.push(createRow());
-			weeks.push(createRow());
-			weeks.push(createRow());
+			weeks.push(createWeekRow());
+			weeks.push(createWeekRow());
+			weeks.push(createWeekRow());
+			weeks.push(createWeekRow());
+			weeks.push(createWeekRow());
 			
 			weeks.forEach(function(row){
 				this.children.body.addChild(row);
