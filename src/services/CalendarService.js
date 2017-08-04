@@ -27,12 +27,24 @@ export function getCalendarMonth(dt){
 	var cellCount = maxRow*maxCol;
 	
 	for(var i = 1; i <= cellCount; i++){
-		if(i <= currentMonth.startDayOfMonth()){
-			row.push(prev++);
-		} else if(i > currentMonth.daysCount()+1){
-			row.push(next++);
+		if(i <= currentMonth.startDayOfMonth()) {
+			row.push({
+			  day: prev++,
+			  month: 'previous',
+			  isSpecialDay: false,
+			});
+		} else if(i > currentMonth.daysCount()+1) {
+			row.push({
+			  day: next++,
+			  month: 'next',
+			  isSpecialDay: false,
+			});
 		} else {
-			row.push(i - currentMonth.startDayOfMonth());
+			row.push({
+			  day: i - currentMonth.startDayOfMonth(),
+			  month: 'current',
+			  isSpecialDay: false,
+			});
 		}
 
 		if(i % 7 == 0 && cellCount !== i){

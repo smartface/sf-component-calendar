@@ -1,0 +1,14 @@
+{
+  ".sfCalendar": {
+    "&_block": {
+      "right": 0,
+      "left": 0,
+      "flexProps": {
+        "positionType": "ABSOLUTE"
+      },
+      "&_header": {
+        "height": 80
+      }
+    }
+  }
+}
