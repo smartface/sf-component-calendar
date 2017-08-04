@@ -9,7 +9,7 @@
 			},
 			"userProps": {},
 			"className": ".page",
-			"version": "6.4.4-rc.11",
+			"version": "6.4.4-rc.13",
 			"props": {
 				"backgroundColor": "#EEEEEE",
 				"orientation": "PORTRAIT",
@@ -87,8 +87,8 @@
 				"Calendar": "Default"
 			},
 			"userProps": {
-				"left": 62.63086560746314,
-				"top": 141.52699860048966,
+				"left": 54.18016138211103,
+				"top": 227.44248081261006,
 				"width": 245.73491056200484,
 				"height": 185.27056197045556
 			},
@@ -103,8 +103,8 @@
 				"borderColor": "rgba(0,0,0,1)",
 				"borderWidth": 0,
 				"right": 0,
-				"left": 62.63086560746314,
-				"top": 141.52699860048966,
+				"left": 54.18016138211103,
+				"top": 227.44248081261006,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",
@@ -256,8 +256,8 @@
 				"Highlights": "Default"
 			},
 			"userProps": {
-				"left": 20.176718268595952,
-				"top": 350.24856782295336,
+				"left": 22.993619677046656,
+				"top": 143.20631430182658,
 				"borderRadius": 20,
 				"width": 62.93594772751267,
 				"height": 64.32432741732211,
@@ -283,8 +283,8 @@
 				"borderWidth": 1,
 				"textColor": "rgba( 71, 71, 71, 1 )",
 				"textAlignment": "MIDCENTER",
-				"left": 20.176718268595952,
-				"top": 350.24856782295336,
+				"left": 22.993619677046656,
+				"top": 143.20631430182658,
 				"borderRadius": 20,
 				"font": {
 					"size": 16,
@@ -296,7 +296,7 @@
 					"positionType": "ABSOLUTE",
 					"alignSelf": "AUTO"
 				},
-				"name": "calendarNumber",
+				"name": "calendarDay",
 				"parent": "3365675e",
 				"children": []
 			}
@@ -1848,8 +1848,8 @@
 				"Calendar": "Default"
 			},
 			"userProps": {
-				"left": 101.1563905527894,
-				"top": 333.3642234264965
+				"left": 96.93103844011334,
+				"top": 385.47689948283454
 			},
 			"className": ".flexLayout .sfCalendar_block .sfCalendar_block",
 			"props": {
@@ -1862,8 +1862,8 @@
 				"borderColor": "rgba(0,0,0,1)",
 				"borderWidth": 0,
 				"right": 0,
-				"left": 101.1563905527894,
-				"top": 333.3642234264965,
+				"left": 96.93103844011334,
+				"top": 385.47689948283454,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",
@@ -1938,15 +1938,15 @@
 				"name": "navbar",
 				"parent": "940ab35f",
 				"children": [
-					"5374-aec6-a6c3-51dc",
-					"206e-ebd7-1059-4ad2",
-					"e0c6-b605-1b38-34f9"
+					"12a2-6873-3a8d-8fb7",
+					"80a1-9b59-66d3-2529",
+					"c391-4016-85cd-53e4"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "5374-aec6-a6c3-51dc",
+			"id": "12a2-6873-3a8d-8fb7",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2000,7 +2000,7 @@
 		},
 		{
 			"type": "Label",
-			"id": "206e-ebd7-1059-4ad2",
+			"id": "80a1-9b59-66d3-2529",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2048,7 +2048,7 @@
 		},
 		{
 			"type": "Button",
-			"id": "e0c6-b605-1b38-34f9",
+			"id": "c391-4016-85cd-53e4",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"

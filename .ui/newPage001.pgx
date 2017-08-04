@@ -9,7 +9,7 @@
 			},
 			"userProps": {},
 			"className": ".page",
-			"version": "6.4.4-rc.11",
+			"version": "6.4.4-rc.13",
 			"props": {
 				"backgroundColor": "#EEEEEE",
 				"orientation": "PORTRAIT",
@@ -85,8 +85,8 @@
 				"Calendar": "Default"
 			},
 			"userProps": {
-				"left": 0,
-				"top": 0,
+				"left": null,
+				"top": null,
 				"width": 375,
 				"height": 286.6790126746809,
 				"flexProps": {
@@ -107,8 +107,8 @@
 				"borderColor": "rgba(0,0,0,1)",
 				"borderWidth": 0,
 				"right": 0,
-				"left": 0,
-				"top": 0,
+				"left": null,
+				"top": null,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",
@@ -122,443 +122,15 @@
 				"name": "calendar",
 				"parent": "e876-9805-6b68-f0e4",
 				"children": [
-					"5c9f-2449-9a92-2331",
-					"9722-a63d-1651-97b9",
-					"75d1-3773-a2ce-1739"
-				],
-				"visibility": true
-			}
-		},
-		{
-			"type": "FlexLayout",
-			"id": "5c9f-2449-9a92-2331",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default",
-				"Calendar": "Default"
-			},
-			"userProps": {
-				"left": null,
-				"top": null,
-				"width": null,
-				"height": 0,
-				"maxHeight": 40,
-				"minHeight": 20,
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"flexGrow": 0.5,
-					"flexDirection": "ROW"
-				}
-			},
-			"className": ".flexLayout .sfCalendar_block .sfCalendar_block",
-			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"right": 0,
-				"left": null,
-				"top": null,
-				"maxHeight": 40,
-				"minHeight": 20,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 0.5
-				},
-				"name": "calendarDays",
-				"parent": "b766-261b-7b3f-6437",
-				"children": [
-					"6831-c393-30fa-2d73",
-					"1f77-76ec-05df-8f1f",
-					"4a5e-0b7e-ddd8-8a41",
-					"1cd2-e6f5-9200-b086",
-					"b1c7-6a72-c101-5529",
-					"8fd4-8292-5470-5844",
-					"46f2-812f-e7b0-8eb2"
+					"41f0-b4fc-92e6-e080",
+					"2a27-c514-d434-1f73",
+					"5d6d-fae6-b76f-8625"
 				]
 			}
 		},
 		{
-			"type": "Label",
-			"id": "6831-c393-30fa-2d73",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {
-				"height": null,
-				"width": 40,
-				"text": "Mon",
-				"textAlignment": "MIDCENTER",
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"font": {
-					"size": 14
-				}
-			},
-			"className": ".label",
-			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Mon",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
-				"name": "weekday_0",
-				"parent": "5c9f-2449-9a92-2331",
-				"children": []
-			}
-		},
-		{
-			"type": "Label",
-			"id": "1f77-76ec-05df-8f1f",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {
-				"height": null,
-				"width": 40,
-				"text": "Tu",
-				"textAlignment": "MIDCENTER",
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"font": {
-					"size": 14
-				}
-			},
-			"className": ".label",
-			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Tu",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
-				"name": "weekDay_1",
-				"parent": "5c9f-2449-9a92-2331",
-				"children": []
-			}
-		},
-		{
-			"type": "Label",
-			"id": "4a5e-0b7e-ddd8-8a41",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {
-				"height": null,
-				"width": 40,
-				"text": "Wed",
-				"textAlignment": "MIDCENTER",
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"font": {
-					"size": 14
-				}
-			},
-			"className": ".label",
-			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Wed",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
-				"name": "weekDay_2",
-				"parent": "5c9f-2449-9a92-2331",
-				"children": []
-			}
-		},
-		{
-			"type": "Label",
-			"id": "1cd2-e6f5-9200-b086",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {
-				"height": null,
-				"width": 40,
-				"text": "Th",
-				"textAlignment": "MIDCENTER",
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"font": {
-					"size": 14
-				}
-			},
-			"className": ".label",
-			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Th",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
-				"name": "weekDay_3",
-				"parent": "5c9f-2449-9a92-2331",
-				"children": []
-			}
-		},
-		{
-			"type": "Label",
-			"id": "b1c7-6a72-c101-5529",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {
-				"height": null,
-				"width": 40,
-				"text": "Fri",
-				"textAlignment": "MIDCENTER",
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"font": {
-					"size": 14
-				}
-			},
-			"className": ".label",
-			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Fri",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
-				"name": "weekDay_4",
-				"parent": "5c9f-2449-9a92-2331",
-				"children": []
-			}
-		},
-		{
-			"type": "Label",
-			"id": "8fd4-8292-5470-5844",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {
-				"height": null,
-				"width": 40,
-				"text": "Sat",
-				"textAlignment": "MIDCENTER",
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"font": {
-					"size": 14
-				}
-			},
-			"className": ".label",
-			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Sat",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
-				"name": "weekDay_5",
-				"parent": "5c9f-2449-9a92-2331",
-				"children": []
-			}
-		},
-		{
-			"type": "Label",
-			"id": "46f2-812f-e7b0-8eb2",
-			"hiddenComponent": false,
-			"source": {
-				"page": "__library__"
-			},
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {
-				"height": null,
-				"width": 40,
-				"text": "Sun",
-				"textAlignment": "MIDCENTER",
-				"flexProps": {
-					"flexGrow": 1
-				},
-				"font": {
-					"size": 14
-				}
-			},
-			"className": ".label",
-			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Sun",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
-				"name": "weekDay_6",
-				"parent": "5c9f-2449-9a92-2331",
-				"children": []
-			}
-		},
-		{
 			"type": "FlexLayout",
-			"id": "9722-a63d-1651-97b9",
+			"id": "41f0-b4fc-92e6-e080",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -614,15 +186,15 @@
 				"name": "navbar",
 				"parent": "b766-261b-7b3f-6437",
 				"children": [
-					"8a89-5820-a680-a87f",
-					"fe09-0893-d679-f1f8",
-					"f301-5d21-110d-04ea"
+					"5196-0d6b-74e8-85f2",
+					"3840-f059-0c96-5d76",
+					"14f5-e8d0-adb4-75ae"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "8a89-5820-a680-a87f",
+			"id": "5196-0d6b-74e8-85f2",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -669,14 +241,14 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button3",
-				"parent": "9722-a63d-1651-97b9",
+				"name": "button2",
+				"parent": "41f0-b4fc-92e6-e080",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "fe09-0893-d679-f1f8",
+			"id": "3840-f059-0c96-5d76",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -718,13 +290,13 @@
 					"flexGrow": 10
 				},
 				"name": "label1",
-				"parent": "9722-a63d-1651-97b9",
+				"parent": "41f0-b4fc-92e6-e080",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "f301-5d21-110d-04ea",
+			"id": "14f5-e8d0-adb4-75ae",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -771,14 +343,441 @@
 					"alignSelf": "AUTO",
 					"flexGrow": 1
 				},
-				"name": "button4",
-				"parent": "9722-a63d-1651-97b9",
+				"name": "button3",
+				"parent": "41f0-b4fc-92e6-e080",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "75d1-3773-a2ce-1739",
+			"id": "2a27-c514-d434-1f73",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default",
+				"Calendar": "Default"
+			},
+			"userProps": {
+				"left": null,
+				"top": null,
+				"width": null,
+				"height": 0,
+				"maxHeight": 40,
+				"minHeight": 20,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 0.5,
+					"flexDirection": "ROW"
+				}
+			},
+			"className": ".flexLayout .sfCalendar_block .sfCalendar_block",
+			"props": {
+				"height": 0,
+				"width": null,
+				"touchEnabled": true,
+				"visible": true,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"right": 0,
+				"left": null,
+				"top": null,
+				"maxHeight": 40,
+				"minHeight": 20,
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"direction": "INHERIT",
+					"alignContent": "STRETCH",
+					"alignItems": "STRETCH",
+					"justifyContent": "FLEX_START",
+					"flexWrap": "NOWRAP",
+					"flexDirection": "ROW",
+					"positionType": "RELATIVE",
+					"flexGrow": 0.5
+				},
+				"name": "calendarDays",
+				"parent": "b766-261b-7b3f-6437",
+				"children": [
+					"4d00-e62d-1209-d774",
+					"2614-7d33-6cbd-fd04",
+					"3382-24f4-abb6-eaac",
+					"80b6-e0b5-a51e-a37c",
+					"a68c-992b-faa0-70cc",
+					"3388-e541-915d-573e",
+					"6e7c-ef82-d9f3-5ff1"
+				]
+			}
+		},
+		{
+			"type": "Label",
+			"id": "4d00-e62d-1209-d774",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": null,
+				"width": 40,
+				"text": "Mon",
+				"textAlignment": "MIDCENTER",
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"font": {
+					"size": 14
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": 40,
+				"height": null,
+				"touchEnabled": true,
+				"text": "Mon",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"font": {
+					"size": 14,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"name": "weekday_0",
+				"parent": "2a27-c514-d434-1f73",
+				"children": []
+			}
+		},
+		{
+			"type": "Label",
+			"id": "2614-7d33-6cbd-fd04",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": null,
+				"width": 40,
+				"text": "Tu",
+				"textAlignment": "MIDCENTER",
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"font": {
+					"size": 14
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": 40,
+				"height": null,
+				"touchEnabled": true,
+				"text": "Tu",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"font": {
+					"size": 14,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"name": "weekDay_1",
+				"parent": "2a27-c514-d434-1f73",
+				"children": []
+			}
+		},
+		{
+			"type": "Label",
+			"id": "3382-24f4-abb6-eaac",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": null,
+				"width": 40,
+				"text": "Wed",
+				"textAlignment": "MIDCENTER",
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"font": {
+					"size": 14
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": 40,
+				"height": null,
+				"touchEnabled": true,
+				"text": "Wed",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"font": {
+					"size": 14,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"name": "weekDay_2",
+				"parent": "2a27-c514-d434-1f73",
+				"children": []
+			}
+		},
+		{
+			"type": "Label",
+			"id": "80b6-e0b5-a51e-a37c",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": null,
+				"width": 40,
+				"text": "Th",
+				"textAlignment": "MIDCENTER",
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"font": {
+					"size": 14
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": 40,
+				"height": null,
+				"touchEnabled": true,
+				"text": "Th",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"font": {
+					"size": 14,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"name": "weekDay_3",
+				"parent": "2a27-c514-d434-1f73",
+				"children": []
+			}
+		},
+		{
+			"type": "Label",
+			"id": "a68c-992b-faa0-70cc",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": null,
+				"width": 40,
+				"text": "Fri",
+				"textAlignment": "MIDCENTER",
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"font": {
+					"size": 14
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": 40,
+				"height": null,
+				"touchEnabled": true,
+				"text": "Fri",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"font": {
+					"size": 14,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"name": "weekDay_4",
+				"parent": "2a27-c514-d434-1f73",
+				"children": []
+			}
+		},
+		{
+			"type": "Label",
+			"id": "3388-e541-915d-573e",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": null,
+				"width": 40,
+				"text": "Sat",
+				"textAlignment": "MIDCENTER",
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"font": {
+					"size": 14
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": 40,
+				"height": null,
+				"touchEnabled": true,
+				"text": "Sat",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"font": {
+					"size": 14,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"name": "weekDay_5",
+				"parent": "2a27-c514-d434-1f73",
+				"children": []
+			}
+		},
+		{
+			"type": "Label",
+			"id": "6e7c-ef82-d9f3-5ff1",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": null,
+				"width": 40,
+				"text": "Sun",
+				"textAlignment": "MIDCENTER",
+				"flexProps": {
+					"flexGrow": 1
+				},
+				"font": {
+					"size": 14
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": 40,
+				"height": null,
+				"touchEnabled": true,
+				"text": "Sun",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"font": {
+					"size": 14,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"name": "weekDay_6",
+				"parent": "2a27-c514-d434-1f73",
+				"children": []
+			}
+		},
+		{
+			"type": "FlexLayout",
+			"id": "5d6d-fae6-b76f-8625",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -792,6 +791,7 @@
 				"top": 0,
 				"width": null,
 				"height": null,
+				"paddingBottom": 6,
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 5
@@ -813,6 +813,7 @@
 				"right": 0,
 				"left": 0,
 				"top": 0,
+				"paddingBottom": 6,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",

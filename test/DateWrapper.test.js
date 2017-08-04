@@ -40,10 +40,10 @@ describe("DateWrapper", function() {
   
   describe("Month", function() {
     it("should return endof a month", function() {
-      expect(DateWrapper.date("1").daysCount()).to.eql(31);
-      expect(DateWrapper.date("6").daysCount()).to.eql(30);
-      expect(DateWrapper.date("7").daysCount()).to.eql(31);
-      expect(DateWrapper.date("12").daysCount()).to.eql(31);
+      expect(DateWrapper.date({month: 0}).daysCount()).to.eql(31);
+      expect(DateWrapper.date({month: 5}).daysCount()).to.eql(30);
+      expect(DateWrapper.date({month: 6}).daysCount()).to.eql(31);
+      expect(DateWrapper.date({month: 11}).daysCount()).to.eql(31);
     });
   });
 });
