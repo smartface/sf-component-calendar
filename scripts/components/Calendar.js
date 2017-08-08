@@ -14,15 +14,78 @@ const weekRowStyle = {
 	flexGrow: 1
 };
 
+const styles = {
+	".header": {
+		"&_navbar": {
+			"&_arrow" : {
+				"flexProps": {
+					"flexGrow": 1,
+					"textColor": "#5E5E5E",
+				}
+			},
+			"&_label": {
+				"textColor": "#000000",
+			},
+			"&_daynames": {
+				".weekday": {
+					"textColor": "#000000",
+					"backgroundColor": "rgba(0,185,255,42)"
+				},
+				".weekend": {
+					"textColor": "#000000",
+					"backgroundColor": "rgba(0,185,255,42)"
+				}
+			}
+		}
+	},
+	".day": {
+		"font": {
+      "size": 16,
+      "bold": false,
+      "italic": false,
+      "family": "Arial"
+    },
+		"borderRadius": 26,
+		"textColor": "#000000",
+		"backgroundColor": "rgba(0,0,0,0)",
+		"&-inrange": {
+    	"backgorundColor": "rgba(0,185,255,42)",
+			"textColor": "#000000",
+		},
+    "&-selected": {
+    	"backgorundColor": "rgba(0,185,255,42)",
+			"textColor": "#000000",
+    },
+		".deactiveDays": {
+			"borderRadius": 10,
+			"textColor": "",
+			"backgroundColor": "",
+		},
+		".specialDays": {
+			"&-selected": {
+				"@extend": ".day-selected",
+			},
+			"borderRadius": 10,
+			"textColor": "",
+			"backgroundColor": "",
+		},
+		".holidays": {
+			"borderRadius": 10,
+			"textColor": "",
+			"backgroundColor": "",
+		}
+	}
+};
+
 function createWeekRow(){
 	return new WeekDaysRow(weekRowStyle);
 }
 
 const Calendar = extend(CalendarDesign)(
 	//constructor
-	function(_super, props, options){
+	function(_super, props, style){
 		// initalizes super class for this scope
-		_super(this, props || CalendarDesign.defaults );
+		_super(this, props || CalendarDesign.defaults);
 		
 		this.children.navbar.onNext = function(){
 			this.nextMonth();
@@ -47,6 +110,10 @@ const Calendar = extend(CalendarDesign)(
 		}
 		
 		function onDaySelected(row, index){
+			return {
+				...currentMonth.date,
+				day: currentMonth.days[row][index]
+			}
 		}
 		
 		proto.buildRows = function(){
@@ -59,8 +126,9 @@ const Calendar = extend(CalendarDesign)(
 			weeks.forEach(function(row){
 				this.children.body.addChild(row);
 				row.onDaySelected = function(){
-					if(selectedRow)
+					if(selectedRow){
 						selectedRow.clearSelected();
+					}
 					selectedRow = row;
 				};
 			}.bind(this));

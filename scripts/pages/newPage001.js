@@ -13,7 +13,6 @@ const NewPage001 = extend(NewPage001Design)(
 		this.onShow = onShow.bind(this, this.onShow.bind(this));
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
-		
 });
 
 // Page.onShow -> This event is called when a page appears on the screen (everytime).

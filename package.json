@@ -4,8 +4,8 @@
   "description": "Calendar Component",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./test/**/*.test.js",
-    "test:watch": "mocha --watch --compilers js:babel-core/register ./test/**/*.test.js",
+    "test": "mocha --compilers js:babel-core/register --debug ./test/**/*.test.js",
+    "test:watch": "mocha --watch --compilers js:babel-core/register --debug ./test/**/*.test.js",
     "build": "babel ./src/ --out-dir -d ./lib/.",
     "dev": "babel ./src/services --out-dir -d ./scripts/services",
     "docs:create": "jsdox ./src -o docs",
@@ -52,6 +52,7 @@
     "semver": "^5.3.0"
   },
   "dependencies": {
+    "@smartface/styler": "^1.0.10",
     "moment": "^2.18.1"
   },
   "config": {

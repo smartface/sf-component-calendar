@@ -9,7 +9,7 @@
 			},
 			"userProps": {},
 			"className": ".page",
-			"version": "6.4.4-rc.13",
+			"version": "6.4.4-rc.16",
 			"props": {
 				"backgroundColor": "#EEEEEE",
 				"orientation": "PORTRAIT",
@@ -28,8 +28,8 @@
 					"b766-261b-7b3f-6437"
 				],
 				"name": "newPage001",
-				"width": 266.25,
-				"height": 428.13
+				"width": 277.5,
+				"height": 446.21999999999997
 			}
 		},
 		{

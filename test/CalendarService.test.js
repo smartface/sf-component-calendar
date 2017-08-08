@@ -44,12 +44,52 @@ describe("Calendar Service", function() {
             'Saturday' ],
           daysShort: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
           days: [ 
-                  [ 31, 1, 2, 3, 4, 5, 6 ],
-                  [ 7, 8, 9, 10, 11, 12, 13 ],
-                  [ 14, 15, 16, 17, 18, 19, 20 ],
-                  [ 21, 22, 23, 24, 25, 26, 27 ],
-                  [ 28, 29, 1, 2, 3, 4, 5 ],
-               ],
+              [ 
+                { day: 31, month: 'previous', isSpecialDay: false, isWeekend: true },
+                { day: 1, month: 'current', isSpecialDay: false },
+                { day: 2, month: 'current', isSpecialDay: false },
+                { day: 3, month: 'current', isSpecialDay: false },
+                { day: 4, month: 'current', isSpecialDay: false },
+                { day: 5, month: 'current', isSpecialDay: false },
+                { day: 6, month: 'current', isSpecialDay: false, isWeekend: true } 
+              ],
+              [ 
+                { day: 7, month: 'current', isSpecialDay: false, isWeekend: true },
+                { day: 8, month: 'current', isSpecialDay: false },
+                { day: 9, month: 'current', isSpecialDay: false },
+                { day: 10, month: 'current', isSpecialDay: false },
+                { day: 11, month: 'current', isSpecialDay: false },
+                { day: 12, month: 'current', isSpecialDay: false },
+                { day: 13, month: 'current', isSpecialDay: false, isWeekend: true } 
+              ],
+              [
+                { day: 14, month: 'current', isSpecialDay: false, isWeekend: true },
+                { day: 15, month: 'current', isSpecialDay: false },
+                { day: 16, month: 'current', isSpecialDay: false },
+                { day: 17, month: 'current', isSpecialDay: false },
+                { day: 18, month: 'current', isSpecialDay: false },
+                { day: 19, month: 'current', isSpecialDay: false },
+                { day: 20, month: 'current', isSpecialDay: false, isWeekend: true } 
+              ],
+              [
+                { day: 21, month: 'current', isSpecialDay: false, isWeekend: true },
+                { day: 22, month: 'current', isSpecialDay: false },
+                { day: 23, month: 'current', isSpecialDay: false },
+                { day: 24, month: 'current', isSpecialDay: false },
+                { day: 25, month: 'current', isSpecialDay: false },
+                { day: 26, month: 'current', isSpecialDay: false },
+                { day: 27, month: 'current', isSpecialDay: false, isWeekend: true } 
+              ],
+              [ 
+                { day: 28, month: 'current', isSpecialDay: false, isWeekend: true },
+                { day: 29, month: 'current', isSpecialDay: false },
+                { day: 1, month: 'next', isSpecialDay: false },
+                { day: 2, month: 'next', isSpecialDay: false },
+                { day: 3, month: 'next', isSpecialDay: false },
+                { day: 4, month: 'next', isSpecialDay: false },
+                { day: 5, month: 'next', isSpecialDay: false, isWeekend: true } 
+              ]
+            ],
           date: {
             day: 1,
             month: 1,
@@ -95,11 +135,51 @@ describe("Calendar Service", function() {
             'Saturday' ],
           daysShort: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
           days: [ 
-                  [ 1, 2, 3, 4, 5, 6, 7 ],
-                  [ 8, 9, 10, 11, 12, 13, 14 ],
-                  [ 15, 16, 17, 18, 19, 20, 21 ],
-                  [ 22, 23, 24, 25, 26, 27, 28 ],
-                  [ 29, 30, 31, 32, 1, 2, 3 ]
+                  [ 
+                    { day: 1, month: 'current', isSpecialDay: false, isWeekend: true },
+                    { day: 2, month: 'current', isSpecialDay: false },
+                    { day: 3, month: 'current', isSpecialDay: false },
+                    { day: 4, month: 'current', isSpecialDay: false },
+                    { day: 5, month: 'current', isSpecialDay: false },
+                    { day: 6, month: 'current', isSpecialDay: false },
+                    { day: 7, month: 'current', isSpecialDay: false, isWeekend: true } 
+                  ],
+                  [
+                    { day: 8, month: 'current', isSpecialDay: false, isWeekend: true },
+                    { day: 9, month: 'current', isSpecialDay: false },
+                    { day: 10, month: 'current', isSpecialDay: false },
+                    { day: 11, month: 'current', isSpecialDay: false },
+                    { day: 12, month: 'current', isSpecialDay: false },
+                    { day: 13, month: 'current', isSpecialDay: false },
+                    { day: 14, month: 'current', isSpecialDay: false, isWeekend: true } 
+                  ],
+                  [
+                    { day: 15, month: 'current', isSpecialDay: false, isWeekend: true },
+                    { day: 16, month: 'current', isSpecialDay: false },
+                    { day: 17, month: 'current', isSpecialDay: false },
+                    { day: 18, month: 'current', isSpecialDay: false },
+                    { day: 19, month: 'current', isSpecialDay: false },
+                    { day: 20, month: 'current', isSpecialDay: false },
+                    { day: 21, month: 'current', isSpecialDay: false, isWeekend: true } 
+                  ],
+                  [
+                    { day: 22, month: 'current', isSpecialDay: false, isWeekend: true },
+                    { day: 23, month: 'current', isSpecialDay: false },
+                    { day: 24, month: 'current', isSpecialDay: false },
+                    { day: 25, month: 'current', isSpecialDay: false },
+                    { day: 26, month: 'current', isSpecialDay: false },
+                    { day: 27, month: 'current', isSpecialDay: false },
+                    { day: 28, month: 'current', isSpecialDay: false, isWeekend: true } 
+                  ],
+                  [
+                    { day: 29, month: 'current', isSpecialDay: false, isWeekend: true },
+                    { day: 30, month: 'current', isSpecialDay: false },
+                    { day: 31, month: 'current', isSpecialDay: false },
+                    { day: 32, month: 'current', isSpecialDay: false },
+                    { day: 1, month: 'next', isSpecialDay: false },
+                    { day: 2, month: 'next', isSpecialDay: false },
+                    { day: 3, month: 'next', isSpecialDay: false, isWeekend: true } 
+                  ]
                ],
           date: {
             day: 1,

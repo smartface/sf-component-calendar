@@ -27,24 +27,31 @@ export function getCalendarMonth(dt){
 	var cellCount = maxRow*maxCol;
 	
 	for(var i = 1; i <= cellCount; i++){
+		let day;
 		if(i <= currentMonth.startDayOfMonth()) {
-			row.push({
+			day = {
 			  day: prev++,
 			  month: 'previous',
 			  isSpecialDay: false,
-			});
+			};
 		} else if(i > currentMonth.daysCount()+1) {
-			row.push({
+			day = {
 			  day: next++,
 			  month: 'next',
 			  isSpecialDay: false,
-			});
+			};
 		} else {
-			row.push({
+			day = {
 			  day: i - currentMonth.startDayOfMonth(),
 			  month: 'current',
 			  isSpecialDay: false,
-			});
+			};
+		}
+		
+		row.push(day);
+		
+		if(row.length === 1 || row.length === 7){
+			day.isWeekend = true;
 		}
 
 		if(i % 7 == 0 && cellCount !== i){

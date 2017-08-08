@@ -27,4 +27,3 @@ const CalendarNavBar = extend(CalendarNavBarDesign)(
 );
 
 module && (module.exports = CalendarNavBar);
-

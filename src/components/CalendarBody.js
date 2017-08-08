@@ -16,3 +16,4 @@ const CalendarBody = extend(CalendarBodyDesign)(
 );
 
 module && (module.exports = CalendarBody);
+
