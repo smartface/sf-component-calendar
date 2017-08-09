@@ -1853,8 +1853,7 @@
 				"left": 96.93103947051584,
 				"top": 173.59188550139126,
 				"width": 191.78082191780823,
-				"height": 146.57534246575344,
-				"backgroundColor": "rgba( 218, 218, 218, 1 )"
+				"height": 146.57534246575344
 			},
 			"className": ".flexLayout .sfCalendar_block .sfCalendar_block",
 			"props": {
@@ -1862,7 +1861,7 @@
 				"width": 191.78082191780823,
 				"touchEnabled": true,
 				"visible": true,
-				"backgroundColor": "rgba( 218, 218, 218, 1 )",
+				"backgroundColor": "#FFFFFF",
 				"alpha": 1,
 				"borderColor": "rgba(0,0,0,1)",
 				"borderWidth": 0,

@@ -32,7 +32,6 @@ export function getCalendarMonth(dt){
 	
 	for(var i = 0; i < cellCount; i++){
 		let day;
-		// 1
 		if(i < currentMonth.startDayOfMonth()) {
 			day = {
 			  day: ++prev,

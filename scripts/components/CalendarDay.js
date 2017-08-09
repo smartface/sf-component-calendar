@@ -28,9 +28,10 @@ const CalendarDay = extend(CalendarDayDesign)(
 		}
 		
 		proto.setSelected = function(){
-			this.dispatch({
-				type: "daySelected"
-			});
+			if(this.currentData.month === "current")
+				this.dispatch({
+					type: "daySelected"
+				});
 		}
 		
 		proto.clearSelected = function(){

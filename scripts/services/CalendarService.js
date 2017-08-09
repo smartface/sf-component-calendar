@@ -72,7 +72,6 @@
 
 		for (var i = 0; i < cellCount; i++) {
 			var day = void 0;
-			// 1
 			if (i < currentMonth.startDayOfMonth()) {
 				day = {
 					day: ++prev,

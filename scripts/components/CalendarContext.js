@@ -35,7 +35,7 @@ const styles = {
 				"italic": false,
 				"family": "Arial"
 			},
-			"borderRadius": 20,
+			"borderRadius": 18,
 			"textColor": "#000000",
 			"backgroundColor": "rgba(0,0,0,0)",
 			"&-inrange": {
@@ -48,6 +48,7 @@ const styles = {
 			},
 			"&-deactiveDays": {
 				"textColor": "#D6D6D6",
+				"borderColor": "#D6D6D6",
 				"backgroundColor": "rgba(0,0,0,0)",
 			},
 			"&-specialDays": {
@@ -57,7 +58,8 @@ const styles = {
 				"backgroundColor": "rgba(0,0,0,0)",
 			},
 			"&-weekend": {
-				"textColor": "#E6E6E6",
+				"textColor": "#A3A3A3",
+				"borderColor": "#A3A3A3"
 			}
 		}
 	}
@@ -66,13 +68,17 @@ const styles = {
 
 var styler = flatStyler(styles);
 
+const selectDays = function(name){
+	return name.indexOf("_weekDay") > 0;;
+}
+
 function createContext(component) {
 	var styleContext = StyleContext.fromSFComponent(
 		component,
 		"calendar",
 		//initial classNames
 		function(name) {
-			if (name.indexOf("weekday") == 0) {
+			if (name.indexOf("_weekDay") > 0) {
 				return '.calendar.day';
 			}
 
@@ -86,7 +92,7 @@ function createContext(component) {
 			return ".calendar";
 		}
 	);
-
+	
 	var context = styleContext(
 		function(className) {
 			return function getStyle() {
@@ -98,41 +104,52 @@ function createContext(component) {
 			const newState = Object.assign({}, state);
 
 			switch (action.type) {
+				case "resetDays":
+					Object.keys(newState.actors)
+						.filter(selectDays)
+						.forEach(function(name){
+							newState.actors[name].resetClassNames([".calendar.day"]);
+						});
+					
+					break;
 				case "daySelected":
-					if (newState.selectedDay)
-						newState.actors[newState.selectedDay].setClassName(".calendar.day");
+					if (newState.selectedDay){
+						newState.actors[newState.selectedDay].removeClassName(".calendar.day-selected");
+					}
 
-					newState.actors[target].setClassName(".calendar.day .calendar.day-selected");
+					newState.actors[target].pushClassName(".calendar.day-selected");
 					newState.selectedDay = target;
 
 					return newState;
 					break;
 				case "clearSelectedDay":
-					newState.actors[target].setClassName(".calendar.day");
+					newState.actors[target].removeClassName(".calendar.day-selected");
 					newState.selectedDay = "";
 					
 					break;
 				case "changeState":
 					const actor = newState.actors[target];
-					actor.setClassName(".calendar.day");
+					// actor.setClassName(".calendar.day");
+					
 					newState.states = newState.states || {};
 					newState.states[target] = action.data;
+					
 					const classNames = [actor.getClassName()];
 					const data = action.data;
 					
-					if(data.isWeekend){
-						classNames.push(".calendar.day-weekend");
+					if(data.isSpecialDay){
+						actor.pushClassName(".calendar.day-specialDays");
 					}
 
-					if(data.isSpecialDay){
-						classNames.push(".calendar.day-specialDays");
+					if(data.isWeekend){
+						actor.pushClassName(".calendar.day-weekend");
 					}
-					
+
 					if(data.month !== "current"){
-						classNames.push(".calendar.day-deactiveDays");
+						actor.pushClassName(".calendar.day-deactiveDays");
 					}
 					
-					actor.setClassName(classNames.join(" "));
+					// actor.getClassName();
 					
 					// console.log(actor.getClassName());
 					break;

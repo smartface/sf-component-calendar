@@ -4,7 +4,7 @@
 const extend = require('js-base/core/extend');
 
 const CalendarDesign = require('library/Calendar');
-const WeekDaysRow = require('./CalendarWeekRow');
+const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
 const CalendarService = require("../services/CalendarService");
 const CalendarContext = require("./CalendarContext");
@@ -15,8 +15,8 @@ const weekRowStyle = {
 	flexGrow: 1
 };
 
-function createWeekRow(){
-	return new WeekDaysRow(weekRowStyle);
+function createWeekRow(rowIndex){
+	return new CalendarWeekRow(weekRowStyle, rowIndex);
 }
 
 const Calendar = extend(CalendarDesign)(
@@ -48,26 +48,27 @@ const Calendar = extend(CalendarDesign)(
 		}
 		
 		function onDaySelected(row, index){
-			return Object.assign({}, currentMonth.date, {
-					day: currentMonth.days[row][index]
-				})
+			this.onChanged && this.onChanged(
+				Object.assign(
+					{},
+					currentMonth.date, 
+					{
+						day: currentMonth.days[row][index].day
+					}
+				))
 		}
 		
 		proto.buildRows = function(){
-			weeks.push(createWeekRow());
-			weeks.push(createWeekRow());
-			weeks.push(createWeekRow());
-			weeks.push(createWeekRow());
-			weeks.push(createWeekRow());
+			weeks.push(createWeekRow(0));
+			weeks.push(createWeekRow(1));
+			weeks.push(createWeekRow(2));
+			weeks.push(createWeekRow(3));
+			weeks.push(createWeekRow(4));
+			weeks.push(createWeekRow(5));
 			
 			weeks.forEach(function(row, index){
 				this.children.body.addChild(row);
-				row.onDaySelected = function(){
-					if(selectedRow){
-						selectedRow.clearSelected();
-					}
-					selectedRow = row;
-				};
+				row.onDaySelected = onDaySelected.bind(this);
 				this.children["week"+index] = row;
 			}.bind(this));
 			
@@ -76,7 +77,6 @@ const Calendar = extend(CalendarDesign)(
 		
 		proto.updateCalendar = function(month){
 			currentMonth = month;
-			console.log(JSON.stringify(month.date))
 			
 			updateRows.call(this, month.days);
 			this.children.navbar.setLabel(currentMonth.longName +" "+currentMonth.date.year);

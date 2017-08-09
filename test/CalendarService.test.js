@@ -8,21 +8,21 @@ describe("Calendar Service", function() {
       var data = CalendarService.getMonth({year: 2016, month: 1});
 
       expect(data).to.eql(
-        {
-          longName: 'February',
-          shortName: 'Feb',
-          daysCount: 29,
-          startDayOfMonth: 1
+      {
+        longName: 'February',
+        shortName: 'Feb',
+        daysCount: 29,
+        startDayOfMonth: 1
       });
       
       data = CalendarService.getMonth({year: 2017, month: 0});
 
       expect(data).to.eql(
-        {
-          longName: 'January',
-          shortName: 'Jan',
-          daysCount: 31,
-          startDayOfMonth: 0
+      {
+        longName: 'January',
+        shortName: 'Jan',
+        daysCount: 31,
+        startDayOfMonth: 0
       });
     });
     

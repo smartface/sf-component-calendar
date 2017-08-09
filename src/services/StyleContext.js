@@ -23,7 +23,9 @@ export function fromSFComponent(component, name, mapper){
   function flat(name, comp) {
     flatted[name] = comp
   }
-  collect(component, name, mapper)
+  
+  collect(component, name, mapper);
+  
   return createStyleContext(flatted);
 }
 
@@ -52,7 +54,8 @@ export function makeStylable(component, className, name){
   return new class Stylable {
     constructor(){
       this.name = name;
-      this.className = className;
+      this.initialClassName = className;
+      this.classNames = [className];
       this.component = component;
       this.styles;
       this.isUgly = true;
@@ -75,13 +78,52 @@ export function makeStylable(component, className, name){
       return Object.assign({}, this.styles);
     }
     
-    getClassName(){
+    getInitialClassName(){
       return this.className;
     }
     
-    setClassName(className){
+    getClassName(){
+      return this.classNames.join(" ");
+    }
+    
+    removeClassName(className){
+      if(this.hasClassName(className)){
+        this.isUgly = true;
+        this.classNames = this.classNames.filter(function(cname){
+          return cname !== className;
+        });
+      }
+      
+      return this.getClassName();
+    }
+    
+    resetClassNames(classNames){
       this.isUgly = true;
-      return this.className = className;
+      this.classNames = classNames.slice();
+    }
+    
+    hasClassName(className){
+      return this.classNames.some(function(cname){
+        return cname === className;
+      })
+    }
+    
+    pushClassName(className){
+      if(!this.hasClassName(className)){
+        this.classNames.push(className);
+        this.isUgly = true;
+      }
+      
+      return this.getClassName();
+    }
+    
+    addClassName(className, index){
+      if(!this.hasClassName(className)){
+        this.classNames.splice(index, 1, className);
+        this.isUgly = true;
+      }
+      
+      return this.getClassName();
     }
     
     dispose(){
@@ -111,17 +153,18 @@ export function createStyleContext(actors){
           newState = Object.assign({}, state);
         }
         
-        Object.keys(newState.actors).forEach(function setInitialStyles(name){
-          const comp = newState.actors[name];
-          
-          if(comp.isUgly === true){
-            const className = newState.actors[name].getClassName();
-            const styles = styler(className);
+        Object.keys(newState.actors).forEach(
+          function setInitialStyles(name){
+            const comp = newState.actors[name];
             
-            newState.actors[name].setStyles(styles());
-            comp.isUgly = false;
-          }
-        });
+            if(comp.isUgly === true){
+              const className = newState.actors[name].getClassName();
+              const styles = styler(className);
+              
+              newState.actors[name].setStyles(styles());
+              comp.isUgly = false;
+            }
+          });
         
         return newState;
     });

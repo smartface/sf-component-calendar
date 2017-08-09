@@ -60,7 +60,9 @@
     function flat(name, comp) {
       flatted[name] = comp;
     }
+
     collect(component, name, mapper);
+
     return createStyleContext(flatted);
   }
 
@@ -91,7 +93,8 @@
         _classCallCheck(this, Stylable);
 
         this.name = name;
-        this.className = className;
+        this.initialClassName = className;
+        this.classNames = [className];
         this.component = component;
         this.styles;
         this.isUgly = true;
@@ -113,13 +116,52 @@
         return Object.assign({}, this.styles);
       };
 
-      Stylable.prototype.getClassName = function getClassName() {
+      Stylable.prototype.getInitialClassName = function getInitialClassName() {
         return this.className;
       };
 
-      Stylable.prototype.setClassName = function setClassName(className) {
+      Stylable.prototype.getClassName = function getClassName() {
+        return this.classNames.join(" ");
+      };
+
+      Stylable.prototype.removeClassName = function removeClassName(className) {
+        if (this.hasClassName(className)) {
+          this.isUgly = true;
+          this.classNames = this.classNames.filter(function (cname) {
+            return cname !== className;
+          });
+        }
+
+        return this.getClassName();
+      };
+
+      Stylable.prototype.resetClassNames = function resetClassNames(classNames) {
         this.isUgly = true;
-        return this.className = className;
+        this.classNames = classNames.slice();
+      };
+
+      Stylable.prototype.hasClassName = function hasClassName(className) {
+        return this.classNames.some(function (cname) {
+          return cname === className;
+        });
+      };
+
+      Stylable.prototype.pushClassName = function pushClassName(className) {
+        if (!this.hasClassName(className)) {
+          this.classNames.push(className);
+          this.isUgly = true;
+        }
+
+        return this.getClassName();
+      };
+
+      Stylable.prototype.addClassName = function addClassName(className, index) {
+        if (!this.hasClassName(className)) {
+          this.classNames.splice(index, 1, className);
+          this.isUgly = true;
+        }
+
+        return this.getClassName();
       };
 
       Stylable.prototype.dispose = function dispose() {

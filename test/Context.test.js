@@ -129,20 +129,20 @@ describe("Style Context", function() {
       	// actions for context's components
 	      function reducer(state, action, target){
 	      	const newState = Object.assign({}, state);
+	      	
 	      	switch(action){
 	      		case "daySelected":
-	      			
 	      			if(newState.selected){
-	      				newState.actors[newState.selected].setClassName(".calendar.day .calendar.day-selected");
+	      				newState.actors[newState.selected].removeClassName(".calendar.day-selected");
 	      			}
 	      			
-	      			newState.actors[target].setClassName(".calendar.day .calendar.day-selected");
+	      			newState.actors[target].pushClassName(".calendar.day");
+	      			newState.actors[target].pushClassName(".calendar.day-selected");
 	      			newState.selected = target;
 
 	      			return newState;
-	      			break;
 	      		case "clearSelected":
-	      			newState.actors[target].setClassName(".calendar.day");
+	      			newState.actors[target].removeClassName(".calendar.day-selected");
 	      			break;
 	      	}
 	      }
@@ -150,18 +150,30 @@ describe("Style Context", function() {
       
       var actors = context.map(actor => actor);
       component.children.week1.children.day1.changeState("daySelected");
-      component.children.week1.children.day2.changeState("daySelected");
-      component.children.week1.children.day3.changeState("daySelected");
 
       {
 				const {context, name, dispatcher, children, ...style} = component.children.week1.children.day1;
 				expect(style).to.eql(styler(".calendar.day .calendar.day-selected")());
       }
 			
+			{
+				const actor = context.map(actor => actor).find(actor => actor.name === "calendar_week1_day1");
+				expect(actor.getClassName()).to.eql(".calendar .calendar.day .calendar.day-selected");
+			}
+			
+      component.children.week1.children.day2.changeState("daySelected");
+
       {
 				const {context, name, dispatcher, children, ...style} = component.children.week1.children.day2;
 				expect(style).to.eql(styler(".calendar.day .calendar.day-selected")());
       }
+
+			{
+				const actor = context.map(actor => actor).find(actor => actor.name === "calendar_week1_day1");
+				expect(actor.getClassName()).to.eql(".calendar .calendar.day");
+			}
+
+      component.children.week1.children.day3.changeState("daySelected");
 			
       {
 				const {context, name, dispatcher, children, ...style} = component.children.week1.children.day3;

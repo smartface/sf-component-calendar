@@ -12,11 +12,11 @@ delete CalendarWeekRowDesign.defaults.height;
 
 const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 	//constructor
-	function(_super, props, data, index){
+	function(_super, props, index){
 		// initalizes super class for this scope
 		_super(this, Object.assign({},CalendarWeekRowDesign.defaults, props));
 		this.rowIndex = index;
-		data && this.setDays(data);
+		// data && this.setDays(data);
 		this.init();
 	},
 	function(proto){
@@ -27,9 +27,9 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 		}
 		
 		function daySelected(index){
-			this.onDaySelected(index, this.rowIndex);
 			this.children["weekDay"+(index+1)].setSelected();
 			selectedIndex = index;
+			this.onDaySelected(this.rowIndex, index);
 		}
 		
 		proto.getSelectedIndex = function(){
