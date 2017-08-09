@@ -126,13 +126,15 @@ describe("Style Context", function() {
       var styler = flatStyler(style);
       var context = styleContext(
       	styler,
-      	// reducer for context's components
+      	// actions for context's components
 	      function reducer(state, action, target){
 	      	const newState = Object.assign({}, state);
 	      	switch(action){
 	      		case "daySelected":
-	      			if(newState.selected)
+	      			
+	      			if(newState.selected){
 	      				newState.actors[newState.selected].setClassName(".calendar.day .calendar.day-selected");
+	      			}
 	      			
 	      			newState.actors[target].setClassName(".calendar.day .calendar.day-selected");
 	      			newState.selected = target;

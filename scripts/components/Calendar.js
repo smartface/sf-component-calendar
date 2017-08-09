@@ -76,6 +76,7 @@ const Calendar = extend(CalendarDesign)(
 		
 		proto.updateCalendar = function(month){
 			currentMonth = month;
+			console.log(JSON.stringify(month.date))
 			
 			updateRows.call(this, month.days);
 			this.children.navbar.setLabel(currentMonth.longName +" "+currentMonth.date.year);

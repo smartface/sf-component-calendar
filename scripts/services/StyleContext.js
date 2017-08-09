@@ -94,11 +94,12 @@
         this.className = className;
         this.component = component;
         this.styles;
+        this.isUgly = true;
       }
 
       Stylable.prototype.setStyles = function setStyles(styles) {
         this.styles = styles;
-        Object.keys(styles).length && Object.assign(this.component, (0, _merge2.default)({}, this.styles));
+        Object.keys(styles).length && Object.assign(this.component, this.styles);
       };
 
       Stylable.prototype.setContext = function setContext(context) {
@@ -117,6 +118,7 @@
       };
 
       Stylable.prototype.setClassName = function setClassName(className) {
+        this.isUgly = true;
         return this.className = className;
       };
 
@@ -142,13 +144,20 @@
           if (newState === state) {
             return state;
           }
+        } else {
+          newState = Object.assign({}, state);
         }
 
-        newState = Object.assign({}, state);
         Object.keys(newState.actors).forEach(function setInitialStyles(name) {
-          var className = newState.actors[name].getClassName();
-          var styles = styler(className);
-          newState.actors[name].setStyles(styles());
+          var comp = newState.actors[name];
+
+          if (comp.isUgly === true) {
+            var className = newState.actors[name].getClassName();
+            var styles = styler(className);
+
+            newState.actors[name].setStyles(styles());
+            comp.isUgly = false;
+          }
         });
 
         return newState;

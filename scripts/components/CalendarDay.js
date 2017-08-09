@@ -20,10 +20,17 @@ const CalendarDay = extend(CalendarDayDesign)(
 		
 		proto.setDay = function(data){
 			this.currentData = data;
+			this.text = data.day;
+			this.dispatch({
+				type: "changeState",
+				data: data
+			});
 		}
 		
 		proto.setSelected = function(){
-			this.dispatch("daySelected");
+			this.dispatch({
+				type: "daySelected"
+			});
 		}
 		
 		proto.clearSelected = function(){

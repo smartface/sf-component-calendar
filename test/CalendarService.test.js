@@ -27,7 +27,9 @@ describe("Calendar Service", function() {
     });
     
     it("should return all needed calendar data a month of calendar", function() {
-      var data = CalendarService.getCalendarMonth({year: 2016, month: 1});
+      var data = CalendarService.getCalendarMonth({year: 2016, month: 1, day:9});
+
+      expect(data.startDayOfMonth).to.equal(1);
       expect(data).to.eql(
         {
           longName: 'February',
@@ -88,10 +90,19 @@ describe("Calendar Service", function() {
                 { day: 3, month: 'next', isSpecialDay: false },
                 { day: 4, month: 'next', isSpecialDay: false },
                 { day: 5, month: 'next', isSpecialDay: false, isWeekend: true } 
+              ],
+              [ 
+                { day: 6, month: 'next', isSpecialDay: false, isWeekend: true },
+                { day: 7, month: 'next', isSpecialDay: false },
+                { day: 8, month: 'next', isSpecialDay: false },
+                { day: 9, month: 'next', isSpecialDay: false },
+                { day: 10, month: 'next', isSpecialDay: false },
+                { day: 11, month: 'next', isSpecialDay: false },
+                { day: 12, month: 'next', isSpecialDay: false, isWeekend: true } 
               ]
             ],
           date: {
-            day: 1,
+            day: 9,
             month: 1,
             year: 2016
           },
@@ -100,7 +111,7 @@ describe("Calendar Service", function() {
             longName: "January",
             shortName: "Jan",
             date: {
-              day: 1,
+              day: 9,
               month: 0,
               year: 2016
             }
@@ -110,15 +121,16 @@ describe("Calendar Service", function() {
             longName: "March",
             shortName: "Mar",
             date: {
-              day: 1,
+              day: 9,
               month: 2,
               year: 2016
             }
           }
       });
-      
-      data = CalendarService.getCalendarMonth({year: 2017, month: 0});
 
+      data = CalendarService.getCalendarMonth({year: 2017, month: 0, day: 15});
+      // console.log(data.days);
+      
       expect(data).to.eql(
         {
           longName: 'January',
@@ -175,14 +187,23 @@ describe("Calendar Service", function() {
                     { day: 29, month: 'current', isSpecialDay: false, isWeekend: true },
                     { day: 30, month: 'current', isSpecialDay: false },
                     { day: 31, month: 'current', isSpecialDay: false },
-                    { day: 32, month: 'current', isSpecialDay: false },
                     { day: 1, month: 'next', isSpecialDay: false },
                     { day: 2, month: 'next', isSpecialDay: false },
-                    { day: 3, month: 'next', isSpecialDay: false, isWeekend: true } 
+                    { day: 3, month: 'next', isSpecialDay: false },
+                    { day: 4, month: 'next', isSpecialDay: false, isWeekend: true } 
+                  ],
+                  [
+                    { day: 5, month: 'next', isSpecialDay: false, isWeekend: true },
+                    { day: 6, month: 'next', isSpecialDay: false },
+                    { day: 7, month: 'next', isSpecialDay: false },
+                    { day: 8, month: 'next', isSpecialDay: false },
+                    { day: 9, month: 'next', isSpecialDay: false },
+                    { day: 10, month: 'next', isSpecialDay: false },
+                    { day: 11, month: 'next', isSpecialDay: false, isWeekend: true } 
                   ]
                ],
           date: {
-            day: 1,
+            day: 15,
             month: 0,
             year: 2017
           },
@@ -191,7 +212,7 @@ describe("Calendar Service", function() {
             longName: "December",
             shortName: "Dec",
             date: {
-              day: 1,
+              day: 15,
               month: 11,
               year: 2016
             }
@@ -201,7 +222,7 @@ describe("Calendar Service", function() {
             longName: "February",
             shortName: "Feb",
             date: {
-              day: 1,
+              day: 15,
               month: 1,
               year: 2017
             }

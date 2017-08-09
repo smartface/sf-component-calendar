@@ -55,11 +55,12 @@ export function makeStylable(component, className, name){
       this.className = className;
       this.component = component;
       this.styles;
+      this.isUgly = true;
     }
     
     setStyles(styles) {
       this.styles = styles;
-      Object.keys(styles).length && Object.assign(this.component, merge({}, this.styles));
+      Object.keys(styles).length && Object.assign(this.component, this.styles);
     }
     
     setContext(context){
@@ -79,6 +80,7 @@ export function makeStylable(component, className, name){
     }
     
     setClassName(className){
+      this.isUgly = true;
       return this.className = className;
     }
     
@@ -105,13 +107,20 @@ export function createStyleContext(actors){
           if(newState === state){
             return state;
           }
+        } else {
+          newState = Object.assign({}, state);
         }
         
-        newState = Object.assign({}, state);
         Object.keys(newState.actors).forEach(function setInitialStyles(name){
-          const className = newState.actors[name].getClassName();
-          const styles = styler(className);
-          newState.actors[name].setStyles(styles());
+          const comp = newState.actors[name];
+          
+          if(comp.isUgly === true){
+            const className = newState.actors[name].getClassName();
+            const styles = styler(className);
+            
+            newState.actors[name].setStyles(styles());
+            comp.isUgly = false;
+          }
         });
         
         return newState;

@@ -37,7 +37,7 @@ export function date(dt=null){
     }
     
     startDayOfMonth(){
-      return startDayOfMonth(_date);
+      return startDayOfMonth(_date.clone().date(1));
     }
     
     monthShort(){

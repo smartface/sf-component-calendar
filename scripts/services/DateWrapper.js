@@ -72,7 +72,7 @@
       };
 
       DateWrapper.prototype.startDayOfMonth = function startDayOfMonth() {
-        return _startDayOfMonth(_date);
+        return _startDayOfMonth(_date.clone().date(1));
       };
 
       DateWrapper.prototype.monthShort = function monthShort() {

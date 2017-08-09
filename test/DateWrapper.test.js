@@ -10,13 +10,13 @@ describe("DateWrapper", function() {
     
     it("should return the starting weekday of the months", function() {
       let day = DateWrapper.date("2017-09-28").startDayOfMonth();
-      expect(day).to.eql(4);
+      expect(day).to.eql(5);
       
       day = DateWrapper.date("2017-08-28").startDayOfMonth();
-      expect(day).to.eql(1);
+      expect(day).to.eql(2);
   
       day = DateWrapper.date("2017-10-28").startDayOfMonth();
-      expect(day).to.eql(6);
+      expect(day).to.eql(0);
     });
   
     it("should return all weekdays short in English", function() {
