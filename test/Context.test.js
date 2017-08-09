@@ -1,4 +1,8 @@
-import createStyleContext, {makeStylable, fromSFComponent} from "../src/services/StyleContext";
+import {
+	createStyleContext, 
+	makeStylable, 
+	fromSFComponent
+} from "../src/services/StyleContext";
 import {expect} from "chai";
 import Component from "./mock/Component";
 import flatStyler from "@smartface/styler/lib/flatStyler";
@@ -74,14 +78,30 @@ const style = {
 
 describe("Style Context", function() {
   describe("Create context", function() {
-    it("should be create a style context", function() {
+  	/*it("should be flat all nested childrens", () => {
       const component = new Component("calendar");
-      
       component.addChild("navbar", new Component("navbar"));
       component.addChild("body", new Component("body"));
-      component.addChild("day1", new Component("day1"));
-      component.addChild("day2", new Component("day2"));
-      component.addChild("day3", new Component("day3"));
+      component.addChild("week", new Component("week"));
+      component.children.week.addChild("day1", new Component("day1"));
+      component.children.week.addChild("day2", new Component("day2"));
+			component.children.week.addChild("day3", new Component("day3"));
+      
+  		fromSFComponent(component, "calendar", _=>_)
+  	})*/
+    it("should be create a style context", function() {
+      const component = new Component("calendar");
+      component.addChild("navbar", new Component("navbar"));
+      component.addChild("body", new Component("body"));
+      component.addChild("week1", new Component("week"));
+      component.addChild("week2", new Component("week"));
+      component.children.week1.addChild("day1", new Component("day1"));
+      component.children.week1.addChild("day2", new Component("day2"));
+			component.children.week1.addChild("day3", new Component("day3"));
+
+      component.children.week2.addChild("day1", new Component("day1"));
+      component.children.week2.addChild("day2", new Component("day2"));
+			component.children.week2.addChild("day3", new Component("day3"));
       
       var styleContext = fromSFComponent(
     		component,
@@ -107,7 +127,7 @@ describe("Style Context", function() {
       var context = styleContext(
       	styler,
       	// reducer for context's components
-	      function(state, action, target){
+	      function reducer(state, action, target){
 	      	const newState = Object.assign({}, state);
 	      	switch(action){
 	      		case "daySelected":
@@ -127,14 +147,26 @@ describe("Style Context", function() {
       );
       
       var actors = context.map(actor => actor);
-      component.children.day1.changeState("daySelected");
-      
+      component.children.week1.children.day1.changeState("daySelected");
+      component.children.week1.children.day2.changeState("daySelected");
+      component.children.week1.children.day3.changeState("daySelected");
+
       {
-				const {context, name, dispatcher, children, ...style} = component.children.day1;
+				const {context, name, dispatcher, children, ...style} = component.children.week1.children.day1;
 				expect(style).to.eql(styler(".calendar.day .calendar.day-selected")());
       }
-
-      expect(actors.length).to.equal(6);
+			
+      {
+				const {context, name, dispatcher, children, ...style} = component.children.week1.children.day2;
+				expect(style).to.eql(styler(".calendar.day .calendar.day-selected")());
+      }
+			
+      {
+				const {context, name, dispatcher, children, ...style} = component.children.week1.children.day3;
+				expect(style).to.eql(styler(".calendar.day .calendar.day-selected")());
+      }
+			
+      expect(actors.length).to.equal(11);
     });
   });
 });

@@ -14,12 +14,20 @@ const CalendarDay = extend(CalendarDayDesign)(
 		this.pageName = pageName;
 	},
 	function (proto) {
+		proto.setContextDispatcher = function(dispatcher){
+			this.dispatch = dispatcher;
+		}
+		
+		proto.setDay = function(data){
+			this.currentData = data;
+		}
+		
 		proto.setSelected = function(){
-			this.borderColor = Color.RED;
+			this.dispatch("daySelected");
 		}
 		
 		proto.clearSelected = function(){
-			this.borderColor = Color.BLACK;
+			// this.borderColor = Color.BLACK;
 		}
 	}
 );

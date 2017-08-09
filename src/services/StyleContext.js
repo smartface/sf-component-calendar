@@ -9,24 +9,28 @@ import merge from "@smartface/styler/lib/utils/merge";
  * @params {Function} mapper
  */
 export function fromSFComponent(component, name, mapper){
+  const flatted = {};
+  
   function collect(component, name, mapper){
-    const hasChildren = !!component.children && Object.keys(component.children).length > 0;
     const newComp = makeStylable(component, mapper(name), name);
-    
-    const comps = hasChildren
-      ? Object.assign(
-          fromObject(component.children, collect, mapper), 
-          {[name]: newComp}
-        )
-      : newComp;
-    
-    // children[name] = newComp;
-    return comps;
+    flat(name, newComp);
+
+    component.children && Object.keys(component.children).forEach(function(child){
+      collect(component.children[child], name+"_"+child, mapper);
+    });
   }
   
-  return createStyleContext(collect(component, name, mapper));
+  function flat(name, comp) {
+    flatted[name] = comp
+  }
+  collect(component, name, mapper)
+  return createStyleContext(flatted);
 }
 
+/**
+ * Creates context from a hash list
+ *
+ */
 export function fromObject(children, maker, mapper){
   return Object.keys(children).reduce((acc, child) => {
     acc[child] = maker(children[child], child, mapper);
@@ -34,6 +38,10 @@ export function fromObject(children, maker, mapper){
   }, {});
 }
 
+/**
+ * Creates context from an array
+ *
+ */
 export function fromArray(children, maker, mapper){
   return children.map((child) => {
     return maker(child, mapper);
@@ -41,49 +49,54 @@ export function fromArray(children, maker, mapper){
 }
 
 export function makeStylable(component, className, name){
-  var _styles;
-  var _context;
-  var _className = className;
-  
   return new class Stylable {
+    constructor(){
+      this.name = name;
+      this.className = className;
+      this.component = component;
+      this.styles;
+    }
+    
     setStyles(styles) {
-      _styles = styles;
-      Object.assign(component, styles);
+      this.styles = styles;
+      Object.keys(styles).length && Object.assign(this.component, merge({}, this.styles));
     }
     
     setContext(context){
-      _context = context;
-      component.setContextDispatcher(function(action){
-        _context.dispatch(action, name);
-      })
+      this.context = context;
+      component.setContextDispatcher && 
+        component.setContextDispatcher(function(action){
+          this.context.dispatch(action, this.name);
+        }.bind(this))
     }
     
     getStyles(){
-      return Object.assign({}, _styles);
+      return Object.assign({}, this.styles);
     }
     
     getClassName(){
-      return _className;
+      return this.className;
     }
     
     setClassName(className){
-      return _className = className;
+      return this.className = className;
     }
     
     dispose(){
-      component = null;
-      _context = null;
-      _styles = null;
-      component.setContextDispatcher(null);
+      this.component = null;
+      this.context = null;
+      this.styles = null;
+      this.component.setContextDispatcher && 
+        this.component.setContextDispatcher(null);
     }
   };
 }
 
-export default function createStyleContext(actors){
+export function createStyleContext(actors){
   return function changeStyles(styler, reducer){
     const context = createContext(
       actors, 
-      function(state, action, target){
+      function contextUpdate(state, action, target){
         var newState = state;
 
         if(target){
@@ -95,7 +108,7 @@ export default function createStyleContext(actors){
         }
         
         newState = Object.assign({}, state);
-        Object.keys(newState.actors).forEach(function(name){
+        Object.keys(newState.actors).forEach(function setInitialStyles(name){
           const className = newState.actors[name].getClassName();
           const styles = styler(className);
           newState.actors[name].setStyles(styles());
@@ -104,7 +117,7 @@ export default function createStyleContext(actors){
         return newState;
     });
     
-    Object.keys(actors).forEach(function(name){
+    Object.keys(actors).forEach(function assignContext(name){
       actors[name].setContext(context);
     });
     

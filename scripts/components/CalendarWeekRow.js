@@ -52,13 +52,13 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 		}
 		
 		proto.setDays = function(days){
-			this.children.weekDay1.text = days[0];
-			this.children.weekDay2.text = days[1];
-			this.children.weekDay3.text = days[2];
-			this.children.weekDay4.text = days[3];
-			this.children.weekDay5.text = days[4];
-			this.children.weekDay6.text = days[5];
-			this.children.weekDay7.text = days[6];
+			this.children.weekDay1.setDay(days[0]);
+			this.children.weekDay2.setDay(days[1]);
+			this.children.weekDay3.setDay(days[2]);
+			this.children.weekDay4.setDay(days[3]);
+			this.children.weekDay5.setDay(days[4]);
+			this.children.weekDay6.setDay(days[5]);
+			this.children.weekDay7.setDay(days[6]);
 		}
 	}
 );

@@ -17,7 +17,7 @@
     value: true
   });
   exports.contextConnector = contextConnector;
-  exports.createContext = createContext;
+  exports.default = createContext;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -31,29 +31,36 @@
     return function contextWrapper(component, contextMap) {};
   }
 
-  function createContext(actors, variables) {
-    return new (function () {
+  function createContext(actors, updater) {
+    var state = { actors: actors };
+
+    var Context = function () {
       function Context() {
         _classCallCheck(this, Context);
 
-        /*s
-          this._unsubcribe = store.subscribe((state) => {
-            this.propagateAll();
-          });
-        */
-
-        this.__id = __id++;
-        this._subscribers = new WeakMap();
-        this._subscriberKeys = new Map();
+        // this.__id            = __id++;
+        // this._subscribers    = new WeakMap();
+        // this._subscriberKeys = new Map();
+        updater(state);
       }
 
-      Context.prototype.dispatch = function dispatch(action) {};
+      Context.prototype.dispatch = function dispatch(action, target) {
+        Object.assign(state, updater(state, action, target));
+      };
 
-      Context.prototype.map = function map(fn) {};
+      Context.prototype.map = function map(fn) {
+        return Object.keys(actors).map(function (name, index) {
+          return fn(actors[name], name, index);
+        });
+      };
 
       Context.prototype.subcribe = function subcribe(fn) {};
 
       return Context;
-    }())();
+    }();
+
+    ;
+
+    return new Context();
   }
 });

@@ -7,74 +7,12 @@ const CalendarDesign = require('library/Calendar');
 const WeekDaysRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
 const CalendarService = require("../services/CalendarService");
+const CalendarContext = require("./CalendarContext");
 
 const weekRowStyle = {
 	positionType: FlexLayout.PositionType.RELATIVE,
 	marginTop: 4,
 	flexGrow: 1
-};
-
-const styles = {
-	".header": {
-		"&_navbar": {
-			"&_arrow" : {
-				"flexProps": {
-					"flexGrow": 1,
-					"textColor": "#5E5E5E",
-				}
-			},
-			"&_label": {
-				"textColor": "#000000",
-			},
-			"&_daynames": {
-				".weekday": {
-					"textColor": "#000000",
-					"backgroundColor": "rgba(0,185,255,42)"
-				},
-				".weekend": {
-					"textColor": "#000000",
-					"backgroundColor": "rgba(0,185,255,42)"
-				}
-			}
-		}
-	},
-	".day": {
-		"font": {
-      "size": 16,
-      "bold": false,
-      "italic": false,
-      "family": "Arial"
-    },
-		"borderRadius": 26,
-		"textColor": "#000000",
-		"backgroundColor": "rgba(0,0,0,0)",
-		"&-inrange": {
-    	"backgorundColor": "rgba(0,185,255,42)",
-			"textColor": "#000000",
-		},
-    "&-selected": {
-    	"backgorundColor": "rgba(0,185,255,42)",
-			"textColor": "#000000",
-    },
-		".deactiveDays": {
-			"borderRadius": 10,
-			"textColor": "",
-			"backgroundColor": "",
-		},
-		".specialDays": {
-			"&-selected": {
-				"@extend": ".day-selected",
-			},
-			"borderRadius": 10,
-			"textColor": "",
-			"backgroundColor": "",
-		},
-		".holidays": {
-			"borderRadius": 10,
-			"textColor": "",
-			"backgroundColor": "",
-		}
-	}
 };
 
 function createWeekRow(){
@@ -110,10 +48,9 @@ const Calendar = extend(CalendarDesign)(
 		}
 		
 		function onDaySelected(row, index){
-			return {
-				...currentMonth.date,
-				day: currentMonth.days[row][index]
-			}
+			return Object.assign({}, currentMonth.date, {
+					day: currentMonth.days[row][index]
+				})
 		}
 		
 		proto.buildRows = function(){
@@ -123,7 +60,7 @@ const Calendar = extend(CalendarDesign)(
 			weeks.push(createWeekRow());
 			weeks.push(createWeekRow());
 			
-			weeks.forEach(function(row){
+			weeks.forEach(function(row, index){
 				this.children.body.addChild(row);
 				row.onDaySelected = function(){
 					if(selectedRow){
@@ -131,7 +68,10 @@ const Calendar = extend(CalendarDesign)(
 					}
 					selectedRow = row;
 				};
+				this.children["week"+index] = row;
 			}.bind(this));
+			
+			CalendarContext.createContext(this);
 		};
 		
 		proto.updateCalendar = function(month){

@@ -96,7 +96,11 @@ const Calendar = extend(CalendarDesign)(
 		}.bind(this);
 		
 		this.buildRows();
-		this.updateCalendar(CalendarService.getCalendarMonth());
+		
+		setTimeout(function() {
+			this.updateCalendar(CalendarService.getCalendarMonth());
+		});
+		
 	},
 	function(proto){
 		var currentMonth;
