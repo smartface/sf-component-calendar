@@ -45,9 +45,9 @@ const Calendar = extend(CalendarDesign)(
 		const weeks = [];
 		var selectedRow;
 		
-		function updateRows(days) {
+		function updateRows(days, date) {
 			weeks.forEach(function(row, index){
-				row.setDays(days[index]);
+				row.setDays(days[index], date);
 			}.bind(this));
 		}
 		
@@ -88,7 +88,7 @@ const Calendar = extend(CalendarDesign)(
 				dayData.year = currentMonth.previousMonth.date.year
 			}
 
-			this.onChanged && this.onChanged(dayData)
+			this.onChanged && this.onChanged(dayData);
 		}
 		
 		proto.buildRows = function(){
@@ -108,11 +108,22 @@ const Calendar = extend(CalendarDesign)(
 			CalendarContext.createContext(this);
 		};
 		
+		proto.setSelectedDate = function(date){
+			const newDate = Object.assign({}, date);
+			newDate.month = date.month - 1;
+			this.updateCalendar(CalendarService.getCalendarMonth(newDate));
+			const index = (currentMonth.startDayOfMonth + currentMonth.date.day) % 7;
+			const row = Math.ceil((currentMonth.startDayOfMonth + currentMonth.date.day) / 7);
+
+			weeks[row-1].setSelectedIndex(index-1);
+		}
+		
 		proto.updateCalendar = function(month){
 			currentMonth = month;
 			
-			updateRows.call(this, month.days);
-			this.children.navbar.setLabel(currentMonth.longName +" "+currentMonth.date.year);
+			updateRows.call(this, month.days, month.date);
+			this.children.navbar.setLabel(currentMonth.longName);
+			this.children.navbar.setYear(currentMonth.date.year);
 		};
 		
 		proto.nextMonth = function(){

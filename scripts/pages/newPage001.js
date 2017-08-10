@@ -24,6 +24,11 @@ const NewPage001 = extend(NewPage001Design)(
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
 function onShow(superOnShow) {
   superOnShow();
+  this.children.calendar.setSelectedDate({
+  	day: 30,
+  	month: 11,
+  	year: 2017
+  })
   // alert(JSON.stringify(benchmark()))
   //console.log(benchmark());
 }

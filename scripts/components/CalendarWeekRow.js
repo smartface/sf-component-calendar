@@ -24,10 +24,10 @@ const CalendarWeekRow = extend(CalendarWeekRowWithLabelDesign)(
 		var selectedIndex = -1;
 		
 		function addDaySelectEvent(day, index){
-			day.onPress = daySelected.bind(this, index);
+			day.onPress = selectDay.bind(this, index);
 		}
 		
-		function daySelected(index){
+		function selectDay(index){
 			this.children["weekDay"+(index+1)].setSelected();
 			selectedIndex = index;
 			this.onDaySelected(this.rowIndex, index);
@@ -35,6 +35,10 @@ const CalendarWeekRow = extend(CalendarWeekRowWithLabelDesign)(
 		
 		proto.getSelectedIndex = function(){
 			return selectedIndex;
+		}
+		
+		proto.setSelectedIndex = function(index){
+			return selectDay.call(this, index);
 		}
 		
 		proto.clearSelected = function(){
