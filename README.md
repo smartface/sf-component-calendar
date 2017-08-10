@@ -9,10 +9,13 @@
 const Calendar = require("@smartface/sf-component-calendar");
 const calendar = new Calendar();
 
-// injects selected date
+// when user is select a date
 calendar.onChange = function(data){
   ...
 }
+
+// changing calendar date
+calendar.setSelectedDate({month: Number, year: Number, day: Number});
 ```
 
 ### Selected Date Schema
