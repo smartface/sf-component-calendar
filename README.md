@@ -9,7 +9,7 @@
 const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
 const calendar = new Calendar();
 
-// when user is select a date
+// when user select a date
 calendar.onChange = function(data){
   ...
 }
