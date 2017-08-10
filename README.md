@@ -6,7 +6,7 @@
 ## Usage
 ```js 
 
-const Calendar = require("@smartface/sf-component-calendar");
+const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
 const calendar = new Calendar();
 
 // when user is select a date
