@@ -29,10 +29,9 @@ const CalendarDay = extend(CalendarDayLabelDesign)(
 		}
 		
 		proto.setSelected = function(){
-			if(this.currentData.month === "current")
-				this.dispatch({
-					type: "daySelected"
-				});
+			this.dispatch({
+				type: "daySelected"
+			});
 		}
 		
 		proto.clearSelected = function(){

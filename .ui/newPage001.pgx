@@ -31,8 +31,8 @@
 					"d136-67d2-869e-f919"
 				],
 				"name": "newPage001",
-				"width": 277.5,
-				"height": 446.21999999999997
+				"width": 273.75,
+				"height": 440.18999999999994
 			}
 		},
 		{
@@ -76,6 +76,42 @@
 			}
 		},
 		{
+			"type": "Label",
+			"id": "d136-67d2-869e-f919",
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {},
+			"className": ".label",
+			"props": {
+				"width": 250,
+				"height": 70,
+				"touchEnabled": true,
+				"text": "Label",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDLEFT",
+				"font": {
+					"size": 16,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "RELATIVE"
+				},
+				"name": "label2",
+				"parent": "e876-9805-6b68-f0e4",
+				"children": []
+			}
+		},
+		{
 			"type": "FlexLayout",
 			"id": "b766-261b-7b3f-6437",
 			"hiddenComponent": false,
@@ -91,7 +127,7 @@
 				"left": null,
 				"top": null,
 				"width": 375,
-				"height": 286.6790126746809,
+				"height": 262.0214801945099,
 				"backgroundColor": "rgba( 179, 179, 179, 1 )",
 				"flexProps": {
 					"positionType": "RELATIVE"
@@ -102,7 +138,7 @@
 			},
 			"className": ".flexLayout .sfCalendar_block .sfCalendar_block",
 			"props": {
-				"height": 286.6790126746809,
+				"height": 262.0214801945099,
 				"width": 375,
 				"touchEnabled": true,
 				"visible": true,
@@ -126,15 +162,15 @@
 				"name": "calendar",
 				"parent": "e876-9805-6b68-f0e4",
 				"children": [
-					"a6e0-f038-4254-0f33",
-					"2ec2-46d0-4e4c-55f6",
-					"7e7a-aae9-8a73-51e3"
+					"e517-bf1c-158b-41d0",
+					"5564-0f4e-83a2-1a26",
+					"4882-cbcd-7200-74ba"
 				]
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "a6e0-f038-4254-0f33",
+			"id": "e517-bf1c-158b-41d0",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -148,8 +184,8 @@
 				"top": 0,
 				"width": null,
 				"height": 0,
-				"minHeight": 30,
-				"maxHeight": 40,
+				"minHeight": 50,
+				"maxHeight": 80,
 				"flexProps": {
 					"positionType": "RELATIVE",
 					"flexGrow": 1,
@@ -174,8 +210,8 @@
 				"right": 0,
 				"left": 0,
 				"top": 0,
-				"minHeight": 30,
-				"maxHeight": 40,
+				"minHeight": 50,
+				"maxHeight": 80,
 				"flexProps": {
 					"alignSelf": "AUTO",
 					"direction": "INHERIT",
@@ -190,15 +226,16 @@
 				"name": "navbar",
 				"parent": "b766-261b-7b3f-6437",
 				"children": [
-					"4bba-6484-8735-eb59",
-					"dc04-4ad2-0dac-1c44",
-					"4f2b-954e-5609-dd24"
+					"c950-a615-cffb-4aef",
+					"8ed1-0c4b-8d2b-820e",
+					"48d6-a920-04e7-c48b",
+					"c6e1-abc5-92fd-9059"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "4bba-6484-8735-eb59",
+			"id": "c950-a615-cffb-4aef",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -246,13 +283,13 @@
 					"flexGrow": 1
 				},
 				"name": "button4",
-				"parent": "a6e0-f038-4254-0f33",
+				"parent": "e517-bf1c-158b-41d0",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "dc04-4ad2-0dac-1c44",
+			"id": "8ed1-0c4b-8d2b-820e",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -293,14 +330,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 10
 				},
-				"name": "label1",
-				"parent": "a6e0-f038-4254-0f33",
+				"name": "label3",
+				"parent": "e517-bf1c-158b-41d0",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "4f2b-954e-5609-dd24",
+			"id": "48d6-a920-04e7-c48b",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -348,13 +385,71 @@
 					"flexGrow": 1
 				},
 				"name": "button5",
-				"parent": "a6e0-f038-4254-0f33",
+				"parent": "e517-bf1c-158b-41d0",
+				"children": []
+			}
+		},
+		{
+			"type": "Label",
+			"id": "c6e1-abc5-92fd-9059",
+			"hiddenComponent": false,
+			"source": {
+				"page": "__library__"
+			},
+			"themeProps": {
+				"Sizes": "Default"
+			},
+			"userProps": {
+				"height": 20,
+				"width": null,
+				"textAlignment": "MIDCENTER",
+				"bottom": 0,
+				"left": 0,
+				"right": 0,
+				"flexProps": {
+					"flexGrow": null,
+					"positionType": "ABSOLUTE"
+				},
+				"font": {
+					"size": 12
+				}
+			},
+			"className": ".label",
+			"props": {
+				"width": null,
+				"height": 20,
+				"touchEnabled": true,
+				"text": "Label",
+				"visible": true,
+				"multiline": false,
+				"backgroundColor": "#FFFFFF",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#000000",
+				"textAlignment": "MIDCENTER",
+				"bottom": 0,
+				"left": 0,
+				"right": 0,
+				"font": {
+					"size": 12,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"alignSelf": "AUTO",
+					"positionType": "ABSOLUTE",
+					"flexGrow": null
+				},
+				"name": "label4",
+				"parent": "e517-bf1c-158b-41d0",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "2ec2-46d0-4e4c-55f6",
+			"id": "5564-0f4e-83a2-1a26",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -405,19 +500,19 @@
 				"name": "calendarDays",
 				"parent": "b766-261b-7b3f-6437",
 				"children": [
-					"8f01-7efe-7731-930c",
-					"ccf7-98eb-86ee-79b7",
-					"182a-8309-8c7f-cb48",
-					"3b73-612e-d5f2-989e",
-					"34c2-00de-6dd5-dfad",
-					"720c-4e6a-4e6b-aed2",
-					"0145-b43c-cfee-d0af"
+					"6df9-e374-ec16-85d5",
+					"da58-9bbb-83f1-e427",
+					"dc02-5e4e-61ac-6f71",
+					"a20d-a8b3-5319-6637",
+					"8641-a0f1-de00-b972",
+					"0420-266f-374a-caf1",
+					"5825-9760-c9ef-e24b"
 				]
 			}
 		},
 		{
 			"type": "Label",
-			"id": "8f01-7efe-7731-930c",
+			"id": "6df9-e374-ec16-85d5",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -462,14 +557,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 1
 				},
-				"name": "weekday_0",
-				"parent": "2ec2-46d0-4e4c-55f6",
+				"name": "dayName_0",
+				"parent": "5564-0f4e-83a2-1a26",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "ccf7-98eb-86ee-79b7",
+			"id": "da58-9bbb-83f1-e427",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -514,14 +609,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 1
 				},
-				"name": "weekDay_1",
-				"parent": "2ec2-46d0-4e4c-55f6",
+				"name": "dayName_1",
+				"parent": "5564-0f4e-83a2-1a26",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "182a-8309-8c7f-cb48",
+			"id": "dc02-5e4e-61ac-6f71",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -566,14 +661,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 1
 				},
-				"name": "weekDay_2",
-				"parent": "2ec2-46d0-4e4c-55f6",
+				"name": "dayName_2",
+				"parent": "5564-0f4e-83a2-1a26",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "3b73-612e-d5f2-989e",
+			"id": "a20d-a8b3-5319-6637",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -618,14 +713,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 1
 				},
-				"name": "weekDay_3",
-				"parent": "2ec2-46d0-4e4c-55f6",
+				"name": "dayName_3",
+				"parent": "5564-0f4e-83a2-1a26",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "34c2-00de-6dd5-dfad",
+			"id": "8641-a0f1-de00-b972",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -670,14 +765,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 1
 				},
-				"name": "weekDay_4",
-				"parent": "2ec2-46d0-4e4c-55f6",
+				"name": "dayName_4",
+				"parent": "5564-0f4e-83a2-1a26",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "720c-4e6a-4e6b-aed2",
+			"id": "0420-266f-374a-caf1",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -722,14 +817,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 1
 				},
-				"name": "weekDay_5",
-				"parent": "2ec2-46d0-4e4c-55f6",
+				"name": "dayName_5",
+				"parent": "5564-0f4e-83a2-1a26",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "0145-b43c-cfee-d0af",
+			"id": "5825-9760-c9ef-e24b",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -774,14 +869,14 @@
 					"positionType": "RELATIVE",
 					"flexGrow": 1
 				},
-				"name": "weekDay_6",
-				"parent": "2ec2-46d0-4e4c-55f6",
+				"name": "dayName_6",
+				"parent": "5564-0f4e-83a2-1a26",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "7e7a-aae9-8a73-51e3",
+			"id": "4882-cbcd-7200-74ba",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -831,42 +926,6 @@
 				},
 				"name": "body",
 				"parent": "b766-261b-7b3f-6437",
-				"children": []
-			}
-		},
-		{
-			"type": "Label",
-			"id": "d136-67d2-869e-f919",
-			"themeProps": {
-				"Sizes": "Default"
-			},
-			"userProps": {},
-			"className": ".label",
-			"props": {
-				"width": 250,
-				"height": 70,
-				"touchEnabled": true,
-				"text": "Label",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDLEFT",
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE"
-				},
-				"name": "label2",
-				"parent": "e876-9805-6b68-f0e4",
 				"children": []
 			}
 		}
