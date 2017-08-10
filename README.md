@@ -1,7 +1,7 @@
 # Smartface Calendar Component
 
 ## Intallation
-```sh $ npm i @smartface/sf-component-calendar ```
+``` $ npm i @smartface/sf-component-calendar ```
 
 ## Usage
 ```js 
