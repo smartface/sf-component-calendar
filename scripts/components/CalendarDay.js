@@ -5,8 +5,9 @@ const extend = require('js-base/core/extend');
 
 const CalendarDayDesign = require('library/CalendarDay');
 const Color = require('sf-core/ui/color');
+const CalendarDayLabelDesign = require('library/CalendarDay');
 
-const CalendarDay = extend(CalendarDayDesign)(
+const CalendarDay = extend(CalendarDayLabelDesign)(
 	//constructor
 	function(_super, props, pageName){
 		// initalizes super class for this scope

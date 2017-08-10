@@ -4,12 +4,23 @@ const getPropsFromStyle = require("library/styler-builder").getPropsFromStyle;
 
 const styles = {
 	".calendar": {
+		"&-size": {
+			height: 360,
+			paddingLeft: 0,
+			paddingRight: 0
+		},
 		".header": {
 			"&_navbar": {
+				"&_monthLabel": {
+					"textColor": "#1775D0"
+				},
+				"&_yearLabel": {
+					"textColor": "#B1B1B4"
+				},
 				"&_arrow": {
 					"flexProps": {
 						"flexGrow": 1,
-						"textColor": "#5E5E5E",
+						"textColor": "#B1B1B4",
 					}
 				},
 				"&_label": {
@@ -27,16 +38,26 @@ const styles = {
 				}
 			}
 		},
-		".body": {},
+		".body": {
+		},
+		".weekRow": {
+			minHeight: 42,
+			
+		},
 		".day": {
 			"font": {
-				"size": 16,
+				"size": 14,
 				"bold": false,
 				"italic": false,
 				"family": "Arial"
 			},
-			"borderRadius": 18,
+			"borderWidth": 0,
+			"borderRadius": 20,
+			maxWidth: 40,
+			minWidth: 40,
+			height: 40,
 			"textColor": "#000000",
+			"borderColor": "rgba(0,0,0,0)",
 			"backgroundColor": "rgba(0,0,0,0)",
 			"&-inrange": {
 				"backgroundColor": "rgba(0,185,255,42)",
@@ -44,20 +65,24 @@ const styles = {
 			},
 			"&-selected": {
 				"backgroundColor": "rgba(0,185,255,42)",
-				"textColor": "#000000",
+				"borderColor": "rgba(0,185,255,42)",
+				"textColor": "#000000"
 			},
 			"&-deactiveDays": {
+				"borderWidth": 0,
 				"textColor": "#D6D6D6",
 				"borderColor": "#D6D6D6",
-				"backgroundColor": "rgba(0,0,0,0)",
+				"backgroundColor": "rgba(0,0,0,0)"
 			},
 			"&-specialDays": {
+				"borderWidth": 0,
 				"&-selected": {
 					"@extend": ".calendar.day-selected",
 				},
-				"backgroundColor": "rgba(0,0,0,0)",
+				"backgroundColor": "rgba(0,0,0,0)"
 			},
 			"&-weekend": {
+				"borderWidth": 0,
 				"textColor": "#A3A3A3",
 				"borderColor": "#A3A3A3"
 			}
@@ -69,7 +94,7 @@ const styles = {
 var styler = flatStyler(styles);
 
 const selectDays = function(name){
-	return name.indexOf("_weekDay") > 0;;
+	return name.indexOf("_weekDay") > 0;
 }
 
 function createContext(component) {
@@ -78,13 +103,27 @@ function createContext(component) {
 		"calendar",
 		//initial classNames
 		function(name) {
-			if (name.indexOf("_weekDay") > 0) {
+			const namePattern = /week[0-9]+_weekDay[0-9]+/
+			const rowPattern = new RegExp("week[0-9]+");
+				console.log(name);
+			if (namePattern.test(name)) {
 				return '.calendar.day';
+			} else if (rowPattern.test(name)) {
+				return '.calendar.weekRow';
 			}
 
 			switch (name) {
-				case 'navbar':
+				case 'calendar':
+					return ".calendar-size";
+				case 'calendar_navbar':
 					return ".calendar.header .calendar.header_navbar";
+				case 'calendar_navbar_prevMonth':
+				case 'calendar_navbar_nextMonth':
+					return ".calendar.header_navbar_arrow";
+				case 'calendar_navbar_monthLabel':
+					return ".calendar.header_navbar_monthLabel";
+				case 'calendar_navbar_yearLabel':
+					return ".calendar.header_navbar_yearLabel";
 				case 'body':
 					return ".body";
 			}

@@ -9,8 +9,9 @@ const Color = require('sf-core/ui/color');
 
 delete CalendarWeekRowDesign.defaults.width;
 delete CalendarWeekRowDesign.defaults.height;
+const CalendarWeekRowWithLabelDesign = require('library/CalendarWeekRow');
 
-const CalendarWeekRow = extend(CalendarWeekRowDesign)(
+const CalendarWeekRow = extend(CalendarWeekRowWithLabelDesign)(
 	//constructor
 	function(_super, props, index){
 		// initalizes super class for this scope

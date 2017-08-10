@@ -8,6 +8,7 @@ const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
 const CalendarService = require("../services/CalendarService");
 const CalendarContext = require("./CalendarContext");
+const runner = require("../benchmarks/runner")
 
 const weekRowStyle = {
 	positionType: FlexLayout.PositionType.RELATIVE,
@@ -27,10 +28,13 @@ const Calendar = extend(CalendarDesign)(
 		
 		this.children.navbar.onNext = function(){
 			this.nextMonth();
+			// runner(this.nextMonth.bind(this), "nextMonth");
 		}.bind(this);
 		
 		this.children.navbar.onPrev = function(){
 			this.prevMonth();
+			// runner(this.prevMonth.bind(this), "prevMonth");
+			// this.prevMonth();
 		}.bind(this);
 		
 		this.buildRows();
@@ -48,14 +52,43 @@ const Calendar = extend(CalendarDesign)(
 		}
 		
 		function onDaySelected(row, index){
-			this.onChanged && this.onChanged(
-				Object.assign(
-					{},
-					currentMonth.date, 
-					{
-						day: currentMonth.days[row][index].day
-					}
-				))
+			const selectedDay = Object.assign({}, currentMonth.days[row][index]);
+			const dayData = {};
+			
+			dayData.dayInfo = {
+				weekDay: index,
+				longName: currentMonth.daysLong[index],
+				shortName: currentMonth.daysShort[index],
+				day: selectedDay.day
+			}
+			
+			if(selectedDay.month == "current"){
+				dayData.monthInfo = {
+					longName: currentMonth.longName,
+					shortName: currentMonth.shortName,
+					month: currentMonth.date.month + 1
+				}
+				
+				dayData.year = currentMonth.date.year
+			} else if(selectedDay.month == "next"){
+				dayData.monthInfo = {
+					longName: currentMonth.nextMonth.longName,
+					shortName: currentMonth.nextMonth.shortName,
+					month: currentMonth.nextMonth.date.month + 1
+				}
+				
+				dayData.year = currentMonth.nextMonth.date.year
+			} else if(selectedDay.month == "previous"){
+				dayData.monthInfo = {
+					longName: currentMonth.previousMonth.longName,
+					shortName: currentMonth.previousMonth.shortName,
+					month: currentMonth.previousMonth.date.month + 1
+				}
+				
+				dayData.year = currentMonth.previousMonth.date.year
+			}
+
+			this.onChanged && this.onChanged(dayData)
 		}
 		
 		proto.buildRows = function(){
