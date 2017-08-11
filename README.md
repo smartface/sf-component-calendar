@@ -164,3 +164,4 @@ calendar.addStyles(newMonthLabelColorStyle);
 
 
 ```
+
