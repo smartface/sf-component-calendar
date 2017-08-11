@@ -162,4 +162,5 @@ const calendar = new Calendar();
 // changing calendar date
 calendar.addStyles(newMonthLabelColorStyle);
 
+
 ```
