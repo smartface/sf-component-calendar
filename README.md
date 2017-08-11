@@ -145,16 +145,16 @@ Default style schema
 ### Changing Styles
 ```js
 const newMonthLabelColorStyle = {
-				".calendar": {
-					".header": {
-						"&_navbar": {
-							"&_monthLabel": {
-								"textColor": "#F10000"
-							}
-						}
-					}
+	".calendar": {
+		".header": {
+			"&_navbar": {
+				"&_monthLabel": {
+					"textColor": "#F10000"
 				}
-			};
+			}
+		}
+	}
+};
       
 const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
 const calendar = new Calendar();
