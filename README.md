@@ -1,8 +1,8 @@
 # Smartface Calendar Component
-[![Npm Status](https://img.shields.io/npm/v/@smartface/sf-component-calendar.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-component-calendar)
+[![Npm Status](https://img.shields.io/npm/v/@smartface/sf-calendar-component.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-calendar-component)
 
 ## Intallation
-``` $ npm i @smartface/sf-component-calendar ```
+``` $ npm i @smartface/sf-calendar-component ```
 
 ## Usage
 ```js 
@@ -149,7 +149,7 @@ Default style schema
 
 ### Changing Styles
 
-You can override new styles
+You can override new styles like below
 
 ```js
 const newMonthLabelColorStyle = {
