@@ -148,6 +148,9 @@ Default style schema
 ```
 
 ### Changing Styles
+
+You can override new styles
+
 ```js
 const newMonthLabelColorStyle = {
   ".calendar":{
