@@ -1,5 +1,5 @@
 /* 
-		Smarface Calendar Component v.1.0.0
+		Smarface Calendar Component v.1.0.6
 */
 const extend = require('js-base/core/extend');
 
@@ -8,7 +8,6 @@ const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
 const CalendarService = require("../services/CalendarService");
 const CalendarContext = require("./CalendarContext");
-const runner = require("../benchmarks/runner")
 
 const weekRowStyle = {
 	positionType: FlexLayout.PositionType.RELATIVE,
@@ -22,9 +21,9 @@ function createWeekRow(rowIndex){
 
 const Calendar = extend(CalendarDesign)(
 	//constructor
-	function(_super, props, style){
+	function(_super, style={}){
 		// initalizes super class for this scope
-		_super(this, props || CalendarDesign.defaults);
+		_super(this, style);
 		
 		this.children.navbar.onNext = function(){
 			this.nextMonth();

@@ -1,0 +1,341 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/versions/node/v6.10.3/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/versions/node/v6.10.3/bin/npm',
+1 verbose cli   'i',
+1 verbose cli   '@smartface/sf-calendar-component' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.3
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData @smartface/sf-calendar-component
+8 silly fetchNamedPackageData @smartface/sf-calendar-component
+9 silly mapToRegistry name @smartface/sf-calendar-component
+10 silly mapToRegistry scope (from package name) @smartface
+11 verbose mapToRegistry no registry URL found in name for scope @smartface
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry data Result {
+14 silly mapToRegistry   raw: '@smartface/sf-calendar-component',
+14 silly mapToRegistry   scope: '@smartface',
+14 silly mapToRegistry   escapedName: '@smartface%2fsf-calendar-component',
+14 silly mapToRegistry   name: '@smartface/sf-calendar-component',
+14 silly mapToRegistry   rawSpec: '',
+14 silly mapToRegistry   spec: 'latest',
+14 silly mapToRegistry   type: 'tag' }
+15 silly mapToRegistry uri https://registry.npmjs.org/@smartface%2fsf-calendar-component
+16 verbose request uri https://registry.npmjs.org/@smartface%2fsf-calendar-component
+17 verbose request no auth needed
+18 info attempt registry request try #1 at 3:47:48 PM
+19 verbose request using bearer token for auth
+20 verbose request id 5a4fab9c06d75417
+21 verbose etag W/"598c7f42-16b2"
+22 verbose lastModified Thu, 10 Aug 2017 15:44:02 GMT
+23 http request GET https://registry.npmjs.org/@smartface%2fsf-calendar-component
+24 http 304 https://registry.npmjs.org/@smartface%2fsf-calendar-component
+25 verbose headers { server: 'nginx/1.10.1',
+25 verbose headers   'last-modified': 'Thu, 10 Aug 2017 15:44:02 GMT',
+25 verbose headers   etag: '"598c7f42-16b2"',
+25 verbose headers   'cache-control': 'max-age=0',
+25 verbose headers   'accept-ranges': 'bytes',
+25 verbose headers   date: 'Thu, 10 Aug 2017 15:47:48 GMT',
+25 verbose headers   via: '1.1 varnish',
+25 verbose headers   connection: 'keep-alive',
+25 verbose headers   'x-served-by': 'cache-lhr6340-LHR',
+25 verbose headers   'x-cache': 'MISS',
+25 verbose headers   'x-cache-hits': '0',
+25 verbose headers   'x-timer': 'S1502380068.328785,VS0,VE590' }
+26 silly get cb [ 304,
+26 silly get   { server: 'nginx/1.10.1',
+26 silly get     'last-modified': 'Thu, 10 Aug 2017 15:44:02 GMT',
+26 silly get     etag: '"598c7f42-16b2"',
+26 silly get     'cache-control': 'max-age=0',
+26 silly get     'accept-ranges': 'bytes',
+26 silly get     date: 'Thu, 10 Aug 2017 15:47:48 GMT',
+26 silly get     via: '1.1 varnish',
+26 silly get     connection: 'keep-alive',
+26 silly get     'x-served-by': 'cache-lhr6340-LHR',
+26 silly get     'x-cache': 'MISS',
+26 silly get     'x-cache-hits': '0',
+26 silly get     'x-timer': 'S1502380068.328785,VS0,VE590' } ]
+27 verbose etag https://registry.npmjs.org/@smartface%2fsf-calendar-component from cache
+28 verbose get saving @smartface/sf-calendar-component to /home/ubuntu/.npm/registry.npmjs.org/_40smartface_252fsf-calendar-component/.cache.json
+29 verbose correctMkdir /home/ubuntu/.npm correctMkdir not in flight; initializing
+30 silly install normalizeTree
+31 silly loadCurrentTree Finishing
+32 silly loadIdealTree Starting
+33 silly install loadIdealTree
+34 silly cloneCurrentTree Starting
+35 silly install cloneCurrentTreeToIdealTree
+36 silly cloneCurrentTree Finishing
+37 silly loadShrinkwrap Starting
+38 silly install loadShrinkwrap
+39 silly loadShrinkwrap Finishing
+40 silly loadAllDepsIntoIdealTree Starting
+41 silly install loadAllDepsIntoIdealTree
+42 silly resolveWithNewModule @smartface/sf-calendar-component@1.0.2 checking installable status
+43 silly cache add args [ '@smartface/sf-calendar-component', null ]
+44 verbose cache add spec @smartface/sf-calendar-component
+45 silly cache add parsed spec Result {
+45 silly cache add   raw: '@smartface/sf-calendar-component',
+45 silly cache add   scope: '@smartface',
+45 silly cache add   escapedName: '@smartface%2fsf-calendar-component',
+45 silly cache add   name: '@smartface/sf-calendar-component',
+45 silly cache add   rawSpec: '',
+45 silly cache add   spec: 'latest',
+45 silly cache add   type: 'tag' }
+46 silly addNamed @smartface/sf-calendar-component@latest
+47 verbose addNamed "latest" is being treated as a dist-tag for @smartface/sf-calendar-component
+48 info addNameTag [ '@smartface/sf-calendar-component', 'latest' ]
+49 silly mapToRegistry name @smartface/sf-calendar-component
+50 silly mapToRegistry scope (from package name) @smartface
+51 verbose mapToRegistry no registry URL found in name for scope @smartface
+52 silly mapToRegistry using default registry
+53 silly mapToRegistry registry https://registry.npmjs.org/
+54 silly mapToRegistry data Result {
+54 silly mapToRegistry   raw: '@smartface/sf-calendar-component',
+54 silly mapToRegistry   scope: '@smartface',
+54 silly mapToRegistry   escapedName: '@smartface%2fsf-calendar-component',
+54 silly mapToRegistry   name: '@smartface/sf-calendar-component',
+54 silly mapToRegistry   rawSpec: '',
+54 silly mapToRegistry   spec: 'latest',
+54 silly mapToRegistry   type: 'tag' }
+55 silly mapToRegistry uri https://registry.npmjs.org/@smartface%2fsf-calendar-component
+56 verbose addNameTag registry:https://registry.npmjs.org/@smartface%2fsf-calendar-component not in flight; fetching
+57 verbose get https://registry.npmjs.org/@smartface%2fsf-calendar-component not expired, no request
+58 silly addNameTag next cb for @smartface/sf-calendar-component with tag latest
+59 silly addNamed @smartface/sf-calendar-component@1.0.2
+60 verbose addNamed "1.0.2" is a plain semver version for @smartface/sf-calendar-component
+61 silly cache afterAdd @smartface/sf-calendar-component@1.0.2
+62 verbose afterAdd /home/ubuntu/.npm/@smartface/sf-calendar-component/1.0.2/package/package.json not in flight; writing
+63 verbose correctMkdir /home/ubuntu/.npm correctMkdir not in flight; initializing
+64 verbose afterAdd /home/ubuntu/.npm/@smartface/sf-calendar-component/1.0.2/package/package.json written
+65 silly fetchNamedPackageData sf-core
+66 silly mapToRegistry name sf-core
+67 silly mapToRegistry using default registry
+68 silly mapToRegistry registry https://registry.npmjs.org/
+69 silly mapToRegistry data Result {
+69 silly mapToRegistry   raw: 'sf-core',
+69 silly mapToRegistry   scope: null,
+69 silly mapToRegistry   escapedName: 'sf-core',
+69 silly mapToRegistry   name: 'sf-core',
+69 silly mapToRegistry   rawSpec: '',
+69 silly mapToRegistry   spec: 'latest',
+69 silly mapToRegistry   type: 'tag' }
+70 silly mapToRegistry uri https://registry.npmjs.org/sf-core
+71 silly fetchNamedPackageData js-base
+72 silly mapToRegistry name js-base
+73 silly mapToRegistry using default registry
+74 silly mapToRegistry registry https://registry.npmjs.org/
+75 silly mapToRegistry data Result {
+75 silly mapToRegistry   raw: 'js-base',
+75 silly mapToRegistry   scope: null,
+75 silly mapToRegistry   escapedName: 'js-base',
+75 silly mapToRegistry   name: 'js-base',
+75 silly mapToRegistry   rawSpec: '',
+75 silly mapToRegistry   spec: 'latest',
+75 silly mapToRegistry   type: 'tag' }
+76 silly mapToRegistry uri https://registry.npmjs.org/js-base
+77 verbose request uri https://registry.npmjs.org/sf-core
+78 verbose request no auth needed
+79 info attempt registry request try #1 at 3:47:51 PM
+80 verbose request using bearer token for auth
+81 verbose etag W/"57948400-49f"
+82 verbose lastModified Sun, 24 Jul 2016 09:01:52 GMT
+83 http request GET https://registry.npmjs.org/sf-core
+84 verbose request uri https://registry.npmjs.org/js-base
+85 verbose request no auth needed
+86 info attempt registry request try #1 at 3:47:51 PM
+87 verbose request using bearer token for auth
+88 verbose etag W/"56ad8f91-8fa"
+89 verbose lastModified Sun, 31 Jan 2016 04:37:37 GMT
+90 http request GET https://registry.npmjs.org/js-base
+91 http 304 https://registry.npmjs.org/sf-core
+92 verbose headers { server: 'nginx/1.10.1',
+92 verbose headers   'last-modified': 'Sun, 24 Jul 2016 09:01:52 GMT',
+92 verbose headers   etag: '"57948400-49f"',
+92 verbose headers   'cache-control': 'max-age=300',
+92 verbose headers   'accept-ranges': 'bytes',
+92 verbose headers   date: 'Thu, 10 Aug 2017 15:47:51 GMT',
+92 verbose headers   via: '1.1 varnish',
+92 verbose headers   connection: 'keep-alive',
+92 verbose headers   'x-served-by': 'cache-lhr6340-LHR',
+92 verbose headers   'x-cache': 'MISS',
+92 verbose headers   'x-cache-hits': '0',
+92 verbose headers   'x-timer': 'S1502380071.040951,VS0,VE24',
+92 verbose headers   vary: 'Accept-Encoding, Accept' }
+93 silly get cb [ 304,
+93 silly get   { server: 'nginx/1.10.1',
+93 silly get     'last-modified': 'Sun, 24 Jul 2016 09:01:52 GMT',
+93 silly get     etag: '"57948400-49f"',
+93 silly get     'cache-control': 'max-age=300',
+93 silly get     'accept-ranges': 'bytes',
+93 silly get     date: 'Thu, 10 Aug 2017 15:47:51 GMT',
+93 silly get     via: '1.1 varnish',
+93 silly get     connection: 'keep-alive',
+93 silly get     'x-served-by': 'cache-lhr6340-LHR',
+93 silly get     'x-cache': 'MISS',
+93 silly get     'x-cache-hits': '0',
+93 silly get     'x-timer': 'S1502380071.040951,VS0,VE24',
+93 silly get     vary: 'Accept-Encoding, Accept' } ]
+94 verbose etag https://registry.npmjs.org/sf-core from cache
+95 verbose get saving sf-core to /home/ubuntu/.npm/registry.npmjs.org/sf-core/.cache.json
+96 verbose correctMkdir /home/ubuntu/.npm correctMkdir not in flight; initializing
+97 silly resolveWithNewModule sf-core@1.0.0 checking installable status
+98 silly cache add args [ 'sf-core@^1.0.0', null ]
+99 verbose cache add spec sf-core@^1.0.0
+100 silly cache add parsed spec Result {
+100 silly cache add   raw: 'sf-core@^1.0.0',
+100 silly cache add   scope: null,
+100 silly cache add   escapedName: 'sf-core',
+100 silly cache add   name: 'sf-core',
+100 silly cache add   rawSpec: '^1.0.0',
+100 silly cache add   spec: '>=1.0.0 <2.0.0',
+100 silly cache add   type: 'range' }
+101 silly addNamed sf-core@>=1.0.0 <2.0.0
+102 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for sf-core
+103 silly addNameRange { name: 'sf-core', range: '>=1.0.0 <2.0.0', hasData: false }
+104 silly mapToRegistry name sf-core
+105 silly mapToRegistry using default registry
+106 silly mapToRegistry registry https://registry.npmjs.org/
+107 silly mapToRegistry data Result {
+107 silly mapToRegistry   raw: 'sf-core',
+107 silly mapToRegistry   scope: null,
+107 silly mapToRegistry   escapedName: 'sf-core',
+107 silly mapToRegistry   name: 'sf-core',
+107 silly mapToRegistry   rawSpec: '',
+107 silly mapToRegistry   spec: 'latest',
+107 silly mapToRegistry   type: 'tag' }
+108 silly mapToRegistry uri https://registry.npmjs.org/sf-core
+109 verbose addNameRange registry:https://registry.npmjs.org/sf-core not in flight; fetching
+110 http 304 https://registry.npmjs.org/js-base
+111 verbose headers { server: 'nginx/1.10.1',
+111 verbose headers   'last-modified': 'Sun, 31 Jan 2016 04:37:37 GMT',
+111 verbose headers   etag: '"56ad8f91-8fa"',
+111 verbose headers   'cache-control': 'max-age=300',
+111 verbose headers   'accept-ranges': 'bytes',
+111 verbose headers   date: 'Thu, 10 Aug 2017 15:47:51 GMT',
+111 verbose headers   via: '1.1 varnish',
+111 verbose headers   connection: 'keep-alive',
+111 verbose headers   'x-served-by': 'cache-lhr6342-LHR',
+111 verbose headers   'x-cache': 'MISS',
+111 verbose headers   'x-cache-hits': '0',
+111 verbose headers   'x-timer': 'S1502380071.049460,VS0,VE18',
+111 verbose headers   vary: 'Accept-Encoding, Accept' }
+112 silly get cb [ 304,
+112 silly get   { server: 'nginx/1.10.1',
+112 silly get     'last-modified': 'Sun, 31 Jan 2016 04:37:37 GMT',
+112 silly get     etag: '"56ad8f91-8fa"',
+112 silly get     'cache-control': 'max-age=300',
+112 silly get     'accept-ranges': 'bytes',
+112 silly get     date: 'Thu, 10 Aug 2017 15:47:51 GMT',
+112 silly get     via: '1.1 varnish',
+112 silly get     connection: 'keep-alive',
+112 silly get     'x-served-by': 'cache-lhr6342-LHR',
+112 silly get     'x-cache': 'MISS',
+112 silly get     'x-cache-hits': '0',
+112 silly get     'x-timer': 'S1502380071.049460,VS0,VE18',
+112 silly get     vary: 'Accept-Encoding, Accept' } ]
+113 verbose etag https://registry.npmjs.org/js-base from cache
+114 verbose get saving js-base to /home/ubuntu/.npm/registry.npmjs.org/js-base/.cache.json
+115 verbose correctMkdir /home/ubuntu/.npm correctMkdir not in flight; initializing
+116 verbose get https://registry.npmjs.org/sf-core not expired, no request
+117 silly addNameRange number 2 { name: 'sf-core', range: '>=1.0.0 <2.0.0', hasData: true }
+118 silly addNameRange versions [ 'sf-core', [ '1.0.0' ] ]
+119 silly addNamed sf-core@1.0.0
+120 verbose addNamed "1.0.0" is a plain semver version for sf-core
+121 silly cache afterAdd sf-core@1.0.0
+122 verbose afterAdd /home/ubuntu/.npm/sf-core/1.0.0/package/package.json not in flight; writing
+123 verbose correctMkdir /home/ubuntu/.npm correctMkdir not in flight; initializing
+124 silly fetchNamedPackageData No valid target from cache, forcing network
+125 verbose request uri https://registry.npmjs.org/js-base
+126 verbose request no auth needed
+127 info attempt registry request try #1 at 3:47:51 PM
+128 verbose request using bearer token for auth
+129 http request GET https://registry.npmjs.org/js-base
+130 verbose afterAdd /home/ubuntu/.npm/sf-core/1.0.0/package/package.json written
+131 http 200 https://registry.npmjs.org/js-base
+132 verbose headers { server: 'nginx/1.10.1',
+132 verbose headers   'content-type': 'application/json',
+132 verbose headers   'last-modified': 'Sun, 31 Jan 2016 04:37:37 GMT',
+132 verbose headers   etag: 'W/"56ad8f91-8fa"',
+132 verbose headers   'content-encoding': 'gzip',
+132 verbose headers   'cache-control': 'max-age=300',
+132 verbose headers   'transfer-encoding': 'chunked',
+132 verbose headers   'accept-ranges': 'bytes',
+132 verbose headers   date: 'Thu, 10 Aug 2017 15:47:51 GMT',
+132 verbose headers   via: '1.1 varnish',
+132 verbose headers   connection: 'keep-alive',
+132 verbose headers   'x-served-by': 'cache-lhr6340-LHR',
+132 verbose headers   'x-cache': 'MISS',
+132 verbose headers   'x-cache-hits': '0',
+132 verbose headers   'x-timer': 'S1502380071.119512,VS0,VE18',
+132 verbose headers   vary: 'Accept-Encoding, Accept' }
+133 silly get cb [ 200,
+133 silly get   { server: 'nginx/1.10.1',
+133 silly get     'content-type': 'application/json',
+133 silly get     'last-modified': 'Sun, 31 Jan 2016 04:37:37 GMT',
+133 silly get     etag: 'W/"56ad8f91-8fa"',
+133 silly get     'content-encoding': 'gzip',
+133 silly get     'cache-control': 'max-age=300',
+133 silly get     'transfer-encoding': 'chunked',
+133 silly get     'accept-ranges': 'bytes',
+133 silly get     date: 'Thu, 10 Aug 2017 15:47:51 GMT',
+133 silly get     via: '1.1 varnish',
+133 silly get     connection: 'keep-alive',
+133 silly get     'x-served-by': 'cache-lhr6340-LHR',
+133 silly get     'x-cache': 'MISS',
+133 silly get     'x-cache-hits': '0',
+133 silly get     'x-timer': 'S1502380071.119512,VS0,VE18',
+133 silly get     vary: 'Accept-Encoding, Accept' } ]
+134 verbose get saving js-base to /home/ubuntu/.npm/registry.npmjs.org/js-base/.cache.json
+135 verbose correctMkdir /home/ubuntu/.npm correctMkdir not in flight; initializing
+136 silly fetchPackageMetaData Error: No compatible version found: js-base@^1.0.0
+136 silly fetchPackageMetaData Valid install targets:
+136 silly fetchPackageMetaData 0.0.1-beta
+136 silly fetchPackageMetaData
+136 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/fetch-package-metadata.js:178:16)
+136 silly fetchPackageMetaData     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+136 silly fetchPackageMetaData     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/utils/pulse-till-done.js:20:8
+136 silly fetchPackageMetaData     at saved (/home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/cache/caching-client.js:174:7)
+136 silly fetchPackageMetaData     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:241:18
+136 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15)
+136 silly fetchPackageMetaData  error for js-base@^1.0.0 { Error: No compatible version found: js-base@^1.0.0
+136 silly fetchPackageMetaData Valid install targets:
+136 silly fetchPackageMetaData 0.0.1-beta
+136 silly fetchPackageMetaData
+136 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/fetch-package-metadata.js:178:16)
+136 silly fetchPackageMetaData     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+136 silly fetchPackageMetaData     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/utils/pulse-till-done.js:20:8
+136 silly fetchPackageMetaData     at saved (/home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/cache/caching-client.js:174:7)
+136 silly fetchPackageMetaData     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:241:18
+136 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15) code: 'ETARGET' }
+137 silly rollbackFailedOptional Starting
+138 silly rollbackFailedOptional Finishing
+139 silly runTopLevelLifecycles Finishing
+140 silly install printInstalled
+141 verbose stack Error: No compatible version found: js-base@^1.0.0
+141 verbose stack Valid install targets:
+141 verbose stack 0.0.1-beta
+141 verbose stack
+141 verbose stack     at pickVersionFromRegistryDocument (/home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/fetch-package-metadata.js:178:16)
+141 verbose stack     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+141 verbose stack     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/utils/pulse-till-done.js:20:8
+141 verbose stack     at saved (/home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/lib/cache/caching-client.js:174:7)
+141 verbose stack     at /home/ubuntu/.nvm/versions/node/v6.10.3/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:241:18
+141 verbose stack     at FSReqWrap.oncomplete (fs.js:123:15)
+142 verbose cwd /home/ubuntu/workspace/workspace/installtest
+143 error Linux 4.9.17-c9
+144 error argv "/home/ubuntu/.nvm/versions/node/v6.10.3/bin/node" "/home/ubuntu/.nvm/versions/node/v6.10.3/bin/npm" "i" "@smartface/sf-calendar-component"
+145 error node v6.10.3
+146 error npm  v3.10.10
+147 error code ETARGET
+148 error notarget No compatible version found: js-base@^1.0.0
+148 error notarget Valid install targets:
+148 error notarget 0.0.1-beta
+149 error notarget This is most likely not a problem with npm itself.
+149 error notarget In most cases you or one of your dependencies are requesting
+149 error notarget a package version that doesn't exist.
+149 error notarget
+149 error notarget It was specified as a dependency of '@smartface/sf-calendar-component'
+150 verbose exit [ 1, true ]

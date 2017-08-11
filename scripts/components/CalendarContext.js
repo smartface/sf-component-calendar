@@ -105,7 +105,7 @@ function createContext(component) {
 		function(name) {
 			const namePattern = /week[0-9]+_weekDay[0-9]+/
 			const rowPattern = new RegExp("week[0-9]+");
-				console.log(name);
+
 			if (namePattern.test(name)) {
 				return '.calendar.day';
 			} else if (rowPattern.test(name)) {
