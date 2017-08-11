@@ -45,8 +45,6 @@ const styles = {
 		},
 		".weekRow": {
 			"minHeight": 42,
-			"paddingLeft": null,
-			"paddingRight": null,
 			"flexProps": {
 				"flexDirection": "ROW",
 				"justifyContent": "SPACE_AROUND",
@@ -63,9 +61,9 @@ const styles = {
 			},
 			"borderWidth": 0,
 			"borderRadius": 20,
-			maxWidth: 40,
-			minWidth: 40,
-			height: 40,
+			"maxWidth": 40,
+			"minWidth": 40,
+			"height": 40,
 			"textColor": "#000000",
 			"borderColor": "rgba(0,0,0,0)",
 			"backgroundColor": "rgba(0,0,0,0)",
