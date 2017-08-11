@@ -5,6 +5,14 @@ export function contextConnector(context){
   };
 }
 
+export const INIT_CONTEXT_ACTION_TYPE = '__INIT_CONTEXT__';
+
+export function createInitAction(){
+  return {
+    type: INIT_CONTEXT_ACTION_TYPE
+  }
+}
+
 export default function createContext(actors, updater){
   const state = {actors};
   
@@ -13,7 +21,7 @@ export default function createContext(actors, updater){
       // this.__id            = __id++;
       // this._subscribers    = new WeakMap();
       // this._subscriberKeys = new Map();
-      updater(state);
+      updater(state, {type: INIT_CONTEXT_ACTION_TYPE});
     }
     
     dispatch(action, target){

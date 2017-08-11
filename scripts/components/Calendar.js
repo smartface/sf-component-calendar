@@ -21,9 +21,11 @@ function createWeekRow(rowIndex){
 
 const Calendar = extend(CalendarDesign)(
 	//constructor
-	function(_super, style={}){
+	function(_super, styles){
 		// initalizes super class for this scope
-		_super(this, style);
+		_super(this);
+		
+		this.styles;
 		
 		this.children.navbar.onNext = function(){
 			this.nextMonth();
@@ -104,8 +106,12 @@ const Calendar = extend(CalendarDesign)(
 				this.children["week"+index] = row;
 			}.bind(this));
 			
-			CalendarContext.createContext(this);
+			this.context = CalendarContext.createContext(this);
 		};
+		
+		proto.addStyles = function(styles) {
+			this.context(styles);
+		}
 		
 		proto.setSelectedDate = function(date){
 			const newDate = Object.assign({}, date);

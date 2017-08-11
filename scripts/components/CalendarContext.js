@@ -5,6 +5,9 @@ const getPropsFromStyle = require("library/styler-builder").getPropsFromStyle;
 const styles = {
 	".calendar": {
 		"&-size": {
+			right:0,
+			left:0,
+			top:0,
 			height: 360,
 			paddingLeft: 0,
 			paddingRight: 0
@@ -42,7 +45,16 @@ const styles = {
 		},
 		".weekRow": {
 			minHeight: 42,
-			
+			width: 363.2432473672403,
+			height: 76.48648957948427,
+			paddingLeft: null,
+			paddingRight: null,
+			flexProps: {
+				flexDirection: "ROW",
+				justifyContent: "SPACE_AROUND",
+				alignItems: "CENTER",
+				alignContent: "CENTER"
+			}
 		},
 		".day": {
 			"font": {
@@ -88,13 +100,67 @@ const styles = {
 			}
 		}
 	}
-
 };
 
 var styler = flatStyler(styles);
 
 const selectDays = function(name){
 	return name.indexOf("_weekDay") > 0;
+}
+
+// reducer for context's components
+function reducer(state, action, target) {
+	const newState = Object.assign({}, state);
+
+	switch (action.type) {
+		case "resetDays":
+			Object.keys(newState.actors)
+				.filter(selectDays)
+				.forEach(function(name){
+					newState.actors[name].resetClassNames([".calendar.day"]);
+				});
+			
+			break;
+		case "daySelected":
+			if (newState.selectedDay){
+				newState.actors[newState.selectedDay].removeClassName(".calendar.day-selected");
+			}
+
+			newState.actors[target].pushClassName(".calendar.day-selected");
+			newState.selectedDay = target;
+
+			return newState;
+		case "clearSelectedDay":
+			newState.actors[target].removeClassName(".calendar.day-selected");
+			newState.selectedDay = "";
+			
+			break;
+		case "changeState":
+			const actor = newState.actors[target];
+			// actor.setClassName(".calendar.day");
+			
+			newState.states = newState.states || {};
+			newState.states[target] = action.data;
+			
+			const classNames = [actor.getClassName()];
+			const data = action.data;
+			
+			if(data.isSpecialDay){
+				actor.pushClassName(".calendar.day-specialDays");
+			}
+
+			if(data.isWeekend){
+				actor.pushClassName(".calendar.day-weekend");
+			}
+
+			if(data.month !== "current"){
+				actor.pushClassName(".calendar.day-deactiveDays");
+			}
+			
+			break;
+	}
+	
+	return newState;
 }
 
 function createContext(component) {
@@ -132,76 +198,31 @@ function createContext(component) {
 		}
 	);
 	
+	// creates an initial styler to the context
 	var context = styleContext(
 		function(className) {
 			return function getStyle() {
 				return getPropsFromStyle(styler, className);
 			}
 		},
-		// reducer for context's components
-		function(state, action, target) {
-			const newState = Object.assign({}, state);
-
-			switch (action.type) {
-				case "resetDays":
-					Object.keys(newState.actors)
-						.filter(selectDays)
-						.forEach(function(name){
-							newState.actors[name].resetClassNames([".calendar.day"]);
-						});
-					
-					break;
-				case "daySelected":
-					if (newState.selectedDay){
-						newState.actors[newState.selectedDay].removeClassName(".calendar.day-selected");
-					}
-
-					newState.actors[target].pushClassName(".calendar.day-selected");
-					newState.selectedDay = target;
-
-					return newState;
-					break;
-				case "clearSelectedDay":
-					newState.actors[target].removeClassName(".calendar.day-selected");
-					newState.selectedDay = "";
-					
-					break;
-				case "changeState":
-					const actor = newState.actors[target];
-					// actor.setClassName(".calendar.day");
-					
-					newState.states = newState.states || {};
-					newState.states[target] = action.data;
-					
-					const classNames = [actor.getClassName()];
-					const data = action.data;
-					
-					if(data.isSpecialDay){
-						actor.pushClassName(".calendar.day-specialDays");
-					}
-
-					if(data.isWeekend){
-						actor.pushClassName(".calendar.day-weekend");
-					}
-
-					if(data.month !== "current"){
-						actor.pushClassName(".calendar.day-deactiveDays");
-					}
-					
-					// actor.getClassName();
-					
-					// console.log(actor.getClassName());
-					break;
-			}
-			
-			return newState;
-		}
+		reducer
 	);
+	
+	return function setStyle(newStyles) {
+		try {
+			const styler = flatStyler(styles, newStyles);
+			// injects a new styler to the context
+			styleContext(function(className) {
+				return function getStyle() {
+					return getPropsFromStyle(styler, className);
+				}
+			}, reducer);
+		} catch(e){
+			alert(e.message);
+		}
+	}
 }
 
 module.exports = {
-	registerStyle: function(style) {
-
-	},
 	createContext: createContext
 }

@@ -9,7 +9,7 @@ const CalendarNavBar = extend(CalendarNavBarDesign)(
 	//constructor
 	function(_super, props){
 		// initalizes super class for this scope
-		_super(this, props || CalendarNavBarDesign.defaults );
+		_super(this, props || {} );
 		
 		this.setContextDispatcher = function(dispatch) {
 			this.dispatch = dispatch;

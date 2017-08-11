@@ -9,7 +9,7 @@ const CalendarBody = extend(CalendarBodyDesign)(
 	//constructor
 	function(_super, props, pageName){
 		// initalizes super class for this scope
-		_super(this, props || CalendarBodyDesign.defaults );
+		_super(this, props || {} );
 		this.pageName = pageName;
 	}
 	

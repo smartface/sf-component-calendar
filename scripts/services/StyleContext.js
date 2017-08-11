@@ -39,7 +39,7 @@
   }
 
   /**
-   * Create styleContext from a SF Component
+   * Create styleContext tre from a SF Component and flat component tree to create actors
    * 
    * @params {*} component - a SF Component
    * @params {String} name - component name
@@ -176,7 +176,7 @@
   }
 
   function createStyleContext(actors) {
-    return function changeStyles(styler, reducer) {
+    return function composeContext(styler, reducer) {
       var context = (0, _Context2.default)(actors, function contextUpdate(state, action, target) {
         var newState = state;
 
@@ -193,7 +193,7 @@
         Object.keys(newState.actors).forEach(function setInitialStyles(name) {
           var comp = newState.actors[name];
 
-          if (comp.isUgly === true) {
+          if (comp.isUgly === true || action.type === _Context.INIT_CONTEXT_ACTION_TYPE) {
             var className = newState.actors[name].getClassName();
             var styles = styler(className);
 
@@ -206,6 +206,7 @@
       });
 
       Object.keys(actors).forEach(function assignContext(name) {
+        actors[name].isUgly = true;
         actors[name].setContext(context);
       });
 

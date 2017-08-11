@@ -1,8 +1,8 @@
-import createContext from "./Context";
+import createContext, { INIT_CONTEXT_ACTION_TYPE } from "./Context";
 import merge from "@smartface/styler/lib/utils/merge";
 
 /**
- * Create styleContext from a SF Component
+ * Create styleContext tre from a SF Component and flat component tree to create actors
  * 
  * @params {*} component - a SF Component
  * @params {String} name - component name
@@ -137,7 +137,7 @@ export function makeStylable(component, className, name){
 }
 
 export function createStyleContext(actors){
-  return function changeStyles(styler, reducer){
+  return function composeContext(styler, reducer){
     const context = createContext(
       actors, 
       function contextUpdate(state, action, target){
@@ -157,7 +157,7 @@ export function createStyleContext(actors){
           function setInitialStyles(name){
             const comp = newState.actors[name];
             
-            if(comp.isUgly === true){
+            if(comp.isUgly === true || action.type === INIT_CONTEXT_ACTION_TYPE){
               const className = newState.actors[name].getClassName();
               const styles = styler(className);
               
@@ -170,9 +170,10 @@ export function createStyleContext(actors){
     });
     
     Object.keys(actors).forEach(function assignContext(name){
+      actors[name].isUgly = true;
       actors[name].setContext(context);
     });
-    
+
     return context;
   };
 }

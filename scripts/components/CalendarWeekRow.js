@@ -15,7 +15,7 @@ const CalendarWeekRow = extend(CalendarWeekRowWithLabelDesign)(
 	//constructor
 	function(_super, props, index){
 		// initalizes super class for this scope
-		_super(this, Object.assign({},CalendarWeekRowDesign.defaults, props));
+		_super(this, props || {});
 		this.rowIndex = index;
 		// data && this.setDays(data);
 		this.init();

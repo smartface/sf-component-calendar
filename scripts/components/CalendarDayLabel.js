@@ -9,7 +9,7 @@ const CalendarDayLabel = extend(CalendarDayLabelDesign)(
 	//constructor
 	function(_super, props, pageName){
 		// initalizes super class for this scope
-		_super(this, props || CalendarDayLabelDesign.defaults );
+		_super(this, props || {} );
 		this.pageName = pageName;
 	}
 	
