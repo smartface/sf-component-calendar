@@ -167,7 +167,7 @@ const newMonthLabelColorStyle = {
 const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
 const calendar = new Calendar();
 
-// changing calendar date
+// changing calendar month label color to red
 calendar.addStyles(newMonthLabelColorStyle);
 
 
