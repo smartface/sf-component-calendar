@@ -5,12 +5,12 @@ const getPropsFromStyle = require("library/styler-builder").getPropsFromStyle;
 const styles = {
 	".calendar": {
 		"&-size": {
-			right:0,
-			left:0,
-			top:0,
-			height: 360,
-			paddingLeft: 0,
-			paddingRight: 0
+			"right":0,
+			"left":0,
+			"top":0,
+			"height": 360,
+			"paddingLeft": 0,
+			"paddingRight": 0
 		},
 		".header": {
 			"&_navbar": {
@@ -44,16 +44,14 @@ const styles = {
 		".body": {
 		},
 		".weekRow": {
-			minHeight: 42,
-			width: 363.2432473672403,
-			height: 76.48648957948427,
-			paddingLeft: null,
-			paddingRight: null,
-			flexProps: {
-				flexDirection: "ROW",
-				justifyContent: "SPACE_AROUND",
-				alignItems: "CENTER",
-				alignContent: "CENTER"
+			"minHeight": 42,
+			"paddingLeft": null,
+			"paddingRight": null,
+			"flexProps": {
+				"flexDirection": "ROW",
+				"justifyContent": "SPACE_AROUND",
+				"alignItems": "CENTER",
+				"alignContent": "CENTER"
 			}
 		},
 		".day": {

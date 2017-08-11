@@ -21,11 +21,9 @@ function createWeekRow(rowIndex){
 
 const Calendar = extend(CalendarDesign)(
 	//constructor
-	function(_super, styles){
+	function(_super){
 		// initalizes super class for this scope
 		_super(this);
-		
-		this.styles;
 		
 		this.children.navbar.onNext = function(){
 			this.nextMonth();
