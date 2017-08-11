@@ -1,4 +1,5 @@
 # Smartface Calendar Component
+[![Npm Status](https://img.shields.io/npm/v/@smartface/styler.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-component-calendar)
 
 ## Intallation
 ``` $ npm i @smartface/sf-component-calendar ```
