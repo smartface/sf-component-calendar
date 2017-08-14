@@ -1,35 +1,35 @@
 {
-	"name": "@smartface/sf-calendar-component",
-	"version": "1.0.16",
-	"description": "Calendar component",
-	"main": "components/calendar.js",
-	"scripts": {
-	  "prepublish": "cp -r ./node_modules/library ./library && rm ./library/styler-builder.js",
-	  "postpublish": "rm -r ./library",
-	  "preinstall": "mkdir -p node_modules && cp -r ./library ./node_modules/library && rm -r ./library"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/smartface/sf-component-calendar.git"
-	},
-	"keywords": [
-		"javascript",
-		"mobile",
-		"styling",
-		"style"
-	],
-	"author": "Cenk Cetinkaya",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/smartface/sf-component-calendar/issues"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"dependencies": {
-		"moment": "^2.18.1"
-	},
-	"devDependencies": {
+  "name": "@smartface/sf-calendar-component",
+  "version": "1.0.16",
+  "description": "Calendar component",
+  "main": "components/calendar.js",
+  "scripts": {
+    "prepublish": "cp -r ./node_modules/library ./library && rm ./library/styler-builder.js",
+    "postpublish": "rm -r ./library",
+    "preinstall": "mkdir -p node_modules && cp -r ./library ./node_modules/library && rm -r ./library"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartface/sf-component-calendar.git"
+  },
+  "keywords": [
+    "javascript",
+    "mobile",
+    "styling",
+    "style"
+  ],
+  "author": "Cenk Cetinkaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smartface/sf-component-calendar/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
     "@smartface/sf-calendar-component": "^1.0.15",
     "@smartface/styler": "^1.1.0",
     "sf-core": "^1.0.0"
