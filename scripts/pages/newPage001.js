@@ -14,7 +14,7 @@ const NewPage001 = extend(NewPage001Design)(
 		this.onShow = onShow.bind(this, this.onShow.bind(this));
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
-		
+
 		this.children.calendar.onChanged = function(date){
 			this.children.label2.text = date.dayInfo.day+"/"+(date.monthInfo.longName)+"/"+date.year;
 		}.bind(this);

@@ -13,28 +13,26 @@ const CalendarWeekRowWithLabelDesign = require('library/CalendarWeekRow');
 
 const CalendarWeekRow = extend(CalendarWeekRowWithLabelDesign)(
 	//constructor
-	function(_super, props, index){
+	function(_super, props){
 		// initalizes super class for this scope
 		_super(this, props || {});
-		this.rowIndex = index;
 		// data && this.setDays(data);
 		this.init();
 	},
 	function(proto){
-		var selectedIndex = -1;
-		
+
 		function addDaySelectEvent(day, index){
 			day.onPress = selectDay.bind(this, index);
 		}
 		
 		function selectDay(index){
 			this.children["weekDay"+(index+1)].setSelected();
-			selectedIndex = index;
-			this.onDaySelected(this.rowIndex, index);
+			this.selectedIndex = index;
+			this.onDaySelected(index);
 		}
 		
 		proto.getSelectedIndex = function(){
-			return selectedIndex;
+			return this.selectedIndex;
 		}
 		
 		proto.setSelectedIndex = function(index){
@@ -42,9 +40,9 @@ const CalendarWeekRow = extend(CalendarWeekRowWithLabelDesign)(
 		}
 		
 		proto.clearSelected = function(){
-			selectedIndex > -1 && this.children["weekDay"+(selectedIndex+1)].clearSelected();
-			selectedIndex = -1;
-		}
+			this.selectedIndex > -1 && this.children["weekDay"+(this.selectedIndex+1)].clearSelected();
+			this.selectedIndex = -1;
+		};
 		
 		proto.init = function(){
 			addDaySelectEvent.call(this, this.children.weekDay1, 0);

@@ -17,14 +17,14 @@ const CalendarNavBar = extend(CalendarNavBarDesign)(
 		
 		this.children.nextMonth.onPress = function(){
 			this.dispatch({
-				type: "resetDays"
+				type: "changeMonth"
 			})
 			this.onNext();
 		}.bind(this);
 		
 		this.children.prevMonth.onPress = function(){
 			this.dispatch({
-				type: "resetDays"
+				type: "changeMonth"
 			})
 			this.onPrev();
 		}.bind(this);

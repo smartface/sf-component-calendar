@@ -8,9 +8,14 @@ const styles = {
 			"right":0,
 			"left":0,
 			"top":0,
-			"height": 360,
+			"bottom": 0, 
+			"minHeight": 300,
+			"maxHeight": 300,
 			"paddingLeft": 0,
-			"paddingRight": 0
+			"paddingRight": 0,
+			flexProps: {
+				positionType: "ABSOLUTE",
+			}
 		},
 		".header": {
 			"&_navbar": {
@@ -42,14 +47,19 @@ const styles = {
 			}
 		},
 		".body": {
+			width: NaN,
+			positionType: "RELATIVE",
+			flexGrow: 1
 		},
 		".weekRow": {
-			"minHeight": 42,
+			"minHeight": 21,
 			"flexProps": {
 				"flexDirection": "ROW",
 				"justifyContent": "SPACE_AROUND",
 				"alignItems": "CENTER",
-				"alignContent": "CENTER"
+				"alignContent": "CENTER",
+				positionType: "RELATIVE",
+				flexGrow: 1
 			}
 		},
 		".day": {
@@ -60,10 +70,11 @@ const styles = {
 				"family": "Arial"
 			},
 			"borderWidth": 0,
-			"borderRadius": 20,
-			"maxWidth": 40,
-			"minWidth": 40,
-			"height": 40,
+			"borderRadius": 15,
+			"maxWidth": 30,
+			"minWidth": 20,
+			"maxHeight": 40,
+			"minHeight": 30,
 			"textColor": "#000000",
 			"borderColor": "rgba(0,0,0,0)",
 			"backgroundColor": "rgba(0,0,0,0)",
@@ -129,6 +140,16 @@ function reducer(state, action, target) {
 		case "clearSelectedDay":
 			newState.actors[target].removeClassName(".calendar.day-selected");
 			newState.selectedDay = "";
+			
+			break;
+		case "changeMonth":
+			Object.keys(newState.actors)
+				.filter(selectDays)
+				.forEach(function(name){
+					if(newState.actors[name].getClassName() !== ".calendar.day"){
+						newState.actors[name].resetClassNames([".calendar.day"]);
+					}
+				});
 			
 			break;
 		case "changeState":

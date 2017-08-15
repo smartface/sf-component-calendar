@@ -1,5 +1,5 @@
 /* 
-		Smarface Calendar Component v.1.0.6
+		Smarface Calendar Component
 */
 const extend = require('js-base/core/extend');
 
@@ -8,16 +8,7 @@ const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
 const CalendarService = require("../services/CalendarService");
 const CalendarContext = require("./CalendarContext");
-
-const weekRowStyle = {
-	positionType: FlexLayout.PositionType.RELATIVE,
-	marginTop: 4,
-	flexGrow: 1
-};
-
-function createWeekRow(rowIndex){
-	return new CalendarWeekRow(weekRowStyle, rowIndex);
-}
+const runner = require("../benchmarks/runner");
 
 const Calendar = extend(CalendarDesign)(
 	//constructor
@@ -27,7 +18,7 @@ const Calendar = extend(CalendarDesign)(
 		
 		this.children.navbar.onNext = function(){
 			this.nextMonth();
-			// runner(this.nextMonth.bind(this), "nextMonth");
+		
 		}.bind(this);
 		
 		this.children.navbar.onPrev = function(){
@@ -38,6 +29,15 @@ const Calendar = extend(CalendarDesign)(
 		
 		this.buildRows();
 		this.updateCalendar(CalendarService.getCalendarMonth());
+
+		runner.add(this.nextMonth.bind(this), "nextMonth");
+		runner.add(this.prevMonth.bind(this), "prevMonth");
+		
+		runner.runAll(3, function(res){
+			res.forEach(function(item){
+				console.log(item.asString);
+			})
+		});
 	},
 	function(proto){
 		var currentMonth;
@@ -50,6 +50,7 @@ const Calendar = extend(CalendarDesign)(
 			}.bind(this));
 		}
 		
+		// when a day is selected by user
 		function onDaySelected(row, index){
 			const selectedDay = Object.assign({}, currentMonth.days[row][index]);
 			const dayData = {};
@@ -61,46 +62,55 @@ const Calendar = extend(CalendarDesign)(
 				day: selectedDay.day
 			}
 			
-			if(selectedDay.month == "current"){
-				dayData.monthInfo = {
-					longName: currentMonth.longName,
-					shortName: currentMonth.shortName,
-					month: currentMonth.date.month + 1
-				}
-				
-				dayData.year = currentMonth.date.year
-			} else if(selectedDay.month == "next"){
-				dayData.monthInfo = {
-					longName: currentMonth.nextMonth.longName,
-					shortName: currentMonth.nextMonth.shortName,
-					month: currentMonth.nextMonth.date.month + 1
-				}
-				
-				dayData.year = currentMonth.nextMonth.date.year
-			} else if(selectedDay.month == "previous"){
-				dayData.monthInfo = {
-					longName: currentMonth.previousMonth.longName,
-					shortName: currentMonth.previousMonth.shortName,
-					month: currentMonth.previousMonth.date.month + 1
-				}
-				
-				dayData.year = currentMonth.previousMonth.date.year
+			switch (selectedDay.month) {
+				// selected day owned by current month
+				case 'current':
+					dayData.monthInfo = {
+						longName: currentMonth.longName,
+						shortName: currentMonth.shortName,
+						month: currentMonth.date.month + 1
+					}
+					
+					dayData.year = currentMonth.date.year
+					break;
+				case 'next':
+					dayData.monthInfo = {
+						longName: currentMonth.nextMonth.longName,
+						shortName: currentMonth.nextMonth.shortName,
+						month: currentMonth.nextMonth.date.month + 1
+					}
+					
+					dayData.year = currentMonth.nextMonth.date.year
+					break;
+				case 'previous':
+					dayData.monthInfo = {
+						longName: currentMonth.previousMonth.longName,
+						shortName: currentMonth.previousMonth.shortName,
+						month: currentMonth.previousMonth.date.month + 1
+					}
+					
+					dayData.year = currentMonth.previousMonth.date.year
+					break;
+					
+					default:
+						throw new Error('Selected day has invalid data');
 			}
-
+			
 			this.onChanged && this.onChanged(dayData);
 		}
 		
 		proto.buildRows = function(){
-			weeks.push(createWeekRow(0));
-			weeks.push(createWeekRow(1));
-			weeks.push(createWeekRow(2));
-			weeks.push(createWeekRow(3));
-			weeks.push(createWeekRow(4));
-			weeks.push(createWeekRow(5));
+			weeks.push(this.children.body.children.week1);
+			weeks.push(this.children.body.children.week2);
+			weeks.push(this.children.body.children.week3);
+			weeks.push(this.children.body.children.week4);
+			weeks.push(this.children.body.children.week5);
+			weeks.push(this.children.body.children.week6);
+			
 			
 			weeks.forEach(function(row, index){
-				this.children.body.addChild(row);
-				row.onDaySelected = onDaySelected.bind(this);
+				// this.children.body.addChild(row);
+				row.onDaySelected = onDaySelected.bind(this, index);
 				this.children["week"+index] = row;
 			}.bind(this));
 			

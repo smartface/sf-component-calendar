@@ -45,14 +45,10 @@
 		},
 		"FlexLayout": {
 			"Sizes": {
-				"Default": ".sfCalendar_block",
+				"Default": ".flexLayout",
 				"Small": ".flexLayout-small",
 				"Medium": ".flexLayout-medium",
 				"Large": ".flexLayout-large"
-			},
-			"Calendar": {
-				"Block": ".sfCalendar_block",
-				"Header": ".sfCalendar_block_header"
 			}
 		},
 		"ScrollView": {
