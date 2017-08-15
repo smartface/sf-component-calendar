@@ -47,11 +47,15 @@ const styles = {
 			}
 		},
 		".body": {
-			width: NaN,
-			positionType: "RELATIVE",
-			flexGrow: 1
+			width: null,
+			flexProps: {
+				positionType: "RELATIVE",
+				flexGrow: 1
+			},
+			backgroundColor: "#000000"
 		},
 		".weekRow": {
+			"backgroundColor": "rgba(0,0,0,0)",
 			"minHeight": 21,
 			"flexProps": {
 				"flexDirection": "ROW",
@@ -208,7 +212,7 @@ function createContext(component) {
 				case 'calendar_navbar_yearLabel':
 					return ".calendar.header_navbar_yearLabel";
 				case 'body':
-					return ".body";
+					return ".calendar.body";
 			}
 
 			return ".calendar";
