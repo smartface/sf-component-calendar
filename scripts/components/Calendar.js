@@ -8,13 +8,6 @@ const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
 const CalendarService = require("../services/CalendarService");
 const CalendarContext = require("./CalendarContext");
-const runner = require("../benchmarks/runner");
-
-const weekRowStyle = {
-	positionType: FlexLayout.PositionType.RELATIVE,
-	marginTop: 4,
-	flexGrow: 1
-};
 
 const Calendar = extend(CalendarDesign)(
 	//constructor
@@ -35,15 +28,6 @@ const Calendar = extend(CalendarDesign)(
 		
 		this.buildRows();
 		this.updateCalendar(CalendarService.getCalendarMonth());
-
-		runner.add(this.nextMonth.bind(this), "nextMonth");
-		runner.add(this.prevMonth.bind(this), "prevMonth");
-		
-		runner.runAll(3, function(res){
-			res.forEach(function(item){
-				console.log(item.asString);
-			})
-		});
 	},
 	function(proto){
 		var currentMonth;

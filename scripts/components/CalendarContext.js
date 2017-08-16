@@ -37,34 +37,19 @@ const styles = {
 				"&_daynames": {
 					".weekday": {
 						"textColor": "#000000",
-						"backgroundColor": "rgba(0,185,255,42)"
 					},
 					".weekend": {
 						"textColor": "#000000",
-						"backgroundColor": "rgba(0,185,255,42)"
 					}
 				}
 			}
 		},
 		".body": {
-			width: null,
-			flexProps: {
-				positionType: "RELATIVE",
-				flexGrow: 1
-			},
-			backgroundColor: "#000000"
 		},
 		".weekRow": {
 			"backgroundColor": "rgba(0,0,0,0)",
-			"minHeight": 21,
-			"flexProps": {
-				"flexDirection": "ROW",
-				"justifyContent": "SPACE_AROUND",
-				"alignItems": "CENTER",
-				"alignContent": "CENTER",
-				positionType: "RELATIVE",
-				flexGrow: 1
-			}
+			"maxHeight": 26,
+			"minHeight": 26,
 		},
 		".day": {
 			"font": {
@@ -74,40 +59,31 @@ const styles = {
 				"family": "Arial"
 			},
 			"borderWidth": 0,
-			"borderRadius": 15,
-			"maxWidth": 30,
-			"minWidth": 20,
-			"maxHeight": 40,
-			"minHeight": 30,
+			"borderRadius": 12,
+			"maxWidth": 40,
+			"minWidth": 40,
+			"maxHeight": 24,
+			"minHeight": 24,
 			"textColor": "#000000",
-			"borderColor": "rgba(0,0,0,0)",
 			"backgroundColor": "rgba(0,0,0,0)",
 			"&-inrange": {
-				"backgroundColor": "rgba(0,185,255,42)",
 				"textColor": "#000000",
 			},
 			"&-selected": {
+				"borderWidth": 0,
 				"backgroundColor": "rgba(0,185,255,42)",
-				"borderColor": "rgba(0,185,255,42)",
 				"textColor": "#000000"
 			},
 			"&-deactiveDays": {
 				"borderWidth": 0,
 				"textColor": "#D6D6D6",
-				"borderColor": "#D6D6D6",
-				"backgroundColor": "rgba(0,0,0,0)"
 			},
 			"&-specialDays": {
 				"borderWidth": 0,
-				"&-selected": {
-					"@extend": ".calendar.day-selected",
-				},
-				"backgroundColor": "rgba(0,0,0,0)"
 			},
 			"&-weekend": {
 				"borderWidth": 0,
 				"textColor": "#A3A3A3",
-				"borderColor": "#A3A3A3"
 			}
 		}
 	}
@@ -119,52 +95,56 @@ const selectDays = function(name){
 	return name.indexOf("_weekDay") > 0;
 }
 
+function removeSelection(state, actors){
+	if(state.selectedDay){
+		actors[state.selectedDay].removeClassName(".calendar.day-selected");
+		delete state.selectedDay;
+	}
+}
+
 // reducer for context's components
-function reducer(state, action, target) {
+function reducer(state, actors, action, target) {
 	const newState = Object.assign({}, state);
 
 	switch (action.type) {
 		case "resetDays":
-			Object.keys(newState.actors)
+			Object.keys(actors)
 				.filter(selectDays)
 				.forEach(function(name){
-					newState.actors[name].resetClassNames([".calendar.day"]);
-				});
-			
-			break;
-		case "daySelected":
-			if (newState.selectedDay){
-				newState.actors[newState.selectedDay].removeClassName(".calendar.day-selected");
-			}
-
-			newState.actors[target].pushClassName(".calendar.day-selected");
-			newState.selectedDay = target;
-
-			return newState;
-		case "clearSelectedDay":
-			newState.actors[target].removeClassName(".calendar.day-selected");
-			newState.selectedDay = "";
-			
-			break;
-		case "changeMonth":
-			Object.keys(newState.actors)
-				.filter(selectDays)
-				.forEach(function(name){
-					if(newState.actors[name].getClassName() !== ".calendar.day"){
-						newState.actors[name].resetClassNames([".calendar.day"]);
+					if(actors[name].getClassName() != ".calendar.day"){
+						actors[name].resetClassNames([".calendar.day"]);
 					}
 				});
 			
 			break;
-		case "changeState":
-			const actor = newState.actors[target];
-			// actor.setClassName(".calendar.day");
+		case "daySelected":
+			removeSelection(newState, actors);
+			actors[target].pushClassName(".calendar.day-selected");
+
+			newState.selectedDay = target;
+
+			return newState;
+		case "clearSelectedDay":
+			removeSelection(newState, actors);
 			
+			break;
+		case "changeMonth":
+			removeSelection(newState, actors);
+		break;
+		case "changeState":
+			const actor = actors[target];
+			// actor.setClassName(".calendar.day");
 			newState.states = newState.states || {};
 			newState.states[target] = action.data;
 			
-			const classNames = [actor.getClassName()];
+			// const classNames = [actor.getClassName()];
 			const data = action.data;
+			
+			// if(actor.classNamesCount() > 1)
+				// actor.resetClassNames([".calendar.day"]);
+			// if(actors[target].getClassName() != ".calendar.day"){
+			// 	actors[target].resetClassNames([".calendar.day"]);
+			// }
 			
 			if(data.isSpecialDay){
 				actor.pushClassName(".calendar.day-specialDays");
@@ -174,7 +154,7 @@ function reducer(state, action, target) {
 				actor.pushClassName(".calendar.day-weekend");
 			}
 
-			if(data.month !== "current"){
+			if(data.month != "current"){
 				actor.pushClassName(".calendar.day-deactiveDays");
 			}
 			
@@ -198,7 +178,7 @@ function createContext(component) {
 			} else if (rowPattern.test(name)) {
 				return '.calendar.weekRow';
 			}
-
+			
 			switch (name) {
 				case 'calendar':
 					return ".calendar-size";
@@ -211,7 +191,7 @@ function createContext(component) {
 					return ".calendar.header_navbar_monthLabel";
 				case 'calendar_navbar_yearLabel':
 					return ".calendar.header_navbar_yearLabel";
-				case 'body':
+				case 'calendar_body':
 					return ".calendar.body";
 			}
 

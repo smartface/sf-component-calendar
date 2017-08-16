@@ -71,7 +71,7 @@ export function makeStylable(component, className, name){
       component.setContextDispatcher && 
         component.setContextDispatcher(function(action){
           this.context.dispatch(action, this.name);
-        }.bind(this))
+        }.bind(this));
     }
     
     getStyles(){
@@ -86,6 +86,10 @@ export function makeStylable(component, className, name){
       return this.classNames.join(" ");
     }
     
+    classNamesCount(){
+      return this.classNames.length;
+    }
+    
     removeClassName(className){
       if(this.hasClassName(className)){
         this.isUgly = true;
@@ -97,9 +101,9 @@ export function makeStylable(component, className, name){
       return this.getClassName();
     }
     
-    resetClassNames(classNames){
-      this.isUgly = true;
+    resetClassNames(classNames=[]){
       this.classNames = classNames.slice();
+      this.isUgly = true;
     }
     
     hasClassName(className){
@@ -137,43 +141,52 @@ export function makeStylable(component, className, name){
 }
 
 export function createStyleContext(actors){
+  var context;
+
   return function composeContext(styler, reducer){
-    const context = createContext(
+    var latestState = context ? context.getState() : {};
+    context && context.dispose();
+    
+    context = createContext(
       actors, 
-      function contextUpdate(state, action, target){
-        var newState = state;
+      function contextUpdater(context, action, target){
+        var state = context.getState(), newState = state;
 
         if(target){
-          newState = reducer(state, action, target);
-
+          console.log(state);
+          newState = reducer(state, context.actors, action, target);
+          // state is not changed
           if(newState === state){
+            // return current state instance
             return state;
           }
-        } else {
-          newState = Object.assign({}, state);
         }
         
-        Object.keys(newState.actors).forEach(
+        Object.keys(context.actors).forEach(
           function setInitialStyles(name){
-            const comp = newState.actors[name];
+            const comp = context.actors[name];
             
             if(comp.isUgly === true || action.type === INIT_CONTEXT_ACTION_TYPE){
-              const className = newState.actors[name].getClassName();
+              const className = context.actors[name].getClassName();
               const styles = styler(className);
               
-              newState.actors[name].setStyles(styles());
+              context.actors[name].setStyles(styles());
               comp.isUgly = false;
             }
           });
         
+        latestState = newState;
+        
         return newState;
+      },
+      latestState
+    );
+    
+    Object.keys(context.actors).forEach(function assignContext(name){
+      context.actors[name].isUgly = true;
+      context.actors[name].setContext(context);
     });
     
-    Object.keys(actors).forEach(function assignContext(name){
-      actors[name].isUgly = true;
-      actors[name].setContext(context);
-    });
-
     return context;
   };
 }

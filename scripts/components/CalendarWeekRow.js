@@ -7,11 +7,7 @@ const CalendarWeekRowDesign = require('library/CalendarWeekRow');
 const getCombinedStyle = require("library/styler-builder").getCombinedStyle;
 const Color = require('sf-core/ui/color');
 
-delete CalendarWeekRowDesign.defaults.width;
-delete CalendarWeekRowDesign.defaults.height;
-const CalendarWeekRowWithLabelDesign = require('library/CalendarWeekRow');
-
-const CalendarWeekRow = extend(CalendarWeekRowWithLabelDesign)(
+const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 	//constructor
 	function(_super, props){
 		// initalizes super class for this scope

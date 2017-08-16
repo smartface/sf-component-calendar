@@ -13,23 +13,40 @@ export function createInitAction(){
   }
 }
 
-export default function createContext(actors, updater){
-  const state = {actors};
-  
+export default function createContext(actors, updater, initialState={}){
   class Context {
     constructor(){
       // this.__id            = __id++;
       // this._subscribers    = new WeakMap();
       // this._subscriberKeys = new Map();
-      updater(state, {type: INIT_CONTEXT_ACTION_TYPE});
+      this.actors = Object.assign({}, actors);
+      this.state = Object.assign({}, initialState);
+      // this.dispatch = this.dispatch.bind(this);
+      // this.setState = this.setState.bind(this);
+      // this.getState = this.getState.bind(this);
+
+      updater(this, {type: INIT_CONTEXT_ACTION_TYPE});
     }
     
-    dispatch(action, target){
-      Object.assign(state, updater(state, action, target));
+    setState = (state) => {
+      this.state = Object.assign({}, state);
+    }
+    
+    getState = () => {
+      return Object.assign({}, this.state);
+    }
+    
+    dispatch = (action, target) => {
+      this.setState(updater(this, action, target));
+    }
+    
+    dispose =  () => {
+      this.state = null;
+      this.actors = null;
     }
     
     map(fn){
-      return Object.keys(actors).map((name,index) => fn(actors[name], name, index));
+      return Object.keys(this.actors).map((name,index) => fn(actors[name], name, index));
     }
     
     subcribe(fn){

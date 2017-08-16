@@ -124,6 +124,10 @@
         return this.classNames.join(" ");
       };
 
+      Stylable.prototype.classNamesCount = function classNamesCount() {
+        return this.classNames.length;
+      };
+
       Stylable.prototype.removeClassName = function removeClassName(className) {
         if (this.hasClassName(className)) {
           this.isUgly = true;
@@ -135,7 +139,9 @@
         return this.getClassName();
       };
 
-      Stylable.prototype.resetClassNames = function resetClassNames(classNames) {
+      Stylable.prototype.resetClassNames = function resetClassNames() {
+        var classNames = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
         this.isUgly = true;
         this.classNames = classNames.slice();
       };
@@ -176,38 +182,46 @@
   }
 
   function createStyleContext(actors) {
+    var context;
+
     return function composeContext(styler, reducer) {
-      var context = (0, _Context2.default)(actors, function contextUpdate(state, action, target) {
-        var newState = state;
+      var latestState = context ? context.getState() : {};
+      context && context.dispose();
+
+      context = (0, _Context2.default)(actors, function contextUpdater(context, action, target) {
+        var state = context.getState(),
+            newState = state;
 
         if (target) {
-          newState = reducer(state, action, target);
-
+          console.log(state);
+          newState = reducer(state, context.actors, action, target);
+          // state is not changed
           if (newState === state) {
+            // return current state instance
             return state;
           }
-        } else {
-          newState = Object.assign({}, state);
         }
 
-        Object.keys(newState.actors).forEach(function setInitialStyles(name) {
-          var comp = newState.actors[name];
+        Object.keys(context.actors).forEach(function setInitialStyles(name) {
+          var comp = context.actors[name];
 
           if (comp.isUgly === true || action.type === _Context.INIT_CONTEXT_ACTION_TYPE) {
-            var className = newState.actors[name].getClassName();
+            var className = context.actors[name].getClassName();
             var styles = styler(className);
 
-            newState.actors[name].setStyles(styles());
+            context.actors[name].setStyles(styles());
             comp.isUgly = false;
           }
         });
 
-        return newState;
-      });
+        latestState = newState;
 
-      Object.keys(actors).forEach(function assignContext(name) {
-        actors[name].isUgly = true;
-        actors[name].setContext(context);
+        return newState;
+      }, latestState);
+
+      Object.keys(context.actors).forEach(function assignContext(name) {
+        context.actors[name].isUgly = true;
+        context.actors[name].setContext(context);
       });
 
       return context;

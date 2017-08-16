@@ -4,6 +4,7 @@
 const extend = require('js-base/core/extend');
 const NewPage001Design = require('ui/ui_newPage001');
 const benchmark = require("../benchmarks/CalendarServices");
+const runner = require("../benchmarks/runner");
 
 const NewPage001 = extend(NewPage001Design)(
 	// Constructor
@@ -43,6 +44,24 @@ function onShow(superOnShow) {
   	month: 11,
   	year: 2017
   })
+  
+	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth");
+	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth2");
+	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth3");
+	
+	runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth");
+	runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth2");
+	runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth3");
+	
+	
+	// setTimeout(function(){
+		runner.runAll(3, function(res){
+			res.forEach(function(item){
+				console.log(item.asString);
+			})
+		});
+	// }
+	// , 3)
   // alert(JSON.stringify(benchmark()))
   //console.log(benchmark());
 }

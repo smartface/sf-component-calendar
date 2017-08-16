@@ -41,24 +41,45 @@
   }
 
   function createContext(actors, updater) {
-    var state = { actors: actors };
+    var initialState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     var Context = function () {
       function Context() {
+        var _this = this;
+
         _classCallCheck(this, Context);
+
+        this.setState = function (state) {
+          _this.state = Object.assign({}, state);
+        };
+
+        this.getState = function () {
+          return Object.assign({}, _this.state);
+        };
+
+        this.dispatch = function (action, target) {
+          _this.setState(updater(_this, action, target));
+        };
+
+        this.dispose = function () {
+          _this.state = null;
+          _this.actors = null;
+        };
 
         // this.__id            = __id++;
         // this._subscribers    = new WeakMap();
         // this._subscriberKeys = new Map();
-        updater(state, { type: INIT_CONTEXT_ACTION_TYPE });
+        this.actors = Object.assign({}, actors);
+        this.state = Object.assign({}, initialState);
+        // this.dispatch = this.dispatch.bind(this);
+        // this.setState = this.setState.bind(this);
+        // this.getState = this.getState.bind(this);
+
+        updater(this, { type: INIT_CONTEXT_ACTION_TYPE });
       }
 
-      Context.prototype.dispatch = function dispatch(action, target) {
-        Object.assign(state, updater(state, action, target));
-      };
-
       Context.prototype.map = function map(fn) {
-        return Object.keys(actors).map(function (name, index) {
+        return Object.keys(this.actors).map(function (name, index) {
           return fn(actors[name], name, index);
         });
       };
