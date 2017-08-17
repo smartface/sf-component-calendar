@@ -15,24 +15,12 @@ const Calendar = extend(CalendarDesign)(
 		// initalizes super class for this scope
 		_super(this);
 		
-		this.children.navbar.onNext = function(){
-			this.nextMonth();
-		
-		}.bind(this);
-		
-		this.children.navbar.onPrev = function(){
-			this.prevMonth();
-			// runner(this.prevMonth.bind(this), "prevMonth");
-			// this.prevMonth();
-		}.bind(this);
-		
 		this.buildRows();
-		this.updateCalendar(CalendarService.getCalendarMonth());
+		this.init();
 	},
 	function(proto){
 		var currentMonth;
 		const weeks = [];
-		var selectedRow;
 		
 		function updateRows(days, date) {
 			weeks.forEach(function(row, index){
@@ -53,7 +41,7 @@ const Calendar = extend(CalendarDesign)(
 			}
 			
 			switch (selectedDay.month) {
-				// selected day owned by current month
+				// if selected day is in current month.
 				case 'current':
 					dayData.monthInfo = {
 						longName: currentMonth.longName,
@@ -63,6 +51,7 @@ const Calendar = extend(CalendarDesign)(
 					
 					dayData.year = currentMonth.date.year
 					break;
+				// if selected day is in next month.
 				case 'next':
 					dayData.monthInfo = {
 						longName: currentMonth.nextMonth.longName,
@@ -72,6 +61,7 @@ const Calendar = extend(CalendarDesign)(
 					
 					dayData.year = currentMonth.nextMonth.date.year
 					break;
+				// if selected day is in previous month.
 				case 'previous':
 					dayData.monthInfo = {
 						longName: currentMonth.previousMonth.longName,
@@ -87,6 +77,20 @@ const Calendar = extend(CalendarDesign)(
 			}
 			
 			this.onChanged && this.onChanged(dayData);
+		}
+		
+		proto.setContextDispatcher = function(dispatcher){
+			this.dispatch = dispatcher;
+		}
+		
+		proto.init = function(argument) {
+			this.children.navbar.onNext = function(){
+				this.nextMonth();
+			}.bind(this);
+			
+			this.children.navbar.onPrev = function(){
+				this.prevMonth();
+			}.bind(this);
 		}
 		
 		proto.buildRows = function(){
@@ -107,6 +111,11 @@ const Calendar = extend(CalendarDesign)(
 			this.context = CalendarContext.createContext(this);
 		};
 		
+		proto.now = function(){
+			this.updateCalendar(CalendarService.getCalendarMonth());
+			this.selectDay();
+		}
+		
 		proto.addStyles = function(styles) {
 			this.context(styles);
 		}
@@ -114,28 +123,47 @@ const Calendar = extend(CalendarDesign)(
 		proto.setSelectedDate = function(date){
 			const newDate = Object.assign({}, date);
 			newDate.month = date.month - 1;
-			this.updateCalendar(CalendarService.getCalendarMonth(newDate));
-			const index = (currentMonth.startDayOfMonth + currentMonth.date.day) % 7;
-			const row = Math.ceil((currentMonth.startDayOfMonth + currentMonth.date.day) / 7);
+			const dateData = CalendarService.getCalendarMonth(newDate);
+			this.updateCalendar(dateData);
+		};
+		
+		proto.selectDay = function(){
+			this.dispatch({
+				type: "resetDays"
+			})
+			const totalDay = currentMonth.startDayOfMonth + currentMonth.date.day;
+			const row = Math.ceil(totalDay / 7);
+			const index = currentMonth.date.day - 1 - ((row-1) * 7 - currentMonth.startDayOfMonth);
 
-			weeks[row-1].setSelectedIndex(index-1);
+			weeks[row-1].setSelectedIndex(index);
 		}
 		
 		proto.updateCalendar = function(month){
-			currentMonth = month;
-			
 			updateRows.call(this, month.days, month.date);
-			this.children.navbar.setLabel(currentMonth.longName);
-			this.children.navbar.setYear(currentMonth.date.year);
+			this.children.navbar.setLabel(month.longName);
+			this.children.navbar.setYear(month.date.year);
+			currentMonth = month;
 		};
 		
 		proto.nextMonth = function(){
-			this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.nextMonth.date));
-		}
+			if(currentMonth){
+				this.dispatch({
+					type: "resetDays"
+				});
+				
+				this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.nextMonth.date));
+			}
+		};
 		
 		proto.prevMonth = function(){
-			this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.previousMonth.date));
-		}
+			if(currentMonth){
+				this.dispatch({
+					type: "resetDays"
+				});
+				
+				this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.previousMonth.date));
+			}
+		};
 	}
 );
 

@@ -1,6 +1,7 @@
 const flatStyler = require("@smartface/styler/lib/flatStyler");
 const StyleContext = require("../services/StyleContext");
 const getPropsFromStyle = require("library/styler-builder").getPropsFromStyle;
+const INIT_CONTEXT_ACTION_TYPE = require("../services/Context").INIT_CONTEXT_ACTION_TYPE;
 
 const styles = {
 	".calendar": {
@@ -102,49 +103,43 @@ function removeSelection(state, actors){
 	}
 }
 
+function resetDays(days, actors){
+	days.forEach(function(name){
+		if(actors[name].getClassName() != ".calendar.day"){
+			actors[name].resetClassNames([".calendar.day"]);
+		}
+	});
+}
+
 // reducer for context's components
 function reducer(state, actors, action, target) {
 	const newState = Object.assign({}, state);
-
+	
 	switch (action.type) {
+		case INIT_CONTEXT_ACTION_TYPE:
+			newState.days = Object.keys(actors).filter(selectDays);
+			
+			return newState;
+			break;
 		case "resetDays":
-			Object.keys(actors)
-				.filter(selectDays)
-				.forEach(function(name){
-					if(actors[name].getClassName() != ".calendar.day"){
-						actors[name].resetClassNames([".calendar.day"]);
-					}
-				});
+			resetDays(newState.days, actors);
 			
 			break;
 		case "daySelected":
 			removeSelection(newState, actors);
 			actors[target].pushClassName(".calendar.day-selected");
-
 			newState.selectedDay = target;
 
 			return newState;
 		case "clearSelectedDay":
 			removeSelection(newState, actors);
-			
 			break;
 		case "changeMonth":
 			removeSelection(newState, actors);
 		break;
 		case "changeState":
 			const actor = actors[target];
-			// actor.setClassName(".calendar.day");
-			newState.states = newState.states || {};
-			newState.states[target] = action.data;
-			
-			// const classNames = [actor.getClassName()];
 			const data = action.data;
-			
-			// if(actor.classNamesCount() > 1)
-				// actor.resetClassNames([".calendar.day"]);
-			// if(actors[target].getClassName() != ".calendar.day"){
-			// 	actors[target].resetClassNames([".calendar.day"]);
-			// }
 			
 			if(data.isSpecialDay){
 				actor.pushClassName(".calendar.day-specialDays");

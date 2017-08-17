@@ -142,8 +142,8 @@
       Stylable.prototype.resetClassNames = function resetClassNames() {
         var classNames = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
-        this.isUgly = true;
         this.classNames = classNames.slice();
+        this.isUgly = true;
       };
 
       Stylable.prototype.hasClassName = function hasClassName(className) {
@@ -192,8 +192,7 @@
         var state = context.getState(),
             newState = state;
 
-        if (target) {
-          console.log(state);
+        if (target || action.type == _Context.INIT_CONTEXT_ACTION_TYPE) {
           newState = reducer(state, context.actors, action, target);
           // state is not changed
           if (newState === state) {

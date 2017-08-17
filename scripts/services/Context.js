@@ -75,7 +75,7 @@
         // this.setState = this.setState.bind(this);
         // this.getState = this.getState.bind(this);
 
-        updater(this, { type: INIT_CONTEXT_ACTION_TYPE });
+        this.dispatch({ type: INIT_CONTEXT_ACTION_TYPE });
       }
 
       Context.prototype.map = function map(fn) {

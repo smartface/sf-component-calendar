@@ -25,7 +25,7 @@ export default function createContext(actors, updater, initialState={}){
       // this.setState = this.setState.bind(this);
       // this.getState = this.getState.bind(this);
 
-      updater(this, {type: INIT_CONTEXT_ACTION_TYPE});
+      this.dispatch({type: INIT_CONTEXT_ACTION_TYPE});
     }
     
     setState = (state) => {

@@ -152,8 +152,7 @@ export function createStyleContext(actors){
       function contextUpdater(context, action, target){
         var state = context.getState(), newState = state;
 
-        if(target){
-          console.log(state);
+        if(target || action.type == INIT_CONTEXT_ACTION_TYPE){
           newState = reducer(state, context.actors, action, target);
           // state is not changed
           if(newState === state){

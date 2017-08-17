@@ -22,6 +22,10 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 		}
 		
 		function selectDay(index){
+			if(index === -1){
+				throw new Error("Day index cannot be -1");
+			}
+			
 			this.children["weekDay"+(index+1)].setSelected();
 			this.selectedIndex = index;
 			this.onDaySelected(index);
