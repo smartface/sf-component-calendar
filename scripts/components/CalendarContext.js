@@ -60,10 +60,10 @@ const styles = {
 				"family": "Arial"
 			},
 			"borderWidth": 0,
-			"borderRadius": 20,
-			"maxWidth": 40,
+			"borderRadius": 13,
+			"maxWidth": 26,
 			"minWidth": 26,
-			"maxHeight": 40,
+			"maxHeight": 26,
 			"minHeight": 26,
 			"textColor": "#000000",
 			"backgroundColor": "rgba(0,0,0,0)",
