@@ -47,16 +47,16 @@ function onShow(superOnShow) {
   // });
 	this.children.calendar.now();
   
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth2");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth3");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth4");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth5");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth6");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth7");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth8");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth9");
-	runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth10");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth2");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth3");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth4");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth5");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth6");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth7");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth8");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth9");
+	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth10");
 	
 	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth");
 	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth2");
@@ -64,11 +64,11 @@ function onShow(superOnShow) {
 	
 
 	// setTimeout(function(){
-		// runner.runAll(3, function(res){
-		// 	res.forEach(function(item){
-		// 		console.log(item.asString);
-		// 	})
-		// });
+	/*	runner.runAll(3, function(res){
+			res.forEach(function(item){
+				console.log(item.asString);
+			})
+		});*/
 	// }
 	// , 3)
   // alert(JSON.stringify(benchmark()))
