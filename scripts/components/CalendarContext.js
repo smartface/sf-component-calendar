@@ -49,7 +49,7 @@ const styles = {
 		},
 		".weekRow": {
 			"backgroundColor": "rgba(0,0,0,0)",
-			"maxHeight": 26,
+			"maxHeight": 40,
 			"minHeight": 26,
 		},
 		".day": {
@@ -60,11 +60,11 @@ const styles = {
 				"family": "Arial"
 			},
 			"borderWidth": 0,
-			"borderRadius": 12,
+			"borderRadius": 20,
 			"maxWidth": 40,
-			"minWidth": 40,
-			"maxHeight": 24,
-			"minHeight": 24,
+			"minWidth": 26,
+			"maxHeight": 40,
+			"minHeight": 26,
 			"textColor": "#000000",
 			"backgroundColor": "rgba(0,0,0,0)",
 			"&-inrange": {

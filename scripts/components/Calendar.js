@@ -125,12 +125,10 @@ const Calendar = extend(CalendarDesign)(
 			newDate.month = date.month - 1;
 			const dateData = CalendarService.getCalendarMonth(newDate);
 			this.updateCalendar(dateData);
+			this.selectDay();
 		};
 		
 		proto.selectDay = function(){
-			this.dispatch({
-				type: "resetDays"
-			})
 			const totalDay = currentMonth.startDayOfMonth + currentMonth.date.day;
 			const row = Math.ceil(totalDay / 7);
 			const index = currentMonth.date.day - 1 - ((row-1) * 7 - currentMonth.startDayOfMonth);
