@@ -105,7 +105,7 @@ const Calendar = extend(CalendarDesign)(
 			weeks.forEach(function(row, index){
 				// this.children.body.addChild(row);
 				row.onDaySelected = onDaySelected.bind(this, index);
-				this.children["week"+index] = row;
+				// this.children["week"+index] = row;
 			}.bind(this));
 			
 			this.context = CalendarContext.createContext(this);
