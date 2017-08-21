@@ -1,58 +1,85 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(['exports', './DateWrapper'], factory);
+		define(["exports", "./DateWrapper", "./DateWrapperHijri", "moment", "moment-hijri"], factory);
 	} else if (typeof exports !== "undefined") {
-		factory(exports, require('./DateWrapper'));
+		factory(exports, require("./DateWrapper"), require("./DateWrapperHijri"), require("moment"), require("moment-hijri"));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.DateWrapper);
+		factory(mod.exports, global.DateWrapper, global.DateWrapperHijri, global.moment, global.momentHijri);
 		global.CalendarService = mod.exports;
 	}
-})(this, function (exports, _DateWrapper) {
-	'use strict';
+})(this, function (exports, _DateWrapper, _DateWrapperHijri, _moment, _momentHijri) {
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.getMonth = getMonth;
-	exports.getCalendarMonth = getCalendarMonth;
+	exports.default = createService;
 	exports.getWeek = getWeek;
 	exports.changeGlobalLang = changeGlobalLang;
 
-	var DateWrapper = _interopRequireWildcard(_DateWrapper);
+	var _DateWrapper2 = _interopRequireDefault(_DateWrapper);
 
-	function _interopRequireWildcard(obj) {
-		if (obj && obj.__esModule) {
-			return obj;
-		} else {
-			var newObj = {};
+	var _DateWrapperHijri2 = _interopRequireDefault(_DateWrapperHijri);
 
-			if (obj != null) {
-				for (var key in obj) {
-					if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-				}
-			}
+	var _moment2 = _interopRequireDefault(_moment);
 
-			newObj.default = obj;
-			return newObj;
-		}
-	}
+	var _momentHijri2 = _interopRequireDefault(_momentHijri);
 
-	function getMonth(dt) {
-		var date = DateWrapper.date(dt);
-
-		return {
-			longName: date.monthLong(),
-			shortName: date.monthShort(),
-			daysCount: date.daysCount(),
-			startDayOfMonth: date.startDayOfMonth()
+	function _interopRequireDefault(obj) {
+		return obj && obj.__esModule ? obj : {
+			default: obj
 		};
 	}
 
-	function getCalendarMonth(dt) {
-		var currentMonth = DateWrapper.date(dt);
+	/**
+  * Creates an calendar service
+  * 
+  * @returns {}
+  */
+
+	function createService() {
+		var lang = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "en";
+		var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "gregorian";
+
+		var service;
+		var current;
+
+		switch (type) {
+			case 'gregorian':
+				service = _DateWrapper2.default;
+				current = _moment2.default;
+				break;
+			case 'hijri':
+				service = _DateWrapperHijri2.default;
+				current = _momentHijri2.default;
+				break;
+		}
+
+		_moment2.default.lang(lang);
+
+		return {
+			getCalendarMonth: getCalendarMonth.bind(null, current, service),
+			getMonth: getMonth.bind(null, current, service)
+		};
+	}
+
+	function getMonth(moment, service, dt) {
+		var dateService = new service(moment, dt);
+
+		return {
+			longName: dateService.monthLong(),
+			shortName: dateService.monthShort(),
+			daysCount: dateService.daysCount(),
+			startDayOfMonth: dateService.startDayOfMonth()
+		};
+	}
+
+	function getCalendarMonth(moment, service, dt) {
+		var currentMonth = new service(moment, dt);
+
 		var prevMonth = currentMonth.prevMonth();
 		var nextMonth = currentMonth.nextMonth();
 
@@ -109,8 +136,8 @@
 			shortName: currentMonth.monthShort(),
 			daysCount: currentMonth.daysCount(),
 			startDayOfMonth: currentMonth.startDayOfMonth(),
-			daysLong: DateWrapper.weekdaysLong(),
-			daysShort: DateWrapper.weekdaysShort(),
+			daysLong: currentMonth.weekdaysLong(),
+			daysShort: currentMonth.weekdaysShort(),
 			days: days,
 			date: currentMonth.toObject(),
 			previousMonth: {
@@ -130,7 +157,7 @@
 
 	function getWeek() {}
 
-	function changeGlobalLang(lang) {
-		DateWrapper.locale(lang);
+	function changeGlobalLang(dateService, lang) {
+		dateService.locale(lang);
 	}
 });

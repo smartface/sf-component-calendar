@@ -30,11 +30,16 @@
 					"381d-019c-0923-7f26",
 					"b766-261b-7b3f-6437",
 					"d136-67d2-869e-f919",
-					"3d1d-591a-b74f-4d71"
+					"3d1d-591a-b74f-4d71",
+					"2bc0-3823-c50e-7518",
+					"26f3-9c60-60dc-4f1c",
+					"aa00-5c53-57c4-a625",
+					"20cf-779a-2350-e731",
+					"e948-c9ae-aacc-5e45"
 				],
 				"name": "newPage001",
-				"width": 273.75,
-				"height": 440.18999999999994
+				"width": 285,
+				"height": 458.28000000000003
 			}
 		},
 		{
@@ -82,8 +87,8 @@
 				"Sizes": "Default"
 			},
 			"userProps": {
-				"left": 35.70547234522153,
-				"top": 427.6471699753853,
+				"left": 62.021265531841074,
+				"top": 507.91031686883224,
 				"width": 228.26157661333477,
 				"height": 58.69862804674123,
 				"flexProps": {
@@ -104,8 +109,8 @@
 				"borderWidth": 0,
 				"textColor": "#000000",
 				"textAlignment": "MIDLEFT",
-				"left": 35.70547234522153,
-				"top": 427.6471699753853,
+				"left": 62.021265531841074,
+				"top": 507.91031686883224,
 				"font": {
 					"size": 16,
 					"bold": false,
@@ -129,29 +134,31 @@
 				"Highlights": "Default"
 			},
 			"userProps": {
-				"left": 33.42985879807245,
-				"top": 385.58560325985866,
-				"width": 294.6673249545163,
+				"left": 33.429858559056335,
+				"top": 359.26979466488484,
+				"width": 64.40417641087582,
 				"height": 41.069793701171875,
+				"text": "Color",
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
 				"flexProps": {
 					"positionType": "ABSOLUTE"
 				}
 			},
 			"className": ".button",
 			"props": {
-				"width": 294.6673249545163,
+				"width": 64.40417641087582,
 				"height": 41.069793701171875,
 				"touchEnabled": true,
-				"text": "Button",
+				"text": "Color",
 				"visible": true,
-				"backgroundColor": "#00A1F1",
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
 				"alpha": 1,
 				"borderColor": "rgba(0,0,0,1)",
 				"borderWidth": 0,
 				"textColor": "#FFFFFF",
 				"textAlignment": "MIDCENTER",
-				"left": 33.42985879807245,
-				"top": 385.58560325985866,
+				"left": 33.429858559056335,
+				"top": 359.26979466488484,
 				"font": {
 					"size": 16,
 					"bold": false,
@@ -225,15 +232,15 @@
 				"name": "calendar",
 				"parent": "e876-9805-6b68-f0e4",
 				"children": [
-					"76c0-4f13-33bd-7dac",
-					"d571-ed7c-93fb-422d",
-					"4fd5-b9ca-3f10-325a"
+					"d229-d9d4-e125-e184",
+					"fa7b-2711-0f7a-76d7",
+					"76c3-da6d-a102-f5c1"
 				]
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "76c0-4f13-33bd-7dac",
+			"id": "d229-d9d4-e125-e184",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -288,16 +295,16 @@
 				"name": "navbar",
 				"parent": "b766-261b-7b3f-6437",
 				"children": [
-					"a724-ae8e-e2da-c0a6",
-					"60e9-fa86-6aa1-5762",
-					"20f1-eba9-d665-a867",
-					"e283-051c-3e03-a0a6"
+					"72f7-1080-bdf1-7111",
+					"254a-9d65-4df7-7587",
+					"3edd-366b-65c9-e52a",
+					"505c-51ad-d2f1-d02a"
 				]
 			}
 		},
 		{
 			"type": "Label",
-			"id": "a724-ae8e-e2da-c0a6",
+			"id": "72f7-1080-bdf1-7111",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -341,13 +348,13 @@
 					"flexGrow": 10
 				},
 				"name": "label1",
-				"parent": "76c0-4f13-33bd-7dac",
+				"parent": "d229-d9d4-e125-e184",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "60e9-fa86-6aa1-5762",
+			"id": "254a-9d65-4df7-7587",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -399,13 +406,13 @@
 					"flexGrow": null
 				},
 				"name": "label3",
-				"parent": "76c0-4f13-33bd-7dac",
+				"parent": "d229-d9d4-e125-e184",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "20f1-eba9-d665-a867",
+			"id": "3edd-366b-65c9-e52a",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -461,13 +468,13 @@
 					"flexGrow": 1
 				},
 				"name": "button1",
-				"parent": "76c0-4f13-33bd-7dac",
+				"parent": "d229-d9d4-e125-e184",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "e283-051c-3e03-a0a6",
+			"id": "505c-51ad-d2f1-d02a",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -523,13 +530,13 @@
 					"flexGrow": 1
 				},
 				"name": "button2",
-				"parent": "76c0-4f13-33bd-7dac",
+				"parent": "d229-d9d4-e125-e184",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "d571-ed7c-93fb-422d",
+			"id": "fa7b-2711-0f7a-76d7",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -579,19 +586,19 @@
 				"name": "calendarDays",
 				"parent": "b766-261b-7b3f-6437",
 				"children": [
-					"d712-425e-c329-3d6d",
-					"b2b8-7025-deda-0992",
-					"6c6e-49f6-739b-4120",
-					"8975-200b-68a0-d313",
-					"6c0c-4e0c-82b4-5b96",
-					"4053-a045-9dd7-91f1",
-					"cc5d-d4ed-48a6-271e"
+					"7d0c-0a67-59fd-ed73",
+					"adb1-5078-0bbb-f970",
+					"7040-3009-f0c6-c8d8",
+					"fd48-6efb-4f50-2ce5",
+					"6996-770b-5373-5983",
+					"3686-32f2-843c-79b9",
+					"ad86-3a08-13f2-bcc4"
 				]
 			}
 		},
 		{
 			"type": "Label",
-			"id": "d712-425e-c329-3d6d",
+			"id": "7d0c-0a67-59fd-ed73",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -637,13 +644,13 @@
 					"flexGrow": 1
 				},
 				"name": "dayName_0",
-				"parent": "d571-ed7c-93fb-422d",
+				"parent": "fa7b-2711-0f7a-76d7",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "b2b8-7025-deda-0992",
+			"id": "adb1-5078-0bbb-f970",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -689,13 +696,13 @@
 					"flexGrow": 1
 				},
 				"name": "dayName_1",
-				"parent": "d571-ed7c-93fb-422d",
+				"parent": "fa7b-2711-0f7a-76d7",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "6c6e-49f6-739b-4120",
+			"id": "7040-3009-f0c6-c8d8",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -741,13 +748,13 @@
 					"flexGrow": 1
 				},
 				"name": "dayName_2",
-				"parent": "d571-ed7c-93fb-422d",
+				"parent": "fa7b-2711-0f7a-76d7",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "8975-200b-68a0-d313",
+			"id": "fd48-6efb-4f50-2ce5",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -793,13 +800,13 @@
 					"flexGrow": 1
 				},
 				"name": "dayName_3",
-				"parent": "d571-ed7c-93fb-422d",
+				"parent": "fa7b-2711-0f7a-76d7",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "6c0c-4e0c-82b4-5b96",
+			"id": "6996-770b-5373-5983",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -845,13 +852,13 @@
 					"flexGrow": 1
 				},
 				"name": "dayName_4",
-				"parent": "d571-ed7c-93fb-422d",
+				"parent": "fa7b-2711-0f7a-76d7",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "4053-a045-9dd7-91f1",
+			"id": "3686-32f2-843c-79b9",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -897,13 +904,13 @@
 					"flexGrow": 1
 				},
 				"name": "dayName_5",
-				"parent": "d571-ed7c-93fb-422d",
+				"parent": "fa7b-2711-0f7a-76d7",
 				"children": []
 			}
 		},
 		{
 			"type": "Label",
-			"id": "cc5d-d4ed-48a6-271e",
+			"id": "ad86-3a08-13f2-bcc4",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -949,13 +956,13 @@
 					"flexGrow": 1
 				},
 				"name": "dayName_6",
-				"parent": "d571-ed7c-93fb-422d",
+				"parent": "fa7b-2711-0f7a-76d7",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "4fd5-b9ca-3f10-325a",
+			"id": "76c3-da6d-a102-f5c1",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1006,18 +1013,18 @@
 				"name": "body",
 				"parent": "b766-261b-7b3f-6437",
 				"children": [
-					"e14b-5089-fc5a-ebb5",
-					"88a4-3693-267e-b37e",
-					"1964-9f6e-c265-3038",
-					"b90d-f334-bec7-a62d",
-					"c554-ad25-c7f6-ab86",
-					"b955-254b-53f0-8887"
+					"7109-7978-e810-d354",
+					"7315-a6b2-e619-3be9",
+					"087b-a4ea-2c87-4fff",
+					"e8c8-4099-01c1-b533",
+					"4d97-4939-f745-2518",
+					"fc56-1bee-5262-26d2"
 				]
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "e14b-5089-fc5a-ebb5",
+			"id": "7109-7978-e810-d354",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1079,21 +1086,21 @@
 					"flexGrow": 1
 				},
 				"name": "flexLayout1",
-				"parent": "4fd5-b9ca-3f10-325a",
+				"parent": "76c3-da6d-a102-f5c1",
 				"children": [
-					"ef23-5e40-62a0-a304",
-					"f1fd-4530-e533-31ee",
-					"04d8-73f5-40f2-aa82",
-					"1c13-efde-a6c6-e250",
-					"078d-0596-86e3-5137",
-					"a130-c62c-1211-898a",
-					"5fb9-84e7-3bf4-ae5d"
+					"a642-da55-b260-997a",
+					"57ac-280c-810b-b72d",
+					"808b-78b5-15f6-85a8",
+					"417d-1246-81a7-f3ce",
+					"5c96-859a-de11-8aa9",
+					"659a-f552-f900-d770",
+					"38eb-5557-3f05-6b12"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "ef23-5e40-62a0-a304",
+			"id": "a642-da55-b260-997a",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1163,13 +1170,13 @@
 					"flexGrow": 1
 				},
 				"name": "button86",
-				"parent": "e14b-5089-fc5a-ebb5",
+				"parent": "7109-7978-e810-d354",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "f1fd-4530-e533-31ee",
+			"id": "57ac-280c-810b-b72d",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1239,13 +1246,13 @@
 					"flexGrow": 1
 				},
 				"name": "button4",
-				"parent": "e14b-5089-fc5a-ebb5",
+				"parent": "7109-7978-e810-d354",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "04d8-73f5-40f2-aa82",
+			"id": "808b-78b5-15f6-85a8",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1315,13 +1322,13 @@
 					"flexGrow": 1
 				},
 				"name": "button5",
-				"parent": "e14b-5089-fc5a-ebb5",
+				"parent": "7109-7978-e810-d354",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "1c13-efde-a6c6-e250",
+			"id": "417d-1246-81a7-f3ce",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1391,13 +1398,13 @@
 					"flexGrow": 1
 				},
 				"name": "button6",
-				"parent": "e14b-5089-fc5a-ebb5",
+				"parent": "7109-7978-e810-d354",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "078d-0596-86e3-5137",
+			"id": "5c96-859a-de11-8aa9",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1467,13 +1474,13 @@
 					"flexGrow": 1
 				},
 				"name": "button7",
-				"parent": "e14b-5089-fc5a-ebb5",
+				"parent": "7109-7978-e810-d354",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "a130-c62c-1211-898a",
+			"id": "659a-f552-f900-d770",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1543,13 +1550,13 @@
 					"flexGrow": 1
 				},
 				"name": "button8",
-				"parent": "e14b-5089-fc5a-ebb5",
+				"parent": "7109-7978-e810-d354",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "5fb9-84e7-3bf4-ae5d",
+			"id": "38eb-5557-3f05-6b12",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1619,13 +1626,13 @@
 					"flexGrow": 1
 				},
 				"name": "button9",
-				"parent": "e14b-5089-fc5a-ebb5",
+				"parent": "7109-7978-e810-d354",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "88a4-3693-267e-b37e",
+			"id": "7315-a6b2-e619-3be9",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1687,21 +1694,21 @@
 					"flexGrow": 1
 				},
 				"name": "flexLayout2",
-				"parent": "4fd5-b9ca-3f10-325a",
+				"parent": "76c3-da6d-a102-f5c1",
 				"children": [
-					"e2f3-12ba-0a72-688b",
-					"4835-d31a-47d9-67a1",
-					"c21e-c71e-6e4e-4843",
-					"d0dd-f8c5-78ee-b4d0",
-					"5d9d-2527-2dfa-8e92",
-					"fd38-1158-a947-baae",
-					"4978-010b-745b-082c"
+					"a94e-8d23-915f-4cbe",
+					"9dde-9ee4-cd3b-7ce6",
+					"bd4f-65df-961e-dba1",
+					"8a64-0ab1-f107-6dd1",
+					"107d-0b20-ab53-7993",
+					"ee86-6c9a-d8c5-0648",
+					"b24e-4eef-1f65-a2e3"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "e2f3-12ba-0a72-688b",
+			"id": "a94e-8d23-915f-4cbe",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1771,13 +1778,13 @@
 					"flexGrow": 1
 				},
 				"name": "button10",
-				"parent": "88a4-3693-267e-b37e",
+				"parent": "7315-a6b2-e619-3be9",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "4835-d31a-47d9-67a1",
+			"id": "9dde-9ee4-cd3b-7ce6",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1847,13 +1854,13 @@
 					"flexGrow": 1
 				},
 				"name": "button11",
-				"parent": "88a4-3693-267e-b37e",
+				"parent": "7315-a6b2-e619-3be9",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "c21e-c71e-6e4e-4843",
+			"id": "bd4f-65df-961e-dba1",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1923,13 +1930,13 @@
 					"flexGrow": 1
 				},
 				"name": "button12",
-				"parent": "88a4-3693-267e-b37e",
+				"parent": "7315-a6b2-e619-3be9",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "d0dd-f8c5-78ee-b4d0",
+			"id": "8a64-0ab1-f107-6dd1",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -1999,13 +2006,13 @@
 					"flexGrow": 1
 				},
 				"name": "button13",
-				"parent": "88a4-3693-267e-b37e",
+				"parent": "7315-a6b2-e619-3be9",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "5d9d-2527-2dfa-8e92",
+			"id": "107d-0b20-ab53-7993",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2075,13 +2082,13 @@
 					"flexGrow": 1
 				},
 				"name": "button14",
-				"parent": "88a4-3693-267e-b37e",
+				"parent": "7315-a6b2-e619-3be9",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "fd38-1158-a947-baae",
+			"id": "ee86-6c9a-d8c5-0648",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2151,13 +2158,13 @@
 					"flexGrow": 1
 				},
 				"name": "button15",
-				"parent": "88a4-3693-267e-b37e",
+				"parent": "7315-a6b2-e619-3be9",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "4978-010b-745b-082c",
+			"id": "b24e-4eef-1f65-a2e3",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2227,13 +2234,13 @@
 					"flexGrow": 1
 				},
 				"name": "button16",
-				"parent": "88a4-3693-267e-b37e",
+				"parent": "7315-a6b2-e619-3be9",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "1964-9f6e-c265-3038",
+			"id": "087b-a4ea-2c87-4fff",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2295,21 +2302,21 @@
 					"flexGrow": 1
 				},
 				"name": "flexLayout3",
-				"parent": "4fd5-b9ca-3f10-325a",
+				"parent": "76c3-da6d-a102-f5c1",
 				"children": [
-					"fa19-d9eb-196c-09de",
-					"3814-752c-33b6-6114",
-					"aded-1c3e-56d6-b980",
-					"8a9c-26dd-8c5d-958c",
-					"f35c-9735-ed7a-ebde",
-					"2f22-7e31-a78e-c0e0",
-					"a9eb-80ea-8749-2bf3"
+					"4de9-8651-521f-4490",
+					"d598-2a0c-ccff-311c",
+					"5d3c-af02-00dc-7876",
+					"1b5e-67f0-4a33-1754",
+					"8ecb-d9e6-858f-ab9a",
+					"b3b4-57f5-fb52-6c71",
+					"6df2-d595-13b7-edc5"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "fa19-d9eb-196c-09de",
+			"id": "4de9-8651-521f-4490",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2379,13 +2386,13 @@
 					"flexGrow": 1
 				},
 				"name": "button17",
-				"parent": "1964-9f6e-c265-3038",
+				"parent": "087b-a4ea-2c87-4fff",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "3814-752c-33b6-6114",
+			"id": "d598-2a0c-ccff-311c",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2455,13 +2462,13 @@
 					"flexGrow": 1
 				},
 				"name": "button18",
-				"parent": "1964-9f6e-c265-3038",
+				"parent": "087b-a4ea-2c87-4fff",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "aded-1c3e-56d6-b980",
+			"id": "5d3c-af02-00dc-7876",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2531,13 +2538,13 @@
 					"flexGrow": 1
 				},
 				"name": "button19",
-				"parent": "1964-9f6e-c265-3038",
+				"parent": "087b-a4ea-2c87-4fff",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "8a9c-26dd-8c5d-958c",
+			"id": "1b5e-67f0-4a33-1754",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2607,13 +2614,13 @@
 					"flexGrow": 1
 				},
 				"name": "button20",
-				"parent": "1964-9f6e-c265-3038",
+				"parent": "087b-a4ea-2c87-4fff",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "f35c-9735-ed7a-ebde",
+			"id": "8ecb-d9e6-858f-ab9a",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2683,13 +2690,13 @@
 					"flexGrow": 1
 				},
 				"name": "button21",
-				"parent": "1964-9f6e-c265-3038",
+				"parent": "087b-a4ea-2c87-4fff",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "2f22-7e31-a78e-c0e0",
+			"id": "b3b4-57f5-fb52-6c71",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2759,13 +2766,13 @@
 					"flexGrow": 1
 				},
 				"name": "button22",
-				"parent": "1964-9f6e-c265-3038",
+				"parent": "087b-a4ea-2c87-4fff",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "a9eb-80ea-8749-2bf3",
+			"id": "6df2-d595-13b7-edc5",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2835,13 +2842,13 @@
 					"flexGrow": 1
 				},
 				"name": "button23",
-				"parent": "1964-9f6e-c265-3038",
+				"parent": "087b-a4ea-2c87-4fff",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "b90d-f334-bec7-a62d",
+			"id": "e8c8-4099-01c1-b533",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2903,21 +2910,21 @@
 					"flexGrow": 1
 				},
 				"name": "flexLayout4",
-				"parent": "4fd5-b9ca-3f10-325a",
+				"parent": "76c3-da6d-a102-f5c1",
 				"children": [
-					"9b19-49d7-562a-9ad4",
-					"e5fe-a28d-e692-190f",
-					"eaec-bb55-46ff-1f55",
-					"53a1-3ec0-1976-1639",
-					"f92b-4c54-e430-2323",
-					"c14f-abec-535b-a455",
-					"29f3-78a8-1037-c897"
+					"8a89-092c-fb59-78e0",
+					"1222-39ae-753e-0f30",
+					"f479-3b21-476b-5b15",
+					"8f7b-40e7-f824-b951",
+					"db9a-a93c-6f54-2bdb",
+					"ff79-d16e-cbf2-c79d",
+					"27b7-0e72-acf2-a8a3"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "9b19-49d7-562a-9ad4",
+			"id": "8a89-092c-fb59-78e0",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -2987,13 +2994,13 @@
 					"flexGrow": 1
 				},
 				"name": "button24",
-				"parent": "b90d-f334-bec7-a62d",
+				"parent": "e8c8-4099-01c1-b533",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "e5fe-a28d-e692-190f",
+			"id": "1222-39ae-753e-0f30",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3063,13 +3070,13 @@
 					"flexGrow": 1
 				},
 				"name": "button25",
-				"parent": "b90d-f334-bec7-a62d",
+				"parent": "e8c8-4099-01c1-b533",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "eaec-bb55-46ff-1f55",
+			"id": "f479-3b21-476b-5b15",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3139,13 +3146,13 @@
 					"flexGrow": 1
 				},
 				"name": "button26",
-				"parent": "b90d-f334-bec7-a62d",
+				"parent": "e8c8-4099-01c1-b533",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "53a1-3ec0-1976-1639",
+			"id": "8f7b-40e7-f824-b951",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3215,13 +3222,13 @@
 					"flexGrow": 1
 				},
 				"name": "button27",
-				"parent": "b90d-f334-bec7-a62d",
+				"parent": "e8c8-4099-01c1-b533",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "f92b-4c54-e430-2323",
+			"id": "db9a-a93c-6f54-2bdb",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3291,13 +3298,13 @@
 					"flexGrow": 1
 				},
 				"name": "button28",
-				"parent": "b90d-f334-bec7-a62d",
+				"parent": "e8c8-4099-01c1-b533",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "c14f-abec-535b-a455",
+			"id": "ff79-d16e-cbf2-c79d",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3367,13 +3374,13 @@
 					"flexGrow": 1
 				},
 				"name": "button29",
-				"parent": "b90d-f334-bec7-a62d",
+				"parent": "e8c8-4099-01c1-b533",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "29f3-78a8-1037-c897",
+			"id": "27b7-0e72-acf2-a8a3",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3443,13 +3450,13 @@
 					"flexGrow": 1
 				},
 				"name": "button30",
-				"parent": "b90d-f334-bec7-a62d",
+				"parent": "e8c8-4099-01c1-b533",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "c554-ad25-c7f6-ab86",
+			"id": "4d97-4939-f745-2518",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3511,21 +3518,21 @@
 					"flexGrow": 1
 				},
 				"name": "flexLayout5",
-				"parent": "4fd5-b9ca-3f10-325a",
+				"parent": "76c3-da6d-a102-f5c1",
 				"children": [
-					"ff4b-6373-ad22-22c6",
-					"2104-36d4-b697-3c8c",
-					"f5cc-6e1b-5745-a391",
-					"aa03-ed01-9622-4850",
-					"eb25-67a8-3a6e-0494",
-					"19c2-eab3-3769-43e5",
-					"bd6f-114d-5c27-03df"
+					"478a-9755-a923-3a85",
+					"14db-62ed-4442-42c0",
+					"8962-c246-409a-4aa8",
+					"0c05-b7fc-9482-2890",
+					"ef69-f320-5ed4-3ae8",
+					"301f-65d7-bd00-118f",
+					"1024-653e-8315-fbe4"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "ff4b-6373-ad22-22c6",
+			"id": "478a-9755-a923-3a85",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3595,13 +3602,13 @@
 					"flexGrow": 1
 				},
 				"name": "button31",
-				"parent": "c554-ad25-c7f6-ab86",
+				"parent": "4d97-4939-f745-2518",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "2104-36d4-b697-3c8c",
+			"id": "14db-62ed-4442-42c0",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3671,13 +3678,13 @@
 					"flexGrow": 1
 				},
 				"name": "button32",
-				"parent": "c554-ad25-c7f6-ab86",
+				"parent": "4d97-4939-f745-2518",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "f5cc-6e1b-5745-a391",
+			"id": "8962-c246-409a-4aa8",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3747,13 +3754,13 @@
 					"flexGrow": 1
 				},
 				"name": "button33",
-				"parent": "c554-ad25-c7f6-ab86",
+				"parent": "4d97-4939-f745-2518",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "aa03-ed01-9622-4850",
+			"id": "0c05-b7fc-9482-2890",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3823,13 +3830,13 @@
 					"flexGrow": 1
 				},
 				"name": "button34",
-				"parent": "c554-ad25-c7f6-ab86",
+				"parent": "4d97-4939-f745-2518",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "eb25-67a8-3a6e-0494",
+			"id": "ef69-f320-5ed4-3ae8",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3899,13 +3906,13 @@
 					"flexGrow": 1
 				},
 				"name": "button35",
-				"parent": "c554-ad25-c7f6-ab86",
+				"parent": "4d97-4939-f745-2518",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "19c2-eab3-3769-43e5",
+			"id": "301f-65d7-bd00-118f",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -3975,13 +3982,13 @@
 					"flexGrow": 1
 				},
 				"name": "button36",
-				"parent": "c554-ad25-c7f6-ab86",
+				"parent": "4d97-4939-f745-2518",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "bd6f-114d-5c27-03df",
+			"id": "1024-653e-8315-fbe4",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4051,13 +4058,13 @@
 					"flexGrow": 1
 				},
 				"name": "button37",
-				"parent": "c554-ad25-c7f6-ab86",
+				"parent": "4d97-4939-f745-2518",
 				"children": []
 			}
 		},
 		{
 			"type": "FlexLayout",
-			"id": "b955-254b-53f0-8887",
+			"id": "fc56-1bee-5262-26d2",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4119,21 +4126,21 @@
 					"flexGrow": 1
 				},
 				"name": "flexLayout6",
-				"parent": "4fd5-b9ca-3f10-325a",
+				"parent": "76c3-da6d-a102-f5c1",
 				"children": [
-					"41f8-d5b4-6084-a96c",
-					"4f19-4a11-c961-45ba",
-					"77c4-e85b-36f3-0f93",
-					"dcb3-18cf-622c-c7a8",
-					"30f2-870e-f8a7-a430",
-					"cf88-d9f5-c764-346c",
-					"f97d-62e3-e8d1-d5d0"
+					"c00f-caab-04e7-1535",
+					"5038-e4a4-934c-3c5a",
+					"9952-10e5-0784-a0f9",
+					"9455-9c67-fd0e-afab",
+					"db9e-37f9-3ca0-2184",
+					"04af-78a5-3fa2-01b0",
+					"a6ca-8e3c-5167-f9b7"
 				]
 			}
 		},
 		{
 			"type": "Button",
-			"id": "41f8-d5b4-6084-a96c",
+			"id": "c00f-caab-04e7-1535",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4203,13 +4210,13 @@
 					"flexGrow": 1
 				},
 				"name": "button38",
-				"parent": "b955-254b-53f0-8887",
+				"parent": "fc56-1bee-5262-26d2",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "4f19-4a11-c961-45ba",
+			"id": "5038-e4a4-934c-3c5a",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4279,13 +4286,13 @@
 					"flexGrow": 1
 				},
 				"name": "button39",
-				"parent": "b955-254b-53f0-8887",
+				"parent": "fc56-1bee-5262-26d2",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "77c4-e85b-36f3-0f93",
+			"id": "9952-10e5-0784-a0f9",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4355,13 +4362,13 @@
 					"flexGrow": 1
 				},
 				"name": "button40",
-				"parent": "b955-254b-53f0-8887",
+				"parent": "fc56-1bee-5262-26d2",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "dcb3-18cf-622c-c7a8",
+			"id": "9455-9c67-fd0e-afab",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4431,13 +4438,13 @@
 					"flexGrow": 1
 				},
 				"name": "button41",
-				"parent": "b955-254b-53f0-8887",
+				"parent": "fc56-1bee-5262-26d2",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "30f2-870e-f8a7-a430",
+			"id": "db9e-37f9-3ca0-2184",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4507,13 +4514,13 @@
 					"flexGrow": 1
 				},
 				"name": "button42",
-				"parent": "b955-254b-53f0-8887",
+				"parent": "fc56-1bee-5262-26d2",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "cf88-d9f5-c764-346c",
+			"id": "04af-78a5-3fa2-01b0",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4583,13 +4590,13 @@
 					"flexGrow": 1
 				},
 				"name": "button43",
-				"parent": "b955-254b-53f0-8887",
+				"parent": "fc56-1bee-5262-26d2",
 				"children": []
 			}
 		},
 		{
 			"type": "Button",
-			"id": "f97d-62e3-e8d1-d5d0",
+			"id": "a6ca-8e3c-5167-f9b7",
 			"hiddenComponent": false,
 			"source": {
 				"page": "__library__"
@@ -4659,7 +4666,247 @@
 					"flexGrow": 1
 				},
 				"name": "button44",
-				"parent": "b955-254b-53f0-8887",
+				"parent": "fc56-1bee-5262-26d2",
+				"children": []
+			}
+		},
+		{
+			"type": "Button",
+			"id": "20cf-779a-2350-e731",
+			"themeProps": {
+				"Sizes": "Default",
+				"Highlights": "Default"
+			},
+			"userProps": {
+				"left": 138.1666986565841,
+				"top": 358.7434869063528,
+				"width": 65.71996588456003,
+				"height": 41.069793701171875,
+				"text": "Hijri",
+				"backgroundColor": "rgba( 126, 211, 33, 1 )",
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				}
+			},
+			"className": ".button",
+			"props": {
+				"width": 65.71996588456003,
+				"height": 41.069793701171875,
+				"touchEnabled": true,
+				"text": "Hijri",
+				"visible": true,
+				"backgroundColor": "rgba( 126, 211, 33, 1 )",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#FFFFFF",
+				"textAlignment": "MIDCENTER",
+				"left": 138.1666986565841,
+				"top": 358.7434869063528,
+				"font": {
+					"size": 16,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"positionType": "ABSOLUTE",
+					"alignSelf": "AUTO"
+				},
+				"name": "buttonHijri",
+				"parent": "e876-9805-6b68-f0e4",
+				"children": []
+			}
+		},
+		{
+			"type": "Button",
+			"id": "e948-c9ae-aacc-5e45",
+			"themeProps": {
+				"Sizes": "Default",
+				"Highlights": "Default"
+			},
+			"userProps": {
+				"left": 242.90353875411185,
+				"top": 362.16454756887333,
+				"width": 86.7725974635074,
+				"height": 39.75400422748766,
+				"text": "Gregoryen",
+				"backgroundColor": "rgba( 74, 144, 226, 1 )",
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				}
+			},
+			"className": ".button",
+			"props": {
+				"width": 86.7725974635074,
+				"height": 39.75400422748766,
+				"touchEnabled": true,
+				"text": "Gregoryen",
+				"visible": true,
+				"backgroundColor": "rgba( 74, 144, 226, 1 )",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#FFFFFF",
+				"textAlignment": "MIDCENTER",
+				"left": 242.90353875411185,
+				"top": 362.16454756887333,
+				"font": {
+					"size": 16,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"positionType": "ABSOLUTE",
+					"alignSelf": "AUTO"
+				},
+				"name": "buttonGreg",
+				"parent": "e876-9805-6b68-f0e4",
+				"children": []
+			}
+		},
+		{
+			"type": "Button",
+			"id": "2bc0-3823-c50e-7518",
+			"themeProps": {
+				"Sizes": "Default",
+				"Highlights": "Default"
+			},
+			"userProps": {
+				"left": 44.745646025005136,
+				"top": 449.53296059056333,
+				"width": 64.40417641087582,
+				"height": 41.069793701171875,
+				"text": "TR",
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				}
+			},
+			"className": ".button",
+			"props": {
+				"width": 64.40417641087582,
+				"height": 41.069793701171875,
+				"touchEnabled": true,
+				"text": "TR",
+				"visible": true,
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#FFFFFF",
+				"textAlignment": "MIDCENTER",
+				"left": 44.745646025005136,
+				"top": 449.53296059056333,
+				"font": {
+					"size": 16,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"positionType": "ABSOLUTE",
+					"alignSelf": "AUTO"
+				},
+				"name": "buttonTR",
+				"parent": "e876-9805-6b68-f0e4",
+				"children": []
+			}
+		},
+		{
+			"type": "Button",
+			"id": "26f3-9c60-60dc-4f1c",
+			"themeProps": {
+				"Sizes": "Default",
+				"Highlights": "Default"
+			},
+			"userProps": {
+				"left": 132.37722296463815,
+				"top": 446.3750738846628,
+				"width": 64.40417641087582,
+				"height": 41.069793701171875,
+				"text": "EN",
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				}
+			},
+			"className": ".button",
+			"props": {
+				"width": 64.40417641087582,
+				"height": 41.069793701171875,
+				"touchEnabled": true,
+				"text": "EN",
+				"visible": true,
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#FFFFFF",
+				"textAlignment": "MIDCENTER",
+				"left": 132.37722296463815,
+				"top": 446.3750738846628,
+				"font": {
+					"size": 16,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"positionType": "ABSOLUTE",
+					"alignSelf": "AUTO"
+				},
+				"name": "buttonEN",
+				"parent": "e876-9805-6b68-f0e4",
+				"children": []
+			}
+		},
+		{
+			"type": "Button",
+			"id": "aa00-5c53-57c4-a625",
+			"themeProps": {
+				"Sizes": "Default",
+				"Highlights": "Default"
+			},
+			"userProps": {
+				"left": 216.06144152189555,
+				"top": 445.8487661261307,
+				"width": 64.40417641087582,
+				"height": 41.069793701171875,
+				"text": "AR",
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				}
+			},
+			"className": ".button",
+			"props": {
+				"width": 64.40417641087582,
+				"height": 41.069793701171875,
+				"touchEnabled": true,
+				"text": "AR",
+				"visible": true,
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"alpha": 1,
+				"borderColor": "rgba(0,0,0,1)",
+				"borderWidth": 0,
+				"textColor": "#FFFFFF",
+				"textAlignment": "MIDCENTER",
+				"left": 216.06144152189555,
+				"top": 445.8487661261307,
+				"font": {
+					"size": 16,
+					"bold": false,
+					"italic": false,
+					"family": "Arial"
+				},
+				"flexProps": {
+					"positionType": "ABSOLUTE",
+					"alignSelf": "AUTO"
+				},
+				"name": "buttonAR",
+				"parent": "e876-9805-6b68-f0e4",
 				"children": []
 			}
 		}

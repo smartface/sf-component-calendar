@@ -87,8 +87,14 @@ function notValidDateThrowanError(moment, date) {
 
 export default class DateService {
 	constructor(moment, date){
+		moment.lang("ar-sa");
 		this._moment = moment;
 		this._date = moment(date);
+		// this._date.startOf("iYear");
+		
+		if(!this._date.isValid()){
+			throw new Error("Invalid date");
+		}
 	}
 	
 	weekOfYear() {
@@ -110,15 +116,15 @@ export default class DateService {
 	}
 	
 	year() {
-		return this._date().year();
+		return this._date().iYear();
 	}
 	
 	day(day, date) {
-		return this._date().day();
+		return this._date().iDay();
 	}
 	
 	startDayOfMonth() {
-		return this._date.clone().date(1).weekday();
+		return this._date.clone().iDate(1).weekday();
 	}
 	
 	monthsShort() {
@@ -126,11 +132,11 @@ export default class DateService {
 	}
 	
 	monthShort() {
-		return this._moment.monthsShort(this._date.month());
+		return this._moment.monthsShort(this._date.iMonth());
 	}
 	
 	monthLong() {
-		return this._moment.months(this._date.month());
+		return this._moment.months(this._date.iMonth());
 	}
 	
 	monthsLong() {
@@ -146,31 +152,36 @@ export default class DateService {
 	}
 	
 	daysCount() {
-		return this._date.daysInMonth();
+		return this._date.iDaysInMonth();
 	}
 	
-	nextMonth(moment, date) {
-		return new DateService(this._moment, this._date.clone().add(1, 'month'))
+	nextMonth() {
+		return new DateService(this._moment, this._date.clone().add(1, 'iMonth'))
 	}
 	
-	prevMonth(date) {
-		return new DateService(this._moment, this._date.clone().subtract(1, 'month'));
+	prevMonth() {
+		return new DateService(this._moment, this._date.clone().subtract(1, 'iMonth'));
 	}
 	
-	prevYear(date) {}
+	prevYear() {
+		return new DateService(this._moment, this._date.clone().subtract(1, 'iYear'))
+	}
 	
-	nextYear(date) {}
+	nextYear() {
+		return new DateService(this._moment, this._date.clone().add(1, 'iYear'))
+	}
 	
 	dateLang(sh = "en") {
-		return this._moment.locale(sh);
+		// this._moment = this._moment.localeData(sh);
+		return this._moment.lang(sh)
 	}
 
-	toObject() {
-		var dateObject = this._date.toObject();
+	toObject(format) {
+		// var dateObject = this._date.toObject();
 		return {
-			year: dateObject.years,
-			day: dateObject.date,
-			month: dateObject.months
+			year: this._date.iYear(),
+			day: this._date.iDate(),
+			month: this._date.iMonth()
 		};
 	}
 	

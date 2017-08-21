@@ -1,18 +1,51 @@
-import * as DateWrapper from './DateWrapper';
+/**
+ * Creates an calendar service
+ * 
+ * @returns {}
+ */
 
-export function getMonth(dt) {
-  var date = DateWrapper.date(dt);
+import DateService from "./DateWrapper";
+import DateServiceHijri from "./DateWrapperHijri";
+import moment from "moment";
+import momentHijri from "moment-hijri";
+
+export default function createService(lang="en", type="gregorian"){
+	var service
+	var current;
+	
+	switch (type) {
+		case 'gregorian':
+			service = DateService;
+			current = moment;
+			break;
+		case 'hijri':
+			service = DateServiceHijri
+			current = momentHijri;
+			break;
+	}
+
+	moment.lang(lang);
+	
+	return {
+		getCalendarMonth: getCalendarMonth.bind(null, current, service),
+		getMonth: getMonth.bind(null, current, service)
+	};
+}
+
+function getMonth(moment, service, dt) {
+	const dateService = new service(moment, dt);
   
   return {
-    longName: date.monthLong(),
-    shortName: date.monthShort(),
-    daysCount: date.daysCount(),
-    startDayOfMonth: date.startDayOfMonth(),
+    longName: dateService.monthLong(),
+    shortName: dateService.monthShort(),
+    daysCount: dateService.daysCount(),
+    startDayOfMonth: dateService.startDayOfMonth(),
   };
 }
 
-export function getCalendarMonth(dt){
-  const currentMonth = DateWrapper.date(dt);
+function getCalendarMonth(moment, service, dt){
+	const currentMonth = new service(moment, dt);
+
   const prevMonth = currentMonth.prevMonth();
   const nextMonth = currentMonth.nextMonth();
   
@@ -69,8 +102,8 @@ export function getCalendarMonth(dt){
     shortName: currentMonth.monthShort(),
     daysCount: currentMonth.daysCount(),
     startDayOfMonth: currentMonth.startDayOfMonth(),
-    daysLong: DateWrapper.weekdaysLong(),
-    daysShort: DateWrapper.weekdaysShort(),
+    daysLong: currentMonth.weekdaysLong(),
+    daysShort: currentMonth.weekdaysShort(),
 	  days,
     date: currentMonth.toObject(),
     previousMonth: {
@@ -85,12 +118,12 @@ export function getCalendarMonth(dt){
       daysCount: nextMonth.daysCount(),
       date: nextMonth.toObject()
     }
-	}
+	};
 }
 
 export function getWeek(){
 }
 
-export function changeGlobalLang(lang){
-  DateWrapper.locale(lang);
+export function changeGlobalLang(dateService, lang){
+  dateService.locale(lang);
 }

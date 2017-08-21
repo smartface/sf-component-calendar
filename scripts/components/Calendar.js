@@ -6,7 +6,7 @@ const extend = require('js-base/core/extend');
 const CalendarDesign = require('library/Calendar');
 const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
-const CalendarService = require("../services/CalendarService");
+const createService = require("../services/CalendarService").default;
 const CalendarContext = require("./CalendarContext");
 
 const Calendar = extend(CalendarDesign)(
@@ -17,6 +17,7 @@ const Calendar = extend(CalendarDesign)(
 		
 		this.buildRows();
 		this.init();
+		this._calendarService = createService("en");
 	},
 	function(proto){
 		var currentMonth;
@@ -38,38 +39,38 @@ const Calendar = extend(CalendarDesign)(
 				longName: currentMonth.daysLong[index],
 				shortName: currentMonth.daysShort[index],
 				day: selectedDay.day
-			}
+			};
 			
 			switch (selectedDay.month) {
-				// if selected day is in current month.
+				// if selected day is in the current month.
 				case 'current':
 					dayData.monthInfo = {
 						longName: currentMonth.longName,
 						shortName: currentMonth.shortName,
 						month: currentMonth.date.month + 1
-					}
+					};
 					
-					dayData.year = currentMonth.date.year
+					dayData.year = currentMonth.date.year;
 					break;
-				// if selected day is in next month.
+				// if selected day is in the next month.
 				case 'next':
 					dayData.monthInfo = {
 						longName: currentMonth.nextMonth.longName,
 						shortName: currentMonth.nextMonth.shortName,
 						month: currentMonth.nextMonth.date.month + 1
-					}
+					};
 					
-					dayData.year = currentMonth.nextMonth.date.year
+					dayData.year = currentMonth.nextMonth.date.year;
 					break;
-				// if selected day is in previous month.
+				// if selected day is in the previous month.
 				case 'previous':
 					dayData.monthInfo = {
 						longName: currentMonth.previousMonth.longName,
 						shortName: currentMonth.previousMonth.shortName,
 						month: currentMonth.previousMonth.date.month + 1
-					}
+					};
 					
-					dayData.year = currentMonth.previousMonth.date.year
+					dayData.year = currentMonth.previousMonth.date.year;
 					break;
 					
 					default:
@@ -81,7 +82,7 @@ const Calendar = extend(CalendarDesign)(
 		
 		proto.setContextDispatcher = function(dispatcher){
 			this.dispatch = dispatcher;
-		}
+		};
 		
 		proto.init = function(argument) {
 			this.children.navbar.onNext = function(){
@@ -91,7 +92,7 @@ const Calendar = extend(CalendarDesign)(
 			this.children.navbar.onPrev = function(){
 				this.prevMonth();
 			}.bind(this);
-		}
+		};
 		
 		proto.buildRows = function(){
 			weeks.push(this.children.body.children.week1);
@@ -100,7 +101,6 @@ const Calendar = extend(CalendarDesign)(
 			weeks.push(this.children.body.children.week4);
 			weeks.push(this.children.body.children.week5);
 			weeks.push(this.children.body.children.week6);
-			
 			
 			weeks.forEach(function(row, index){
 				// this.children.body.addChild(row);
@@ -112,7 +112,7 @@ const Calendar = extend(CalendarDesign)(
 		};
 		
 		proto.now = function(){
-			this.updateCalendar(CalendarService.getCalendarMonth());
+			this.updateCalendar(this._calendarService.getCalendarMonth());
 			this.selectDay();
 		}
 		
@@ -123,7 +123,7 @@ const Calendar = extend(CalendarDesign)(
 		proto.setSelectedDate = function(date){
 			const newDate = Object.assign({}, date);
 			newDate.month = date.month - 1;
-			const dateData = CalendarService.getCalendarMonth(newDate);
+			const dateData = this._calendarService.getCalendarMonth(newDate);
 			this.updateCalendar(dateData);
 			this.selectDay();
 		};
@@ -141,6 +141,9 @@ const Calendar = extend(CalendarDesign)(
 			this.children.navbar.setLabel(month.longName);
 			this.children.navbar.setYear(month.date.year);
 			currentMonth = month;
+			month.daysShort.forEach(function(day, index) {
+				this.children.calendarDays.children["dayName_"+index].text = day;
+			}.bind(this));
 		};
 		
 		proto.nextMonth = function(){
@@ -149,9 +152,19 @@ const Calendar = extend(CalendarDesign)(
 					type: "resetDays"
 				});
 				
-				this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.nextMonth.date));
+				this.updateCalendar(this._calendarService.getCalendarMonth(currentMonth.nextMonth.date));
 			}
 		};
+		
+		proto.changeCalendar = function(lang, type){
+			this._calendarService = createService(lang, type);
+			this.updateCalendar(this._calendarService.getCalendarMonth())
+		}
+		
+		proto.changeLang = function(lang){
+			this._calendarService = createService(lang);
+			this.updateCalendar(this._calendarService.getCalendarMonth())
+		}
 		
 		proto.prevMonth = function(){
 			if(currentMonth){
@@ -159,7 +172,7 @@ const Calendar = extend(CalendarDesign)(
 					type: "resetDays"
 				});
 				
-				this.updateCalendar(CalendarService.getCalendarMonth(currentMonth.previousMonth.date));
+				this.updateCalendar(this._calendarService.getCalendarMonth(currentMonth.previousMonth.date));
 			}
 		};
 	}

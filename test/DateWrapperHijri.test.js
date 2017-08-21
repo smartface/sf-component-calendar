@@ -1,8 +1,8 @@
-import DateService from "../src/services/DateWrapper";
+import DateService from "../src/services/DateWrapperHijri";
 import {expect} from "chai";
-import moment from "moment";
+import moment from "moment-hijri";
 
-describe("DateWrapper", function() {
+describe("DateWrapper Hijri", function() {
   
   describe("Week", function() {
     it("should be set English as default lang", function() {
@@ -11,17 +11,19 @@ describe("DateWrapper", function() {
     });
     
     it("should return the starting weekday of the month", function() {
-      var scope = new DateService(moment, "2017-09-01");
+      var scope = new DateService(moment, "2017-01-30");
+      console.log(scope.month());
       let day = scope.startDayOfMonth();
-      expect(day).to.eql(5);
+      
+      expect(day).to.eql(0);
       
       scope = new DateService(moment, "2017-08-01");
       day = scope.startDayOfMonth();
-      expect(day).to.eql(2);
+      expect(day).to.eql(1);
   
       scope = new DateService(moment, "2017-10-01");
       day = scope.startDayOfMonth();
-      expect(day).to.eql(0);
+      expect(day).to.eql(4);
     });
   
     it("should return all weekdays short in English", function() {
@@ -48,18 +50,17 @@ describe("DateWrapper", function() {
   
   describe("Month", function() {
     it("should return end of a month", function() {
-      var scope = new DateService(moment, {month: 0});
-      expect(scope.daysCount()).to.eql(31);
+      var scope = new DateService(moment, {year: 2017, month: 0});
+      expect(scope.daysCount()).to.eql(30);
 
-      scope = new DateService(moment, {month: 5});
-      expect(scope.daysCount({month: 5})).to.eql(30);
+      scope = new DateService(moment, {year: 2017, month: 5});
+      expect(scope.daysCount()).to.eql(29);
 
-      scope = new DateService(moment, {month: 6});
-      expect(scope.daysCount({month: 6})).to.eql(31);
+      scope = new DateService(moment, {year: 2017, month: 6});
+      expect(scope.daysCount()).to.eql(29);
 
-      scope = new DateService(moment, {month: 11});
-      expect(scope.daysCount({month: 11})).to.eql(31);
+      scope = new DateService(moment, {year: 2017, month: 11});
+      expect(scope.daysCount()).to.eql(30);
     });
   });
 });
-

@@ -21,7 +21,7 @@ export function fromSFComponent(component, name, mapper){
   }
   
   function flat(name, comp) {
-    flatted[name] = comp
+    flatted[name] = comp;
   }
   
   collect(component, name, mapper);

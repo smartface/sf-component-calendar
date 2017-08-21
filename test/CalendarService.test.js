@@ -1,21 +1,25 @@
-import * as DateWrapper from "../src/services/DateWrapper";
-import * as CalendarService from "../src/services/CalendarService";
+import DateService from "../src/services/DateWrapper";
+import createService from "../src/services/CalendarService";
 import {expect} from "chai";
+import moment from "moment";
 
 describe("Calendar Service", function() {
+  
+  const calendarService = createService(moment);
+  
   describe("Month", function() {
     it("should return all needed data a month", function() {
-      var data = CalendarService.getMonth({year: 2016, month: 1});
-
-      expect(data).to.eql(
-      {
+      
+      var data = calendarService.getMonth({year: 2016, month: 1});
+      
+      expect(data).to.eql({
         longName: 'February',
         shortName: 'Feb',
         daysCount: 29,
         startDayOfMonth: 1
       });
       
-      data = CalendarService.getMonth({year: 2017, month: 0});
+      data = calendarService.getMonth({year: 2017, month: 0});
 
       expect(data).to.eql(
       {
@@ -26,8 +30,8 @@ describe("Calendar Service", function() {
       });
     });
     
-    it("should return all needed calendar data a month of calendar", function() {
-      var data = CalendarService.getCalendarMonth({year: 2016, month: 1, day:9});
+    it("should return all needed calendar data for a month of calendar", function() {
+      var data = calendarService.getCalendarMonth({year: 2016, month: 1, day : 9});
 
       expect(data.startDayOfMonth).to.equal(1);
       expect(data).to.eql(
@@ -128,7 +132,7 @@ describe("Calendar Service", function() {
           }
       });
 
-      data = CalendarService.getCalendarMonth({year: 2017, month: 0, day: 15});
+      data = calendarService.getCalendarMonth({year: 2017, month: 0, day: 15});
       // console.log(data.days);
       
       expect(data).to.eql(
@@ -146,8 +150,8 @@ describe("Calendar Service", function() {
             'Friday',
             'Saturday' ],
           daysShort: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
-          days: [ 
-                  [ 
+          days: [
+                  [
                     { day: 1, month: 'current', isSpecialDay: false, isWeekend: true },
                     { day: 2, month: 'current', isSpecialDay: false },
                     { day: 3, month: 'current', isSpecialDay: false },

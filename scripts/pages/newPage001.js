@@ -5,6 +5,7 @@ const extend = require('js-base/core/extend');
 const NewPage001Design = require('ui/ui_newPage001');
 const benchmark = require("../benchmarks/CalendarServices");
 const runner = require("../benchmarks/runner");
+const calendarTypes = require("../components/CalendarTypes");
 
 const NewPage001 = extend(NewPage001Design)(
 	// Constructor
@@ -18,6 +19,26 @@ const NewPage001 = extend(NewPage001Design)(
 
 		this.children.calendar.onChanged = function(date){
 			this.children.label2.text = date.dayInfo.day+"/"+(date.monthInfo.longName)+"/"+date.year;
+		}.bind(this);
+		
+		this.children.buttonTR.onPress = function(){
+			this.children.calendar.changeLang("tr");
+		}.bind(this);
+		
+		this.children.buttonEN.onPress = function(){
+			this.children.calendar.changeLang("en");
+		}.bind(this);
+		
+		this.children.buttonAR.onPress = function(){
+			this.children.calendar.changeLang("ar");
+		}.bind(this);
+		
+		this.children.buttonHijri.onPress = function(){
+			this.children.calendar.changeCalendar("ar", calendarTypes.HIJRI);
+		}.bind(this);
+		
+		this.children.buttonGreg.onPress = function(){
+			this.children.calendar.changeCalendar("en", calendarTypes.GREGORIAN);
 		}.bind(this);
 		
 		this.children.button3.onPress = function(){
