@@ -85,6 +85,10 @@
 		};
 
 		DateService.prototype.weekdaysShort = function weekdaysShort() {
+			return this._moment.weekdaysShort();
+		};
+
+		DateService.prototype.weekdaysMin = function weekdaysMin() {
 			return this._moment.weekdaysMin();
 		};
 

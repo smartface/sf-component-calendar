@@ -79,13 +79,7 @@
 		};
 
 		HijriDateService.prototype.month = function month() {
-			// 	date !== undefined 
-			// 	  ? date.month(month)
-			// 	  : month 
-			// ? 
 			return this._date.toObject().months;
-			// month ? moment().month(month) : moment.toObject().months;
-			// : date.toObject().monts;
 		};
 
 		HijriDateService.prototype.year = function year() {

@@ -170,6 +170,7 @@
 			startDayOfMonth: currentMonth.startDayOfMonth(),
 			daysLong: currentMonth.weekdaysLong(),
 			daysShort: currentMonth.weekdaysShort(),
+			daysMin: currentMonth.weekdaysMin(),
 			days: days,
 			date: currentMonth.toObject(),
 			normalizedDate: currentMonth.toNormalizedObject(),
