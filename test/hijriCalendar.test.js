@@ -4,10 +4,10 @@ import {expect} from "chai";
 
 describe("Hijri Calendar Service", function() {
   
-  const calendarService = createService("en", "hijri");
   
   describe("Month", function() {
     it("should match with sun calendar", function() {
+      const calendarService = createService("en", "hijri");
       var data = calendarService.getMonth({year: 2017, month: 7, day: 29});
 
       expect(data).to.eql({
@@ -19,7 +19,7 @@ describe("Hijri Calendar Service", function() {
     });
     
     it("should return all needed data a month", function() {
-      
+      const calendarService = createService("en", "hijri");
       var data = calendarService.getMonth({year: 2017, month: 0, day: 1});
 
       expect(data).to.eql(
@@ -32,8 +32,8 @@ describe("Hijri Calendar Service", function() {
     });
     
     it("should return all needed calendar data for a month of calendar", function() {
+      const calendarService = createService("en", "hijri");
       var data = calendarService.getCalendarMonth({year: 2016, month: 1, day : 9});
-
       expect(data.startDayOfMonth).to.equal(1);
 
       expect(data).to.eql(
@@ -104,24 +104,27 @@ describe("Hijri Calendar Service", function() {
             { day: 8, month: 'next', isSpecialDay: false },
             { day: 9, month: 'next', isSpecialDay: false },
             { day: 10, month: 'next', isSpecialDay: false },
-            { day: 11, month: 'next', isSpecialDay: false, isWeekend: true } ] 
-          ],
+            { day: 11, month: 'next', isSpecialDay: false, isWeekend: true } 
+          ]],
           date: { year: 1437, day: 30, month: 3 },
+          normalizedDate: { year: 2016, day: 9, month: 1 },
           previousMonth: { 
             longName: 'March',
             shortName: 'Mar',
             daysCount: 30,
-            date: { year: 1437, day: 30, month: 2 } 
+            date: { year: 1437, day: 30, month: 2 },
+            normalizedDate: { year: 2016, day: 10, month: 0 } 
           },
           nextMonth: { 
             longName: 'May',
             shortName: 'May',
             daysCount: 29,
-            date: { year: 1437, day: 29, month: 4 } }
-          });
+            date: { year: 1437, day: 29, month: 4 },
+            normalizedDate: { year: 2016, day: 9, month: 2 } 
+          }
+        });
 
       data = calendarService.getCalendarMonth({year: 2017, month: 0, day: 15});
-      // console.log(data.days);
 
       expect(data).to.eql(
         {
@@ -137,6 +140,7 @@ describe("Hijri Calendar Service", function() {
             'Thursday',
             'Friday',
             'Saturday' ],
+          normalizedDate: { year: 2016, day: 9, month: 2 },
           daysShort: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
           days: [ 
             [
@@ -193,16 +197,21 @@ describe("Hijri Calendar Service", function() {
               { day: 7, month: 'next', isSpecialDay: false, isWeekend: true } ]
             ],
             date: { year: 1438, day: 17, month: 3 },
+            normalizedDate: { year: 2017, day: 15, month: 0 },
             previousMonth: { 
               longName: 'March',
               shortName: 'Mar',
               daysCount: 30,
-              date: { year: 1438, day: 17, month: 2 } },
+              date: { year: 1438, day: 17, month: 2 },
+               normalizedDate: { year: 2016, day: 16, month: 11 }
+            },
             nextMonth:{ 
               longName: 'May',
               shortName: 'May',
               daysCount: 28,
-              date: { year: 1438, day: 17, month: 4 } }
+              date: { year: 1438, day: 17, month: 4 },
+              normalizedDate: { year: 2017, day: 14, month: 1 }
+            },
       });
     });
   });

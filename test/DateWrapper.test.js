@@ -5,11 +5,6 @@ import moment from "moment";
 describe("DateWrapper", function() {
   
   describe("Week", function() {
-    it("should be set English as default lang", function() {
-      const scope = new DateService(moment, {});
-      expect(scope.dateLang()).to.eql("en");
-    });
-    
     it("should return the starting weekday of the month", function() {
       var scope = new DateService(moment, "2017-09-01");
       let day = scope.startDayOfMonth();
@@ -25,6 +20,7 @@ describe("DateWrapper", function() {
     });
   
     it("should return all weekdays short in English", function() {
+      moment.locale("en");
       var scope = new DateService(moment);
       const names = scope.weekdaysShort();
 
@@ -32,6 +28,7 @@ describe("DateWrapper", function() {
     });
   
     it("should return all weekdays long in English", function() {
+      moment.locale("en");
       var scope = new DateService(moment);
       const names = scope.weekdaysLong();
       expect(names).to.eql([

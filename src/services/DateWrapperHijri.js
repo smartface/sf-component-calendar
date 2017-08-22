@@ -1,3 +1,5 @@
+import DateService from "./DateWrapper";
+
 function notValidDateThrowanError(moment, date) {
 	if(moment(date)
 		.isValid()) {
@@ -5,98 +7,7 @@ function notValidDateThrowanError(moment, date) {
 	}
 }
 
-/*export function date(moment, dt = null) {
-	moment = moment || require("moment");
-
-	const _date = dt !== null ?
-		typeof dt === "string" || dt instanceof Object ?
-		moment(dt) :
-		clone(dt) :
-		moment();
-
-	const dateObject = _date.toObject();
-
-	class DateWrapper {
-		month(num) {
-			return num ? month.call(null, moment, num, _date) : dateObject.months;
-		}
-
-		day(num) {
-			return num ? day.call(null, moment, num, _date) : dateObject.dates;
-		}
-
-		year(num) {
-			return num ? year.call(null, moment, num, _date) : dateObject.years;
-		}
-
-		startDayOfMonth() {
-			return startDayOfMonth(_date.clone()
-				.date(1));
-		}
-
-		monthShort() {
-			return monthsShort.call(null, moment, _date);
-		}
-
-		monthLong() {
-			return monthsLong.call(null, moment, _date);
-		}
-
-		daysCount() {
-			return daysCount(_date);
-		}
-
-		nextMonth() {
-			return date(nextMonth(_date));
-		}
-
-		prevMonth() {
-			return date.call(null, moment, prevMonth(_date));
-		}
-
-		toString() {
-			return _date.toString();
-		}
-
-		toObject() {
-			return {
-				year: dateObject.years,
-				day: dateObject.date,
-				month: dateObject.months
-			};
-		}
-	}
-
-	return new DateWrapper();
-}*/
-
-/*export function dateScope(moment) {
-  return function dateCaller(fn, dt=null){
-    const _date = dt !== null
-      ? typeof dt === "string" || dt instanceof Object
-    		? moment(dt)
-    		: clone(dt)
-  		: moment();
-		
-		const args = arguments.length > 1 ? [moment, ...Array.prototype.slice.call(arguments, 2), _date] : [moment];
-    return fn.apply(null, args);
-  };
-}
-*/
-// export function 
-
-export default class DateService {
-	constructor(moment, date){
-		moment.lang("ar-sa");
-		this._moment = moment;
-		this._date = moment(date);
-		// this._date.startOf("iYear");
-		
-		if(!this._date.isValid()){
-			throw new Error("Invalid date");
-		}
-	}
-	
+export default class HijriDateService extends DateService {
 	weekOfYear() {
 		return this._moment.week();
 	}
@@ -119,7 +30,7 @@ export default class DateService {
 		return this._date().iYear();
 	}
 	
-	day(day, date) {
+	day() {
 		return this._date().iDay();
 	}
 	
@@ -152,31 +63,26 @@ export default class DateService {
 	}
 	
 	daysCount() {
-		return this._date.iDaysInMonth();
+		return this._moment(this._date).locale("en").iDaysInMonth();
 	}
 	
 	nextMonth() {
-		return new DateService(this._moment, this._date.clone().add(1, 'iMonth'))
+		return new HijriDateService(this._moment, this._date.clone().add(1, 'iMonth'));
 	}
 	
 	prevMonth() {
-		return new DateService(this._moment, this._date.clone().subtract(1, 'iMonth'));
+		return new HijriDateService(this._moment, this._date.clone().subtract(1, 'iMonth'));
 	}
 	
 	prevYear() {
-		return new DateService(this._moment, this._date.clone().subtract(1, 'iYear'))
+		return new HijriDateService(this._moment, this._date.clone().subtract(1, 'iYear'));
 	}
 	
 	nextYear() {
-		return new DateService(this._moment, this._date.clone().add(1, 'iYear'))
+		return new HijriDateService(this._moment, this._date.clone().add(1, 'iYear'));
 	}
 	
-	dateLang(sh = "en") {
-		// this._moment = this._moment.localeData(sh);
-		return this._moment.lang(sh)
-	}
-
-	toObject(format) {
+	toObject() {
 		// var dateObject = this._date.toObject();
 		return {
 			year: this._date.iYear(),
@@ -184,66 +90,4 @@ export default class DateService {
 			month: this._date.iMonth()
 		};
 	}
-	
-	dispose(){
-		this._date = null;
-		this._moment = null;
-	}
 }
-
-/*
-export function month(month, date){
-  return date !== undefined ? date.month(month) : moment().month(month);
-}
-
-export function year(year, date){
-  return date !== undefined ? date.year(year) : moment().year(year);
-}
-
-export function day(year, date){
-  return date !== undefined ? date.day(year) : moment().day(year);
-}
-
-export function startDayOfMonth(date){
-  return date.weekday();
-}
-
-export function monthsShort(date){
-  return date ? moment.monthsShort(date.month()) : moment.monthsShort();
-}
-
-export function monthsLong(date){
-  return date ? moment.months(date.month()) : moment.months();
-}
-
-export function weekdaysShort(date){
-  return date ? moment.weekdaysMin(date.weekday()) : moment.weekdaysMin();
-}
-
-export function weekdaysLong(date) {
-  return date ? moment.weekdays(date.weekday()) : moment.weekdays();
-}
-
-export function daysCount(date) {
-  return date.daysInMonth();
-}
-
-export function nextMonth(date){
-  return date.clone().add(1, 'month');
-}
-
-export function prevMonth(date){
-  return date.clone().subtract(1, 'month');
-}
-
-export function prevYear(date){
-}
-
-export function nextYear(date){
-}
-
-export function dateLang(sh="en"){
-  return moment.locale(sh);
-}
-
-*/

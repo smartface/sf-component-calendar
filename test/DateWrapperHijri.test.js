@@ -5,14 +5,8 @@ import moment from "moment-hijri";
 describe("DateWrapper Hijri", function() {
   
   describe("Week", function() {
-    it("should be set English as default lang", function() {
-      const scope = new DateService(moment, {});
-      expect(scope.dateLang()).to.eql("en");
-    });
-    
     it("should return the starting weekday of the month", function() {
       var scope = new DateService(moment, "2017-01-30");
-      console.log(scope.month());
       let day = scope.startDayOfMonth();
       
       expect(day).to.eql(0);
@@ -24,27 +18,6 @@ describe("DateWrapper Hijri", function() {
       scope = new DateService(moment, "2017-10-01");
       day = scope.startDayOfMonth();
       expect(day).to.eql(4);
-    });
-  
-    it("should return all weekdays short in English", function() {
-      var scope = new DateService(moment);
-      const names = scope.weekdaysShort();
-
-      expect(names).to.eql([ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ]);
-    });
-  
-    it("should return all weekdays long in English", function() {
-      var scope = new DateService(moment);
-      const names = scope.weekdaysLong();
-      expect(names).to.eql([
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday' 
-      ]);
     });
   });
   

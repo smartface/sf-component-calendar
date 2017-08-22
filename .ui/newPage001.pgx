@@ -4774,8 +4774,8 @@
 				"Highlights": "Default"
 			},
 			"userProps": {
-				"left": 44.745646025005136,
-				"top": 449.53296059056333,
+				"left": 47.37722497237356,
+				"top": 448.2171711168791,
 				"width": 64.40417641087582,
 				"height": 41.069793701171875,
 				"text": "TR",
@@ -4797,8 +4797,8 @@
 				"borderWidth": 0,
 				"textColor": "#FFFFFF",
 				"textAlignment": "MIDCENTER",
-				"left": 44.745646025005136,
-				"top": 449.53296059056333,
+				"left": 47.37722497237356,
+				"top": 448.2171711168791,
 				"font": {
 					"size": 16,
 					"bold": false,

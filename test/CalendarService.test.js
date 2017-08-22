@@ -5,11 +5,13 @@ import moment from "moment";
 
 describe("Calendar Service", function() {
   
-  const calendarService = createService(moment);
+  var calendarService = createService();
+  describe("Turkish", function() {
+    
+  });
   
   describe("Month", function() {
     it("should return all needed data a month", function() {
-      
       var data = calendarService.getMonth({year: 2016, month: 1});
       
       expect(data).to.eql({
@@ -28,14 +30,49 @@ describe("Calendar Service", function() {
         daysCount: 31,
         startDayOfMonth: 0
       });
+
+      data = calendarService.getMonth({year: 2017, month: 0});
+
+      expect(data).to.eql(
+      {
+        longName: 'January',
+        shortName: 'Jan',
+        daysCount: 31,
+        startDayOfMonth: 0
+      });
     });
     
     it("should return all needed calendar data for a month of calendar", function() {
+      calendarService = createService();
       var data = calendarService.getCalendarMonth({year: 2016, month: 1, day : 9});
-
+      
+      calendarService = createService("tr");
+      var data2 = calendarService.getCalendarMonth({year: 2016, month: 1, day : 9});
+      
+      expect({
+        daysCount: data.daysCount,
+        startDayOfMonth: data.startDayOfMonth
+      }).to.eql({
+        daysCount: data2.daysCount,
+        startDayOfMonth: data2.startDayOfMonth
+      });
+      
+      expect(
+          [ 'Pazar',
+            'Pazartesi',
+            'Salı',
+            'Çarşamba',
+            'Perşembe',
+            'Cuma',
+            'Cumartesi' ]
+      ).to.eql(data2.daysLong);
+      
+      calendarService = createService("en");
+      expect(data.days).to.eql(data2.days);
+      
       expect(data.startDayOfMonth).to.equal(1);
-      expect(data).to.eql(
-        {
+      
+      expect(data).to.eql({
           longName: 'February',
           shortName: 'Feb',
           daysCount: 29,
@@ -110,6 +147,7 @@ describe("Calendar Service", function() {
             month: 1,
             year: 2016
           },
+          normalizedDate: { year: 2016, day: 9, month: 1 },
           previousMonth: {
             daysCount: 31,
             longName: "January",
@@ -118,7 +156,8 @@ describe("Calendar Service", function() {
               day: 9,
               month: 0,
               year: 2016
-            }
+            },
+            normalizedDate: { year: 2016, day: 9, month: 0 } 
           },
           nextMonth: {
             daysCount: 31,
@@ -128,13 +167,13 @@ describe("Calendar Service", function() {
               day: 9,
               month: 2,
               year: 2016
-            }
+            },
+            normalizedDate: { year: 2016, day: 9, month: 2 } 
           }
       });
 
       data = calendarService.getCalendarMonth({year: 2017, month: 0, day: 15});
-      // console.log(data.days);
-      
+
       expect(data).to.eql(
         {
           longName: 'January',
@@ -211,6 +250,7 @@ describe("Calendar Service", function() {
             month: 0,
             year: 2017
           },
+          normalizedDate: { year: 2017, day: 15, month: 0 },
           previousMonth: {
             daysCount: 31,
             longName: "December",
@@ -219,7 +259,8 @@ describe("Calendar Service", function() {
               day: 15,
               month: 11,
               year: 2016
-            }
+            },
+            normalizedDate: { year: 2016, day: 15, month: 11 }
           },
           nextMonth: {
             daysCount: 28,
@@ -229,7 +270,8 @@ describe("Calendar Service", function() {
               day: 15,
               month: 1,
               year: 2017
-            }
+            },
+            normalizedDate: { year: 2017, day: 15, month: 1 }
           }
       });
     });

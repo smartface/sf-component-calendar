@@ -80,6 +80,7 @@ const Calendar = extend(CalendarDesign)(
 			this.onChanged && this.onChanged(dayData);
 		}
 		
+		// to inject a context dispatcher
 		proto.setContextDispatcher = function(dispatcher){
 			this.dispatch = dispatcher;
 		};
@@ -114,11 +115,11 @@ const Calendar = extend(CalendarDesign)(
 		proto.now = function(){
 			this.updateCalendar(this._calendarService.getCalendarMonth());
 			this.selectDay();
-		}
+		};
 		
 		proto.addStyles = function(styles) {
 			this.context(styles);
-		}
+		};
 		
 		proto.setSelectedDate = function(date){
 			const newDate = Object.assign({}, date);
@@ -131,10 +132,11 @@ const Calendar = extend(CalendarDesign)(
 		proto.selectDay = function(){
 			const totalDay = currentMonth.startDayOfMonth + currentMonth.date.day;
 			const row = Math.ceil(totalDay / 7);
+			// use %7 to calculate
 			const index = currentMonth.date.day - 1 - ((row-1) * 7 - currentMonth.startDayOfMonth);
 
 			weeks[row-1].setSelectedIndex(index);
-		}
+		};
 		
 		proto.updateCalendar = function(month){
 			updateRows.call(this, month.days, month.date);
@@ -152,18 +154,24 @@ const Calendar = extend(CalendarDesign)(
 					type: "resetDays"
 				});
 				
-				this.updateCalendar(this._calendarService.getCalendarMonth(currentMonth.nextMonth.date));
+				this.updateCalendar(this._calendarService.getCalendarMonth(currentMonth.nextMonth.normalizedDate));
 			}
 		};
 		
 		proto.changeCalendar = function(lang, type){
+			this.dispatch({
+				type: "resetDays"
+			});
 			this._calendarService = createService(lang, type);
-			this.updateCalendar(this._calendarService.getCalendarMonth())
+			this.updateCalendar(this._calendarService.getCalendarMonth());
 		}
 		
 		proto.changeLang = function(lang){
+			this.dispatch({
+				type: "resetDays"
+			});
 			this._calendarService = createService(lang);
-			this.updateCalendar(this._calendarService.getCalendarMonth())
+			this.updateCalendar(this._calendarService.getCalendarMonth());
 		}
 		
 		proto.prevMonth = function(){
@@ -172,7 +180,7 @@ const Calendar = extend(CalendarDesign)(
 					type: "resetDays"
 				});
 				
-				this.updateCalendar(this._calendarService.getCalendarMonth(currentMonth.previousMonth.date));
+				this.updateCalendar(this._calendarService.getCalendarMonth(currentMonth.previousMonth.normalizedDate));
 			}
 		};
 	}

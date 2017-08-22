@@ -9,22 +9,50 @@ import DateServiceHijri from "./DateWrapperHijri";
 import moment from "moment";
 import momentHijri from "moment-hijri";
 
+moment.locale("en");
+momentHijri.locale("en");
+
 export default function createService(lang="en", type="gregorian"){
 	var service
-	var current;
 	
-	switch (type) {
-		case 'gregorian':
+	// moment.locale(lang,  {
+	// 	dolongDateFormatw: "LLLL"
+	// });
+	// momentHijri.locale(lang,  {
+	// 	dolongDateFormatw: "LLLL"
+	// });
+	
+	var current;
 			service = DateService;
 			current = moment;
-			break;
+	
+	switch (type) {
 		case 'hijri':
 			service = DateServiceHijri
 			current = momentHijri;
 			break;
 	}
+	
+	current.locale(lang);
+	current.updateLocale(lang, {
+		week : {
+        dow : 0
+    }
+	})
+	
+	// current = function momentWrapper(){
+	// 	current().locale(lang);
+	// 	var locale = 
+	// }
 
-	moment.lang(lang);
+	// current = function(){
+	// 	var args = Array.prototype.slice.apply(arguments);
+	// 	var res = current.apply(null, args);
+	// 	// moment.locale(lang);
+	// 	// moment.format("LLLL");
+		
+	// 	return res;
+	// }
 	
 	return {
 		getCalendarMonth: getCalendarMonth.bind(null, current, service),
@@ -106,17 +134,20 @@ function getCalendarMonth(moment, service, dt){
     daysShort: currentMonth.weekdaysShort(),
 	  days,
     date: currentMonth.toObject(),
+    normalizedDate: currentMonth.toNormalizedObject(),
     previousMonth: {
       longName: prevMonth.monthLong(),
       shortName: prevMonth.monthShort(),
       daysCount: prevMonth.daysCount(),
-      date: prevMonth.toObject()
+      date: prevMonth.toObject(),
+      normalizedDate: prevMonth.toNormalizedObject()
     },
     nextMonth: {
       longName: nextMonth.monthLong(),
       shortName: nextMonth.monthShort(),
       daysCount: nextMonth.daysCount(),
-      date: nextMonth.toObject()
+      date: nextMonth.toObject(),
+      normalizedDate: nextMonth.toNormalizedObject()
     }
 	};
 }

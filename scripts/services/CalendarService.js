@@ -40,25 +40,53 @@
   * @returns {}
   */
 
+	_moment2.default.locale("en");
+	_momentHijri2.default.locale("en");
+
 	function createService() {
 		var lang = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "en";
 		var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "gregorian";
 
 		var service;
+
+		// moment.locale(lang,  {
+		// 	dolongDateFormatw: "LLLL"
+		// });
+		// momentHijri.locale(lang,  {
+		// 	dolongDateFormatw: "LLLL"
+		// });
+
 		var current;
+		service = _DateWrapper2.default;
+		current = _moment2.default;
 
 		switch (type) {
-			case 'gregorian':
-				service = _DateWrapper2.default;
-				current = _moment2.default;
-				break;
 			case 'hijri':
 				service = _DateWrapperHijri2.default;
 				current = _momentHijri2.default;
 				break;
 		}
 
-		_moment2.default.lang(lang);
+		current.locale(lang);
+		current.updateLocale(lang, {
+			week: {
+				dow: 0
+			}
+		});
+
+		// current = function momentWrapper(){
+		// 	current().locale(lang);
+		// 	var locale = 
+		// }
+
+		// current = function(){
+		// 	var args = Array.prototype.slice.apply(arguments);
+		// 	var res = current.apply(null, args);
+		// 	// moment.locale(lang);
+		// 	// moment.format("LLLL");
+
+		// 	return res;
+		// }
 
 		return {
 			getCalendarMonth: getCalendarMonth.bind(null, current, service),
@@ -140,17 +168,20 @@
 			daysShort: currentMonth.weekdaysShort(),
 			days: days,
 			date: currentMonth.toObject(),
+			normalizedDate: currentMonth.toNormalizedObject(),
 			previousMonth: {
 				longName: prevMonth.monthLong(),
 				shortName: prevMonth.monthShort(),
 				daysCount: prevMonth.daysCount(),
-				date: prevMonth.toObject()
+				date: prevMonth.toObject(),
+				normalizedDate: prevMonth.toNormalizedObject()
 			},
 			nextMonth: {
 				longName: nextMonth.monthLong(),
 				shortName: nextMonth.monthShort(),
 				daysCount: nextMonth.daysCount(),
-				date: nextMonth.toObject()
+				date: nextMonth.toObject(),
+				normalizedDate: nextMonth.toNormalizedObject()
 			}
 		};
 	}

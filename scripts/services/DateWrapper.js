@@ -29,92 +29,13 @@
 		}
 	}
 
-	/*export function date(moment, dt = null) {
- 	moment = moment || require("moment");
- 
- 	const _date = dt !== null ?
- 		typeof dt === "string" || dt instanceof Object ?
- 		moment(dt) :
- 		clone(dt) :
- 		moment();
- 
- 	const dateObject = _date.toObject();
- 
- 	class DateWrapper {
- 		month(num) {
- 			return num ? month.call(null, moment, num, _date) : dateObject.months;
- 		}
- 
- 		day(num) {
- 			return num ? day.call(null, moment, num, _date) : dateObject.dates;
- 		}
- 
- 		year(num) {
- 			return num ? year.call(null, moment, num, _date) : dateObject.years;
- 		}
- 
- 		startDayOfMonth() {
- 			return startDayOfMonth(_date.clone()
- 				.date(1));
- 		}
- 
- 		monthShort() {
- 			return monthsShort.call(null, moment, _date);
- 		}
- 
- 		monthLong() {
- 			return monthsLong.call(null, moment, _date);
- 		}
- 
- 		daysCount() {
- 			return daysCount(_date);
- 		}
- 
- 		nextMonth() {
- 			return date(nextMonth(_date));
- 		}
- 
- 		prevMonth() {
- 			return date.call(null, moment, prevMonth(_date));
- 		}
- 
- 		toString() {
- 			return _date.toString();
- 		}
- 
- 		toObject() {
- 			return {
- 				year: dateObject.years,
- 				day: dateObject.date,
- 				month: dateObject.months
- 			};
- 		}
- 	}
- 
- 	return new DateWrapper();
- }*/
-
-	/*export function dateScope(moment) {
-   return function dateCaller(fn, dt=null){
-     const _date = dt !== null
-       ? typeof dt === "string" || dt instanceof Object
-     		? moment(dt)
-     		: clone(dt)
-   		: moment();
- 		
- 		const args = arguments.length > 1 ? [moment, ...Array.prototype.slice.call(arguments, 2), _date] : [moment];
-     return fn.apply(null, args);
-   };
- }
- */
-	// export function 
-
 	var DateService = function () {
 		function DateService(moment, date) {
 			_classCallCheck(this, DateService);
 
 			this._moment = moment;
 			this._date = moment(date);
+			// notValidDateThrowanError(moment, date);
 		}
 
 		DateService.prototype.weekOfYear = function weekOfYear() {
@@ -190,11 +111,21 @@
 		DateService.prototype.dateLang = function dateLang() {
 			var sh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "en";
 
-			return this._moment.locale(sh);
+			this._moment.updateLocale(sh);
 		};
 
 		DateService.prototype.toObject = function toObject() {
 			var dateObject = this._date.toObject();
+			return {
+				year: dateObject.years,
+				day: dateObject.date,
+				month: dateObject.months
+			};
+		};
+
+		DateService.prototype.toNormalizedObject = function toNormalizedObject() {
+			var dateObject = this._date.toObject();
+
 			return {
 				year: dateObject.years,
 				day: dateObject.date,
