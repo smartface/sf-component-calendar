@@ -1,6 +1,6 @@
 {
   "name": "@smartface/component-calendar",
-  "version": "1.0.0-alpha.1",
+  "version": "1.2.0",
   "description": "Calendar Component",
   "main": "index.js",
   "scripts": {
@@ -25,9 +25,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/smartface/sf-component-calendar/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "homepage": "https://github.com/smartface/sf-component-calendar#readme",
   "devDependencies": {

@@ -64,10 +64,10 @@
 	var HijriDateService = function (_DateService) {
 		_inherits(HijriDateService, _DateService);
 
-		function HijriDateService() {
+		function HijriDateService(moment, date) {
 			_classCallCheck(this, HijriDateService);
 
-			return _possibleConstructorReturn(this, _DateService.apply(this, arguments));
+			return _possibleConstructorReturn(this, _DateService.call(this, moment, date));
 		}
 
 		HijriDateService.prototype.weekOfYear = function weekOfYear() {
@@ -101,23 +101,23 @@
 		};
 
 		HijriDateService.prototype.monthsShort = function monthsShort() {
-			return this._moment.monthsShort();
+			return this._date.localeData()._iMonthsShort;
 		};
 
 		HijriDateService.prototype.monthShort = function monthShort() {
-			return this._moment.monthsShort(this._date.iMonth());
+			return this._date.format("iMMM");
 		};
 
 		HijriDateService.prototype.monthLong = function monthLong() {
-			return this._moment.months(this._date.iMonth());
+			return this._date.format("iMMMM");
 		};
 
 		HijriDateService.prototype.monthsLong = function monthsLong() {
-			return this._moment.months();
+			return this._date.localeData()._iMonths;
 		};
 
 		HijriDateService.prototype.weekdaysShort = function weekdaysShort() {
-			return this._moment.weekdaysMin();
+			return this._moment.weekdaysShort();
 		};
 
 		HijriDateService.prototype.weekdaysLong = function weekdaysLong() {

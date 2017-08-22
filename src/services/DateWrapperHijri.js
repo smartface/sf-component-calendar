@@ -8,6 +8,10 @@ function notValidDateThrowanError(moment, date) {
 }
 
 export default class HijriDateService extends DateService {
+	constructor(moment, date){
+		super(moment, date);
+	}
+	
 	weekOfYear() {
 		return this._moment.week();
 	}
@@ -39,23 +43,23 @@ export default class HijriDateService extends DateService {
 	}
 	
 	monthsShort() {
-		return this._moment.monthsShort();
+		return this._date.localeData()._iMonthsShort;
 	}
 	
 	monthShort() {
-		return this._moment.monthsShort(this._date.iMonth());
+		return this._date.format("iMMM");
 	}
 	
 	monthLong() {
-		return this._moment.months(this._date.iMonth());
+		return this._date.format("iMMMM");
 	}
 	
 	monthsLong() {
-		return this._moment.months();
+		return this._date.localeData()._iMonths;
 	}
 	
 	weekdaysShort() {
-		return this._moment.weekdaysMin();
+		return this._moment.weekdaysShort();
 	}
 	
 	weekdaysLong() {

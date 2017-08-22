@@ -14,8 +14,8 @@ const styles = {
 			"maxHeight": 300,
 			"paddingLeft": 0,
 			"paddingRight": 0,
-			flexProps: {
-				positionType: "ABSOLUTE",
+			"flexProps": {
+				"positionType": "ABSOLUTE",
 			}
 		},
 		".header": {
@@ -164,7 +164,7 @@ function createContext(component) {
 		component,
 		"calendar",
 		//initial classNames
-		function(name) {
+		function initializeClassNames(name) {
 			const namePattern = /week[0-9]+_weekDay[0-9]+/
 			const rowPattern = new RegExp("week[0-9]+");
 

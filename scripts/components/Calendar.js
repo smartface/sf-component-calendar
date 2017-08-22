@@ -143,6 +143,7 @@ const Calendar = extend(CalendarDesign)(
 			this.children.navbar.setLabel(month.longName);
 			this.children.navbar.setYear(month.date.year);
 			currentMonth = month;
+
 			month.daysShort.forEach(function(day, index) {
 				this.children.calendarDays.children["dayName_"+index].text = day;
 			}.bind(this));

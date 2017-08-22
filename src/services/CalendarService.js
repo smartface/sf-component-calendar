@@ -6,11 +6,14 @@
 
 import DateService from "./DateWrapper";
 import DateServiceHijri from "./DateWrapperHijri";
-import moment from "moment";
-import momentHijri from "moment-hijri";
 
-moment.locale("en");
-momentHijri.locale("en");
+import moment from "moment";
+import 'moment/locale/ar-sa';
+import momentHijri from "moment-hijri";
+momentHijri().format('iYYYY/iM/iD');
+
+// moment.locale(["en", "ar-sa", "ar", "tr"]);
+// momentHijri.locale("en");
 
 export default function createService(lang="en", type="gregorian"){
 	var service
@@ -28,17 +31,19 @@ export default function createService(lang="en", type="gregorian"){
 	
 	switch (type) {
 		case 'hijri':
-			service = DateServiceHijri
+			service = DateServiceHijri;
 			current = momentHijri;
+
 			break;
 	}
 	
 	current.locale(lang);
 	current.updateLocale(lang, {
 		week : {
-        dow : 0
+      dow : 0,
+      doy: 6
     }
-	})
+	});
 	
 	// current = function momentWrapper(){
 	// 	current().locale(lang);

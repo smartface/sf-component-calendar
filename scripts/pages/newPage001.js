@@ -1,6 +1,7 @@
 /* 
 		You can modify its contents.
 */
+
 const extend = require('js-base/core/extend');
 const NewPage001Design = require('ui/ui_newPage001');
 const benchmark = require("../benchmarks/CalendarServices");
@@ -30,11 +31,11 @@ const NewPage001 = extend(NewPage001Design)(
 		}.bind(this);
 		
 		this.children.buttonAR.onPress = function(){
-			this.children.calendar.changeLang("ar");
+			this.children.calendar.changeLang("ar-sa");
 		}.bind(this);
 		
 		this.children.buttonHijri.onPress = function(){
-			this.children.calendar.changeCalendar("ar", calendarTypes.HIJRI);
+			this.children.calendar.changeCalendar("ar-sa", calendarTypes.HIJRI);
 		}.bind(this);
 		
 		this.children.buttonGreg.onPress = function(){

@@ -1,13 +1,13 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(["exports", "./DateWrapper", "./DateWrapperHijri", "moment", "moment-hijri"], factory);
+		define(["exports", "./DateWrapper", "./DateWrapperHijri", "moment", "moment-hijri", "moment/locale/ar-sa"], factory);
 	} else if (typeof exports !== "undefined") {
-		factory(exports, require("./DateWrapper"), require("./DateWrapperHijri"), require("moment"), require("moment-hijri"));
+		factory(exports, require("./DateWrapper"), require("./DateWrapperHijri"), require("moment"), require("moment-hijri"), require("moment/locale/ar-sa"));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.DateWrapper, global.DateWrapperHijri, global.moment, global.momentHijri);
+		factory(mod.exports, global.DateWrapper, global.DateWrapperHijri, global.moment, global.momentHijri, global.arSa);
 		global.CalendarService = mod.exports;
 	}
 })(this, function (exports, _DateWrapper, _DateWrapperHijri, _moment, _momentHijri) {
@@ -34,14 +34,16 @@
 		};
 	}
 
+	(0, _momentHijri2.default)().format('iYYYY/iM/iD');
+
+	// moment.locale(["en", "ar-sa", "ar", "tr"]);
+	// momentHijri.locale("en");
+
 	/**
   * Creates an calendar service
   * 
   * @returns {}
   */
-
-	_moment2.default.locale("en");
-	_momentHijri2.default.locale("en");
 
 	function createService() {
 		var lang = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "en";
@@ -64,13 +66,15 @@
 			case 'hijri':
 				service = _DateWrapperHijri2.default;
 				current = _momentHijri2.default;
+
 				break;
 		}
 
 		current.locale(lang);
 		current.updateLocale(lang, {
 			week: {
-				dow: 0
+				dow: 0,
+				doy: 6
 			}
 		});
 

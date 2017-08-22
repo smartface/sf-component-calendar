@@ -3,7 +3,6 @@ import {expect} from "chai";
 import moment from "moment";
 
 describe("DateWrapper", function() {
-  
   describe("Week", function() {
     it("should return the starting weekday of the month", function() {
       var scope = new DateService(moment, "2017-09-01");
@@ -38,7 +37,7 @@ describe("DateWrapper", function() {
         'Wednesday',
         'Thursday',
         'Friday',
-        'Saturday' 
+        'Saturday'
       ]);
     });
   });
@@ -59,4 +58,3 @@ describe("DateWrapper", function() {
     });
   });
 });
-
