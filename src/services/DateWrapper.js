@@ -59,6 +59,10 @@ export default class DateService {
 	}
 	
 	weekdaysShort() {
+		return this._moment.weekdaysShort();
+	}
+	
+	weekdaysMin() {
 		return this._moment.weekdaysMin();
 	}
 	

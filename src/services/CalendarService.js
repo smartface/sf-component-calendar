@@ -137,6 +137,7 @@ function getCalendarMonth(moment, service, dt){
     startDayOfMonth: currentMonth.startDayOfMonth(),
     daysLong: currentMonth.weekdaysLong(),
     daysShort: currentMonth.weekdaysShort(),
+    daysMin: currentMonth.weekdaysMin(),
 	  days,
     date: currentMonth.toObject(),
     normalizedDate: currentMonth.toNormalizedObject(),

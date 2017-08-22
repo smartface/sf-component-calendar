@@ -21,8 +21,10 @@ describe("DateWrapper", function() {
     it("should return all weekdays short in English", function() {
       moment.locale("en");
       var scope = new DateService(moment);
-      const names = scope.weekdaysShort();
-
+      var names = scope.weekdaysShort();
+      expect(names).to.eql([ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ]);
+      
+      names = scope.weekdaysMin();
       expect(names).to.eql([ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ]);
     });
   

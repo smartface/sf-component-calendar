@@ -21,13 +21,7 @@ export default class HijriDateService extends DateService {
 	}
 	
 	month() {
-// 	date !== undefined 
-// 	  ? date.month(month)
-// 	  : month 
-	   // ? 
   return this._date.toObject().months;
-  // month ? moment().month(month) : moment.toObject().months;
-	   // : date.toObject().monts;
 	}
 	
 	year() {

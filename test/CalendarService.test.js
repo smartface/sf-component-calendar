@@ -49,6 +49,10 @@ describe("Calendar Service", function() {
       calendarService = createService("tr");
       var data2 = calendarService.getCalendarMonth({year: 2016, month: 1, day : 9});
       
+      // expect(names).to.eql([ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ]);
+      
+      // expect(names).to.eql([ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ]);
+      
       expect({
         daysCount: data.daysCount,
         startDayOfMonth: data.startDayOfMonth
@@ -85,7 +89,8 @@ describe("Calendar Service", function() {
             'Thursday',
             'Friday',
             'Saturday' ],
-          daysShort: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
+          daysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+          daysMin: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
           days: [ 
               [ 
                 { day: 31, month: 'previous', isSpecialDay: false, isWeekend: true },
@@ -188,7 +193,8 @@ describe("Calendar Service", function() {
             'Thursday',
             'Friday',
             'Saturday' ],
-          daysShort: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
+          daysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+          daysMin: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
           days: [
                   [
                     { day: 1, month: 'current', isSpecialDay: false, isWeekend: true },

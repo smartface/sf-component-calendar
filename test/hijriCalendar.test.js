@@ -48,6 +48,7 @@ describe("Hijri Calendar Service", function() {
              'Friday',
              'Saturday' ],
           daysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+          daysMin: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
           days: [ 
           [ 
             { day: 30, month: 'previous', isSpecialDay: false, isWeekend: true },
@@ -139,6 +140,7 @@ describe("Hijri Calendar Service", function() {
           'Saturday' ],
         normalizedDate: { year: 2016, day: 9, month: 2 },
         daysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+        daysMin: [ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
         days: 
           [[
             { day: 26, month: 'previous', isSpecialDay: false, isWeekend: true },
