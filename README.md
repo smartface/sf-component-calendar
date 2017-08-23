@@ -170,7 +170,7 @@ calendar.addStyles(newMonthLabelColorStyle);
 ## Api
 
 ### Calendar.prototype.addStyles(style)
-Merges initial styles and updates the component
+Merges specified styles to current styles and updates the component
 
 ### Calendar.prototype.setSelectedDate({day: Number, month: Number, year: Number})
 Sets specified date object as the selected date.
