@@ -1,10 +1,10 @@
 # Smartface Calendar Component
 [![Npm Status](https://img.shields.io/npm/v/@smartface/sf-calendar-component.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-calendar-component)
 
-## Intallation
+## Component Intallation
 ``` $ npm i @smartface/sf-calendar-component ```
 
-## Usage
+## Component Usage
 ```js 
 
 const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
@@ -18,6 +18,23 @@ myCalendar.onChange = function(data){
 // changing calendar date
 myCalendar.setSelectedDate({month: Number, year: Number, day: Number});
 ```
+
+## Component maintaning for Smartface Developers
+
+Create new cloud workspace in the Smartface-Cloud with this repository url. Open Cloud IDE and switch to terminal in the scripts folder. Install dependencies via terminal:
+
+``` $ npm i moment```
+``` $ npm i moment-hijri```
+
+Then run command via terminal on the workspace root for TDD
+``` $ npm i ```
+``` npm run test:watch```
+
+and run command to build service layer
+``` $npm run dev ```
+
+Finally run commnand on the scripts folder to publish to npm:
+``` $ npm publish ```
 
 ### Selected Date Schema
 
