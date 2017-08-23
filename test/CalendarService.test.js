@@ -11,7 +11,7 @@ describe("Calendar Service", function() {
   });
   
   describe("Month", function() {
-    it("should return all needed data a month", function() {
+    it("should return all needed data for a month", function() {
       var data = calendarService.getMonth({year: 2016, month: 1});
       
       expect(data).to.eql({

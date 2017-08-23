@@ -16,7 +16,6 @@
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.contextConnector = contextConnector;
   exports.createInitAction = createInitAction;
   exports.default = createContext;
 
@@ -27,10 +26,6 @@
   }
 
   var __id = 0;
-
-  function contextConnector(context) {
-    return function contextWrapper(component, contextMap) {};
-  }
 
   var INIT_CONTEXT_ACTION_TYPE = exports.INIT_CONTEXT_ACTION_TYPE = '__INIT_CONTEXT__';
 

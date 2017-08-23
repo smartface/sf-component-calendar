@@ -1,10 +1,5 @@
 let __id = 0;
 
-export function contextConnector(context){
-  return function contextWrapper(component, contextMap){
-  };
-}
-
 export const INIT_CONTEXT_ACTION_TYPE = '__INIT_CONTEXT__';
 
 export function createInitAction(){

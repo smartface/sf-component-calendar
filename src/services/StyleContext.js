@@ -15,7 +15,7 @@ export function fromSFComponent(component, name, mapper){
     const newComp = makeStylable(component, mapper(name), name);
     flat(name, newComp);
 
-    component.children && Object.keys(component.children).forEach(function(child){
+    component.children && Object.keys(component.children).forEach((child) => {
       collect(component.children[child], name+"_"+child, mapper);
     });
   }
@@ -57,21 +57,33 @@ export function makeStylable(component, className, name){
       this.initialClassName = className;
       this.classNames = [className];
       this.component = component;
-      this.styles;
+      this.styles = {};
       this.isUgly = true;
     }
     
     setStyles(styles) {
+      const diff = Object.keys(styles).reduce((acc, key) => {
+        if(this.styles[key] !== undefined) {
+          if(this.styles[key] !== styles[key]){
+            acc[key] = styles[key];
+          }
+        } else {
+          acc[key] = styles[key];
+        }
+        
+        return acc;
+      }, {});
+      
       this.styles = styles;
-      Object.keys(styles).length && Object.assign(this.component, this.styles);
+      Object.keys(styles).length && Object.assign(this.component, diff);
     }
     
     setContext(context){
       this.context = context;
       component.setContextDispatcher && 
-        component.setContextDispatcher(function(action){
+        component.setContextDispatcher((action) => {
           this.context.dispatch(action, this.name);
-        }.bind(this));
+        });
     }
     
     getStyles(){
@@ -93,7 +105,7 @@ export function makeStylable(component, className, name){
     removeClassName(className){
       if(this.hasClassName(className)){
         this.isUgly = true;
-        this.classNames = this.classNames.filter(function(cname){
+        this.classNames = this.classNames.filter((cname) => {
           return cname !== className;
         });
       }
@@ -107,7 +119,7 @@ export function makeStylable(component, className, name){
     }
     
     hasClassName(className){
-      return this.classNames.some(function(cname){
+      return this.classNames.some((cname) => {
         return cname === className;
       })
     }

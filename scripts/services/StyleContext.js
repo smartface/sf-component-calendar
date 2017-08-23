@@ -96,20 +96,36 @@
         this.initialClassName = className;
         this.classNames = [className];
         this.component = component;
-        this.styles;
+        this.styles = {};
         this.isUgly = true;
       }
 
       Stylable.prototype.setStyles = function setStyles(styles) {
+        var _this = this;
+
+        var diff = Object.keys(styles).reduce(function (acc, key) {
+          if (_this.styles[key] !== undefined) {
+            if (_this.styles[key] !== styles[key]) {
+              acc[key] = styles[key];
+            }
+          } else {
+            acc[key] = styles[key];
+          }
+
+          return acc;
+        }, {});
+
         this.styles = styles;
-        Object.keys(styles).length && Object.assign(this.component, this.styles);
+        Object.keys(styles).length && Object.assign(this.component, diff);
       };
 
       Stylable.prototype.setContext = function setContext(context) {
+        var _this2 = this;
+
         this.context = context;
         component.setContextDispatcher && component.setContextDispatcher(function (action) {
-          this.context.dispatch(action, this.name);
-        }.bind(this));
+          _this2.context.dispatch(action, _this2.name);
+        });
       };
 
       Stylable.prototype.getStyles = function getStyles() {

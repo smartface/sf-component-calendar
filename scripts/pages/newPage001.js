@@ -68,11 +68,11 @@ function onShow(superOnShow) {
   // 	year: 2017
   // });
 	this.children.calendar.now();
-  
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth2");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth3");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth4");
+	var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
+	runner.add(fn, "nextMonth");
+	runner.add(fn, "nextMonth2");
+	runner.add(fn, "nextMonth3");
+	runner.add(fn, "nextMonth4");
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth5");
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth6");
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth7");
@@ -86,11 +86,11 @@ function onShow(superOnShow) {
 	
 
 	// setTimeout(function(){
-	/*	runner.runAll(3, function(res){
+		runner.runAll(3, function(res){
 			res.forEach(function(item){
 				console.log(item.asString);
 			})
-		});*/
+		});
 	// }
 	// , 3)
   // alert(JSON.stringify(benchmark()))
