@@ -198,5 +198,5 @@ Changes calendar language.
   - Arabic: "ar"
   - Arabic (Saudi): "ar-sa"
   - Dutch : "nl"
-   and all languages that are supported in the [moment.js](https://github.com/moment/moment/tree/develop/locale)
+   and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
 
