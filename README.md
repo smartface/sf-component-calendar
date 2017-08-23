@@ -185,6 +185,7 @@ Jump to the previous month
 Changes calendar type
 
   Supported Calendars:
+  
     - CalendarTypes.HIJRI
     - CalendarTypes.GREGORIAN
 
