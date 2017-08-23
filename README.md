@@ -167,3 +167,38 @@ calendar.addStyles(newMonthLabelColorStyle);
 
 ```
 
+## Api
+
+### Calendar.prototype.addStyles(style)
+Merges initial styles and updates the component
+
+### Calendar.prototype.setSelectedDate({day: Number, month: Number, year: Number})
+Sets specified date object as the selected date.
+
+### Calendar.prototype.nextMonth()
+Jump to the next month
+
+### Calendar.prototype.prevMonth()
+Jump to the previous month
+
+### Calendar.prototype.changeCalendar(type:String)
+Changes calendar type.
+
+  Supported Calendars:
+  
+    **CalendarTypes.HIJRI**
+    
+    **CalendarTypes.GREGORIAN**
+
+### Calendar.prototype.changeLang(lang:String)
+Changes calendar language.
+
+ Supported Calendars:
+  - Turkish : "tr"
+  - German : "de"
+  - French : "fr"
+  - Arabic: "ar"
+  - Arabic (Saudi): "ar-sa"
+  - Dutch : "nl"
+   and all languages that are supported in the [moment.js](https://github.com/moment/moment/tree/develop/locale)
+
