@@ -23,17 +23,23 @@ myCalendar.setSelectedDate({month: Number, year: Number, day: Number});
 
 Create new cloud workspace in the Smartface-Cloud with this repository url. Open Cloud IDE and switch to terminal in the scripts folder. Install dependencies via terminal:
 
-``` $ npm i moment```
-``` $ npm i moment-hijri```
+``` 
+    $ npm i moment
+    $ npm i moment-hijri
+```
 
 Then run command via terminal on the workspace root for TDD
-``` $ npm i ```
-``` npm run test:watch```
+
+``` 
+  $ npm i 
+  $ npm run test:watch```
 
 and run command to build service layer
+
 ``` $npm run dev ```
 
 Finally run commnand on the scripts folder to publish to npm:
+
 ``` $ npm publish ```
 
 ### Selected Date Schema
