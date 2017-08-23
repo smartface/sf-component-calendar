@@ -32,7 +32,8 @@ Then run command via terminal on the workspace root for TDD
 
 ``` 
   $ npm i 
-  $ npm run test:watch```
+  $ npm run test:watch
+```
 
 and run command to build service layer
 
