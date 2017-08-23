@@ -8,15 +8,15 @@
 ```js 
 
 const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
-const calendar = new Calendar();
+const myCalendar = new Calendar();
 
 // when user select a date
-calendar.onChange = function(data){
+myCalendar.onChange = function(data){
   ...
 }
 
 // changing calendar date
-calendar.setSelectedDate({month: Number, year: Number, day: Number});
+myCalendar.setSelectedDate({month: Number, year: Number, day: Number});
 ```
 
 ### Selected Date Schema
@@ -40,7 +40,7 @@ calendar.setSelectedDate({month: Number, year: Number, day: Number});
 ```
 ## Styling
 
-Default style schema
+Default style
 ```js
 
 {
@@ -68,10 +68,6 @@ Default style schema
 
           }
         },
-        "&_label":{
-          "textColor":"#000000",
-
-        },
         "&_daynames":{
           ".weekday":{
             "textColor":"#000000",
@@ -85,7 +81,6 @@ Default style schema
       }
     },
     ".body":{
-
     },
     ".weekRow":{
       "minHeight":42,
@@ -114,7 +109,6 @@ Default style schema
       "&-inrange":{
         "backgroundColor":"rgba(0,185,255,42)",
         "textColor":"#000000",
-
       },
       "&-selected":{
         "backgroundColor":"rgba(0,185,255,42)",
