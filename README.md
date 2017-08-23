@@ -182,13 +182,15 @@ Jump to the next month
 Jump to the previous month
 
 ### Calendar.prototype.changeCalendar(type:String)
-Changes calendar type.
+Changes calendar type
+
   Supported Calendars:
-    **CalendarTypes.HIJRI**
-    **CalendarTypes.GREGORIAN**
+    - **CalendarTypes.HIJRI**
+    - **CalendarTypes.GREGORIAN**
 
 ### Calendar.prototype.changeLang(lang:String)
 Changes calendar language.
+
  Supported Calendars:
   - Turkish : "tr"
   - German : "de"
