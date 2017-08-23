@@ -176,20 +176,20 @@ Merges initial styles and updates the component
 Sets specified date object as the selected date.
 
 ### Calendar.prototype.nextMonth()
-Jump to the next month
+Jumps to the next month
 
 ### Calendar.prototype.prevMonth()
-Jump to the previous month
+Jumps to the previous month
 
 ### Calendar.prototype.changeCalendar(type:String)
-Changes calendar type
+Changes the calendar's type
 
   Supported Calendars:
   - CalendarTypes.HIJRI
   - CalendarTypes.GREGORIAN
 
 ### Calendar.prototype.changeLang(lang:String)
-Changes calendar language.
+Changes the calendar's language.
 
  Supported Calendars:
   - Turkish : "tr"
