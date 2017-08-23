@@ -185,8 +185,8 @@ Jump to the previous month
 Changes calendar type
 
   Supported Calendars:
-    - **CalendarTypes.HIJRI**
-    - **CalendarTypes.GREGORIAN**
+    -   **CalendarTypes.HIJRI
+    -   **CalendarTypes.GREGORIAN
 
 ### Calendar.prototype.changeLang(lang:String)
 Changes calendar language.
