@@ -61,52 +61,6 @@ export function makeStylable(component, className, name, hooks){
       this.isUgly = true;
     }
     
-     // styles = merge(styles);
-      // const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
-      /*const reduceDiff = 
-        // reduceDiffStyleHook
-        // ? reduceDiffStyleHook(this.styles, styles)
-        // :
-        function (acc, key) {
-            if(this.styles[key] !== undefined) {
-              if(this.styles[key] !== styles[key]){
-                acc[key] = styles[key];
-              }
-            } else {
-              acc[key] = styles[key];
-            }
-            
-            return acc;
-          }.bind(this);*/
-
-      /*let diff = Object.keys(styles).reduce(function (acc, key) {
-            if(this.styles[key] !== undefined) {
-              if(this.styles[key] !== styles[key]){
-                acc[key] = styles[key];
-              }
-            } else {
-              acc[key] = styles[key];
-            }
-            
-            return acc;
-          }.bind(this), {});*/
-      
-      // console.log(JSON.stringify(diff));
-      // for(let i = 0, i< keys.length: i++){
-      //   let key = keys[i];
-      //   reduceDiffStyleDiffHook
-      // }
-      
-/*      const beforeHook = hooks("beforeStyleDiffAssign");
-      beforeHook && (diff = hooks("beforeStyleDiffAssign")(diff));
-      
-      Object.keys(diff).length && Object.assign(this.component, diff);
-      
-      // const afterHook = hooks("afterStyleDiffAssign");
-      // afterHook && (styles = hooks("afterStyleDiffAssign")(styles));
-      
-      this.styles = styles;
-*/    
     setStyles(styles) {
       const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
       let diffReducer = reduceDiffStyleHook 

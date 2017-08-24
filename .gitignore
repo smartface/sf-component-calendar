@@ -13,3 +13,4 @@ scripts/ui
 scripts/settings.json
 scripts/themes
 node_modules
+npm-debug.log
