@@ -8,11 +8,11 @@ import merge from "@smartface/styler/lib/utils/merge";
  * @params {String} name - component name
  * @params {Function} mapper
  */
-export function fromSFComponent(component, name, mapper){
+export function fromSFComponent(component, name, mapper, hooks){
   const flatted = {};
   
   function collect(component, name, mapper){
-    const newComp = makeStylable(component, mapper(name), name);
+    const newComp = makeStylable(component, mapper(name), name, hooks);
     flat(name, newComp);
 
     component.children && Object.keys(component.children).forEach((child) => {
@@ -50,7 +50,7 @@ export function fromArray(children, maker, mapper){
   });
 }
 
-export function makeStylable(component, className, name){
+export function makeStylable(component, className, name, hooks){
   return new class Stylable {
     constructor(){
       this.name = name;
@@ -61,21 +61,84 @@ export function makeStylable(component, className, name){
       this.isUgly = true;
     }
     
-    setStyles(styles) {
-      const diff = Object.keys(styles).reduce((acc, key) => {
-        if(this.styles[key] !== undefined) {
-          if(this.styles[key] !== styles[key]){
-            acc[key] = styles[key];
-          }
-        } else {
-          acc[key] = styles[key];
-        }
-        
-        return acc;
-      }, {});
+     // styles = merge(styles);
+      // const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
+      /*const reduceDiff = 
+        // reduceDiffStyleHook
+        // ? reduceDiffStyleHook(this.styles, styles)
+        // :
+        function (acc, key) {
+            if(this.styles[key] !== undefined) {
+              if(this.styles[key] !== styles[key]){
+                acc[key] = styles[key];
+              }
+            } else {
+              acc[key] = styles[key];
+            }
+            
+            return acc;
+          }.bind(this);*/
+
+      /*let diff = Object.keys(styles).reduce(function (acc, key) {
+            if(this.styles[key] !== undefined) {
+              if(this.styles[key] !== styles[key]){
+                acc[key] = styles[key];
+              }
+            } else {
+              acc[key] = styles[key];
+            }
+            
+            return acc;
+          }.bind(this), {});*/
+      
+      // console.log(JSON.stringify(diff));
+      // for(let i = 0, i< keys.length: i++){
+      //   let key = keys[i];
+      //   reduceDiffStyleDiffHook
+      // }
+      
+/*      const beforeHook = hooks("beforeStyleDiffAssign");
+      beforeHook && (diff = hooks("beforeStyleDiffAssign")(diff));
+      
+      Object.keys(diff).length && Object.assign(this.component, diff);
+      
+      // const afterHook = hooks("afterStyleDiffAssign");
+      // afterHook && (styles = hooks("afterStyleDiffAssign")(styles));
       
       this.styles = styles;
-      Object.keys(styles).length && Object.assign(this.component, diff);
+*/    
+    setStyles(styles) {
+      const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
+      let diffReducer = reduceDiffStyleHook 
+        ? reduceDiffStyleHook(this.styles, styles)
+        : (acc, key) => {
+            if(this.styles[key] !== undefined) {
+              if(this.styles[key] !== styles[key]) {
+                acc[key] = styles[key];
+              } else {
+                acc[key] = styles[key];
+              }
+            } 
+            
+            return acc;
+          };
+      
+      let diff = Object.keys(styles).reduce(diffReducer, {});
+      
+     /* global.benchmarkLog && 
+        global.benchmarkLog(Object.keys(diff));*/
+      
+      const beforeHook = hooks("beforeStyleDiffAssign");
+      beforeHook && 
+        (diff = beforeHook(diff));
+      
+      Object.keys(diff).length && 
+        Object.assign(this.component, diff);
+      
+      const afterHook = hooks("afterStyleDiffAssign");
+      afterHook && (styles = afterHook(styles));
+      
+      this.styles = styles;
     }
     
     setContext(context){
@@ -155,7 +218,7 @@ export function makeStylable(component, className, name){
 export function createStyleContext(actors){
   var context;
 
-  return function composeContext(styler, reducer){
+  return function composeContext(styler, reducer, filters){
     var latestState = context ? context.getState() : {};
     context && context.dispose();
     
@@ -179,9 +242,8 @@ export function createStyleContext(actors){
             
             if(comp.isUgly === true || action.type === INIT_CONTEXT_ACTION_TYPE){
               const className = context.actors[name].getClassName();
-              const styles = styler(className);
-              
-              context.actors[name].setStyles(styles());
+              const styles = styler(className)();
+              context.actors[name].setStyles(styles);
               comp.isUgly = false;
             }
           });

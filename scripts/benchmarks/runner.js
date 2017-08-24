@@ -1,24 +1,32 @@
 const timer = new Date();
 const collection = {};
+global.benchmarkLog = function(str){};
 
 function add(fn, name){
   collection[name] = fn;
 }
 
 function addLap(){
-  
 }
 
 function run(name, count){
+  var logs =[];
+  global.benchmarkLog = function(str){
+    logs.push(str);
+  };
+  
   var stop = timerStart();
   collection[name]();
   var elapsedTime = stop();
   
+  global.benchmarkLog = null;
+  
   return {
+    logs: logs,
     elapsedTime: elapsedTime,
     name: name,
     count: count,
-    asString: name+": name, elapsedTime: "+elapsedTime
+    asString: name+": elapsedTime: "+elapsedTime
   };
 }
 

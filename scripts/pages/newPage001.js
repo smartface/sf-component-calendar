@@ -73,6 +73,13 @@ function onShow(superOnShow) {
 	runner.add(fn, "nextMonth2");
 	runner.add(fn, "nextMonth3");
 	runner.add(fn, "nextMonth4");
+	runner.add(fn, "nextMonth5");
+	runner.add(fn, "nextMonth6");
+	runner.add(fn, "nextMonth7");
+	runner.add(fn, "nextMonth8");
+	runner.add(fn, "nextMonth9");
+	runner.add(fn, "nextMonth10");
+	
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth5");
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth6");
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth7");
@@ -83,13 +90,15 @@ function onShow(superOnShow) {
 	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth");
 	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth2");
 	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth3");
-	
 
 	// setTimeout(function(){
 		runner.runAll(3, function(res){
-			res.forEach(function(item){
-				console.log(item.asString);
-			})
+			res.forEach(function(item, index){
+				// console.log(index+":"+item.logs.length);
+				console.log(index+":"+item.asString);
+				// item.logs.forEach(function(log){
+				// });
+			});
 		});
 	// }
 	// , 3)

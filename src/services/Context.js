@@ -1,5 +1,9 @@
 let __id = 0;
 
+function addMiddleware(mware){
+  
+}
+
 export const INIT_CONTEXT_ACTION_TYPE = '__INIT_CONTEXT__';
 
 export function createInitAction(){
@@ -8,7 +12,7 @@ export function createInitAction(){
   }
 }
 
-export default function createContext(actors, updater, initialState={}){
+export default function createContext(actors, updater, middlewares, initialState={}){
   class Context {
     constructor(){
       // this.__id            = __id++;

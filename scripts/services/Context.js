@@ -27,6 +27,8 @@
 
   var __id = 0;
 
+  function addMiddleware(mware) {}
+
   var INIT_CONTEXT_ACTION_TYPE = exports.INIT_CONTEXT_ACTION_TYPE = '__INIT_CONTEXT__';
 
   function createInitAction() {
@@ -35,8 +37,8 @@
     };
   }
 
-  function createContext(actors, updater) {
-    var initialState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  function createContext(actors, updater, middlewares) {
+    var initialState = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
     var Context = function () {
       function Context() {

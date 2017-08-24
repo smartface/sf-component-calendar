@@ -1,6 +1,6 @@
 const flatStyler = require("@smartface/styler/lib/flatStyler");
 const StyleContext = require("../services/StyleContext");
-const getPropsFromStyle = require("library/styler-builder").getPropsFromStyle;
+const getOneProp = require("library/styler-builder").getOneProp;
 const INIT_CONTEXT_ACTION_TYPE = require("../services/Context").INIT_CONTEXT_ACTION_TYPE;
 
 const styles = {
@@ -51,6 +51,9 @@ const styles = {
 			"backgroundColor": "rgba(0,0,0,0)",
 			"maxHeight": 40,
 			"minHeight": 26,
+			"&_line": {
+				backgroundColor: "#C0C0C0"
+			}
 		},
 		".day": {
 			"font": {
@@ -94,7 +97,7 @@ var styler = flatStyler(styles);
 
 const selectDays = function(name){
 	return name.indexOf("_weekDay") > 0;
-}
+};
 
 function removeSelection(state, actors){
 	if(state.selectedDay){
@@ -120,10 +123,8 @@ function reducer(state, actors, action, target) {
 			newState.days = Object.keys(actors).filter(selectDays);
 			
 			return newState;
-			break;
 		case "resetDays":
 			resetDays(newState.days, actors);
-			
 			break;
 		case "daySelected":
 			removeSelection(newState, actors);
@@ -191,16 +192,64 @@ function createContext(component) {
 			}
 
 			return ".calendar";
+		},
+		//context hooks
+		function(hook){
+			switch (hook) {
+				case 'beforeStyleDiffAssign':
+					return function beforeStyleAssignment(styles){
+						Object.keys(styles).forEach(function(key){
+							styles[key] = getOneProp(key, styles[key])
+						});
+						
+					 return styles;
+				  }
+				case 'reduceDiffStyleHook':
+					return function reduceDiffStyleHook(oldStyles, newStyles){
+						function isEqual(oldStyle, newStyle){
+							if(oldStyle === undefined){
+								return false;
+							}
+							
+							var keys1 = Object.keys(oldStyle);
+							var keys2 = Object.keys(newStyle);
+							
+							// console.log(keys1.length +"!==" +keys2.length)
+							if(keys1.length !== keys2.length){
+								return false;
+							}
+							
+							let res = keys2.some(function(key){
+								return oldStyle[key] !== newStyle[key];
+							});
+							
+							return !res;
+						};
+						
+						return function diffStyleReducer(acc, key){
+							if(typeof newStyles[key] === "object"){
+								if(!isEqual(oldStyles[key], newStyles[key])){
+									acc[key] = newStyles[key];
+								} 
+							} else if(oldStyles[key] !== newStyles[key]){
+								acc[key] = newStyles[key];
+							}
+							
+							return acc;
+						}
+				  }
+			}
 		}
 	);
 	
-	// creates an initial styler to the context
+	// creates an initial styler for the context
 	var context = styleContext(
-		function(className) {
+		styler
+		/*function(className) {
 			return function getStyle() {
 				return getPropsFromStyle(styler, className);
 			}
-		},
+		}*/,
 		reducer
 	);
 	
@@ -208,11 +257,11 @@ function createContext(component) {
 		try {
 			const styler = flatStyler(styles, newStyles);
 			// injects a new styler to the context
-			styleContext(function(className) {
+			styleContext(styler/*function(className) {
 				return function getStyle() {
 					return getPropsFromStyle(styler, className);
 				}
-			}, reducer);
+			}*/, reducer);
 		} catch(e){
 			alert(e.message);
 		}

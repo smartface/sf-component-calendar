@@ -45,11 +45,11 @@
    * @params {String} name - component name
    * @params {Function} mapper
    */
-  function fromSFComponent(component, name, mapper) {
+  function fromSFComponent(component, name, mapper, hooks) {
     var flatted = {};
 
     function collect(component, name, mapper) {
-      var newComp = makeStylable(component, mapper(name), name);
+      var newComp = makeStylable(component, mapper(name), name, hooks);
       flat(name, newComp);
 
       component.children && Object.keys(component.children).forEach(function (child) {
@@ -87,7 +87,7 @@
     });
   }
 
-  function makeStylable(component, className, name) {
+  function makeStylable(component, className, name, hooks) {
     return new (function () {
       function Stylable() {
         _classCallCheck(this, Stylable);
@@ -100,23 +100,84 @@
         this.isUgly = true;
       }
 
+      // styles = merge(styles);
+      // const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
+      /*const reduceDiff = 
+        // reduceDiffStyleHook
+        // ? reduceDiffStyleHook(this.styles, styles)
+        // :
+        function (acc, key) {
+            if(this.styles[key] !== undefined) {
+              if(this.styles[key] !== styles[key]){
+                acc[key] = styles[key];
+              }
+            } else {
+              acc[key] = styles[key];
+            }
+            
+            return acc;
+          }.bind(this);*/
+
+      /*let diff = Object.keys(styles).reduce(function (acc, key) {
+            if(this.styles[key] !== undefined) {
+              if(this.styles[key] !== styles[key]){
+                acc[key] = styles[key];
+              }
+            } else {
+              acc[key] = styles[key];
+            }
+            
+            return acc;
+          }.bind(this), {});*/
+
+      // console.log(JSON.stringify(diff));
+      // for(let i = 0, i< keys.length: i++){
+      //   let key = keys[i];
+      //   reduceDiffStyleDiffHook
+      // }
+
+      /*      const beforeHook = hooks("beforeStyleDiffAssign");
+            beforeHook && (diff = hooks("beforeStyleDiffAssign")(diff));
+            
+            Object.keys(diff).length && Object.assign(this.component, diff);
+            
+            // const afterHook = hooks("afterStyleDiffAssign");
+            // afterHook && (styles = hooks("afterStyleDiffAssign")(styles));
+            
+            this.styles = styles;
+      */
+
+
       Stylable.prototype.setStyles = function setStyles(styles) {
         var _this = this;
 
-        var diff = Object.keys(styles).reduce(function (acc, key) {
+        var reduceDiffStyleHook = hooks("reduceDiffStyleHook");
+        var diffReducer = reduceDiffStyleHook ? reduceDiffStyleHook(this.styles, styles) : function (acc, key) {
           if (_this.styles[key] !== undefined) {
             if (_this.styles[key] !== styles[key]) {
               acc[key] = styles[key];
+            } else {
+              acc[key] = styles[key];
             }
-          } else {
-            acc[key] = styles[key];
           }
 
           return acc;
-        }, {});
+        };
+
+        var diff = Object.keys(styles).reduce(diffReducer, {});
+
+        /* global.benchmarkLog && 
+           global.benchmarkLog(Object.keys(diff));*/
+
+        var beforeHook = hooks("beforeStyleDiffAssign");
+        beforeHook && (diff = beforeHook(diff));
+
+        Object.keys(diff).length && Object.assign(this.component, diff);
+
+        var afterHook = hooks("afterStyleDiffAssign");
+        afterHook && (styles = afterHook(styles));
 
         this.styles = styles;
-        Object.keys(styles).length && Object.assign(this.component, diff);
       };
 
       Stylable.prototype.setContext = function setContext(context) {
@@ -200,7 +261,7 @@
   function createStyleContext(actors) {
     var context;
 
-    return function composeContext(styler, reducer) {
+    return function composeContext(styler, reducer, filters) {
       var latestState = context ? context.getState() : {};
       context && context.dispose();
 
@@ -222,9 +283,8 @@
 
           if (comp.isUgly === true || action.type === _Context.INIT_CONTEXT_ACTION_TYPE) {
             var className = context.actors[name].getClassName();
-            var styles = styler(className);
-
-            context.actors[name].setStyles(styles());
+            var styles = styler(className)();
+            context.actors[name].setStyles(styles);
             comp.isUgly = false;
           }
         });
