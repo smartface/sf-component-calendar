@@ -68,117 +68,125 @@ Default style
 ```js
 
 {
-	"#calendar":{
-		"&_line2": {
-			width: 160,
-			"alignSelf": "FLEX_END"
-		}
-	},	
-	".calendar": {
-		"&-self": {
-			"backgroundColor": "#FFFFFF",
-			"right":0,
-			"left":0,
-			"top":0,
-			"bottom": 0, 
-			"minHeight": 300,
-			"maxHeight": 300,
-			"paddingLeft": 0,
-			"paddingRight": 0,
-			"positionType": "ABSOLUTE"
-		},
-		"&_line": {
-			"height": 1,
-			"width": NaN,
-			"backgroundColor": "rgba(228,228,228,1)"
-		},
-		"&_calendarYear": {
-			"&_yearLabel": {
-				"textColor": "#FF001F"
-			}
-		},
-		".header": {
-			"&_navbar": {
-				"&_monthLabel": {
-					"textColor": "#1775D0"
-				},
-				"&_arrow": {
-					"flexGrow": 1,
-					"textColor": "#B1B1B4",
-				},
-				"&_label": {
-					"textColor": "#000000",
-				}
-			},
-			"&_dayNames": {
-				"backgroundColor": "#EBEBEB",
-				"minHeight": 14,
-				"maxHeight": NaN,
-				"height": NaN,
-				"flexGrow": 0.2,
-				"&_dayName": {
-					"height": NaN,
-					"font": {
-						"size": 10,
-						"family": "Arial"
-					},
-					".weekday": {
-						"textColor": "#000000",
-					},
-					".weekend": {
-						"textColor": "#808080",
-					}
-				}
-			}
-		},
-		".body": {
-		},
-		".weekRow": {
-			"backgroundColor": "rgba(0,0,0,0)",
-			"maxHeight": 40,
-			"minHeight": 26,
-			"&_line": {
-				"backgroundColor": "#C0C0C0"
-			}
-		},
-		".day": {
-			"font": {
-				"size": 14,
-				"bold": false,
-				"italic": false,
-				"family": "Arial"
-			},
-			"borderWidth": 0,
-			"borderRadius": 13,
-			"maxWidth": 26,
-			"minWidth": 26,
-			"maxHeight": 26,
-			"minHeight": 26,
-			"textColor": "#000000",
-			"backgroundColor": "rgba(0,0,0,0)",
-			"&-inrange": {
-				"textColor": "#000000",
-			},
-			"&-selected": {
-				"borderWidth": 0,
-				"backgroundColor": "rgba(0,185,255,42)",
-				"textColor": "#000000"
-			},
-			"&-deactiveDays": {
-				"borderWidth": 0,
-				"textColor": "#D6D6D6",
-			},
-			"&-specialDays": {
-				"borderWidth": 0,
-			},
-			"&-weekend": {
-				"borderWidth": 0,
-				"textColor": "#A3A3A3",
-			}
-		}
-	}
-};
+  "#calendar":{
+    "&_line2":{
+      width:160,
+      "alignSelf":"FLEX_END"
+    }
+  },
+  ".calendar":{
+    "&-self":{
+      "backgroundColor":"#FFFFFF",
+      "right":0,
+      "left":0,
+      "top":0,
+      "bottom":0,
+      "minHeight":300,
+      "maxHeight":300,
+      "paddingLeft":0,
+      "paddingRight":0,
+      "positionType":"ABSOLUTE"
+    },
+    "&_line":{
+      "height":1,
+      "width":NaN,
+      "backgroundColor":"rgba(228,228,228,1)"
+    },
+    "&_calendarYear":{
+      "&_yearLabel":{
+        "textColor":"#FF001F"
+      }
+    },
+    ".header":{
+      "&_navbar":{
+        "&_monthLabel":{
+          "textColor":"#1775D0"
+        },
+        "&_arrow":{
+          "flexGrow":1,
+          "textColor":"#B1B1B4",
 
+        },
+        "&_label":{
+          "textColor":"#000000",
+
+        }
+      },
+      "&_dayNames":{
+        "backgroundColor":"#EBEBEB",
+        "minHeight":14,
+        "maxHeight":NaN,
+        "height":NaN,
+        "flexGrow":0.2,
+        "&_dayName":{
+          "height":NaN,
+          "font":{
+            "size":10,
+            "family":"Arial"
+          },
+          ".weekday":{
+            "textColor":"#000000",
+
+          },
+          ".weekend":{
+            "textColor":"#808080",
+
+          }
+        }
+      }
+    },
+    ".body":{
+
+    },
+    ".weekRow":{
+      "backgroundColor":"rgba(0,0,0,0)",
+      "maxHeight":40,
+      "minHeight":26,
+      "&_line":{
+        "backgroundColor":"#C0C0C0"
+      }
+    },
+    ".day":{
+      "font":{
+        "size":14,
+        "bold":false,
+        "italic":false,
+        "family":"Arial"
+      },
+      "borderWidth":0,
+      "borderRadius":13,
+      "maxWidth":26,
+      "minWidth":26,
+      "maxHeight":26,
+      "minHeight":26,
+      "textColor":"#000000",
+      "backgroundColor":"rgba(0,0,0,0)",
+      "&-inrange":{
+        "textColor":"#000000",
+
+      },
+      "&-selected":{
+        "borderWidth":0,
+        "backgroundColor":"rgba(0,185,255,42)",
+        "textColor":"#000000"
+      },
+      "&-deactiveDays":{
+        "borderWidth":0,
+        "textColor":"#D6D6D6",
+
+      },
+      "&-specialDays":{
+        "borderWidth":0,
+
+      },
+      "&-weekend":{
+        "borderWidth":0,
+        "textColor":"#A3A3A3",
+
+      }
+    }
+  }
+};
 
 ```
 
