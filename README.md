@@ -213,15 +213,6 @@ calendar.addStyles(newMonthLabelColorStyle);
 ### Calendar.prototype.addStyles(style)
 Merges specified styles to current styles and updates the component
 
-### Calendar.prototype.setSelectedDate({day: Number, month: Number, year: Number})
-Sets specified date object as the selected date.
-
-### Calendar.prototype.nextMonth()
-Jumps to the next month
-
-### Calendar.prototype.prevMonth()
-Jumps to the previous month
-
 ### Calendar.prototype.changeCalendar(lang:String, type:String)
 Changes the calendar's type
 
@@ -242,8 +233,19 @@ Changes the calendar's language.
    and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
 
 ### Calendar.prototype.dispose()
-
 Disposes the calendar.
 
-### Calendar.prototype.onChanged
+### Calendar.prototype.nextMonth()
+Jumps to the next month
+
+### Calendar.prototype.now()
+Selects today.
+
+### Calendar.prototype.prevMonth()
+Jumps to the previous month
+
+### Calendar.prototype.setSelectedDate({day: Number, month: Number, year: Number})
+Sets specified date object as the selected date.
+
+### Calendar.prototype.onChanged Event
 Called when user presses on a day on the calendar. Calendar injects to callback a selected date object is described above.
