@@ -24,6 +24,8 @@ myCalendar.setSelectedDate({month: Number, year: Number, day: Number});
 Create new cloud workspace in the Smartface-Cloud with this repository url. Open Cloud IDE and switch to terminal in the scripts folder. Install dependencies via terminal:
 
 ``` 
+    $ npm i sf-core
+    $ npm i @smartface/styler
     $ npm i moment
     $ npm i moment-hijri
 ```
