@@ -18,13 +18,6 @@ momentHijri().format('iYYYY/iM/iD');
 export default function createService(lang="en", type="gregorian"){
 	var service
 	
-	// moment.locale(lang,  {
-	// 	dolongDateFormatw: "LLLL"
-	// });
-	// momentHijri.locale(lang,  {
-	// 	dolongDateFormatw: "LLLL"
-	// });
-	
 	var current;
 			service = DateService;
 			current = moment;
@@ -44,20 +37,6 @@ export default function createService(lang="en", type="gregorian"){
       doy: 6
     }
 	});
-	
-	// current = function momentWrapper(){
-	// 	current().locale(lang);
-	// 	var locale = 
-	// }
-
-	// current = function(){
-	// 	var args = Array.prototype.slice.apply(arguments);
-	// 	var res = current.apply(null, args);
-	// 	// moment.locale(lang);
-	// 	// moment.format("LLLL");
-		
-	// 	return res;
-	// }
 	
 	return {
 		getCalendarMonth: getCalendarMonth.bind(null, current, service),

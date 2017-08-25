@@ -196,7 +196,7 @@ export function createStyleContext(actors){
             
             if(comp.isUgly === true || action.type === INIT_CONTEXT_ACTION_TYPE){
               const className = context.actors[name].getClassName();
-              const styles = styler(className)();
+              const styles = styler(className+" #"+name)();
               context.actors[name].setStyles(styles);
               comp.isUgly = false;
             }

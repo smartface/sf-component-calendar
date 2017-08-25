@@ -78,20 +78,6 @@
 			}
 		});
 
-		// current = function momentWrapper(){
-		// 	current().locale(lang);
-		// 	var locale = 
-		// }
-
-		// current = function(){
-		// 	var args = Array.prototype.slice.apply(arguments);
-		// 	var res = current.apply(null, args);
-		// 	// moment.locale(lang);
-		// 	// moment.format("LLLL");
-
-		// 	return res;
-		// }
-
 		return {
 			getCalendarMonth: getCalendarMonth.bind(null, current, service),
 			getMonth: getMonth.bind(null, current, service)

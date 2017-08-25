@@ -146,13 +146,17 @@ function CalendarPrototype(proto){
 	proto.updateCalendar = function(month){
 		updateRows.call(this, month.days, month.date);
 		this.children.navbar.setLabel(month.longName);
-		this.children.navbar.setYear(month.date.year);
+		this.children.calendarYear.setYear(month.date.year);
 		currentMonth = month;
 
-		month.daysShort.forEach(function(day, index) {
+		month.daysMin.forEach(function(day, index) {
 			this.children.calendarDays.children["dayName_"+index].text = day;
 		}.bind(this));
 	};
+	
+	proto.onShow = function(){
+		this.updateCalendar(currentMonth);
+	}
 	
 	proto.nextMonth = function(){
 		if(currentMonth){

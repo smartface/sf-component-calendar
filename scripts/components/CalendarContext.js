@@ -4,8 +4,15 @@ const getOneProp = require("library/styler-builder").getOneProp;
 const INIT_CONTEXT_ACTION_TYPE = require("../services/Context").INIT_CONTEXT_ACTION_TYPE;
 
 const styles = {
+	"#calendar":{
+		"&_line2": {
+			width: 160,
+			"alignSelf": "FLEX_END"
+		}
+	},	
 	".calendar": {
-		"&-size": {
+		"&-self": {
+			"backgroundColor": "#FFFFFF",
 			"right":0,
 			"left":0,
 			"top":0,
@@ -14,8 +21,16 @@ const styles = {
 			"maxHeight": 300,
 			"paddingLeft": 0,
 			"paddingRight": 0,
-			"flexProps": {
-				"positionType": "ABSOLUTE",
+			"positionType": "ABSOLUTE"
+		},
+		"&_line": {
+			"height": 1,
+			"width": NaN,
+			"backgroundColor": "rgba(228,228,228,1)"
+		},
+		"&_calendarYear": {
+			"&_yearLabel": {
+				"textColor": "#FF001F"
 			}
 		},
 		".header": {
@@ -23,24 +38,31 @@ const styles = {
 				"&_monthLabel": {
 					"textColor": "#1775D0"
 				},
-				"&_yearLabel": {
-					"textColor": "#B1B1B4"
-				},
 				"&_arrow": {
-					"flexProps": {
-						"flexGrow": 1,
-						"textColor": "#B1B1B4",
-					}
+					"flexGrow": 1,
+					"textColor": "#B1B1B4",
 				},
 				"&_label": {
 					"textColor": "#000000",
-				},
-				"&_daynames": {
+				}
+			},
+			"&_dayNames": {
+				"backgroundColor": "#EBEBEB",
+				"minHeight": 14,
+				"maxHeight": NaN,
+				"height": NaN,
+				"flexGrow": 0.2,
+				"&_dayName": {
+					"height": NaN,
+					"font": {
+						"size": 10,
+						"family": "Arial"
+					},
 					".weekday": {
 						"textColor": "#000000",
 					},
 					".weekend": {
-						"textColor": "#000000",
+						"textColor": "#808080",
 					}
 				}
 			}
@@ -52,7 +74,7 @@ const styles = {
 			"maxHeight": 40,
 			"minHeight": 26,
 			"&_line": {
-				backgroundColor: "#C0C0C0"
+				"backgroundColor": "#C0C0C0"
 			}
 		},
 		".day": {
@@ -165,19 +187,26 @@ function createContext(component) {
 		component,
 		"calendar",
 		//initial classNames
-		function initializeClassNames(name) {
+		function classNameFactory(name) {
 			const namePattern = /week[0-9]+_weekDay[0-9]+/
 			const rowPattern = new RegExp("week[0-9]+");
+			const dayNamesPattern = new RegExp("dayName_[0-9]+");
+			const linePattern = new RegExp("_line[0-9]+");
 
 			if (namePattern.test(name)) {
 				return '.calendar.day';
 			} else if (rowPattern.test(name)) {
 				return '.calendar.weekRow';
+			} else if(dayNamesPattern.test(name)){
+				return ".calendar.header_dayNames_dayName.weekday";
+			} else if(linePattern.test(name)){
+				console.log(name);
+				return ".calendar_line";
 			}
 			
 			switch (name) {
 				case 'calendar':
-					return ".calendar-size";
+					return ".calendar-self";
 				case 'calendar_navbar':
 					return ".calendar.header .calendar.header_navbar";
 				case 'calendar_navbar_prevMonth':
@@ -185,10 +214,12 @@ function createContext(component) {
 					return ".calendar.header_navbar_arrow";
 				case 'calendar_navbar_monthLabel':
 					return ".calendar.header_navbar_monthLabel";
-				case 'calendar_navbar_yearLabel':
-					return ".calendar.header_navbar_yearLabel";
+				case 'calendar_calendarYear_yearLabel':
+					return ".calendar_calendarYear_yearLabel";
 				case 'calendar_body':
 					return ".calendar.body";
+				case 'calendar_calendarDays':
+					return ".calendar.header_dayNames";
 			}
 
 			return ".calendar";

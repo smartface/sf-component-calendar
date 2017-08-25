@@ -26,12 +26,7 @@ const CalendarNavBar = extend(CalendarNavBarDesign)(
 		this.setLabel = function(text){
 			this.children.monthLabel.text = text;
 		}.bind(this);
-		
-		this.setYear = function(text){
-			this.children.yearLabel.text = text;
-		}.bind(this);
 	}
-	
 );
 
 module && (module.exports = CalendarNavBar);

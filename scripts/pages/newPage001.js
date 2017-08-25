@@ -73,12 +73,12 @@ function onShow(superOnShow) {
 	runner.add(fn, "nextMonth2");
 	runner.add(fn, "nextMonth3");
 	runner.add(fn, "nextMonth4");
-	runner.add(fn, "nextMonth5");
-	runner.add(fn, "nextMonth6");
-	runner.add(fn, "nextMonth7");
-	runner.add(fn, "nextMonth8");
-	runner.add(fn, "nextMonth9");
-	runner.add(fn, "nextMonth10");
+	// runner.add(fn, "nextMonth5");
+	// runner.add(fn, "nextMonth6");
+	// runner.add(fn, "nextMonth7");
+	// runner.add(fn, "nextMonth8");
+	// runner.add(fn, "nextMonth9");
+	// runner.add(fn, "nextMonth10");
 	
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth5");
 	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth6");
