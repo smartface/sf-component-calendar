@@ -39,4 +39,3 @@ const CalendarDay = extend(CalendarDayDesign)(
 );
 
 module && (module.exports = CalendarDay);
-

@@ -62,6 +62,53 @@ const NewPage001 = extend(NewPage001Design)(
 function onShow(superOnShow) {
   superOnShow();
   
+	var specialDaysData = {
+		"isSpecialDay": function(date){
+			
+		},
+		"by-year": {
+			"year-2018": {
+	      "month-1": {
+	        "day-1": {
+	        	"gregorian": {
+		        	"available-langs": "en,tr",
+		        	"text": {
+		        		"*": "New Year",
+		        		"tr": "Yeni Yil"
+		        	}
+		        }
+	        }
+	      }
+      }
+		},
+    "by-months": {
+      "month-1": {
+        "day-1": [{
+        	"gregorian": {
+	        	"available-langs": "en,tr",
+	        	"text": {
+	        		"*": "New Year",
+	        		"tr": "Yeni Yil"
+	        	}
+	        },
+	        length: 2
+        }],
+        "day-2": {
+        	"available-langs": "en,tr",
+        	"text": {
+        		"*": "New Year",
+        		"tr": "Yeni Yil"
+        	}        	
+        }
+      },
+      "month-2": {
+        "14": "Sevgililer gunu"
+      }
+    }
+  }
+};
+	
+	
   // this.children.calendar.setSelectedDate({
   // 	day: 16,
   // 	month: 9,

@@ -156,7 +156,7 @@ function CalendarPrototype(proto){
 	
 	proto.onShow = function(){
 		this.updateCalendar(currentMonth);
-	}
+	};
 	
 	proto.nextMonth = function(){
 		if(currentMonth){

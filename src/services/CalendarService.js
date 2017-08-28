@@ -15,7 +15,7 @@ momentHijri().format('iYYYY/iM/iD');
 // moment.locale(["en", "ar-sa", "ar", "tr"]);
 // momentHijri.locale("en");
 
-export default function createService(lang="en", type="gregorian"){
+export default function createService(lang="en", type="gregorian", specialDays={}){
 	var service
 	
 	var current;
@@ -42,6 +42,10 @@ export default function createService(lang="en", type="gregorian"){
 		getCalendarMonth: getCalendarMonth.bind(null, current, service),
 		getMonth: getMonth.bind(null, current, service)
 	};
+}
+
+function getSpecialDay(){
+	
 }
 
 function getMonth(moment, service, dt) {
@@ -77,6 +81,7 @@ function getCalendarMonth(moment, service, dt){
 	
 	for(var i = 0; i < cellCount; i++){
 		let day;
+		
 		if(i < currentMonth.startDayOfMonth()) {
 			day = {
 			  day: ++prev,

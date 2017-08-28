@@ -1,22 +1,24 @@
 const flatStyler = require("@smartface/styler/lib/flatStyler");
 const StyleContext = require("../services/StyleContext");
-const getOneProp = require("library/styler-builder").getOneProp;
-const INIT_CONTEXT_ACTION_TYPE = require("../services/Context").INIT_CONTEXT_ACTION_TYPE;
+const getOneProp = require("library/styler-builder")
+	.getOneProp;
+const INIT_CONTEXT_ACTION_TYPE = require("../services/Context")
+	.INIT_CONTEXT_ACTION_TYPE;
 
 const styles = {
-	"#calendar":{
+	"#calendar": {
 		"&_line2": {
 			width: 160,
 			"alignSelf": "FLEX_END"
 		}
-	},	
+	},
 	".calendar": {
 		"&-self": {
 			"backgroundColor": "#FFFFFF",
-			"right":0,
-			"left":0,
-			"top":0,
-			"bottom": 0, 
+			"right": 0,
+			"left": 0,
+			"top": 0,
+			"bottom": 0,
 			"minHeight": 300,
 			"maxHeight": 300,
 			"paddingLeft": 0,
@@ -67,8 +69,7 @@ const styles = {
 				}
 			}
 		},
-		".body": {
-		},
+		".body": {},
 		".weekRow": {
 			"backgroundColor": "rgba(0,0,0,0)",
 			"maxHeight": 40,
@@ -117,20 +118,20 @@ const styles = {
 
 var styler = flatStyler(styles);
 
-const selectDays = function(name){
+const selectDays = function(name) {
 	return name.indexOf("_weekDay") > 0;
 };
 
-function removeSelection(state, actors){
-	if(state.selectedDay){
+function removeSelection(state, actors) {
+	if(state.selectedDay) {
 		actors[state.selectedDay].removeClassName(".calendar.day-selected");
 		delete state.selectedDay;
 	}
 }
 
-function resetDays(days, actors){
-	days.forEach(function(name){
-		if(actors[name].getClassName() != ".calendar.day"){
+function resetDays(days, actors) {
+	days.forEach(function(name) {
+		if(actors[name].getClassName() != ".calendar.day") {
 			actors[name].resetClassNames([".calendar.day"]);
 		}
 	});
@@ -139,11 +140,12 @@ function resetDays(days, actors){
 // reducer for context's components
 function reducer(state, actors, action, target) {
 	const newState = Object.assign({}, state);
-	
-	switch (action.type) {
+
+	switch(action.type) {
 		case INIT_CONTEXT_ACTION_TYPE:
-			newState.days = Object.keys(actors).filter(selectDays);
-			
+			newState.days = Object.keys(actors)
+				.filter(selectDays);
+
 			return newState;
 		case "resetDays":
 			resetDays(newState.days, actors);
@@ -159,26 +161,26 @@ function reducer(state, actors, action, target) {
 			break;
 		case "changeMonth":
 			removeSelection(newState, actors);
-		break;
+			break;
 		case "changeState":
 			const actor = actors[target];
 			const data = action.data;
-			
-			if(data.isSpecialDay){
+
+			if(data.isSpecialDay) {
 				actor.pushClassName(".calendar.day-specialDays");
 			}
 
-			if(data.isWeekend){
+			if(data.isWeekend) {
 				actor.pushClassName(".calendar.day-weekend");
 			}
 
-			if(data.month != "current"){
+			if(data.month != "current") {
 				actor.pushClassName(".calendar.day-deactiveDays");
 			}
-			
+
 			break;
 	}
-	
+
 	return newState;
 }
 
@@ -193,18 +195,18 @@ function createContext(component) {
 			const dayNamesPattern = new RegExp("dayName_[0-9]+");
 			const linePattern = new RegExp("_line[0-9]+");
 
-			if (namePattern.test(name)) {
+			if(namePattern.test(name)) {
 				return '.calendar.day';
-			} else if (rowPattern.test(name)) {
+			} else if(rowPattern.test(name)) {
 				return '.calendar.weekRow';
-			} else if(dayNamesPattern.test(name)){
+			} else if(dayNamesPattern.test(name)) {
 				return ".calendar.header_dayNames_dayName.weekday";
-			} else if(linePattern.test(name)){
+			} else if(linePattern.test(name)) {
 				console.log(name);
 				return ".calendar_line";
 			}
-			
-			switch (name) {
+
+			switch(name) {
 				case 'calendar':
 					return ".calendar-self";
 				case 'calendar_navbar':
@@ -225,54 +227,55 @@ function createContext(component) {
 			return ".calendar";
 		},
 		//context hooks
-		function(hook){
-			switch (hook) {
+		function(hook) {
+			switch(hook) {
 				case 'beforeStyleDiffAssign':
-					return function beforeStyleAssignment(styles){
-						Object.keys(styles).forEach(function(key){
-							styles[key] = getOneProp(key, styles[key])
-						});
-						
-					 return styles;
-				  }
+					return function beforeStyleAssignment(styles) {
+						Object.keys(styles)
+							.forEach(function(key) {
+								styles[key] = getOneProp(key, styles[key])
+							});
+
+						return styles;
+					}
 				case 'reduceDiffStyleHook':
-					return function reduceDiffStyleHook(oldStyles, newStyles){
-						function isEqual(oldStyle, newStyle){
-							if(oldStyle === undefined){
+					return function reduceDiffStyleHook(oldStyles, newStyles) {
+						function isEqual(oldStyle, newStyle) {
+							if(oldStyle === undefined) {
 								return false;
 							}
-							
+
 							var keys1 = Object.keys(oldStyle);
 							var keys2 = Object.keys(newStyle);
-							
+
 							// console.log(keys1.length +"!==" +keys2.length)
-							if(keys1.length !== keys2.length){
+							if(keys1.length !== keys2.length) {
 								return false;
 							}
-							
-							let res = keys2.some(function(key){
+
+							let res = keys2.some(function(key) {
 								return oldStyle[key] !== newStyle[key];
 							});
-							
+
 							return !res;
 						};
-						
-						return function diffStyleReducer(acc, key){
-							if(typeof newStyles[key] === "object"){
-								if(!isEqual(oldStyles[key], newStyles[key])){
+
+						return function diffStyleReducer(acc, key) {
+							if(typeof newStyles[key] === "object") {
+								if(!isEqual(oldStyles[key], newStyles[key])) {
 									acc[key] = newStyles[key];
-								} 
-							} else if(oldStyles[key] !== newStyles[key]){
+								}
+							} else if(oldStyles[key] !== newStyles[key]) {
 								acc[key] = newStyles[key];
 							}
-							
+
 							return acc;
 						}
-				  }
+					}
 			}
 		}
 	);
-	
+
 	// creates an initial styler for the context
 	var context = styleContext(
 		styler
@@ -280,25 +283,28 @@ function createContext(component) {
 			return function getStyle() {
 				return getPropsFromStyle(styler, className);
 			}
-		}*/,
+		}*/
+		,
 		reducer
 	);
-	
+
 	return function setStyle(newStyles) {
 		try {
 			const styler = flatStyler(styles, newStyles);
 			// injects a new styler to the context
-			styleContext(styler/*function(className) {
-				return function getStyle() {
-					return getPropsFromStyle(styler, className);
-				}
-			}*/, reducer);
-		} catch(e){
+			styleContext(styler
+				/*function(className) {
+								return function getStyle() {
+									return getPropsFromStyle(styler, className);
+								}
+							}*/
+				, reducer);
+		} catch(e) {
 			alert(e.message);
 		}
-	}
+	};
 }
 
 module.exports = {
 	createContext: createContext
-}
+};
