@@ -70,7 +70,7 @@
         this.state = Object.assign({}, initialState);
         // this.dispatch = this.dispatch.bind(this);
         // this.setState = this.setState.bind(this);
-        // this.getState = this.getState.bind(this);
+        // this.getState = tbbbbbbbbbhis.getState.bind(this);
 
         this.dispatch({ type: INIT_CONTEXT_ACTION_TYPE });
       }

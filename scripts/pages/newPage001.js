@@ -91,7 +91,7 @@ function onShow(superOnShow) {
 	        		"tr": "Yeni Yil"
 	        	}
 	        },
-	        length: 2
+	        length: 1
         }],
         "day-2": {
         	"available-langs": "en,tr",

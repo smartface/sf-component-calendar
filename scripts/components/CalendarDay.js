@@ -33,7 +33,6 @@ const CalendarDay = extend(CalendarDayDesign)(
 		}
 		
 		proto.clearSelected = function(){
-			// this.borderColor = Color.BLACK;
 		}
 	}
 );

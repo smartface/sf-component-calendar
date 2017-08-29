@@ -132,7 +132,6 @@ describe("Style Context", function() {
 
 	      	switch(action){
 	      		case INIT_CONTEXT_ACTION_TYPE:
-	      			actors[target].pushClassName(".calendar.day");
 	      			break;
 	      		case "daySelected":
 	      			if(newState.selected){
@@ -145,7 +144,7 @@ describe("Style Context", function() {
 	      			return newState;
 	      			break;
 	      		case "clearSelected":
-	      			actors[target].setClassName(".calendar.day");
+	      			actors[newState.selected].removeClassName(".calendar.day-selected");
 	      			break;
 	      	}
 	      }
@@ -153,11 +152,20 @@ describe("Style Context", function() {
       
       var actors = context.map(actor => actor);
       component.children.week.children.day1.changeState("daySelected");
+      
       {
       	const actor = actors.find(actor => actor.name === "calendar_week_day1");
 				const {context, name, dispatcher, children, ...style} = component.children.week.children.day1;
 				expect(".calendar.day .calendar.day-selected").to.eql(actor.getClassName());
 				expect(style).to.eql(styling(".calendar.day .calendar.day-selected")());
+      }
+
+      component.children.week.children.day1.changeState("clearSelected");
+      {
+      	const actor = actors.find(actor => actor.name === "calendar_week_day1");
+				const {context, name, dispatcher, children, ...style} = component.children.week.children.day1;
+				expect(".calendar.day").to.eql(actor.getClassName());
+				expect(style).to.eql(styling(".calendar.day")());
       }
 
       expect(actors.length).to.equal(7);

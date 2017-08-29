@@ -1,20 +1,23 @@
-/**
- * Creates an calendar service
- * 
- * @returns {}
- */
-
 import DateService from "./DateWrapper";
 import DateServiceHijri from "./DateWrapperHijri";
 
 import moment from "moment";
 import 'moment/locale/ar-sa';
 import momentHijri from "moment-hijri";
-momentHijri().format('iYYYY/iM/iD');
+// momentHijri().format('iYYYY/iM/iD');
 
 // moment.locale(["en", "ar-sa", "ar", "tr"]);
 // momentHijri.locale("en");
 
+/**
+ * Creates a service by specified parameters
+ * 
+ * @param {string} lang - Calendar language
+ * @param {string} type - Calendar type
+ * @param {Object} specialDays - Special days data
+ * 
+ * @returns {Object}
+ */
 export default function createService(lang="en", type="gregorian", specialDays={}){
 	var service
 	
@@ -39,15 +42,23 @@ export default function createService(lang="en", type="gregorian", specialDays={
 	});
 	
 	return {
+		/**
+		 * Returns current calendar month data
+		 */
 		getCalendarMonth: getCalendarMonth.bind(null, current, service),
+		/**
+		 * Returns current month data
+		 */
 		getMonth: getMonth.bind(null, current, service)
 	};
 }
 
-function getSpecialDay(){
-	
-}
-
+/**
+ * Returns current month data
+ * 
+ * @private
+ * @returns {Object}
+ */
 function getMonth(moment, service, dt) {
 	const dateService = new service(moment, dt);
   
@@ -59,6 +70,12 @@ function getMonth(moment, service, dt) {
   };
 }
 
+/**
+ * Returns current calendar month data
+ * 
+ * @private
+ * @returns {Object}
+ */
 function getCalendarMonth(moment, service, dt){
 	const currentMonth = new service(moment, dt);
 

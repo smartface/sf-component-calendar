@@ -34,29 +34,26 @@
 		};
 	}
 
-	(0, _momentHijri2.default)().format('iYYYY/iM/iD');
+	// momentHijri().format('iYYYY/iM/iD');
 
 	// moment.locale(["en", "ar-sa", "ar", "tr"]);
 	// momentHijri.locale("en");
 
 	/**
-  * Creates an calendar service
+  * Creates a service by specified parameters
   * 
-  * @returns {}
+  * @param {string} lang - Calendar language
+  * @param {string} type - Calendar type
+  * @param {Object} specialDays - Special days data
+  * 
+  * @returns {Object}
   */
-
 	function createService() {
 		var lang = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "en";
 		var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "gregorian";
+		var specialDays = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
 		var service;
-
-		// moment.locale(lang,  {
-		// 	dolongDateFormatw: "LLLL"
-		// });
-		// momentHijri.locale(lang,  {
-		// 	dolongDateFormatw: "LLLL"
-		// });
 
 		var current;
 		service = _DateWrapper2.default;
@@ -79,11 +76,23 @@
 		});
 
 		return {
+			/**
+    * Returns current calendar month data
+    */
 			getCalendarMonth: getCalendarMonth.bind(null, current, service),
+			/**
+    * Returns current month data
+    */
 			getMonth: getMonth.bind(null, current, service)
 		};
 	}
 
+	/**
+  * Returns current month data
+  * 
+  * @private
+  * @returns {Object}
+  */
 	function getMonth(moment, service, dt) {
 		var dateService = new service(moment, dt);
 
@@ -95,6 +104,12 @@
 		};
 	}
 
+	/**
+  * Returns current calendar month data
+  * 
+  * @private
+  * @returns {Object}
+  */
 	function getCalendarMonth(moment, service, dt) {
 		var currentMonth = new service(moment, dt);
 
@@ -117,6 +132,7 @@
 
 		for (var i = 0; i < cellCount; i++) {
 			var day = void 0;
+
 			if (i < currentMonth.startDayOfMonth()) {
 				day = {
 					day: ++prev,
