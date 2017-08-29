@@ -23,7 +23,7 @@
    * Returns a special days wrapper service
    * 
    * @param {{byYears: Object.<string, SpecialDaysYear>, byMonths: Object.<string, SpecialDaysMonth>} specialDays
-   * @returns {{isSpecialDay:function,getSpecialDay:function, getAll:function, getRaw:function}}
+   * @returns {{getSpecialDay:function, getBundle:function, getRaw:function}}
    */
 
   /**
@@ -78,51 +78,18 @@
     // console.log(JSON.stringify(specialDaysBundle));
 
     return Object.freeze({
-      isSpecialDay: function isSpecialDay(_ref) {
+      getSpecialDay: function getSpecialDay(_ref) {
         var _ref$year = _ref.year,
-            year = _ref$year === undefined ? "" : _ref$year,
+            year = _ref$year === undefined ? 0 : _ref$year,
             month = _ref.month,
             day = _ref.day,
             calendar = _ref.calendar,
             lang = _ref.lang;
 
-        var keyByYear = getKey(year, month, day, calendar);
-        var keyByMonth = getKey("", month, day, calendar);
-        var keyByYearandAllCalendars = getKey(year, month, day, "*");
-        var keyByMonthandAllCalendars = getKey("", month, day, "*");
-
-        var selectedDays = specialDaysBundle[keyByYear] || specialDaysBundle[keyByMonth] || specialDaysBundle[keyByYearandAllCalendars] || specialDaysBundle[keyByMonthandAllCalendars] || [];
-
-        var selectedDay = selectedDays.find(function (aday) {
-          return !aday.langs.some(function (ln) {
-            return ln === "~" + lang;
-          }) || aday.langs.some(function (ln) {
-            return ln === "*";
-          }) || aday.langs.some(function (ln) {
-            return ln === lang;
-          });
-        });
-
-        return selectedDay && selectedDay.langs.some(function (ln) {
-          return ln !== "~" + lang;
-        }) && selectedDay.langs.some(function (ln) {
-          return ln === "*";
-        }) && selectedDay.langs.some(function (ln) {
-          return ln === lang;
-        });
-      },
-      getSpecialDay: function getSpecialDay(_ref2) {
-        var _ref2$year = _ref2.year,
-            year = _ref2$year === undefined ? "" : _ref2$year,
-            month = _ref2.month,
-            day = _ref2.day,
-            calendar = _ref2.calendar,
-            lang = _ref2.lang;
-
-        var keyByYear = getKey(year, month, day, calendar);
-        var keyByMonth = getKey("", month, day, calendar);
-        var keyByYearandAllCalendars = getKey(year, month, day, "*");
-        var keyByMonthandAllCalendars = getKey("", month, day, "*");
+        var keyByYear = getKey({ year: year, month: month, day: day, calendar: calendar });
+        var keyByMonth = getKey({ year: year, month: month, day: day, calendar: calendar });
+        var keyByYearandAllCalendars = getKey({ year: year, month: month, day: day, calendar: "*" });
+        var keyByMonthandAllCalendars = getKey({ month: month, day: day, calendar: "*" });
 
         var selectedDays = specialDaysBundle[keyByYear] || specialDaysBundle[keyByMonth] || specialDaysBundle[keyByYearandAllCalendars] || specialDaysBundle[keyByMonthandAllCalendars] || [];
 
@@ -142,7 +109,7 @@
           }
         } : false;
       },
-      getAll: function getAll() {
+      getBundle: function getBundle() {
         return specialDaysBundle;
       },
       getRaw: function getRaw() {
@@ -151,7 +118,13 @@
     });
   }
 
-  function getKey(year, month, day, calendar) {
+  function getKey(_ref2) {
+    var _ref2$year = _ref2.year,
+        year = _ref2$year === undefined ? 0 : _ref2$year,
+        month = _ref2.month,
+        day = _ref2.day,
+        calendar = _ref2.calendar;
+
     return year ? "m-" + year + "-" + month + "-" + day + "-" + calendar : "m-" + month + "-" + day + "-" + calendar;
   }
 
