@@ -1,6 +1,6 @@
 import DateService from "./DateWrapper";
 import DateServiceHijri from "./DateWrapperHijri";
-
+import createSpecialDaysService from "./SpecialDaysService";
 import moment from "moment";
 import 'moment/locale/ar-sa';
 import momentHijri from "moment-hijri";
@@ -18,7 +18,7 @@ import momentHijri from "moment-hijri";
  * 
  * @returns {Object}
  */
-export default function createService(lang="en", type="gregorian", specialDays={}){
+export default function createService({lang="en", type="gregorian", specialDays={}}){
 	var service
 	
 	var current;
@@ -41,11 +41,21 @@ export default function createService(lang="en", type="gregorian", specialDays={
     }
 	});
 	
+	const specialDaysService = createSpecialDaysService(specialDays);
+	
 	return {
 		/**
 		 * Returns current calendar month data
 		 */
-		getCalendarMonth: getCalendarMonth.bind(null, current, service),
+		getCalendarMonth: getCalendarMonth.bind(
+			null, 
+			current, 
+			service, 
+			(args) => {
+				args.lang = lang;
+				args.calendar = type;
+				return specialDaysService.getSpecialDay(args);
+			}),
 		/**
 		 * Returns current month data
 		 */
@@ -76,7 +86,7 @@ function getMonth(moment, service, dt) {
  * @private
  * @returns {Object}
  */
-function getCalendarMonth(moment, service, dt){
+function getCalendarMonth(moment, service, specialDaysService, dt){
 	const currentMonth = new service(moment, dt);
 
   const prevMonth = currentMonth.prevMonth();
@@ -103,22 +113,25 @@ function getCalendarMonth(moment, service, dt){
 			day = {
 			  day: ++prev,
 			  month: 'previous',
-			  isSpecialDay: false,
 			};
+	
+			day.specialDay = specialDaysService({...prevMonth.toObject(), day: day.day-1});
 		} else if(i >= startNext) {
 			day = {
 			  day: next++,
 			  month: 'next',
-			  isSpecialDay: false,
 			};
+
+			day.specialDay = specialDaysService({...nextMonth.toObject(), day: day.day-1});
 		} else {
 			day = {
 			  day: i - startDay + 1,
 			  month: 'current',
-			  isSpecialDay: false,
 			};
+			
+			day.specialDay = specialDaysService({...currentMonth.toObject(), day: day.day-1});
 		}
-		
+
 		row.push(day);
 		
 		if(row.length === 1 || row.length === 7){
@@ -157,11 +170,4 @@ function getCalendarMonth(moment, service, dt){
       normalizedDate: nextMonth.toNormalizedObject()
     }
 	};
-}
-
-export function getWeek(){
-}
-
-export function changeGlobalLang(dateService, lang){
-  dateService.locale(lang);
 }

@@ -66,29 +66,25 @@ export default
        */
       getSpecialDay({year=0, month, day, calendar, lang}){
         const keyByYear = getKey({year, month, day, calendar});
-        const keyByMonth = getKey({year, month, day, calendar});
+        const keyByMonth = getKey({month, day, calendar});
         const keyByYearandAllCalendars = getKey({year, month, day, calendar: "*"});
         const keyByMonthandAllCalendars = getKey({month, day, calendar: "*"});
         
-        const selectedDays = specialDaysBundle[keyByYear] || 
-          specialDaysBundle[keyByMonth] ||
-          specialDaysBundle[keyByYearandAllCalendars] ||
-          specialDaysBundle[keyByMonthandAllCalendars] ||
-          [];
+        // console.log(day, month, calendar, specialDaysBundle[keyByMonth]);
+        const selectedDays = [].concat(
+          specialDaysBundle[keyByYear] || [], 
+          specialDaysBundle[keyByMonth] || [],
+          specialDaysBundle[keyByYearandAllCalendars] || [],
+          specialDaysBundle[keyByMonthandAllCalendars] || []
+        );
           
-        const selectedDay = selectedDays.find(aday => {
-            return !aday.langs.some(ln => ln === "~"+lang) ||
+        const selectedDay = selectedDays.filter(aday => {
+          return !aday.langs.some(ln => ln === "~"+lang) ||
             aday.langs.some(ln => ln === "*") ||
-            aday.langs.some(ln => ln === lang)
-          })
+            aday.langs.some(ln => ln === lang);
+        });
           
-        return selectedDay
-          ? {
-              getText(){
-                return selectedDay.text[lang] || selectedDay.text["*"]
-              },
-            }
-          : false;
+        return selectedDay.map(day => day.text[lang] || day.text["*"]);
       },
       getBundle(){
         return specialDaysBundle;

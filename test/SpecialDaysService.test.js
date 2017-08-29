@@ -68,31 +68,30 @@ describe("Special Days Service", function() {
 	it("return a valid specialday", function() {
 		let day = service.getSpecialDay({});
 		expect(day)
-			.to.be.false;
+			.to.eql([]);
 
 		day = service.getSpecialDay({year: 2018, month: 0, day: 0, calendar: "gregorian", lang: "en"});
-		expect(day.getText())
-			.to.equal("Happy New Year");
+		expect(day)
+			.to.eql(["Happy New Year", "in all langs"]);
 
 		day = service.getSpecialDay({year: 2018, month: 0, day: 0, calendar: "gregorian", lang: "tr"});
-		expect(day.getText())
-			.to.equal("Mutlu Yeni Yillar");
+		expect(day)
+			.to.eql(["Mutlu Yeni Yillar", "just in turkish"]);
 
 		day = service.getSpecialDay({year: 2018, month: 0, day: 0, calendar: "gregorian", lang: "de"});
-		expect(day.getText())
-			.to.equal("Happy New Year");
+		expect(day)
+			.to.eql(["Happy New Year", "in all langs"]);
 	});
 
 	it("return selected day when calendar collide with all operator(*)", function() {
 		let day = service.getSpecialDay({year: 2018, month: 0, day: 0, calendar: "gregorian", lang: "ar"});
 		expect(day)
-			.to.be.false;
+			.to.eql(["in all langs"]);
 	});
 	
-	it("return false when lang collide with expect operator", function() {
+	it("return false when lang collide with expect operator(~)", function() {
 		let day = service.getSpecialDay({year: 2018, month: 0, day: 0, calendar: "gregorian", lang: "ar"});
 		expect(day)
-			.to.be.false;
+			.to.eql(["in all langs"]);
 	});
-	
 });
