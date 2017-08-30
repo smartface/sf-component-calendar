@@ -2,8 +2,9 @@ import createContext, { INIT_CONTEXT_ACTION_TYPE } from "./Context";
 import merge from "@smartface/styler/lib/utils/merge";
 
 function hooks(hooksList){
-  return function hookMaybe(hook, elseValue){
-    return hooksList[hook] ? hooksList[hook] : elseValue;
+  return function hookMaybe(hook){
+    return hooksList(hook);
+    // ? hooksList[hook] : elseValue;
   };
 }
 
@@ -56,7 +57,7 @@ export function fromArray(children, maker, mapper){
   });
 }
 
-export function makeStylable(component, className, name, hooks_){
+export function makeStylable(component, className, name, hooks){
   return new class Stylable {
     constructor(){
       this.name = name;
@@ -68,32 +69,62 @@ export function makeStylable(component, className, name, hooks_){
     }
     
     setStyles(styles) {
-      const diffReducer = hooks_(
-        "reduceDiffStyleHook",
-        _ => (acc, key) => {
-          if(this.styles[key] !== undefined) {
-            if(this.styles[key] !== styles[key]) {
-              acc[key] = styles[key];
-            } else {
-              acc[key] = styles[key];
-            }
-          }
+    //   const diffReducer = hooks_(
+    //     "reduceDiffStyleHook",
+    //     _ => (acc, key) => {
+    //       if(this.styles[key] !== undefined) {
+    //         if(this.styles[key] !== styles[key]) {
+    //           acc[key] = styles[key];
+    //         } else {
+    //           acc[key] = styles[key];
+    //         }
+    //       }
           
-          return acc;
-        })(this.styles, styles);
-      // let diffReducer = reduceDiffStyleHook();
+    //       return acc;
+    //     })(this.styles, styles);
+    //   // let diffReducer = reduceDiffStyleHook();
+      
+    //   let diff = Object.keys(styles).reduce(diffReducer, {});
+
+    // /* global.benchmarkLog && 
+    //     global.benchmarkLog(Object.keys(diff));*/
+      
+    //   diff = hooks_("beforeStyleDiffAssign", _=>_)(diff);
+      
+    //   Object.keys(diff).length && 
+    //     Object.assign(this.component, diff);
+      
+    //   styles = hooks_("afterStyleDiffAssign", _=>_)(styles);
+      const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
+      let diffReducer = reduceDiffStyleHook
+        ? reduceDiffStyleHook(this.styles, styles)
+        : (acc, key) => {
+            if(this.styles[key] !== undefined) {
+              if(this.styles[key] !== styles[key]) {
+                acc[key] = styles[key];
+              } else {
+                acc[key] = styles[key];
+              }
+            }
+            
+            return acc;
+          };
       
       let diff = Object.keys(styles).reduce(diffReducer, {});
-
+      
      /* global.benchmarkLog && 
         global.benchmarkLog(Object.keys(diff));*/
       
-      diff = hooks_("beforeStyleDiffAssign", _=>_)(diff);
+      const beforeHook = hooks("beforeStyleDiffAssign");
+      beforeHook && 
+        (diff = beforeHook(diff));
       
       Object.keys(diff).length && 
         Object.assign(this.component, diff);
       
-      styles = hooks_("afterStyleDiffAssign", _=>_)(styles);
+      const afterHook = hooks("afterStyleDiffAssign");
+      afterHook && (styles = afterHook(styles));
+      
       
       this.styles = styles;
     }

@@ -87,13 +87,14 @@
             lang = _ref.lang;
 
         var keyByYear = getKey({ year: year, month: month, day: day, calendar: calendar });
-        var keyByMonth = getKey({ year: year, month: month, day: day, calendar: calendar });
+        var keyByMonth = getKey({ month: month, day: day, calendar: calendar });
         var keyByYearandAllCalendars = getKey({ year: year, month: month, day: day, calendar: "*" });
         var keyByMonthandAllCalendars = getKey({ month: month, day: day, calendar: "*" });
 
-        var selectedDays = specialDaysBundle[keyByYear] || specialDaysBundle[keyByMonth] || specialDaysBundle[keyByYearandAllCalendars] || specialDaysBundle[keyByMonthandAllCalendars] || [];
+        // console.log(day, month, calendar, specialDaysBundle[keyByMonth]);
+        var selectedDays = [].concat(specialDaysBundle[keyByYear] || [], specialDaysBundle[keyByMonth] || [], specialDaysBundle[keyByYearandAllCalendars] || [], specialDaysBundle[keyByMonthandAllCalendars] || []);
 
-        var selectedDay = selectedDays.find(function (aday) {
+        var selectedDay = selectedDays.filter(function (aday) {
           return !aday.langs.some(function (ln) {
             return ln === "~" + lang;
           }) || aday.langs.some(function (ln) {
@@ -103,11 +104,9 @@
           });
         });
 
-        return selectedDay ? {
-          getText: function getText() {
-            return selectedDay.text[lang] || selectedDay.text["*"];
-          }
-        } : false;
+        return selectedDay.map(function (day) {
+          return day.text[lang] || day.text["*"];
+        });
       },
       getBundle: function getBundle() {
         return specialDaysBundle;

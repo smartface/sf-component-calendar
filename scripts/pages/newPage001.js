@@ -7,6 +7,7 @@ const NewPage001Design = require('ui/ui_newPage001');
 const benchmark = require("../benchmarks/CalendarServices");
 const runner = require("../benchmarks/runner");
 const calendarTypes = require("../components/CalendarTypes");
+const specialDays = require("./specialDays");
 
 const NewPage001 = extend(NewPage001Design)(
 	// Constructor
@@ -23,15 +24,15 @@ const NewPage001 = extend(NewPage001Design)(
 		}.bind(this);
 		
 		this.children.buttonTR.onPress = function(){
-			this.children.calendar.changeLang("tr");
+			this.children.calendar.changeCalendar("tr");
 		}.bind(this);
 		
 		this.children.buttonEN.onPress = function(){
-			this.children.calendar.changeLang("en");
+			this.children.calendar.changeCalendar("en");
 		}.bind(this);
 		
 		this.children.buttonAR.onPress = function(){
-			this.children.calendar.changeLang("ar-sa");
+			this.children.calendar.changeCalendar("ar-sa");
 		}.bind(this);
 		
 		this.children.buttonHijri.onPress = function(){
@@ -61,53 +62,7 @@ const NewPage001 = extend(NewPage001Design)(
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
 function onShow(superOnShow) {
   superOnShow();
-  
-	var specialDaysData = {
-		"isSpecialDay": function(date){
-			
-		},
-		"by-year": {
-			"year-2018": {
-	      "month-1": {
-	        "day-1": {
-	        	"gregorian": {
-		        	"available-langs": "en,tr",
-		        	"text": {
-		        		"*": "New Year",
-		        		"tr": "Yeni Yil"
-		        	}
-		        }
-	        }
-	      }
-      }
-		},
-    "by-months": {
-      "month-1": {
-        "day-1": [{
-        	"gregorian": {
-	        	"available-langs": "en,tr",
-	        	"text": {
-	        		"*": "New Year",
-	        		"tr": "Yeni Yil"
-	        	}
-	        },
-	        length: 1
-        }],
-        "day-2": {
-        	"available-langs": "en,tr",
-        	"text": {
-        		"*": "New Year",
-        		"tr": "Yeni Yil"
-        	}        	
-        }
-      },
-      "month-2": {
-        "14": "Sevgililer gunu"
-      }
-    }
-  }
-};
-	
+  this.children.calendar.changeCalendar("en", "gregorian", specialDays);
 	
   // this.children.calendar.setSelectedDate({
   // 	day: 16,

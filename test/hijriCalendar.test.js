@@ -86,7 +86,7 @@ describe("Hijri Calendar Service", function() {
             { day: 26, month: 'current', specialDay: [] },
             { day: 27, month: 'current', specialDay: [], isWeekend: true } 
           ],
-          [ 
+          [
             { day: 28, month: 'current', specialDay: [], isWeekend: true },
             { day: 29, month: 'current', specialDay: [] },
             { day: 30, month: 'current', specialDay: [] },
@@ -95,7 +95,7 @@ describe("Hijri Calendar Service", function() {
             { day: 3, month: 'next', specialDay: [] },
             { day: 4, month: 'next', specialDay: [], isWeekend: true } 
           ],
-          [ 
+          [
             { day: 5, month: 'next', specialDay: [], isWeekend: true },
             { day: 6, month: 'next', specialDay: [] },
             { day: 7, month: 'next', specialDay: [] },
@@ -111,9 +111,9 @@ describe("Hijri Calendar Service", function() {
             shortName: 'Rab-I',
             daysCount: 30,
             date: { year: 1437, day: 30, month: 2 },
-            normalizedDate: { year: 2016, day: 10, month: 0 } 
+            normalizedDate: { year: 2016, day: 10, month: 0 }
           },
-          nextMonth: { 
+          nextMonth: {
             longName: 'Jumada al-Ula',
             shortName: 'Jum-I',
             daysCount: 29,

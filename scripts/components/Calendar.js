@@ -6,7 +6,7 @@ const extend = require('js-base/core/extend');
 const CalendarDesign = require('library/Calendar');
 const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
-const createService = require("../services/CalendarService").default;
+const createService = require("../services/CalendarService");
 const CalendarContext = require("./CalendarContext");
 
 function buildCalendar(view){
@@ -19,14 +19,24 @@ function Calendar(_super){
 	// initalizes super class for this scope
 	_super(this);
 	
+	this._specialDays = {};
 	this.buildRows();
 	this.init();
-	this._calendarService = createService("en");
 }
 
 function CalendarPrototype(proto){
 	var currentMonth;
 	const weeks = [];
+	
+	proto.init = function() {
+		this.children.navbar.onNext = function(){
+			this.nextMonth();
+		}.bind(this);
+		
+		this.children.navbar.onPrev = function(){
+			this.prevMonth();
+		}.bind(this);
+	}
 	
 	function updateRows(days, date) {
 		weeks.forEach(function(row, index){
@@ -88,16 +98,6 @@ function CalendarPrototype(proto){
 	// to inject a context dispatcher
 	proto.setContextDispatcher = function(dispatcher){
 		this.dispatch = dispatcher;
-	};
-	
-	proto.init = function(argument) {
-		this.children.navbar.onNext = function(){
-			this.nextMonth();
-		}.bind(this);
-		
-		this.children.navbar.onPrev = function(){
-			this.prevMonth();
-		}.bind(this);
 	};
 	
 	proto.buildRows = function(){
@@ -168,19 +168,15 @@ function CalendarPrototype(proto){
 		}
 	};
 	
-	proto.changeCalendar = function(lang, type){
+	proto.changeCalendar = function(lang="en", type="gregorian", specialDays=null){
 		this.dispatch({
 			type: "resetDays"
 		});
-		this._calendarService = createService(lang, type);
-		this.updateCalendar(this._calendarService.getCalendarMonth());
-	};
-	
-	proto.changeLang = function(lang){
-		this.dispatch({
-			type: "resetDays"
-		});
-		this._calendarService = createService(lang);
+		
+	  this._specialDays = specialDays || this._specialDays;
+  	this._calendarService = createService({lang: lang, type: type, specialDays: specialDays});
+		
+		this._calendarService = createService({lang: lang, type: type, specialDays: this._specialDays});
 		this.updateCalendar(this._calendarService.getCalendarMonth());
 	};
 	

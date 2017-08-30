@@ -1,4 +1,3 @@
-const flatStyler = require("@smartface/styler/lib/flatStyler");
 const StyleContext = require("../services/StyleContext");
 const getOneProp = require("library/styler-builder")
 	.getOneProp;
@@ -105,8 +104,9 @@ const styles = {
 				"borderWidth": 0,
 				"textColor": "#D6D6D6",
 			},
-			"&-specialDays": {
+			"&-specialDay": {
 				"borderWidth": 0,
+				"backgroundColor": "#FF9F9F"
 			},
 			"&-weekend": {
 				"borderWidth": 0,
@@ -116,7 +116,9 @@ const styles = {
 	}
 };
 
-var styler = flatStyler(styles);
+const styler = require("@smartface/styler/lib/styler");
+
+var styling = styler(styles);
 
 const selectDays = function(name) {
 	return name.indexOf("_weekDay") > 0;
@@ -166,12 +168,12 @@ function reducer(state, actors, action, target) {
 			const actor = actors[target];
 			const data = action.data;
 
-			if(data.isSpecialDay) {
-				actor.pushClassName(".calendar.day-specialDays");
-			}
-
 			if(data.isWeekend) {
 				actor.pushClassName(".calendar.day-weekend");
+			}
+
+			if(Array.isArray(data.specialDay) && data.specialDay.length > 0) {
+				actor.pushClassName(".calendar.day-specialDay");
 			}
 
 			if(data.month != "current") {
@@ -260,7 +262,7 @@ function createContext(component) {
 							return !res;
 						};
 
-						return function diffStyleReducer(acc, key) {
+						return function diffstylingeducer(acc, key) {
 							if(typeof newStyles[key] === "object") {
 								if(!isEqual(oldStyles[key], newStyles[key])) {
 									acc[key] = newStyles[key];
@@ -276,12 +278,12 @@ function createContext(component) {
 		}
 	);
 
-	// creates an initial styler for the context
+	// creates an initial styling for the context
 	var context = styleContext(
-		styler
+		styling
 		/*function(className) {
 			return function getStyle() {
-				return getPropsFromStyle(styler, className);
+				return getPropsFromStyle(styling, className);
 			}
 		}*/
 		,
@@ -290,12 +292,12 @@ function createContext(component) {
 
 	return function setStyle(newStyles) {
 		try {
-			const styler = flatStyler(styles, newStyles);
-			// injects a new styler to the context
-			styleContext(styler
+			const styling = styler(styles, newStyles);
+			// injects a new styling to the context
+			styleContext(styling
 				/*function(className) {
 								return function getStyle() {
-									return getPropsFromStyle(styler, className);
+									return getPropsFromStyle(styling, className);
 								}
 							}*/
 				, reducer);

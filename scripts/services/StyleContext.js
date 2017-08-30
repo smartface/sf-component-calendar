@@ -39,8 +39,9 @@
   }
 
   function hooks(hooksList) {
-    return function hookMaybe(hook, elseValue) {
-      return hooksList[hook] ? hooksList[hook] : elseValue;
+    return function hookMaybe(hook) {
+      return hooksList(hook);
+      // ? hooksList[hook] : elseValue;
     };
   }
 
@@ -95,7 +96,7 @@
     });
   }
 
-  function makeStylable(component, className, name, hooks_) {
+  function makeStylable(component, className, name, hooks) {
     return new (function () {
       function Stylable() {
         _classCallCheck(this, Stylable);
@@ -111,35 +112,57 @@
       Stylable.prototype.setStyles = function setStyles(styles) {
         var _this = this;
 
-        var diffReducer = hooks_("reduceDiffStyleHook", function (_) {
-          return function (acc, key) {
-            if (_this.styles[key] !== undefined) {
-              if (_this.styles[key] !== styles[key]) {
-                acc[key] = styles[key];
-              } else {
-                acc[key] = styles[key];
-              }
-            }
+        //   const diffReducer = hooks_(
+        //     "reduceDiffStyleHook",
+        //     _ => (acc, key) => {
+        //       if(this.styles[key] !== undefined) {
+        //         if(this.styles[key] !== styles[key]) {
+        //           acc[key] = styles[key];
+        //         } else {
+        //           acc[key] = styles[key];
+        //         }
+        //       }
 
-            return acc;
-          };
-        })(this.styles, styles);
-        // let diffReducer = reduceDiffStyleHook();
+        //       return acc;
+        //     })(this.styles, styles);
+        //   // let diffReducer = reduceDiffStyleHook();
+
+        //   let diff = Object.keys(styles).reduce(diffReducer, {});
+
+        // /* global.benchmarkLog && 
+        //     global.benchmarkLog(Object.keys(diff));*/
+
+        //   diff = hooks_("beforeStyleDiffAssign", _=>_)(diff);
+
+        //   Object.keys(diff).length && 
+        //     Object.assign(this.component, diff);
+
+        //   styles = hooks_("afterStyleDiffAssign", _=>_)(styles);
+        var reduceDiffStyleHook = hooks("reduceDiffStyleHook");
+        var diffReducer = reduceDiffStyleHook ? reduceDiffStyleHook(this.styles, styles) : function (acc, key) {
+          if (_this.styles[key] !== undefined) {
+            if (_this.styles[key] !== styles[key]) {
+              acc[key] = styles[key];
+            } else {
+              acc[key] = styles[key];
+            }
+          }
+
+          return acc;
+        };
 
         var diff = Object.keys(styles).reduce(diffReducer, {});
 
         /* global.benchmarkLog && 
            global.benchmarkLog(Object.keys(diff));*/
 
-        diff = hooks_("beforeStyleDiffAssign", function (_) {
-          return _;
-        })(diff);
+        var beforeHook = hooks("beforeStyleDiffAssign");
+        beforeHook && (diff = beforeHook(diff));
 
         Object.keys(diff).length && Object.assign(this.component, diff);
 
-        styles = hooks_("afterStyleDiffAssign", function (_) {
-          return _;
-        })(styles);
+        var afterHook = hooks("afterStyleDiffAssign");
+        afterHook && (styles = afterHook(styles));
 
         this.styles = styles;
       };

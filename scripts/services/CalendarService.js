@@ -1,28 +1,28 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(["exports", "./DateWrapper", "./DateWrapperHijri", "moment", "moment-hijri", "moment/locale/ar-sa"], factory);
+		define(["module", "exports", "./DateWrapper", "./DateWrapperHijri", "./SpecialDaysService", "moment", "moment-hijri", "moment/locale/ar-sa"], factory);
 	} else if (typeof exports !== "undefined") {
-		factory(exports, require("./DateWrapper"), require("./DateWrapperHijri"), require("moment"), require("moment-hijri"), require("moment/locale/ar-sa"));
+		factory(module, exports, require("./DateWrapper"), require("./DateWrapperHijri"), require("./SpecialDaysService"), require("moment"), require("moment-hijri"), require("moment/locale/ar-sa"));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.DateWrapper, global.DateWrapperHijri, global.moment, global.momentHijri, global.arSa);
+		factory(mod, mod.exports, global.DateWrapper, global.DateWrapperHijri, global.SpecialDaysService, global.moment, global.momentHijri, global.arSa);
 		global.CalendarService = mod.exports;
 	}
-})(this, function (exports, _DateWrapper, _DateWrapperHijri, _moment, _momentHijri) {
+})(this, function (module, exports, _DateWrapper, _DateWrapperHijri, _SpecialDaysService, _moment, _momentHijri) {
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.default = createService;
-	exports.getWeek = getWeek;
-	exports.changeGlobalLang = changeGlobalLang;
 
 	var _DateWrapper2 = _interopRequireDefault(_DateWrapper);
 
 	var _DateWrapperHijri2 = _interopRequireDefault(_DateWrapperHijri);
+
+	var _SpecialDaysService2 = _interopRequireDefault(_SpecialDaysService);
 
 	var _moment2 = _interopRequireDefault(_moment);
 
@@ -33,6 +33,20 @@
 			default: obj
 		};
 	}
+
+	var _extends = Object.assign || function (target) {
+		for (var i = 1; i < arguments.length; i++) {
+			var source = arguments[i];
+
+			for (var key in source) {
+				if (Object.prototype.hasOwnProperty.call(source, key)) {
+					target[key] = source[key];
+				}
+			}
+		}
+
+		return target;
+	};
 
 	// momentHijri().format('iYYYY/iM/iD');
 
@@ -48,10 +62,13 @@
   * 
   * @returns {Object}
   */
-	function createService() {
-		var lang = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "en";
-		var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "gregorian";
-		var specialDays = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+	function createService(_ref) {
+		var _ref$lang = _ref.lang,
+		    lang = _ref$lang === undefined ? "en" : _ref$lang,
+		    _ref$type = _ref.type,
+		    type = _ref$type === undefined ? "gregorian" : _ref$type,
+		    _ref$specialDays = _ref.specialDays,
+		    specialDays = _ref$specialDays === undefined ? {} : _ref$specialDays;
 
 		var service;
 
@@ -75,11 +92,17 @@
 			}
 		});
 
+		var specialDaysService = (0, _SpecialDaysService2.default)(specialDays);
+
 		return {
 			/**
     * Returns current calendar month data
     */
-			getCalendarMonth: getCalendarMonth.bind(null, current, service),
+			getCalendarMonth: getCalendarMonth.bind(null, current, service, function (args) {
+				args.lang = lang;
+				args.calendar = type;
+				return specialDaysService.getSpecialDay(args);
+			}),
 			/**
     * Returns current month data
     */
@@ -110,7 +133,7 @@
   * @private
   * @returns {Object}
   */
-	function getCalendarMonth(moment, service, dt) {
+	function getCalendarMonth(moment, service, specialDaysService, dt) {
 		var currentMonth = new service(moment, dt);
 
 		var prevMonth = currentMonth.prevMonth();
@@ -136,21 +159,24 @@
 			if (i < currentMonth.startDayOfMonth()) {
 				day = {
 					day: ++prev,
-					month: 'previous',
-					isSpecialDay: false
+					month: 'previous'
 				};
+
+				day.specialDay = specialDaysService(_extends({}, prevMonth.toObject(), { day: day.day - 1 }));
 			} else if (i >= startNext) {
 				day = {
 					day: next++,
-					month: 'next',
-					isSpecialDay: false
+					month: 'next'
 				};
+
+				day.specialDay = specialDaysService(_extends({}, nextMonth.toObject(), { day: day.day - 1 }));
 			} else {
 				day = {
 					day: i - startDay + 1,
-					month: 'current',
-					isSpecialDay: false
+					month: 'current'
 				};
+
+				day.specialDay = specialDaysService(_extends({}, currentMonth.toObject(), { day: day.day - 1 }));
 			}
 
 			row.push(day);
@@ -192,10 +218,5 @@
 			}
 		};
 	}
-
-	function getWeek() {}
-
-	function changeGlobalLang(dateService, lang) {
-		dateService.locale(lang);
-	}
+	module.exports = exports["default"];
 });
