@@ -23,19 +23,34 @@
 		}
 	}
 
-	function notValidDateThrowanError(moment, date) {
-		if (moment(date).isValid()) {
-			throw new Error("Specified date is not valid.");
+	function notValidDateThrowanError(date, strDate) {
+		if (!date.isValid()) {
+			throw new Error("[" + strDate + "] Specified date is not valid.");
 		}
 	}
 
 	var DateService = function () {
 		function DateService(moment, date) {
+			var format = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "DD-MM-YYYY";
+
 			_classCallCheck(this, DateService);
 
 			this._moment = moment;
-			this._date = moment(date);
-			// notValidDateThrowanError(moment, date);
+
+			if (moment.isMoment(date)) {
+				this._date = date.clone();
+			} else {
+				if (date instanceof Object) {
+					// date.month--;
+					date.day = date.day || 1;
+					date = date.day + "-" + date.month + "-" + date.year;
+				}
+
+				if (date) {
+					this._date = moment(date, format);
+					notValidDateThrowanError(this._date, date);
+				}
+			}
 		}
 
 		DateService.prototype.weekOfYear = function weekOfYear() {
@@ -46,16 +61,27 @@
 			return this._moment.clone();
 		};
 
-		DateService.prototype.getLocaleDay = function getLocaleDay(day) {
-			return this._moment().date(day).format("D");
-		};
+		DateService.prototype.localeDate = function localeDate() {
+			var now = this._date.clone();
 
-		DateService.prototype.getLocaleMonth = function getLocaleMonth(month) {
-			return this._moment().month(month).format("M");
-		};
-
-		DateService.prototype.getLocaleYear = function getLocaleYear(year) {
-			return this._moment().year(year).format("YYYY");
+			return {
+				setDay: function setDay(day) {
+					now.date(day).format("D");
+					return this;
+				},
+				setMonth: function setMonth(month) {
+					now.month(month).format("M");
+					return this;
+				},
+				setYear: function setYear(year) {
+					now.year(year).format("YYYY");
+					return this;
+				},
+				getDate: function getDate() {
+					return { day: now.format("D"), month: now.format("M"), year: now.format("YYYY") };
+				}
+			};
+			// return this._date.format("D-M-YYYY").toObject();
 		};
 
 		DateService.prototype.month = function month() {
@@ -77,7 +103,7 @@
 		};
 
 		DateService.prototype.startDayOfMonth = function startDayOfMonth() {
-			return this._date.clone().date(1).weekday();
+			return this._date.clone().date(1).weekday() + 1;
 		};
 
 		DateService.prototype.monthsShort = function monthsShort() {
@@ -113,11 +139,15 @@
 		};
 
 		DateService.prototype.nextMonth = function nextMonth(moment, date) {
-			return new DateService(this._moment, this._date.clone().add(1, 'month'));
+			var newdate = this._date.clone();
+			newdate.add(1, 'month');
+			return new DateService(this._moment, newdate);
 		};
 
 		DateService.prototype.prevMonth = function prevMonth(date) {
-			return new DateService(this._moment, this._date.clone().subtract(1, 'month'));
+			var newdate = this._date.clone();
+			newdate.subtract(1, 'month');
+			return new DateService(this._moment, newdate);
 		};
 
 		DateService.prototype.prevYear = function prevYear(date) {};
@@ -135,7 +165,7 @@
 			return {
 				year: dateObject.years,
 				day: dateObject.date,
-				month: dateObject.months
+				month: ++dateObject.months
 			};
 		};
 
@@ -145,7 +175,7 @@
 			return {
 				year: dateObject.years,
 				day: dateObject.date,
-				month: dateObject.months
+				month: ++dateObject.months
 			};
 		};
 

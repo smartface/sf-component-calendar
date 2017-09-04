@@ -152,7 +152,7 @@
             newday.langs = day.calendars[calendar].availableLangs.split(",");
             acc[key].push(newday);
 
-            for (var i = 0; i < day.length - 1; i++) {
+            for (var i = 1; i <= day.length - 1; i++) {
               var _key = "m-" + year.year + "-" + month.month + "-" + (day.day + i) + "-" + calendar;
               acc[_key] = acc[_key] || [];
 

@@ -141,7 +141,8 @@
 
 		var days = [];
 		var daysCount = currentMonth.daysCount();
-		var startDay = currentMonth.startDayOfMonth();
+		var startDay = currentMonth.startDayOfMonth() - 1;
+
 		var startNext = daysCount + startDay;
 		// 31 -> 1
 		var prev = prevMonth.daysCount() - startDay;
@@ -154,40 +155,42 @@
 		var cellCount = maxRow * maxCol;
 		var localeDays = [];
 
-		for (var i = 0; i < cellCount; i++) {
+		for (var i = 1; i <= cellCount; i++) {
 			var day = void 0;
 
-			if (i < currentMonth.startDayOfMonth()) {
+			if (i <= startDay) {
 				day = {
 					day: ++prev,
 					month: 'previous'
 				};
 
-				day.specialDay = specialDaysService(_extends({}, prevMonth.toObject(), { day: day.day - 1 }));
-			} else if (i >= startNext) {
+				day.specialDay = specialDaysService(_extends({}, prevMonth.toObject(), { day: day.day }));
+				day.localeDay = prevMonth.localeDate().setDay(day.day).getDate().day;
+			} else if (i > startNext) {
 				day = {
 					day: next++,
 					month: 'next'
 				};
 
-				day.specialDay = specialDaysService(_extends({}, nextMonth.toObject(), { day: day.day - 1 }));
+				day.specialDay = specialDaysService(_extends({}, nextMonth.toObject(), { day: day.day }));
+				day.localeDay = nextMonth.localeDate().setDay(day.day).getDate().day;
 			} else {
 				day = {
-					day: i - startDay + 1,
+					day: i - startDay,
 					month: 'current'
 				};
 
-				day.specialDay = specialDaysService(_extends({}, currentMonth.toObject(), { day: day.day - 1 }));
+				day.specialDay = specialDaysService(_extends({}, currentMonth.toObject(), { day: day.day }));
+				day.localeDay = currentMonth.localeDate().setDay(day.day).getDate().day;
 			}
 
 			row.push(day);
-			day.localeDay = currentMonth.getLocaleDay(day.day);
 
 			if (row.length === 1 || row.length === 7) {
 				day.isWeekend = true;
 			}
 
-			if (i > 0 && (i + 1) % 7 == 0 && i !== cellCount - 1) {
+			if (i > 0 && i % 7 == 0 && i !== cellCount) {
 				row = [];
 				days.push(row);
 			}
@@ -203,21 +206,23 @@
 			daysMin: currentMonth.weekdaysMin(),
 			days: days,
 			date: currentMonth.toObject(),
+			localeDate: currentMonth.localeDate().getDate(),
 			normalizedDate: currentMonth.toNormalizedObject(),
-			// localeNumbers: [],
 			previousMonth: {
 				longName: prevMonth.monthLong(),
 				shortName: prevMonth.monthShort(),
 				daysCount: prevMonth.daysCount(),
 				date: prevMonth.toObject(),
-				normalizedDate: prevMonth.toNormalizedObject()
+				normalizedDate: prevMonth.toNormalizedObject(),
+				localeDate: prevMonth.localeDate().getDate()
 			},
 			nextMonth: {
 				longName: nextMonth.monthLong(),
 				shortName: nextMonth.monthShort(),
 				daysCount: nextMonth.daysCount(),
 				date: nextMonth.toObject(),
-				normalizedDate: nextMonth.toNormalizedObject()
+				normalizedDate: nextMonth.toNormalizedObject(),
+				localeDate: nextMonth.localeDate().getDate()
 			}
 		};
 	}
