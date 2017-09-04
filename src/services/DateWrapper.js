@@ -1,15 +1,27 @@
-function notValidDateThrowanError(moment, date) {
-	if(moment(date)
-		.isValid()) {
-		throw new Error("Specified date is not valid.");
+function notValidDateThrowanError(date, strDate) {
+	if(!date.isValid()) {
+		throw new Error(`[${strDate}] Specified date is not valid.`);
 	}
 }
 
 export default class DateService {
-	constructor(moment, date){
+	constructor(moment, date, format="DD-MM-YYYY"){
 		this._moment = moment;
-		this._date = moment(date);
-		// notValidDateThrowanError(moment, date);
+		
+		if(moment.isMoment(date)){
+			this._date = date.clone();
+		} else {
+			if(date instanceof Object){
+				// date.month--;
+				date.day = date.day || 1;
+				date = `${date.day}-${date.month}-${date.year}`;
+			}
+			
+			if(date){
+				this._date = moment(date, format);
+				notValidDateThrowanError(this._date, date);
+			}
+		}
 	}
 	
 	weekOfYear() {
@@ -20,12 +32,35 @@ export default class DateService {
 		return this._moment.clone();
 	}
 	
+	localeDate(){
+		var now = this._date.clone();
+		
+		return {
+			setDay(day) {
+				now.date(day).format("D");
+				return this;
+			},
+			setMonth(month) {
+				now.month(month).format("M");
+				return this;
+			},
+			setYear(year) {
+				now.year(year).format("YYYY");
+				return this
+			},
+			getDate(){
+				return {day: now.format("D"), month: now.format("M"), year: now.format("YYYY")};
+			}
+		}
+		// return this._date.format("D-M-YYYY").toObject();
+	}
+	
 	month() {
 // 	date !== undefined 
 // 	  ? date.month(month)
 // 	  : month 
 	   // ? 
-  return this._date.toObject().months;
+	 return this._date.toObject().months;
   // month ? moment().month(month) : moment.toObject().months;
 	   // : date.toObject().monts;
 	}
@@ -39,7 +74,7 @@ export default class DateService {
 	}
 	
 	startDayOfMonth() {
-		return this._date.clone().date(1).weekday();
+		return this._date.clone().date(1).weekday() + 1;
 	}
 	
 	monthsShort() {
@@ -75,11 +110,15 @@ export default class DateService {
 	}
 	
 	nextMonth(moment, date) {
-		return new DateService(this._moment, this._date.clone().add(1, 'month'))
+		var newdate = this._date.clone()
+		newdate.add(1, 'month');
+		return new DateService(this._moment, newdate)
 	}
 	
 	prevMonth(date) {
-		return new DateService(this._moment, this._date.clone().subtract(1, 'month'));
+		var newdate = this._date.clone()
+		newdate.subtract(1, 'month');
+		return new DateService(this._moment, newdate);
 	}
 	
 	prevYear(date) {}
@@ -95,7 +134,7 @@ export default class DateService {
 		return {
 			year: dateObject.years,
 			day: dateObject.date,
-			month: dateObject.months
+			month: ++dateObject.months
 		};
 	}
 	
@@ -105,7 +144,7 @@ export default class DateService {
 		return {
 			year: dateObject.years,
 			day: dateObject.date,
-			month: dateObject.months
+			month: ++dateObject.months
 		};
 	}
 	

@@ -152,6 +152,7 @@
 		var maxCol = 7;
 		var maxRow = 6;
 		var cellCount = maxRow * maxCol;
+		var localeDays = [];
 
 		for (var i = 0; i < cellCount; i++) {
 			var day = void 0;
@@ -180,6 +181,7 @@
 			}
 
 			row.push(day);
+			day.localeDay = currentMonth.getLocaleDay(day.day);
 
 			if (row.length === 1 || row.length === 7) {
 				day.isWeekend = true;
@@ -202,6 +204,7 @@
 			days: days,
 			date: currentMonth.toObject(),
 			normalizedDate: currentMonth.toNormalizedObject(),
+			// localeNumbers: [],
 			previousMonth: {
 				longName: prevMonth.monthLong(),
 				shortName: prevMonth.monthShort(),

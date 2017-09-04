@@ -7,12 +7,12 @@ export default {
 		  "months": [
 		    // month 1st
   	    {
-  		    "month": 0,
+  		    "month": 1,
   		    /** @type {SpecialDays} */
   		    "days": [
   		      // day 1st
     	      {
-    	        "day": 0,
+    	        "day": 1,
     	        "calendars": {
               	"gregorian": {
       	        	"availableLangs": "en,tr,~ar",
@@ -30,11 +30,11 @@ export default {
     "byMonths": [
       // month 1st
       {
-        "month": 0,
+        "month": 1,
   	    /** @type {SpecialDays} */
         "days": [
           {
-            "day": 0,
+            "day": 1,
             "calendars": {
             	"gregorian": {
               	"availableLangs": "en,tr",
@@ -47,7 +47,7 @@ export default {
             "length": 2
           },
           {
-            "day": 6,
+            "day": 7,
             "calendars": {
           	  "*": {
               	"availableLangs": "en,tr",
@@ -62,10 +62,10 @@ export default {
       },
       // month 4th
       {
-        "month": 3,
+        "month": 4,
         "days": [
           {
-            "day": 11,
+            "day": 12,
             "calendars": {
             	"*": {
               	"availableLangs": "en,ar",

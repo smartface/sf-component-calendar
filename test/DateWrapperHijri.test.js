@@ -7,24 +7,24 @@ import momentHijri from "moment-hijri";
 describe("DateWrapper Hijri", function() {
   describe("Week", function() {
     it("should return the starting weekday of the month", function() {
-      var scope = new DateService(momentHijri, "2017-01-30");
+      var scope = new DateService(momentHijri, "30-1-2017");
       let day = scope.startDayOfMonth();
-      expect(day).to.eql(0);
-      
-      scope = new DateService(momentHijri, "2017-08-01");
-      day = scope.startDayOfMonth();
       expect(day).to.eql(1);
-  
-      scope = new DateService(momentHijri, "2017-10-01");
+      
+      scope = new DateService(momentHijri, "01-08-2017");
       day = scope.startDayOfMonth();
-      expect(day).to.eql(4);
+      expect(day).to.eql(2);
+  
+      scope = new DateService(momentHijri, "01-10-2017");
+      day = scope.startDayOfMonth();
+      expect(day).to.eql(5);
     });
   });
   
   describe("Month", function() {
     it("should get all hijri months in arabic", function() {
       momentHijri.locale("ar-sa");
-      var scope = new DateService(momentHijri, {year: 2017, month: 0});
+      var scope = new DateService(momentHijri, {year: 2017, month: 1});
 
       expect(scope.monthsLong()).to.eql([ 
         'محرم',
@@ -43,16 +43,16 @@ describe("DateWrapper Hijri", function() {
     });
     
     it("should return end of a month", function() {
-      var scope = new DateService(momentHijri, {year: 2017, month: 0});
+      var scope = new DateService(momentHijri, {year: 2017, month: 1});
       expect(scope.daysCount()).to.eql(30);
-
-      scope = new DateService(momentHijri, {year: 2017, month: 5});
-      expect(scope.daysCount()).to.eql(29);
 
       scope = new DateService(momentHijri, {year: 2017, month: 6});
       expect(scope.daysCount()).to.eql(29);
 
-      scope = new DateService(momentHijri, {year: 2017, month: 11});
+      scope = new DateService(momentHijri, {year: 2017, month: 7});
+      expect(scope.daysCount()).to.eql(29);
+
+      scope = new DateService(momentHijri, {year: 2017, month: 12});
       expect(scope.daysCount()).to.eql(30);
     });
   });

@@ -8,8 +8,8 @@ function notValidDateThrowanError(moment, date) {
 }
 
 export default class HijriDateService extends DateService {
-	constructor(moment, date){
-		super(moment, date);
+	constructor(moment, date, format="DD-MM-YYYY"){
+		super(moment, date, format);
 	}
 	
 	weekOfYear() {
@@ -21,19 +21,45 @@ export default class HijriDateService extends DateService {
 	}
 	
 	month() {
-		return this._date.toObject().months;
+		return this._date.format("iM")
 	}
 	
 	year() {
-		return this._date().iYear();
+		return this._date.format("iYYYY");
 	}
 	
 	day() {
-		return this._date().iDay();
+		return this._date.format("iD");
+	}
+	
+	localeDate(){
+		var now = this._date.clone();
+		var self = this;
+		const localeDate = {day: now.format("iD"), month: now.format("iM"), year: now.format("iYYYY")};
+		const moment = this._moment;
+		
+		return {
+			setDay(day) {
+				localeDate.day = now.month(0).date(day).format("D");
+				return this;
+			},
+			setMonth(month) {
+				localeDate.month = now.month(month).format("iM");
+				return this;
+			},
+			setYear(year) {
+				localeDate.month = now.year(year).format("iYYYY");
+				return this;
+			},
+			getDate(){
+				return {...localeDate};
+			},
+		};
+		// return this._date.format("D-M-YYYY").toObject();
 	}
 	
 	startDayOfMonth() {
-		return this._date.clone().iDate(1).weekday();
+		return this._date.clone().iDate(1).weekday() + 1;
 	}
 	
 	monthsShort() {
@@ -85,7 +111,7 @@ export default class HijriDateService extends DateService {
 		return {
 			year: this._date.iYear(),
 			day: this._date.iDate(),
-			month: this._date.iMonth()
+			month: this._date.iMonth() + 1
 		};
 	}
 }

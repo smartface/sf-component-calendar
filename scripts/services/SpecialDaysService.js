@@ -134,6 +134,7 @@
    * @returns {Object}
    */
   function denormalizeSpecialDays(specialDays) {
+    specialDays = specialDays || {};
     var byYears = specialDays["byYears"] || [];
     var byMonths = specialDays["byMonths"] || [];
     var acc = {};

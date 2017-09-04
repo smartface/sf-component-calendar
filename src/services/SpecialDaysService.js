@@ -108,6 +108,7 @@ export function getKey({year=0, month, day, calendar}){
  * @returns {Object}
  */
 function denormalizeSpecialDays(specialDays){
+  specialDays = specialDays || {};
   const byYears = specialDays["byYears"] || [];
   const byMonths = specialDays["byMonths"] || [];
   const acc = {};
@@ -125,7 +126,7 @@ function denormalizeSpecialDays(specialDays){
           newday.langs = day.calendars[calendar].availableLangs.split(",");
           acc[key].push(newday);
           
-          for(let i = 0; i < day.length-1; i++){
+          for(let i = 1; i <= day.length-1; i++){
             let key = "m-"+year.year+"-"+month.month+"-"+(day.day+i)+"-"+calendar;
             acc[key] = acc[key] || [];
             

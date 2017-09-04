@@ -1,6 +1,6 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(['module', 'exports'], factory);
+		define(["module", "exports"], factory);
 	} else if (typeof exports !== "undefined") {
 		factory(module, exports);
 	} else {
@@ -11,7 +11,7 @@
 		global.DateWrapper = mod.exports;
 	}
 })(this, function (module, exports) {
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -44,6 +44,18 @@
 
 		DateService.prototype.clone = function clone() {
 			return this._moment.clone();
+		};
+
+		DateService.prototype.getLocaleDay = function getLocaleDay(day) {
+			return this._moment().date(day).format("D");
+		};
+
+		DateService.prototype.getLocaleMonth = function getLocaleMonth(month) {
+			return this._moment().month(month).format("M");
+		};
+
+		DateService.prototype.getLocaleYear = function getLocaleYear(year) {
+			return this._moment().year(year).format("YYYY");
 		};
 
 		DateService.prototype.month = function month() {
@@ -146,5 +158,5 @@
 	}();
 
 	exports.default = DateService;
-	module.exports = exports['default'];
+	module.exports = exports["default"];
 });

@@ -5,17 +5,17 @@ import moment from "moment";
 describe("DateWrapper", function() {
   describe("Week", function() {
     it("should return the starting weekday of the month", function() {
-      var scope = new DateService(moment, "2017-09-01");
+      var scope = new DateService(moment, "2017-09-01", "YYYY-MM-DD");
       let day = scope.startDayOfMonth();
-      expect(day).to.eql(5);
+      expect(day).to.eql(6);
       
-      scope = new DateService(moment, "2017-08-01");
+      scope = new DateService(moment, "2017-08-01", "YYYY-MM-DD");
       day = scope.startDayOfMonth();
-      expect(day).to.eql(2);
+      expect(day).to.eql(3);
   
-      scope = new DateService(moment, "2017-10-01");
+      scope = new DateService(moment, "2017-10-01", "YYYY-MM-DD");
       day = scope.startDayOfMonth();
-      expect(day).to.eql(0);
+      expect(day).to.eql(1);
     });
   
     it("should return all weekdays short in English", function() {
@@ -46,16 +46,16 @@ describe("DateWrapper", function() {
   
   describe("Month", function() {
     it("should return end of a month", function() {
-      var scope = new DateService(moment, {month: 0});
+      var scope = new DateService(moment, {month: 1, year: 2017});
       expect(scope.daysCount()).to.eql(31);
 
-      scope = new DateService(moment, {month: 5});
+      scope = new DateService(moment, {month: 6, year: 2017});
       expect(scope.daysCount({month: 5})).to.eql(30);
 
-      scope = new DateService(moment, {month: 6});
+      scope = new DateService(moment, {month: 7, year: 2017});
       expect(scope.daysCount({month: 6})).to.eql(31);
 
-      scope = new DateService(moment, {month: 11});
+      scope = new DateService(moment, {month: 12, year: 2017});
       expect(scope.daysCount({month: 11})).to.eql(31);
     });
   });

@@ -3,7 +3,9 @@ import merge from "@smartface/styler/lib/utils/merge";
 
 function hooks(hooksList){
   return function hookMaybe(hook){
-    return hooksList(hook);
+    return hooksList
+      ? hooksList(hook)
+      : null;
     // ? hooksList[hook] : elseValue;
   };
 }
@@ -15,16 +17,17 @@ function hooks(hooksList){
  * @params {String} name - component name
  * @params {Function} mapper
  */
-export function fromSFComponent(component, name, mapper, hooksList={}){
+export function fromSFComponent(component, name, mapper, hooksList=null){
   const flatted = {};
   
   function collect(component, name, mapper){
     const newComp = makeStylable(component, mapper(name), name, hooks(hooksList));
     flat(name, newComp);
 
-    component.children && Object.keys(component.children).forEach((child) => {
-      collect(component.children[child], name+"_"+child, mapper);
-    });
+    component.children && 
+      Object.keys(component.children).forEach((child) => {
+        collect(component.children[child], name+"_"+child, mapper);
+      });
   }
   
   function flat(name, comp) {
@@ -69,32 +72,6 @@ export function makeStylable(component, className, name, hooks){
     }
     
     setStyles(styles) {
-    //   const diffReducer = hooks_(
-    //     "reduceDiffStyleHook",
-    //     _ => (acc, key) => {
-    //       if(this.styles[key] !== undefined) {
-    //         if(this.styles[key] !== styles[key]) {
-    //           acc[key] = styles[key];
-    //         } else {
-    //           acc[key] = styles[key];
-    //         }
-    //       }
-          
-    //       return acc;
-    //     })(this.styles, styles);
-    //   // let diffReducer = reduceDiffStyleHook();
-      
-    //   let diff = Object.keys(styles).reduce(diffReducer, {});
-
-    // /* global.benchmarkLog && 
-    //     global.benchmarkLog(Object.keys(diff));*/
-      
-    //   diff = hooks_("beforeStyleDiffAssign", _=>_)(diff);
-      
-    //   Object.keys(diff).length && 
-    //     Object.assign(this.component, diff);
-      
-    //   styles = hooks_("afterStyleDiffAssign", _=>_)(styles);
       const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
       let diffReducer = reduceDiffStyleHook
         ? reduceDiffStyleHook(this.styles, styles)
@@ -124,7 +101,6 @@ export function makeStylable(component, className, name, hooks){
       
       const afterHook = hooks("afterStyleDiffAssign");
       afterHook && (styles = afterHook(styles));
-      
       
       this.styles = styles;
     }
@@ -243,10 +219,11 @@ export function createStyleContext(actors){
       latestState
     );
     
-    Object.keys(context.actors).forEach(function assignContext(name){
-      context.actors[name].isUgly = true;
-      context.actors[name].setContext(context);
-    });
+    Object.keys(context.actors)
+      .forEach(function assignContext(name){
+        context.actors[name].isUgly = true;
+        context.actors[name].setContext(context);
+      });
     
     return context;
   };

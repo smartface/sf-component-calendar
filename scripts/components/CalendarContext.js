@@ -204,7 +204,6 @@ function createContext(component) {
 			} else if(dayNamesPattern.test(name)) {
 				return ".calendar.header_dayNames_dayName.weekday";
 			} else if(linePattern.test(name)) {
-				console.log(name);
 				return ".calendar_line";
 			}
 

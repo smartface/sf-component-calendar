@@ -33,11 +33,11 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 		
 		proto.getSelectedIndex = function(){
 			return this.selectedIndex;
-		}
+		};
 		
 		proto.setSelectedIndex = function(index){
 			return selectDay.call(this, index);
-		}
+		};
 		
 		proto.clearSelected = function(){
 			this.selectedIndex > -1 && this.children["weekDay"+(this.selectedIndex+1)].clearSelected();

@@ -40,7 +40,7 @@
 
   function hooks(hooksList) {
     return function hookMaybe(hook) {
-      return hooksList(hook);
+      return hooksList ? hooksList(hook) : null;
       // ? hooksList[hook] : elseValue;
     };
   }
@@ -53,7 +53,7 @@
    * @params {Function} mapper
    */
   function fromSFComponent(component, name, mapper) {
-    var hooksList = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+    var hooksList = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
     var flatted = {};
 
@@ -112,32 +112,6 @@
       Stylable.prototype.setStyles = function setStyles(styles) {
         var _this = this;
 
-        //   const diffReducer = hooks_(
-        //     "reduceDiffStyleHook",
-        //     _ => (acc, key) => {
-        //       if(this.styles[key] !== undefined) {
-        //         if(this.styles[key] !== styles[key]) {
-        //           acc[key] = styles[key];
-        //         } else {
-        //           acc[key] = styles[key];
-        //         }
-        //       }
-
-        //       return acc;
-        //     })(this.styles, styles);
-        //   // let diffReducer = reduceDiffStyleHook();
-
-        //   let diff = Object.keys(styles).reduce(diffReducer, {});
-
-        // /* global.benchmarkLog && 
-        //     global.benchmarkLog(Object.keys(diff));*/
-
-        //   diff = hooks_("beforeStyleDiffAssign", _=>_)(diff);
-
-        //   Object.keys(diff).length && 
-        //     Object.assign(this.component, diff);
-
-        //   styles = hooks_("afterStyleDiffAssign", _=>_)(styles);
         var reduceDiffStyleHook = hooks("reduceDiffStyleHook");
         var diffReducer = reduceDiffStyleHook ? reduceDiffStyleHook(this.styles, styles) : function (acc, key) {
           if (_this.styles[key] !== undefined) {

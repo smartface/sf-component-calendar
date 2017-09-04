@@ -15,11 +15,11 @@ const CalendarDay = extend(CalendarDayDesign)(
 	function (proto) {
 		proto.setContextDispatcher = function(dispatcher){
 			this.dispatch = dispatcher;
-		}
+		};
 		
 		proto.setDay = function(data){
-			this.currentData = data;
-			this.text = data.day;
+			// this.currentData = data;
+			this.text = data.localeDay;
 			this.dispatch({
 				type: "changeState",
 				data: data

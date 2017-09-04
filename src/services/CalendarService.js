@@ -94,7 +94,8 @@ function getCalendarMonth(moment, service, specialDaysService, dt){
   
 	const days = [];
 	const daysCount = currentMonth.daysCount();
-	const startDay = currentMonth.startDayOfMonth();
+	const startDay = currentMonth.startDayOfMonth() - 1;
+	
 	const startNext = daysCount + startDay;
 	// 31 -> 1
 	var prev = prevMonth.daysCount() - startDay;
@@ -105,31 +106,35 @@ function getCalendarMonth(moment, service, specialDaysService, dt){
 	var maxCol = 7;
 	var maxRow = 6;
 	var cellCount = maxRow*maxCol;
+	var localeDays = [];
 	
-	for(var i = 0; i < cellCount; i++){
+	for(var i = 1; i <= cellCount; i++){
 		let day;
 		
-		if(i < currentMonth.startDayOfMonth()) {
+		if(i <= startDay) {
 			day = {
 			  day: ++prev,
 			  month: 'previous',
 			};
 	
-			day.specialDay = specialDaysService({...prevMonth.toObject(), day: day.day-1});
-		} else if(i >= startNext) {
+			day.specialDay = specialDaysService({...prevMonth.toObject(), day: day.day});
+			day.localeDay = prevMonth.localeDate().setDay(day.day).getDate().day;
+		} else if(i > startNext) {
 			day = {
 			  day: next++,
 			  month: 'next',
 			};
 
-			day.specialDay = specialDaysService({...nextMonth.toObject(), day: day.day-1});
+			day.specialDay = specialDaysService({...nextMonth.toObject(), day: day.day});
+			day.localeDay = nextMonth.localeDate().setDay(day.day).getDate().day;
 		} else {
 			day = {
-			  day: i - startDay + 1,
+			  day: i - startDay,
 			  month: 'current',
 			};
 			
-			day.specialDay = specialDaysService({...currentMonth.toObject(), day: day.day-1});
+			day.specialDay = specialDaysService({...currentMonth.toObject(), day: day.day});
+			day.localeDay = currentMonth.localeDate().setDay(day.day).getDate().day;
 		}
 
 		row.push(day);
@@ -138,7 +143,7 @@ function getCalendarMonth(moment, service, specialDaysService, dt){
 			day.isWeekend = true;
 		}
 
-		if(i > 0 && (i+1) % 7 == 0 && i !== cellCount-1){
+		if(i > 0 && i % 7 == 0 && i !== cellCount){
 			row = [];
 			days.push(row);
 		}
@@ -154,20 +159,23 @@ function getCalendarMonth(moment, service, specialDaysService, dt){
     daysMin: currentMonth.weekdaysMin(),
 	  days,
     date: currentMonth.toObject(),
+    localeDate: currentMonth.localeDate().getDate(),
     normalizedDate: currentMonth.toNormalizedObject(),
     previousMonth: {
       longName: prevMonth.monthLong(),
       shortName: prevMonth.monthShort(),
       daysCount: prevMonth.daysCount(),
       date: prevMonth.toObject(),
-      normalizedDate: prevMonth.toNormalizedObject()
+      normalizedDate: prevMonth.toNormalizedObject(),
+	    localeDate: prevMonth.localeDate().getDate(),
     },
     nextMonth: {
       longName: nextMonth.monthLong(),
       shortName: nextMonth.monthShort(),
       daysCount: nextMonth.daysCount(),
       date: nextMonth.toObject(),
-      normalizedDate: nextMonth.toNormalizedObject()
+      normalizedDate: nextMonth.toNormalizedObject(),
+	    localeDate: nextMonth.localeDate().getDate(),
     }
 	};
 }
