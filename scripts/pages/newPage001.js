@@ -45,14 +45,8 @@ const NewPage001 = extend(NewPage001Design)(
 		
 		this.children.button3.onPress = function(){
 			this.children.calendar.addStyles({
-				".calendar": {
-					".header": {
-						"&_navbar": {
-							"&_monthLabel": {
-								"textColor": "#F10000"
-							}
-						}
-					}
+				".calendar.header_navbar_monthLabel": {
+					"textColor": "#F10000"
 				}
 			})
 		}.bind(this);
@@ -63,6 +57,9 @@ const NewPage001 = extend(NewPage001Design)(
 function onShow(superOnShow) {
   superOnShow();
 	this.children.calendar.changeCalendar("en", "gregorian", specialDays);
+	this.children.calendar.onDisplayChange = function(){
+		
+	};
 
   // this.children.calendar.setSelectedDate({
   // 	day: 16,
@@ -70,13 +67,13 @@ function onShow(superOnShow) {
   // 	year: 2017
   // });
 	this.children.calendar.now();
-	// var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
-	// runner.add(fn, "nextMonth");
-	// runner.add(fn, "nextMonth2");
-	// runner.add(fn, "nextMonth3");
-	// runner.add(fn, "nextMonth4");
-	// runner.add(fn, "nextMonth5");
-	// runner.add(fn, "nextMonth6");
+	var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
+	runner.add(fn, "nextMonth");
+	runner.add(fn, "nextMonth2");
+	runner.add(fn, "nextMonth3");
+	runner.add(fn, "nextMonth4");
+	runner.add(fn, "nextMonth5");
+	runner.add(fn, "nextMonth6");
 	// runner.add(fn, "nextMonth7");
 	// runner.add(fn, "nextMonth8");
 	// runner.add(fn, "nextMonth9");

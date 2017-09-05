@@ -53,6 +53,13 @@ const styles = {
 				"maxHeight": NaN,
 				"height": NaN,
 				"flexGrow": 0.2,
+				"direction": "LTR",
+				"&-lang_ar": {
+				  "direction": "RTL",
+				},
+				"&-lang_ar-sa": {
+				  "direction": "RTL",
+				},
 				"&_dayName": {
 					"height": NaN,
 					"font": {
@@ -68,14 +75,22 @@ const styles = {
 				}
 			}
 		},
+		// .calendar.weekRow.lang_ar-sa
 		".body": {},
 		".weekRow": {
 			"backgroundColor": "rgba(0,0,0,0)",
 			"maxHeight": 40,
 			"minHeight": 26,
+		  "direction": "LTR",
+			"&-lang_ar-sa": {
+			  "direction": "RTL"
+			},
+			"&-lang_ar": {
+			  "direction": "RTL"
+			},
 			"&_line": {
 				"backgroundColor": "#C0C0C0"
-			}
+			},
 		},
 		".day": {
 			"font": {
@@ -164,10 +179,17 @@ function reducer(state, actors, action, target) {
 		case "changeMonth":
 			removeSelection(newState, actors);
 			break;
+		case "changeCalendar":
+		  Object.keys(actors).forEach(function(key){
+		    const actor = actors[key];
+		    actor.resetClassNames([actor.getInitialClassName()]);
+		    actor.pushClassName(actor.getInitialClassName()+"-lang_"+action.lang);
+		  });
+		  
+		  break;
 		case "changeState":
 			const actor = actors[target];
 			const data = action.data;
-
 			if(data.isWeekend) {
 				actor.pushClassName(".calendar.day-weekend");
 			}
@@ -186,59 +208,65 @@ function reducer(state, actors, action, target) {
 	return newState;
 }
 
+function classNameMap(name) {
+	const namePattern = /week[0-9]+_weekDay[0-9]+/
+	const rowPattern = new RegExp("week[0-9]+");
+	const dayNamesPattern = new RegExp("dayName_[0-9]+");
+	const linePattern = new RegExp("_line[0-9]+");
+
+	if(namePattern.test(name)) {
+		return '.calendar.day';
+	} else if(rowPattern.test(name)) {
+		return '.calendar.weekRow';
+	} else if(dayNamesPattern.test(name)) {
+		return ".calendar.header_dayNames_dayName.weekday";
+	} else if(linePattern.test(name)) {
+		return ".calendar_line";
+	}
+
+	switch(name) {
+		case 'calendar':
+			return ".calendar-self";
+		case 'calendar_navbar':
+			return ".calendar.header .calendar.header_navbar";
+		case 'calendar_navbar_prevMonth':
+		case 'calendar_navbar_nextMonth':
+			return ".calendar.header_navbar_arrow";
+		case 'calendar_navbar_monthLabel':
+			return ".calendar.header_navbar_monthLabel";
+		case 'calendar_calendarYear_yearLabel':
+			return ".calendar_calendarYear_yearLabel";
+		case 'calendar_body':
+			return ".calendar.body";
+		case 'calendar_calendarDays':
+			return ".calendar.header_dayNames";
+	}
+
+	return ".calendar";
+}
+
 function createContext(component) {
 	var styleContext = StyleContext.fromSFComponent(
 		component,
 		"calendar",
 		//initial classNames
-		function classNameFactory(name) {
-			const namePattern = /week[0-9]+_weekDay[0-9]+/
-			const rowPattern = new RegExp("week[0-9]+");
-			const dayNamesPattern = new RegExp("dayName_[0-9]+");
-			const linePattern = new RegExp("_line[0-9]+");
-
-			if(namePattern.test(name)) {
-				return '.calendar.day';
-			} else if(rowPattern.test(name)) {
-				return '.calendar.weekRow';
-			} else if(dayNamesPattern.test(name)) {
-				return ".calendar.header_dayNames_dayName.weekday";
-			} else if(linePattern.test(name)) {
-				return ".calendar_line";
-			}
-
-			switch(name) {
-				case 'calendar':
-					return ".calendar-self";
-				case 'calendar_navbar':
-					return ".calendar.header .calendar.header_navbar";
-				case 'calendar_navbar_prevMonth':
-				case 'calendar_navbar_nextMonth':
-					return ".calendar.header_navbar_arrow";
-				case 'calendar_navbar_monthLabel':
-					return ".calendar.header_navbar_monthLabel";
-				case 'calendar_calendarYear_yearLabel':
-					return ".calendar_calendarYear_yearLabel";
-				case 'calendar_body':
-					return ".calendar.body";
-				case 'calendar_calendarDays':
-					return ".calendar.header_dayNames";
-			}
-
-			return ".calendar";
-		},
+		classNameMap,
 		//context hooks
 		function(hook) {
 			switch(hook) {
+			  case 'beforeAssignComponentStyles':
+			    return function beforeStyleAssignment(name, className) {
+						return className;
+					};
 				case 'beforeStyleDiffAssign':
 					return function beforeStyleAssignment(styles) {
 						Object.keys(styles)
 							.forEach(function(key) {
-								styles[key] = getOneProp(key, styles[key])
+								styles[key] = getOneProp(key, styles[key]);
 							});
 
 						return styles;
-					}
+					};
 				case 'reduceDiffStyleHook':
 					return function reduceDiffStyleHook(oldStyles, newStyles) {
 						function isEqual(oldStyle, newStyle) {
@@ -249,7 +277,6 @@ function createContext(component) {
 							var keys1 = Object.keys(oldStyle);
 							var keys2 = Object.keys(newStyle);
 
-							// console.log(keys1.length +"!==" +keys2.length)
 							if(keys1.length !== keys2.length) {
 								return false;
 							}
@@ -261,7 +288,7 @@ function createContext(component) {
 							return !res;
 						};
 
-						return function diffstylingeducer(acc, key) {
+						return function diffStylingReducer(acc, key) {
 							if(typeof newStyles[key] === "object") {
 								if(!isEqual(oldStyles[key], newStyles[key])) {
 									acc[key] = newStyles[key];
@@ -271,8 +298,8 @@ function createContext(component) {
 							}
 
 							return acc;
-						}
-					}
+						};
+					};
 			}
 		}
 	);

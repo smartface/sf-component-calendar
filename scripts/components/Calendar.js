@@ -147,7 +147,7 @@ function CalendarPrototype(proto){
 	proto.updateCalendar = function(month){
 		updateRows.call(this, month.days, month.date);
 		this.children.navbar.setLabel(month.longName);
-		this.children.calendarYear.setYear(month.date.year);
+		this.children.calendarYear.setYear(month.localeDate.year);
 		currentMonth = month;
 
 		month.daysMin.forEach(function(day, index) {
@@ -174,11 +174,17 @@ function CalendarPrototype(proto){
 			type: "resetDays"
 		});
 		
+		this.dispatch({
+			type: "changeCalendar",
+			lang: lang,
+		});
+		
 	  this._specialDays = specialDays || this._specialDays;
   	this._calendarService = createService({lang: lang, type: type, specialDays: specialDays});
 		
 		this._calendarService = createService({lang: lang, type: type, specialDays: this._specialDays});
 		this.updateCalendar(this._calendarService.getCalendarMonth());
+		this.applyLayout();
 	};
 	
 	proto.dispose = function(){

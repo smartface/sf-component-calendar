@@ -139,11 +139,11 @@ function getCalendarMonth(moment, service, specialDaysService, dt){
 
 		row.push(day);
 		
-		if(row.length === 1 || row.length === 7){
+		if(row.length === 1 || row.length === 7) {
 			day.isWeekend = true;
 		}
 
-		if(i > 0 && i % 7 == 0 && i !== cellCount){
+		if(i > 0 && i % 7 == 0 && i !== cellCount) {
 			row = [];
 			days.push(row);
 		}

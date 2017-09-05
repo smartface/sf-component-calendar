@@ -46,23 +46,23 @@
   }
 
   /**
-   * Create styleContext tre from a SF Component and flat component tree to create actors
+   * Create styleContext tree from a SF Component and flat component tree to create actors
    * 
-   * @params {*} component - a SF Component
-   * @params {String} name - component name
-   * @params {Function} mapper
+   * @param {*} component - a SF Component
+   * @param {string} name - component name
+   * @param {function} mapper
    */
-  function fromSFComponent(component, name, mapper) {
+  function fromSFComponent(component, name, initialClassNameMap) {
     var hooksList = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
     var flatted = {};
 
-    function collect(component, name, mapper) {
-      var newComp = makeStylable(component, mapper(name), name, hooks(hooksList));
+    function collect(component, name, initialClassNameMap) {
+      var newComp = makeStylable(component, initialClassNameMap(name), name, hooks(hooksList));
       flat(name, newComp);
 
       component.children && Object.keys(component.children).forEach(function (child) {
-        collect(component.children[child], name + "_" + child, mapper);
+        collect(component.children[child], name + "_" + child, initialClassNameMap);
       });
     }
 
@@ -70,9 +70,9 @@
       flatted[name] = comp;
     }
 
-    collect(component, name, mapper);
+    collect(component, name, initialClassNameMap);
 
-    return createStyleContext(flatted);
+    return createStyleContext(flatted, hooks(hooksList));
   }
 
   /**
@@ -134,10 +134,10 @@
         beforeHook && (diff = beforeHook(diff));
 
         Object.keys(diff).length && Object.assign(this.component, diff);
-
+        
         var afterHook = hooks("afterStyleDiffAssign");
         afterHook && (styles = afterHook(styles));
-
+        
         this.styles = styles;
       };
 
@@ -155,7 +155,7 @@
       };
 
       Stylable.prototype.getInitialClassName = function getInitialClassName() {
-        return this.className;
+        return this.initialClassName;
       };
 
       Stylable.prototype.getClassName = function getClassName() {
@@ -180,7 +180,7 @@
       Stylable.prototype.resetClassNames = function resetClassNames() {
         var classNames = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
-        this.classNames = classNames.slice();
+        this.classNames = classNames.slice() || [this.getInitialClassName()];
         this.isUgly = true;
       };
 
@@ -219,7 +219,7 @@
     }())();
   }
 
-  function createStyleContext(actors) {
+  function createStyleContext(actors, hooks) {
     var context;
 
     return function composeContext(styler, reducer, filters) {
@@ -243,7 +243,11 @@
           var comp = context.actors[name];
 
           if (comp.isUgly === true || action.type === _Context.INIT_CONTEXT_ACTION_TYPE) {
+
             var className = context.actors[name].getClassName();
+            var beforeHook = hooks("beforeAssignComponentStyles");
+            beforeHook && (className = beforeHook(name, className));
+
             var styles = styler(className + " #" + name)();
             context.actors[name].setStyles(styles);
             comp.isUgly = false;

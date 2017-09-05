@@ -123,7 +123,7 @@ describe("Style Context", function() {
       var styling = styler_(style);
       var context = styleContext(
       	styling,
-      	// reducer for context's components
+      	// actions reducer for context's components
 	      function(state, actors, action, target){
 	      	const newState = Object.assign({}, state);
 	      	if(target === undefined){
@@ -151,10 +151,12 @@ describe("Style Context", function() {
       );
       
       var actors = context.map(actor => actor);
+    	const actor = actors.find(actor => actor.name === "calendar_week_day1");
       component.children.week.children.day1.changeState("daySelected");
       
       {
       	const actor = actors.find(actor => actor.name === "calendar_week_day1");
+      	
 				const {context, name, dispatcher, children, ...style} = component.children.week.children.day1;
 				expect(".calendar.day .calendar.day-selected").to.eql(actor.getClassName());
 				expect(style).to.eql(styling(".calendar.day .calendar.day-selected")());

@@ -11,22 +11,22 @@ function hooks(hooksList){
 }
 
 /**
- * Create styleContext tre from a SF Component and flat component tree to create actors
+ * Create styleContext tree from a SF Component and flat component tree to create actors
  * 
- * @params {*} component - a SF Component
- * @params {String} name - component name
- * @params {Function} mapper
+ * @param {*} component - a SF Component
+ * @param {string} name - component name
+ * @param {function} mapper
  */
-export function fromSFComponent(component, name, mapper, hooksList=null){
+export function fromSFComponent(component, name, initialClassNameMap, hooksList=null){
   const flatted = {};
   
-  function collect(component, name, mapper){
-    const newComp = makeStylable(component, mapper(name), name, hooks(hooksList));
+  function collect(component, name, initialClassNameMap){
+    const newComp = makeStylable(component, initialClassNameMap(name), name, hooks(hooksList));
     flat(name, newComp);
 
     component.children && 
       Object.keys(component.children).forEach((child) => {
-        collect(component.children[child], name+"_"+child, mapper);
+        collect(component.children[child], name+"_"+child, initialClassNameMap);
       });
   }
   
@@ -34,9 +34,9 @@ export function fromSFComponent(component, name, mapper, hooksList=null){
     flatted[name] = comp;
   }
   
-  collect(component, name, mapper);
+  collect(component, name, initialClassNameMap);
   
-  return createStyleContext(flatted);
+  return createStyleContext(flatted, hooks(hooksList));
 }
 
 /**
@@ -93,8 +93,7 @@ export function makeStylable(component, className, name, hooks){
         global.benchmarkLog(Object.keys(diff));*/
       
       const beforeHook = hooks("beforeStyleDiffAssign");
-      beforeHook && 
-        (diff = beforeHook(diff));
+      beforeHook && (diff = beforeHook(diff));
       
       Object.keys(diff).length && 
         Object.assign(this.component, diff);
@@ -118,7 +117,7 @@ export function makeStylable(component, className, name, hooks){
     }
     
     getInitialClassName(){
-      return this.className;
+      return this.initialClassName;
     }
     
     getClassName(){
@@ -141,7 +140,7 @@ export function makeStylable(component, className, name, hooks){
     }
     
     resetClassNames(classNames=[]){
-      this.classNames = classNames.slice();
+      this.classNames = classNames.slice() || [this.getInitialClassName()];
       this.isUgly = true;
     }
     
@@ -179,7 +178,7 @@ export function makeStylable(component, className, name, hooks){
   };
 }
 
-export function createStyleContext(actors){
+export function createStyleContext(actors, hooks){
   var context;
 
   return function composeContext(styler, reducer, filters){
@@ -205,7 +204,11 @@ export function createStyleContext(actors){
             const comp = context.actors[name];
             
             if(comp.isUgly === true || action.type === INIT_CONTEXT_ACTION_TYPE){
-              const className = context.actors[name].getClassName();
+
+              let className = context.actors[name].getClassName();
+              const beforeHook = hooks("beforeAssignComponentStyles");
+              beforeHook && (className = beforeHook(name, className));
+
               const styles = styler(className+" #"+name)();
               context.actors[name].setStyles(styles);
               comp.isUgly = false;

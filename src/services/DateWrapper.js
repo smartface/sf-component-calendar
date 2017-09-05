@@ -36,22 +36,22 @@ export default class DateService {
 	
 	localeDate(){
 		var now = this._date.clone();
-		
+		const localeDate = {day: now.format("D"), month: now.format("M"), year: now.format("YYYY")};
 		return {
 			setDay(day) {
-				now.date(day).format("D");
+				localeDate.day = now.month(0).date(day).format("D");
 				return this;
 			},
 			setMonth(month) {
-				now.month(month).format("M");
+				localeDate.month = now.month(month).format("M");
 				return this;
 			},
 			setYear(year) {
-				now.year(year).format("YYYY");
+				localeDate.year = now.year(year).format("YYYY");
 				return this
 			},
 			getDate(){
-				return {day: now.format("D"), month: now.format("M"), year: now.format("YYYY")};
+				return {...localeDate};
 			}
 		}
 		// return this._date.format("D-M-YYYY").toObject();
