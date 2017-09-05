@@ -20,6 +20,8 @@ export default class DateService {
 			if(date){
 				this._date = moment(date, format);
 				notValidDateThrowanError(this._date, date);
+			} else {
+				this._date = moment();
 			}
 		}
 	}

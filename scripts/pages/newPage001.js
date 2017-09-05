@@ -62,19 +62,19 @@ const NewPage001 = extend(NewPage001Design)(
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
 function onShow(superOnShow) {
   superOnShow();
-  this.children.calendar.changeCalendar("en", "gregorian", specialDays);
-	
+	this.children.calendar.changeCalendar("en", "gregorian", specialDays);
+
   // this.children.calendar.setSelectedDate({
   // 	day: 16,
   // 	month: 9,
   // 	year: 2017
   // });
 	this.children.calendar.now();
-	var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
-	runner.add(fn, "nextMonth");
-	runner.add(fn, "nextMonth2");
-	runner.add(fn, "nextMonth3");
-	runner.add(fn, "nextMonth4");
+	// var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
+	// runner.add(fn, "nextMonth");
+	// runner.add(fn, "nextMonth2");
+	// runner.add(fn, "nextMonth3");
+	// runner.add(fn, "nextMonth4");
 	// runner.add(fn, "nextMonth5");
 	// runner.add(fn, "nextMonth6");
 	// runner.add(fn, "nextMonth7");

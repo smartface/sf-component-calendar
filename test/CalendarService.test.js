@@ -12,6 +12,15 @@ describe("Calendar Service", function() {
   });
   
   describe("Month", function() {
+    it("should return current date if date is not set.", function() {
+      var data = calendarService.getCalendarMonth();
+      expect(data.longName).to.not.eql(undefined);
+      expect(data.shortName).to.not.eql(undefined);
+      expect(data.daysCount).to.be.a('number');
+      expect(data.startDayOfMonth).to.be.a('number');
+      expect(data.date).to.be.a('object');
+    });
+    
     it("should return all needed data for a month", function() {
       var data = calendarService.getMonth({year: 2016, month: "02", day: "01"});
       
