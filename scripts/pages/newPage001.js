@@ -21,6 +21,9 @@ const NewPage001 = extend(NewPage001Design)(
 
 		this.children.calendar.onChanged = function(date){
 			this.children.label2.text = date.dayInfo.day+"/"+(date.monthInfo.longName)+"/"+date.year;
+			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
+				? date.dayInfo.specialDay.join(" - ")
+				: "Ozel Gun Yok";
 		}.bind(this);
 		
 		this.children.buttonTR.onPress = function(){
@@ -68,12 +71,12 @@ function onShow(superOnShow) {
   // });
 	this.children.calendar.now();
 	var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
-	runner.add(fn, "nextMonth");
-	runner.add(fn, "nextMonth2");
-	runner.add(fn, "nextMonth3");
-	runner.add(fn, "nextMonth4");
-	runner.add(fn, "nextMonth5");
-	runner.add(fn, "nextMonth6");
+	// runner.add(fn, "nextMonth");
+	// runner.add(fn, "nextMonth2");
+	// runner.add(fn, "nextMonth3");
+	// runner.add(fn, "nextMonth4");
+	// runner.add(fn, "nextMonth5");
+	// runner.add(fn, "nextMonth6");
 	// runner.add(fn, "nextMonth7");
 	// runner.add(fn, "nextMonth8");
 	// runner.add(fn, "nextMonth9");

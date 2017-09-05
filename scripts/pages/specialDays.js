@@ -80,6 +80,28 @@ module.exports = {
         //end of days
       },
       //end of month 4th
+      // month 9th
+      {
+        "month": 9,
+        "days": [
+          {
+            "day": 1,
+            "calendars": {
+            	"*": {
+              	"availableLangs": "en,ar",
+              	"text": {
+              		"*": "in all langs",
+              		"ar": "just in arabic",
+              		"tr": "Kurban bayrami"
+              	}
+            	}
+            },
+            "length": 3
+          }
+        ]
+        //end of days
+      },
+      //end of month 9th
       
     ]//end of byMonths
   }

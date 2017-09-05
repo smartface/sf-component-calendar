@@ -54,7 +54,7 @@ function CalendarPrototype(proto){
 			longName: currentMonth.daysLong[index],
 			shortName: currentMonth.daysShort[index],
 			day: selectedDay.day,
-			specialDays: selectedDay.specialDays,
+			specialDay: selectedDay.specialDay,
 		};
 		
 		switch (selectedDay.month) {
