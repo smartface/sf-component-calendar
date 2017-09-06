@@ -245,7 +245,9 @@ There are 2 types in the configuration.
   - days: Array.<Day>
   
 **Day**
+  - day: Number - Date day
   - calendars: Object.<CalendarEnum, Calendar>
+  - length: Number - It defines how long this special day is.
   
 **Calendar**
   - text: Object.<LangEnum, string>
@@ -255,7 +257,14 @@ There are 2 types in the configuration.
   - en
   - ar
   - tr
-  Includes all supported languages shorts like above.
+Includes all supported languages shorts like above.
+  
+  - ~en
+  - ~ar
+And includes not-include languages.
+  
+  - \*
+And includes all languages operator.
  
 **CalendarEnum**
   - \*: All calendars
