@@ -89,7 +89,7 @@ describe("Special Days Service", function() {
 			.to.eql(["in all langs"]);
 	});
 	
-	it("return false when lang collide with expect operator(~)", function() {
+	it("return false when lang collide with except operator(~)", function() {
 		let day = service.getSpecialDay({year: 2018, month: 1, day: 1, calendar: "gregorian", lang: "ar"});
 		expect(day)
 			.to.eql(["in all langs"]);
