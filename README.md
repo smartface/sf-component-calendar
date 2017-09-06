@@ -55,25 +55,36 @@ The Calendar component is consisted of several elements. Elements are :
       - type: FlexLayout
       - styling id: #calendar_navbar
       - children: 
-         - **prevMonth**: Previous month button
+        - **prevMonth**:
           - type: Button
           - styling id: #calendar_navbar_prevMonth
-         - **nextMonth**: Next month button
+        - **nextMonth**:
           - type: Button
           - styling id: #calendar_navbar_nextMonth
-         -  **monthLabel**: Month name label
+        -  **monthLabel**:
           - type: Label
           - styling id : #calendar_navbar_monthLabel
-   - **calendarYear**: #calendar_calendarYear
-    - type: FlexLayout
-    - children:
-      - **yearLabel**
+    - **calendarYear**: #calendar_calendarYear
+      - type: FlexLayout
         - type: FlexLayout
-        - styling id: #calendar_yearLabel
+        - styling id: #calendar_calendarYear
         - children:
-          - **label**
-            - type: Label
-            - styling id: #calendar_yearLabel_label
+        - **yearLabel**
+          - type: FlexLayout
+          - styling id: #calendar_calendarYear_yearLabel
+          - children:
+            - **label**
+              - type: Label
+              - styling id: #calendar_yearLabel_label
+      - **calendarDays**:
+        - type: FlexLayout
+        - styling id: #calendar_calendarDays
+        - children:
+          - **dayName_0, dayName_1, dayName_2, dayName_3, dayName_4, dayName_5, dayName_6**
+          - types: Label
+          - styling id: #calendar_calendarDays_{component name}
+      - **body**
+        - type: FlexLayout
       
     
       
