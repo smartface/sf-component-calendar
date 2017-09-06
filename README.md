@@ -89,7 +89,7 @@ The Calendar component is consisted of several elements. Elements are :
         - children:
           - **week1, week2, week3, week4, week5, week6, week7**
           - types: FlexLayout
-           - children each:
+          - children each:
             - **weekDay1, weekDay2, weekDay3, weekDay4, weekDay5, weekDay6, weekDay7**
             - types: Button
             - styling id: #calendar_{week component name}_{weekday component name}
