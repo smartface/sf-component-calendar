@@ -62,8 +62,8 @@ The Calendar component is consisted of several elements. Elements are :
           - type: Button
           - styling id: #calendar_navbar_nextMonth
         -  **monthLabel**:
-          - type: Label
-          - styling id : #calendar_navbar_monthLabel
+            - type: Label
+            - styling id : #calendar_navbar_monthLabel
     - **calendarYear**: #calendar_calendarYear
       - type: FlexLayout
         - type: FlexLayout
