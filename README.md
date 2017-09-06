@@ -112,18 +112,25 @@ The Calendar component is consisted of several elements. Elements are :
 
 ```js
 { 
-  year: Number,
+  localeDate: {
+    day: String,
+    month: String,
+    year: String
+  },
+  date: {
+    day: Number,
+    month: Number,
+    year: Number
+  },
   dayInfo: {
     weekDay: Number,
     longName: String
     shortName: String
-    day: Number,
     specialDay: Array.<String>
   },
   monthInfo: {
     longName: String
     shortName: String
-    month: Number
   }
 }
 
