@@ -250,11 +250,14 @@ You can configure special-days in The Calendar by years, calendars, languages an
 
 ## Anatomy of The Specialday Configuration
 There are 2 types in the configuration.
-  - **byYear**
-    You can create specialdays in this section by years. This section start with years.
-    Years include months and month days.
-  - **byMonth**
-    You can create specialdays in this section by months and these definitions are included within all years. This section starts with months.
+**byYear**
+  
+You can create specialdays in this section by years. This section start with years. Years include months and month days.
+
+**byMonth**  
+
+You can create specialdays in this section by months and these definitions are included within all years. This section starts with months.
+
 ### Specialday Data Types
 **Year** 
   - year: Number
@@ -271,19 +274,22 @@ There are 2 types in the configuration.
   
 **Calendar**
   - text: Object.<LangEnum, string>
-  - availableLangs: String - Comma seperated languages string. For example: "en,tr". It also includes not-available langs with "~" operator for example "~de,~ar".
+  - availableLangs: string - Comma seperated languages string. For example: "en,tr". It also includes not-available langs with "~" operator for example "~de,~ar".
   
 **LangEnum**
   - en
   - ar
   - tr
+  
 Includes all supported languages shorts like above.
   
   - ~en
   - ~ar
+  
 And includes not-include languages.
   
   - \*
+  
 And includes all languages operator.
  
 **CalendarEnum**
