@@ -53,9 +53,12 @@ function CalendarPrototype(proto){
 			weekDay: index,
 			longName: currentMonth.daysLong[index],
 			shortName: currentMonth.daysShort[index],
-			day: selectedDay.day,
 			specialDay: selectedDay.specialDay,
 		};
+		
+		dayData.date = {
+      day: selectedDay.day
+    };
 		
 		switch (selectedDay.month) {
 			// if selected day is in the current month.
@@ -63,30 +66,33 @@ function CalendarPrototype(proto){
 				dayData.monthInfo = {
 					longName: currentMonth.longName,
 					shortName: currentMonth.shortName,
-					month: currentMonth.date.month + 1
 				};
 				
-				dayData.year = currentMonth.date.year;
+				dayData.date.month = currentMonth.date.month;
+				dayData.localeDate = currentMonth.localeDate;
+				dayData.date.year = currentMonth.date.year;
 				break;
 			// if selected day is in the next month.
 			case 'next':
 				dayData.monthInfo = {
 					longName: currentMonth.nextMonth.longName,
 					shortName: currentMonth.nextMonth.shortName,
-					month: currentMonth.nextMonth.date.month + 1
 				};
 				
-				dayData.year = currentMonth.nextMonth.date.year;
+				dayData.localeDate = currentMonth.nextMonth.localeDate;
+				dayData.date.month = currentMonth.nextMonth.month;
+				dayData.date.year = currentMonth.nextMonth.date.year;
 				break;
 			// if selected day is in the previous month.
 			case 'previous':
 				dayData.monthInfo = {
 					longName: currentMonth.previousMonth.longName,
 					shortName: currentMonth.previousMonth.shortName,
-					month: currentMonth.previousMonth.date.month + 1
 				};
 				
-				dayData.year = currentMonth.previousMonth.date.year;
+				dayData.localeDate = currentMonth.previousMonth.localeDate;
+				dayData.date.month = currentMonth.previousMonth.month;
+				dayData.date.year = currentMonth.previousMonth.date.year;
 				break;
 				
 				default:
@@ -110,12 +116,10 @@ function CalendarPrototype(proto){
 		weeks.push(this.children.body.children.week6);
 		
 		weeks.forEach(function(row, index){
-			// this.children.body.addChild(row);
 			row.onDaySelected = onDaySelected.bind(this, index);
-			// this.children["week"+index] = row;
 		}.bind(this));
 		
-		this.context = CalendarContext.createContext(this);
+		this.styleContext = CalendarContext.createContext(this);
 	};
 	
 	proto.now = function(){
@@ -124,7 +128,7 @@ function CalendarPrototype(proto){
 	};
 	
 	proto.addStyles = function(styles) {
-		this.context(styles);
+		this.styleContext(styles);
 	};
 	
 	proto.setSelectedDate = function(date){
@@ -189,9 +193,9 @@ function CalendarPrototype(proto){
 	
 	proto.dispose = function(){
 		weeks = [];
-		this.context(null);
+		this.styleContext(null);
 		this.dispatch = null;
-		this.context = null;
+		this.styleContext = null;
 		this._calendarService = null;
 		currentMonth = null;
 		this.onChanged = null;

@@ -134,10 +134,10 @@
         beforeHook && (diff = beforeHook(diff));
 
         Object.keys(diff).length && Object.assign(this.component, diff);
-        
+
         var afterHook = hooks("afterStyleDiffAssign");
         afterHook && (styles = afterHook(styles));
-        
+
         this.styles = styles;
       };
 

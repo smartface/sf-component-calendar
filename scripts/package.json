@@ -28,6 +28,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@smartface/styler": "^1.2.2",
     "moment": "^2.18.1",
     "moment-hijri": "^2.0.1"
   },
