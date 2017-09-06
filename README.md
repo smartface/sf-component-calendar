@@ -248,7 +248,7 @@ You can configure special-days in The Calendar by years, calendars, languages an
 
 ```
 
-## Anatomy of The Specialday configuration
+## Anatomy of The Specialday Configuration
 There are 2 types in the configuration.
   - **byYear**
     You can create specialdays in this section by years. This section start with years.
