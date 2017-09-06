@@ -51,27 +51,35 @@ Finally run commnand on the scripts folder to publish to npm:
 The Calendar component is consisted of several elements. Elements are :
 
   - **calendar**
+    - className: .calendar-self
+    - children:
     - **navbar**
       - type: FlexLayout
       - styling id: #calendar_navbar
+      - className: .calendar.header_navbar
       - children: 
         - **prevMonth**:
           - type: Button
           - styling id: #calendar_navbar_prevMonth
+          - className: .calendar.header_navbar_arrow
         - **nextMonth**:
           - type: Button
           - styling id: #calendar_navbar_nextMonth
+          - className: .calendar.header_navbar_arrow
         -  **monthLabel**:
             - type: Label
-            - styling id : #calendar_navbar_monthLabel
+            - styling id: #calendar_navbar_monthLabel
+            - className: .calendar.header_navbar_monthLabel
     - **calendarYear**: #calendar_calendarYear
       - type: FlexLayout
         - type: FlexLayout
         - styling id: #calendar_calendarYear
+        - className: .calendar_calendarYear
         - children:
           - **yearLabel**
             - type: FlexLayout
             - styling id: #calendar_calendarYear_yearLabel
+            - className: .calendar_calendarYear_yearLabel
             - children:
               - **label**
                 - type: Label
@@ -79,20 +87,25 @@ The Calendar component is consisted of several elements. Elements are :
       - **calendarDays**:
         - type: FlexLayout
         - styling id: #calendar_calendarDays
+        - className: .calendar.header_dayNames
         - children:
           - **dayName_0, dayName_1, dayName_2, dayName_3, dayName_4, dayName_5, dayName_6**
+            - className: .calendar.header_dayNames_dayName
             - types: Label
             - styling id: #calendar_calendarDays_{component name}
       - **calendarBody**
         - type: FlexLayout
         - styling id: #calendar_calendarBody
+        - className: .calendar.body
         - children:
           - **week1, week2, week3, week4, week5, week6, week7**
             - types: FlexLayout
+            - className: .calendar.weekrow
             - children each:
               - **weekDay1, weekDay2, weekDay3, weekDay4, weekDay5, weekDay6, weekDay7**
                 - types: Button
                 - styling id: #calendar_{week component name}_{weekday component name}
+                - className: .calendar.day
     
       
 ### Selected Date Schema
