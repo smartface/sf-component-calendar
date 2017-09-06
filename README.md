@@ -455,17 +455,14 @@ calendar.addStyles(newMonthLabelColorStyle);
 ### Calendar.prototype.addStyles(style)
 Merges specified styles to current styles and updates the component
 
-### Calendar.prototype.changeCalendar(lang:String, type:String)
+### Calendar.prototype.changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
 Changes the calendar's type
 
   Supported Calendars:
   - CalendarTypes.HIJRI
   - CalendarTypes.GREGORIAN
 
-### Calendar.prototype.changeLang(lang:String)
-Changes the calendar's language.
-
- Supported Calendars:
+ Supported Languages:
   - Turkish : "tr"
   - German : "de"
   - French : "fr"
