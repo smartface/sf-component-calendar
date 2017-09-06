@@ -46,6 +46,37 @@ Finally run commnand on the scripts folder to publish to npm:
 
 ``` $ npm publish ```
 
+### Component Elements
+
+The Calendar component is consisted of several elements. Elements are :
+
+  - **calendar**
+    - **navbar**
+      - type: FlexLayout
+      - styling id: #calendar_navbar
+      - children: 
+         - **prevMonth**: Previous month button
+          - type: Button
+          - styling id: #calendar_navbar_prevMonth
+         - **nextMonth**: Next month button
+          - type: Button
+          - styling id: #calendar_navbar_nextMonth
+         -  **monthLabel**: Month name label
+          - type: Label
+          - styling id : #calendar_navbar_monthLabel
+   - **calendarYear**: #calendar_calendarYear
+    - type: FlexLayout
+    - children:
+      - **yearLabel**
+        - type: FlexLayout
+        - styling id: #calendar_yearLabel
+        - children:
+          - **label**
+            - type: Label
+            - styling id: #calendar_yearLabel_label
+      
+    
+      
 ### Selected Date Schema
 
 ```js
@@ -65,7 +96,13 @@ Finally run commnand on the scripts folder to publish to npm:
   }
 }
 
+
 ```
+
+## Special Days
+
+You can configure special-days in The Calendar by years, calendars, languages and months.
+
 ## Styling
 
 Default style
