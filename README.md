@@ -69,30 +69,30 @@ The Calendar component is consisted of several elements. Elements are :
         - type: FlexLayout
         - styling id: #calendar_calendarYear
         - children:
-        - **yearLabel**
-          - type: FlexLayout
-          - styling id: #calendar_calendarYear_yearLabel
-          - children:
-            - **label**
-              - type: Label
-              - styling id: #calendar_yearLabel_label
+          - **yearLabel**
+            - type: FlexLayout
+            - styling id: #calendar_calendarYear_yearLabel
+            - children:
+              - **label**
+                - type: Label
+                - styling id: #calendar_yearLabel_label
       - **calendarDays**:
         - type: FlexLayout
         - styling id: #calendar_calendarDays
         - children:
           - **dayName_0, dayName_1, dayName_2, dayName_3, dayName_4, dayName_5, dayName_6**
-          - types: Label
-          - styling id: #calendar_calendarDays_{component name}
+            - types: Label
+            - styling id: #calendar_calendarDays_{component name}
       - **calendarBody**
         - type: FlexLayout
         - styling id: #calendar_calendarBody
         - children:
           - **week1, week2, week3, week4, week5, week6, week7**
-          - types: FlexLayout
-          - children each:
-            - **weekDay1, weekDay2, weekDay3, weekDay4, weekDay5, weekDay6, weekDay7**
-            - types: Button
-            - styling id: #calendar_{week component name}_{weekday component name}
+            - types: FlexLayout
+            - children each:
+              - **weekDay1, weekDay2, weekDay3, weekDay4, weekDay5, weekDay6, weekDay7**
+                - types: Button
+                - styling id: #calendar_{week component name}_{weekday component name}
     
       
 ### Selected Date Schema
