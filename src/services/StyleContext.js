@@ -40,8 +40,7 @@ export function fromSFComponent(component, name, initialClassNameMap, hooksList=
 }
 
 /**
- * Creates context from a hash list
- *
+ * Creates context from a children hash
  */
 export function fromObject(children, maker, mapper){
   return Object.keys(children).reduce((acc, child) => {

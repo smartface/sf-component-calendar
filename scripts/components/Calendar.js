@@ -60,6 +60,12 @@ function CalendarPrototype(proto){
       day: selectedDay.day
     };
 		
+  	dayData.localeDate = {
+  	  day: currentMonth.days[row][index].localeDay,
+  		month: currentMonth.localeDate.month,
+			year: currentMonth.localeDate.year,
+		};
+  	
 		switch (selectedDay.month) {
 			// if selected day is in the current month.
 			case 'current':
@@ -69,7 +75,6 @@ function CalendarPrototype(proto){
 				};
 				
 				dayData.date.month = currentMonth.date.month;
-				dayData.localeDate = currentMonth.localeDate;
 				dayData.date.year = currentMonth.date.year;
 				break;
 			// if selected day is in the next month.
@@ -79,7 +84,8 @@ function CalendarPrototype(proto){
 					shortName: currentMonth.nextMonth.shortName,
 				};
 				
-				dayData.localeDate = currentMonth.nextMonth.localeDate;
+			  dayData.localeDate.month = currentMonth.nextMonth.localeDate.month;
+			  dayData.localeDate.year = currentMonth.nextMonth.localeDate.year;
 				dayData.date.month = currentMonth.nextMonth.month;
 				dayData.date.year = currentMonth.nextMonth.date.year;
 				break;
@@ -90,7 +96,8 @@ function CalendarPrototype(proto){
 					shortName: currentMonth.previousMonth.shortName,
 				};
 				
-				dayData.localeDate = currentMonth.previousMonth.localeDate;
+			  dayData.localeDate.month = currentMonth.previousMonth.localeDate.month;
+			  dayData.localeDate.year = currentMonth.previousMonth.localeDate.year;
 				dayData.date.month = currentMonth.previousMonth.month;
 				dayData.date.year = currentMonth.previousMonth.date.year;
 				break;

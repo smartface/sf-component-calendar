@@ -76,8 +76,7 @@
   }
 
   /**
-   * Creates context from a hash list
-   *
+   * Creates context from a children hash
    */
   function fromObject(children, maker, mapper) {
     return Object.keys(children).reduce(function (acc, child) {
