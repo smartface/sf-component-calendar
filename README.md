@@ -53,37 +53,36 @@ The Calendar component is consisted of several elements. Elements are :
   - **calendar**
     - className: .calendar-self
     - children:
-    - **navbar**
-      - type: FlexLayout
-      - styling id: #calendar_navbar
-      - className: .calendar.header_navbar
-      - children: 
-        - **prevMonth**:
-          - type: Button
-          - styling id: #calendar_navbar_prevMonth
-          - className: .calendar.header_navbar_arrow
-        - **nextMonth**:
-          - type: Button
-          - styling id: #calendar_navbar_nextMonth
-          - className: .calendar.header_navbar_arrow
-        -  **monthLabel**:
-            - type: Label
-            - styling id: #calendar_navbar_monthLabel
-            - className: .calendar.header_navbar_monthLabel
+      - **navbar**
+        - type: FlexLayout
+        - styling id: #calendar_navbar
+        - className: .calendar.header_navbar
+        - children: 
+          - **prevMonth**:
+            - type: Button
+            - styling id: #calendar_navbar_prevMonth
+            - className: .calendar.header_navbar_arrow
+          - **nextMonth**:
+            - type: Button
+            - styling id: #calendar_navbar_nextMonth
+            - className: .calendar.header_navbar_arrow
+          -  **monthLabel**:
+              - type: Label
+              - styling id: #calendar_navbar_monthLabel
+              - className: .calendar.header_navbar_monthLabel
     - **calendarYear**: #calendar_calendarYear
       - type: FlexLayout
-        - type: FlexLayout
-        - styling id: #calendar_calendarYear
-        - className: .calendar_calendarYear
-        - children:
-          - **yearLabel**
-            - type: FlexLayout
-            - styling id: #calendar_calendarYear_yearLabel
-            - className: .calendar_calendarYear_yearLabel
-            - children:
-              - **label**
-                - type: Label
-                - styling id: #calendar_yearLabel_label
+      - styling id: #calendar_calendarYear
+      - className: .calendar_calendarYear
+      - children:
+        - **yearLabel**
+          - type: FlexLayout
+          - styling id: #calendar_calendarYear_yearLabel
+          - className: .calendar_calendarYear_yearLabel
+          - children:
+            - **label**
+              - type: Label
+              - styling id: #calendar_yearLabel_label
       - **calendarDays**:
         - type: FlexLayout
         - styling id: #calendar_calendarDays
