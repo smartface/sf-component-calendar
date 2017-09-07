@@ -139,19 +139,27 @@ function CalendarPrototype(proto){
 	};
 	
 	proto.setSelectedDate = function(date){
+		this.dispatch({
+			type: "resetDays"
+		});
 		const newDate = Object.assign({}, date);
-		newDate.month = date.month - 1;
+		newDate.month = date.month;
 		const dateData = this._calendarService.getCalendarMonth(newDate);
 		this.updateCalendar(dateData);
-		this._selectDay();
+		this._selectDay(dateData);
 	};
 	
 	proto._selectDay = function(){
-		const totalDay = currentMonth.startDayOfMonth + currentMonth.date.day;
-		const row = Math.ceil(totalDay / 7);
+		// const row = Math.ceil(totalDay / 7);
 		// use %7 to calculate
-		const index = currentMonth.date.day - 1 - ((row-1) * 7 - currentMonth.startDayOfMonth);
-
+		// const index = currentMonth.date.day - 2 - ((row-1) * 7 - currentMonth.startDayOfMonth);
+    const start = currentMonth.startDayOfMonth - 1;
+    const day = currentMonth.date.day - 1;
+		// const totalDay = start + currentMonth.date.day;
+    
+		const index = (start + day) % 7;
+		const row = Math.ceil((start + day + 1) / 7);
+		
 		weeks[row-1].setSelectedIndex(index);
 	};
 	

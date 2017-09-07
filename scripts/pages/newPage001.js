@@ -20,8 +20,7 @@ const NewPage001 = extend(NewPage001Design)(
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
 		this.children.calendar.onChanged = function(date){
-			alert(JSON.stringify(date, "", "  "));
-			this.children.label2.text = date.date.day+"/"+(date.monthInfo.longName)+"/"+date.date.year;
+			this.children.label2.text = date.dayInfo.day+"/"+(date.monthInfo.longName)+"/"+date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")
 				: "Ozel Gun Yok";
@@ -60,17 +59,13 @@ const NewPage001 = extend(NewPage001Design)(
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
 function onShow(superOnShow) {
   superOnShow();
-	this.children.calendar.changeCalendar("en", "gregorian", specialDays);
+	this.children.calendar.changeCalendar("en", "gregorian");
 	this.children.calendar.onDisplayChange = function(){
 		
 	};
 
-  // this.children.calendar.setSelectedDate({
-  // 	day: 16,
-  // 	month: 9,
-  // 	year: 2017
-  // });
-	this.children.calendar.now();
+  this.children.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
+	// this.children.calendar.now();
 	var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
 	// runner.add(fn, "nextMonth");
 	// runner.add(fn, "nextMonth2");

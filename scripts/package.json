@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "@smartface/styler": "^1.1.0",
-    "sf-core": "^1.0.0"
+    "sf-core": "^1.1.18-beta.1"
   }
 }
