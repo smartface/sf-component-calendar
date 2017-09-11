@@ -2,7 +2,7 @@
 [![Npm Status](https://img.shields.io/npm/v/@smartface/sf-calendar-component.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-component-calendar)
 
 ## Component Intallation
-``` $ npm i @smartface/sf-calendar-component ```
+``` $ npm i @smartface/sf-component-calendar ```
 
 ## Component Usage
 ```js 
