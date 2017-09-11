@@ -457,7 +457,7 @@ calendar.addStyles(newMonthLabelColorStyle);
 
 ## Api
 
-### Calendar.prototype.addStyles(style)
+### Calendar.prototype.addStyles(styleObject:Object)
 Merges specified styles to current styles and updates the component
 
 ### Calendar.prototype.changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
