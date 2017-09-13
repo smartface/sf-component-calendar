@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@smartface/styler": "^1.2.2",
+    "js-base": "^1.0.0",
     "moment": "^2.18.1",
     "moment-hijri": "^2.0.1"
   },

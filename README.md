@@ -12,7 +12,7 @@ const myCalendar = new Calendar();
 
 // when user select a date
 myCalendar.onChanged = function(data){
-  ...
+  //...
 }
 
 // changing calendar date
@@ -29,6 +29,7 @@ Create new cloud workspace in the Smartface-Cloud with this repository url. Open
     $ npm i @smartface/styler
     $ npm i moment
     $ npm i moment-hijri
+    $ npm i js-base
 ```
 
 Then run command via terminal on the workspace root for TDD
