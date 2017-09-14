@@ -12,7 +12,7 @@
 				"orientation": "AUTO"
 			},
 			"className": ".page",
-			"version": "6.4.7",
+			"version": "6.4.8",
 			"props": {
 				"backgroundColor": "rgba( 163, 163, 163, 1 )",
 				"orientation": "AUTO",

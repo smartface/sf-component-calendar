@@ -9,6 +9,9 @@ const styles = {
 		"&_line2": {
 			width: 160,
 			"alignSelf": "FLEX_END"
+		},
+    "&_navbar_prevMonth": {
+			width: 260
 		}
 	},
 	".calendar": {
@@ -135,6 +138,7 @@ const styler = require("@smartface/styler/lib/styler");
 
 var styling = styler(styles);
 
+
 const selectDays = function(name) {
 	return name.indexOf("_weekDay") > 0;
 };
@@ -255,11 +259,11 @@ function createContext(component) {
 		function(hook) {
 			switch(hook) {
 			  case 'beforeAssignComponentStyles':
-			    return function beforeStyleAssignment(name, className) {
+			    return function beforeAssignComponentStyles(name, className) {
 						return className;
 					};
 				case 'beforeStyleDiffAssign':
-					return function beforeStyleAssignment(styles) {
+					return function beforeStyleDiffAssign(styles) {
 						Object.keys(styles)
 							.forEach(function(key) {
 								styles[key] = getOneProp(key, styles[key]);
@@ -268,7 +272,7 @@ function createContext(component) {
 						return styles;
 					};
 				case 'reduceDiffStyleHook':
-					return function reduceDiffStyleHook(oldStyles, newStyles) {
+					return function stylesDiffHook(oldStyles, newStyles) {
 						function isEqual(oldStyle, newStyle) {
 							if(oldStyle === undefined) {
 								return false;
@@ -288,7 +292,7 @@ function createContext(component) {
 							return !res;
 						};
 
-						return function diffStylingReducer(acc, key) {
+						return function stylesDiffReducer(acc, key) {
 							if(typeof newStyles[key] === "object") {
 								if(!isEqual(oldStyles[key], newStyles[key])) {
 									acc[key] = newStyles[key];

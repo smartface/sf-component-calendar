@@ -24,13 +24,13 @@ const CalendarDay = extend(CalendarDayDesign)(
 				type: "changeState",
 				data: data
 			});
-		}
+		};
 		
 		proto.setSelected = function(){
 			this.dispatch({
 				type: "daySelected"
 			});
-		}
+		};
 		
 		proto.clearSelected = function(){
 		}

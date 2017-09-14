@@ -13,9 +13,12 @@ function hooks(hooksList){
 /**
  * Create styleContext tree from a SF Component and flat component tree to create actors
  * 
- * @param {*} component - a SF Component
+ * @param {Object} component - A sf-core component
  * @param {string} name - component name
- * @param {function} mapper
+ * @param {function} initialClassNameMap - classNames mapping with specified component and children
+ * @param {?function} hookList - callback function to capture context's hooks
+ * 
+ * @return {function} - context helper
  */
 export function fromSFComponent(component, name, initialClassNameMap, hooksList=null){
   const flatted = {};
@@ -40,26 +43,41 @@ export function fromSFComponent(component, name, initialClassNameMap, hooksList=
 }
 
 /**
- * Creates context from a children hash
+ * Creates context from a children hash (not tested)
+ * 
+ * 
  */
-export function fromObject(children, maker, mapper){
-  return Object.keys(children).reduce((acc, child) => {
-    acc[child] = maker(children[child], child, mapper);
-    return acc;
-  }, {});
-}
+// export function fromObject(children, maker, mapper){
+//   return Object.keys(children).reduce((acc, child) => {
+//     acc[child] = maker(children[child], child, mapper);
+//     return acc;
+//   }, {});
+// }
 
 /**
  * Creates context from an array
  *
  */
-export function fromArray(children, maker, mapper){
-  return children.map((child) => {
-    return maker(child, mapper);
-  });
-}
+// export function fromArray(children, maker, mapper){
+//   return children.map((child) => {
+//     return maker(child, mapper);
+//   });
+// }
 
+/**
+ * Styleable Actor HOC. Decorates specifeid component and return an actor component
+ * 
+ * @param {object} component - A component to decorate
+ * @param {string} className - initial className for actor
+ * @param {function} hooks - context's hooks dispatcher
+ * 
+ * @returns {Object} - A Stylable Actor
+ */
 export function makeStylable(component, className, name, hooks){
+  /**
+   * Styable actor
+   * @class
+   */
   return new class Stylable {
     constructor(){
       this.name = name;
@@ -70,23 +88,28 @@ export function makeStylable(component, className, name, hooks){
       this.isUgly = true;
     }
     
-    setStyles(styles) {
+    /**
+     * Sets styles
+     *
+     * @param {object} styles - a style object
+     */
+    setStyles(style) {
       const reduceDiffStyleHook = hooks("reduceDiffStyleHook");
       let diffReducer = reduceDiffStyleHook
-        ? reduceDiffStyleHook(this.styles, styles)
+        ? reduceDiffStyleHook(this.styles, style)
         : (acc, key) => {
             if(this.styles[key] !== undefined) {
-              if(this.styles[key] !== styles[key]) {
-                acc[key] = styles[key];
+              if(this.styles[key] !== style[key]) {
+                acc[key] = style[key];
               } else {
-                acc[key] = styles[key];
+                acc[key] = style[key];
               }
             }
             
             return acc;
           };
       
-      let diff = Object.keys(styles).reduce(diffReducer, {});
+      let diff = Object.keys(style).reduce(diffReducer, {});
       
      /* global.benchmarkLog && 
         global.benchmarkLog(Object.keys(diff));*/
@@ -98,9 +121,9 @@ export function makeStylable(component, className, name, hooks){
         Object.assign(this.component, diff);
       
       const afterHook = hooks("afterStyleDiffAssign");
-      afterHook && (styles = afterHook(styles));
+      afterHook && (style = afterHook(style));
       
-      this.styles = styles;
+      this.styles = style;
     }
     
     setContext(context){
@@ -177,10 +200,23 @@ export function makeStylable(component, className, name, hooks){
   };
 }
 
+/**
+ * Style Context. Returns context composer
+ * 
+ * @param {Array.<Object>} actors - Actors List
+ * @param {function} hooks - Hooks callback
+ * @returns {function} - Context Composer Function
+ */
 export function createStyleContext(actors, hooks){
   var context;
-
-  return function composeContext(styler, reducer, filters){
+  
+  /**
+   * Composes a context.
+   * 
+   * @param {function) styling - Styling function from styler.
+   * @param {function} reducer - Reducer function to run actions
+   */
+  return function composeContext(styling, reducer){
     var latestState = context ? context.getState() : {};
     context && context.dispose();
     
@@ -208,7 +244,7 @@ export function createStyleContext(actors, hooks){
               const beforeHook = hooks("beforeAssignComponentStyles");
               beforeHook && (className = beforeHook(name, className));
 
-              const styles = styler(className+" #"+name)();
+              const styles = styling(className+" #"+name)();
               context.actors[name].setStyles(styles);
               comp.isUgly = false;
             }

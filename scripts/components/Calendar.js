@@ -150,13 +150,8 @@ function CalendarPrototype(proto){
 	};
 	
 	proto._selectDay = function(){
-		// const row = Math.ceil(totalDay / 7);
-		// use %7 to calculate
-		// const index = currentMonth.date.day - 2 - ((row-1) * 7 - currentMonth.startDayOfMonth);
     const start = currentMonth.startDayOfMonth - 1;
     const day = currentMonth.date.day - 1;
-		// const totalDay = start + currentMonth.date.day;
-    
 		const index = (start + day) % 7;
 		const row = Math.ceil((start + day + 1) / 7);
 		
