@@ -20,7 +20,7 @@ const NewPage001 = extend(NewPage001Design)(
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
 		this.children.calendar.onChanged = function(date){
-			this.children.label2.text = date.dayInfo.day+"/"+(date.monthInfo.longName)+"/"+date.year;
+			this.children.label2.text = date.date.day+"/"+(date.monthInfo.longName)+"/"+date.date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")
 				: "Ozel Gun Yok";

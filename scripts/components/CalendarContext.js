@@ -9,9 +9,6 @@ const styles = {
 		"&_line2": {
 			width: 160,
 			"alignSelf": "FLEX_END"
-		},
-    "&_navbar_prevMonth": {
-			width: 260
 		}
 	},
 	".calendar": {

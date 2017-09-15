@@ -1,13 +1,14 @@
 {
   "name": "@smartface/sf-calendar-component",
-  "version": "1.3.1",
+  "version": "1.3.6",
   "description": "Calendar component",
   "main": "components/calendar.js",
   "scripts": {
     "prepublish": "cp -r ./node_modules/library ./library && rm ./library/styler-builder.js",
     "postpublish": "rm -r ./library",
-    "preinstall": "mkdir -p node_modules && cp -r ./library ./node_modules/library && rm -r ./library",
-    "postinstall": "mkdir -p node_modules && cp -r ./library ./node_modules/library && rm -r ./library"
+    "preinstall": "mkdir -p node_modules",
+    "postinstall": "cp -r ./library ./node_modules/library && rm -r ./library && npm run installSelf",
+    "installSelf": "config=$(node -p \"JSON.stringify(require('./package.json').sfModule)\") && smm --config=$config || echo \"smm cannot be found\""
   },
   "repository": {
     "type": "git",
@@ -19,13 +20,7 @@
     "styling",
     "style"
   ],
-  "homepage": "https://github.com/smartface/sf-component-calendar#readme",
-  "author": "Cenk Cetinkaya",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/smartface/sf-component-calendar/issues"
-  },
-  "smartfaceConfig": {
+  "sfModule": {
     "type": "Component",
     "moduleAssets": {
       "images": [],
@@ -36,6 +31,12 @@
       "type": "Calendar",
       "icon": "if it is a image path then it must be imported to UiEditor or a existing component type can be used like FlexLayout, ListView etc."
     }
+  },
+  "homepage": "https://github.com/smartface/sf-component-calendar#readme",
+  "author": "Cenk Cetinkaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smartface/sf-component-calendar/issues"
   },
   "publishConfig": {
     "access": "public"
