@@ -55,6 +55,10 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 		}
 		
 		proto.setDays = function(days){
+			if(days === undefined){
+				return;
+			}
+			
 			this.children.weekDay1.setDay(days[0]);
 			this.children.weekDay2.setDay(days[1]);
 			this.children.weekDay3.setDay(days[2]);

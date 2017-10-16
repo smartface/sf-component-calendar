@@ -8,6 +8,7 @@ const benchmark = require("../benchmarks/CalendarServices");
 const runner = require("../benchmarks/runner");
 const calendarTypes = require("../components/CalendarTypes");
 const specialDays = require("./specialDays");
+const Router = require("sf-core/ui/router");
 
 const NewPage001 = extend(NewPage001Design)(
 	// Constructor
@@ -44,6 +45,10 @@ const NewPage001 = extend(NewPage001Design)(
 		
 		this.children.buttonGreg.onPress = function(){
 			this.children.calendar.changeCalendar("en", calendarTypes.GREGORIAN);
+		}.bind(this);
+		
+		this.children.button1.onPress = function(){
+			Router.go("page2");
 		}.bind(this);
 		
 		this.children.button3.onPress = function(){

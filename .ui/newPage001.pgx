@@ -14,17 +14,7 @@
 			"className": ".page",
 			"version": "6.4.8",
 			"props": {
-				"backgroundColor": "rgba( 163, 163, 163, 1 )",
-				"orientation": "AUTO",
-				"flexProps": {
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"direction": "INHERIT",
-					"flexDirection": "COLUMN",
-					"flexWrap": "NOWRAP",
-					"justifyContent": "FLEX_START"
-				},
-				"parent": null,
+				"name": "newPage001",
 				"children": [
 					"1031-0633-319d-c9b9",
 					"381d-019c-0923-7f26",
@@ -36,11 +26,11 @@
 					"26f3-9c60-60dc-4f1c",
 					"aa00-5c53-57c4-a625",
 					"20cf-779a-2350-e731",
-					"e948-c9ae-aacc-5e45"
+					"e948-c9ae-aacc-5e45",
+					"622f-a25b-5d28-3628"
 				],
-				"name": "newPage001",
-				"width": 285,
-				"height": 458.28000000000003
+				"parent": null,
+				"orientation": "AUTO"
 			}
 		},
 		{
@@ -52,12 +42,10 @@
 			"userProps": {},
 			"className": ".statusBar",
 			"props": {
-				"color": "#00A1F1",
-				"visible": true,
-				"parent": "e876-9805-6b68-f0e4",
+				"name": "statusBar",
 				"children": [],
-				"isRemovable": false,
-				"name": "statusBar"
+				"parent": "e876-9805-6b68-f0e4",
+				"isRemovable": false
 			}
 		},
 		{
@@ -71,14 +59,11 @@
 			},
 			"className": ".headerBar",
 			"props": {
+				"name": "headerBar",
 				"title": "newPage001",
-				"titleColor": "#000000",
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"parent": "e876-9805-6b68-f0e4",
 				"children": [],
-				"isRemovable": false,
-				"name": "headerBar"
+				"parent": "e876-9805-6b68-f0e4",
+				"isRemovable": false
 			}
 		},
 		{
@@ -102,33 +87,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 146.68263887104234,
-				"height": 33.69862907811215,
-				"touchEnabled": true,
-				"text": "Label",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"left": 40.96863395289371,
-				"top": 452.64715897409536,
-				"font": {
-					"size": 14,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "ABSOLUTE"
-				},
 				"name": "label2",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "Label",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -151,32 +113,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 64.40417641087582,
-				"height": 41.069793701171875,
-				"touchEnabled": true,
-				"text": "Color",
-				"visible": true,
-				"backgroundColor": "rgba( 208, 2, 27, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#FFFFFF",
-				"textAlignment": "MIDCENTER",
-				"left": 34.74564803274054,
-				"top": 318.4803209806743,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO"
-				},
 				"name": "button3",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "Color",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -199,32 +139,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 65.71996588456003,
-				"height": 41.069793701171875,
-				"touchEnabled": true,
-				"text": "Hijri",
-				"visible": true,
-				"backgroundColor": "rgba( 126, 211, 33, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#FFFFFF",
-				"textAlignment": "MIDCENTER",
-				"left": 138.1666986565841,
-				"top": 320.5855921695107,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO"
-				},
 				"name": "buttonHijri",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "Hijri",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -247,32 +165,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 86.7725974635074,
-				"height": 39.75400422748766,
-				"touchEnabled": true,
-				"text": "Gregoryen",
-				"visible": true,
-				"backgroundColor": "rgba( 74, 144, 226, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#FFFFFF",
-				"textAlignment": "MIDCENTER",
-				"left": 242.90353875411185,
-				"top": 318.74349493729443,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO"
-				},
 				"name": "buttonGreg",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "Gregoryen",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -295,32 +191,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 64.40417641087582,
-				"height": 41.069793701171875,
-				"touchEnabled": true,
-				"text": "TR",
-				"visible": true,
-				"backgroundColor": "rgba( 208, 2, 27, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#FFFFFF",
-				"textAlignment": "MIDCENTER",
-				"left": 47.37722497237356,
-				"top": 386.3750658537212,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO"
-				},
 				"name": "buttonTR",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "TR",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -343,32 +217,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 64.40417641087582,
-				"height": 41.069793701171875,
-				"touchEnabled": true,
-				"text": "EN",
-				"visible": true,
-				"backgroundColor": "rgba( 208, 2, 27, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#FFFFFF",
-				"textAlignment": "MIDCENTER",
-				"left": 132.37722296463815,
-				"top": 384.53296862150495,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO"
-				},
 				"name": "buttonEN",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "EN",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -391,32 +243,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 64.40417641087582,
-				"height": 41.069793701171875,
-				"touchEnabled": true,
-				"text": "AR",
-				"visible": true,
-				"backgroundColor": "rgba( 208, 2, 27, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#FFFFFF",
-				"textAlignment": "MIDCENTER",
-				"left": 216.06144152189555,
-				"top": 384.00666086297286,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO"
-				},
 				"name": "buttonAR",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "AR",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -450,32 +280,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 300,
-				"width": 375,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 179, 179, 179, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": -1.3157894736842106,
-				"top": 0,
-				"right": 0,
-				"minHeight": 250,
-				"maxHeight": 300,
-				"bottom": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "ABSOLUTE"
-				},
 				"name": "calendar",
-				"parent": "e876-9805-6b68-f0e4",
 				"children": [
 					"83ec-6214-2cb9-c7b5",
 					"de3b-c4d4-2c82-ca8e",
@@ -483,7 +288,8 @@
 					"9211-58e2-9cf3-7453",
 					"7c32-1a44-b215-eb0e",
 					"a0b4-7d71-a702-2ec3"
-				]
+				],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		},
 		{
@@ -511,31 +317,11 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 20,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 235, 235, 235, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "calendarYear",
-				"parent": "b766-261b-7b3f-6437",
 				"children": [
 					"9fe5-7fa1-89a2-9fce"
-				]
+				],
+				"parent": "b766-261b-7b3f-6437"
 			}
 		},
 		{
@@ -569,38 +355,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 80,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Label",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDLEFT",
-				"bottom": 0,
-				"left": 10,
-				"right": null,
-				"marginLeft": null,
-				"marginRight": 10,
-				"top": 0,
-				"font": {
-					"size": 12,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "ABSOLUTE",
-					"flexGrow": 1
-				},
 				"name": "yearLabel",
-				"parent": "83ec-6214-2cb9-c7b5",
-				"children": []
+				"text": "Label",
+				"children": [],
+				"parent": "83ec-6214-2cb9-c7b5"
 			}
 		},
 		{
@@ -630,31 +388,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 235, 235, 235, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": null,
-				"top": null,
-				"maxHeight": null,
-				"minHeight": 10,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 0.4
-				},
 				"name": "calendarDays",
-				"parent": "b766-261b-7b3f-6437",
 				"children": [
 					"8e54-ed94-b001-9889",
 					"7dd3-d530-fd01-d1d4",
@@ -663,7 +397,8 @@
 					"87b4-a2ad-58b9-9ede",
 					"5316-36ed-98ad-d8b2",
 					"023b-7ba1-68a7-773a"
-				]
+				],
+				"parent": "b766-261b-7b3f-6437"
 			}
 		},
 		{
@@ -692,32 +427,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Sun",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 128, 128, 128, 1 )",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "dayName_0",
-				"parent": "de3b-c4d4-2c82-ca8e",
-				"children": []
+				"text": "Sun",
+				"children": [],
+				"parent": "de3b-c4d4-2c82-ca8e"
 			}
 		},
 		{
@@ -746,32 +459,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Mon",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 128, 128, 128, 1 )",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "dayName_1",
-				"parent": "de3b-c4d4-2c82-ca8e",
-				"children": []
+				"text": "Mon",
+				"children": [],
+				"parent": "de3b-c4d4-2c82-ca8e"
 			}
 		},
 		{
@@ -800,32 +491,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Tu",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 128, 128, 128, 1 )",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "dayName_2",
-				"parent": "de3b-c4d4-2c82-ca8e",
-				"children": []
+				"text": "Tu",
+				"children": [],
+				"parent": "de3b-c4d4-2c82-ca8e"
 			}
 		},
 		{
@@ -854,32 +523,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Wed",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 128, 128, 128, 1 )",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "dayName_3",
-				"parent": "de3b-c4d4-2c82-ca8e",
-				"children": []
+				"text": "Wed",
+				"children": [],
+				"parent": "de3b-c4d4-2c82-ca8e"
 			}
 		},
 		{
@@ -908,32 +555,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Thu",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 128, 128, 128, 1 )",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "dayName_4",
-				"parent": "de3b-c4d4-2c82-ca8e",
-				"children": []
+				"text": "Thu",
+				"children": [],
+				"parent": "de3b-c4d4-2c82-ca8e"
 			}
 		},
 		{
@@ -962,32 +587,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Fri",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 128, 128, 128, 1 )",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "dayName_5",
-				"parent": "de3b-c4d4-2c82-ca8e",
-				"children": []
+				"text": "Fri",
+				"children": [],
+				"parent": "de3b-c4d4-2c82-ca8e"
 			}
 		},
 		{
@@ -1016,32 +619,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Sat",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 128, 128, 128, 1 )",
-				"textAlignment": "MIDCENTER",
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "dayName_6",
-				"parent": "de3b-c4d4-2c82-ca8e",
-				"children": []
+				"text": "Sat",
+				"children": [],
+				"parent": "de3b-c4d4-2c82-ca8e"
 			}
 		},
 		{
@@ -1061,27 +642,9 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 1,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "line1",
-				"parent": "b766-261b-7b3f-6437",
-				"children": []
+				"children": [],
+				"parent": "b766-261b-7b3f-6437"
 			}
 		},
 		{
@@ -1115,36 +678,13 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"minHeight": 20,
-				"maxHeight": 30,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "navbar",
-				"parent": "b766-261b-7b3f-6437",
 				"children": [
 					"af46-abe9-c2a4-0dda",
 					"23a3-90eb-e6ac-a7f6",
 					"a746-ac98-5ad1-6597"
-				]
+				],
+				"parent": "b766-261b-7b3f-6437"
 			}
 		},
 		{
@@ -1176,39 +716,10 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 90,
-				"height": null,
-				"touchEnabled": true,
-				"text": "Label",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDLEFT",
-				"marginBottom": null,
-				"marginLeft": null,
-				"marginRight": null,
-				"left": null,
-				"right": 0,
-				"top": 0,
-				"bottom": 0,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "ABSOLUTE",
-					"flexGrow": null
-				},
 				"name": "monthLabel",
-				"parent": "9211-58e2-9cf3-7453",
-				"children": []
+				"text": "Label",
+				"children": [],
+				"parent": "9211-58e2-9cf3-7453"
 			}
 		},
 		{
@@ -1244,35 +755,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": ">",
-				"visible": true,
-				"backgroundColor": "rgba( 0, 161, 241, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 94, 94, 94, 1 )",
-				"textAlignment": "MIDCENTER",
-				"right": 90,
-				"bottom": 0,
-				"top": 0,
-				"left": null,
-				"font": {
-					"size": 20,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "nextMonth",
-				"parent": "9211-58e2-9cf3-7453",
-				"children": []
+				"text": ">",
+				"children": [],
+				"parent": "9211-58e2-9cf3-7453"
 			}
 		},
 		{
@@ -1308,35 +794,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 40,
-				"height": null,
-				"touchEnabled": true,
-				"text": "<",
-				"visible": true,
-				"backgroundColor": "rgba( 0, 161, 241, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "rgba( 94, 94, 94, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": 0,
-				"bottom": 0,
-				"right": 130,
-				"font": {
-					"size": 20,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "ABSOLUTE",
-					"alignSelf": "AUTO",
-					"flexGrow": null
-				},
 				"name": "prevMonth",
-				"parent": "9211-58e2-9cf3-7453",
-				"children": []
+				"text": "<",
+				"children": [],
+				"parent": "9211-58e2-9cf3-7453"
 			}
 		},
 		{
@@ -1357,27 +818,9 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 1,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "line2",
-				"parent": "b766-261b-7b3f-6437",
-				"children": []
+				"children": [],
+				"parent": "b766-261b-7b3f-6437"
 			}
 		},
 		{
@@ -1408,30 +851,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": null,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"paddingBottom": 6,
-				"flexProps": {
-					"alignSelf": "STRETCH",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE",
-					"flexGrow": 5
-				},
 				"name": "body",
-				"parent": "b766-261b-7b3f-6437",
 				"children": [
 					"77c2-d33c-d94b-1f82",
 					"264a-5460-48f3-059e",
@@ -1444,7 +864,8 @@
 					"0e1f-971d-b9c6-9d60",
 					"b30c-59a9-b2be-9a13",
 					"dab9-dd8a-cf3e-1045"
-				]
+				],
+				"parent": "b766-261b-7b3f-6437"
 			}
 		},
 		{
@@ -1485,33 +906,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"paddingLeft": null,
-				"paddingRight": null,
-				"minHeight": 30,
-				"maxHeight": 40,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "CENTER",
-					"alignItems": "CENTER",
-					"justifyContent": "SPACE_AROUND",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "week1",
-				"parent": "a0b4-7d71-a702-2ec3",
 				"children": [
 					"6cc6-3ddf-f59f-0219",
 					"974e-b2b8-45e7-2242",
@@ -1520,7 +915,8 @@
 					"606c-18b4-52a1-51e5",
 					"5cbb-9c96-aa9b-c8e2",
 					"c245-cdab-f25c-e5aa"
-				]
+				],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -1562,41 +958,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minHeight": 30,
-				"minWidth": 20,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay1",
-				"parent": "77c2-d33c-d94b-1f82",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "77c2-d33c-d94b-1f82"
 			}
 		},
 		{
@@ -1638,41 +1003,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay2",
-				"parent": "77c2-d33c-d94b-1f82",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "77c2-d33c-d94b-1f82"
 			}
 		},
 		{
@@ -1714,41 +1048,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay3",
-				"parent": "77c2-d33c-d94b-1f82",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "77c2-d33c-d94b-1f82"
 			}
 		},
 		{
@@ -1790,41 +1093,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay4",
-				"parent": "77c2-d33c-d94b-1f82",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "77c2-d33c-d94b-1f82"
 			}
 		},
 		{
@@ -1866,41 +1138,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay5",
-				"parent": "77c2-d33c-d94b-1f82",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "77c2-d33c-d94b-1f82"
 			}
 		},
 		{
@@ -1942,41 +1183,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay6",
-				"parent": "77c2-d33c-d94b-1f82",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "77c2-d33c-d94b-1f82"
 			}
 		},
 		{
@@ -2018,41 +1228,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay7",
-				"parent": "77c2-d33c-d94b-1f82",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "77c2-d33c-d94b-1f82"
 			}
 		},
 		{
@@ -2072,27 +1251,9 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 1,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "line6",
-				"parent": "a0b4-7d71-a702-2ec3",
-				"children": []
+				"children": [],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -2133,33 +1294,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"paddingLeft": null,
-				"paddingRight": null,
-				"minHeight": 30,
-				"maxHeight": 40,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "CENTER",
-					"alignItems": "CENTER",
-					"justifyContent": "SPACE_AROUND",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "week2",
-				"parent": "a0b4-7d71-a702-2ec3",
 				"children": [
 					"5c7c-b242-537b-c7c4",
 					"f9b3-ee3e-2e77-22aa",
@@ -2168,7 +1303,8 @@
 					"2eac-b883-a0b7-bade",
 					"3255-c4bd-a88e-4b88",
 					"8b2c-2906-8d1e-d99c"
-				]
+				],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -2210,41 +1346,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minHeight": 30,
-				"minWidth": 20,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay1",
-				"parent": "f197-98f7-fd21-ee8d",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "f197-98f7-fd21-ee8d"
 			}
 		},
 		{
@@ -2286,41 +1391,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay2",
-				"parent": "f197-98f7-fd21-ee8d",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "f197-98f7-fd21-ee8d"
 			}
 		},
 		{
@@ -2362,41 +1436,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay3",
-				"parent": "f197-98f7-fd21-ee8d",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "f197-98f7-fd21-ee8d"
 			}
 		},
 		{
@@ -2438,41 +1481,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay4",
-				"parent": "f197-98f7-fd21-ee8d",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "f197-98f7-fd21-ee8d"
 			}
 		},
 		{
@@ -2514,41 +1526,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay5",
-				"parent": "f197-98f7-fd21-ee8d",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "f197-98f7-fd21-ee8d"
 			}
 		},
 		{
@@ -2590,41 +1571,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay6",
-				"parent": "f197-98f7-fd21-ee8d",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "f197-98f7-fd21-ee8d"
 			}
 		},
 		{
@@ -2666,41 +1616,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay7",
-				"parent": "f197-98f7-fd21-ee8d",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "f197-98f7-fd21-ee8d"
 			}
 		},
 		{
@@ -2720,27 +1639,9 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 1,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "line5",
-				"parent": "a0b4-7d71-a702-2ec3",
-				"children": []
+				"children": [],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -2781,33 +1682,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"paddingLeft": null,
-				"paddingRight": null,
-				"minHeight": 30,
-				"maxHeight": 40,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "CENTER",
-					"alignItems": "CENTER",
-					"justifyContent": "SPACE_AROUND",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "week3",
-				"parent": "a0b4-7d71-a702-2ec3",
 				"children": [
 					"3201-a1f3-36cb-7c5c",
 					"b480-4050-50bd-1273",
@@ -2816,7 +1691,8 @@
 					"16f0-2472-c0dc-63c1",
 					"ea62-945c-2f61-5311",
 					"eae6-5837-dbce-9492"
-				]
+				],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -2858,41 +1734,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minHeight": 30,
-				"minWidth": 20,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay1",
-				"parent": "1afe-c2c2-ea21-557a",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "1afe-c2c2-ea21-557a"
 			}
 		},
 		{
@@ -2934,41 +1779,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay2",
-				"parent": "1afe-c2c2-ea21-557a",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "1afe-c2c2-ea21-557a"
 			}
 		},
 		{
@@ -3010,41 +1824,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay3",
-				"parent": "1afe-c2c2-ea21-557a",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "1afe-c2c2-ea21-557a"
 			}
 		},
 		{
@@ -3086,41 +1869,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay4",
-				"parent": "1afe-c2c2-ea21-557a",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "1afe-c2c2-ea21-557a"
 			}
 		},
 		{
@@ -3162,41 +1914,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay5",
-				"parent": "1afe-c2c2-ea21-557a",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "1afe-c2c2-ea21-557a"
 			}
 		},
 		{
@@ -3238,41 +1959,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay6",
-				"parent": "1afe-c2c2-ea21-557a",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "1afe-c2c2-ea21-557a"
 			}
 		},
 		{
@@ -3314,41 +2004,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay7",
-				"parent": "1afe-c2c2-ea21-557a",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "1afe-c2c2-ea21-557a"
 			}
 		},
 		{
@@ -3368,27 +2027,9 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 1,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "line4",
-				"parent": "a0b4-7d71-a702-2ec3",
-				"children": []
+				"children": [],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -3429,33 +2070,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"paddingLeft": null,
-				"paddingRight": null,
-				"minHeight": 30,
-				"maxHeight": 40,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "CENTER",
-					"alignItems": "CENTER",
-					"justifyContent": "SPACE_AROUND",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "week4",
-				"parent": "a0b4-7d71-a702-2ec3",
 				"children": [
 					"608f-0fff-8610-7697",
 					"b13a-87d8-be2d-5ff6",
@@ -3464,7 +2079,8 @@
 					"8ac0-a0a1-0169-d501",
 					"9cf4-ea04-3f89-7dcc",
 					"6328-ddd7-48bb-07df"
-				]
+				],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -3506,41 +2122,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minHeight": 30,
-				"minWidth": 20,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay1",
-				"parent": "a1e7-b89b-7be5-748b",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "a1e7-b89b-7be5-748b"
 			}
 		},
 		{
@@ -3582,41 +2167,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay2",
-				"parent": "a1e7-b89b-7be5-748b",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "a1e7-b89b-7be5-748b"
 			}
 		},
 		{
@@ -3658,41 +2212,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay3",
-				"parent": "a1e7-b89b-7be5-748b",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "a1e7-b89b-7be5-748b"
 			}
 		},
 		{
@@ -3734,41 +2257,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay4",
-				"parent": "a1e7-b89b-7be5-748b",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "a1e7-b89b-7be5-748b"
 			}
 		},
 		{
@@ -3810,41 +2302,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay5",
-				"parent": "a1e7-b89b-7be5-748b",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "a1e7-b89b-7be5-748b"
 			}
 		},
 		{
@@ -3886,41 +2347,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay6",
-				"parent": "a1e7-b89b-7be5-748b",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "a1e7-b89b-7be5-748b"
 			}
 		},
 		{
@@ -3962,41 +2392,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay7",
-				"parent": "a1e7-b89b-7be5-748b",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "a1e7-b89b-7be5-748b"
 			}
 		},
 		{
@@ -4016,27 +2415,9 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 1,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "line3",
-				"parent": "a0b4-7d71-a702-2ec3",
-				"children": []
+				"children": [],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -4077,33 +2458,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"paddingLeft": null,
-				"paddingRight": null,
-				"minHeight": 30,
-				"maxHeight": 40,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "CENTER",
-					"alignItems": "CENTER",
-					"justifyContent": "SPACE_AROUND",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "week5",
-				"parent": "a0b4-7d71-a702-2ec3",
 				"children": [
 					"f8f4-68e8-117d-f61e",
 					"280a-a8a4-5b3f-2958",
@@ -4112,7 +2467,8 @@
 					"883e-3cf6-03a0-bf5b",
 					"d3d2-b912-f052-531b",
 					"21d3-8e15-58a4-4fd8"
-				]
+				],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -4154,41 +2510,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minHeight": 30,
-				"minWidth": 20,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay1",
-				"parent": "0e1f-971d-b9c6-9d60",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "0e1f-971d-b9c6-9d60"
 			}
 		},
 		{
@@ -4230,41 +2555,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay2",
-				"parent": "0e1f-971d-b9c6-9d60",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "0e1f-971d-b9c6-9d60"
 			}
 		},
 		{
@@ -4306,41 +2600,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay3",
-				"parent": "0e1f-971d-b9c6-9d60",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "0e1f-971d-b9c6-9d60"
 			}
 		},
 		{
@@ -4382,41 +2645,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay4",
-				"parent": "0e1f-971d-b9c6-9d60",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "0e1f-971d-b9c6-9d60"
 			}
 		},
 		{
@@ -4458,41 +2690,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay5",
-				"parent": "0e1f-971d-b9c6-9d60",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "0e1f-971d-b9c6-9d60"
 			}
 		},
 		{
@@ -4534,41 +2735,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay6",
-				"parent": "0e1f-971d-b9c6-9d60",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "0e1f-971d-b9c6-9d60"
 			}
 		},
 		{
@@ -4610,41 +2780,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay7",
-				"parent": "0e1f-971d-b9c6-9d60",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "0e1f-971d-b9c6-9d60"
 			}
 		},
 		{
@@ -4664,27 +2803,9 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 1,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "STRETCH",
-					"alignItems": "STRETCH",
-					"justifyContent": "FLEX_START",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "COLUMN",
-					"positionType": "RELATIVE"
-				},
 				"name": "line2",
-				"parent": "a0b4-7d71-a702-2ec3",
-				"children": []
+				"children": [],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -4725,33 +2846,7 @@
 			},
 			"className": ".flexLayout",
 			"props": {
-				"height": 0,
-				"width": null,
-				"touchEnabled": true,
-				"visible": true,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"left": 0,
-				"top": 0,
-				"paddingLeft": null,
-				"paddingRight": null,
-				"minHeight": 30,
-				"maxHeight": 40,
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"direction": "INHERIT",
-					"alignContent": "CENTER",
-					"alignItems": "CENTER",
-					"justifyContent": "SPACE_AROUND",
-					"flexWrap": "NOWRAP",
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE",
-					"flexGrow": 1
-				},
 				"name": "week6",
-				"parent": "a0b4-7d71-a702-2ec3",
 				"children": [
 					"d6ba-98ab-869c-d0af",
 					"acc9-e3eb-3063-0b0f",
@@ -4760,7 +2855,8 @@
 					"56f0-b0c4-59da-959e",
 					"f750-fa6b-71e6-432c",
 					"9e45-73ec-750c-00cd"
-				]
+				],
+				"parent": "a0b4-7d71-a702-2ec3"
 			}
 		},
 		{
@@ -4802,41 +2898,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minHeight": 30,
-				"minWidth": 20,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay1",
-				"parent": "dab9-dd8a-cf3e-1045",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "dab9-dd8a-cf3e-1045"
 			}
 		},
 		{
@@ -4878,41 +2943,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay2",
-				"parent": "dab9-dd8a-cf3e-1045",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "dab9-dd8a-cf3e-1045"
 			}
 		},
 		{
@@ -4954,41 +2988,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay3",
-				"parent": "dab9-dd8a-cf3e-1045",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "dab9-dd8a-cf3e-1045"
 			}
 		},
 		{
@@ -5030,41 +3033,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay4",
-				"parent": "dab9-dd8a-cf3e-1045",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "dab9-dd8a-cf3e-1045"
 			}
 		},
 		{
@@ -5106,41 +3078,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay5",
-				"parent": "dab9-dd8a-cf3e-1045",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "dab9-dd8a-cf3e-1045"
 			}
 		},
 		{
@@ -5182,41 +3123,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay6",
-				"parent": "dab9-dd8a-cf3e-1045",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "dab9-dd8a-cf3e-1045"
 			}
 		},
 		{
@@ -5258,41 +3168,10 @@
 			},
 			"className": ".button",
 			"props": {
-				"width": 0,
-				"height": 0,
-				"touchEnabled": true,
-				"text": "",
-				"visible": true,
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"alpha": 1,
-				"borderColor": "rgba( 185, 185, 185, 1 )",
-				"borderWidth": 1,
-				"textColor": "rgba( 0, 0, 0, 1 )",
-				"textAlignment": "MIDCENTER",
-				"left": null,
-				"top": null,
-				"borderRadius": 20,
-				"marginLeft": 3,
-				"marginRight": 3,
-				"right": null,
-				"minWidth": 20,
-				"minHeight": 30,
-				"maxWidth": 30,
-				"maxHeight": 40,
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"positionType": "RELATIVE",
-					"alignSelf": "AUTO",
-					"flexGrow": 1
-				},
 				"name": "weekDay7",
-				"parent": "dab9-dd8a-cf3e-1045",
-				"children": []
+				"text": "",
+				"children": [],
+				"parent": "dab9-dd8a-cf3e-1045"
 			}
 		},
 		{
@@ -5317,33 +3196,32 @@
 			},
 			"className": ".label",
 			"props": {
-				"width": 153.2615862394634,
-				"height": 33.69862907811215,
-				"touchEnabled": true,
-				"text": "Ozel Gunler",
-				"visible": true,
-				"multiline": false,
-				"backgroundColor": "#FFFFFF",
-				"alpha": 1,
-				"borderColor": "rgba(0,0,0,1)",
-				"borderWidth": 0,
-				"textColor": "#000000",
-				"textAlignment": "MIDCENTER",
-				"left": 191.75810562936883,
-				"top": 452.12085121556333,
-				"font": {
-					"size": 10,
-					"bold": false,
-					"italic": false,
-					"family": "Arial"
-				},
-				"flexProps": {
-					"alignSelf": "AUTO",
-					"positionType": "ABSOLUTE"
-				},
 				"name": "label2_1",
-				"parent": "e876-9805-6b68-f0e4",
-				"children": []
+				"text": "Ozel Gunler",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
+			}
+		},
+		{
+			"type": "Button",
+			"id": "622f-a25b-5d28-3628",
+			"themeProps": {
+				"Sizes": "Default",
+				"Highlights": "Default"
+			},
+			"userProps": {
+				"left": 63.513513513513516,
+				"top": 502.7027027027027,
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				}
+			},
+			"className": ".button",
+			"props": {
+				"name": "button1",
+				"text": "Button",
+				"children": [],
+				"parent": "e876-9805-6b68-f0e4"
 			}
 		}
 	]
