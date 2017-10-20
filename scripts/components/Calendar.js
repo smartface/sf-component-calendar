@@ -106,7 +106,7 @@ function CalendarPrototype(proto) {
 				throw new Error('Selected day has invalid data');
 		}
 
-		this.onChanged && this.onChanged(dayData);
+		this.onDaySelect && this.onDaySelect(dayData);
 	}
 
 	// to inject a context dispatcher
@@ -137,13 +137,19 @@ function CalendarPrototype(proto) {
 	proto.addStyles = function(styles) {
 		this.styleContext(styles);
 	};
-
-	proto.setSelectedDate = function(date) {
+	
+	proto.setDate = function(date) {
 		this.dispatch({
 			type: "resetDays"
 		});
 		const newDate = Object.assign({}, date);
-		newDate.month = date.month;
+		const dateData = this._calendarService.getCalendarMonth(newDate);
+		this.updateCalendar(dateData);
+	};
+
+	proto.setSelectedDate = function(date) {
+		this.setDate(date);
+		const newDate = Object.assign({}, date);
 		const dateData = this._calendarService.getCalendarMonth(newDate);
 		this.updateCalendar(dateData);
 		this._selectDay(dateData);
@@ -174,12 +180,26 @@ function CalendarPrototype(proto) {
 	};
 
 	proto.nextMonth = function() {
+		if(this.onBeforeMonthChange &&
+			 this.onBeforeMonthChange({
+					month: this.nextMonth.previousMonth.localeDate.month,
+					year: this.nextMonth.previousMonth.localeDate.year,
+				}) === false
+		){
+			return;
+		}
+		
 		if(this.currentMonth) {
 			this.dispatch({
 				type: "resetDays"
 			});
 
 			this.updateCalendar(this._calendarService.getCalendarMonth(this.currentMonth.nextMonth.normalizedDate));
+
+			this.onMonthChange && this.onMonthChange({
+				month: this.currentMonth.localeDate.month,
+				year: this.currentMonth.localeDate.year,
+			});
 		}
 	};
 
@@ -216,12 +236,25 @@ function CalendarPrototype(proto) {
 	};
 
 	proto.prevMonth = function() {
+		if(this.onBeforeMonthChange &&
+			 this.onBeforeMonthChange({
+					month: this.currentMonth.previousMonth.localeDate.month,
+					year: this.currentMonth.previousMonth.localeDate.year,
+				}) === false
+		){
+			return;
+		}
+		
 		if(this.currentMonth) {
 			this.dispatch({
 				type: "resetDays"
 			});
 
 			this.updateCalendar(this._calendarService.getCalendarMonth(this.currentMonth.previousMonth.normalizedDate));
+			this.onMonthChange && this.onMonthChange({
+				month: this.currentMonth.localeDate.month,
+				year: this.currentMonth.localeDate.year,
+			});
 		}
 	};
 };
