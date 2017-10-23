@@ -182,8 +182,8 @@ function CalendarPrototype(proto) {
 	proto.nextMonth = function() {
 		if(this.onBeforeMonthChange &&
 			 this.onBeforeMonthChange({
-					month: this.nextMonth.previousMonth.localeDate.month,
-					year: this.nextMonth.previousMonth.localeDate.year,
+					month: this.currentMonth.nextMonth.localeDate.month,
+					year: this.currentMonth.nextMonth.localeDate.year,
 				}) === false
 		){
 			return;
@@ -222,7 +222,6 @@ function CalendarPrototype(proto) {
 
 		// this._calendarService = createService({lang: lang, type: type, specialDays: this._specialDays});
 		this.updateCalendar(this._calendarService.getCalendarMonth());
-		this.applyLayout();
 	};
 
 	proto.dispose = function() {
