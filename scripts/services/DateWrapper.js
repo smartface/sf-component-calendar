@@ -100,6 +100,23 @@
 			// return this._date.format("D-M-YYYY").toObject();
 		};
 
+		DateService.prototype.nextDay = function nextDay() {
+			var newdate = this._date.clone();
+			newdate.add(1, 'day');
+			return new DateService(this._moment, newdate);
+		};
+
+		DateService.prototype.prevDay = function prevDay() {
+			var newdate = this._date.clone();
+			newdate.subtract(1, 'day');
+			return new DateService(this._moment, newdate);
+		};
+
+		DateService.prototype.fromDay = function fromDay(day) {
+			var newdate = this._date.clone().date(day);
+			return new DateService(this._moment, newdate);
+		};
+
 		DateService.prototype.month = function month() {
 			// 	date !== undefined 
 			// 	  ? date.month(month)
@@ -114,7 +131,7 @@
 			return this._date().year();
 		};
 
-		DateService.prototype.day = function day(_day, date) {
+		DateService.prototype.day = function day() {
 			return this._date().day();
 		};
 
@@ -154,21 +171,21 @@
 			return this._date.daysInMonth();
 		};
 
-		DateService.prototype.nextMonth = function nextMonth(moment, date) {
+		DateService.prototype.nextMonth = function nextMonth() {
 			var newdate = this._date.clone();
 			newdate.add(1, 'month');
 			return new DateService(this._moment, newdate);
 		};
 
-		DateService.prototype.prevMonth = function prevMonth(date) {
+		DateService.prototype.prevMonth = function prevMonth() {
 			var newdate = this._date.clone();
 			newdate.subtract(1, 'month');
 			return new DateService(this._moment, newdate);
 		};
 
-		DateService.prototype.prevYear = function prevYear(date) {};
+		DateService.prototype.prevYear = function prevYear() {};
 
-		DateService.prototype.nextYear = function nextYear(date) {};
+		DateService.prototype.nextYear = function nextYear() {};
 
 		DateService.prototype.dateLang = function dateLang() {
 			var sh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "en";

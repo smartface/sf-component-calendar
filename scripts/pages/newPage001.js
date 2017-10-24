@@ -10,6 +10,298 @@ const calendarTypes = require("../components/CalendarTypes");
 const specialDays = require("./specialDays");
 const Router = require("sf-core/ui/router");
 
+var sample = {
+  "byMonths":[
+    {
+      "month":11,
+      "days":[
+        {
+          "day":1,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":2,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":3,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":4,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":7,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":8,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":9,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":10,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":11,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":14,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":15,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":16,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":17,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":18,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":21,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":22,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":23,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":24,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":25,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":28,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":29,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":30,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":31,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        }
+      ]
+    }
+  ]
+};
+
+function changeCalendar(lang, calendar, sp){
+	this.children.calendar.changeCalendar(lang, calendar, sp);
+	this.children.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
+	this.children.calendar.applyLayout();
+}
+
 const NewPage001 = extend(NewPage001Design)(
 	// Constructor
 	function(_super){
@@ -20,31 +312,31 @@ const NewPage001 = extend(NewPage001Design)(
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-		this.children.calendar.onChanged = function(date){
-			this.children.label2.text = date.date.day+"/"+(date.monthInfo.longName)+"/"+date.date.year;
+		this.children.calendar.onDaySelect = function(date){
+			this.children.label2.text = date.date.day+"/"+(date.date.month)+"/"+date.date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")
 				: "Ozel Gun Yok";
 		}.bind(this);
 		
 		this.children.buttonTR.onPress = function(){
-			this.children.calendar.changeCalendar("tr");
+			changeCalendar.call(this, "tr", "gregorian", sample);
 		}.bind(this);
 		
 		this.children.buttonEN.onPress = function(){
-			this.children.calendar.changeCalendar("en");
+			changeCalendar.call(this, "en", "gregorian", sample);
 		}.bind(this);
 		
 		this.children.buttonAR.onPress = function(){
-			this.children.calendar.changeCalendar("ar-sa");
+			changeCalendar.call(this, "ar-sa", "gregorian", sample);
 		}.bind(this);
 		
 		this.children.buttonHijri.onPress = function(){
-			this.children.calendar.changeCalendar("ar-sa", calendarTypes.HIJRI);
+			changeCalendar.call(this, "ar-sa", calendarTypes.HIJRI, sample);
 		}.bind(this);
 		
 		this.children.buttonGreg.onPress = function(){
-			this.children.calendar.changeCalendar("en", calendarTypes.GREGORIAN);
+			changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
 		}.bind(this);
 		
 		this.children.button1.onPress = function(){
@@ -64,9 +356,8 @@ const NewPage001 = extend(NewPage001Design)(
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
 function onShow(superOnShow) {
   superOnShow();
-	this.children.calendar.changeCalendar("en", "gregorian");
+	changeCalendar.call(this, "ar-sa", "hijri", sample);
 	this.children.calendar.onDisplayChange = function(){
-		
 	};
 
   this.children.calendar.setSelectedDate({"month":11,"year":2017,"day":1});

@@ -7,10 +7,6 @@ import specialDays from "./mock/specialDays";
 describe("Calendar Service", function() {
   
   var calendarService = createService({});
-  describe("Turkish", function() {
-    
-  });
-  
   describe("Month", function() {
     it("should return current date if date is not set.", function() {
       var data = calendarService.getCalendarMonth();

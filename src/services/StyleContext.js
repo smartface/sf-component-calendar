@@ -244,7 +244,7 @@ export function createStyleContext(actors, hooks){
               const beforeHook = hooks("beforeAssignComponentStyles");
               beforeHook && (className = beforeHook(name, className));
 
-              const styles = styling(className+" #"+name)();
+              const styles = styling(className)();
               context.actors[name].setStyles(styles);
               comp.isUgly = false;
             }

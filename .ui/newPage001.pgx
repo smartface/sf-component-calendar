@@ -264,7 +264,7 @@
 			"userProps": {
 				"left": -1.3157894736842106,
 				"top": 0,
-				"width": 375,
+				"width": null,
 				"height": 300,
 				"backgroundColor": "rgba( 179, 179, 179, 1 )",
 				"right": 0,

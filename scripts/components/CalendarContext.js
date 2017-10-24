@@ -3,16 +3,20 @@ const getOneProp = require("library/styler-builder")
 	.getOneProp;
 const INIT_CONTEXT_ACTION_TYPE = require("../services/Context")
 	.INIT_CONTEXT_ACTION_TYPE;
+const System = require('sf-core/device/system');
 
 const styles = {
 	"#calendar": {
+		"flexProps": {
+			"direction": "LTR"
+		},
 		"&_line2": {
-			width: 160,
-			"alignSelf": "FLEX_END"
 		}
 	},
 	".calendar": {
+		"direction": "LTR",
 		"&-self": {
+			"direction": "LTR",
 			"backgroundColor": "#FFFFFF",
 			"right": 0,
 			"left": 0,
@@ -36,6 +40,7 @@ const styles = {
 		},
 		".header": {
 			"&_navbar": {
+				"direction": "LTR",
 				"&_monthLabel": {
 					"textColor": "#1775D0"
 				},
@@ -48,12 +53,12 @@ const styles = {
 				}
 			},
 			"&_dayNames": {
+				"direction": "LTR",
 				"backgroundColor": "#EBEBEB",
 				"minHeight": 14,
 				"maxHeight": NaN,
 				"height": NaN,
 				"flexGrow": 0.2,
-				"direction": "LTR",
 				"&-lang_ar": {
 				  "direction": "RTL",
 				},
@@ -78,10 +83,10 @@ const styles = {
 		// .calendar.weekRow.lang_ar-sa
 		".body": {},
 		".weekRow": {
+			"direction": "LTR",
 			"backgroundColor": "rgba(0,0,0,0)",
 			"maxHeight": 40,
 			"minHeight": 26,
-		  "direction": "LTR",
 			"&-lang_ar-sa": {
 			  "direction": "RTL"
 			},
@@ -183,8 +188,15 @@ function reducer(state, actors, action, target) {
 		case "changeCalendar":
 		  Object.keys(actors).forEach(function(key){
 		    const actor = actors[key];
-		    actor.resetClassNames([actor.getInitialClassName()]);
-		    actor.pushClassName(actor.getInitialClassName()+"-lang_"+action.lang);
+		    const className = actor.getInitialClassName();
+		    actor.resetClassNames([className,
+		    	className+"-lang_"+action.lang, 
+		    	"#"+actor.name, 
+		    	"#"+actor.name+"-lang_"+action.lang,
+		    	"#"+actor.name+"-os_"+System.OS
+	    	]);
+		    // actor.pushClassName("#"+actor.name+"-os_"+System.OS);
+		    
 		  });
 		  
 		  break;

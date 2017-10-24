@@ -86,7 +86,7 @@ function CalendarPrototype(proto) {
 
 				dayData.localeDate.month = this.currentMonth.nextMonth.localeDate.month;
 				dayData.localeDate.year = this.currentMonth.nextMonth.localeDate.year;
-				dayData.date.month = this.currentMonth.nextMonth.month;
+				dayData.date.month = this.currentMonth.nextMonth.date.month;
 				dayData.date.year = this.currentMonth.nextMonth.date.year;
 				break;
 				// if selected day is in the previous month.
@@ -98,7 +98,7 @@ function CalendarPrototype(proto) {
 
 				dayData.localeDate.month = this.currentMonth.previousMonth.localeDate.month;
 				dayData.localeDate.year = this.currentMonth.previousMonth.localeDate.year;
-				dayData.date.month = this.currentMonth.previousMonth.month;
+				dayData.date.month = this.currentMonth.previousMonth.date.month;
 				dayData.date.year = this.currentMonth.previousMonth.date.year;
 				break;
 
@@ -181,10 +181,7 @@ function CalendarPrototype(proto) {
 
 	proto.nextMonth = function() {
 		if(this.onBeforeMonthChange &&
-			 this.onBeforeMonthChange({
-					month: this.currentMonth.nextMonth.localeDate.month,
-					year: this.currentMonth.nextMonth.localeDate.year,
-				}) === false
+			 this.onBeforeMonthChange(this.currentMonth.nextMonth.normalizedDate) === false
 		){
 			return;
 		}
@@ -195,11 +192,7 @@ function CalendarPrototype(proto) {
 			});
 
 			this.updateCalendar(this._calendarService.getCalendarMonth(this.currentMonth.nextMonth.normalizedDate));
-
-			this.onMonthChange && this.onMonthChange({
-				month: this.currentMonth.localeDate.month,
-				year: this.currentMonth.localeDate.year,
-			});
+			this.onMonthChange && this.onMonthChange(this.currentMonth.nextMonth.normalizedDate);
 		}
 	};
 
@@ -223,7 +216,10 @@ function CalendarPrototype(proto) {
 		// this._calendarService = createService({lang: lang, type: type, specialDays: this._specialDays});
 		this.updateCalendar(this._calendarService.getCalendarMonth());
 	};
-
+	
+	/**
+	 * Disposes the Component instance
+	 */
 	proto.dispose = function() {
 		this.weeks = [];
 		this.styleContext(null);
@@ -233,13 +229,10 @@ function CalendarPrototype(proto) {
 		this.currentMonth = null;
 		this.onChanged = null;
 	};
-
+	
 	proto.prevMonth = function() {
 		if(this.onBeforeMonthChange &&
-			 this.onBeforeMonthChange({
-					month: this.currentMonth.previousMonth.localeDate.month,
-					year: this.currentMonth.previousMonth.localeDate.year,
-				}) === false
+			 this.onBeforeMonthChange(this.currentMonth.previousMonth.normalizedDate) === false
 		){
 			return;
 		}
@@ -250,10 +243,7 @@ function CalendarPrototype(proto) {
 			});
 
 			this.updateCalendar(this._calendarService.getCalendarMonth(this.currentMonth.previousMonth.normalizedDate));
-			this.onMonthChange && this.onMonthChange({
-				month: this.currentMonth.localeDate.month,
-				year: this.currentMonth.localeDate.year,
-			});
+			this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
 		}
 	};
 };

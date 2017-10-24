@@ -117,24 +117,24 @@ function getCalendarMonth(moment, service, specialDaysService, dt){
 			  month: 'previous',
 			};
 	
-			day.specialDay = specialDaysService({...prevMonth.toObject(), day: day.day});
-			day.localeDay = prevMonth.localeDate().setDay(day.day).getDate().day;
+			day.specialDay = specialDaysService({...prevMonth.fromDay(day.day).toNormalizedObject()});
+			day.localeDay  = prevMonth.localeDate().setDay(day.day).getDate().day;
 		} else if(i > startNext) {
 			day = {
 			  day: next++,
 			  month: 'next',
 			};
 
-			day.specialDay = specialDaysService({...nextMonth.toObject(), day: day.day});
-			day.localeDay = nextMonth.localeDate().setDay(day.day).getDate().day;
+			day.specialDay = specialDaysService({...nextMonth.fromDay(day.day).toNormalizedObject()});
+			day.localeDay  = nextMonth.localeDate().setDay(day.day).getDate().day;
 		} else {
 			day = {
 			  day: i - startDay,
 			  month: 'current',
 			};
 			
-			day.specialDay = specialDaysService({...currentMonth.toObject(), day: day.day});
-			day.localeDay = currentMonth.localeDate().setDay(day.day).getDate().day;
+			day.specialDay = specialDaysService({...currentMonth.fromDay(day.day).toNormalizedObject()});
+			day.localeDay  = currentMonth.localeDate().setDay(day.day).getDate().day;
 		}
 
 		row.push(day);

@@ -57,6 +57,23 @@ export default class DateService {
 		// return this._date.format("D-M-YYYY").toObject();
 	}
 	
+	nextDay(){
+		var newdate = this._date.clone()
+		newdate.add(1, 'day');
+		return new DateService(this._moment, newdate);	
+	}
+	
+	prevDay(){
+		var newdate = this._date.clone();
+		newdate.subtract(1, 'day');
+		return new DateService(this._moment, newdate);
+	}
+	
+	fromDay(day){
+		var newdate = this._date.clone().date(day);
+		return new DateService(this._moment, newdate);	
+	}
+
 	month() {
 // 	date !== undefined 
 // 	  ? date.month(month)
@@ -71,7 +88,7 @@ export default class DateService {
 		return this._date().year();
 	}
 	
-	day(day, date) {
+	day() {
 		return this._date().day();
 	}
 	
@@ -111,21 +128,21 @@ export default class DateService {
 		return this._date.daysInMonth();
 	}
 	
-	nextMonth(moment, date) {
+	nextMonth() {
 		var newdate = this._date.clone()
 		newdate.add(1, 'month');
 		return new DateService(this._moment, newdate)
 	}
 	
-	prevMonth(date) {
+	prevMonth() {
 		var newdate = this._date.clone()
 		newdate.subtract(1, 'month');
 		return new DateService(this._moment, newdate);
 	}
 	
-	prevYear(date) {}
+	prevYear() {}
 	
-	nextYear(date) {}
+	nextYear() {}
 	
 	dateLang(sh = "en") {
 		this._moment.updateLocale(sh);

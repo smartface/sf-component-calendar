@@ -12,6 +12,8 @@ Application.onUnhandledError = function(e) {
 	});
 };
 
+// require("sf-extension-utils");
+
 const Router = require("sf-core/ui/router");
 const stylerBuilder = require("library/styler-builder");
 const settings = require("./settings.json");

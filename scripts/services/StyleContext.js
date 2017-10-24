@@ -283,7 +283,7 @@
             var beforeHook = hooks("beforeAssignComponentStyles");
             beforeHook && (className = beforeHook(name, className));
 
-            var styles = styling(className + " #" + name)();
+            var styles = styling(className)();
             context.actors[name].setStyles(styles);
             comp.isUgly = false;
           }

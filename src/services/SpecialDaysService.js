@@ -55,8 +55,6 @@ export default
   function createSpecialDaysService(specialDays){
     const specialDaysBundle = denormalizeSpecialDays(specialDays);
     
-    // console.log(JSON.stringify(specialDaysBundle));
-    
     return Object.freeze({
       /**
        * Get a specialday by specified props
@@ -132,7 +130,7 @@ function denormalizeSpecialDays(specialDays){
             
             acc[key].push(newday);
           }
-        })
+        });
       });
     });
   });
@@ -155,7 +153,7 @@ function denormalizeSpecialDays(specialDays){
           acc[key] = acc[key] || [];
           acc[key].push(newday);
         }
-      })
+      });
     });
   });
   

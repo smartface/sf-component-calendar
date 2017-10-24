@@ -1,7 +1,291 @@
 import DateService from "../src/services/DateWrapperHijri";
 import createService from "../src/services/CalendarService";
 import {expect} from "chai";
-
+var sample = {
+  "byMonths":[
+    {
+      "month":1,
+      "days":[
+        {
+          "day":1,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":2,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":3,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":4,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":7,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":8,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":9,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":10,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":11,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":14,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":15,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":16,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":17,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":18,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":21,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":22,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":23,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":24,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":25,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":28,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":29,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":30,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        },
+        {
+          "day":31,
+          "calendars":{
+            "*":{
+              "availableLangs":"*",
+              "text":{
+                "*":"4"
+              }
+            }
+          },
+          "length":1
+        }
+      ]
+    }
+  ]
+};
 describe("Hijri Calendar Service", function() {
   describe("Month", function() {
     it("should match with sun calendar", function() {
@@ -153,7 +437,7 @@ describe("Hijri Calendar Service", function() {
           }
         });
       
-      calendarService = createService({lang: "en", type: "hijri"});
+      calendarService = createService({lang: "en", type: "hijri", specialDays: sample});
       data = calendarService.getCalendarMonth({year: 2017, month: 1, day: 15});
 
       expect(data).to.eql(
@@ -180,43 +464,43 @@ describe("Hijri Calendar Service", function() {
             { day: 28, localeDay: "28", month: 'previous', specialDay: [] },
             { day: 29, localeDay: "29", month: 'previous', specialDay: [] },
             { day: 30, localeDay: "30", month: 'previous', specialDay: [] },
-            { day: 1, localeDay: "1", month: 'current', specialDay: [] },
-            { day: 2, localeDay: "2", month: 'current', specialDay: [], isWeekend: true } ],
+            { day: 1, localeDay: "1", month: 'current', specialDay: ["4"] },
+            { day: 2, localeDay: "2", month: 'current', specialDay: ["4"], isWeekend: true } ],
           [ 
-            { day: 3, localeDay: "3", month: 'current', specialDay: [], isWeekend: true },
-            { day: 4, localeDay: "4", month: 'current', specialDay: [] },
+            { day: 3, localeDay: "3", month: 'current', specialDay: ["4"], isWeekend: true },
+            { day: 4, localeDay: "4", month: 'current', specialDay: ["4"] },
             { day: 5, localeDay: "5", month: 'current', specialDay: [] },
             { day: 6, localeDay: "6", month: 'current', specialDay: [] },
-            { day: 7, localeDay: "7", month: 'current', specialDay: [] },
-            { day: 8, localeDay: "8", month: 'current', specialDay: [] },
-            { day: 9, localeDay: "9", month: 'current', specialDay: [], isWeekend: true } 
+            { day: 7, localeDay: "7", month: 'current', specialDay: ["4"] },
+            { day: 8, localeDay: "8", month: 'current', specialDay: ["4"] },
+            { day: 9, localeDay: "9", month: 'current', specialDay: ["4"], isWeekend: true } 
           ],
           [ 
-            { day: 10, localeDay: "10", month: 'current', specialDay: [], isWeekend: true },
-            { day: 11, localeDay: "11", month: 'current', specialDay: [] },
+            { day: 10, localeDay: "10", month: 'current', specialDay: ["4"], isWeekend: true },
+            { day: 11, localeDay: "11", month: 'current', specialDay: ["4"] },
             { day: 12, localeDay: "12", month: 'current', specialDay: [] },
             { day: 13, localeDay: "13", month: 'current', specialDay: [] },
-            { day: 14, localeDay: "14", month: 'current', specialDay: [] },
-            { day: 15, localeDay: "15", month: 'current', specialDay: [] },
-            { day: 16, localeDay: "16", month: 'current', specialDay: [], isWeekend: true } 
+            { day: 14, localeDay: "14", month: 'current', specialDay: ["4"] },
+            { day: 15, localeDay: "15", month: 'current', specialDay: ["4"] },
+            { day: 16, localeDay: "16", month: 'current', specialDay: ["4"], isWeekend: true } 
           ],
           [ 
-            { day: 17, localeDay: "17", month: 'current', specialDay: [], isWeekend: true },
-            { day: 18, localeDay: "18", month: 'current', specialDay: [] },
+            { day: 17, localeDay: "17", month: 'current', specialDay: ["4"], isWeekend: true },
+            { day: 18, localeDay: "18", month: 'current', specialDay: ["4"] },
             { day: 19, localeDay: "19", month: 'current', specialDay: [] },
             { day: 20, localeDay: "20", month: 'current', specialDay: [] },
-            { day: 21, localeDay: "21", month: 'current', specialDay: [] },
-            { day: 22, localeDay: "22", month: 'current', specialDay: [] },
-            { day: 23, localeDay: "23", month: 'current', specialDay: [], isWeekend: true } 
+            { day: 21, localeDay: "21", month: 'current', specialDay: ["4"] },
+            { day: 22, localeDay: "22", month: 'current', specialDay: ["4"] },
+            { day: 23, localeDay: "23", month: 'current', specialDay: ["4"], isWeekend: true } 
           ],
           [ 
-            { day: 24, localeDay: "24", month: 'current', specialDay: [], isWeekend: true },
-            { day: 25, localeDay: "25", month: 'current', specialDay: [] },
+            { day: 24, localeDay: "24", month: 'current', specialDay: ["4"], isWeekend: true },
+            { day: 25, localeDay: "25", month: 'current', specialDay: ["4"] },
             { day: 26, localeDay: "26", month: 'current', specialDay: [] },
             { day: 27, localeDay: "27", month: 'current', specialDay: [] },
-            { day: 28, localeDay: "28", month: 'current', specialDay: [] },
-            { day: 29, localeDay: "29", month: 'current', specialDay: [] },
-            { day: 30, localeDay: "30", month: 'current', specialDay: [], isWeekend: true } 
+            { day: 28, localeDay: "28", month: 'current', specialDay: ["4"] },
+            { day: 29, localeDay: "29", month: 'current', specialDay: ["4"] },
+            { day: 30, localeDay: "30", month: 'current', specialDay: ["4"], isWeekend: true } 
           ],
           [ 
             { day: 1, localeDay: "1", month: 'next', specialDay: [], isWeekend: true },

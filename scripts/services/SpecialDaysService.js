@@ -75,8 +75,6 @@
   function createSpecialDaysService(specialDays) {
     var specialDaysBundle = denormalizeSpecialDays(specialDays);
 
-    // console.log(JSON.stringify(specialDaysBundle));
-
     return Object.freeze({
       getSpecialDay: function getSpecialDay(_ref) {
         var _ref$year = _ref.year,

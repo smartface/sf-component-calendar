@@ -164,7 +164,7 @@
 					month: 'previous'
 				};
 
-				day.specialDay = specialDaysService(_extends({}, prevMonth.toObject(), { day: day.day }));
+				day.specialDay = specialDaysService(_extends({}, prevMonth.fromDay(day.day).toNormalizedObject()));
 				day.localeDay = prevMonth.localeDate().setDay(day.day).getDate().day;
 			} else if (i > startNext) {
 				day = {
@@ -172,7 +172,7 @@
 					month: 'next'
 				};
 
-				day.specialDay = specialDaysService(_extends({}, nextMonth.toObject(), { day: day.day }));
+				day.specialDay = specialDaysService(_extends({}, nextMonth.fromDay(day.day).toNormalizedObject()));
 				day.localeDay = nextMonth.localeDate().setDay(day.day).getDate().day;
 			} else {
 				day = {
@@ -180,7 +180,7 @@
 					month: 'current'
 				};
 
-				day.specialDay = specialDaysService(_extends({}, currentMonth.toObject(), { day: day.day }));
+				day.specialDay = specialDaysService(_extends({}, currentMonth.fromDay(day.day).toNormalizedObject()));
 				day.localeDay = currentMonth.localeDate().setDay(day.day).getDate().day;
 			}
 

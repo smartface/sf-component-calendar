@@ -4,6 +4,7 @@ import {
 	expect
 } from "chai";
 
+
 describe("Special Days Service", function() {
 	const service = createSpecialDaysService(specialDaysData);
 	
@@ -63,7 +64,7 @@ describe("Special Days Service", function() {
     expect(keyByMonth).to.equal("m-1-1-gregorian");
     expect(keyByYearandAllCalendars).to.equal("m-2018-1-1-*");
     expect(keyByMonthandAllCalendars).to.equal("m-1-1-*");
-	})
+	});
 
 	it("return a valid specialday", function() {
 		let day = service.getSpecialDay({});
@@ -81,6 +82,10 @@ describe("Special Days Service", function() {
 		day = service.getSpecialDay({year: 2018, month: 1, day: 1, calendar: "gregorian", lang: "de"});
 		expect(day)
 			.to.eql(["Happy New Year", "in all langs"]);
+
+		day = service.getSpecialDay({year: 2018, month: 1, day: 7, calendar: "hijri", lang: "ar-sa"});
+		expect(day)
+			.to.eql(["in all langs"]);
 	});
 
 	it("return selected day when calendar collide with all operator(*)", function() {

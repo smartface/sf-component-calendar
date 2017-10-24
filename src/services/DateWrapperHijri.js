@@ -21,7 +21,7 @@ export default class HijriDateService extends DateService {
 	}
 	
 	month() {
-		return this._date.format("iM")
+		return this._date.format("iM");
 	}
 	
 	year() {
