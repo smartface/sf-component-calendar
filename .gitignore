@@ -2,6 +2,7 @@
 .smf/*
 .npm/*
 .tmp/*
+.templates/*
 output/*
 plugin/*
 !output/Android/README.md

@@ -339,10 +339,6 @@ const NewPage001 = extend(NewPage001Design)(
 			changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
 		}.bind(this);
 		
-		this.children.button1.onPress = function(){
-			Router.go("page2");
-		}.bind(this);
-		
 		this.children.button3.onPress = function(){
 			this.children.calendar.addStyles({
 				".calendar.header_navbar_monthLabel": {

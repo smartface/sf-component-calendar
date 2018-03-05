@@ -1,3 +1,5 @@
+require("./theme");
+
 /* globals lang */
 require("i18n/i18n.js"); // Generates global lang object
 
@@ -22,5 +24,4 @@ stylerBuilder.setActiveTheme(settings.config.theme.currentTheme);
 
 // Define routes and go to initial page of application
 Router.add("page1", require("./pages/newPage001"));
-Router.add("page2", require("./pages/newPage002"));
 Router.go("page1");
