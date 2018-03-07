@@ -41,13 +41,13 @@ function timerStart(){
 
 function runAll(count, done, delay=0){
   // setTimeout(function(){
-    var res = Object
-    .keys(collection)
-    .map(function(name){
-      return run(name);
-    });
-    
-    done(res);
+  var res = Object
+  .keys(collection)
+  .map(function(name){
+    return run(name);
+  });
+  
+  done(res);
   // }, delay);
 }
 

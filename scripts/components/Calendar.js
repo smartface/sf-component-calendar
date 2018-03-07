@@ -7,7 +7,7 @@ const CalendarDesign = require('library/Calendar');
 const CalendarWeekRow = require('./CalendarWeekRow');
 const FlexLayout = require('sf-core/ui/flexlayout');
 const createService = require("../services/CalendarService");
-const CalendarContext = require("./CalendarContext");
+const calendarContext = require("./calendarContext");
 
 function buildCalendar(view) {
 	return extend(view)(Calendar, function(proto) {
@@ -28,13 +28,15 @@ function Calendar(_super) {
 
 function CalendarPrototype(proto) {
 	proto.init = function() {
-		this.children.navbar.onNext = function() {
+		this.styleContext = calendarContext(this, "calendar");
+		
+		this.children.navbar.onNext = () => {
 			this.nextMonth();
-		}.bind(this);
+		};
 
-		this.children.navbar.onPrev = function() {
+		this.children.navbar.onPrev = () => {
 			this.prevMonth();
-		}.bind(this);
+		};
 	}
 
 	function updateRows(days, date) {
@@ -110,10 +112,6 @@ function CalendarPrototype(proto) {
 	}
 
 	// to inject a context dispatcher
-	proto.setContextDispatcher = function(dispatcher) {
-		this.dispatch = dispatcher;
-	};
-
 	proto.buildRows = function() {
 		this.weeks.push(this.children.body.children.week1);
 		this.weeks.push(this.children.body.children.week2);
@@ -125,8 +123,6 @@ function CalendarPrototype(proto) {
 		this.weeks.forEach(function(row, index) {
 			row.onDaySelected = onDaySelected.bind(this, index);
 		}.bind(this));
-
-		this.styleContext = CalendarContext.createContext(this);
 	};
 
 	proto.now = function() {
@@ -194,6 +190,10 @@ function CalendarPrototype(proto) {
 			this.updateCalendar(this._calendarService.getCalendarMonth(this.currentMonth.nextMonth.normalizedDate));
 			this.onMonthChange && this.onMonthChange(this.currentMonth.nextMonth.normalizedDate);
 		}
+	};
+	
+	proto.subcribeContext = function(e){
+		alert(JSON.stringify(e));
 	};
 
 	proto.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {

@@ -18,10 +18,9 @@ const CalendarDay = extend(CalendarDayDesign)(
 		};
 		
 		proto.setDay = function(data){
-			// this.currentData = data;
-			this.text = data.localeDay;
+			this.children.dayNum.text = data.localeDay;
 			this.dispatch({
-				type: "changeState",
+				type: "updateDayType",
 				data: data
 			});
 		};

@@ -3,7 +3,8 @@
 		"flexProps": {
 			"direction": "LTR"
 		},
-		"&_line2": {}
+		"&_line2": {
+		}
 	},
 	".calendar": {
 		"direction": "LTR",
@@ -22,7 +23,7 @@
 		},
 		"&_line": {
 			"height": 1,
-			"width": null,
+			"width": NaN,
 			"backgroundColor": "rgba(228,228,228,1)"
 		},
 		"&_calendarYear": {
@@ -38,40 +39,41 @@
 				},
 				"&_arrow": {
 					"flexGrow": 1,
-					"textColor": "#B1B1B4"
+					"textColor": "#B1B1B4",
 				},
 				"&_label": {
-					"textColor": "#000000"
+					"textColor": "#000000",
 				}
 			},
 			"&_dayNames": {
 				"direction": "LTR",
 				"backgroundColor": "#EBEBEB",
 				"minHeight": 14,
-				"maxHeight": null,
-				"height": null,
+				"maxHeight": NaN,
+				"height": NaN,
 				"flexGrow": 0.2,
 				"&-lang_ar": {
-					"direction": "RTL"
+				  "direction": "RTL",
 				},
 				"&-lang_ar-sa": {
-					"direction": "RTL"
+				  "direction": "RTL",
 				},
 				"&_dayName": {
-					"height": null,
+					"height": NaN,
 					"font": {
 						"size": 10,
 						"family": "Arial"
 					},
 					".weekday": {
-						"textColor": "#000000"
+						"textColor": "#000000",
 					},
 					".weekend": {
-						"textColor": "#808080"
+						"textColor": "#808080",
 					}
 				}
 			}
 		},
+		// .calendar.weekRow.lang_ar-sa
 		".body": {},
 		".weekRow": {
 			"direction": "LTR",
@@ -79,18 +81,14 @@
 			"maxHeight": 40,
 			"minHeight": 26,
 			"&-lang_ar-sa": {
-				"direction": "RTL"
+			  "direction": "RTL"
 			},
 			"&-lang_ar": {
-				"direction": "RTL"
+			  "direction": "RTL"
 			},
 			"&_line": {
 				"backgroundColor": "#C0C0C0"
 			},
-			"flexProps": {
-				"alignContent": "CENTER",
-				"alignItems": "CENTER"
-			}
 		},
 		".day": {
 			"font": {
@@ -107,9 +105,8 @@
 			"minHeight": 26,
 			"textColor": "#000000",
 			"backgroundColor": "rgba(0,0,0,0)",
-			"&_label": {},
 			"&-inrange": {
-				"textColor": "#000000"
+				"textColor": "#000000",
 			},
 			"&-selected": {
 				"borderWidth": 0,
@@ -118,7 +115,7 @@
 			},
 			"&-deactiveDays": {
 				"borderWidth": 0,
-				"textColor": "#D6D6D6"
+				"textColor": "#D6D6D6",
 			},
 			"&-specialDay": {
 				"borderWidth": 0,
@@ -126,8 +123,8 @@
 			},
 			"&-weekend": {
 				"borderWidth": 0,
-				"textColor": "#A3A3A3"
+				"textColor": "#A3A3A3",
 			}
 		}
 	}
-}
+};

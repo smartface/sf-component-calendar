@@ -297,9 +297,9 @@ var sample = {
 };
 
 function changeCalendar(lang, calendar, sp){
-	this.children.calendar.changeCalendar(lang, calendar, sp);
-	this.children.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
-	this.children.calendar.applyLayout();
+	this.calendar.changeCalendar(lang, calendar, sp);
+	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
+	this.calendar.applyLayout();
 }
 
 const NewPage001 = extend(NewPage001Design)(
@@ -307,12 +307,16 @@ const NewPage001 = extend(NewPage001Design)(
 	function(_super){
 		// Initalizes super class for this page scope
 		_super(this);
+	
+		this.calendar = this.children.calendar;
+    delete this.children.calendar;
+
 		// overrides super.onShow method
 		this.onShow = onShow.bind(this, this.onShow.bind(this));
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-		this.children.calendar.onDaySelect = function(date){
+		this.calendar.onDaySelect = function(date){
 			this.children.label2.text = date.date.day+"/"+(date.date.month)+"/"+date.date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")
@@ -340,7 +344,7 @@ const NewPage001 = extend(NewPage001Design)(
 		}.bind(this);
 		
 		this.children.button3.onPress = function(){
-			this.children.calendar.addStyles({
+			this.calendar.addStyles({
 				".calendar.header_navbar_monthLabel": {
 					"textColor": "#F10000"
 				}
@@ -352,13 +356,13 @@ const NewPage001 = extend(NewPage001Design)(
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
 function onShow(superOnShow) {
   superOnShow();
+  
 	changeCalendar.call(this, "ar-sa", "hijri", sample);
-	this.children.calendar.onDisplayChange = function(){
+	this.calendar.onDisplayChange = function(){
 	};
-
-  this.children.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
-	// this.children.calendar.now();
-	var fn = this.children.calendar.nextMonth.bind(this.children.calendar);
+  this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
+	// this.calendar.now();
+	var fn = this.calendar.nextMonth.bind(this.calendar);
 	// runner.add(fn, "nextMonth");
 	// runner.add(fn, "nextMonth2");
 	// runner.add(fn, "nextMonth3");
@@ -370,16 +374,16 @@ function onShow(superOnShow) {
 	// runner.add(fn, "nextMonth9");
 	// runner.add(fn, "nextMonth10");
 	
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth5");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth6");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth7");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth8");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth9");
-	// runner.add(this.children.calendar.nextMonth.bind(this.children.calendar), "nextMonth10");
+	// runner.add(this.calendar.nextMonth.bind(this.calendar), "nextMonth5");
+	// runner.add(this.calendar.nextMonth.bind(this.calendar), "nextMonth6");
+	// runner.add(this.calendar.nextMonth.bind(this.calendar), "nextMonth7");
+	// runner.add(this.calendar.nextMonth.bind(this.calendar), "nextMonth8");
+	// runner.add(this.calendar.nextMonth.bind(this.calendar), "nextMonth9");
+	// runner.add(this.calendar.nextMonth.bind(this.calendar), "nextMonth10");
 	
-	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth");
-	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth2");
-	// runner.add(this.children.calendar.prevMonth.bind(this.children.calendar), "prevMonth3");
+	// runner.add(this.calendar.prevMonth.bind(this.calendar), "prevMonth");
+	// runner.add(this.calendar.prevMonth.bind(this.calendar), "prevMonth2");
+	// runner.add(this.calendar.prevMonth.bind(this.calendar), "prevMonth3");
 
 	// setTimeout(function(){
 		runner.runAll(3, function(res){

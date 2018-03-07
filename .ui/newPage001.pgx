@@ -29,7 +29,7 @@
 				"orientation": "AUTO",
 				"safeAreaEnabled": true
 			},
-			"version": "6.6.3"
+			"version": "6.6.4"
 		},
 		{
 			"className": ".statusBar",
@@ -160,14 +160,15 @@
 			"type": "Button",
 			"userProps": {
 				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"borderRadius": 20,
 				"flexProps": {
 					"positionType": "ABSOLUTE"
 				},
-				"height": 41.069793701171875,
+				"height": 40,
 				"left": 20.253164556962023,
 				"text": "TR",
 				"top": 350.63291139240505,
-				"width": 64.40417641087582
+				"width": 40
 			}
 		},
 		{
@@ -189,7 +190,8 @@
 					"size": 16,
 					"bold": false,
 					"italic": false,
-					"family": "FontAwesome5FreeRegular"
+					"family": "AbakuTLSymSans",
+					"style": "n"
 				},
 				"height": 43.0379746835443,
 				"left": 116.45569620253164,
@@ -246,7 +248,7 @@
 			}
 		},
 		{
-			"className": ".flexLayout",
+			"className": ".flexLayout .calendar-self",
 			"hiddenComponent": false,
 			"id": "b4e0-f382-402e-f5bd",
 			"props": {
@@ -274,11 +276,11 @@
 					"alignContent": "FLEX_START",
 					"positionType": "RELATIVE"
 				},
-				"height": 252.05459594726562,
+				"height": 330,
 				"left": 0,
 				"right": 0,
 				"top": 0,
-				"width": null
+				"width": 376
 			}
 		}
 	]
