@@ -2,7 +2,6 @@
 		You can modify its contents.
 */
 const extend = require('js-base/core/extend');
-
 const CalendarDayLabelDesign = require('library/CalendarDayLabel');
 
 const CalendarDayLabel = extend(CalendarDayLabelDesign)(
@@ -12,8 +11,6 @@ const CalendarDayLabel = extend(CalendarDayLabelDesign)(
 		_super(this, props || {} );
 		this.pageName = pageName;
 	}
-	
 );
 
 module && (module.exports = CalendarDayLabel);
-

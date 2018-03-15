@@ -1,0 +1,66 @@
+{
+	"components": [
+		{
+			"className": ".page",
+			"id": "6ceb-f32e-728f-fca9",
+			"initialized": true,
+			"props": {
+				"children": [
+					"dd35-9715-133d-2926",
+					"ec53-2d05-4801-2930",
+					"6d0f-71f6-f8af-73f8"
+				],
+				"name": "newPage003",
+				"orientation": "PORTRAIT",
+				"parent": null
+			},
+			"type": "Page",
+			"userProps": {},
+			"version": "6.6.4-rc.15"
+		},
+		{
+			"className": ".statusBar",
+			"id": "dd35-9715-133d-2926",
+			"props": {
+				"children": [],
+				"isRemovable": false,
+				"name": "statusBar",
+				"parent": "6ceb-f32e-728f-fca9"
+			},
+			"type": "StatusBar",
+			"userProps": {}
+		},
+		{
+			"className": ".headerBar",
+			"id": "ec53-2d05-4801-2930",
+			"props": {
+				"children": [],
+				"isRemovable": false,
+				"name": "headerBar",
+				"parent": "6ceb-f32e-728f-fca9",
+				"title": "newPage003"
+			},
+			"type": "HeaderBar",
+			"userProps": {
+				"title": "newPage003"
+			}
+		},
+		{
+			"className": ".calendarWeekly",
+			"hiddenComponent": false,
+			"id": "6d0f-71f6-f8af-73f8",
+			"props": {
+				"children": [],
+				"name": "calendarWeekly",
+				"parent": "6ceb-f32e-728f-fca9"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarWeekly",
+				"id": "bebe-bb6a-d4f0-a386"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		}
+	]
+}

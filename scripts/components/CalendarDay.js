@@ -3,7 +3,6 @@
 */
 const extend = require('js-base/core/extend');
 const CalendarDayDesign = require('library/CalendarDay');
-const Color = require('sf-core/ui/color');
 
 const CalendarDay = extend(CalendarDayDesign)(
 	//constructor
@@ -11,28 +10,27 @@ const CalendarDay = extend(CalendarDayDesign)(
 		// initalizes super class for this scope
 		_super(this, props || {});
 		this.pageName = pageName;
+		this.children.dayNum.onPress = (e) => {
+			this.onPress && this.onPress.call(this, e);
+		};
 	},
 	function (proto) {
-		proto.setContextDispatcher = function(dispatcher){
-			this.dispatch = dispatcher;
-		};
-		
 		proto.setDay = function(data){
 			this.children.dayNum.text = data.localeDay;
-			this.dispatch({
+			this.children.dayNum.dispatch({
 				type: "updateDayType",
 				data: data
 			});
 		};
 		
 		proto.setSelected = function(){
-			this.dispatch({
+			this.children.dayNum.dispatch({
 				type: "daySelected"
 			});
 		};
 		
 		proto.clearSelected = function(){
-		}
+		};
 	}
 );
 

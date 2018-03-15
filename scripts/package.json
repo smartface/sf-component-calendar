@@ -49,7 +49,6 @@
     "sf-extension-utils": "3.2.5"
   },
   "devDependencies": {
-    "@smartface/styler": "^1.1.0",
     "sf-core": "*"
   }
 }

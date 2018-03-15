@@ -2,10 +2,7 @@
 		You can modify its contents.
 */
 const extend = require('js-base/core/extend');
-
 const CalendarWeekRowDesign = require('library/CalendarWeekRow');
-const getCombinedStyle = require("library/styler-builder").getCombinedStyle;
-const Color = require('sf-core/ui/color');
 
 const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 	//constructor
@@ -52,7 +49,7 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 			addDaySelectEvent.call(this, this.children.weekDay5, 4);
 			addDaySelectEvent.call(this, this.children.weekDay6, 5);
 			addDaySelectEvent.call(this, this.children.weekDay7, 6);
-		}
+		};
 		
 		proto.setDays = function(days){
 			if(days === undefined){

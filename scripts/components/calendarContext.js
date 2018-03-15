@@ -15,60 +15,65 @@ function raiseTargetNotfound(target){
 	};
 }
 
-
 function removeSelection(context, state) {
 	if(!state.selectedDay)
 		return;
 	
 	context
 		.find(state.selectedDay, {removeClassName: raiseTargetNotfound(state.selectedDay)})
-		.removeClassName(".calendar.day-selected");
+		.removeClassName(".calendar.day_label-selected");
 	delete state.selectedDay;
 }
 
-function resetDays(days, actor) {
+function resetDays(actor) {
 	// days.forEach(function(name) {
-	if(actor.getClassName() != ".calendar.day") {
-		actor.resetClassNames([".calendar.day"]);
-	}
+		if(actor.hasClassName(".calendar.day_label")) {
+			actor.resetClassNames([".calendar.day_label"]);
+		}
 	// });
 }
 
 // reducer for context's components
-function reducer(context, action, target) {
-	const newState = context.getState();
+function reducer(context, action, target, state) {
+	const newState = Object.assign({}, state);
+	let actor;
 	
 	switch(action.type) {
 		case INIT_CONTEXT_ACTION_TYPE:
 			newState.days = context.reduce((acc, actor, name) => {
 				if(name.indexOf("_weekDay") > 0)
-					acc.push(name)
+					acc.push(name);
 				return acc;
 			}, []);
 
 			return newState;
 		case "resetDays":
-			context.map(resetDays.bind(null, newState.days));
-			break;
+			context.map(resetDays);
+			
+			return newState;
 		case "daySelected":
-			let selected = context.find(newState.selectedDay);
+			const selected = context.find(newState.selectedDay);
+			
 			if(selected){
 				removeSelection(context, newState);
-				context
-					.find(target, {pushClassName: raiseTargetNotfound(target)})
-					.pushClassName(".calendar.day-selected");
-				newState.selectedDay = target;
 			}
 
+			actor = context.find(target, {pushClassNames: raiseTargetNotfound(target)});
+			actor.pushClassNames(".calendar.day_label-selected");
+			newState.selectedDay = target;
+			
 			return newState;
 		case "clearSelectedDay":
 			removeSelection(context, newState);
-			break;
+			return newState;
 		case "changeMonth":
 			removeSelection(context, newState);
-			break;
+			return newState;
 		case "changeCalendar":
-		  context.forEach(function(actor){
+		  context.map(function(actor){
+		    if(!actor || actor.name === undefined)
+		    	raiseTargetNotfound(target);
+
 		    const className = actor.getInitialClassName();
 		    
 		    actor.resetClassNames([className,
@@ -80,26 +85,27 @@ function reducer(context, action, target) {
 		    // actor.pushClassName("#"+actor.name+"-os_"+System.OS);
 		  });
 		  
-		  break;
+		  return newState;
 		case "updateDayType":
-			const actor = context.find(target);
+			actor = context.find(target);
 			const data = action.data;
+			
 			if(data.isWeekend) {
-				actor.pushClassName(".calendar.day-weekend");
+				actor.pushClassNames(".calendar.day_label-weekend");
 			}
 
 			if(Array.isArray(data.specialDay) && data.specialDay.length > 0) {
-				actor.pushClassName(".calendar.day-specialDay");
+				actor.pushClassNames(".calendar.day_label-specialDay");
 			}
 
 			if(data.month != "current") {
-				actor.pushClassName(".calendar.day-deactiveDays");
+				actor.pushClassNames(".calendar.day_label-deactiveDays");
 			}
-
-			break;
+			
+			return newState;
 	}
 
-	return newState;
+	return state;
 }
 
 function classNameMap(name) {
@@ -205,8 +211,8 @@ function createContext(component) {
 	);*/
 	
 	
-	let context = pageContext(component, "calendar", reducer, classNameMap);
-	context(styling);
+	let context = pageContext(component, "calendar", reducer);
+	context(styling, reducer);
 	
 	return function setStyle(newStyles) {
 		try {
