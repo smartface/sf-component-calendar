@@ -100,7 +100,6 @@
 		},
 		".day": {
 			"borderWidth": 0,
-			"borderRadius": 13,
 			"&_label": {
 				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"textColor": "rgba( 71, 71, 71, 1 )",
@@ -117,13 +116,20 @@
 					"italic": false,
 					"family": "Arial",
 					"style": "b"
+				},
+				"&-rangeSelected": {
+					"textColor": "rgba( 255, 255, 255, 1 )"
 				}
 			},
 			"flexProps": {
 				"justifyContent": "CENTER",
 				"flexGrow": 1,
 				"positionType": "RELATIVE"
-			}
+			},
+			"&-selected": {
+				"backgroundColor": "rgba( 219, 129, 31, 1 )"
+			},
+			"backgroundColor": "rgba( 255, 255, 255, 0 )"
 		},
 		".day_label": {
 			"font": {

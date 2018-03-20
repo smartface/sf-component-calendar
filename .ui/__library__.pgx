@@ -368,8 +368,8 @@
 					"flexDirection": "ROW"
 				},
 				"height": 56.25,
-				"left": 16.666666666666668,
-				"top": 60,
+				"left": 13.333333333333334,
+				"top": 241.66666666666669,
 				"width": 351.5625
 			}
 		},
@@ -1237,7 +1237,7 @@
 		},
 		{
 			"className": ".calendar.day",
-			"hiddenComponent": true,
+			"hiddenComponent": false,
 			"id": "2c9e-2356-2ac6-4bc1",
 			"props": {
 				"children": [
