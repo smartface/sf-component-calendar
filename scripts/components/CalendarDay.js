@@ -10,9 +10,31 @@ const CalendarDay = extend(CalendarDayDesign)(
 		// initalizes super class for this scope
 		_super(this, props || {});
 		this.pageName = pageName;
-		this.children.dayNum.onPress = (e) => {
-			this.onPress && this.onPress.call(this, e);
+		
+		// this.children.dayNum.onPress = (e) => {
+		// 	this.onPress && this.onPress.call(this, e);
+		// };
+		this.children.dayNum.onTouch = (e) => {
+			// this.onLongPress && this.onLongPress.call(this, e);
+			let timeout;
+			let isLongPress = false;
+			
+			timeout = setTimeout(() => {
+				isLongPress = true;
+				// this.onTouchEnded && this.onTouchEnded.call(this, e);
+				isLongPress && this.onLongPress && this.onLongPress.call(this, e);
+			}, 300);
+
+			this.children.dayNum.onTouchEnded = () => {
+				clearTimeout(timeout);
+				this.children.dayNum.onTouchEnded = null;
+				!isLongPress && this.onPress && this.onPress.call(this, e);
+				isLongPress = false;
+			};
 		};
+		// let timeout;
+		
+		// this.children.dayNum.onTouch = this.onTouch;
 	},
 	function (proto) {
 		proto.setDay = function(data){
@@ -23,13 +45,27 @@ const CalendarDay = extend(CalendarDayDesign)(
 			});
 		};
 		
-		proto.setSelected = function(){
+		proto.activate = function(){
+			this.dispatch({
+				type: "pushClassNames",
+				classNames: ".calendar.day-selected"
+			});
+			this.children.dayNum.dispatch({
+				type: "pushClassNames",
+				classNames: ".calendar.day_label-rangeSelected"
+			});
+		}
+		
+		proto.select = function(){
 			this.children.dayNum.dispatch({
 				type: "daySelected"
 			});
 		};
 		
 		proto.clearSelected = function(){
+			// this.children.dayNum.dispatch({
+			// 	type: "reset"
+			// });
 		};
 	}
 );

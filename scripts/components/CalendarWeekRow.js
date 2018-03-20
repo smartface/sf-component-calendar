@@ -4,29 +4,57 @@
 const extend = require('js-base/core/extend');
 const CalendarWeekRowDesign = require('library/CalendarWeekRow');
 
+
+function selectDay(index){
+	if(index === -1){
+		throw new Error("Day index cannot be -1");
+	}
+
+	this.selectedIndex = index;
+	this.rangeIndexes = [];
+	this.children["weekDay"+(index+1)].select();
+}
+
+function onDayPress(index){
+	this.onDaySelected(index);
+}
+
+function selectRange(indexes){
+	this.rangeIndexes.push(indexes);
+	indexes.forEach(index => this.children["weekDay"+(index+1)].activate());
+}
+
+function onDayLongPress(index) {
+	this.onRangeSelect && this.onRangeSelect(index);
+}
+
+function addDaySelectEvent(day, index){
+	day.onPress = onDayPress.bind(this, index);
+	day.onLongPress = onDayLongPress.bind(this, index);
+}
+
 const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 	//constructor
 	function(_super, props){
 		// initalizes super class for this scope
 		_super(this, props || {});
+		this.rangeIndexes = [];
 		// data && this.setDays(data);
+		this._days = ["weekDay1", "weekDay2", "weekDay3","weekDay4","weekDay5","weekDay6","weekDay7"];
 		this.init();
 	},
 	function(proto){
-
-		function addDaySelectEvent(day, index){
-			day.onPress = selectDay.bind(this, index);
-		}
+		proto.activateRangeSelection = function(){
+			this.isRangeSelection = true;
+			this._days.forEach((day, index) => 
+				this.children[day].onTouch = this.onMove.bind(null, index))
+		};
 		
-		function selectDay(index){
-			if(index === -1){
-				throw new Error("Day index cannot be -1");
-			}
-			
-			this.children["weekDay"+(index+1)].setSelected();
-			this.selectedIndex = index;
-			this.onDaySelected(index);
-		}
+		proto.deactivateRangeSelection = function(){
+			this.isRangeSelection = false;
+			this._days.forEach((day, index) => 
+				this.children[day].onTouch = null)
+		};
 		
 		proto.getSelectedIndex = function(){
 			return this.selectedIndex;
@@ -36,19 +64,19 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 			return selectDay.call(this, index);
 		};
 		
+		proto.setRangeIndex = function(index){
+			return selectRange.call(this, index);
+		};
+		
 		proto.clearSelected = function(){
 			this.selectedIndex > -1 && this.children["weekDay"+(this.selectedIndex+1)].clearSelected();
 			this.selectedIndex = -1;
+			this.rangeIndexes = [];
 		};
 		
 		proto.init = function(){
-			addDaySelectEvent.call(this, this.children.weekDay1, 0);
-			addDaySelectEvent.call(this, this.children.weekDay2, 1);
-			addDaySelectEvent.call(this, this.children.weekDay3, 2);
-			addDaySelectEvent.call(this, this.children.weekDay4, 3);
-			addDaySelectEvent.call(this, this.children.weekDay5, 4);
-			addDaySelectEvent.call(this, this.children.weekDay6, 5);
-			addDaySelectEvent.call(this, this.children.weekDay7, 6);
+			this._days.forEach((day, index) => 
+				addDaySelectEvent.call(this, this.children[day], index))
 		};
 		
 		proto.setDays = function(days){
@@ -56,14 +84,9 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 				return;
 			}
 			
-			this.children.weekDay1.setDay(days[0]);
-			this.children.weekDay2.setDay(days[1]);
-			this.children.weekDay3.setDay(days[2]);
-			this.children.weekDay4.setDay(days[3]);
-			this.children.weekDay5.setDay(days[4]);
-			this.children.weekDay6.setDay(days[5]);
-			this.children.weekDay7.setDay(days[6]);
-		}
+			this._days.forEach((day, index) => 
+				this.children[day].setDay(days[index]));
+		};
 	}
 );
 

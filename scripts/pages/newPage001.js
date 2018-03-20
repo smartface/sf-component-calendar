@@ -316,14 +316,14 @@ const NewPage001 = extend(NewPage001Design)(
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-		this.calendar.onDaySelect = function(date){
+		this.calendar.onDaySelect = function([date]){
 			this.children.label2.text = date.date.day+"/"+(date.date.month)+"/"+date.date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")
 				: "Ozel Gun Yok";
 		}.bind(this);
 		
-		this.children.buttonTR.onPress = function(){
+		this.children.buttonTR.onLongPress = function(){
 			changeCalendar.call(this, "tr", "gregorian", sample);
 		}.bind(this);
 		
@@ -331,7 +331,7 @@ const NewPage001 = extend(NewPage001Design)(
 			changeCalendar.call(this, "en", "gregorian", sample);
 		}.bind(this);
 		
-		this.children.buttonAR.onPress = function(){
+		this.children.buttonAR.onLongPress = function(){
 			changeCalendar.call(this, "ar-sa", "gregorian", sample);
 		}.bind(this);
 		
@@ -357,11 +357,12 @@ const NewPage001 = extend(NewPage001Design)(
 function onShow(superOnShow) {
   superOnShow();
   
-	changeCalendar.call(this, "ar-sa", "hijri", sample);
+	
 	this.calendar.onDisplayChange = function(){
 	};
+  
   this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
-	// this.calendar.now();
+// 	this.calendar.now();
 	var fn = this.calendar.nextMonth.bind(this.calendar);
 	// runner.add(fn, "nextMonth");
 	// runner.add(fn, "nextMonth2");

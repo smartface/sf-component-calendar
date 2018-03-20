@@ -29,6 +29,18 @@ function resetDays(actor) {
 	// days.forEach(function(name) {
 		if(actor.hasClassName(".calendar.day_label")) {
 			actor.resetClassNames([".calendar.day_label"]);
+		} else if(actor.hasClassName(".calendar.day")){
+			actor.resetClassNames([".calendar.day"]);
+		}
+	// });
+}
+
+function deselectDays(actor) {
+	// days.forEach(function(name) {
+		if(actor.hasClassName(".calendar.day_label")) {
+			actor.removeClassName([".calendar.day_label-selected", ".calendar.day_label-rangeSelected"]);
+		} else if(actor.hasClassName(".calendar.day")){
+			actor.removeClassName([".calendar.day-selected"]);
 		}
 	// });
 }
@@ -49,6 +61,10 @@ function reducer(context, action, target, state) {
 			return newState;
 		case "resetDays":
 			context.map(resetDays);
+			
+			return newState;
+		case "deselectDays":
+			context.map(deselectDays);
 			
 			return newState;
 		case "daySelected":
@@ -108,7 +124,7 @@ function reducer(context, action, target, state) {
 	return state;
 }
 
-function classNameMap(name) {
+/*function classNameMap(name) {
 	const namePattern = /week[0-9]+_weekDay[0-9]+/
 	const rowPattern = new RegExp("week[0-9]+");
 	const dayNamesPattern = new RegExp("dayName_[0-9]+");
@@ -143,7 +159,7 @@ function classNameMap(name) {
 	}
 
 	return ".calendar";
-}
+}*/
 
 //TOOD: add classnameFactory to fromSFComponent
 

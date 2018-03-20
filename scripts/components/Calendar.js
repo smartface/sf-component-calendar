@@ -7,13 +7,6 @@ const CalendarCore = require("./CalendarCore");
 const extend = require('js-base/core/extend');
 const calendarContext = require("./calendarContext");
 
-/*function buildCalendar(view) {
-	return extend(view)(Calendar, function(proto) {
-		CalendarPrototype(proto);
-	});
-}
-*/
-
 const Calendar = extend(CalendarDesign)(
 	function Calendar(_super){
 		_super(this);
@@ -33,9 +26,10 @@ const Calendar = extend(CalendarDesign)(
 		this.weeks.push(this.children.body.children.week4);
 		this.weeks.push(this.children.body.children.week5);
 		this.weeks.push(this.children.body.children.week6);
-
+		
 		this.weeks.forEach((row, weekIndex) => {
 			row.onDaySelected = this.selectWeekDay.bind(this, weekIndex);
+			row.onRangeSelect = this._onRangeSelectStart.bind(this, weekIndex);
 		});
 	},
 	function(proto){
@@ -44,6 +38,25 @@ const Calendar = extend(CalendarDesign)(
 				row.setDays(days[index], date);
 			}.bind(this));
 		}
+		
+		// function activateRangeSelection(){
+		// 	this.isRangeSelection = true;
+		// }
+		
+		// function deactivateRangeSelection(){
+		// 	this.isRangeSelection = false;
+		// }
+		
+		proto._onRangeSelectStart = function (weekIndex, weekDayIndex) {
+			this.onRangeSelectStart && this.onRangeSelectStart(weekIndex, weekDayIndex);
+			// this.isRangeSelection !== true && activateRangeSelection.call(this);
+			this.calendarCore.rangeSelection(weekIndex, weekDayIndex);
+		};
+		
+		proto._onRangeSelectComplete = function (weekIndex, weekDayIndex) {
+			this.onRangeSelectComplete && this.onRangeSelectComplete(this.calendarCore.getState().days);
+			// deactivateRangeSelection.call(this);
+		};
 		
 		proto.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
 			this.dispatch({
@@ -54,13 +67,29 @@ const Calendar = extend(CalendarDesign)(
 			this.calendarCore.changeCalendar(lang, type, specialDays);
 		};
 		
-		proto.updateCalendar = function(state){
-			this.currentMonth = state.month;
-			updateRows.call(this, state.month.days, state.month.date);
-			this.children.navbar.setLabel(state.month.longName);
-			this.children.calendarYear.setYear(state.month.localeDate.year);
+		proto.updateCalendar = function(newState, oldState){
+			if((oldState.rangeSelectionMode === -1 && newState.rangeSelectionMode === 0)
+				|| (oldState.rangeSelectionMode === 1 && newState.rangeSelectionMode === -1)
+			){
+				this.dispatch({
+					type: "deselectDays"
+				});
+			}
+			
+			if(newState.month !== oldState.month){
+				this.currentMonth = newState.month;
+				updateRows.call(this, newState.month.days, newState.month.date);
+				this.children.navbar.setLabel(newState.month.longName);
+				this.children.calendarYear.setYear(newState.month.localeDate.year);
+			}
+			
+			// if(state.daysByIndex.length > 0)
+			newState.daysByIndex.map(newState.rangeSelectionMode === -1 
+				? this._selectDay.bind(this)
+				: this._selectDayasRange.bind(this)
+			);
 	
-			state.month.daysMin.forEach(function(day, index) {
+			newState.month.daysMin.forEach(function(day, index) {
 				this.children.calendarDays.children["dayName_" + index].text = day;
 			}.bind(this));
 		};
@@ -69,26 +98,28 @@ const Calendar = extend(CalendarDesign)(
 			this.styleContext(styles);
 		};
 		
-		proto._selectDay = function(row, index) {
-			this.weeks[row - 1].setSelectedIndex(index);
+		proto._selectDay = function({weekIndex, weekDayIndex}) {
+			this.weeks[weekIndex].setSelectedIndex(weekDayIndex);
+		};
+		
+		proto._selectDayasRange = function({weekIndex, weekDayIndexes}) {
+			this.weeks[weekIndex].setRangeIndex(weekDayIndexes);
 		};
 		
 		// move core
 		proto.setDate = function(date) {
-			this.dispatch({
-				type: "resetDays"
-			});
 			const newDate = Object.assign({}, date);
 			this.calendarCore.setDate(date);
-			// const dateData = this._calendarService.getCalendarMonth(newDate);
-			// this.updateCalendar(dateData);
 		};
 	
 		//move core
 		proto.setSelectedDate = function(date) {
-			this.setDate(date);
-			const state = this.calendarCore.getState();
-			this._selectDay(state.selectedWeekDay.weekIndex, state.selectedWeekDay.weekDayIndex);
+			// this.setDate(date);
+			this.calendarCore.setSelectedDate(date);
+			// const state = this.calendarCore.getState();
+			
+			// state.selectedWeekDay.weekDayIndex > -1 
+			// 	&& this._selectDay(state.selectedWeekDay.weekIndex, state.selectedWeekDay.weekDayIndex);
 		};
 		
 		/**
@@ -122,12 +153,10 @@ const Calendar = extend(CalendarDesign)(
 		};
 		
 		proto.nextWeek = function(){
-			
-		}
+		};
 		
 		proto.prevWeek = function(){
-			
-		}
+		};
 		
 		proto.prevMonth = function() {
 			if(this.onBeforeMonthChange &&
@@ -148,7 +177,7 @@ const Calendar = extend(CalendarDesign)(
 		
 		proto.selectWeekDay = function(weekIndex, weekDayIndex){
 			this.calendarCore.selectWeekDay(weekIndex, weekDayIndex);
-			this.onDaySelect && this.onDaySelect(this.calendarCore.getState().day);
+			this.onDaySelect && this.onDaySelect(this.calendarCore.getState().days);
 		};
 	}
 );
