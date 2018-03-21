@@ -11,11 +11,7 @@ const CalendarDay = extend(CalendarDayDesign)(
 		_super(this, props || {});
 		this.pageName = pageName;
 		
-		// this.children.dayNum.onPress = (e) => {
-		// 	this.onPress && this.onPress.call(this, e);
-		// };
 		this.children.dayNum.onTouch = (e) => {
-			// this.onLongPress && this.onLongPress.call(this, e);
 			let timeout;
 			let isLongPress = false;
 			
@@ -63,9 +59,6 @@ const CalendarDay = extend(CalendarDayDesign)(
 		};
 		
 		proto.clearSelected = function(){
-			// this.children.dayNum.dispatch({
-			// 	type: "reset"
-			// });
 		};
 	}
 );

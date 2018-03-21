@@ -62,7 +62,6 @@
 			"id": "940ab35f",
 			"props": {
 				"children": [
-					"0363-fcc9-50ed-548e",
 					"cf78-2304-1947-1383",
 					"ef76084f",
 					"f3fa-feb1-b214-9021",
@@ -115,11 +114,11 @@
 					"flexWrap": "WRAP"
 				},
 				"height": 46,
-				"left": 83,
+				"left": 58.333333333333336,
 				"maxHeight": null,
 				"minHeight": null,
 				"paddingBottom": null,
-				"top": 10,
+				"top": 36.66666666666667,
 				"width": 285.95890410958907
 			}
 		},
@@ -1211,31 +1210,6 @@
 			}
 		},
 		{
-			"className": ".flexLayout .calendar_calendarYear_yearLabel",
-			"hiddenComponent": false,
-			"id": "0363-fcc9-50ed-548e",
-			"props": {
-				"children": [],
-				"name": "calendarYear",
-				"parent": "940ab35f"
-			},
-			"source": {
-				"page": "__library__",
-				"id": "8da3-f6cf-bad0-0a60"
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"backgroundColor": "rgba( 235, 235, 235, 1 )",
-				"flexProps": {
-					"positionType": "RELATIVE"
-				},
-				"height": 20,
-				"left": 0,
-				"top": 0,
-				"width": null
-			}
-		},
-		{
 			"className": ".calendar.day",
 			"hiddenComponent": false,
 			"id": "2c9e-2356-2ac6-4bc1",
@@ -1253,8 +1227,8 @@
 			"userProps": {
 				"flexProps": {},
 				"height": 100,
-				"left": 58,
-				"top": 18,
+				"left": 26.666666666666668,
+				"top": 20,
 				"width": 100
 			}
 		},
@@ -1494,6 +1468,7 @@
 			"id": "bebe-bb6a-d4f0-a386",
 			"props": {
 				"children": [
+					"f781-30f6-2530-67ea",
 					"16f3-5f70-089a-4c37",
 					"7a19-523b-fb44-ab78"
 				],
@@ -1508,7 +1483,7 @@
 				"flexProps": {},
 				"left": 0,
 				"right": 0,
-				"top": 118.33333333333334
+				"top": 96.66666666666667
 			}
 		},
 		{
@@ -1758,6 +1733,42 @@
 				"textAlignment": "MIDCENTER",
 				"textColor": "rgba( 128, 128, 128, 1 )",
 				"width": 40
+			}
+		},
+		{
+			"className": ".flexLayout",
+			"hiddenComponent": false,
+			"id": "f781-30f6-2530-67ea",
+			"props": {
+				"children": [],
+				"name": "navbar",
+				"parent": "bebe-bb6a-d4f0-a386"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarNavBar",
+				"id": "7d0c86e9"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flex": {
+					"positionType": 0,
+					"flexGrow": 1,
+					"flexDirection": 2,
+					"flexWrap": 1
+				},
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexDirection": "ROW",
+					"flexWrap": "WRAP"
+				},
+				"height": 30,
+				"left": 0,
+				"maxHeight": null,
+				"minHeight": null,
+				"paddingBottom": null,
+				"top": 0,
+				"width": null
 			}
 		}
 	]

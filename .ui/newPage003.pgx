@@ -8,14 +8,22 @@
 				"children": [
 					"dd35-9715-133d-2926",
 					"ec53-2d05-4801-2930",
-					"6d0f-71f6-f8af-73f8"
+					"6d0f-71f6-f8af-73f8",
+					"e107-e7fc-4a51-a9d7",
+					"1daf-6628-bcd7-e5a2",
+					"f737-7521-ed90-9d48",
+					"3ff8-459a-b6d9-e1d4"
 				],
 				"name": "newPage003",
 				"orientation": "PORTRAIT",
 				"parent": null
 			},
 			"type": "Page",
-			"userProps": {},
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				}
+			},
 			"version": "6.6.4-rc.15"
 		},
 		{
@@ -61,6 +69,88 @@
 			},
 			"type": "FlexLayout",
 			"userProps": {}
+		},
+		{
+			"className": ".button",
+			"id": "e107-e7fc-4a51-a9d7",
+			"props": {
+				"children": [],
+				"name": "prev",
+				"parent": "6ceb-f32e-728f-fca9",
+				"text": "Onceki Hafta"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 70,
+				"left": 16.666666666666668,
+				"text": "Onceki Hafta",
+				"top": 138.33333333333334,
+				"width": 111.66666666666667
+			}
+		},
+		{
+			"className": ".button",
+			"id": "1daf-6628-bcd7-e5a2",
+			"props": {
+				"children": [],
+				"name": "next",
+				"parent": "6ceb-f32e-728f-fca9",
+				"text": "Sonraki Hafta"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 70,
+				"left": 248.33333333333334,
+				"text": "Sonraki Hafta",
+				"top": 138.33333333333334,
+				"width": 111.66666666666667
+			}
+		},
+		{
+			"className": ".button",
+			"id": "f737-7521-ed90-9d48",
+			"props": {
+				"children": [],
+				"name": "now",
+				"parent": "6ceb-f32e-728f-fca9",
+				"text": "Bugun"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 70,
+				"left": 130.35714285714283,
+				"text": "Bugun",
+				"top": 237.49999999999997,
+				"width": 111.66666666666667
+			}
+		},
+		{
+			"className": ".button",
+			"id": "3ff8-459a-b6d9-e1d4",
+			"props": {
+				"children": [],
+				"name": "back",
+				"parent": "6ceb-f32e-728f-fca9",
+				"text": "Aylik Takvim"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"left": 66.07142857142857,
+				"text": "Aylik Takvim",
+				"top": 449.99999999999994
+			}
 		}
 	]
 }

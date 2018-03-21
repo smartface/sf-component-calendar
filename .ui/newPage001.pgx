@@ -16,7 +16,8 @@
 					"aa00-5c53-57c4-a625",
 					"20cf-779a-2350-e731",
 					"e948-c9ae-aacc-5e45",
-					"b4e0-f382-402e-f5bd"
+					"b4e0-f382-402e-f5bd",
+					"950e-e811-c256-a3ed"
 				],
 				"name": "newPage001",
 				"orientation": "AUTO",
@@ -281,6 +282,25 @@
 				"right": 0,
 				"top": 0,
 				"width": null
+			}
+		},
+		{
+			"className": ".button",
+			"id": "950e-e811-c256-a3ed",
+			"props": {
+				"children": [],
+				"name": "nextPage",
+				"parent": "e876-9805-6b68-f0e4",
+				"text": "Haftalik Takvim"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"left": 69.64285714285714,
+				"text": "Haftalik Takvim",
+				"top": 469.6428571428571
 			}
 		}
 	]

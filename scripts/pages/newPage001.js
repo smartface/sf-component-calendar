@@ -298,7 +298,7 @@ var sample = {
 
 function changeCalendar(lang, calendar, sp){
 	this.calendar.changeCalendar(lang, calendar, sp);
-	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
+// 	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
 	this.calendar.applyLayout();
 }
 
@@ -316,40 +316,47 @@ const NewPage001 = extend(NewPage001Design)(
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-		this.calendar.onDaySelect = function([date]){
+		this.calendar.onDaySelect = ([date]) => {
+		  if(!date)
+		    return
 			this.children.label2.text = date.date.day+"/"+(date.date.month)+"/"+date.date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")
 				: "Ozel Gun Yok";
-		}.bind(this);
+		};
 		
-		this.children.buttonTR.onLongPress = function(){
+		this.children.buttonTR.onPress = () => {
 			changeCalendar.call(this, "tr", "gregorian", sample);
-		}.bind(this);
+			this.calendar.now();
+		};
 		
-		this.children.buttonEN.onPress = function(){
+		this.children.buttonEN.onPress = () => {
 			changeCalendar.call(this, "en", "gregorian", sample);
-		}.bind(this);
+		};
 		
-		this.children.buttonAR.onLongPress = function(){
+		this.children.buttonAR.onPress = () => {
 			changeCalendar.call(this, "ar-sa", "gregorian", sample);
-		}.bind(this);
+		};
 		
-		this.children.buttonHijri.onPress = function(){
+		this.children.buttonHijri.onPress = () => {
 			changeCalendar.call(this, "ar-sa", calendarTypes.HIJRI, sample);
-		}.bind(this);
+		};
 		
-		this.children.buttonGreg.onPress = function(){
+		this.children.buttonGreg.onPress = () => {
 			changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
-		}.bind(this);
+		};
 		
-		this.children.button3.onPress = function(){
+		this.children.nextPage.onPress = () => {
+			Router.go("page3");
+		};
+		
+		this.children.button3.onPress = () => {
 			this.calendar.addStyles({
 				".calendar.header_navbar_monthLabel": {
 					"textColor": "#F10000"
 				}
-			})
-		}.bind(this);
+			});
+		};
 	}
 );
 

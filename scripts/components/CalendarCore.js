@@ -1,6 +1,7 @@
 const createService = require("../services/CalendarService");
 const extend = require('js-base/core/extend');
 const merge = require("@smartface/styler/lib/utils/merge");
+const moment = require("moment");
 
 function getInitialState(){
 	return {
@@ -11,6 +12,17 @@ function getInitialState(){
 	    rangeSelectionMode: -1,
 	    days: [],
 	    daysByIndex: []
+	};
+}
+
+function calculateWeekDay(startDayOfMonth, day){
+	const start = startDayOfMonth - 1;
+	day = day - 1;
+	const weekDayIndex = (start + day) % 7;
+	const weekIndex = Math.ceil((start + day + 1) / 7) - 1;
+	return {
+		weekIndex,
+		weekDayIndex
 	};
 }
 
@@ -32,10 +44,10 @@ const CalendarCore = extend(function(){})(
 			this.setState(getInitialState());
 		};
 		
-		proto.selectWeekDay = function(weekIndex, weekDayIndex) {
-			if(this._state.rangeSelectionMode === 0){
+		proto.selectDay = function(weekIndex, weekDayIndex) {
+			if(this._state.rangeSelectionMode === 0) {
 				this.completeRangeSelection(weekIndex, weekDayIndex);
-			} else if(this._state.rangeSelectionMode === -1 || this._state.rangeSelectionMode === 1){
+			} else if(this._state.rangeSelectionMode === -1 || this._state.rangeSelectionMode === 1) {
 				this.setState({
 					rangeSelection: null,
 					rangeSelectionMode: -1,
@@ -44,7 +56,7 @@ const CalendarCore = extend(function(){})(
 				});
 			}
 		};
-		// 
+
 		/**
 		 * Select specified day
 		 * @private
@@ -116,13 +128,19 @@ const CalendarCore = extend(function(){})(
 		};
 		
 		proto.clearRangeSelection = function() {
-			if(this._state.rangeSelection !== null)
+			if(this._state.rangeSelection !== null){
 				this.setState({
 					rangeSelection: null,
-					rangeSelectionMode: -1
+					rangeSelectionMode: -1,
+					daysByIndex: [],
+					days: []
 				});
+			}
 		};
-
+		
+		/**
+		 * @private
+		 */
 		proto._getRange = function({start, end}) {
 			const days = [];
 			const daysByIndex = [];
@@ -136,7 +154,7 @@ const CalendarCore = extend(function(){})(
 				}
 				
 				if(end.weekIndex === i) {
-					endDayIndex = start.weekDayIndex;
+					endDayIndex = end.weekDayIndex;
 				}
 
 				daysByIndex.push({weekIndex:i, weekDayIndexes: []});
@@ -152,6 +170,26 @@ const CalendarCore = extend(function(){})(
 				days: days,
 				daysByIndex: daysByIndex
 			};
+		};
+		
+		proto.nextWeek = function(){
+			const weekIndex = this._state.daysByIndex[0].weekIndex + 1;
+			const weekDayIndex = null;
+			this.setState({
+				rangeSelection: null,
+				rangeSelectionMode: -1,
+				daysByIndex: [{weekIndex, weekDayIndex}]
+			});
+		};
+		
+		proto.prevWeek = function(){
+			const weekIndex = this._state.daysByIndex[0].weekIndex - 1;
+			const weekDayIndex = null;
+			this.setState({
+				rangeSelection: null,
+				rangeSelectionMode: -1,
+				daysByIndex: [{weekIndex, weekDayIndex}]
+			});
 		};
 		
 		proto.rangeSelection = function(weekIndex, weekDayIndex){
@@ -181,6 +219,11 @@ const CalendarCore = extend(function(){})(
 		};
 		
 		proto.completeRangeSelection = function(weekIndex, weekDayIndex) {
+			if(this._state.rangeSelection.start.weekIndex >= weekIndex 
+				&& this._state.rangeSelection.start.weekDayIndex > weekDayIndex
+			)
+				return false;
+			
 			if(this._state.rangeSelectionMode === 0){
 				const state = {
 					rangeSelection: {
@@ -192,6 +235,8 @@ const CalendarCore = extend(function(){})(
 				Object.assign(state, this._getRange(state.rangeSelection));
 				this.setState(state);
 			}
+			
+			return true;
 		};
 		
 		proto.subscribe = function(cb){
@@ -205,20 +250,25 @@ const CalendarCore = extend(function(){})(
 	
 		// to inject a context dispatcher
 		proto.now = function() {
-			this.setDate(new Date())
+			this.setDate(new Date());
 			this._selectDay();
 		};
+		
+		proto.getWeekDay = function(){
+			return calculateWeekDay(this._state.month.startDayOfMonth, this._state.month.date.day);
+		};
 	
+		/**
+		 * @private
+		 *
+		 */
 		proto._selectDay = function() {
-			const start = this._state.month.startDayOfMonth - 1;
-			const day = this._state.month.date.day - 1;
-			const index = (start + day) % 7;
-			const row = Math.ceil((start + day + 1) / 7) - 1;
+			const {weekIndex, weekDayIndex} = this.getWeekDay();
 	        this.setState({
-	        	days: [this._getSelectedWeekDay(row, index)],
+	        	days: [this._getSelectedWeekDay(weekIndex, weekDayIndex)],
 	            daysByIndex: [{
-	    		    weekIndex: row,
-	    		    weekDayIndex: index
+	    		    weekIndex: weekIndex,
+	    		    weekDayIndex: weekDayIndex
 	    		}]
 	        });
 		};
@@ -231,6 +281,10 @@ const CalendarCore = extend(function(){})(
 			if(this._state.month) {
 				const state = getInitialState();
 				state.month = this._calendarService.getCalendarMonth(this._state.month.nextMonth.normalizedDate);
+				state.daysByIndex = [{
+					weekIndex: 0,
+					weekDayIndex: null
+				}];
 				this.setState(state);
 			}
 		};
@@ -244,10 +298,21 @@ const CalendarCore = extend(function(){})(
 		};
 		
 		proto.setDate = function(date) {
+			let dateObj = date;
+			
+			if(date instanceof Date){
+				dateObj = {year: date.getFullYear(), month: date.getMonth()+1, day: date.getDate()};
+			}
+			
+			const month = this._calendarService.getCalendarMonth(dateObj);
+			const daysByIndex = [calculateWeekDay(
+				month.startDayOfMonth, 
+				month.date.day
+			)];
 			this.setState({
-			    month: this._calendarService.getCalendarMonth(date),
+			    month,
 			    days: [],
-			    daysByIndex: []
+			    daysByIndex
 			});
 		};
 		
@@ -266,7 +331,6 @@ const CalendarCore = extend(function(){})(
 			
 			const state = getInitialState();
 			state.month = this._calendarService.getCalendarMonth();
-			// state.selectedWeekDay = {weekIndex: 0, weekDayIndex: -1};
 			
 			this.setState(state);
 		};
@@ -275,13 +339,16 @@ const CalendarCore = extend(function(){})(
 			this.subscribers.forEach((cb) => {
 				cb(newState, oldState);
 			});
-			// this.onTick && this.onTick();
 		}
 		
 		proto.prevMonth = function() {
 			if(this._state.month) {
 				const state = getInitialState();
 				state.month = this._calendarService.getCalendarMonth(this._state.month.previousMonth.normalizedDate);
+				state.daysByIndex = [{
+					weekIndex: 0,
+					weekDayIndex: null
+				}];
 				this.setState(state);
 			}
 		};
