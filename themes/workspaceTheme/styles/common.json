@@ -127,7 +127,7 @@
 				"positionType": "RELATIVE"
 			},
 			"&-selected": {
-				"backgroundColor": "rgba( 219, 129, 31, 1 )"
+				"backgroundColor": "rgba( 0, 185, 255, 1 )"
 			},
 			"backgroundColor": "rgba( 255, 255, 255, 0 )"
 		},
