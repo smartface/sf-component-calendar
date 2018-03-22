@@ -11,10 +11,8 @@ plugin/*
 !plugin/iOS/README.md
 scripts/node_modules
 scripts/ui
-scripts/settings.json
 scripts/themes
 node_modules
 npm-debug.log
-pages
 ui
 contxjs
