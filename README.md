@@ -11,7 +11,7 @@ const Calendar = require("@smartface/sf-component-calendar/components/Calendar")
 const myCalendar = new Calendar();
 
 // when user select a date
-myCalendar.onChanged = function(data){
+myCalendar.onChange = function(data){
   //...
 }
 
@@ -493,5 +493,5 @@ Jumps to the previous month
 ### Calendar.prototype.setSelectedDate({day: Number, month: Number, year: Number})
 Sets specified date object as the selected date.
 
-### Calendar.prototype.onChanged Event
+### Calendar.prototype.onChange Event
 Called when user presses on a day on the calendar. Calendar injects to callback a selected date object is described above.
