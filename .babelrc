@@ -1,8 +1,15 @@
 {
-  "presets": [["es2015", {"loose": true}], "stage-0"],
-  "plugins": [
-    "transform-object-rest-spread",
-    "add-module-exports",
-    "transform-es2015-modules-umd",
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+         "ios": "10"
+      },
+      "modules": "commonjs",
+      "useBuiltIns": false,
+      "debug": false,
+    }],
+    "@babel/preset-react",
+    "@babel/preset-es2015",
+    "@babel/preset-stage-0"
   ]
 }

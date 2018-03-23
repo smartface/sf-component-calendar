@@ -46,7 +46,7 @@ const Calendar = extend(CalendarDesign)(
 		};
 		
 		proto._onRangeSelectComplete = function (weekIndex, weekDayIndex) {
-			this.onRangeSelectComplete && this.onRangeSelectComplete(this.calendarCore.getState().days);
+			this.onRangeSelectComplete && this.onRangeSelectComplete(this.calendarCore.getState().selectedDays);
 			// deactivateRangeSelection.call(this);
 		};
 		
@@ -75,8 +75,8 @@ const Calendar = extend(CalendarDesign)(
 				// this.children.calendarYear.setYear(newState.month.localeDate.year);
 			}
 			
-			// if(state.daysByIndex.length > 0)
-			newState.daysByIndex.map(newState.rangeSelectionMode === -1 
+			// if(state.selectedDaysByIndex.length > 0)
+			newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1 
 				? this._selectDay.bind(this)
 				: this._selectDayasRange.bind(this)
 			);
@@ -96,6 +96,8 @@ const Calendar = extend(CalendarDesign)(
 		};
 		
 		proto._selectDayasRange = function({weekIndex, weekDayIndexes}) {
+			if(this.weeks[weekIndex] === undefined)
+				throw new TypeError(`${weekIndex} Week cannot be undefined`)
 			this.weeks[weekIndex].setRangeIndex(weekDayIndexes);
 		};
 		
@@ -113,6 +115,9 @@ const Calendar = extend(CalendarDesign)(
 		 * @param {{month:number, year:number, day:number}} date
 		 */
 		proto.setSelectedDate = function(date) {
+			this.dispatch({
+				type: "deselectDays"
+			});
 			this.calendarCore.setSelectedDate(date);
 		};
 		
@@ -168,7 +173,7 @@ const Calendar = extend(CalendarDesign)(
 		
 		proto.selectDay = function(weekIndex, weekDayIndex){
 			this.calendarCore.selectDay(weekIndex, weekDayIndex);
-			this.onDaySelect && this.onDaySelect(this.calendarCore.getState().days || []);
+			this.onDaySelect && this.onDaySelect(this.calendarCore.getState().selectedDays || []);
 		};
 	}
 );

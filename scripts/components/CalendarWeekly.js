@@ -44,12 +44,12 @@ const CalendarWeekly = extend(CalendarWeeklyDesign)(
 		
 		proto.selectDay = function(weekIndex, weekDayIndex){
 			const state = this.calendarCore.getState();
-			if(weekIndex === null && state.daysByIndex.length > 0){
-				this.calendarCore.selectDay(state.daysByIndex[0].weekIndex, weekDayIndex);
+			if(weekIndex === null && state.selectedDaysByIndex.length > 0){
+				this.calendarCore.selectDay(state.selectedDaysByIndex[0].weekIndex, weekDayIndex);
 			} else if(weekIndex !== null && weekDayIndex !== null) {
 				this.calendarCore.selectDay(weekIndex, weekDayIndex);
 			}
-			this.onDaySelect && this.onDaySelect(this.calendarCore.getState().days);
+			this.onDaySelect && this.onDaySelect(this.calendarCore.getState().selectedDays);
 		};
 		
 		proto.prevMonth = function() {
@@ -115,8 +115,8 @@ const CalendarWeekly = extend(CalendarWeeklyDesign)(
 		
     proto.updateCalendar = function(newState, oldState){
       this.currentMonth = newState.month;
-			newState.daysByIndex.length > 0 
-				&& this.children.week.setDays(newState.month.days[newState.daysByIndex[0].weekIndex], newState.month.date);
+			newState.selectedDaysByIndex.length > 0 
+				&& this.children.week.setDays(newState.month.days[newState.selectedDaysByIndex[0].weekIndex], newState.month.date);
 			if(newState.month !== oldState.month){
 				this.children.navbar.setLabel(newState.month.longName+" "+newState.month.localeDate.year);
 				newState.month.daysMin.forEach(function(day, index) {
@@ -124,7 +124,7 @@ const CalendarWeekly = extend(CalendarWeeklyDesign)(
 				}.bind(this));
 			}
 			
-			newState.daysByIndex.map(newState.rangeSelectionMode === -1 
+			newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1 
 				? this._selectDay.bind(this)
 				: this._selectDayasRange.bind(this)
 			);

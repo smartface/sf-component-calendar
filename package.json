@@ -28,6 +28,12 @@
   },
   "homepage": "https://github.com/smartface/sf-component-calendar#readme",
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-es2015": "^7.0.0-beta.42",
+    "@babel/preset-react": "^7.0.0-beta.42",
+    "@babel/preset-stage-0": "^7.0.0-beta.42",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-plugin-add-module-exports": "^0.2.1",

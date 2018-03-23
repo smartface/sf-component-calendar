@@ -1226,10 +1226,10 @@
 			"type": "FlexLayout",
 			"userProps": {
 				"flexProps": {},
-				"height": 100,
-				"left": 26.666666666666668,
-				"top": 20,
-				"width": 100
+				"height": 65,
+				"left": 8.333333333333334,
+				"top": 15,
+				"width": 80
 			}
 		},
 		{
