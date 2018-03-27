@@ -246,8 +246,13 @@ calendar.addStyles(newMonthLabelColorStyle);
 ## Api
 ### Types
 #### DateVO
-**Date Value Object**
-{day: (1..31), month: (1..12), year: (1970 or greater)}
+```js
+{
+  day:Number (1..31), 
+  month:Number (1..12), 
+  year:Number (1970 or greater)
+}
+```
 #### DateInfoVO
 ```js
 { 
