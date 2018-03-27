@@ -247,9 +247,11 @@ calendar.addStyles(newMonthLabelColorStyle);
 
 ### Calendar
 - **addStyles(styleObject:Object)**
+
 Merges specified styles to current styles and updates the component
 
 - **changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})**
+
 Changes the calendar's type
 
   **Supported Calendars:**
