@@ -314,6 +314,6 @@ calendar.onBeforeMonthChange = function(date){
 }
 ```
 
-##### onMonthChange(date:Array.<DateVO>)
+##### onMonthChange(date:Array.< DateVO >)
 
   
