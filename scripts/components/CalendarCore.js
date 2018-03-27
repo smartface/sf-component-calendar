@@ -13,10 +13,15 @@ function getInitialState(){
 	    month: {},
 	    day: {},
 	    rangeSelection: null,
-	    rangeSelectionMode: -1,
+	    rangeSelectionMode: RangeSelection.IDLE,
 	    selectedDays: [],
-	    selectedDaysByIndex: []
+	    selectedDaysByIndex: [],
+	    weekIndex: 0
 	};
+}
+
+function createDate({year, month, day}){
+	return new Date(year, month, day);
 }
 
 /**
@@ -47,8 +52,14 @@ function calculateDatePosinCurrent(startDayOfMonth, day){
 }
 
 const WEEKDAYS = 7;
-const COLCOUNT = WEEKDAYS;
-const ROWCOUNT = 6;
+const COLCOUNT = WEEKDAYS - 1;
+const ROWCOUNT = 5;
+
+const RangeSelection = {
+	IDLE: -1,
+	STARTED: 0,
+	COMPLETED: 1
+}
 
 function calculateDatePosinNext(startDayOfCurrentMonth, daysCountofCurrentMonth, day){
 	const start = daysCountofCurrentMonth - 1 + startDayOfCurrentMonth;
@@ -56,16 +67,15 @@ function calculateDatePosinNext(startDayOfCurrentMonth, daysCountofCurrentMonth,
 	const weekIndex = Math.round((start + day + 1) / WEEKDAYS) - 1;
 
 	return {
-		weekIndex,
-		weekDayIndex
+		weekIndex: weekIndex > ROWCOUNT ? -2: weekIndex,
+		weekDayIndex: weekIndex > ROWCOUNT ? -2: weekDayIndex
 	};
 }
 
 function calculateDatePosinPrev(startDayOfMonth, daysCountPrevMonth, day){
-	const weekDayIndex = startDayOfMonth - daysCountPrevMonth - day - 1;
-	
+	const weekDayIndex = startDayOfMonth - 2 - (daysCountPrevMonth - day);
 	return {
-		weekIndex: 0,
+		weekIndex: weekDayIndex < 0 ? -2: 0,
 		weekDayIndex: weekDayIndex < 0 ? 0 : weekDayIndex
 	};
 }
@@ -74,38 +84,26 @@ function getDatePos(date, currentMonth){
 	const monthPos = (date.month === currentMonth.date.month && 'current')
 		 || (date.month === currentMonth.nextMonth.date.month && 'next')
 		 || (date.month === currentMonth.previousMonth.date.month && 'prev');
-		 
 	switch (monthPos) {
 		case 'current':
 			return calculateDatePosinCurrent(currentMonth.startDayOfMonth, date.day);
 		case 'prev':
-			if(currentMonth.days[0][0].day < date.day)
-				return {
-					weekIndex: -1,
-					weekDayIndex: -1
-				};
 			return calculateDatePosinPrev(
 				currentMonth.startDayOfMonth, 
 				currentMonth.previousMonth.daysCount, 
 				date.day
 			);
 		case 'next':
-			if(currentMonth.days[ROWCOUNT-1][COLCOUNT-1].day < date.day)
-				return {
-					weekIndex: -1,
-					weekDayIndex: -1
-				};
-			return calculateDatePosinNext(
+			const posNext = calculateDatePosinNext(
 				currentMonth.startDayOfMonth, 
 				currentMonth.daysCount, 
 				date.day
 			);
+			
+			return posNext;
 		
 		default:
-			return {
-					weekIndex: -2,
-					weekDayIndex: -2
-				}
+			return null;
 	}	 
 }
 
@@ -128,12 +126,12 @@ CalendarCore.prototype.reset = function() {
 };
 
 CalendarCore.prototype.selectDay = function(weekIndex, weekDayIndex) {
-	if(this._state.rangeSelectionMode === 0) {
+	if(this._state.rangeSelectionMode === RangeSelection.STARTED) {
 		this.completeRangeSelection(weekIndex, weekDayIndex);
-	} else if(this._state.rangeSelectionMode === -1 || this._state.rangeSelectionMode === 1) {
+	} else if(this._state.rangeSelectionMode === RangeSelection.IDLE || this._state.rangeSelectionMode === RangeSelection.COMPLETED) {
 		this.setState({
 			rangeSelection: null,
-			rangeSelectionMode: -1,
+			rangeSelectionMode: RangeSelection.IDLE,
 			selectedDays: [this._getDayData(weekIndex, weekDayIndex)],
 			selectedDaysByIndex: [{weekIndex, weekDayIndex}]
 		});
@@ -215,16 +213,65 @@ CalendarCore.prototype._getDayData = function(weekIndex, weekDayIndex) {
 	return dayData;
 };
 
-CalendarCore.prototype.clearRangeSelection = function() {
+CalendarCore.prototype.clearSelection = function() {
 	if(this._state.rangeSelection !== null){
 		this.setState({
 			rangeSelection: null,
-			rangeSelectionMode: -1,
-			selectedDaysByIndex: [],
+			rangeSelectionMode: RangeSelection.IDLE,
+			selectedDaysByIndex: [{weekIndex:0, weekDayIndex: null}],
 			selectedDays: []
 		});
 	}
 };
+
+function isValid(value, notvalue=false){
+	return (value === false || value === undefined || value === null) 
+			? notvalue 
+			: value;
+}
+
+function isNotValid(value, notvalue=false){
+	return isValid(value, notvalue) === notvalue ? value : notvalue;
+}
+
+function hasSameMonth(date1, date2){
+	return date1.month === date2.month && date1.year === date2.year;
+}
+
+function inSameYear(date1, date2){
+	return date1.year === date2.year;
+}
+
+function isMonthGreater(date1, date2){
+	return (date1.month < date2.month && date1.year === date2.year) ? date1 : date2;
+}
+
+function monthMin(date1, date2){
+	return date1.year < date2.year || 
+		(date1.year === date2.year && date1.month <= date2.month)
+			? date1 
+			: date2;
+}
+
+function monthMax(date1, date2){
+	return monthMin(date1, date2) === date1 ? date2: date1;
+}
+
+function notValidRangePoint(){
+	return {
+		weekIndex: -2,
+		weekDayIndex: -2
+	};
+}
+
+function validateRangePoint(point, month){
+	return inSameYear(point, month.date) 
+			? isValid(
+				getDatePos(point, month),
+				notValidRangePoint()
+  			  )
+			: notValidRangePoint();
+}
 
 /**
  * @private
@@ -233,52 +280,59 @@ CalendarCore.prototype.clearRangeSelection = function() {
 CalendarCore.prototype._getRange = function({start, end, current}) {
 	const days = [];
 	const selectedDaysByIndex = [];
-	const {month, year} = current && current.date || this._state.month.date;
-	const startPos = getDatePos(start, this._state.month)
-	const endPos = getDatePos(end, this._state.month)
+	const currentMonth = current || this._state.month;
+	const currentDate = currentMonth.date;
+	const {month, year} = currentDate;
+	const startPos = validateRangePoint(start, currentMonth);
+	const endPos = validateRangePoint(end, currentMonth);
 	let startWeekIndex = startPos.weekIndex, endWeekIndex = endPos.weekIndex;
 	
-	if(this._state.rangeSelectionMode == 1 
-		|| (this._state.rangeSelectionMode == 0 && start !== end)
+	// const daysCount =  this._state.month.daysCount * 24 * 60 * 60 * 1000;
+	const currentMonthintheSelection = monthMin(end, currentDate) === currentDate 
+		&& monthMax(start, currentDate) === currentDate;
+	const startInCurrentPage = startPos.weekIndex !== -2;
+	const endInCurrentPage = endPos.weekIndex !== -2;
+	const startorEndareinCurrentPage = startInCurrentPage && endInCurrentPage;
+	
+	// const isBetweenDates = (hasSameMonth(start, {month, year}) || startDate - currentDate > 0) 
+	// 						&& (hasSameMonth(start, {month, year}) || endDate - currentDate > 0);
+
+	/*if(start !== end && !currentMonthintheSelection){
+		return {
+			selectedDays: [],
+			selectedDaysByIndex: []
+		};
+	}*/
+	
+	// const startDate = createDate(start);
+	// const endDate = createDate(end);
+	// const currentDate = createDate({year, month});
+	// const doesStartandEndareinSameMonth = hasSameMonth(start, end);
+	// const isStartLessThanEnd = doesStartandEndareinSameMonth 
+	// 	? false 
+	// 	: monthMin(start, end) === start;
+		
+	// console.log("start : "+JSON.stringify(startPos)+" endPos : "+JSON.stringify(endPos));
+	// console.log(startPos.weekIndex+" "+endPos.weekIndex);
+	
+	if(this._state.rangeSelectionMode === RangeSelection.COMPLETED
+		|| (this._state.rangeSelectionMode === RangeSelection.STARTED && start !== end)
 	){
-		if(start.month === end.month && start.month === month) {
+		if(currentMonthintheSelection || startorEndareinCurrentPage) {
 			startWeekIndex = startPos.weekIndex;
-			endWeekIndex = endPos.weekIndex;
-		} else if(month === end.month && start.month < end.month) {
-			startWeekIndex = -1;
-			endWeekIndex = endPos.weekDayIndex < 0 ? ROWCOUNT-1 : endPos.weekIndex;
-		} else if(month === start.month && month !== end.month) {
-			startWeekIndex = startPos.weekIndex;
-			endWeekIndex = endPos.weekDayIndex < 0 ? ROWCOUNT-1 : endPos.weekIndex;
-		} else if(month !== end.month && month !== start.month) {
-			const startDate = new Date(start.year, start.month, start.day)
-			const endDate = new Date(end.year, end.month, end.day)
-			const currentDate = new Date(year, month, 1);
-			
-			if(currentDate - startDate > 0 
-				&& endDate - currentDate > 0
-			){
-				endPos.weekIndex = endWeekIndex = ROWCOUNT - 1;
-				endPos.weekDayIndex = COLCOUNT - 1;
-			} else {
-				return {
-					selectedDays: [],
-					selectedDaysByIndex: []
-				};
-			}
-		}
-	} else if(this._state.rangeSelectionMode == 0){
-		if(start.month !== month) {
-			return {
-				selectedDays: [],
-				selectedDaysByIndex: []
-			};
+			endWeekIndex = endPos.weekDayIndex < 0 ? ROWCOUNT : endPos.weekIndex;
+		} else if( currentMonthintheSelection 
+				   && monthMin(end, currentDate) === currentDate 
+				   && monthMin(start, currentDate) === start
+			   ) {
+			endPos.weekIndex = endWeekIndex = ROWCOUNT;
+			endPos.weekDayIndex = COLCOUNT;
 		} 
-	}
+	} 
 	
 	for(let i = startWeekIndex < 0 ? 0 : startWeekIndex; i <= endWeekIndex; i++){
 		let startDayIndex = 0;
-		let endDayIndex = COLCOUNT-1;
+		let endDayIndex = COLCOUNT;
 
 		if(startWeekIndex === i){
 			startDayIndex = startPos.weekDayIndex;
@@ -297,6 +351,8 @@ CalendarCore.prototype._getRange = function({start, end, current}) {
 		}
 	}
 	
+	// console.log(startWeekIndex+" "+endWeekIndex+" "+JSON.stringify(startPos)+" "+JSON.stringify(endPos));
+	
 	return {
 		selectedDays: days,
 		selectedDaysByIndex: selectedDaysByIndex
@@ -304,12 +360,14 @@ CalendarCore.prototype._getRange = function({start, end, current}) {
 };
 
 CalendarCore.prototype.nextWeek = function(){
-	const weekIndex = this._state.selectedDaysByIndex[0].weekIndex + 1;
-	const weekDayIndex = null;
+	let weekIndex = this._state.selectedDaysByIndex[0].weekIndex + 1;
+	let weekDayIndex = null;
+	
+	if(weekIndex > ROWCOUNT){
+		this.nextMonth();
+	}
 	
 	this.setState({
-		rangeSelection: null,
-		rangeSelectionMode: -1,
 		selectedDaysByIndex: [{weekIndex, weekDayIndex}]
 	});
 };
@@ -317,35 +375,49 @@ CalendarCore.prototype.nextWeek = function(){
 CalendarCore.prototype.prevWeek = function(){
 	const weekIndex = this._state.selectedDaysByIndex[0].weekIndex - 1;
 	const weekDayIndex = null;
+	if(this._state.selectedDaysByIndex[0].weekIndex === 0){
+		this.prevMonth();
+	}
 	
 	this.setState({
-		rangeSelection: null,
-		rangeSelectionMode: -1,
 		selectedDaysByIndex: [{weekIndex, weekDayIndex}]
 	});
 };
 
+CalendarCore.prototype.setRangeSelection = function(start, end){
+	const state = {
+		rangeSelection: {
+			start: Object.assign({}, start),
+			end: Object.assign({}, end)
+		},
+		rangeSelectionMode: RangeSelection.COMPLETED
+	};
+	
+	Object.assign(state, this._getRange(state.rangeSelection));
+	
+	this.setState(state);
+};
+
 CalendarCore.prototype.rangeSelection = function(weekIndex, weekDayIndex){
-	if(this._state.rangeSelectionMode === -1)
+	if(this._state.rangeSelectionMode === RangeSelection.IDLE){
 		this.startRangeSelection(weekIndex, weekDayIndex);
-	else if(this._state.rangeSelectionMode === 0)
+	} else if(this._state.rangeSelectionMode === RangeSelection.STARTED){
 		this.completeRangeSelection(weekIndex, weekDayIndex);
-	else {
-		this.clearRangeSelection();
+	} else {
+		this.clearSelection();
 		this.startRangeSelection(weekIndex, weekDayIndex);
 	}
 };
 
 CalendarCore.prototype.startRangeSelection = function(weekIndex, weekDayIndex) {
-	if(this._state.rangeSelectionMode === -1){
+	if(this._state.rangeSelectionMode === RangeSelection.IDLE){
 		const day = this._getDayData(weekIndex, weekDayIndex);
-
 		const state = {
 			rangeSelection: {
 				start: day.date,
 				end: day.date
 			},
-			rangeSelectionMode: 0
+			rangeSelectionMode: RangeSelection.STARTED
 		};
 		
 		Object.assign(state, this._getRange(state.rangeSelection));
@@ -358,7 +430,7 @@ CalendarCore.prototype.completeRangeSelection = function(weekIndex, weekDayIndex
 		&& this._state.rangeSelection.start.weekDayIndex > weekDayIndex
 	)
 		return false;
-	if(this._state.rangeSelectionMode === 0){
+	if(this._state.rangeSelectionMode === RangeSelection.STARTED){
 		const day = this._getDayData(weekIndex, weekDayIndex);
 
 		const state = {
@@ -366,7 +438,7 @@ CalendarCore.prototype.completeRangeSelection = function(weekIndex, weekDayIndex
 				start: this._state.rangeSelection.start, 
 				end: day.date
 			},
-			rangeSelectionMode: 1
+			rangeSelectionMode: RangeSelection.COMPLETED
 		};
 		Object.assign(state, this._getRange(state.rangeSelection));
 		this.setState(state);
@@ -418,11 +490,12 @@ CalendarCore.prototype.nextMonth = function() {
 		const state = getInitialState();
 		state.rangeSelection = this._state.rangeSelection;
 		state.rangeSelectionMode = this._state.rangeSelectionMode;
+		state.selectedDays = this._state.selectedDays;
 		state.month = this._calendarService.getCalendarMonth(this._state.month.nextMonth.normalizedDate);
 
 		this.setState(state);
 		
-		if(this._state.rangeSelectionMode !== -1){
+		if(this._state.rangeSelectionMode !== RangeSelection.IDLE){
 			const {start, end} = state.rangeSelection;
 			const rangeState = Object.assign({}, state, this._getRange({start, end }));
 			this.setState(rangeState);
@@ -455,7 +528,7 @@ CalendarCore.prototype.setDate = function(date) {
 	this.setState({
 	    month,
 	    rangeSelection: [],
-	    rangeSelectionMode: -1,
+	    rangeSelectionMode: RangeSelection.IDLE,
 	    selectedDays: [],
 	    selectedDaysByIndex
 	});
@@ -484,12 +557,11 @@ CalendarCore.prototype.prevMonth = function() {
 	if(this._state.month) {
 		const state = getInitialState();
 		state.month = this._calendarService.getCalendarMonth(this._state.month.previousMonth.normalizedDate);
-
+		state.selectedDays = this._state.selectedDays;
 		state.rangeSelection = this._state.rangeSelection;
 		state.rangeSelectionMode = this._state.rangeSelectionMode;
-		this.setState(state);
 
-		if(this._state.rangeSelectionMode !== -1){
+		if(this._state.rangeSelectionMode !== RangeSelection.IDLE){
 			const {start, end} = state.rangeSelection;
 			Object.assign(state, this._getRange({start, end}));
 		}

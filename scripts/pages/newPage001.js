@@ -330,6 +330,10 @@ const NewPage001 = extend(NewPage001Design)(
 			this.calendar.now();
 		};
 		
+		this.children.buttonRange.onPress = () => {
+		  this.calendar.setRangeDates({day: 21, month: 10, year: 2017}, {day: 12, month: 12, year: 2017});
+		};
+		
 		this.children.buttonEN.onPress = () => {
 			changeCalendar.call(this, "en", "gregorian", sample);
 		};

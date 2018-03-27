@@ -17,7 +17,8 @@
 					"20cf-779a-2350-e731",
 					"e948-c9ae-aacc-5e45",
 					"b4e0-f382-402e-f5bd",
-					"950e-e811-c256-a3ed"
+					"950e-e811-c256-a3ed",
+					"fc3f-1438-f726-c2a3"
 				],
 				"name": "newPage001",
 				"orientation": "AUTO",
@@ -77,9 +78,9 @@
 					"size": 14
 				},
 				"height": 33.69862907811215,
-				"left": 20,
+				"right": 20,
 				"textAlignment": "MIDCENTER",
-				"top": 401,
+				"top": 465,
 				"width": 146.68263887104234
 			}
 		},
@@ -241,10 +242,10 @@
 					"size": 10
 				},
 				"height": 33.69862907811215,
-				"left": 201,
+				"right": 20,
 				"text": "Ozel Gunler",
 				"textAlignment": "MIDCENTER",
-				"top": 401,
+				"top": 421,
 				"width": 153.2615862394634
 			}
 		},
@@ -298,9 +299,32 @@
 				"flexProps": {
 					"positionType": "ABSOLUTE"
 				},
-				"left": 69.64285714285714,
+				"height": 46.66666666666667,
+				"left": 20,
 				"text": "Haftalik Takvim",
-				"top": 469.6428571428571
+				"top": 473.33333333333337,
+				"width": 138.33333333333334
+			}
+		},
+		{
+			"className": ".button",
+			"id": "fc3f-1438-f726-c2a3",
+			"props": {
+				"children": [],
+				"name": "buttonRange",
+				"parent": "e876-9805-6b68-f0e4",
+				"text": "Range"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 51.66666666666667,
+				"left": 20,
+				"text": "Range",
+				"top": 410,
+				"width": 101.66666666666667
 			}
 		}
 	]

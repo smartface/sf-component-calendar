@@ -76,6 +76,7 @@ const Calendar = extend(CalendarDesign)(
 			}
 			
 			// if(state.selectedDaysByIndex.length > 0)
+			
 			newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1 
 				? this._selectDay.bind(this)
 				: this._selectDayasRange.bind(this)
@@ -108,6 +109,10 @@ const Calendar = extend(CalendarDesign)(
 		proto.setDate = function(date) {
 			const newDate = Object.assign({}, date);
 			this.calendarCore.setDate(date);
+		};
+		
+		proto.setRangeDates = function(start, end) {
+			this.calendarCore.setRangeSelection(start, end);
 		};
 		
 		/**
