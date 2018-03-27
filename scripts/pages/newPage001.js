@@ -409,7 +409,7 @@ function onShow(superOnShow) {
 	// }
 	// , 3)
   // alert(JSON.stringify(benchmark()))
-  //console.log(benchmark());
+  // console.log(benchmark());
 }
 
 // Page.onLoad -> This event is called once when page is created.

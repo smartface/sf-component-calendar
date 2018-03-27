@@ -92,13 +92,13 @@ const Calendar = extend(CalendarDesign)(
 		};
 		
 		proto._selectDay = function({weekIndex, weekDayIndex}) {
-			weekDayIndex != null
+			weekIndex >= 0 && weekDayIndex != null
 				&& this.weeks[weekIndex].setSelectedIndex(weekDayIndex);
 		};
 		
 		proto._selectDayasRange = function({weekIndex, weekDayIndexes}) {
 			if(this.weeks[weekIndex] === undefined)
-				throw new TypeError(`${weekIndex} Week cannot be undefined`)
+				throw new TypeError(`${weekIndex} Week cannot be undefined`);
 			this.weeks[weekIndex].setRangeIndex(weekDayIndexes);
 		};
 		
@@ -107,11 +107,17 @@ const Calendar = extend(CalendarDesign)(
 		 * @param {{month:number, year:number, day:number}} date
 		 */
 		proto.setDate = function(date) {
+			this.dispatch({
+				type: "deselectDays"
+			});
 			const newDate = Object.assign({}, date);
-			this.calendarCore.setDate(date);
+			this.calendarCore.setDate(newDate);
 		};
 		
 		proto.setRangeDates = function(start, end) {
+			this.dispatch({
+				type: "deselectDays"
+			});
 			this.calendarCore.setRangeSelection(start, end);
 		};
 		

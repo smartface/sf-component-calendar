@@ -40,7 +40,7 @@ function notify(newState, oldState){
  * @param {number} startDayOfMonth
  * @param {number} day
  */
-function calculateDatePosinCurrent(startDayOfMonth, day){
+function calculateDatePos(startDayOfMonth, day){
 	const start = startDayOfMonth - 1;
 	day = day - 1;
 	const weekDayIndex = (start + day) % WEEKDAYS;
@@ -80,13 +80,13 @@ function calculateDatePosinPrev(startDayOfMonth, daysCountPrevMonth, day){
 	};
 }
 
-function getDatePos(date, currentMonth){
+function getDatePos(date, currentMonth, notValue=null){
 	const monthPos = (date.month === currentMonth.date.month && 'current')
 		 || (date.month === currentMonth.nextMonth.date.month && 'next')
 		 || (date.month === currentMonth.previousMonth.date.month && 'prev');
 	switch (monthPos) {
 		case 'current':
-			return calculateDatePosinCurrent(currentMonth.startDayOfMonth, date.day);
+			return calculateDatePos(currentMonth.startDayOfMonth, date.day);
 		case 'prev':
 			return calculateDatePosinPrev(
 				currentMonth.startDayOfMonth, 
@@ -103,8 +103,8 @@ function getDatePos(date, currentMonth){
 			return posNext;
 		
 		default:
-			return null;
-	}	 
+			return notValue;
+	}
 }
 
 /**
@@ -142,9 +142,10 @@ CalendarCore.prototype.selectDay = function(weekIndex, weekDayIndex) {
  * Select specified day
  * @private
  */
-CalendarCore.prototype._getDayData = function(weekIndex, weekDayIndex) {
+CalendarCore.prototype._getDayData = function(weekIndex, weekDayIndex, state) {
+	const currentState = state || this._state;
 	const dayData = {};
-	const currentMonth = this._state.month;
+	const currentMonth = currentState.month;
 	
 	if(currentMonth.days[weekIndex] === undefined) {
 		throw new TypeError("WeekIndex : "+weekIndex+", weekDayIndex "+weekDayIndex+" selected day cannot be undefined");
@@ -266,57 +267,50 @@ function notValidRangePoint(){
 
 function validateRangePoint(point, month){
 	return inSameYear(point, month.date) 
-			? isValid(
-				getDatePos(point, month),
-				notValidRangePoint()
-  			  )
-			: notValidRangePoint();
+		? isValid(
+			getDatePos(point, month),
+			notValidRangePoint()
+  		  )
+		: notValidRangePoint();
 }
+
+/**
+ * @private
+ *
+ */
+CalendarCore.prototype._selectDay = function() {
+	const {weekIndex, weekDayIndex} = this.getWeekDay();
+    this.setState({
+    	selectedDays: [this._getDayData(weekIndex, weekDayIndex)],
+        selectedDaysByIndex: [{
+		    weekIndex: weekIndex,
+		    weekDayIndex: weekDayIndex
+		}]
+    });
+};
 
 /**
  * @private
  * @param {{start:object, end:object, current:object}} start
  */
-CalendarCore.prototype._getRange = function({start, end, current}) {
+CalendarCore.prototype._getRange = function({start, end, state=null}) {
 	const days = [];
 	const selectedDaysByIndex = [];
-	const currentMonth = current || this._state.month;
+	const currentState = state || this._state;
+	const currentMonth = currentState.month;
 	const currentDate = currentMonth.date;
 	const {month, year} = currentDate;
 	const startPos = validateRangePoint(start, currentMonth);
 	const endPos = validateRangePoint(end, currentMonth);
 	let startWeekIndex = startPos.weekIndex, endWeekIndex = endPos.weekIndex;
-	
-	// const daysCount =  this._state.month.daysCount * 24 * 60 * 60 * 1000;
 	const currentMonthintheSelection = monthMin(end, currentDate) === currentDate 
 		&& monthMax(start, currentDate) === currentDate;
 	const startInCurrentPage = startPos.weekIndex !== -2;
 	const endInCurrentPage = endPos.weekIndex !== -2;
 	const startorEndareinCurrentPage = startInCurrentPage && endInCurrentPage;
 	
-	// const isBetweenDates = (hasSameMonth(start, {month, year}) || startDate - currentDate > 0) 
-	// 						&& (hasSameMonth(start, {month, year}) || endDate - currentDate > 0);
-
-	/*if(start !== end && !currentMonthintheSelection){
-		return {
-			selectedDays: [],
-			selectedDaysByIndex: []
-		};
-	}*/
-	
-	// const startDate = createDate(start);
-	// const endDate = createDate(end);
-	// const currentDate = createDate({year, month});
-	// const doesStartandEndareinSameMonth = hasSameMonth(start, end);
-	// const isStartLessThanEnd = doesStartandEndareinSameMonth 
-	// 	? false 
-	// 	: monthMin(start, end) === start;
-		
-	// console.log("start : "+JSON.stringify(startPos)+" endPos : "+JSON.stringify(endPos));
-	// console.log(startPos.weekIndex+" "+endPos.weekIndex);
-	
-	if(this._state.rangeSelectionMode === RangeSelection.COMPLETED
-		|| (this._state.rangeSelectionMode === RangeSelection.STARTED && start !== end)
+	if(currentState.rangeSelectionMode === RangeSelection.COMPLETED
+		|| (currentState.rangeSelectionMode === RangeSelection.STARTED && start !== end)
 	){
 		if(currentMonthintheSelection || startorEndareinCurrentPage) {
 			startWeekIndex = startPos.weekIndex;
@@ -346,12 +340,13 @@ CalendarCore.prototype._getRange = function({start, end, current}) {
 		let weekDayIndexes = selectedDaysByIndex[selectedDaysByIndex.length-1].weekDayIndexes;
 		
 		for(let j = startDayIndex; j <= endDayIndex; j++){
-			days.push(this._getDayData(i, j));
+			days.push(this._getDayData(i, j, currentState));
 			weekDayIndexes.push(j);
 		}
 	}
 	
-	// console.log(startWeekIndex+" "+endWeekIndex+" "+JSON.stringify(startPos)+" "+JSON.stringify(endPos));
+	// alert(startWeekIndex+" "+endWeekIndex+" "+JSON.stringify(startPos)+" "+JSON.stringify(endPos));
+	// console.log(JSON.stringify(start)+" "+JSON.stringify(end));
 	
 	return {
 		selectedDays: days,
@@ -360,41 +355,40 @@ CalendarCore.prototype._getRange = function({start, end, current}) {
 };
 
 CalendarCore.prototype.nextWeek = function(){
-	let weekIndex = this._state.selectedDaysByIndex[0].weekIndex + 1;
-	let weekDayIndex = null;
-	
-	if(weekIndex > ROWCOUNT){
-		this.nextMonth();
+	if(this._state.weekIndex + 1 === ROWCOUNT){
+		const state = this._nextMonth();
+		state.weekIndex = 0;
+
+		this.setState(state);
+	} else {
+		this.setState({
+			weekIndex: this._state.weekIndex + 1
+		});
 	}
-	
-	this.setState({
-		selectedDaysByIndex: [{weekIndex, weekDayIndex}]
-	});
 };
 
 CalendarCore.prototype.prevWeek = function(){
-	const weekIndex = this._state.selectedDaysByIndex[0].weekIndex - 1;
-	const weekDayIndex = null;
-	if(this._state.selectedDaysByIndex[0].weekIndex === 0){
-		this.prevMonth();
+	if(this._state.weekIndex === 0){
+		const state = this._prevMonth();
+		state.weekIndex = ROWCOUNT-1;
+
+		this.setState(state);
+	} else {
+		this.setState({
+			weekIndex: this._state.weekIndex - 1
+		});
 	}
-	
-	this.setState({
-		selectedDaysByIndex: [{weekIndex, weekDayIndex}]
-	});
 };
 
 CalendarCore.prototype.setRangeSelection = function(start, end){
-	const state = {
-		rangeSelection: {
-			start: Object.assign({}, start),
-			end: Object.assign({}, end)
-		},
-		rangeSelectionMode: RangeSelection.COMPLETED
+	const state = this._setDate(Object.assign({}, start));
+	state.rangeSelection = {
+		start: Object.assign({}, start),
+		end: Object.assign({}, end)
 	};
-	
-	Object.assign(state, this._getRange(state.rangeSelection));
-	
+	state.rangeSelectionMode = RangeSelection.STARTED;
+	Object.assign(state, this._getRange({start, end, state}));
+	state.rangeSelectionMode = RangeSelection.COMPLETED;
 	this.setState(state);
 };
 
@@ -463,45 +457,39 @@ CalendarCore.prototype.now = function() {
 };
 
 CalendarCore.prototype.getWeekDay = function(){
-	return calculateDatePosinCurrent(this._state.month.startDayOfMonth, this._state.month.date.day);
-};
-
-/**
- * @private
- *
- */
-CalendarCore.prototype._selectDay = function() {
-	const {weekIndex, weekDayIndex} = this.getWeekDay();
-    this.setState({
-    	selectedDays: [this._getDayData(weekIndex, weekDayIndex)],
-        selectedDaysByIndex: [{
-		    weekIndex: weekIndex,
-		    weekDayIndex: weekDayIndex
-		}]
-    });
+	return calculateDatePos(this._state.month.startDayOfMonth, this._state.month.date.day);
 };
 
 CalendarCore.prototype.getState = function(){
     return this._state;
 };
 
-CalendarCore.prototype.nextMonth = function() {
+/**
+ * @private
+ *
+ */
+CalendarCore.prototype._nextMonth = function() {
+	const state = getInitialState();
 	if(this._state.month) {
-		const state = getInitialState();
 		state.rangeSelection = this._state.rangeSelection;
 		state.rangeSelectionMode = this._state.rangeSelectionMode;
 		state.selectedDays = this._state.selectedDays;
 		state.month = this._calendarService.getCalendarMonth(this._state.month.nextMonth.normalizedDate);
 
-		this.setState(state);
-		
+		if(this._state.rangeSelectionMode === RangeSelection.IDLE && this._state.selectedDays.length === 1)
+			state.selectedDaysByIndex = [getDatePos(this._state.selectedDays[0].date, state.month, {weekIndex:-2, weekDayIndex: null})];
+
 		if(this._state.rangeSelectionMode !== RangeSelection.IDLE){
 			const {start, end} = state.rangeSelection;
-			const rangeState = Object.assign({}, state, this._getRange({start, end }));
-			this.setState(rangeState);
+			Object.assign(state, this._getRange({start, end, state }));
 		}
-
 	}
+	
+	return state;
+};
+
+CalendarCore.prototype.nextMonth = function() {
+	this.setState(this._nextMonth());
 };
 
 CalendarCore.prototype.setState = function(state, canNotify=true){
@@ -512,7 +500,7 @@ CalendarCore.prototype.setState = function(state, canNotify=true){
 	!this.__locked && notify.call(this, newState, oldState);
 };
 
-CalendarCore.prototype.setDate = function(date) {
+CalendarCore.prototype._setDate = function(date) {
 	let dateObj = date;
 	
 	if(date instanceof Date){
@@ -520,18 +508,19 @@ CalendarCore.prototype.setDate = function(date) {
 	}
 	
 	const month = this._calendarService.getCalendarMonth(dateObj);
-	const selectedDaysByIndex = [ getDatePos(
+	const selectedDaysByIndex = getDatePos(
 		dateObj,
 		month
-	)];
+	);
 	
-	this.setState({
+	return {
 	    month,
-	    rangeSelection: [],
-	    rangeSelectionMode: RangeSelection.IDLE,
-	    selectedDays: [],
-	    selectedDaysByIndex
-	});
+	    weekIndex: selectedDaysByIndex !== null ? selectedDaysByIndex.weekIndex : 0
+	};
+};
+
+CalendarCore.prototype.setDate = function(date) {
+	this.setState(this._setDate(date));
 };
 
 CalendarCore.prototype.setSelectedDate = function(date) {
@@ -553,21 +542,33 @@ CalendarCore.prototype.changeCalendar = function(lang = "en", type = "gregorian"
 	this.setState(state);
 };
 
-CalendarCore.prototype.prevMonth = function() {
+/**
+ * @private
+ *
+ */
+CalendarCore.prototype._prevMonth = function() {
+	const state = getInitialState();
+
 	if(this._state.month) {
-		const state = getInitialState();
 		state.month = this._calendarService.getCalendarMonth(this._state.month.previousMonth.normalizedDate);
 		state.selectedDays = this._state.selectedDays;
 		state.rangeSelection = this._state.rangeSelection;
 		state.rangeSelectionMode = this._state.rangeSelectionMode;
-
+		
+		if(this._state.rangeSelectionMode === RangeSelection.IDLE && this._state.selectedDays.length === 1)
+			state.selectedDaysByIndex = [getDatePos(this._state.selectedDays[0].date, state.month, {weekIndex:-2, weekDayIndex: null})];
+		
 		if(this._state.rangeSelectionMode !== RangeSelection.IDLE){
 			const {start, end} = state.rangeSelection;
-			Object.assign(state, this._getRange({start, end}));
+			Object.assign(state, this._getRange({start, end, state}));
 		}
-		
-		this.setState(state);
 	}
+	
+	return state;
+};
+
+CalendarCore.prototype.prevMonth = function() {
+	this.setState(this._prevMonth());
 };
 
 module.exports = CalendarCore;

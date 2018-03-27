@@ -27,17 +27,19 @@ const NewPage003 = extend(NewPage003Design)(
 		
 		this.children.next.onPress = (argument) => {
 		  this.calendar.nextWeek();
-		}
+		};
+		
 		this.children.prev.onPress = (argument) => {
 		  this.calendar.prevWeek();
-		}
+		};
 		
 		this.children.now.onPress = (argument) => {
 		  this.calendar.setSelectedDate(new Date());
-		}
+		};
+		
 		this.children.back.onPress = (argument) => {
 		  Router.go("page1");
-		}
+		};
   });
 function changeCalendar(lang, calendar, sp){
 	this.calendar.changeCalendar(lang, calendar, sp);

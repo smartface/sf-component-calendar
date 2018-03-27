@@ -70,9 +70,9 @@ const CalendarWeekly = extend(CalendarWeeklyDesign)(
 		};
 		
     proto.nextWeek = function(){
-			this.dispatch({
-				type: "resetDays"
-			});
+		this.dispatch({
+			type: "resetDays"
+		});
     	
     	this.calendarCore.nextWeek();
     };
@@ -84,50 +84,52 @@ const CalendarWeekly = extend(CalendarWeeklyDesign)(
     	this.calendarCore.prevWeek();
     };
     
-		proto.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
-			this.dispatch({
-				type: "changeCalendar",
-				lang: lang
-			});
-			
-			this.calendarCore.changeCalendar(lang, type, specialDays);
-		};
+	proto.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
+		this.dispatch({
+			type: "changeCalendar",
+			lang: lang
+		});
 		
-		proto._setDate = function(date) {
-			this.dispatch({
-				type: "resetDays"
-			});
-			
-			this.calendarCore.setDate(date);
-		};
+		this.calendarCore.changeCalendar(lang, type, specialDays);
+	};
+	
+	proto._setDate = function(date) {
+		this.dispatch({
+			type: "resetDays"
+		});
 		
-		proto.setSelectedDate = function(date) {
-			this.dispatch({
-				type: "resetDays"
-			});
-			this.calendarCore.setSelectedDate(date);
-		};
-		
-		proto._selectDay = function({weekIndex, weekDayIndex}) {
-			weekDayIndex != null
-				&& this.children.week.setSelectedIndex(weekDayIndex);
-		};
+		this.calendarCore.setDate(date);
+	};
+	
+	proto.setSelectedDate = function(date) {
+		this.dispatch({
+			type: "resetDays"
+		});
+		this.calendarCore.setSelectedDate(date);
+	};
+	
+	proto._selectDay = function(currentWeek, {weekIndex, weekDayIndex}) {
+		weekIndex === currentWeek 
+		&& weekIndex >= 0 
+		&& weekDayIndex != null
+		&& this.children.week.setSelectedIndex(weekDayIndex);
+	};
 		
     proto.updateCalendar = function(newState, oldState){
-      this.currentMonth = newState.month;
-			newState.selectedDaysByIndex.length > 0 
-				&& this.children.week.setDays(newState.month.days[newState.selectedDaysByIndex[0].weekIndex], newState.month.date);
-			if(newState.month !== oldState.month){
-				this.children.navbar.setLabel(newState.month.longName+" "+newState.month.localeDate.year);
-				newState.month.daysMin.forEach(function(day, index) {
-					this.children.calendarDays.children["dayName_" + index].text = day;
-				}.bind(this));
-			}
-			
-			newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1 
-				? this._selectDay.bind(this)
-				: this._selectDayasRange.bind(this)
-			);
+		this.currentMonth = newState.month;
+		this.children.week.setDays(newState.month.days[newState.weekIndex], newState.month.date);
+
+		if(newState.month !== oldState.month){
+			this.children.navbar.setLabel(newState.month.longName+" "+newState.month.localeDate.year);
+			newState.month.daysMin.forEach(function(day, index) {
+				this.children.calendarDays.children["dayName_" + index].text = day;
+			}.bind(this));
+		}
+		
+		newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1 
+			? this._selectDay.bind(this, newState.weekIndex)
+			: this._selectDayasRange.bind(this)
+		);
     };
   }
 );

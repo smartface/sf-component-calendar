@@ -27,9 +27,6 @@ const CalendarDay = extend(CalendarDayDesign)(
 				isLongPress = false;
 			};
 		};
-		// let timeout;
-		
-		// this.children.dayNum.onTouch = this.onTouch;
 	},
 	function (proto) {
 		proto.setDay = function(data){
