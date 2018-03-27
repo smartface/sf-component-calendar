@@ -347,3 +347,4 @@ calendar.onBeforeMonthChange = function(date){
 
 ##### onDaySelect(dates:Array.< DateInfoVO >)
 
+TODO: Add Range selection event
