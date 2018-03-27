@@ -245,11 +245,35 @@ calendar.addStyles(newMonthLabelColorStyle);
 
 ## Api
 ### Types
-
 #### DateVO
-
 **Date Value Object**
 {day: (1..31), month: (1..12), year: (1970 or greater)}
+#### DateInfoVO
+```js
+{ 
+  localeDate: {
+    day: String (1..31),
+    month: String (1..12),
+    year: String
+  },
+  date: {
+    day: Number (1..12),
+    month: Number (1..31),
+    year: Number
+  },
+  dayInfo: {
+    weekDay: Number,
+    longName: String
+    shortName: String
+    specialDay: Array.<String>
+  },
+  monthInfo: {
+    longName: String
+    shortName: String
+  }
+}
+
+```
 
 ### Calendar Api
 ***
@@ -314,6 +338,7 @@ calendar.onBeforeMonthChange = function(date){
 }
 ```
 
-##### onMonthChange(date:Array.< DateVO >)
+##### onMonthChange(date:DateVO)
 
-  
+##### onDaySelect(dates:Array.< DateInfoVO >)
+
