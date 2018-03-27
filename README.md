@@ -68,14 +68,6 @@ The Calendar component is consisted of several elements. Elements are :
           -  **monthLabel**:
               - styling id: #calendar_navbar_monthLabel
               - className: .calendar.header_navbar_monthLabel
-    - **calendarYear**: #calendar_calendarYear
-      - styling id: #calendar_calendarYear
-      - className: .calendar_calendarYear
-        - **yearLabel**
-          - styling id: #calendar_calendarYear_yearLabel
-          - className: .calendar_calendarYear_yearLabel
-            - **label**
-              - styling id: #calendar_yearLabel_label
       - **calendarDays**:
         - styling id: #calendar_calendarDays
         - className: .calendar.header_dayNames
@@ -253,17 +245,18 @@ calendar.addStyles(newMonthLabelColorStyle);
 
 ## Api
 
-### Calendar.prototype.addStyles(styleObject:Object)
+### Calendar
+- **addStyles(styleObject:Object)**
 Merges specified styles to current styles and updates the component
 
-### Calendar.prototype.changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
+- **changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})**
 Changes the calendar's type
 
-  Supported Calendars:
+  **Supported Calendars:**
   - CalendarTypes.HIJRI
   - CalendarTypes.GREGORIAN
 
- Supported Languages:
+ **Supported Languages:**
   - Turkish : "tr"
   - German : "de"
   - French : "fr"
