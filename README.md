@@ -244,13 +244,20 @@ calendar.addStyles(newMonthLabelColorStyle);
 ```
 
 ## Api
+### Types
+
+#### DateVO
+
+**Date Value Object**
+{day: (1..31), month: (1..12), year: (1970 or greater)}
 
 ### Calendar
-- **addStyles(styleObject:Object)**
+*****
+#### addStyles(styleObject:Object)
 
 Merges specified styles to current styles and updates the component
 
-- **changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})**
+#### changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
 
 Changes the calendar's type
 
@@ -267,20 +274,44 @@ Changes the calendar's type
   - Dutch : "nl"
    and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
 
-### Calendar.prototype.dispose()
+#### dispose()
 Disposes the calendar.
 
-### Calendar.prototype.nextMonth()
+#### nextMonth()
 Jumps to the next month
 
-### Calendar.prototype.now()
+#### now()
 Selects today.
 
-### Calendar.prototype.prevMonth()
+#### prevMonth()
 Jumps to the previous month
 
-### Calendar.prototype.setSelectedDate({day: Number, month: Number, year: Number})
+#### setSelectedDate(date:Date|DateVO)
 Sets specified date object as the selected date.
 
-### Calendar.prototype.onChange Event
+#### setDate(date:Date|DateVO)
+Sets a date without selection
+
+#### setRangeDates(start:DateVO, end:DateVO)
+Creates a range selection in the Calendar
+
+#### selectDay(weekIndex:(0..5), weekDayIndex:(0..6))
+Selects a day on the calendar by specified week and day indexes.
+#### Events
+
+#### onChange(date:DateInfo) Event
 Called when user presses on a day on the calendar. Calendar injects to callback a selected date object is described above.
+
+#### onBeforeMonthChange
+Be triggered before the Calendar month is being changed. And if the eventlistener returns **false** then it makes the month changing to be canceled.
+
+```js
+var calendar = new Calendar();
+calendar.onBeforeMonthChange = function(date){
+  if(date.month < 6)
+    return false;
+  return true;
+}
+```
+
+#### onMonthChange
