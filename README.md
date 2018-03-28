@@ -332,7 +332,7 @@ Selects a day on the calendar by specified week and day indexes.
 Called when user presses on a day on the calendar. Calendar injects to callback a selected date object is described above.
 
 ##### onBeforeMonthChange(date:DateVO)
-Be triggered before the Calendar month is being changed. And if the eventlistener returns **false** then it makes the month changing to be canceled.
+Triggered before the Calendar month is being changed. And if the eventlistener returns **false** then it makes the month changing to be canceled.
 
 ```js
 var calendar = new Calendar();
@@ -344,7 +344,13 @@ calendar.onBeforeMonthChange = function(date){
 ```
 
 ##### onMonthChange(date:DateVO)
+Triggered when month is changed by user.
 
-##### onDaySelect(dates:Array.< DateInfoVO >)
+##### onDaySelect(date:Array.< DateInfoVO >)
+Triggered when a day is selected by user.
 
-TODO: Add Range selection event
+##### onRangeSelectionStart(date:DateInfoVO)
+Triggered when a day is selected by user.
+
+##### onRangeSelectionComplete(start:DateInfoVO, end:DateInfoVO)
+Triggered when a day is selected by user.
