@@ -13,12 +13,12 @@ const Calendar = require("@smartface/sf-component-calendar/components/Calendar")
 const myCalendar = new Calendar();
 
 // when user select a date
-myCalendar.onChange = function(data){
+myCalendar.onDaySelect = function(dateInfo){
   //...
 }
 
 // changing calendar date
-myCalendar.setSelectedDate({month: Number, year: Number, day: Number});
+myCalendar.setSelectedDate({month:2, year:2017, day:12});
 ```
 
 ## Component maintainers (for Smartface Developers)
