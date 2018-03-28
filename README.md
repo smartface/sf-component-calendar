@@ -282,6 +282,8 @@ calendar.addStyles(newMonthLabelColorStyle);
 
 ### Calendar Api
 ***
+#### Methods
+
 ##### addStyles(styleObject:Object)
 
 Merges specified styles to current styles and updates the component
@@ -344,13 +346,70 @@ calendar.onBeforeMonthChange = function(date){
 ```
 
 ##### onMonthChange(date:DateVO)
-Triggered when month is changed by user.
+Triggered when month is changed by the user.
 
 ##### onDaySelect(date:Array.< DateInfoVO >)
-Triggered when a day is selected by user.
+Triggered when a day or days range is selected by the user.
 
 ##### onRangeSelectionStart(date:DateInfoVO)
-Triggered when a day is selected by user.
+Triggered when a day is selected by the user.
 
 ##### onRangeSelectionComplete(start:DateInfoVO, end:DateInfoVO)
-Triggered when a day is selected by user.
+Triggered when a day is selected by the user.
+
+### CalendarWeekly Api
+#### Methods
+##### addStyles(styleObject:Object)
+
+Merges specified styles to current styles and updates the component
+
+##### changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
+
+Changes the calendar's type
+
+  **Supported Calendars:**
+  - CalendarTypes.HIJRI
+  - CalendarTypes.GREGORIAN
+
+ **Supported Languages:**
+  - Turkish : "tr"
+  - German : "de"
+  - French : "fr"
+  - Arabic: "ar"
+  - Arabic (Saudi): "ar-sa"
+  - Dutch : "nl"
+   and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
+
+##### dispose()
+Disposes the calendar.
+
+##### nextMonth()
+Jumps to the next month
+
+#### nextWeek()
+Jumps to the next week. If the week is the last week then jumps to the next month and its first week.
+
+#### prevWeek()
+Jumps to the previous week. If the week is the first week then jumps to the previous month and its last week.
+
+##### now()
+Selects today.
+
+##### prevMonth()
+Jumps to the previous month
+
+##### selectDay(weekIndex:(0..5), weekDayIndex:(0..6))
+Selects a day on the calendar by specified week and day indexes.
+
+##### setSelectedDate(date:Date|DateVO)
+Sets specified date object as the selected date.
+
+##### setDate(date:Date|DateVO)
+Sets a date without selection
+
+#### Events
+##### onMonthChange(date:DateVO)
+Triggered when month is changed by the user.
+
+##### onDaySelect(date:Array.< DateInfoVO >)
+Triggered when a day or days range is selected by the user.
