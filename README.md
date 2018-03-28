@@ -1,5 +1,5 @@
 # Smartface Calendar Component
-[![Npm Status](https://img.shields.io/npm/v/@smartface/sf-calendar-component.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-component-calendar)
+[![Npm Status](https://img.shields.io/npm/v/@smartface/sf-component-calendar.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-component-calendar)
 
 ## Component Architecture
 ![Component Architecture](diagram.png "Component Architecture")
@@ -384,10 +384,10 @@ Disposes the calendar.
 ##### nextMonth()
 Jumps to the next month
 
-#### nextWeek()
+##### nextWeek()
 Jumps to the next week. If the week is the last week then jumps to the next month and its first week.
 
-#### prevWeek()
+##### prevWeek()
 Jumps to the previous week. If the week is the first week then jumps to the previous month and its last week.
 
 ##### now()
