@@ -109,7 +109,7 @@ Default style
     },
     "&_line":{
       "height":1,
-      "width":NaN,
+      "width":null,
       "backgroundColor":"rgba(228,228,228,1)"
     },
     "&_calendarYear":{
@@ -133,8 +133,8 @@ Default style
       "&_dayNames":{
         "backgroundColor":"#EBEBEB",
         "minHeight":14,
-        "maxHeight":NaN,
-        "height":NaN,
+        "maxHeight":null,
+        "height":null,
         "flexGrow":0.2,
         "direction":"LTR",
         "&-lang_ar":{ // language support for Arabic
@@ -144,7 +144,7 @@ Default style
           "direction":"RTL"
         },
         "&_dayName":{
-          "height":NaN,
+          "height":null,
           "font":{
             "size":10,
             "family":"Arial"
