@@ -413,3 +413,27 @@ Triggered when month is changed by the user.
 
 ##### onDaySelect(date:Array.< DateInfoVO >)
 Triggered when a day or days range is selected by the user.
+
+### CalendarCore Api
+CalendarCore includes all calendar logic to manage the calendar state and create custom calendars.
+
+#### Methods
+##### reset()
+##### selectDay()
+##### clearSelection()
+##### nextWeek()
+##### prevWeek()
+##### setRangeSelection(start:DateVO, end:DateVO)
+##### rangeSelection(weekIndex:number, weekDayIndex:number)
+##### startRangeSelection(weekIndex:number, weekDayIndex:number)
+##### completeRangeSelection(weekIndex:number, weekDayIndex:number)
+##### subscribe(cb:function)
+##### unsubscribe(cb:function)
+##### now()
+##### getWeekDay()
+##### getState()
+##### setState(state:object)
+##### setDate(date:DateVO|Date)
+##### setSelectedDate(date:DateVO|Date)
+##### changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
+##### prevMonth()
