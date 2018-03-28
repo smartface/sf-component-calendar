@@ -8,13 +8,13 @@ const extend = require('js-base/core/extend');
 const calendarContext = require("./calendarContext");
 
 const Calendar = extend(CalendarDesign)(
-	function Calendar(_super){
+	function Calendar(_super, options={rangeSelection:true}){
 		_super(this);
 		
 		this.styleContext = calendarContext(this, "calendar");
 		this.calendarCore = new CalendarCore();
-		this.updateCalendar = this.updateCalendar.bind(this);
-		this.calendarCore.subscribe(this.updateCalendar);
+		this._updateCalendar = this._updateCalendar.bind(this);
+		this._unsubsciber = this.calendarCore.subscribe(this._updateCalendar);
 		this.weeks = [];
 		
 		this.children.navbar.onNext = this.nextMonth.bind(this);
@@ -29,7 +29,8 @@ const Calendar = extend(CalendarDesign)(
 		
 		this.weeks.forEach((row, weekIndex) => {
 			row.onDaySelected = this.selectDay.bind(this, weekIndex);
-			row.onRangeSelect = this._onRangeSelectStart.bind(this, weekIndex);
+			if(options.rangeSelection !== false)
+				row.onRangeSelect = this._onRangeSelect.bind(this, weekIndex);
 		});
 	},
 	function(proto){
@@ -39,15 +40,19 @@ const Calendar = extend(CalendarDesign)(
 			}.bind(this));
 		}
 		
-		proto._onRangeSelectStart = function (weekIndex, weekDayIndex) {
-			this.onRangeSelectStart && this.onRangeSelectStart(weekIndex, weekDayIndex);
+		proto._onRangeSelect = function (weekIndex, weekDayIndex) {
+			// this.onBeforeRangeSelectStart && this.onBeforeRangeSelectStart(weekIndex, weekDayIndex);
 			// this.isRangeSelection !== true && activateRangeSelection.call(this);
 			this.calendarCore.rangeSelection(weekIndex, weekDayIndex);
-		};
-		
-		proto._onRangeSelectComplete = function (weekIndex, weekDayIndex) {
-			this.onRangeSelectComplete && this.onRangeSelectComplete(this.calendarCore.getState().selectedDays);
-			// deactivateRangeSelection.call(this);
+			const state = this.calendarCore.getState();
+			
+			if(state.rangeSelectionMode === 0){
+				this.onRangeSelectionStart 
+					&& this.onRangeSelectionStart(Object.assign({}, state.rangeSelection.start));
+			} else if(state.rangeSelectionMode === 1){
+				this.onRangeSelectionComplete 
+					&& this.onRangeSelectionComplete(Object.assign({}, state.rangeSelection.start), Object.assign({}, state.rangeSelection.end));
+			}
 		};
 		
 		proto.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
@@ -59,7 +64,11 @@ const Calendar = extend(CalendarDesign)(
 			this.calendarCore.changeCalendar(lang, type, specialDays);
 		};
 		
-		proto.updateCalendar = function(newState, oldState){
+		/**
+		 * Subscribes to calendar-core
+		 * 
+		 */
+		proto._updateCalendar = function(newState, oldState){
 			if((oldState.rangeSelectionMode === -1 && newState.rangeSelectionMode === 0)
 				|| (oldState.rangeSelectionMode === 1 && newState.rangeSelectionMode === -1)
 			){
@@ -136,6 +145,9 @@ const Calendar = extend(CalendarDesign)(
 		 * Disposes the Component instance
 		 */
 		proto.dispose = function() {
+			this._unsubsciber();
+			this._unsubsciber = null;
+			this.calendarCore = null;
 			this.weeks = [];
 			this.styleContext(null);
 			this.dispatch = null;
@@ -144,7 +156,11 @@ const Calendar = extend(CalendarDesign)(
 			this.currentMonth = null;
 			this.onChanged = null;
 		};
-
+		
+		/**
+		 * Changes current to next month
+		 *
+		 */
 		proto.nextMonth = function() {
 			if(this.onBeforeMonthChange &&
 				 this.onBeforeMonthChange(this.currentMonth.nextMonth.normalizedDate) === false
@@ -162,10 +178,18 @@ const Calendar = extend(CalendarDesign)(
 			}
 		};
 		
+		/**
+		 * Changes selected date to now
+		 *
+		 */
 		proto.now = function(){
 			this.calendarCore.now();
 		};
 		
+		/**
+		 * Changes current to previous month
+		 *
+		 */
 		proto.prevMonth = function() {
 			if(this.onBeforeMonthChange &&
 				 this.onBeforeMonthChange(this.currentMonth.previousMonth.normalizedDate) === false
