@@ -87,7 +87,7 @@ The Calendar component is consisted of several elements. Elements are :
 ## Styling
 
 Default style
-```js
+```json
 
 {
   "#calendar":{
