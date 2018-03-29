@@ -5,7 +5,9 @@
 ![Component Architecture](diagram.png "Component Architecture")
 
 ## Component Intallation
-``` $ npm i @smartface/sf-component-calendar ```
+```shell
+(cd ~/workspace/scripts && npm i @smartface/sf-component-calendar)
+```
 ## Component Usage
 ```js 
 
