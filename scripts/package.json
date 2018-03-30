@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "cp -r ./node_modules/library ./library && rm -f ./library/styler-builder.js",
     "postpublish": "rm -r -f ./library",
-    "preinstall": "mkdir -p node_modules",
+    "preinstall": "mv -f ./library ./node_modules/library",
     "installSelf": "config=$(node -p \"JSON.stringify(require('./package.json').sfModule)\") && smm --config=$config || echo \"smm cannot be found\""
   },
   "repository": {
