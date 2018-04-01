@@ -1,12 +1,13 @@
 {
   "name": "@smartface/sf-component-calendar",
-  "version": "2.0.0-rc.2",
+  "version": "2.0.0-rc.4",
   "description": "Calendar component",
   "main": "components/calendar.js",
   "scripts": {
-    "prepublish": "cp -r ./node_modules/library ./library && rm -f ./library/styler-builder.js",
+    "prepublish": "npm run copytheme && cp -r ./node_modules/library ./library && rm -f ./library/styler-builder.js",
+    "copytheme": "cp ../themes/workspaceTheme/styles/common.json ./theme.json",
     "postpublish": "rm -r -f ./library",
-    "preinstall": "mv -f ./library ./node_modules/library",
+    "postinstall": "mv -f ./library ./node_modules/library",
     "installSelf": "config=$(node -p \"JSON.stringify(require('./package.json').sfModule)\") && smm --config=$config || echo \"smm cannot be found\""
   },
   "repository": {
@@ -46,9 +47,9 @@
     "js-base": "^1.0.0",
     "moment": "2.18.1",
     "moment-hijri": "2.0.1",
-    "sf-extension-utils": "3.2.5"
+    "sf-extension-utils": "3.2.5",
+    "sf-core": "*"
   },
   "devDependencies": {
-    "sf-core": "*"
   }
 }

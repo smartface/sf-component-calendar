@@ -6,6 +6,7 @@ const CalendarCore = require("./CalendarCore");
 const CalendarWeeklyDesign = require('library/CalendarWeekly');
 const createService = require("../services/CalendarService");
 const calendarContext = require("./calendarContext");
+const themeFile = require("../theme.json");
 
 const CalendarWeekly = extend(CalendarWeeklyDesign)(
   //constructor
@@ -13,7 +14,7 @@ const CalendarWeekly = extend(CalendarWeeklyDesign)(
     // initalizes super class for this scope
     _super(this, props || {});
 
-  	this.styleContext = calendarContext(this, "calendar");
+  	this.styleContext = calendarContext(this, "calendar", themeFile);
   	this.calendarCore = new CalendarCore();
   	this.updateCalendar = this.updateCalendar.bind(this);
   	this.calendarCore.subscribe(this.updateCalendar);
@@ -117,7 +118,7 @@ const CalendarWeekly = extend(CalendarWeeklyDesign)(
 		
     proto.updateCalendar = function(newState, oldState){
 		this.currentMonth = newState.month;
-		this.children.week.setDays(newState.month.days[newState.weekIndex], newState.month.date);
+		this.children.week.setDays(newState.month.days[newState.weekIndex]);
 
 		if(newState.month !== oldState.month){
 			this.children.navbar.setLabel(newState.month.longName+" "+newState.month.localeDate.year);

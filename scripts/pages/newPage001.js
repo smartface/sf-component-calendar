@@ -318,7 +318,8 @@ const NewPage001 = extend(NewPage001Design)(
 
 		this.calendar.onDaySelect = ([date]) => {
 		  if(!date)
-		    return
+		    return;
+		    
 			this.children.label2.text = date.date.day+"/"+(date.date.month)+"/"+date.date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")

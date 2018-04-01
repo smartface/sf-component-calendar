@@ -2,12 +2,9 @@ const StyleContext = require("@smartface/contx/lib/styling/StyleContext");
 const getOneProp = require("@smartface/contx/lib/smartface/sfCorePropFactory").default;
 const pageContext = require("@smartface/contx/lib/smartface/pageContext");
 const fromSFComponent = require("@smartface/contx/lib/smartface/fromSFComponent").default;
-const INIT_CONTEXT_ACTION_TYPE = require("../services/Context")
-	.INIT_CONTEXT_ACTION_TYPE;
+const INIT_CONTEXT_ACTION_TYPE = require("../services/Context").INIT_CONTEXT_ACTION_TYPE;
 const System = require('sf-core/device/system');
-const styles = require("../themes/workspaceTheme");
 const styler = require("@smartface/styler/lib/styler");
-const styling = styler(styles);
 
 function raiseTargetNotfound(target){
 	return function (message = "Component cannot be found.") {
@@ -161,80 +158,14 @@ function reducer(context, action, target, state) {
 	return ".calendar";
 }*/
 
-//TOOD: add classnameFactory to fromSFComponent
-
-function createContext(component) {
-	/*var styleContext = fromSFComponent(
-		component,
-		"calendar",
-		function(hook) {//context hooks
-			switch(hook) {
-			  case 'beforeAssignComponentStyles':
-			    return function beforeAssignComponentStyles(name, className) {
-						return className;
-					};
-				case 'beforeStyleDiffAssign':
-					return function beforeStyleDiffAssign(styles) {
-						Object.keys(styles)
-							.forEach(function(key) {
-								styles[key] = getOneProp(key, styles[key]);
-							});
-
-						return styles;
-					};
-				case 'reduceDiffStyleHook':
-					return function stylesDiffHook(oldStyles, newStyles) {
-						function isEqual(oldStyle, newStyle) {
-							if(oldStyle === undefined) {
-								return false;
-							}
-
-							var keys1 = Object.keys(oldStyle);
-							var keys2 = Object.keys(newStyle);
-
-							if(keys1.length !== keys2.length) {
-								return false;
-							}
-
-							let res = keys2.some(function(key) {
-								return oldStyle[key] !== newStyle[key];
-							});
-
-							return !res;
-						};
-
-						return function stylesDiffReducer(acc, key) {
-							if(typeof newStyles[key] === "object") {
-								if(!isEqual(oldStyles[key], newStyles[key])) {
-									acc[key] = newStyles[key];
-								}
-							} else if(oldStyles[key] !== newStyles[key]) {
-								acc[key] = newStyles[key];
-							}
-
-							return acc;
-						};
-					};
-			}
-		},
-		classNameMap
-	);
-
-	// creates an initial styling for the context
-	var context = styleContext(
-		styling,
-		reducer
-	);*/
-	
-	
-	let context = pageContext(component, "calendar", reducer);
-	context(styling, reducer);
+function createContext(component, name="calendar", styles={}) {
+	let context = pageContext(component, name, reducer);
+	context(styler(styles), reducer);
 	
 	return function setStyle(newStyles) {
 		try {
-			const styling = styler(styles, newStyles);
 			// injects a new styling to the context
-			context(styling, reducer);
+			context(styler(styles, newStyles), reducer);
 		} catch(e) {
 			alert(e.message);
 		}

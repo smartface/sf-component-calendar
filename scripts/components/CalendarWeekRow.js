@@ -60,6 +60,10 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 			return this.selectedIndex;
 		};
 		
+		proto.isEmpty = function(){
+			return this._isEmpty !== false;
+		}
+		
 		proto.setSelectedIndex = function(index){
 			return selectDay.call(this, index);
 		};
@@ -79,13 +83,25 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 				addDaySelectEvent.call(this, this.children[day], index))
 		};
 		
-		proto.setDays = function(days){
+		proto.setDays = function(days, justCurrentDays=false){
 			if(days === undefined){
 				return;
 			}
 			
-			this._days.forEach((day, index) => 
-				this.children[day].setDay(days[index]));
+			this._isEmpty = true;
+			this._days.forEach((day, index) => {
+				if(justCurrentDays && days[index].month !== "current"){
+					this.children[day].visible = false;
+					return;
+				} else if(days[index].month === "current") {
+					this._isEmpty = false;
+				}
+				
+				this.children[day].visible = true;
+				this.children[day].setDay(days[index]);
+			});
+			
+			this.visible = !this._isEmpty;
 		};
 	}
 );

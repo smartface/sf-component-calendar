@@ -16,9 +16,9 @@
 					"aa00-5c53-57c4-a625",
 					"20cf-779a-2350-e731",
 					"e948-c9ae-aacc-5e45",
-					"b4e0-f382-402e-f5bd",
 					"950e-e811-c256-a3ed",
-					"fc3f-1438-f726-c2a3"
+					"fc3f-1438-f726-c2a3",
+					"b4e0-f382-402e-f5bd"
 				],
 				"name": "newPage001",
 				"orientation": "AUTO",
@@ -121,11 +121,11 @@
 				"flexProps": {
 					"positionType": "ABSOLUTE"
 				},
-				"height": 37.974683544303794,
-				"left": 150.63291139240505,
+				"height": 34.48275862068966,
+				"left": 139.6551724137931,
 				"text": "Hijri",
-				"top": 301.2658227848101,
-				"width": 65.82278481012658
+				"top": 303.448275862069,
+				"width": 82.75862068965517
 			}
 		},
 		{
@@ -250,7 +250,7 @@
 			}
 		},
 		{
-			"className": ".flexLayout .calendar-self",
+			"className": ".calendar-self",
 			"hiddenComponent": false,
 			"id": "b4e0-f382-402e-f5bd",
 			"props": {
@@ -265,24 +265,10 @@
 			},
 			"type": "FlexLayout",
 			"userProps": {
-				"backgroundColor": "rgba( 255, 255, 255, 1 )",
-				"flex": {
-					"justifyContent": 0,
-					"alignItems": 4,
-					"alignContent": 1,
-					"positionType": 0
-				},
 				"flexProps": {
-					"justifyContent": "FLEX_START",
-					"alignItems": "STRETCH",
-					"alignContent": "FLEX_START",
-					"positionType": "RELATIVE"
+					"positionType": "ABSOLUTE"
 				},
-				"height": 330,
-				"left": 0,
-				"right": 0,
-				"top": 0,
-				"width": null
+				"height": 300
 			}
 		},
 		{
