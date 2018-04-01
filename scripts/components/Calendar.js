@@ -147,8 +147,6 @@ module.exports = extend(CalendarDesign)(
 						height,
 					}
 				});
-				
-				this.applyLayout();
 			}
 			
 			newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1 
@@ -159,6 +157,8 @@ module.exports = extend(CalendarDesign)(
 			newState.month.daysMin.forEach((day, index) => {
 				this.children.calendarDays.children["dayName_" + index].text = day;
 			});
+			
+			this.applyLayout();
 		};
 		
 		/**
