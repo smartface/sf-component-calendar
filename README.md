@@ -30,7 +30,7 @@ myCalendar.setSelectedDate({month:2, year:2017, day:12});
 ```
 {
   // Provides to use range-selection. Default: true
-  useRangeSelection=rue,
+  useRangeSelection=true,
   // Provides to use custom theme file. Default: null
   theme=null,
   // Provides to display only days of the current month. Default: false
