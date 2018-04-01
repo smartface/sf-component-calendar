@@ -10,7 +10,6 @@ const NewPage002 = extend(NewPage002Design)(
   function(_super) {
     // Initalizes super class for this page scope
     _super(this);
-    delete this.children.
     // this.calendar = new CalendarList();
     // this.addChild(this.calendar);
     
