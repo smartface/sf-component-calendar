@@ -15,6 +15,8 @@ const Calendar = require('@smartface/sf-component-calendar/components/Calendar')
 const specialDaysConf = require('./specialDays.json');
 
 const myCalendar = new Calendar();
+
+// Please use after Page::onShow is triggered.
 myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
 // when user select a date
 myCalendar.onDaySelect = function(dateInfo){
@@ -35,9 +37,9 @@ myCalendar.setSelectedDate({month:2, year:2017, day:12});
   theme=null,
   // Provides to display only days of the current month. Default: false
   justCurrentDays=false,
-  // Provides to manage calendar using external CalendarCore
+  // Provides to manage calendar state using an external CalendarCore component. Default is null to use internal component.
   calendarCore=null,
-  // Provides to manage styles using external calendar-context. Default: null
+  // Provides to manage styles using external calendar-context component. Default is null to use internal component.
   context=null,
   // Provides to use or not single day selection. Default: true
   useDaySelection=true
