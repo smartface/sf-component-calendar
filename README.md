@@ -23,6 +23,23 @@ myCalendar.onDaySelect = function(dateInfo){
 myCalendar.setSelectedDate({month:2, year:2017, day:12});
 ```
 
+## Component Configuration
+```
+{
+  // Provides to use range-selection. Default: true
+  useRangeSelection=true,
+  // Provides to use custom theme file. Default: null
+  theme=null,
+  // Provides to display only days of the current month. Default: false
+  justCurrentDays=false,
+  // Provides to manage calendar using external CalendarCore
+  calendarCore=null,
+  // Provides to manage styles using external calendar-context. Default: null
+  context=null,
+  // Provides to use or not single day selection. Default: true
+  useDaySelection=true
+}
+```
 ## Component maintainers (for Smartface Developers)
 
 Create new cloud workspace in the Smartface-Cloud with this repository url. Open Cloud IDE and switch to terminal in the scripts folder. Install dependencies via terminal:
