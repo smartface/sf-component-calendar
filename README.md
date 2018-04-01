@@ -16,7 +16,7 @@ const specialDaysConf = require('./specialDays.json');
 
 const myCalendar = new Calendar();
 
-// Please use after Page::onShow is triggered.
+// Please use after Page:onShow is triggered.
 myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
 // when user select a date
 myCalendar.onDaySelect = function(dateInfo){
