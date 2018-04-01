@@ -4,7 +4,6 @@
 const extend = require('js-base/core/extend');
 const Calendar  = require("../components/Calendar");
 const NewPage004Design = require('ui/ui_newPage004');
-const theme = require("../themes/workspaceTheme");
 
 const NewPage004 = extend(NewPage004Design)(
   // Constructor

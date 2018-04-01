@@ -36,7 +36,12 @@
 				},
 				"&_arrow": {
 					"flexGrow": 1,
-					"textColor": "#B1B1B4"
+					"textColor": "#B1B1B4",
+					"backgroundColor": "rgba( 255, 255, 255, 0 )",
+					"bottom": 0,
+					"flexProps": {
+						"positionType": "ABSOLUTE"
+					}
 				},
 				"&_label": {
 					"textColor": "#000000"

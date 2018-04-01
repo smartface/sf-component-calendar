@@ -1,6 +1,6 @@
 {
   "name": "@smartface/sf-component-calendar",
-  "version": "2.0.0-rc.6",
+  "version": "2.0.0-rc.8",
   "description": "Calendar component",
   "main": "components/calendar.js",
   "scripts": {
@@ -42,14 +42,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@smartface/contx": "^1.1.2",
-    "@smartface/styler": "^1.3.15",
-    "js-base": "^1.0.0",
     "moment": "2.18.1",
-    "moment-hijri": "2.0.1",
-    "sf-extension-utils": "3.2.5",
-    "sf-core": "*"
+    "moment-hijri": "2.0.1"
   },
   "devDependencies": {
+    "js-base": "^1.0.0",
+    "@smartface/contx": "^1.2.0",
+    "@smartface/styler": "^1.3.15",
+    "sf-extension-utils": "3.2.5",
+    "sf-core": "*"
   }
 }
