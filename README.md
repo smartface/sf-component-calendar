@@ -11,9 +11,11 @@
 ## Component Usage
 ```js 
 
-const Calendar = require("@smartface/sf-component-calendar/components/Calendar");
-const myCalendar = new Calendar();
+const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
+const specialDaysConf = require('./specialDays.json');
 
+const myCalendar = new Calendar();
+myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
 // when user select a date
 myCalendar.onDaySelect = function(dateInfo){
   //...
@@ -21,13 +23,14 @@ myCalendar.onDaySelect = function(dateInfo){
 
 // changing calendar date
 myCalendar.setSelectedDate({month:2, year:2017, day:12});
+
 ```
 
 ## Component Configuration
 ```
 {
   // Provides to use range-selection. Default: true
-  useRangeSelection=true,
+  useRangeSelection=rue,
   // Provides to use custom theme file. Default: null
   theme=null,
   // Provides to display only days of the current month. Default: false
@@ -39,6 +42,34 @@ myCalendar.setSelectedDate({month:2, year:2017, day:12});
   // Provides to use or not single day selection. Default: true
   useDaySelection=true
 }
+```
+### Usages
+
+```js 
+
+const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
+const calendarContext = require('@smartface/sf-component-calendar/components/calendarContext');
+const specialDaysConf = require('./specialDays.json');
+const customTheme = require('./customTheme.json');
+
+// To create custom calendar
+const myCalendar = new Calendar({
+  useRangeSelection: true,
+  theme: customTheme,
+  justCurrentDays: true,
+  useDaySelection: false
+});
+
+// To create with custom context. It's only for advanced use.
+const newContext = calendarContext(this, "calendar", customTheme);
+
+const myCalendar = new Calendar({
+  useRangeSelection: true,
+  context: newContext,
+  justCurrentDays: true,
+  useDaySelection: false
+});
+
 ```
 ## Component maintainers (for Smartface Developers)
 
