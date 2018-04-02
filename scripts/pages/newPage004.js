@@ -11,7 +11,16 @@ const NewPage004 = extend(NewPage004Design)(
     // Initalizes super class for this page scope
     _super(this);
     
-    this.calendar = new Calendar();
+    this.calendar = new Calendar({
+      useRangeSelection: true,
+      //theme: customTheme,
+      justCurrentDays: true,
+      useDaySelection: true
+    });
+    
+    this.calendar.onDaySelect = function([dateInfo]) {
+      alert(JSON.stringify(dateInfo, null, "\t"), "onDaySelect");
+    };    
     this.layout.addChild(this.calendar);
 
     // overrides super.onShow method

@@ -65,7 +65,7 @@ function Calendar(_super, options){
 	
 	this._weeks.forEach((row, weekIndex) => {
 		if(useDaySelection !== false){
-			row.onDaySelected = this.selectDay.bind(this, weekIndex);
+			row.onDaySelect = this.selectDay.bind(this, weekIndex);
 		}
 		if(useRangeSelection !== false){
 			row.onRangeSelect = this._onRangeSelect.bind(this, weekIndex);

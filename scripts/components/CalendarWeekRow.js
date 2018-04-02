@@ -16,7 +16,7 @@ function selectDay(index){
 }
 
 function onDayPress(index){
-	this.onDaySelected(index);
+	this.onDaySelect && this.onDaySelect(index);
 }
 
 function selectRange(indexes){

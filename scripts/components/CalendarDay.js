@@ -22,7 +22,7 @@ const CalendarDay = extend(CalendarDayDesign)(
 
 			this.children.dayNum.onTouchEnded = () => {
 				clearTimeout(timeout);
-				this.children.dayNum.onTouchEnded = function(){}
+				this.children.dayNum.onTouchEnded = function(){};
 				!isLongPress && this.onPress && this.onPress.call(this, e);
 				isLongPress = false;
 			};
