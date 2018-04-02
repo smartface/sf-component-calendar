@@ -63,14 +63,15 @@ const myCalendar = new Calendar({
 });
 
 // To create with custom context. It's only for advanced use.
-const newContext = calendarContext(this, "calendar", customTheme);
 
 const myCalendar = new Calendar({
   useRangeSelection: true,
-  context: newContext,
+  useContext: false,
   justCurrentDays: true,
   useDaySelection: false
 });
+
+const newContext = calendarContext(myCalendar, "calendar", customTheme);
 
 ```
 ## Component maintainers (for Smartface Developers)
