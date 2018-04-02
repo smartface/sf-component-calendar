@@ -3,8 +3,6 @@
 */
 const extend = require('js-base/core/extend');
 const NewPage001Design = require('ui/ui_newPage001');
-const Calendar = require("@smartface/sf-component-calendar/components/Calendar");
-const CalendarTypes = require("@smartface/sf-component-calendar/components/CalendarTypes");
 
 const NewPage001 = extend(NewPage001Design)(
   // Constructor
@@ -12,9 +10,9 @@ const NewPage001 = extend(NewPage001Design)(
     // Initalizes super class for this page scope
     _super(this);
     
-    this.calendar = new Calendar();
-    this.layout.addChild(this.calendar);
-    
+    this.calendar = this.children.calendar;
+    delete this.children.calendar;
+
     // overrides super.onShow method
     this.onShow = onShow.bind(this, this.onShow.bind(this));
     // overrides super.onLoad method
