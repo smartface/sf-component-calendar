@@ -77,11 +77,7 @@
 			},
 			"type": "FlexLayout",
 			"userProps": {
-				"flexProps": {},
-				"height": 300,
-				"left": 9,
-				"top": 252,
-				"width": 344.82758620689657
+				"height": 300
 			}
 		},
 		{
@@ -272,13 +268,13 @@
 					"flexDirection": "ROW"
 				},
 				"height": 40,
-				"left": 4,
-				"top": 203,
+				"left": 17.24137931034483,
+				"top": 324.1379310344828,
 				"width": 355
 			}
 		},
 		{
-			"className": ".button .calendar.header_navbar_arrow",
+			"className": ".calendar.header_navbar_arrow",
 			"id": "ceee-b6c4-49c9-968f",
 			"props": {
 				"children": [],
@@ -342,7 +338,7 @@
 			}
 		},
 		{
-			"className": ".button .calendar.header_navbar_arrow",
+			"className": ".calendar.header_navbar_arrow",
 			"id": "8a46-4b2f-e952-44aa",
 			"props": {
 				"children": [],
@@ -355,18 +351,11 @@
 			},
 			"type": "Button",
 			"userProps": {
-				"backgroundColor": "rgba( 0, 161, 241, 0 )",
 				"bottom": 0,
-				"flexProps": {
-					"flexGrow": 1,
-					"positionType": "ABSOLUTE"
-				},
 				"font": {
 					"bold": false,
 					"size": 20
 				},
-				"height": null,
-				"left": null,
 				"right": 0,
 				"text": ">",
 				"textAlignment": "MIDCENTER",
@@ -377,7 +366,7 @@
 		},
 		{
 			"className": "",
-			"hiddenComponent": false,
+			"hiddenComponent": true,
 			"id": "7072-558c-2327-9bd4",
 			"props": {
 				"children": [
@@ -933,8 +922,8 @@
 			"userProps": {
 				"flexProps": {},
 				"height": 65,
-				"left": 8.333333333333334,
-				"top": 15,
+				"left": 129.31034482758622,
+				"top": 384.4827586206897,
 				"width": 80
 			}
 		},
@@ -951,7 +940,11 @@
 				"page": "__library__"
 			},
 			"type": "Button",
-			"userProps": {}
+			"userProps": {
+				"flexProps": {},
+				"height": 356.89655172413796,
+				"width": 112.06896551724138
+			}
 		},
 		{
 			"className": ".calendar.day",
@@ -1171,6 +1164,7 @@
 		},
 		{
 			"className": ".calendarWeekly",
+			"hiddenComponent": true,
 			"id": "bebe-bb6a-d4f0-a386",
 			"props": {
 				"children": [

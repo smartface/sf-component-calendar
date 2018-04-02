@@ -7,7 +7,8 @@
 			"props": {
 				"children": [
 					"f0c0-cb53-4aaa-4b72",
-					"e759-9495-c8eb-e4bd"
+					"e759-9495-c8eb-e4bd",
+					"8ae0-f5bf-2975-8995"
 				],
 				"name": "newPage004",
 				"orientation": "PORTRAIT",
@@ -42,6 +43,22 @@
 			"type": "HeaderBar",
 			"userProps": {
 				"title": "newPage004"
+			}
+		},
+		{
+			"className": ".button",
+			"id": "8ae0-f5bf-2975-8995",
+			"props": {
+				"children": [],
+				"name": "button1",
+				"parent": "d99c-be1d-1052-759c",
+				"text": "Button"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {},
+				"height": 82.75862068965517,
+				"width": 337.93103448275866
 			}
 		}
 	]

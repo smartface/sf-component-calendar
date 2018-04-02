@@ -16,7 +16,7 @@ function getOptions({
 			calendarType="georgian",
 			specialDays={},
 			calendarCore=null,
-			context=null,
+			useContext=true,
 			useDaySelection=true
 		}){
 	
@@ -28,7 +28,7 @@ function getOptions({
 		calendarType,
 		specialDays,
 		calendarCore,
-		context,
+		useContext,
 		useDaySelection
 	};
 }
@@ -43,27 +43,27 @@ function Calendar(_super, options){
 		justCurrentDays,
 		theme,
 		calendarCore,
-		context,
+		useContext,
 		useDaySelection
 	} = this.__options;
 	
-	this.styleContext = context || calendarContext(this, "calendar", theme || themeFile);
-	this.calendarCore = calendarCore || new CalendarCore();
+	this._styleContext = useContext ? calendarContext(this, "calendar", theme || themeFile) : null;
+	this._calendarCore = calendarCore || new CalendarCore();
 	this._updateCalendar = this._updateCalendar.bind(this);
-	this._unsubsciber = this.calendarCore.subscribe(this._updateCalendar);
-	this.weeks = [];
+	this._unsubsciber = this._calendarCore.subscribe(this._updateCalendar);
+	this._weeks = [];
 	
 	this.children.navbar.onNext = this.nextMonth.bind(this);
 	this.children.navbar.onPrev = this.prevMonth.bind(this);
 	
-	this.weeks.push(this.children.body.children.week1);
-	this.weeks.push(this.children.body.children.week2);
-	this.weeks.push(this.children.body.children.week3);
-	this.weeks.push(this.children.body.children.week4);
-	this.weeks.push(this.children.body.children.week5);
-	this.weeks.push(this.children.body.children.week6);
+	this._weeks.push(this.children.body.children.week1);
+	this._weeks.push(this.children.body.children.week2);
+	this._weeks.push(this.children.body.children.week3);
+	this._weeks.push(this.children.body.children.week4);
+	this._weeks.push(this.children.body.children.week5);
+	this._weeks.push(this.children.body.children.week6);
 	
-	this.weeks.forEach((row, weekIndex) => {
+	this._weeks.forEach((row, weekIndex) => {
 		if(useDaySelection !== false){
 			row.onDaySelected = this.selectDay.bind(this, weekIndex);
 		}
@@ -73,7 +73,7 @@ function Calendar(_super, options){
 	});
 }
 
-// Calendar.$$styleContext = {
+// Calendar.$$_styleContext = {
 // 	'no-context': true
 // };
 
@@ -81,7 +81,7 @@ module.exports = extend(CalendarDesign)(
 	Calendar,
 	function(proto){
 		function updateRows(days, date) {
-			this.weeks.forEach((row, index) => {
+			this._weeks.forEach((row, index) => {
 				row.setDays(days[index], this.__options.justCurrentDays);
 			});
 		}
@@ -89,8 +89,8 @@ module.exports = extend(CalendarDesign)(
 		proto._onRangeSelect = function (weekIndex, weekDayIndex) {
 			// this.onBeforeRangeSelectStart && this.onBeforeRangeSelectStart(weekIndex, weekDayIndex);
 			// this.isRangeSelection !== true && activateRangeSelection.call(this);
-			this.calendarCore.rangeSelection(weekIndex, weekDayIndex);
-			const state = this.calendarCore.getState();
+			this._calendarCore.rangeSelection(weekIndex, weekDayIndex);
+			const state = this._calendarCore.getState();
 			
 			if(state.rangeSelectionMode === 0){
 				this.onRangeSelectionStart 
@@ -107,7 +107,7 @@ module.exports = extend(CalendarDesign)(
 				lang: lang
 			});
 			
-			this.calendarCore.changeCalendar(lang, type, specialDays);
+			this._calendarCore.changeCalendar(lang, type, specialDays);
 		};
 		
 		/**
@@ -131,13 +131,13 @@ module.exports = extend(CalendarDesign)(
 				
 				let itemsCount = 0;
 				
-				this.weeks.forEach((weekItem, index) => {
+				this._weeks.forEach((weekItem, index) => {
 					if(weekItem.isEmpty() === false){
 						itemsCount++;
 					}
 				});
 				
-				const height = itemsCount*this.weeks[0].height;
+				const height = itemsCount*this._weeks[0].height;
 				
 				// this.children.body.visible = false;
 				this.children.body.dispatch({
@@ -166,18 +166,18 @@ module.exports = extend(CalendarDesign)(
 		 * @param {object} styles
 		 */
 		proto.addStyles = function(styles) {
-			this.styleContext(styles);
+			this._styleContext && this._styleContext(styles);
 		};
 		
 		proto._selectDay = function({weekIndex, weekDayIndex}) {
 			weekIndex >= 0 && weekDayIndex != null
-				&& this.weeks[weekIndex].setSelectedIndex(weekDayIndex);
+				&& this._weeks[weekIndex].setSelectedIndex(weekDayIndex);
 		};
 		
 		proto._selectDayasRange = function({weekIndex, weekDayIndexes}) {
-			if(this.weeks[weekIndex] === undefined)
+			if(this._weeks[weekIndex] === undefined)
 				throw new TypeError(`${weekIndex} Week cannot be undefined`);
-			this.weeks[weekIndex].setRangeIndex(weekDayIndexes);
+			this._weeks[weekIndex].setRangeIndex(weekDayIndexes);
 		};
 		
 		/**
@@ -189,14 +189,14 @@ module.exports = extend(CalendarDesign)(
 				type: "deselectDays"
 			});
 			const newDate = Object.assign({}, date);
-			this.calendarCore.setDate(newDate);
+			this._calendarCore.setDate(newDate);
 		};
 		
 		proto.setRangeDates = function(start, end) {
 			this.dispatch({
 				type: "deselectDays"
 			});
-			this.calendarCore.setRangeSelection(start, end);
+			this._calendarCore.setRangeSelection(start, end);
 		};
 		
 		/**
@@ -207,7 +207,7 @@ module.exports = extend(CalendarDesign)(
 			this.dispatch({
 				type: "deselectDays"
 			});
-			this.calendarCore.setSelectedDate(date);
+			this._calendarCore.setSelectedDate(date);
 		};
 		
 		/**
@@ -216,11 +216,11 @@ module.exports = extend(CalendarDesign)(
 		proto.dispose = function() {
 			this._unsubsciber();
 			this._unsubsciber = null;
-			this.calendarCore = null;
-			this.weeks = [];
-			this.styleContext(null);
+			this._calendarCore = null;
+			this._weeks = [];
+			this._styleContext(null);
 			this.dispatch = null;
-			this.styleContext = null;
+			this._styleContext = null;
 			this._calendarService = null;
 			this.currentMonth = null;
 			this.onChanged = null;
@@ -242,7 +242,7 @@ module.exports = extend(CalendarDesign)(
 					type: "resetDays"
 				});
 				
-				this.calendarCore.nextMonth();
+				this._calendarCore.nextMonth();
 				this.onMonthChange && this.onMonthChange(this.currentMonth.nextMonth.normalizedDate);
 			}
 		};
@@ -252,7 +252,7 @@ module.exports = extend(CalendarDesign)(
 		 *
 		 */
 		proto.now = function(){
-			this.calendarCore.now();
+			this._calendarCore.now();
 		};
 		
 		/**
@@ -270,14 +270,14 @@ module.exports = extend(CalendarDesign)(
 				this.dispatch({
 					type: "resetDays"
 				});
-				this.calendarCore.prevMonth();
+				this._calendarCore.prevMonth();
 				this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
 			}
 		};
 		
 		proto.selectDay = function(weekIndex, weekDayIndex){
-			this.calendarCore.selectDay(weekIndex, weekDayIndex);
-			this.onDaySelect && this.onDaySelect(this.calendarCore.getState().selectedDays || []);
+			this._calendarCore.selectDay(weekIndex, weekDayIndex);
+			this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
 		};
 	}
 );
