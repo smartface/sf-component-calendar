@@ -24,10 +24,10 @@ var output = "";
 classNames.forEach(className => {
   const template = `{{#module name="${className}"}}{{>docs}}{{/module}}`;
 
-  output += jsdoc2md.renderSync({ data: templateData, template: template })+'\n';
-  // fs.writeFileSync(path.resolve(outputDir, `${className}.md`), output);
+  output = jsdoc2md.renderSync({ data: templateData, template: template })+'\n';
+  fs.writeFileSync(path.resolve(outputDir, `${className}.md`), output);
 });
 
 
 // const output = jsdoc2md.renderSync({ data: templateData, template: "{{>modules}}" });
-fs.writeFileSync(path.resolve(outputDir, `Api.md`), output);
+// fs.writeFileSync(path.resolve(outputDir, `Api.md`), output);
