@@ -22,10 +22,7 @@ var output = "";
 
 /* create a documentation file for each class */
 classNames.forEach(className => {
-  const template = 
-  `{{#module name="${className}"}}
-    {{>members~}}
-  {{/module}}`;
+  const template = `{{#module name="${className}"}}{{>docs}}{{/module}}`;
 
   output += jsdoc2md.renderSync({ data: templateData, template: template })+'\n';
   // fs.writeFileSync(path.resolve(outputDir, `${className}.md`), output);

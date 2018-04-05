@@ -1,10 +1,10 @@
- /**
- * Smartface Calendar Component
- * @module Calendar
- * @type {object}
- * @author Cenk Cetinkaya <cenk.cetinkaya@smartface.io>
- * @copyright Smartface 2018
- */
+/**
+* Smartface Calendar Component
+* @module Calendar
+* @type {object}
+* @author Cenk Cetinkaya <cenk.cetinkaya@smartface.io>
+* @copyright Smartface 2018
+*/
 
 /**
  * @typedef {Object} DateDTO

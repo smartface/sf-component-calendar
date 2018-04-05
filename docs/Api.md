@@ -1,4 +1,28 @@
-    <a name="module_Calendar..Calendar"></a>
+<a name="module_Calendar"></a>
+
+## Calendar : <code>object</code>
+Smartface Calendar Component
+
+**Author**: Cenk Cetinkaya <cenk.cetinkaya@smartface.io>  
+**Copyright**: Smartface 2018  
+
+* [Calendar](#module_Calendar) : <code>object</code>
+    * [~Calendar](#module_Calendar..Calendar)
+        * [new Calendar(options)](#new_module_Calendar..Calendar_new)
+        * [.changeCalendar(lang, type, specialDays)](#module_Calendar..Calendar+changeCalendar)
+        * [.addStyles(styles)](#module_Calendar..Calendar+addStyles)
+        * [.setDate(date)](#module_Calendar..Calendar+setDate)
+        * [.setRangeDates(start, end)](#module_Calendar..Calendar+setRangeDates)
+        * [.setSelectedDate(date)](#module_Calendar..Calendar+setSelectedDate)
+        * [.dispose()](#module_Calendar..Calendar+dispose)
+        * [.nextMonth()](#module_Calendar..Calendar+nextMonth)
+        * [.now()](#module_Calendar..Calendar+now)
+        * [.prevMonth()](#module_Calendar..Calendar+prevMonth)
+        * [.selectDay(weekIndex, weekDayIndex, notify)](#module_Calendar..Calendar+selectDay)
+    * [~DateDTO](#module_Calendar..DateDTO) : <code>Object</code>
+    * [~DateInfoDTO](#module_Calendar..DateInfoDTO) : <code>Object</code>
+
+<a name="module_Calendar..Calendar"></a>
 
 ### Calendar~Calendar
 **Kind**: inner class of [<code>Calendar</code>](#module_Calendar)  
@@ -184,7 +208,23 @@ Selects a day by week and day index
 | daymonthInfo | <code>Calendar~DayMonthInfoDTO</code> | 
 
 
-    <a name="module_CalendarCore..CalendarCore"></a>
+<a name="module_CalendarCore"></a>
+
+## CalendarCore
+Smartface Calendar Component
+
+**Copyright**: Smartface 2018  
+
+* [CalendarCore](#module_CalendarCore)
+    * [~CalendarCore](#module_CalendarCore..CalendarCore)
+        * [.setRangeSelection(start, end)](#module_CalendarCore..CalendarCore+setRangeSelection)
+    * [~getInitialState()](#module_CalendarCore..getInitialState) ⇒ <code>object</code>
+    * [~notify()](#module_CalendarCore..notify)
+    * [~calculateDatePos(startDayOfMonth, day)](#module_CalendarCore..calculateDatePos)
+    * [~getDateData(date, month)](#module_CalendarCore..getDateData) ⇒ <code>Calendar~DateInfo</code>
+    * [~getDatePos(date, month, notValue)](#module_CalendarCore..getDatePos) ⇒ <code>Object</code> \| <code>\*</code>
+
+<a name="module_CalendarCore..CalendarCore"></a>
 
 ### CalendarCore~CalendarCore
 **Kind**: inner class of [<code>CalendarCore</code>](#module_CalendarCore)  
@@ -251,12 +291,15 @@ Calculates week and weekday indexes in the month
 | notValue | <code>object</code> | <code></code> | 
 
 
-    <a name="exp_module_CalendarTypes--module.exports"></a>
+<a name="module_CalendarTypes"></a>
 
-### module.exports : <code>enum</code> ⏏
+## CalendarTypes
+<a name="module_CalendarTypes..CalendarTypes"></a>
+
+### CalendarTypes~CalendarTypes : <code>enum</code>
 Enum for tri-state values.
 
-**Kind**: Exported enum  
+**Kind**: inner enum of [<code>CalendarTypes</code>](#module_CalendarTypes)  
 **Read only**: true  
 **Properties**
 
@@ -266,7 +309,27 @@ Enum for tri-state values.
 | GREGORIAN | <code>string</code> | <code>&quot;gregorian&quot;</code> | 
 
 
-    <a name="module_CalendarWeekly..CalendarWeekly"></a>
+<a name="module_CalendarWeekly"></a>
+
+## CalendarWeekly : <code>function</code>
+Smartface Calendar Component
+
+**Author**: Cenk Cetinkaya <cenk.cetinkaya@smartface.io>  
+**Copyright**: Smartface 2018  
+
+* [CalendarWeekly](#module_CalendarWeekly) : <code>function</code>
+    * [~CalendarWeekly](#module_CalendarWeekly..CalendarWeekly)
+        * [new CalendarWeekly(options)](#new_module_CalendarWeekly..CalendarWeekly_new)
+        * [.nextMonth()](#module_CalendarWeekly..CalendarWeekly+nextMonth)
+        * [.selectDay(weekIndex, weekDayIndex, notify)](#module_CalendarWeekly..CalendarWeekly+selectDay)
+        * [.prevMonth()](#module_CalendarWeekly..CalendarWeekly+prevMonth)
+        * [.nextWeek()](#module_CalendarWeekly..CalendarWeekly+nextWeek)
+        * [.prevWeek()](#module_CalendarWeekly..CalendarWeekly+prevWeek)
+        * [.changeCalendar(lang, type, specialDays)](#module_CalendarWeekly..CalendarWeekly+changeCalendar)
+        * [.setSelectedDate(date)](#module_CalendarWeekly..CalendarWeekly+setSelectedDate)
+    * [~onDaySelect](#module_CalendarWeekly..onDaySelect) : <code>function</code>
+
+<a name="module_CalendarWeekly..CalendarWeekly"></a>
 
 ### CalendarWeekly~CalendarWeekly
 **Kind**: inner class of [<code>CalendarWeekly</code>](#module_CalendarWeekly)  
@@ -389,8 +452,8 @@ Called when some days are selected.
 
 **Kind**: inner typedef of [<code>CalendarWeekly</code>](#module_CalendarWeekly)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| {@link | <code>Calendar~DateInfoDTO</code> | Calendar~DateInfoDTO} |
+| Type | Description |
+| --- | --- |
+| <code>Calendar~DateInfoDTO</code> | [Calendar~DateInfoDTO](Calendar~DateInfoDTO) |
 
 

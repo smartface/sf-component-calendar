@@ -7,9 +7,9 @@
  * @readonly
  * @enum {string}
  */
-module.exports = {
-  /** @type {string} */
+const CalendarTypes = {
   HIJRI: "hijri",
-  /** @type {string} */
   GREGORIAN: "gregorian"
 };
+
+module.exports = CalendarTypes;

@@ -1,11 +1,11 @@
- /**
- * Smartface Calendar Component
- * @module CalendarWeekly
- * @type {function}
- * @author Cenk Cetinkaya <cenk.cetinkaya@smartface.io>
- * @copyright Smartface 2018
- */
- 
+/**
+* Smartface Calendar Component
+* @module CalendarWeekly
+* @type {function}
+* @author Cenk Cetinkaya <cenk.cetinkaya@smartface.io>
+* @copyright Smartface 2018
+*/
+
 const extend = require('js-base/core/extend');
 const CalendarCore = require("./CalendarCore");
 const CalendarWeeklyDesign = require('library/CalendarWeekly');
@@ -54,7 +54,7 @@ function CalendarWeekly(_super, options) {
  * Called when some days are selected.
  * 
  * @callback onDaySelect
- * @param {Calendar~DateInfoDTO} {@link Calendar~DateInfoDTO}
+ * @param {Calendar~DateInfoDTO} - {@link Calendar~DateInfoDTO}
  */
 
 
