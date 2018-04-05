@@ -1,6 +1,3 @@
-/* 
-		You can modify its contents.
-*/
 const extend = require('js-base/core/extend');
 
 const CalendarListDesign = require('library/CalendarList');

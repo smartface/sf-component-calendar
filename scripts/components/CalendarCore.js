@@ -1,12 +1,17 @@
+ /**
+ * Smartface Calendar Component
+ * @module CalendarCore
+ * @copyright Smartface 2018
+ */
+
 const createService = require("../services/CalendarService").default;
 const extend = require('js-base/core/extend');
 const merge = require("@smartface/styler/lib/utils/merge");
 const moment = require("moment");
 
-//Private methods
 /**
  * Returns initial state
- * @return {object}
+ * @returns {object}
  */
 function getInitialState(){
 	return {
@@ -86,7 +91,7 @@ function calculateDatePosinPrev(startDayOfMonth, daysCountPrevMonth, day){
  * @param {object} date
  * @param {object} month
  * @throw {TypeError}
- * @return {DateInfo}
+ * @returns {Calendar~DateInfo}
  */
 function getDateData(date, month){
 	const pos = getDatePos(date, month);
@@ -180,7 +185,7 @@ function getDayData(weekIndex, weekDayIndex, currentMonth) {
  * @param {object} date
  * @param {object} month
  * @param {object} notValue
- * @return {{weekIndex:number, weekDayIndex:number}|*}
+ * @returns {{weekIndex:number, weekDayIndex:number}|*}
  */
 function getDatePos(date, month, notValue=null){
 	const monthPos = (date.month === month.date.month && 'current')
@@ -318,7 +323,7 @@ CalendarCore.prototype._selectDay = function() {
 
 /**
  * @private
- * @param {{start:DateInfoVO, end:DateInfoVO, current:object}} start
+ * @param {{start:Calendar~DateInfoDTO, end:Calendar~DateInfoDTO, current:object}} start
  */
 CalendarCore.prototype._getRange = function({start, end, state=null}) {
 	start = start.date;
