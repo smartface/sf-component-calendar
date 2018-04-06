@@ -16,16 +16,23 @@
 					"b59b-815d-e541-320e",
 					"8da3-f6cf-bad0-0a60",
 					"2c9e-2356-2ac6-4bc1",
-					"19f4-dcea-53f7-ab99",
 					"bebe-bb6a-d4f0-a386"
 				],
 				"name": "__library__",
 				"orientation": "PORTRAIT",
-				"parent": null
+				"parent": null,
+				"text": "f359"
 			},
 			"type": "Page",
 			"userProps": {
 				"borderColor": "rgba( 0, 0, 0, 0.88 )",
+				"font": {
+					"family": "FontAwesome",
+					"style": "Regular",
+					"bold": false,
+					"italic": false
+				},
+				"text": "f359",
 				"visible": false
 			},
 			"version": "6.6.3"
@@ -59,7 +66,7 @@
 		},
 		{
 			"className": ".calendar-self",
-			"hiddenComponent": false,
+			"hiddenComponent": true,
 			"id": "940ab35f",
 			"props": {
 				"children": [
@@ -105,11 +112,11 @@
 					"flexWrap": "WRAP"
 				},
 				"height": 46,
-				"left": 63,
+				"left": 35,
 				"maxHeight": null,
 				"minHeight": null,
 				"paddingBottom": null,
-				"top": 4,
+				"top": 131,
 				"width": 285.95890410958907
 			}
 		},
@@ -268,8 +275,8 @@
 					"flexDirection": "ROW"
 				},
 				"height": 40,
-				"left": 17.24137931034483,
-				"top": 324.1379310344828,
+				"left": 8,
+				"top": 248,
 				"width": 355
 			}
 		},
@@ -280,30 +287,14 @@
 				"children": [],
 				"name": "prevMonth",
 				"parent": "7d0c86e9",
-				"text": "<"
+				"text": ""
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Button",
 			"userProps": {
-				"backgroundColor": "rgba( 0, 161, 241, 0 )",
-				"bottom": 0,
-				"flexProps": {
-					"flexGrow": null,
-					"positionType": "ABSOLUTE"
-				},
-				"font": {
-					"bold": false,
-					"size": 20
-				},
-				"height": null,
-				"left": 0,
-				"text": "<",
-				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 94, 94, 94, 1 )",
-				"top": 0,
-				"width": 40
+				"text": ""
 			}
 		},
 		{
@@ -344,29 +335,20 @@
 				"children": [],
 				"name": "nextMonth",
 				"parent": "7d0c86e9",
-				"text": ">"
+				"text": ""
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Button",
 			"userProps": {
-				"bottom": 0,
-				"font": {
-					"bold": false,
-					"size": 20
-				},
 				"right": 0,
-				"text": ">",
-				"textAlignment": "MIDCENTER",
-				"textColor": "rgba( 94, 94, 94, 1 )",
-				"top": 0,
-				"width": 40
+				"text": ""
 			}
 		},
 		{
 			"className": "",
-			"hiddenComponent": true,
+			"hiddenComponent": false,
 			"id": "7072-558c-2327-9bd4",
 			"props": {
 				"children": [
@@ -386,15 +368,15 @@
 			"type": "FlexLayout",
 			"userProps": {
 				"flexProps": {},
-				"height": 306.6666666666667,
-				"left": 12.06896551724138,
-				"top": 284.48275862068965,
-				"width": 353.3333333333333
+				"height": 247.3684210526316,
+				"left": 9,
+				"top": 341,
+				"width": 356.140350877193
 			}
 		},
 		{
 			"className": ".flexLayout",
-			"hiddenComponent": true,
+			"hiddenComponent": false,
 			"id": "0fa7-a5b2-8617-502b",
 			"props": {
 				"children": [
@@ -418,16 +400,16 @@
 					"flexDirection": "ROW"
 				},
 				"height": 63.28767227799925,
-				"left": 22,
+				"left": 10.526315789473685,
 				"paddingLeft": 3,
 				"paddingRight": 3,
-				"top": 323,
+				"top": 635.0877192982457,
 				"width": 344.6575426075557
 			}
 		},
 		{
 			"className": ".label",
-			"hiddenComponent": true,
+			"hiddenComponent": false,
 			"id": "b59b-815d-e541-320e",
 			"props": {
 				"children": [],
@@ -442,9 +424,10 @@
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,
+				"flexProps": {},
 				"height": 63.150682841261776,
-				"left": 17.917088099888392,
-				"top": 482.78372628348217,
+				"left": 145,
+				"top": 283,
 				"width": 60.95890410958904
 			}
 		},
@@ -719,7 +702,7 @@
 		},
 		{
 			"className": ".flexLayout",
-			"hiddenComponent": true,
+			"hiddenComponent": false,
 			"id": "8da3-f6cf-bad0-0a60",
 			"props": {
 				"children": [
@@ -736,8 +719,8 @@
 				"backgroundColor": "rgba( 235, 235, 235, 1 )",
 				"flexProps": {},
 				"height": 40,
-				"left": 13,
-				"top": 14,
+				"left": 39,
+				"top": 196,
 				"width": 293.42105263157896
 			}
 		},
@@ -921,10 +904,10 @@
 			"type": "FlexLayout",
 			"userProps": {
 				"flexProps": {},
-				"height": 65,
-				"left": 129.31034482758622,
-				"top": 384.4827586206897,
-				"width": 80
+				"height": 63.15789473684211,
+				"left": 231,
+				"top": 285,
+				"width": 80.70175438596492
 			}
 		},
 		{
@@ -1062,105 +1045,8 @@
 			"userProps": {}
 		},
 		{
-			"className": ".scrollView",
-			"hiddenComponent": true,
-			"id": "19f4-dcea-53f7-ab99",
-			"props": {
-				"children": [
-					"787c-3f2d-fe10-f7ec",
-					"ba8a-a35a-da3f-df24"
-				],
-				"name": "calendarList",
-				"parent": "3365675e"
-			},
-			"source": {
-				"page": "__library__"
-			},
-			"type": "ScrollView",
-			"userProps": {
-				"bottom": 0,
-				"height": null,
-				"left": 0,
-				"right": 0,
-				"top": 0,
-				"width": null
-			}
-		},
-		{
-			"className": ".flexLayout .calendar-self",
-			"hiddenComponent": false,
-			"id": "787c-3f2d-fe10-f7ec",
-			"props": {
-				"children": [],
-				"name": "currentMonth",
-				"parent": "19f4-dcea-53f7-ab99"
-			},
-			"source": {
-				"page": "__library__",
-				"type": "calendar",
-				"id": "940ab35f"
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"backgroundColor": "rgba( 255, 255, 255, 1 )",
-				"flex": {
-					"justifyContent": 0,
-					"alignItems": 4,
-					"alignContent": 1,
-					"positionType": 0
-				},
-				"flexProps": {
-					"justifyContent": "FLEX_START",
-					"alignItems": "STRETCH",
-					"alignContent": "FLEX_START",
-					"positionType": "RELATIVE"
-				},
-				"height": null,
-				"left": 0,
-				"right": 0,
-				"top": 0,
-				"width": null
-			}
-		},
-		{
-			"className": ".flexLayout .calendar-self",
-			"hiddenComponent": false,
-			"id": "ba8a-a35a-da3f-df24",
-			"props": {
-				"children": [],
-				"name": "nextMonth",
-				"parent": "19f4-dcea-53f7-ab99"
-			},
-			"source": {
-				"page": "__library__",
-				"type": "calendar",
-				"id": "940ab35f"
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"backgroundColor": "rgba( 255, 255, 255, 1 )",
-				"flex": {
-					"justifyContent": 0,
-					"alignItems": 4,
-					"alignContent": 1,
-					"positionType": 0
-				},
-				"flexProps": {
-					"justifyContent": "FLEX_START",
-					"alignItems": "STRETCH",
-					"alignContent": "FLEX_START",
-					"positionType": "RELATIVE"
-				},
-				"height": null,
-				"left": 0,
-				"right": 0,
-				"top": 0,
-				"width": null
-			}
-		},
-		{
 			"className": ".calendarWeekly",
-			"hiddenComponent": true,
+			"hiddenComponent": false,
 			"id": "bebe-bb6a-d4f0-a386",
 			"props": {
 				"children": [
@@ -1177,9 +1063,9 @@
 			"type": "FlexLayout",
 			"userProps": {
 				"flexProps": {},
-				"left": 0,
+				"left": -5.2631578947368425,
 				"right": 0,
-				"top": 96.66666666666667
+				"top": 636.8421052631579
 			}
 		},
 		{

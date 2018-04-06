@@ -77,11 +77,12 @@
 				"font": {
 					"size": 14
 				},
-				"height": 33.69862907811215,
+				"height": 35,
+				"left": 207,
 				"right": 20,
 				"textAlignment": "MIDCENTER",
 				"top": 465,
-				"width": 146.68263887104234
+				"width": 147
 			}
 		},
 		{
@@ -241,12 +242,13 @@
 				"font": {
 					"size": 10
 				},
-				"height": 33.69862907811215,
+				"height": 35,
+				"left": 206,
 				"right": 20,
 				"text": "Ozel Gunler",
 				"textAlignment": "MIDCENTER",
-				"top": 421,
-				"width": 153.2615862394634
+				"top": 413,
+				"width": 145
 			}
 		},
 		{
