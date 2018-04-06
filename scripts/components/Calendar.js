@@ -1,9 +1,8 @@
 /**
-* Smartface Calendar Component
-* @module Calendar
-* @type {object}
-* @author Cenk Cetinkaya <cenk.cetinkaya@smartface.io>
-* @copyright Smartface 2018
+ * Smartface Calendar Component
+ * @module Calendar
+ * @type {class}
+ * @copyright Smartface 2018
 */
 
 /**
@@ -11,24 +10,30 @@
  * @property {number} day
  * @property {number} month
  * @property {number} year
- */
+*/
 
 /**
  * @typedef DayMonthInfoDTO
  * @property {string} longName
  * @property {string} shortName
- * 
+ */
+ 
+/** 
  * @typedef DayInfoDTO
  * @property {number} weekDay
  * @property {string} longName
  * @property {string} shortName
  * @property {Array.<string>} specialDay
- * 
+ */ 
+ 
+/** 
  * @typedef LocaleDateDTO
  * @property {string} day
  * @property {string} month
  * @property {string} year
- * 
+ */
+
+/** 
  * @typedef {Object} DateInfoDTO
  * @property {Calendar~LocaleDateDTO} localeDate
  * @property {Calendar~DateDTO} date
@@ -36,7 +41,14 @@
  * @property {Calendar~DayMonthInfoDTO} daymonthInfo
  */
  
-
+/**
+ * @typedef CalendarOptions
+ * @property {boolean} [useRangeSelection=true] - Activate range selection
+ * @property {Object} [theme=null] - Sets custom theme
+ * @property {boolean} [justCurrentDays=false] - To display only the month days
+ * @property {boolean} [useContext=true] - To use internal calendar-context
+ */
+ 
 const CalendarDesign = require('library/Calendar');
 const CalendarCore = require("./CalendarCore");
 const extend = require('js-base/core/extend');
@@ -47,24 +59,16 @@ function getOptions({
 			useRangeSelection=true,
 			theme=null,
 			justCurrentDays=false,
-			lang="en",
-			calendarType="georgian",
-			specialDays={},
 			calendarCore=null,
 			useContext=true,
-			useDaySelection=true
 		}){
 	
 	return {
 		justCurrentDays,
 		useRangeSelection,
 		theme,
-		lang,
-		calendarType,
-		specialDays,
 		calendarCore,
-		useContext,
-		useDaySelection
+		useContext
 	};
 }
 
@@ -89,7 +93,7 @@ function getOptions({
  *	myCalendar.setSelectedDate({month:2, year:2017, day:12});
  * 
  * @class
- * @param {object} options
+ * @param {CalendarOptions} options
  */
 function Calendar(_super, options) {
 	_super(this);
@@ -101,8 +105,7 @@ function Calendar(_super, options) {
 		justCurrentDays,
 		theme,
 		calendarCore,
-		useContext,
-		useDaySelection
+		useContext
 	} = this.__options;
 	
 	this._styleContext = useContext ? calendarContext(this, "calendar", theme || themeFile) : null;
@@ -122,11 +125,10 @@ function Calendar(_super, options) {
 	this._weeks.push(this.children.body.children.week6);
 	
 	this._weeks.forEach((row, weekIndex) => {
-		if(useDaySelection !== false){
+		if(useRangeSelection === false) {
 			row.onDaySelect = this.selectDay.bind(this, weekIndex);
-		}
-		if(useRangeSelection !== false){
-			row.onRangeSelect = this._onRangeSelect.bind(this, weekIndex);
+		} else if(useRangeSelection !== false) {
+			row.onDaySelect = this._onSelectRange.bind(this, weekIndex);
 		}
 	});
 }
@@ -139,7 +141,7 @@ function updateRows(days, date) {
 	});
 }
 
-Calendar.prototype._onRangeSelect = function (weekIndex, weekDayIndex) {
+Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
 	// this.onBeforeRangeSelectStart && this.onBeforeRangeSelectStart(weekIndex, weekDayIndex);
 	// this.isRangeSelection !== true && activateRangeSelection.call(this);
 	this._calendarCore.rangeSelection(weekIndex, weekDayIndex);
@@ -156,11 +158,11 @@ Calendar.prototype._onRangeSelect = function (weekIndex, weekDayIndex) {
 
 /**
  * Changes calendar creating new calendar data and resets view
-
+ * 
  **Supported Calendars:**
   - CalendarTypes.HIJRI
   - CalendarTypes.GREGORIAN
-
+ * 
  **Supported Languages:**
   - Turkish : "tr"
   - German : "de"
@@ -170,11 +172,11 @@ Calendar.prototype._onRangeSelect = function (weekIndex, weekDayIndex) {
   - Dutch : "nl"
    and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
  * 
- * @param {string} lang - Language code like 'en, en-US, tr, ar-SA etc.'
- * @param {string} type - Calendar type, values can only be gregorian or hijri.
- * @param {(object|null)} specialDays - Specialdays objects
+ * @param {string} [lang="en"] - Language code like 'en, en-US, tr, ar-SA etc.'
+ * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
+ * @param {(object|null)} [specialDays=null] - Specialdays objects
  */
-Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
+ Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
 	this.dispatch({
 		type: "changeCalendar",
 		lang: lang
@@ -211,7 +213,7 @@ Calendar.prototype._updateCalendar = function(newState, oldState){
 			}
 		});
 		
-		const height = itemsCount*this._weeks[0].height;
+		const height = itemsCount * this._weeks[0].height;
 		
 		// this.children.body.visible = false;
 		this.children.body.dispatch({
@@ -253,6 +255,10 @@ Calendar.prototype._selectDayasRange = function({weekIndex, weekDayIndexes}) {
 	if(this._weeks[weekIndex] === undefined)
 		throw new TypeError(`${weekIndex} Week cannot be undefined`);
 	this._weeks[weekIndex].setRangeIndex(weekDayIndexes);
+};
+
+Calendar.prototype._onLongPress = function({weekIndex, weekDayIndexes}) {
+	this.onLongPress && this.onLongPress(weekIndex, weekDayIndexes);
 };
 
 /**
@@ -310,7 +316,9 @@ Calendar.prototype.dispose = function() {
 
 /**
  * Changes current to next month
- *
+ * 
+ * @fires onBeforeMonthChange
+ * @fires onMonthChange
  */
 Calendar.prototype.nextMonth = function() {
 	if(this.onBeforeMonthChange &&
@@ -338,7 +346,8 @@ Calendar.prototype.now = function(){
 
 /**
  * Changes current to previous month
- *
+ * @fires onBeforeMonthChange
+ * @fires onMonthChange
  */
 Calendar.prototype.prevMonth = function() {
 	if(this.onBeforeMonthChange &&
@@ -361,7 +370,7 @@ Calendar.prototype.prevMonth = function() {
  * 
  * @param {number} weekIndex - Calendar row index
  * @param {number} weekDayIndex - Calendar column index
- * @param {bool} notify - If fires selection event or not.
+ * @param {boolean} [notify=true] - If fires selection event or not.
  */
 Calendar.prototype.selectDay = function(weekIndex, weekDayIndex, notify=true){
 	this._calendarCore.selectDay(weekIndex, weekDayIndex);
@@ -370,5 +379,6 @@ Calendar.prototype.selectDay = function(weekIndex, weekDayIndex, notify=true){
 // Calendar.$$_styleContext = {
 // 	'no-context': true
 // };
+
 
 module.exports = CalendarComp;

@@ -1,12 +1,11 @@
 <a name="module_Calendar"></a>
 
-## Calendar : <code>object</code>
+## Calendar : <code>class</code>
 Smartface Calendar Component
 
-**Author**: Cenk Cetinkaya <cenk.cetinkaya@smartface.io>  
 **Copyright**: Smartface 2018  
 
-* [Calendar](#module_Calendar) : <code>object</code>
+* [Calendar](#module_Calendar) : <code>class</code>
     * [~Calendar](#module_Calendar..Calendar)
         * [new Calendar(options)](#new_module_Calendar..Calendar_new)
         * [.changeCalendar(lang, type, specialDays)](#module_Calendar..Calendar+changeCalendar)
@@ -20,6 +19,9 @@ Smartface Calendar Component
         * [.prevMonth()](#module_Calendar..Calendar+prevMonth)
         * [.selectDay(weekIndex, weekDayIndex, notify)](#module_Calendar..Calendar+selectDay)
     * [~DateDTO](#module_Calendar..DateDTO) : <code>Object</code>
+    * [~DayMonthInfoDTO](#module_Calendar..DayMonthInfoDTO)
+    * [~DayInfoDTO](#module_Calendar..DayInfoDTO)
+    * [~LocaleDateDTO](#module_Calendar..LocaleDateDTO)
     * [~DateInfoDTO](#module_Calendar..DateInfoDTO) : <code>Object</code>
 
 <a name="module_Calendar..Calendar"></a>
@@ -185,6 +187,42 @@ Selects a day by week and day index
 | month | <code>number</code> | 
 | year | <code>number</code> | 
 
+<a name="module_Calendar..DayMonthInfoDTO"></a>
+
+### Calendar~DayMonthInfoDTO
+**Kind**: inner typedef of [<code>Calendar</code>](#module_Calendar)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| longName | <code>string</code> | 
+| shortName | <code>string</code> | 
+
+<a name="module_Calendar..DayInfoDTO"></a>
+
+### Calendar~DayInfoDTO
+**Kind**: inner typedef of [<code>Calendar</code>](#module_Calendar)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| weekDay | <code>number</code> | 
+| longName | <code>string</code> | 
+| shortName | <code>string</code> | 
+| specialDay | <code>Array.&lt;string&gt;</code> | 
+
+<a name="module_Calendar..LocaleDateDTO"></a>
+
+### Calendar~LocaleDateDTO
+**Kind**: inner typedef of [<code>Calendar</code>](#module_Calendar)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| day | <code>string</code> | 
+| month | <code>string</code> | 
+| year | <code>string</code> | 
+
 <a name="module_Calendar..DateInfoDTO"></a>
 
 ### Calendar~DateInfoDTO : <code>Object</code>
@@ -193,15 +231,6 @@ Selects a day by week and day index
 
 | Name | Type |
 | --- | --- |
-| longName | <code>string</code> | 
-| shortName | <code>string</code> | 
-| weekDay | <code>number</code> | 
-| longName | <code>string</code> | 
-| shortName | <code>string</code> | 
-| specialDay | <code>Array.&lt;string&gt;</code> | 
-| day | <code>string</code> | 
-| month | <code>string</code> | 
-| year | <code>string</code> | 
 | localeDate | <code>Calendar~LocaleDateDTO</code> | 
 | date | <code>Calendar~DateDTO</code> | 
 | dayInfo | <code>Calendar~DayInfoDTO</code> | 

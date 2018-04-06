@@ -1,6 +1,3 @@
-/* 
-		You can modify its contents.
-*/
 const extend = require('js-base/core/extend');
 const CalendarWeekRowDesign = require('library/CalendarWeekRow');
 
@@ -25,7 +22,7 @@ function selectRange(indexes){
 }
 
 function onDayLongPress(index) {
-	this.onRangeSelect && this.onRangeSelect(index);
+	this.onDayLongPress && this.onDayLongPress(index);
 }
 
 function addDaySelectEvent(day, index){

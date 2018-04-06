@@ -1,8 +1,7 @@
 /**
 * Smartface Calendar Component
 * @module CalendarWeekly
-* @type {function}
-* @author Cenk Cetinkaya <cenk.cetinkaya@smartface.io>
+* @type {class}
 * @copyright Smartface 2018
 */
 
@@ -145,11 +144,11 @@ CalendarWeekly.prototype.prevWeek = function(){
 
 /**
  * Changes calendar creating new calendar data and resets view
- 
+ * 
  **Supported Calendars:**
   - CalendarTypes.HIJRI
   - CalendarTypes.GREGORIAN
-
+ * 
  **Supported Languages:**
   - Turkish : "tr"
   - German : "de"
@@ -158,10 +157,10 @@ CalendarWeekly.prototype.prevWeek = function(){
   - Arabic (Saudi): "ar-sa"
   - Dutch : "nl"
    and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
-
- * @param {string} lang - Language code like 'en, en-US, tr, ar-SA etc.'
- * @param {string} type - Calendar type, values can only be gregorian or hijri.
- * @param {(object|null)} specialDays - Specialdays objects
+ * 
+ * @param {string} [lang="en"] - Language code like 'en, en-US, tr, ar-SA etc.'
+ * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
+ * @param {(object|null)} [specialDays=null] - Specialdays objects
  */
 CalendarWeekly.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
 	this.dispatch({

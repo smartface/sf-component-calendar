@@ -1,6 +1,7 @@
  /**
  * Smartface Calendar Component
  * @module CalendarCore
+ * @type {class}
  * @copyright Smartface 2018
  */
 
@@ -265,7 +266,11 @@ function validateRangePoint(point, month){
 }
 
 /**
+ * CalendarCore Application Service
+ * Manages all application logic and state of the calendar.
+ * 
  * @constructor
+ * @class
  */
 const CalendarCore = function CalendarCore() {
 	this._specialDays = {};
@@ -278,10 +283,20 @@ const CalendarCore = function CalendarCore() {
 	this.__locked = false;
 };
 
+/**
+ * Reset calendar state
+ *
+ */
 CalendarCore.prototype.reset = function() {
 	this.setState(getInitialState());
 };
 
+/**
+ * Selects a day in current month
+ * 
+ * @param {number} weekIndex
+ * @param {number} weekDayIndex
+ */
 CalendarCore.prototype.selectDay = function(weekIndex, weekDayIndex) {
 	if(this._state.rangeSelectionMode === RangeSelection.STARTED) {
 		this.completeRangeSelection(weekIndex, weekDayIndex);
@@ -295,6 +310,10 @@ CalendarCore.prototype.selectDay = function(weekIndex, weekDayIndex) {
 	}
 };
 
+/**
+ * Removes selection
+ *
+ */
 CalendarCore.prototype.clearSelection = function() {
 	if(this._state.rangeSelection !== null){
 		this.setState({
@@ -402,6 +421,10 @@ CalendarCore.prototype.nextWeek = function(){
 	}
 };
 
+/**
+ * Changes week status to previous
+ * 
+ */
 CalendarCore.prototype.prevWeek = function(){
 	if(this._state.weekIndex === 0){
 		const state = this._prevMonth();
@@ -436,17 +459,31 @@ CalendarCore.prototype.setRangeSelection = function(start, end){
 	this.setState(state);
 };
 
+/**
+ * Activates range selection and changes its status
+ * 
+ * @param {number} weekIndex
+ * @param {numer} weekDayIndex
+ */
 CalendarCore.prototype.rangeSelection = function(weekIndex, weekDayIndex){
-	if(this._state.rangeSelectionMode === RangeSelection.IDLE){
-		this.startRangeSelection(weekIndex, weekDayIndex);
-	} else if(this._state.rangeSelectionMode === RangeSelection.STARTED){
-		this.completeRangeSelection(weekIndex, weekDayIndex);
-	} else {
-		this.clearSelection();
-		this.startRangeSelection(weekIndex, weekDayIndex);
+	switch(this._state.rangeSelectionMode){
+		case RangeSelection.IDLE:
+			this.startRangeSelection(weekIndex, weekDayIndex);
+			break;
+		case RangeSelection.STARTED:
+			this.completeRangeSelection(weekIndex, weekDayIndex);
+			break;
+		default:
+			this.clearSelection();
 	}
 };
 
+/**
+ * Activates to start calendar.
+ * 
+ * @param {number} weekIndex
+ * @param {numer} weekDayIndex
+ */
 CalendarCore.prototype.startRangeSelection = function(weekIndex, weekDayIndex) {
 	if(this._state.rangeSelectionMode === RangeSelection.IDLE){
 		const day = getDayData(weekIndex, weekDayIndex, this._state.month);
@@ -463,6 +500,12 @@ CalendarCore.prototype.startRangeSelection = function(weekIndex, weekDayIndex) {
 	}
 };
 
+/**
+ * Completes range selection
+ * 
+ * @param {number} weekIndex
+ * @param {numer} weekDayIndex
+ */
 CalendarCore.prototype.completeRangeSelection = function(weekIndex, weekDayIndex) {
 	if(this._state.rangeSelectionMode === RangeSelection.STARTED){
 		const day = getDayData(weekIndex, weekDayIndex, this._state.month);
@@ -481,25 +524,48 @@ CalendarCore.prototype.completeRangeSelection = function(weekIndex, weekDayIndex
 	return true;
 };
 
+/**
+ * Adds callback to subscription list
+ * 
+ * @param {function} cb
+ */
 CalendarCore.prototype.subscribe = function(cb){
 	this.subscribers.push(cb);
 	return () => this.unsubscribe(cb);
 };
 
+/**
+ * Removes callback from subscription list
+ * 
+ * @param {function} cb
+ */
 CalendarCore.prototype.unsubscribe = function(cb){
 	this.subscribers = this.filter(_cb => cb != _cb);
 };
 
-// to inject a context dispatcher
+/**
+ * Selects today
+ *
+ */
 CalendarCore.prototype.now = function() {
 	this.setDate(new Date());
 	this._selectDay();
 };
 
+/**
+ * Gets week day index of selected date
+ * 
+ * @returns {number}
+ */
 CalendarCore.prototype.getWeekDay = function(){
 	return calculateDatePos(this._state.month.startDayOfMonth, this._state.month.date.day);
 };
 
+/**
+ * Gets latest state
+ * 
+ * @returns {Object}
+ */
 CalendarCore.prototype.getState = function(){
     return this._state;
 };
@@ -528,10 +594,19 @@ CalendarCore.prototype._nextMonth = function() {
 	return state;
 };
 
+/**
+ * Changes calendar current to next month
+ *
+ */
 CalendarCore.prototype.nextMonth = function() {
 	this.setState(this._nextMonth());
 };
 
+/**
+ * Updates state
+ * 
+ * @param {Object}
+ */
 CalendarCore.prototype.setState = function(state){
 	const oldState = this._state;
 	const newState = Object.assign({}, this._state, state);
@@ -540,6 +615,10 @@ CalendarCore.prototype.setState = function(state){
 	!this.__locked && notify.call(this, newState, oldState);
 };
 
+/**
+ * @private
+ *
+ */
 CalendarCore.prototype._setDate = function(date) {
 	let dateObj = date;
 	
@@ -559,15 +638,45 @@ CalendarCore.prototype._setDate = function(date) {
 	};
 };
 
+/**
+ * Changes current selected month
+ * 
+ * @param {Calendar~DateDtO} date
+ */
 CalendarCore.prototype.setDate = function(date) {
 	this.setState(this._setDate(date));
 };
 
+/**
+ * Changes current selected date
+ * 
+ * @param {Calendar~DateDtO} date
+ */
 CalendarCore.prototype.setSelectedDate = function(date) {
 	this.setDate(date);
 	this._selectDay();
 };
 
+/**
+ * Changes calendar creating new calendar data and resets view
+ * 
+ **Supported Calendars:**
+  - CalendarTypes.HIJRI
+  - CalendarTypes.GREGORIAN
+ * 
+ **Supported Languages:**
+  - Turkish : "tr"
+  - German : "de"
+  - French : "fr"
+  - Arabic: "ar"
+  - Arabic (Saudi): "ar-sa"
+  - Dutch : "nl"
+   and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
+ * 
+ * @param {string} [lang="en"] - Language code like 'en, en-US, tr, ar-SA etc.'
+ * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
+ * @param {(object|null)} [specialDays=null] - Specialdays objects
+ */
 CalendarCore.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
 	this._specialDays = specialDays || this._specialDays;
 	this._calendarService = createService({
@@ -607,6 +716,10 @@ CalendarCore.prototype._prevMonth = function() {
 	return state;
 };
 
+/**
+ * Changes calendar month to previous month
+ *
+ */
 CalendarCore.prototype.prevMonth = function() {
 	this.setState(this._prevMonth());
 };
