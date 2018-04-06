@@ -7,7 +7,7 @@ const CalendarNavBar = extend(CalendarNavBarDesign)(
 	function(_super, props){
 		// initalizes super class for this scope
 		_super(this, props || {} );
-		
+
 		this.children.nextMonth.onPress = function(){
 			this.onNext();
 		}.bind(this);

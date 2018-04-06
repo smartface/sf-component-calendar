@@ -36,12 +36,19 @@
 				},
 				"&_arrow": {
 					"flexGrow": 1,
-					"textColor": "#B1B1B4",
+					"textColor": "rgba( 94, 94, 94, 1 )",
 					"backgroundColor": "rgba( 255, 255, 255, 0 )",
 					"bottom": 0,
 					"flexProps": {
 						"positionType": "ABSOLUTE"
-					}
+					},
+					"width": 40,
+					"top": 0,
+					"font": {
+						"size": 20,
+						"family": "FontAwesome5FreeSolid"
+					},
+					"textAlignment": "MIDCENTER"
 				},
 				"&_label": {
 					"textColor": "#000000"
