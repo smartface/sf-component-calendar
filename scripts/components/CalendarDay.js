@@ -12,6 +12,8 @@ const CalendarDay = extend(CalendarDayDesign)(
 			let timeout;
 			let isLongPress = false;
 			
+			this.onPress && this.onPress.call(this, e);
+			
 			timeout = setTimeout(() => {
 				isLongPress = true;
 				isLongPress && this.onLongPress && this.onLongPress.call(this, e);
@@ -20,7 +22,7 @@ const CalendarDay = extend(CalendarDayDesign)(
 			this.children.dayNum.onTouchEnded = () => {
 				clearTimeout(timeout);
 				this.children.dayNum.onTouchEnded = function(){};
-				!isLongPress && this.onPress && this.onPress.call(this, e);
+				// !isLongPress && this.onPress && this.onPress.call(this, e);
 				isLongPress = false;
 			};
 		};

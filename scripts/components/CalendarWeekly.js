@@ -201,10 +201,10 @@ CalendarWeekly.prototype._selectDay = function(currentWeek, {weekIndex, weekDayI
 /**
  * Subscribes to calendar-core and renders calendar when state is changed
  * @private
- * @param {object} newState
  * @param {object} oldState
+ * @param {object} newState
  */
-CalendarWeekly.prototype._updateCalendar = function(newState, oldState){
+CalendarWeekly.prototype._updateCalendar = function(oldState, newState){
 	this.currentMonth = newState.month;
 	this.children.week.setDays(newState.month.days[newState.weekIndex]);
 

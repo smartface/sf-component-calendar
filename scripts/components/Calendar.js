@@ -80,17 +80,17 @@ function getOptions({
  * const {Calendar} = require('@smartface/sf-component-calendar/components');
  * const specialDaysConf = require('./specialDays.json');
  *	
- *	const myCalendar = new Calendar();
+ * const myCalendar = new Calendar();
  *	
- *	// Please use after Page:onShow event.
- *	myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
- *	// when user select a date
- *	myCalendar.onDaySelect = function(dateInfo){
+ * // Please use after Page:onShow event.
+ * myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
+ * // when user select a date
+ * myCalendar.onDaySelect = function(dateInfo){
  *	  //...
- *	}
+ * }
  *	
- *	// changing calendar date
- *	myCalendar.setSelectedDate({month:2, year:2017, day:12});
+ * // changing calendar date
+ * myCalendar.setSelectedDate({month:2, year:2017, day:12});
  * 
  * @class
  * @param {CalendarOptions} options
@@ -113,6 +113,7 @@ function Calendar(_super, options) {
 	this._updateCalendar = this._updateCalendar.bind(this);
 	this._unsubsciber = this._calendarCore.subscribe(this._updateCalendar);
 	this._weeks = [];
+	this._weekMode = false;
 	
 	this.children.navbar.onNext = this.nextMonth.bind(this);
 	this.children.navbar.onPrev = this.prevMonth.bind(this);
@@ -125,12 +126,20 @@ function Calendar(_super, options) {
 	this._weeks.push(this.children.body.children.week6);
 	
 	this._weeks.forEach((row, weekIndex) => {
+		row.onDayLongPress = this._onLongPress.bind(this, weekIndex);
 		if(useRangeSelection === false) {
 			row.onDaySelect = this.selectDay.bind(this, weekIndex);
 		} else if(useRangeSelection !== false) {
 			row.onDaySelect = this._onSelectRange.bind(this, weekIndex);
 		}
 	});
+	
+	this.children.navbar.children.nextWeek.onPress = () => {
+		this._calendarCore.nextWeek();
+	};
+	this.children.navbar.children.prevWeek.onPress = () => {
+		this._calendarCore.prevWeek();
+	};
 }
 
 const CalendarComp = extend(CalendarDesign)(Calendar);
@@ -141,10 +150,14 @@ function updateRows(days, date) {
 	});
 }
 
+/**
+ * @private
+ *
+ */
 Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
 	// this.onBeforeRangeSelectStart && this.onBeforeRangeSelectStart(weekIndex, weekDayIndex);
 	// this.isRangeSelection !== true && activateRangeSelection.call(this);
-	this._calendarCore.rangeSelection(weekIndex, weekDayIndex);
+	this._calendarCore.rangeSelection({weekIndex, weekDayIndex});
 	const state = this._calendarCore.getState();
 	
 	if(state.rangeSelectionMode === 0){
@@ -188,10 +201,10 @@ Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
 /**
  * Subscribes to calendar-core and renders calendar when state is changed
  * @private
- * @param {object} newState
  * @param {object} oldState
+ * @param {object} newState
  */
-Calendar.prototype._updateCalendar = function(newState, oldState){
+Calendar.prototype._updateCalendar = function(oldState, newState){
 	if((oldState.rangeSelectionMode === -1 && newState.rangeSelectionMode === 0)
 		|| (oldState.rangeSelectionMode === 1 && newState.rangeSelectionMode === -1)
 	){
@@ -204,28 +217,9 @@ Calendar.prototype._updateCalendar = function(newState, oldState){
 		this.currentMonth = newState.month;
 		updateRows.call(this, newState.month.days, newState.month.date);
 		this.children.navbar.setLabel(newState.month.longName+" "+newState.month.localeDate.year);
-		
-		let itemsCount = 0;
-		
-		this._weeks.forEach((weekItem, index) => {
-			if(weekItem.isEmpty() === false){
-				itemsCount++;
-			}
-		});
-		
-		const height = itemsCount * this._weeks[0].height;
-		
-		// this.children.body.visible = false;
-		this.children.body.dispatch({
-			type: "updateUserStyle",
-			userStyle: {
-				maxHeight: height,
-				height,
-			}
-		});
 	}
 	
-	newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1 
+	newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1
 		? this._selectDay.bind(this)
 		: this._selectDayasRange.bind(this)
 	);
@@ -234,7 +228,7 @@ Calendar.prototype._updateCalendar = function(newState, oldState){
 		this.children.calendarDays.children["dayName_" + index].text = day;
 	});
 	
-	this.applyLayout();
+	this._weekMode && this.setWeekMode(this._weekMode) || this.applyLayout();
 };
 
 /**
@@ -251,13 +245,74 @@ Calendar.prototype._selectDay = function({weekIndex, weekDayIndex}) {
 		&& this._weeks[weekIndex].setSelectedIndex(weekDayIndex);
 };
 
-Calendar.prototype._selectDayasRange = function({weekIndex, weekDayIndexes}) {
-	if(this._weeks[weekIndex] === undefined)
-		throw new TypeError(`${weekIndex} Week cannot be undefined`);
-	this._weeks[weekIndex].setRangeIndex(weekDayIndexes);
+/**
+ * Returns calendar weekmode
+ * 
+ * @returns {boolean}
+ *
+ */
+Calendar.prototype.getWeekMode = function(){
+	return this._weekMode;
 };
 
-Calendar.prototype._onLongPress = function({weekIndex, weekDayIndexes}) {
+/**
+ * Displays only a week row
+ * 
+ * @param {boolean} value
+ */
+Calendar.prototype.setWeekMode = function(value){
+	this._weekMode = value;
+	const weekIndex = this._calendarCore.getState().weekIndex;
+	this.children.navbar.weekMode(value);
+
+	this._weeks.forEach((row, i) => {
+		value == false 
+		? row.dispatch({
+				type: "changeUserStyle",
+				userStyle: (style) => {
+					row.setWeekMode(true);
+					
+					delete style.height;
+					style.visible = true;
+					
+					return style;
+				}
+			})
+		: row.dispatch({
+				type: "changeUserStyle",
+				userStyle: i == weekIndex
+				? (style) => {
+						style = Object.assign({}, style);
+						row.setWeekMode(true);
+						delete style.height;
+						style.visible = true;
+						
+						return style;
+					}
+				: (style) => {
+						row.setWeekMode(false);
+						style.height = 0;
+						style.visible = false;
+						
+						return style;
+					}
+			});
+	});
+			
+	this.applyLayout();
+};
+
+Calendar.prototype._selectDayasRange = function({weekIndex, weekDayIndexes, weekDayIndex}) {
+	if(this._weeks[weekIndex] === undefined)
+		throw new TypeError(`${weekIndex} Week cannot be undefined`);
+	this._weeks[weekIndex].setRangeIndex(weekDayIndexes 
+		? weekDayIndexes 
+		: weekDayIndex 
+			? [weekDayIndex]
+			: []);
+};
+
+Calendar.prototype._onLongPress = function(weekIndex, weekDayIndexes) {
 	this.onLongPress && this.onLongPress(weekIndex, weekDayIndexes);
 };
 
@@ -295,7 +350,11 @@ Calendar.prototype.setSelectedDate = function(date) {
 	this.dispatch({
 		type: "deselectDays"
 	});
-	this._calendarCore.setSelectedDate(date);
+	if(this.__options.useRangeSelection === false){
+		this._calendarCore.setSelectedDate(date);
+	} else {
+		this._calendarCore.startRangeSelection({date});
+	}
 };
 
 /**

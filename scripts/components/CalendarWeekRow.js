@@ -38,13 +38,23 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 		this.rangeIndexes = [];
 		// data && this.setDays(data);
 		this._days = ["weekDay1", "weekDay2", "weekDay3","weekDay4","weekDay5","weekDay6","weekDay7"];
+		// it's displayed in weekMode
+		this._weekMode = true;
 		this.init();
 	},
 	function(proto){
+		proto.setWeekMode = function(mode){
+			this._weekMode = mode;
+		};
+
+		proto.getWeekMode = function(){
+			return this._weekMode;
+		};
+
 		proto.activateRangeSelection = function(){
 			this.isRangeSelection = true;
 			this._days.forEach((day, index) => 
-				this.children[day].onTouch = this.onMove.bind(null, index))
+				this.children[day].onTouch = this.onMove.bind(null, index));
 		};
 		
 		proto.deactivateRangeSelection = function(){
@@ -98,7 +108,16 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 				this.children[day].setDay(days[index]);
 			});
 			
-			this.visible = !this._isEmpty;
+			this._weekMode &&
+				this.dispatch({
+					type: "changeUserStyle",
+					userStyle: (style) => {
+						this._isEmpty ? style.height = 0 : delete style.height;
+						style.visible = !this._isEmpty
+						
+						return style;
+					}
+				});
 		};
 	}
 );

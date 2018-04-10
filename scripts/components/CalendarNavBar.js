@@ -8,6 +8,21 @@ const CalendarNavBar = extend(CalendarNavBarDesign)(
 		// initalizes super class for this scope
 		_super(this, props || {} );
 
+		this.weekMode = function(mode){
+			this.children.prevWeek.dispatch({
+				type: "updateUserStyle",
+				userStyle: {
+					visible: mode
+				}
+			});
+			this.children.nextWeek.dispatch({
+				type: "updateUserStyle",
+				userStyle: {
+					visible: mode
+				}
+			});
+		};
+		
 		this.children.nextMonth.onPress = function(){
 			this.onNext();
 		}.bind(this);

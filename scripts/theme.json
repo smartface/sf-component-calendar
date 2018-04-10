@@ -35,18 +35,20 @@
 					"textColor": "#1775D0"
 				},
 				"&_arrow": {
-					"flexGrow": 1,
 					"textColor": "rgba( 94, 94, 94, 1 )",
 					"backgroundColor": "rgba( 255, 255, 255, 0 )",
 					"bottom": 0,
 					"flexProps": {
 						"positionType": "ABSOLUTE"
 					},
-					"width": 40,
+					"width": 20,
 					"top": 0,
 					"font": {
-						"size": 20,
-						"family": "FontAwesome5FreeSolid"
+						"size": 16,
+						"family": "FontAwesome5FreeSolid",
+						"style": null,
+						"bold": false,
+						"italic": false
 					},
 					"textAlignment": "MIDCENTER"
 				},
@@ -183,6 +185,18 @@
 			"&-weekend": {
 				"borderWidth": 0,
 				"textColor": "#A3A3A3"
+			}
+		},
+		".weekNav": {
+			"flex": {
+				"positionType": 0,
+				"flexGrow": 1,
+				"flexDirection": 2,
+				"flexWrap": 1
+			},
+			"flexProps": {
+				"positionType": "RELATIVE",
+				"flexDirection": "ROW"
 			}
 		}
 	},

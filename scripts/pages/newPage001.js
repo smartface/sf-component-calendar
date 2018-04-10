@@ -312,6 +312,10 @@ const NewPage001 = extend(NewPage001Design)(
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
+    this.calendar.onLongPress = () => {
+    	this.calendar.setWeekMode(true);
+    };
+    
 		this.calendar.onDaySelect = ([date]) => {
 		  if(!date)
 		    return;
@@ -348,7 +352,7 @@ const NewPage001 = extend(NewPage001Design)(
 		};
 		
 		this.children.nextPage.onPress = () => {
-			Router.go("page3");
+			this.calendar.setWeekMode(!this.calendar.getWeekMode());
 		};
 		
 		this.children.button3.onPress = () => {
@@ -365,13 +369,11 @@ const NewPage001 = extend(NewPage001Design)(
 function onShow(superOnShow) {
   superOnShow();
   
-	
-	this.calendar.onDisplayChange = function(){
-	};
+	changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
   
   this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
-// 	this.calendar.now();
 	var fn = this.calendar.nextMonth.bind(this.calendar);
+	
 	// runner.add(fn, "nextMonth");
 	// runner.add(fn, "nextMonth2");
 	// runner.add(fn, "nextMonth3");
