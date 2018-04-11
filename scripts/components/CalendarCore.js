@@ -588,13 +588,7 @@ CalendarCore.prototype.unsubscribe = function(cb) {
  *
  */
 CalendarCore.prototype.now = function() {
-	const now = new Date();
-	this.setDate(now);
-	const state = Object.assign({},
-		this._selectDay(this.getWeekDay(now))
-	);
-	
-	return state;
+	this.setSelectedDate(new Date());
 };
 
 /**

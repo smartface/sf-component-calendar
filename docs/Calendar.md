@@ -8,8 +8,10 @@ Smartface Calendar Component
 * [Calendar](#module_Calendar) : <code>class</code>
     * [~Calendar](#module_Calendar..Calendar)
         * [new Calendar(options)](#new_module_Calendar..Calendar_new)
-        * [.changeCalendar(lang, type, specialDays)](#module_Calendar..Calendar+changeCalendar)
+        * [.changeCalendar([lang], [type], [specialDays])](#module_Calendar..Calendar+changeCalendar)
         * [.addStyles(styles)](#module_Calendar..Calendar+addStyles)
+        * [.getWeekMode()](#module_Calendar..Calendar+getWeekMode) ⇒ <code>boolean</code>
+        * [.setWeekMode(value)](#module_Calendar..Calendar+setWeekMode)
         * [.setDate(date)](#module_Calendar..Calendar+setDate)
         * [.setRangeDates(start, end)](#module_Calendar..Calendar+setRangeDates)
         * [.setSelectedDate(date)](#module_Calendar..Calendar+setSelectedDate)
@@ -17,12 +19,19 @@ Smartface Calendar Component
         * [.nextMonth()](#module_Calendar..Calendar+nextMonth)
         * [.now()](#module_Calendar..Calendar+now)
         * [.prevMonth()](#module_Calendar..Calendar+prevMonth)
-        * [.selectDay(weekIndex, weekDayIndex, notify)](#module_Calendar..Calendar+selectDay)
+        * [.selectDay(weekIndex, weekDayIndex, [notify])](#module_Calendar..Calendar+selectDay)
+        * ["onRangeSelectionStart" (start)](#module_Calendar..Calendar+event_onRangeSelectionStart)
+        * ["onRangeSelectionComplete" (start, end)](#module_Calendar..Calendar+event_onRangeSelectionComplete)
+        * ["onLongPress" (weekIndex, weekDayIndex)](#module_Calendar..Calendar+event_onLongPress)
+        * ["onBeforeMonthChange" (date)](#module_Calendar..Calendar+event_onBeforeMonthChange)
+        * ["onMonthChange"](#module_Calendar..Calendar+event_onMonthChange)
+        * ["onDaySelect" (date)](#module_Calendar..Calendar+event_onDaySelect)
     * [~DateDTO](#module_Calendar..DateDTO) : <code>Object</code>
     * [~DayMonthInfoDTO](#module_Calendar..DayMonthInfoDTO)
     * [~DayInfoDTO](#module_Calendar..DayInfoDTO)
     * [~LocaleDateDTO](#module_Calendar..LocaleDateDTO)
     * [~DateInfoDTO](#module_Calendar..DateInfoDTO) : <code>Object</code>
+    * [~CalendarOptions](#module_Calendar..CalendarOptions)
 
 <a name="module_Calendar..Calendar"></a>
 
@@ -31,8 +40,10 @@ Smartface Calendar Component
 
 * [~Calendar](#module_Calendar..Calendar)
     * [new Calendar(options)](#new_module_Calendar..Calendar_new)
-    * [.changeCalendar(lang, type, specialDays)](#module_Calendar..Calendar+changeCalendar)
+    * [.changeCalendar([lang], [type], [specialDays])](#module_Calendar..Calendar+changeCalendar)
     * [.addStyles(styles)](#module_Calendar..Calendar+addStyles)
+    * [.getWeekMode()](#module_Calendar..Calendar+getWeekMode) ⇒ <code>boolean</code>
+    * [.setWeekMode(value)](#module_Calendar..Calendar+setWeekMode)
     * [.setDate(date)](#module_Calendar..Calendar+setDate)
     * [.setRangeDates(start, end)](#module_Calendar..Calendar+setRangeDates)
     * [.setSelectedDate(date)](#module_Calendar..Calendar+setSelectedDate)
@@ -40,7 +51,13 @@ Smartface Calendar Component
     * [.nextMonth()](#module_Calendar..Calendar+nextMonth)
     * [.now()](#module_Calendar..Calendar+now)
     * [.prevMonth()](#module_Calendar..Calendar+prevMonth)
-    * [.selectDay(weekIndex, weekDayIndex, notify)](#module_Calendar..Calendar+selectDay)
+    * [.selectDay(weekIndex, weekDayIndex, [notify])](#module_Calendar..Calendar+selectDay)
+    * ["onRangeSelectionStart" (start)](#module_Calendar..Calendar+event_onRangeSelectionStart)
+    * ["onRangeSelectionComplete" (start, end)](#module_Calendar..Calendar+event_onRangeSelectionComplete)
+    * ["onLongPress" (weekIndex, weekDayIndex)](#module_Calendar..Calendar+event_onLongPress)
+    * ["onBeforeMonthChange" (date)](#module_Calendar..Calendar+event_onBeforeMonthChange)
+    * ["onMonthChange"](#module_Calendar..Calendar+event_onMonthChange)
+    * ["onDaySelect" (date)](#module_Calendar..Calendar+event_onDaySelect)
 
 <a name="new_module_Calendar..Calendar_new"></a>
 
@@ -50,32 +67,34 @@ Calendar Component
 
 | Param | Type |
 | --- | --- |
-| options | <code>object</code> | 
+| options | <code>CalendarOptions</code> | 
 
 **Example**  
 ```js
 const {Calendar} = require('@smartface/sf-component-calendar/components');
 const specialDaysConf = require('./specialDays.json');
 	
-	const myCalendar = new Calendar();
+const myCalendar = new Calendar();
 	
-	// Please use after Page:onShow event.
-	myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
-	// when user select a date
-	myCalendar.onDaySelect = function(dateInfo){
+// Please use after Page:onShow event.
+myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
+// when user select a date
+myCalendar.onDaySelect = function(dateInfo){
 	  //...
-	}
+}
 	
-	// changing calendar date
-	myCalendar.setSelectedDate({month:2, year:2017, day:12});
+// changing calendar date
+myCalendar.setSelectedDate({month:2, year:2017, day:12});
 ```
 <a name="module_Calendar..Calendar+changeCalendar"></a>
 
-#### calendar.changeCalendar(lang, type, specialDays)
+#### calendar.changeCalendar([lang], [type], [specialDays])
 Changes calendar creating new calendar data and resets view
+
 *Supported Calendars:**
   - CalendarTypes.HIJRI
   - CalendarTypes.GREGORIAN
+
 *Supported Languages:**
   - Turkish : "tr"
   - German : "de"
@@ -87,11 +106,11 @@ Changes calendar creating new calendar data and resets view
 
 **Kind**: instance method of [<code>Calendar</code>](#module_Calendar..Calendar)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| lang | <code>string</code> | Language code like 'en, en-US, tr, ar-SA etc.' |
-| type | <code>string</code> | Calendar type, values can only be gregorian or hijri. |
-| specialDays | <code>object</code> \| <code>null</code> | Specialdays objects |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [lang] | <code>string</code> | <code>&quot;\&quot;en\&quot;&quot;</code> | Language code like 'en, en-US, tr, ar-SA etc.' |
+| [type] | <code>string</code> | <code>&quot;\&quot;gregorian\&quot;&quot;</code> | Calendar type, values can only be gregorian or hijri. |
+| [specialDays] | <code>object</code> \| <code>null</code> | <code></code> | Specialdays objects |
 
 <a name="module_Calendar..Calendar+addStyles"></a>
 
@@ -103,6 +122,23 @@ Changes Calendar styles
 | Param | Type | Description |
 | --- | --- | --- |
 | styles | <code>Object</code> | A style object |
+
+<a name="module_Calendar..Calendar+getWeekMode"></a>
+
+#### calendar.getWeekMode() ⇒ <code>boolean</code>
+Returns calendar weekmode
+
+**Kind**: instance method of [<code>Calendar</code>](#module_Calendar..Calendar)  
+<a name="module_Calendar..Calendar+setWeekMode"></a>
+
+#### calendar.setWeekMode(value)
+Displays only a week row
+
+**Kind**: instance method of [<code>Calendar</code>](#module_Calendar..Calendar)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>boolean</code> | 
 
 <a name="module_Calendar..Calendar+setDate"></a>
 
@@ -150,6 +186,7 @@ Disposes the Component instance
 Changes current to next month
 
 **Kind**: instance method of [<code>Calendar</code>](#module_Calendar..Calendar)  
+**Emits**: <code>event:onBeforeMonthChange</code>, <code>event:onMonthChange</code>  
 <a name="module_Calendar..Calendar+now"></a>
 
 #### calendar.now()
@@ -162,18 +199,74 @@ Changes selected date to now
 Changes current to previous month
 
 **Kind**: instance method of [<code>Calendar</code>](#module_Calendar..Calendar)  
+**Emits**: <code>event:onBeforeMonthChange</code>, <code>event:onMonthChange</code>  
 <a name="module_Calendar..Calendar+selectDay"></a>
 
-#### calendar.selectDay(weekIndex, weekDayIndex, notify)
+#### calendar.selectDay(weekIndex, weekDayIndex, [notify])
 Selects a day by week and day index
 
 **Kind**: instance method of [<code>Calendar</code>](#module_Calendar..Calendar)  
+**Emits**: <code>event:onDaySelect</code>  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| weekIndex | <code>number</code> |  | Calendar row index |
+| weekDayIndex | <code>number</code> |  | Calendar column index |
+| [notify] | <code>boolean</code> | <code>true</code> | If fires selection event or not. |
+
+<a name="module_Calendar..Calendar+event_onRangeSelectionStart"></a>
+
+#### "onRangeSelectionStart" (start)
+**Kind**: event emitted by [<code>Calendar</code>](#module_Calendar..Calendar)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| weekIndex | <code>number</code> | Calendar row index |
-| weekDayIndex | <code>number</code> | Calendar column index |
-| notify | <code>bool</code> | If fires selection event or not. |
+| start | <code>DateInfoDTO</code> | Range start date |
+
+<a name="module_Calendar..Calendar+event_onRangeSelectionComplete"></a>
+
+#### "onRangeSelectionComplete" (start, end)
+**Kind**: event emitted by [<code>Calendar</code>](#module_Calendar..Calendar)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| start | <code>DateInfoDTO</code> | Range start date |
+| end | <code>DateInfoDTO</code> | Range end date |
+
+<a name="module_Calendar..Calendar+event_onLongPress"></a>
+
+#### "onLongPress" (weekIndex, weekDayIndex)
+LongPress
+
+**Kind**: event emitted by [<code>Calendar</code>](#module_Calendar..Calendar)  
+
+| Param | Type |
+| --- | --- |
+| weekIndex | <code>number</code> | 
+| weekDayIndex | <code>number</code> | 
+
+<a name="module_Calendar..Calendar+event_onBeforeMonthChange"></a>
+
+#### "onBeforeMonthChange" (date)
+**Kind**: event emitted by [<code>Calendar</code>](#module_Calendar..Calendar)  
+
+| Param | Type |
+| --- | --- |
+| date | <code>DateDTO</code> | 
+
+<a name="module_Calendar..Calendar+event_onMonthChange"></a>
+
+#### "onMonthChange"
+**Kind**: event emitted by [<code>Calendar</code>](#module_Calendar..Calendar)  
+**Params**: <code>DateDtO</code> date  
+<a name="module_Calendar..Calendar+event_onDaySelect"></a>
+
+#### "onDaySelect" (date)
+**Kind**: event emitted by [<code>Calendar</code>](#module_Calendar..Calendar)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| date | <code>Array.&lt;DateInfoDTO&gt;</code> | Selected date |
 
 <a name="module_Calendar..DateDTO"></a>
 
@@ -235,5 +328,18 @@ Selects a day by week and day index
 | date | <code>Calendar~DateDTO</code> | 
 | dayInfo | <code>Calendar~DayInfoDTO</code> | 
 | daymonthInfo | <code>Calendar~DayMonthInfoDTO</code> | 
+
+<a name="module_Calendar..CalendarOptions"></a>
+
+### Calendar~CalendarOptions
+**Kind**: inner typedef of [<code>Calendar</code>](#module_Calendar)  
+**Properties**
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [useRangeSelection] | <code>boolean</code> | <code>true</code> | Activate range selection |
+| [theme] | <code>Object</code> | <code></code> | Sets custom theme |
+| [justCurrentDays] | <code>boolean</code> | <code>false</code> | To display only the month days |
+| [useContext] | <code>boolean</code> | <code>true</code> | To use internal calendar-context |
 
 

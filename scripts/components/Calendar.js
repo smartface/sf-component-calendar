@@ -151,8 +151,24 @@ function updateRows(days, date) {
 }
 
 /**
+ * @event
+ * @param {DateInfoDTO} start - Range start date
+ */
+Calendar.prototype.onRangeSelectionStart = function(start){};
+
+/**
+ * @event
+ * @param {DateInfoDTO} start - Range start date
+ * @param {DateInfoDTO} end - Range end date
+ */
+Calendar.prototype.onRangeSelectionComplete = function(start, end){};
+
+/**
  * @private
- *
+ * 
+ * @fires onRangeSelectionComplete
+ * @fires onRangeSelectionStart
+ * @fires onDaySelect
  */
 Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
 	// this.onBeforeRangeSelectStart && this.onBeforeRangeSelectStart(weekIndex, weekDayIndex);
@@ -161,11 +177,12 @@ Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
 	const state = this._calendarCore.getState();
 	
 	if(state.rangeSelectionMode === 0){
-		this.onRangeSelectionStart 
+		this.onRangeSelectionComplete 
 			&& this.onRangeSelectionStart(Object.assign({}, state.rangeSelection.start));
 	} else if(state.rangeSelectionMode === 1){
 		this.onRangeSelectionComplete 
 			&& this.onRangeSelectionComplete(Object.assign({}, state.rangeSelection.start), Object.assign({}, state.rangeSelection.end));
+		this.onDaySelect && this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
 	}
 };
 
@@ -266,51 +283,33 @@ Calendar.prototype.setWeekMode = function(value){
 	this.children.navbar.weekMode(value);
 
 	this._weeks.forEach((row, i) => {
-		value == false 
-		? row.dispatch({
-				type: "changeUserStyle",
-				userStyle: (style) => {
-					row.setWeekMode(true);
-					
-					delete style.height;
-					style.visible = true;
-					
-					return style;
-				}
-			})
-		: row.dispatch({
-				type: "changeUserStyle",
-				userStyle: i == weekIndex
-				? (style) => {
-						style = Object.assign({}, style);
-						row.setWeekMode(true);
-						delete style.height;
-						style.visible = true;
-						
-						return style;
-					}
-				: (style) => {
-						row.setWeekMode(false);
-						style.height = 0;
-						style.visible = false;
-						
-						return style;
-					}
-			});
+		row.setAvailable(!(value & i !== weekIndex));
+		row.invalidate();
 	});
-			
+	
 	this.applyLayout();
 };
 
 Calendar.prototype._selectDayasRange = function({weekIndex, weekDayIndexes, weekDayIndex}) {
 	if(this._weeks[weekIndex] === undefined)
 		throw new TypeError(`${weekIndex} Week cannot be undefined`);
-	this._weeks[weekIndex].setRangeIndex(weekDayIndexes 
-		? weekDayIndexes 
-		: weekDayIndex 
-			? [weekDayIndex]
-			: []);
+	this._weeks[weekIndex].setRangeIndex(
+		weekDayIndexes 
+			? weekDayIndexes 
+			: weekDayIndex 
+				? [weekDayIndex]
+				: []
+		);
 };
+
+/**
+ * LongPress
+ * @event
+ * 
+ * @param {number} weekIndex
+ * @param {number} weekDayIndex
+ */
+Calendar.prototype.onLongPress = function(weekIndex, weekDayIndexes){};
 
 Calendar.prototype._onLongPress = function(weekIndex, weekDayIndexes) {
 	this.onLongPress && this.onLongPress(weekIndex, weekDayIndexes);
@@ -374,6 +373,18 @@ Calendar.prototype.dispose = function() {
 };
 
 /**
+ * @event
+ * @param {DateDTO} date
+ */
+Calendar.prototype.onBeforeMonthChange = function(date){};
+
+/**
+ * @event
+ * @params {DateDtO} date
+ */
+Calendar.prototype.onMonthChange = function(date){};
+
+/**
  * Changes current to next month
  * 
  * @fires onBeforeMonthChange
@@ -425,8 +436,15 @@ Calendar.prototype.prevMonth = function() {
 };
 
 /**
+ * @event
+ * @param {Array.<DateInfoDTO>} date - Selected date
+ */
+Calendar.prototype.onDaySelect = function(date){};
+
+/**
  * Selects a day by week and day index
  * 
+ * @fires onDaySelect
  * @param {number} weekIndex - Calendar row index
  * @param {number} weekDayIndex - Calendar column index
  * @param {boolean} [notify=true] - If fires selection event or not.

@@ -1,12 +1,11 @@
 <a name="module_CalendarWeekly"></a>
 
-## CalendarWeekly : <code>function</code>
+## CalendarWeekly : <code>class</code>
 Smartface Calendar Component
 
-**Author**: Cenk Cetinkaya <cenk.cetinkaya@smartface.io>  
 **Copyright**: Smartface 2018  
 
-* [CalendarWeekly](#module_CalendarWeekly) : <code>function</code>
+* [CalendarWeekly](#module_CalendarWeekly) : <code>class</code>
     * [~CalendarWeekly](#module_CalendarWeekly..CalendarWeekly)
         * [new CalendarWeekly(options)](#new_module_CalendarWeekly..CalendarWeekly_new)
         * [.nextMonth()](#module_CalendarWeekly..CalendarWeekly+nextMonth)
@@ -14,7 +13,7 @@ Smartface Calendar Component
         * [.prevMonth()](#module_CalendarWeekly..CalendarWeekly+prevMonth)
         * [.nextWeek()](#module_CalendarWeekly..CalendarWeekly+nextWeek)
         * [.prevWeek()](#module_CalendarWeekly..CalendarWeekly+prevWeek)
-        * [.changeCalendar(lang, type, specialDays)](#module_CalendarWeekly..CalendarWeekly+changeCalendar)
+        * [.changeCalendar([lang], [type], [specialDays])](#module_CalendarWeekly..CalendarWeekly+changeCalendar)
         * [.setSelectedDate(date)](#module_CalendarWeekly..CalendarWeekly+setSelectedDate)
     * [~onDaySelect](#module_CalendarWeekly..onDaySelect) : <code>function</code>
 
@@ -30,7 +29,7 @@ Smartface Calendar Component
     * [.prevMonth()](#module_CalendarWeekly..CalendarWeekly+prevMonth)
     * [.nextWeek()](#module_CalendarWeekly..CalendarWeekly+nextWeek)
     * [.prevWeek()](#module_CalendarWeekly..CalendarWeekly+prevWeek)
-    * [.changeCalendar(lang, type, specialDays)](#module_CalendarWeekly..CalendarWeekly+changeCalendar)
+    * [.changeCalendar([lang], [type], [specialDays])](#module_CalendarWeekly..CalendarWeekly+changeCalendar)
     * [.setSelectedDate(date)](#module_CalendarWeekly..CalendarWeekly+setSelectedDate)
 
 <a name="new_module_CalendarWeekly..CalendarWeekly_new"></a>
@@ -101,11 +100,13 @@ the previous month and its last week.
 **Kind**: instance method of [<code>CalendarWeekly</code>](#module_CalendarWeekly..CalendarWeekly)  
 <a name="module_CalendarWeekly..CalendarWeekly+changeCalendar"></a>
 
-#### calendarWeekly.changeCalendar(lang, type, specialDays)
+#### calendarWeekly.changeCalendar([lang], [type], [specialDays])
 Changes calendar creating new calendar data and resets view
+
 *Supported Calendars:**
   - CalendarTypes.HIJRI
   - CalendarTypes.GREGORIAN
+
 *Supported Languages:**
   - Turkish : "tr"
   - German : "de"
@@ -117,11 +118,11 @@ Changes calendar creating new calendar data and resets view
 
 **Kind**: instance method of [<code>CalendarWeekly</code>](#module_CalendarWeekly..CalendarWeekly)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| lang | <code>string</code> | Language code like 'en, en-US, tr, ar-SA etc.' |
-| type | <code>string</code> | Calendar type, values can only be gregorian or hijri. |
-| specialDays | <code>object</code> \| <code>null</code> | Specialdays objects |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [lang] | <code>string</code> | <code>&quot;\&quot;en\&quot;&quot;</code> | Language code like 'en, en-US, tr, ar-SA etc.' |
+| [type] | <code>string</code> | <code>&quot;\&quot;gregorian\&quot;&quot;</code> | Calendar type, values can only be gregorian or hijri. |
+| [specialDays] | <code>object</code> \| <code>null</code> | <code></code> | Specialdays objects |
 
 <a name="module_CalendarWeekly..CalendarWeekly+setSelectedDate"></a>
 
