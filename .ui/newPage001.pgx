@@ -280,7 +280,7 @@
 				"children": [],
 				"name": "nextPage",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Haftalik Takvim"
+				"text": "Week Toggle"
 			},
 			"type": "Button",
 			"userProps": {
@@ -289,7 +289,7 @@
 				},
 				"height": 46.66666666666667,
 				"left": 20,
-				"text": "Haftalik Takvim",
+				"text": "Week Toggle",
 				"top": 473.33333333333337,
 				"width": 138.33333333333334
 			}
@@ -301,18 +301,18 @@
 				"children": [],
 				"name": "buttonRange",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Range"
+				"text": "Add Range"
 			},
 			"type": "Button",
 			"userProps": {
 				"flexProps": {
 					"positionType": "ABSOLUTE"
 				},
-				"height": 51.66666666666667,
+				"height": 51.85185185185185,
 				"left": 20,
-				"text": "Range",
+				"text": "Add Range",
 				"top": 410,
-				"width": 101.66666666666667
+				"width": 135.1851851851852
 			}
 		}
 	]

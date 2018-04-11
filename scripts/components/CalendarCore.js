@@ -319,7 +319,8 @@ CalendarCore.prototype.selectDay = function(weekIndex, weekDayIndex) {
 			rangeSelection: null,
 			rangeSelectionMode: RangeSelection.IDLE,
 			selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
-			selectedDaysByIndex: [{ weekIndex, weekDayIndex }]
+			selectedDaysByIndex: [{ weekIndex, weekDayIndex }],
+			weekIndex: weekIndex
 		});
 	}
 };
