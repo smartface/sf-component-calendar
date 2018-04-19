@@ -283,7 +283,8 @@ Calendar.prototype.setWeekMode = function(value){
 	this.children.navbar.weekMode(value);
 
 	this._weeks.forEach((row, i) => {
-		row.setAvailable(!(value & i !== weekIndex));
+		const available = !(value & i !== weekIndex);
+		row.setAvailable(available);
 		row.invalidate();
 	});
 	

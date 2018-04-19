@@ -21,7 +21,7 @@ const CalendarBody = extend(CalendarBodyDesign)(
 				userStyle: (style) => {
 					style.height = null;
 					style.flexGrow = 0;
-					style.alignSelf = null;
+					delete style.alignSelf;
 					
 					return style;
 				}

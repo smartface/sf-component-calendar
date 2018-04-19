@@ -22,7 +22,7 @@ const CalendarWeekNavBar = extend(CalendarWeekNavBarDesign)(
           return style;
         }
       });
-    }
+    };
     
     this.showComp = function() {
       this.dispatch({
@@ -34,7 +34,7 @@ const CalendarWeekNavBar = extend(CalendarWeekNavBarDesign)(
           return style;
         }
       });
-    }
+    };
   }
 
 );

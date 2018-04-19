@@ -123,8 +123,9 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 			this.dispatch({
 				type: "changeUserStyle",
 				userStyle: (style) => {
-					this.isAvailable() ? delete style.height : style.height = 0;
-					style.visible = this.isAvailable();
+					this.isAvailable() ? style.height = 40 : style.height = 0;
+					style.visible = this.isAvailable() === 1;
+					// this._available && alert(this.isAvailable());
 
 					return style;
 				}
