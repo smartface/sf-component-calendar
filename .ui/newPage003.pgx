@@ -24,7 +24,7 @@
 					"positionType": "ABSOLUTE"
 				}
 			},
-			"version": "6.6.4-rc.15"
+			"version": "6.7.0"
 		},
 		{
 			"className": ".statusBar",

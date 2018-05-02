@@ -1,0 +1,145 @@
+{
+	"components": [
+		{
+			"className": ".flexLayout",
+			"hiddenComponent": false,
+			"id": "7d0c86e9",
+			"props": {
+				"children": [
+					"5cc2-1e00-0417-3a7b",
+					"60ab-accc-1c8c-7938",
+					"8a46-4b2f-e952-44aa",
+					"17e5-d47d-bb19-e744",
+					"ceee-b6c4-49c9-968f"
+				],
+				"name": "calendarNavBar",
+				"parent": "3365675e"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1,
+					"flexDirection": "ROW",
+					"flexWrap": "WRAP"
+				},
+				"height": 45,
+				"left": 13,
+				"maxHeight": null,
+				"minHeight": null,
+				"paddingBottom": null,
+				"top": 47,
+				"width": 348
+			}
+		},
+		{
+			"className": ".label .calendar.header_navbar_monthLabel",
+			"id": "5cc2-1e00-0417-3a7b",
+			"props": {
+				"children": [],
+				"name": "monthLabel",
+				"parent": "7d0c86e9",
+				"text": "Label"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "TextView",
+			"userProps": {
+				"backgroundColor": "rgba( 255, 255, 255, 0 )",
+				"bottom": 0,
+				"flexProps": {
+					"flexGrow": null,
+					"positionType": "ABSOLUTE"
+				},
+				"height": null,
+				"left": 0,
+				"marginBottom": null,
+				"marginLeft": null,
+				"marginRight": null,
+				"right": 0,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		},
+		{
+			"className": ".calendar.header_navbar_arrow",
+			"id": "60ab-accc-1c8c-7938",
+			"props": {
+				"children": [],
+				"name": "prevWeek",
+				"parent": "7d0c86e9",
+				"text": "ÃÂÃÂ¯ÃÂÃÂÃÂÃÂ"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Button",
+			"userProps": {
+				"left": 30,
+				"text": "ÃÂÃÂ¯ÃÂÃÂÃÂÃÂ",
+				"visible": false,
+				"width": 30
+			}
+		},
+		{
+			"className": ".calendar.header_navbar_arrow",
+			"id": "8a46-4b2f-e952-44aa",
+			"props": {
+				"children": [],
+				"name": "nextMonth",
+				"parent": "7d0c86e9",
+				"text": "ï"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Button",
+			"userProps": {
+				"right": 0,
+				"text": "ï"
+			}
+		},
+		{
+			"className": ".calendar.header_navbar_arrow",
+			"id": "17e5-d47d-bb19-e744",
+			"props": {
+				"children": [],
+				"name": "nextWeek",
+				"parent": "7d0c86e9",
+				"text": "ÃÂÃÂ¯ÃÂÃÂÃÂÃÂ"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Button",
+			"userProps": {
+				"right": 30,
+				"text": "ÃÂÃÂ¯ÃÂÃÂÃÂÃÂ",
+				"visible": false,
+				"width": 30
+			}
+		},
+		{
+			"className": ".calendar.header_navbar_arrow",
+			"id": "ceee-b6c4-49c9-968f",
+			"props": {
+				"children": [],
+				"name": "prevMonth",
+				"parent": "7d0c86e9",
+				"text": "ï"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Button",
+			"userProps": {
+				"text": "ï"
+			}
+		}
+	]
+}

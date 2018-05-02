@@ -1,0 +1,128 @@
+{
+	"components": [
+		{
+			"className": "",
+			"hiddenComponent": false,
+			"id": "7072-558c-2327-9bd4",
+			"props": {
+				"children": [
+					"160a-e3da-dd17-a04b",
+					"e23f-de3b-26d9-822b",
+					"1ed5-fec1-d52f-aba7",
+					"e7a9-ea88-a3a5-1e8e",
+					"53ee-d636-31c6-0b15",
+					"4029-4a03-02af-5a27"
+				],
+				"name": "calendarBody",
+				"parent": "3365675e"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {},
+				"height": 247.3684210526316,
+				"left": 9,
+				"top": 341,
+				"width": 356.140350877193
+			}
+		},
+		{
+			"className": ".calendar.weekRow",
+			"hiddenComponent": false,
+			"id": "160a-e3da-dd17-a04b",
+			"props": {
+				"children": [],
+				"name": "week1",
+				"parent": "7072-558c-2327-9bd4"
+			},
+			"source": {
+				"page": "__library__",
+				"id": "dd15823d"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.weekRow",
+			"hiddenComponent": false,
+			"id": "e23f-de3b-26d9-822b",
+			"props": {
+				"children": [],
+				"name": "week2",
+				"parent": "7072-558c-2327-9bd4"
+			},
+			"source": {
+				"page": "__library__",
+				"id": "dd15823d"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.weekRow",
+			"hiddenComponent": false,
+			"id": "1ed5-fec1-d52f-aba7",
+			"props": {
+				"children": [],
+				"name": "week3",
+				"parent": "7072-558c-2327-9bd4"
+			},
+			"source": {
+				"page": "__library__",
+				"id": "dd15823d"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.weekRow",
+			"hiddenComponent": false,
+			"id": "e7a9-ea88-a3a5-1e8e",
+			"props": {
+				"children": [],
+				"name": "week4",
+				"parent": "7072-558c-2327-9bd4"
+			},
+			"source": {
+				"page": "__library__",
+				"id": "dd15823d"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.weekRow",
+			"hiddenComponent": false,
+			"id": "53ee-d636-31c6-0b15",
+			"props": {
+				"children": [],
+				"name": "week5",
+				"parent": "7072-558c-2327-9bd4"
+			},
+			"source": {
+				"page": "__library__",
+				"id": "dd15823d"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.weekRow",
+			"hiddenComponent": false,
+			"id": "4029-4a03-02af-5a27",
+			"props": {
+				"children": [],
+				"name": "week6",
+				"parent": "7072-558c-2327-9bd4"
+			},
+			"source": {
+				"page": "__library__",
+				"id": "dd15823d"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		}
+	]
+}

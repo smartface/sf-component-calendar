@@ -1,0 +1,42 @@
+{
+	"components": [
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "2c9e-2356-2ac6-4bc1",
+			"props": {
+				"children": [
+					"0ac0-352d-b080-552b"
+				],
+				"name": "calendarDay",
+				"parent": "3365675e"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {},
+				"height": 63.15789473684211,
+				"left": 177.77777777777777,
+				"top": 516.6666666666666,
+				"width": 80.70175438596492
+			}
+		},
+		{
+			"className": ".calendar.day_label",
+			"id": "0ac0-352d-b080-552b",
+			"props": {
+				"children": [],
+				"name": "dayNum",
+				"parent": "2c9e-2356-2ac6-4bc1",
+				"text": "2"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Button",
+			"userProps": {}
+		}
+	]
+}

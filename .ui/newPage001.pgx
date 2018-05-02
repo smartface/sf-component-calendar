@@ -31,7 +31,7 @@
 				"orientation": "AUTO",
 				"safeAreaEnabled": true
 			},
-			"version": "6.6.4"
+			"version": "6.7.0"
 		},
 		{
 			"className": ".statusBar",
@@ -69,7 +69,7 @@
 				"parent": "e876-9805-6b68-f0e4",
 				"text": "Label"
 			},
-			"type": "Label",
+			"type": "TextView",
 			"userProps": {
 				"flexProps": {
 					"positionType": "ABSOLUTE"
@@ -234,7 +234,7 @@
 				"parent": "e876-9805-6b68-f0e4",
 				"text": "Ozel Gunler"
 			},
-			"type": "Label",
+			"type": "TextView",
 			"userProps": {
 				"flexProps": {
 					"positionType": "ABSOLUTE"

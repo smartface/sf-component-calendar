@@ -1,0 +1,179 @@
+{
+	"components": [
+		{
+			"className": ".calendar.weekRow",
+			"hiddenComponent": false,
+			"id": "dd15823d",
+			"props": {
+				"children": [
+					"88c3-e710-2ceb-4dc9",
+					"e996-d749-d0f0-e478",
+					"835d-9b32-1a11-022b",
+					"f365-dfef-0e8f-9fbb",
+					"cd2b-23cf-0388-9857",
+					"4ed4-4d76-c0df-ef4d",
+					"2c79-cebf-6b5f-8f99",
+					"2af5-9afa-a34c-83c6"
+				],
+				"name": "calendarWeekRow",
+				"parent": "3365675e"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"backgroundColor": "rgba( 245, 126, 126, 0 )",
+				"flexProps": {
+					"flexDirection": "ROW"
+				},
+				"height": 40,
+				"left": 9.375,
+				"top": 303.125,
+				"width": 355
+			}
+		},
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "88c3-e710-2ceb-4dc9",
+			"props": {
+				"children": [],
+				"name": "weekDay1",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarDay",
+				"id": "2c9e-2356-2ac6-4bc1"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "e996-d749-d0f0-e478",
+			"props": {
+				"children": [],
+				"name": "weekDay2",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarDay",
+				"id": "2c9e-2356-2ac6-4bc1"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "835d-9b32-1a11-022b",
+			"props": {
+				"children": [],
+				"name": "weekDay3",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarDay",
+				"id": "2c9e-2356-2ac6-4bc1"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "f365-dfef-0e8f-9fbb",
+			"props": {
+				"children": [],
+				"name": "weekDay4",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarDay",
+				"id": "2c9e-2356-2ac6-4bc1"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "cd2b-23cf-0388-9857",
+			"props": {
+				"children": [],
+				"name": "weekDay5",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarDay",
+				"id": "2c9e-2356-2ac6-4bc1"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "4ed4-4d76-c0df-ef4d",
+			"props": {
+				"children": [],
+				"name": "weekDay6",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarDay",
+				"id": "2c9e-2356-2ac6-4bc1"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar.day",
+			"hiddenComponent": false,
+			"id": "2c79-cebf-6b5f-8f99",
+			"props": {
+				"children": [],
+				"name": "weekDay7",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendarDay",
+				"id": "2c9e-2356-2ac6-4bc1"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": "",
+			"id": "2af5-9afa-a34c-83c6",
+			"props": {
+				"children": [],
+				"name": "line",
+				"parent": "dd15823d"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"backgroundColor": "rgba( 228, 228, 228, 1 )",
+				"bottom": 1,
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 1,
+				"left": 0,
+				"right": 0
+			}
+		}
+	]
+}

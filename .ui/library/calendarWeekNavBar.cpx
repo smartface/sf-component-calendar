@@ -1,0 +1,83 @@
+{
+	"components": [
+		{
+			"className": ".flexLayout",
+			"hiddenComponent": false,
+			"id": "7077-fc45-8da4-3327",
+			"props": {
+				"children": [
+					"09bc-b849-4381-fb0c",
+					"f6e4-2e97-eca3-a288"
+				],
+				"name": "calendarWeekNavBar",
+				"parent": "3365675e"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1,
+					"flexDirection": "ROW",
+					"flexWrap": "WRAP"
+				},
+				"height": 20,
+				"left": 46.875,
+				"maxHeight": null,
+				"minHeight": null,
+				"paddingBottom": null,
+				"top": 240.625,
+				"width": 285.9375
+			}
+		},
+		{
+			"className": ".calendar.header_navbar_arrow",
+			"id": "09bc-b849-4381-fb0c",
+			"props": {
+				"children": [],
+				"name": "nextWeek",
+				"parent": "7077-fc45-8da4-3327",
+				"text": "ï"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Button",
+			"userProps": {
+				"font": {
+					"size": 16,
+					"family": "FontAwesome5FreeSolid",
+					"bold": false,
+					"italic": false
+				},
+				"right": 0,
+				"text": "ï"
+			}
+		},
+		{
+			"className": ".calendar.header_navbar_arrow",
+			"id": "f6e4-2e97-eca3-a288",
+			"props": {
+				"children": [],
+				"name": "prevWeek",
+				"parent": "7077-fc45-8da4-3327",
+				"text": "ï"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "Button",
+			"userProps": {
+				"font": {
+					"size": 16,
+					"family": "FontAwesome5FreeSolid",
+					"bold": false,
+					"italic": false
+				},
+				"text": "ï"
+			}
+		}
+	]
+}

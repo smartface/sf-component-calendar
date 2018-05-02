@@ -1,0 +1,61 @@
+{
+	"components": [
+		{
+			"className": ".flexLayout",
+			"hiddenComponent": false,
+			"id": "8da3-f6cf-bad0-0a60",
+			"props": {
+				"children": [
+					"99ff-244c-3195-c8c1"
+				],
+				"name": "calendarYear",
+				"parent": "3365675e"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"backgroundColor": "rgba( 235, 235, 235, 1 )",
+				"flexProps": {},
+				"height": 40,
+				"left": 12.5,
+				"top": 587.5,
+				"width": 293.42105263157896
+			}
+		},
+		{
+			"className": ".label",
+			"id": "99ff-244c-3195-c8c1",
+			"props": {
+				"children": [],
+				"name": "yearLabel",
+				"parent": "8da3-f6cf-bad0-0a60",
+				"text": "Label"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "TextView",
+			"userProps": {
+				"backgroundColor": "rgba( 255, 255, 255, 0 )",
+				"bottom": 0,
+				"flexProps": {
+					"flexGrow": 1,
+					"positionType": "ABSOLUTE"
+				},
+				"font": {
+					"size": 12
+				},
+				"height": null,
+				"left": 10,
+				"marginLeft": null,
+				"marginRight": 10,
+				"right": null,
+				"textAlignment": "MIDLEFT",
+				"top": 0,
+				"width": 80
+			}
+		}
+	]
+}

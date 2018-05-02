@@ -43,6 +43,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@smartface/html-to-text": "^1.0.6",
     "moment": "2.18.1",
     "moment-hijri": "2.0.1"
   },
