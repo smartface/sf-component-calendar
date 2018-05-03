@@ -2,9 +2,9 @@
 	"config": {
 		"theme": {
 			"currentTheme": "workspaceTheme",
-			"baseTheme": "workspaceTheme",
+			"baseTheme": "defaultTheme",
 			"themes": [
-				"calendarapp5Theme",
+				"calendarappTheme",
 				"defaultTheme",
 				"workspaceTheme"
 			]
@@ -18,6 +18,6 @@
 			"themesFolder": "themes",
 			"themesDistFolder": "scripts/themes"
 		},
-		"version": "6.7.0-rc.4"
+		"version": "6.7.0"
 	}
 }

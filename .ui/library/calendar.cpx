@@ -2,7 +2,7 @@
 	"components": [
 		{
 			"className": ".calendar-self",
-			"hiddenComponent": true,
+			"hiddenComponent": false,
 			"id": "940ab35f",
 			"props": {
 				"children": [
