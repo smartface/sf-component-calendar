@@ -12,7 +12,7 @@
 				"name": "__library__",
 				"orientation": "PORTRAIT",
 				"parent": null,
-				"text": "f359"
+				"text": ""
 			},
 			"type": "Page",
 			"userProps": {
@@ -23,7 +23,7 @@
 					"bold": false,
 					"italic": false
 				},
-				"text": "f359",
+				"text": "",
 				"visible": false
 			},
 			"version": "6.7.0"
