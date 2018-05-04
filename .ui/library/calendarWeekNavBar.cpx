@@ -24,11 +24,11 @@
 					"flexWrap": "WRAP"
 				},
 				"height": 20,
-				"left": 46.875,
+				"left": 38.25431034482759,
 				"maxHeight": null,
 				"minHeight": null,
 				"paddingBottom": null,
-				"top": 240.625,
+				"top": 266.48706896551727,
 				"width": 285.9375
 			}
 		},
@@ -39,7 +39,7 @@
 				"children": [],
 				"name": "nextWeek",
 				"parent": "7077-fc45-8da4-3327",
-				"text": "ï"
+				"text": ""
 			},
 			"source": {
 				"page": "__library__"
@@ -53,7 +53,7 @@
 					"italic": false
 				},
 				"right": 0,
-				"text": "ï"
+				"text": ""
 			}
 		},
 		{
@@ -63,7 +63,7 @@
 				"children": [],
 				"name": "prevWeek",
 				"parent": "7077-fc45-8da4-3327",
-				"text": "ï"
+				"text": ""
 			},
 			"source": {
 				"page": "__library__"
@@ -76,7 +76,7 @@
 					"bold": false,
 					"italic": false
 				},
-				"text": "ï"
+				"text": ""
 			}
 		}
 	]

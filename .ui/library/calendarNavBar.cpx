@@ -93,7 +93,7 @@
 				"children": [],
 				"name": "nextMonth",
 				"parent": "7d0c86e9",
-				"text": "ï"
+				"text": ""
 			},
 			"source": {
 				"page": "__library__"
@@ -101,7 +101,7 @@
 			"type": "Button",
 			"userProps": {
 				"right": 0,
-				"text": "ï"
+				"text": ""
 			}
 		},
 		{
@@ -131,14 +131,14 @@
 				"children": [],
 				"name": "prevMonth",
 				"parent": "7d0c86e9",
-				"text": "ï"
+				"text": ""
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Button",
 			"userProps": {
-				"text": "ï"
+				"text": ""
 			}
 		}
 	]
