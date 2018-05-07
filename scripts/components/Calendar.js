@@ -245,7 +245,7 @@ Calendar.prototype._updateCalendar = function(oldState, newState){
 		this.children.calendarDays.children["dayName_" + index].text = day;
 	});
 	
-	this._weekMode && this.setWeekMode(this._weekMode) || this.applyLayout();
+	this._weekMode && this.setWeekMode(this._weekMode) || this.children.body.applyLayout();
 };
 
 /**
