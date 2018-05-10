@@ -87,18 +87,31 @@
 				"playerPath": null
 			},
 			"keys": {
+<<<<<<< HEAD
 				"project3DesKey": "5k3ERaBa0uTm9p2/tMAGG3pB1AXA7+cG",
 				"projectEncryptedKey": "VxFgdz0mlVPnXV9q2bj12y8Gh70jtUSRF5CeWt+k9j4exa7jvQQ8/hfzawwicnlwSwiCqvZsCMknBx4DDT4WLiGcmtDgeeAx+W33lz3MD+0hIkZ+cjuEMriGWhDaZ1THmPpTXKft2PoRQnsIG+Mj3YAQhfupFA2iOE6cb3TMhRw="
+=======
+				"project3DesKey": "epi+63aLzp4Rbm7IlWjuXFhsGfogwLoj",
+				"projectEncryptedKey": "dVIhXmJ4y1kId9i9PqkVGSA8zgEvLwzdVO9Eyy3bZghyM2cJANQtStZ/PaxDeGKOb4J6Ef2rjeLxdi542t4YHQYeGhsoyBtxRphN2H1icr2G1HtsH/EayTiql26EFC80kw2t/GdXD0cxT20zVaCigjSEx71JODpmhX2xlbDu9Fw="
+>>>>>>> fix library move
 			}
 		},
 		"output": {
 			"ios": {
 				"outputFolder": "output/iOS",
+<<<<<<< HEAD
 				"bundleIdentifier": "io.smartface.calendar"
 			},
 			"android": {
 				"outputFolder": "output/Android",
 				"packageName": "io.smartface.calendar"
+=======
+				"bundleIdentifier": "io.smartface.demo"
+			},
+			"android": {
+				"outputFolder": "output/Android",
+				"packageName": "io.smartface.demo"
+>>>>>>> fix library move
 			}
 		},
 		"tempFolder": "output/.tmp"
