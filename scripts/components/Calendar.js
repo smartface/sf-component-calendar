@@ -140,13 +140,14 @@ function Calendar(_super, options) {
 	this.children.navbar.children.prevWeek.onPress = () => {
 		this._calendarCore.prevWeek();
 	};
+	
 }
 
 const CalendarComp = extend(CalendarDesign)(Calendar);
 
 function updateRows(days, date) {
 	this._weeks.forEach((row, index) => {
-		row.setDays(days[index], this.__options.justCurrentDays);
+		row.setDays(days[index], this.__options.justCurrentDays, true);
 	});
 }
 
@@ -231,9 +232,17 @@ Calendar.prototype._updateCalendar = function(oldState, newState){
 	}
 	
 	if(newState.month !== oldState.month){
+		this.dispatch({
+			type: "resetDays"
+		});
+		
 		this.currentMonth = newState.month;
 		updateRows.call(this, newState.month.days, newState.month.date);
 		this.children.navbar.setLabel(newState.month.longName+" "+newState.month.localeDate.year);
+		this._weeks.forEach((row, i) => {
+			row.invalidate();
+		});
+	
 	}
 	
 	newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1
@@ -399,10 +408,6 @@ Calendar.prototype.nextMonth = function() {
 	}
 	
 	if(this.currentMonth) {
-		this.dispatch({
-			type: "resetDays"
-		});
-		
 		this._calendarCore.nextMonth();
 		this.onMonthChange && this.onMonthChange(this.currentMonth.nextMonth.normalizedDate);
 	}
@@ -428,9 +433,6 @@ Calendar.prototype.prevMonth = function() {
 	}
 	
 	if(this.currentMonth) {
-		this.dispatch({
-			type: "resetDays"
-		});
 		this._calendarCore.prevMonth();
 		this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
 	}

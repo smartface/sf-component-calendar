@@ -8,9 +8,6 @@
 'use strict';
 
 const createService = require("../services/CalendarService").default;
-const extend = require('js-base/core/extend');
-const merge = require("@smartface/styler/lib/utils/merge");
-const moment = require("moment");
 
 /**
  * Returns initial state
@@ -429,7 +426,9 @@ CalendarCore.prototype._getRange = function({ start, end, state = null }) {
 };
 
 CalendarCore.prototype.nextWeek = function() {
+	console.log("next week : "+this._state.weekIndex+" - "+ROWCOUNT);
 	if (this._state.weekIndex + 1 === ROWCOUNT) {
+		console.log("jump to next month");
 		const state = this._nextMonth();
 		state.weekIndex = 0;
 
@@ -694,7 +693,7 @@ CalendarCore.prototype._setDate = function(date) {
 /**
  * Changes current selected month
  * 
- * @param {Calendar~DateDtO} date
+ * @param {Calendar~DateDTO} date
  */
 CalendarCore.prototype.setDate = function(date) {
 	this.setState(this._setDate(date));
@@ -703,7 +702,7 @@ CalendarCore.prototype.setDate = function(date) {
 /**
  * Changes current selected date
  * 
- * @param {Calendar~DateDtO} date
+ * @param {Calendar~DateDTO} date
  */
 CalendarCore.prototype.setSelectedDate = function(date) {
 	this.setDate(date);

@@ -1,7 +1,6 @@
 const extend = require('js-base/core/extend');
 const CalendarWeekRowDesign = require('library/CalendarWeekRow');
 
-
 function selectDay(index) {
 	if (index === -1) {
 		throw new Error("Day index cannot be -1");
@@ -99,7 +98,8 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 				type: "changeUserStyle",
 				userStyle: (style) => {
 
-					delete style.height;
+					// delete style.height;
+					style.height = 40;
 					style.visible = true;
 
 					return style;
@@ -131,9 +131,13 @@ const CalendarWeekRow = extend(CalendarWeekRowDesign)(
 				}
 			});
 		};
+		
+	/*	proto.subscribeContext = function(e){
+			Object.assign(this, e.style);
+		};*/
 
-		proto.setDays = function(days, justCurrentDays = false) {
-			if (days === undefined || !this._available) {
+		proto.setDays = function(days, justCurrentDays = false, force=false) {
+			if (!force && (days === undefined || !this._available)) {
 				return;
 			}
 

@@ -25,5 +25,4 @@ stylerBuilder.setActiveTheme(settings.config.theme.currentTheme);
 // Define routes and go to initial page of application
 Router.add("page1", require("./pages/newPage001"));
 Router.add("page3", require("./pages/newPage003"));
-Router.add("page4", require("./pages/newPage004"));
 Router.go("page1");
