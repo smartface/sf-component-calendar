@@ -255,6 +255,7 @@ Calendar.prototype._updateCalendar = function(oldState, newState){
 	});
 	
 	this._weekMode && this.setWeekMode(this._weekMode) || this.children.body.applyLayout();
+	this.applyLayout();
 };
 
 /**
