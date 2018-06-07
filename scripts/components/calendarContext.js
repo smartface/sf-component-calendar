@@ -2,12 +2,9 @@ const StyleContext = require("@smartface/contx/lib/styling/StyleContext");
 const getOneProp = require("@smartface/contx/lib/smartface/sfCorePropFactory").default;
 const pageContext = require("@smartface/contx/lib/smartface/pageContext");
 const fromSFComponent = require("@smartface/contx/lib/smartface/fromSFComponent").default;
-const INIT_CONTEXT_ACTION_TYPE = require("../services/Context")
-	.INIT_CONTEXT_ACTION_TYPE;
+const INIT_CONTEXT_ACTION_TYPE = require("../services/Context").INIT_CONTEXT_ACTION_TYPE;
 const System = require('sf-core/device/system');
-const styles = require("../themes/workspaceTheme");
 const styler = require("@smartface/styler/lib/styler");
-const styling = styler(styles);
 
 function raiseTargetNotfound(target){
 	return function (message = "Component cannot be found.") {
@@ -15,60 +12,81 @@ function raiseTargetNotfound(target){
 	};
 }
 
-
 function removeSelection(context, state) {
 	if(!state.selectedDay)
 		return;
 	
 	context
 		.find(state.selectedDay, {removeClassName: raiseTargetNotfound(state.selectedDay)})
-		.removeClassName(".calendar.day-selected");
+		.removeClassName(".calendar.day_label-selected");
 	delete state.selectedDay;
 }
 
-function resetDays(days, actor) {
+function resetDays(actor) {
 	// days.forEach(function(name) {
-	if(actor.getClassName() != ".calendar.day") {
-		actor.resetClassNames([".calendar.day"]);
-	}
+		if(actor.hasClassName(".calendar.day_label")) {
+			actor.resetClassNames([".calendar.day_label"]);
+		} else if(actor.hasClassName(".calendar.day")){
+			actor.resetClassNames([".calendar.day"]);
+		}
+	// });
+}
+
+function deselectDays(actor) {
+	// days.forEach(function(name) {
+		if(actor.hasClassName(".calendar.day_label")) {
+			actor.removeClassName([".calendar.day_label-selected", ".calendar.day_label-rangeSelected"]);
+		} else if(actor.hasClassName(".calendar.day")){
+			actor.removeClassName([".calendar.day-selected"]);
+		}
 	// });
 }
 
 // reducer for context's components
-function reducer(context, action, target) {
-	const newState = context.getState();
+function reducer(context, action, target, state) {
+	const newState = Object.assign({}, state);
+	let actor;
 	
 	switch(action.type) {
 		case INIT_CONTEXT_ACTION_TYPE:
 			newState.days = context.reduce((acc, actor, name) => {
 				if(name.indexOf("_weekDay") > 0)
-					acc.push(name)
+					acc.push(name);
 				return acc;
 			}, []);
 
 			return newState;
 		case "resetDays":
-			context.map(resetDays.bind(null, newState.days));
-			break;
+			context.map(resetDays);
+			
+			return newState;
+		case "deselectDays":
+			context.map(deselectDays);
+			
+			return newState;
 		case "daySelected":
-			let selected = context.find(newState.selectedDay);
+			const selected = context.find(newState.selectedDay);
+			
 			if(selected){
 				removeSelection(context, newState);
-				context
-					.find(target, {pushClassName: raiseTargetNotfound(target)})
-					.pushClassName(".calendar.day-selected");
-				newState.selectedDay = target;
 			}
 
+			actor = context.find(target, {pushClassNames: raiseTargetNotfound(target)});
+			actor.pushClassNames(".calendar.day_label-selected");
+			newState.selectedDay = target;
+			
 			return newState;
 		case "clearSelectedDay":
 			removeSelection(context, newState);
-			break;
+			return newState;
 		case "changeMonth":
 			removeSelection(context, newState);
-			break;
+			return newState;
 		case "changeCalendar":
-		  context.forEach(function(actor){
+		  context.map(function(actor){
+		    if(!actor || actor.name === undefined)
+		    	raiseTargetNotfound(target);
+
 		    const className = actor.getInitialClassName();
 		    
 		    actor.resetClassNames([className,
@@ -80,29 +98,30 @@ function reducer(context, action, target) {
 		    // actor.pushClassName("#"+actor.name+"-os_"+System.OS);
 		  });
 		  
-		  break;
+		  return newState;
 		case "updateDayType":
-			const actor = context.find(target);
+			actor = context.find(target);
 			const data = action.data;
+			
 			if(data.isWeekend) {
-				actor.pushClassName(".calendar.day-weekend");
+				actor.pushClassNames(".calendar.day_label-weekend");
 			}
 
 			if(Array.isArray(data.specialDay) && data.specialDay.length > 0) {
-				actor.pushClassName(".calendar.day-specialDay");
+				actor.pushClassNames(".calendar.day_label-specialDay");
 			}
 
 			if(data.month != "current") {
-				actor.pushClassName(".calendar.day-deactiveDays");
+				actor.pushClassNames(".calendar.day_label-deactiveDays");
 			}
-
-			break;
+			
+			return newState;
 	}
 
-	return newState;
+	return state;
 }
 
-function classNameMap(name) {
+/*function classNameMap(name) {
 	const namePattern = /week[0-9]+_weekDay[0-9]+/
 	const rowPattern = new RegExp("week[0-9]+");
 	const dayNamesPattern = new RegExp("dayName_[0-9]+");
@@ -137,82 +156,16 @@ function classNameMap(name) {
 	}
 
 	return ".calendar";
-}
+}*/
 
-//TOOD: add classnameFactory to fromSFComponent
-
-function createContext(component) {
-	/*var styleContext = fromSFComponent(
-		component,
-		"calendar",
-		function(hook) {//context hooks
-			switch(hook) {
-			  case 'beforeAssignComponentStyles':
-			    return function beforeAssignComponentStyles(name, className) {
-						return className;
-					};
-				case 'beforeStyleDiffAssign':
-					return function beforeStyleDiffAssign(styles) {
-						Object.keys(styles)
-							.forEach(function(key) {
-								styles[key] = getOneProp(key, styles[key]);
-							});
-
-						return styles;
-					};
-				case 'reduceDiffStyleHook':
-					return function stylesDiffHook(oldStyles, newStyles) {
-						function isEqual(oldStyle, newStyle) {
-							if(oldStyle === undefined) {
-								return false;
-							}
-
-							var keys1 = Object.keys(oldStyle);
-							var keys2 = Object.keys(newStyle);
-
-							if(keys1.length !== keys2.length) {
-								return false;
-							}
-
-							let res = keys2.some(function(key) {
-								return oldStyle[key] !== newStyle[key];
-							});
-
-							return !res;
-						};
-
-						return function stylesDiffReducer(acc, key) {
-							if(typeof newStyles[key] === "object") {
-								if(!isEqual(oldStyles[key], newStyles[key])) {
-									acc[key] = newStyles[key];
-								}
-							} else if(oldStyles[key] !== newStyles[key]) {
-								acc[key] = newStyles[key];
-							}
-
-							return acc;
-						};
-					};
-			}
-		},
-		classNameMap
-	);
-
-	// creates an initial styling for the context
-	var context = styleContext(
-		styling,
-		reducer
-	);*/
-	
-	
-	let context = pageContext(component, "calendar", reducer, classNameMap);
-	context(styling);
+function createContext(component, name="calendar", styles={}) {
+	let context = pageContext(component, name, reducer);
+	context(styler(styles), reducer);
 	
 	return function setStyle(newStyles) {
 		try {
-			const styling = styler(styles, newStyles);
 			// injects a new styling to the context
-			context(styling, reducer);
+			context(styler(styles, newStyles), reducer);
 		} catch(e) {
 			alert(e.message);
 		}

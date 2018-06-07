@@ -1,13 +1,15 @@
 {
-  "name": "@smartface/sf-calendar-component",
-  "version": "1.3.14",
+  "name": "@smartface/sf-component-calendar",
+  "version": "2.0.0-rc.14",
   "description": "Calendar component",
   "main": "components/calendar.js",
   "scripts": {
-    "prepublish": "cp -r ./node_modules/library ./library && rm ./library/styler-builder.js",
-    "postpublish": "rm -r ./library",
-    "preinstall": "mkdir -p node_modules",
-    "installSelf": "config=$(node -p \"JSON.stringify(require('./package.json').sfModule)\") && smm --config=$config || echo \"smm cannot be found\""
+    "prepublish": "npm run copytheme && cp -r ./node_modules/library ./library && rm -f ./library/styler-builder.js",
+    "copytheme": "cp ../themes/workspaceTheme/styles/common.json ./theme.json",
+    "postpublish": "rm -r -f ./library",
+    "postinstall": "if [ ! -d node_modules ]; then mkdir node_modules;fi && mv -f ./library ./node_modules/library",
+    "installSelf": "config=$(node -p \"JSON.stringify(require('./package.json').sfModule)\") && smm --config=$config || echo \"smm cannot be found\"",
+    "docs": "rm -rf ../docs/* && node ../jsdocs.js"
   },
   "repository": {
     "type": "git",
@@ -41,15 +43,15 @@
     "access": "public"
   },
   "dependencies": {
-    "@smartface/contx": "^1.1.2",
-    "@smartface/styler": "^1.3.15",
-    "js-base": "^1.0.0",
-    "moment": "^2.18.1",
-    "moment-hijri": "^2.0.1",
-    "sf-extension-utils": "3.2.5"
+    "@smartface/html-to-text": "^1.0.6",
+    "moment": "2.18.1",
+    "moment-hijri": "2.0.1"
   },
   "devDependencies": {
-    "@smartface/styler": "^1.1.0",
+    "js-base": "^1.0.0",
+    "@smartface/contx": "^1.2.0",
+    "@smartface/styler": "^1.3.15",
+    "sf-extension-utils": "3.2.5",
     "sf-core": "*"
   }
 }

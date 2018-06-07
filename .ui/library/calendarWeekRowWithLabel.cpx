@@ -1,0 +1,268 @@
+{
+	"components": [
+		{
+			"className": ".flexLayout",
+			"hiddenComponent": false,
+			"id": "0fa7-a5b2-8617-502b",
+			"props": {
+				"children": [
+					"0fd9-0eb0-b997-cfdb",
+					"17c4-6772-2306-076d",
+					"63f3-6641-4308-107f",
+					"72f8-9af0-c2e6-4e5c",
+					"04f7-68ca-91e0-70e0",
+					"cc4b-236a-a245-01ae",
+					"e482-8ec7-14c9-871f"
+				],
+				"name": "calendarWeekRowWithLabel",
+				"parent": "3365675e"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {
+					"flexDirection": "ROW"
+				},
+				"height": 63.28767227799925,
+				"left": 22.595281436525543,
+				"paddingLeft": 3,
+				"paddingRight": 3,
+				"top": 460.949812264278,
+				"width": 344.6575426075557
+			}
+		},
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "0fd9-0eb0-b997-cfdb",
+			"props": {
+				"children": [],
+				"name": "weekDayLabel1",
+				"parent": "0fa7-a5b2-8617-502b",
+				"text": null
+			},
+			"source": {
+				"page": "__library__",
+				"id": "b59b-815d-e541-320e"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"font": {
+					"bold": true
+				},
+				"height": null,
+				"left": 0,
+				"text": null,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		},
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "17c4-6772-2306-076d",
+			"props": {
+				"children": [],
+				"name": "weekDayLabel2",
+				"parent": "0fa7-a5b2-8617-502b",
+				"text": null
+			},
+			"source": {
+				"page": "__library__",
+				"id": "b59b-815d-e541-320e"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"font": {
+					"bold": true
+				},
+				"height": null,
+				"left": 0,
+				"text": null,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		},
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "63f3-6641-4308-107f",
+			"props": {
+				"children": [],
+				"name": "weekDayLabel3",
+				"parent": "0fa7-a5b2-8617-502b",
+				"text": null
+			},
+			"source": {
+				"page": "__library__",
+				"id": "b59b-815d-e541-320e"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"font": {
+					"bold": true
+				},
+				"height": null,
+				"left": 0,
+				"text": null,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		},
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "72f8-9af0-c2e6-4e5c",
+			"props": {
+				"children": [],
+				"name": "weekDayLabel4",
+				"parent": "0fa7-a5b2-8617-502b",
+				"text": null
+			},
+			"source": {
+				"page": "__library__",
+				"id": "b59b-815d-e541-320e"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"font": {
+					"bold": true
+				},
+				"height": null,
+				"left": 0,
+				"text": null,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		},
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "04f7-68ca-91e0-70e0",
+			"props": {
+				"children": [],
+				"name": "weekDayLabel5",
+				"parent": "0fa7-a5b2-8617-502b",
+				"text": null
+			},
+			"source": {
+				"page": "__library__",
+				"id": "b59b-815d-e541-320e"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"font": {
+					"bold": true
+				},
+				"height": null,
+				"left": 0,
+				"text": null,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		},
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "cc4b-236a-a245-01ae",
+			"props": {
+				"children": [],
+				"name": "weekDayLabel6",
+				"parent": "0fa7-a5b2-8617-502b",
+				"text": null
+			},
+			"source": {
+				"page": "__library__",
+				"id": "b59b-815d-e541-320e"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"font": {
+					"bold": true
+				},
+				"height": null,
+				"left": 0,
+				"text": null,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		},
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "e482-8ec7-14c9-871f",
+			"props": {
+				"children": [],
+				"name": "weekDayLabel7",
+				"parent": "0fa7-a5b2-8617-502b",
+				"text": null
+			},
+			"source": {
+				"page": "__library__",
+				"id": "b59b-815d-e541-320e"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {
+					"positionType": "RELATIVE",
+					"flexGrow": 1
+				},
+				"font": {
+					"bold": true
+				},
+				"height": null,
+				"left": 0,
+				"text": null,
+				"textAlignment": "MIDCENTER",
+				"top": 0,
+				"width": null
+			}
+		}
+	]
+}

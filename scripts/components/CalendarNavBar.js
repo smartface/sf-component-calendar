@@ -1,6 +1,3 @@
-/* 
-		You can modify its contents.
-*/
 const extend = require('js-base/core/extend');
 
 const CalendarNavBarDesign = require('library/CalendarNavBar');
@@ -10,10 +7,21 @@ const CalendarNavBar = extend(CalendarNavBarDesign)(
 	function(_super, props){
 		// initalizes super class for this scope
 		_super(this, props || {} );
-		
-		this.setContextDispatcher = function(dispatch) {
-			this.dispatch = dispatch;
-		}
+
+		this.weekMode = function(mode){
+			this.children.prevWeek.dispatch({
+				type: "updateUserStyle",
+				userStyle: {
+					visible: mode
+				}
+			});
+			this.children.nextWeek.dispatch({
+				type: "updateUserStyle",
+				userStyle: {
+					visible: mode
+				}
+			});
+		};
 		
 		this.children.nextMonth.onPress = function(){
 			this.onNext();

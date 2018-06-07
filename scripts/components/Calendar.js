@@ -1,251 +1,465 @@
-/* 
-		Smarface Calendar Component
+/**
+ * Smartface Calendar Component
+ * @module Calendar
+ * @type {class}
+ * @copyright Smartface 2018
 */
-const extend = require('js-base/core/extend');
 
+/**
+ * @typedef {Object} DateDTO
+ * @property {number} day
+ * @property {number} month
+ * @property {number} year
+*/
+
+/**
+ * @typedef DayMonthInfoDTO
+ * @property {string} longName
+ * @property {string} shortName
+ */
+ 
+/** 
+ * @typedef DayInfoDTO
+ * @property {number} weekDay
+ * @property {string} longName
+ * @property {string} shortName
+ * @property {Array.<string>} specialDay
+ */ 
+ 
+/** 
+ * @typedef LocaleDateDTO
+ * @property {string} day
+ * @property {string} month
+ * @property {string} year
+ */
+
+/** 
+ * @typedef {Object} DateInfoDTO
+ * @property {Calendar~LocaleDateDTO} localeDate
+ * @property {Calendar~DateDTO} date
+ * @property {Calendar~DayInfoDTO} dayInfo
+ * @property {Calendar~DayMonthInfoDTO} daymonthInfo
+ */
+ 
+/**
+ * @typedef CalendarOptions
+ * @property {boolean} [useRangeSelection=true] - Activate range selection
+ * @property {Object} [theme=null] - Sets custom theme
+ * @property {boolean} [justCurrentDays=false] - To display only the month days
+ * @property {boolean} [useContext=true] - To use internal calendar-context
+ */
+ 
 const CalendarDesign = require('library/Calendar');
-const CalendarWeekRow = require('./CalendarWeekRow');
-const FlexLayout = require('sf-core/ui/flexlayout');
-const createService = require("../services/CalendarService");
+const CalendarCore = require("./CalendarCore");
+const extend = require('js-base/core/extend');
 const calendarContext = require("./calendarContext");
+const themeFile = require("../theme.json");
 
-function buildCalendar(view) {
-	return extend(view)(Calendar, function(proto) {
-		CalendarPrototype(proto);
+function getOptions({
+			useRangeSelection=true,
+			theme=null,
+			justCurrentDays=false,
+			calendarCore=null,
+			useContext=true,
+		}){
+	
+	return {
+		justCurrentDays,
+		useRangeSelection,
+		theme,
+		calendarCore,
+		useContext
+	};
+}
+
+/**
+ * Calendar Component
+ * 
+ * @example
+ * 
+ * const {Calendar} = require('@smartface/sf-component-calendar/components');
+ * const specialDaysConf = require('./specialDays.json');
+ *	
+ * const myCalendar = new Calendar();
+ *	
+ * // Please use after Page:onShow event.
+ * myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
+ * // when user select a date
+ * myCalendar.onDaySelect = function(dateInfo){
+ *	  //...
+ * }
+ *	
+ * // changing calendar date
+ * myCalendar.setSelectedDate({month:2, year:2017, day:12});
+ * 
+ * @class
+ * @param {CalendarOptions} options
+ */
+function Calendar(_super, options) {
+	_super(this);
+	
+	this.__options = getOptions(options || {});
+	
+	const {
+		useRangeSelection,
+		justCurrentDays,
+		theme,
+		calendarCore,
+		useContext
+	} = this.__options;
+	
+	this._styleContext = useContext ? calendarContext(this, "calendar", theme || themeFile) : null;
+	this._calendarCore = calendarCore || new CalendarCore();
+	this._updateCalendar = this._updateCalendar.bind(this);
+	this._unsubsciber = this._calendarCore.subscribe(this._updateCalendar);
+	this._weeks = [];
+	this._weekMode = false;
+	
+	this.children.navbar.onNext = this.nextMonth.bind(this);
+	this.children.navbar.onPrev = this.prevMonth.bind(this);
+	
+	this._weeks.push(this.children.body.children.week1);
+	this._weeks.push(this.children.body.children.week2);
+	this._weeks.push(this.children.body.children.week3);
+	this._weeks.push(this.children.body.children.week4);
+	this._weeks.push(this.children.body.children.week5);
+	this._weeks.push(this.children.body.children.week6);
+	
+	this._weeks.forEach((row, weekIndex) => {
+		row.onDayLongPress = this._onLongPress.bind(this, weekIndex);
+		if(useRangeSelection === false) {
+			row.onDaySelect = this.selectDay.bind(this, weekIndex);
+		} else if(useRangeSelection !== false) {
+			row.onDaySelect = this._onSelectRange.bind(this, weekIndex);
+		}
+	});
+	
+	this.children.navbar.children.nextWeek.onPress = () => {
+		this._calendarCore.nextWeek();
+	};
+	this.children.navbar.children.prevWeek.onPress = () => {
+		this._calendarCore.prevWeek();
+	};
+	
+}
+
+const CalendarComp = extend(CalendarDesign)(Calendar);
+
+function updateRows(days, date) {
+	this._weeks.forEach((row, index) => {
+		row.setDays(days[index], this.__options.justCurrentDays, true);
 	});
 }
 
-function Calendar(_super) {
-	// initalizes super class for this scope
-	_super(this);
+/**
+ * @event
+ * @param {DateInfoDTO} start - Range start date
+ */
+Calendar.prototype.onRangeSelectionStart = function(start){};
 
-	this._specialDays = {};
-	this.currentMonth;
-	this.weeks = [];
-	this.buildRows();
-	this.init();
-}
+/**
+ * @event
+ * @param {DateInfoDTO} start - Range start date
+ * @param {DateInfoDTO} end - Range end date
+ */
+Calendar.prototype.onRangeSelectionComplete = function(start, end){};
 
-function CalendarPrototype(proto) {
-	proto.init = function() {
-		this.styleContext = calendarContext(this, "calendar");
-		
-		this.children.navbar.onNext = () => {
-			this.nextMonth();
-		};
-
-		this.children.navbar.onPrev = () => {
-			this.prevMonth();
-		};
+/**
+ * @private
+ * 
+ * @fires onRangeSelectionComplete
+ * @fires onRangeSelectionStart
+ * @fires onDaySelect
+ */
+Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
+	// this.onBeforeRangeSelectStart && this.onBeforeRangeSelectStart(weekIndex, weekDayIndex);
+	// this.isRangeSelection !== true && activateRangeSelection.call(this);
+	this._calendarCore.rangeSelection({weekIndex, weekDayIndex});
+	const state = this._calendarCore.getState();
+	
+	if(state.rangeSelectionMode === 0){
+		this.onRangeSelectionComplete 
+			&& this.onRangeSelectionStart(Object.assign({}, state.rangeSelection.start));
+	} else if(state.rangeSelectionMode === 1){
+		this.onRangeSelectionComplete 
+			&& this.onRangeSelectionComplete(Object.assign({}, state.rangeSelection.start), Object.assign({}, state.rangeSelection.end));
+		this.onDaySelect && this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
 	}
-
-	function updateRows(days, date) {
-		// console.log(JSON.stringify(days)+"  :::  "+JSON.stringify(date));
-		this.weeks.forEach(function(row, index) {
-			row.setDays(days[index], date);
-		}.bind(this));
-	}
-
-	// when a day is selected by user
-	function onDaySelected(row, index) {
-		const selectedDay = Object.assign({}, this.currentMonth.days[row][index]);
-		const dayData = {};
-
-		dayData.dayInfo = {
-			weekDay: index,
-			longName: this.currentMonth.daysLong[index],
-			shortName: this.currentMonth.daysShort[index],
-			specialDay: selectedDay.specialDay,
-		};
-
-		dayData.date = {
-			day: selectedDay.day
-		};
-
-		dayData.localeDate = {
-			day: this.currentMonth.days[row][index].localeDay,
-			month: this.currentMonth.localeDate.month,
-			year: this.currentMonth.localeDate.year,
-		};
-
-		switch(selectedDay.month) {
-			// if selected day is in the current month.
-			case 'current':
-				dayData.monthInfo = {
-					longName: this.currentMonth.longName,
-					shortName: this.currentMonth.shortName,
-				};
-
-				dayData.date.month = this.currentMonth.date.month;
-				dayData.date.year = this.currentMonth.date.year;
-				break;
-				// if selected day is in the next month.
-			case 'next':
-				dayData.monthInfo = {
-					longName: this.currentMonth.nextMonth.longName,
-					shortName: this.currentMonth.nextMonth.shortName,
-				};
-
-				dayData.localeDate.month = this.currentMonth.nextMonth.localeDate.month;
-				dayData.localeDate.year = this.currentMonth.nextMonth.localeDate.year;
-				dayData.date.month = this.currentMonth.nextMonth.date.month;
-				dayData.date.year = this.currentMonth.nextMonth.date.year;
-				break;
-				// if selected day is in the previous month.
-			case 'previous':
-				dayData.monthInfo = {
-					longName: this.currentMonth.previousMonth.longName,
-					shortName: this.currentMonth.previousMonth.shortName,
-				};
-
-				dayData.localeDate.month = this.currentMonth.previousMonth.localeDate.month;
-				dayData.localeDate.year = this.currentMonth.previousMonth.localeDate.year;
-				dayData.date.month = this.currentMonth.previousMonth.date.month;
-				dayData.date.year = this.currentMonth.previousMonth.date.year;
-				break;
-
-			default:
-				throw new Error('Selected day has invalid data');
-		}
-
-		this.onDaySelect && this.onDaySelect(dayData);
-	}
-
-	// to inject a context dispatcher
-	proto.buildRows = function() {
-		this.weeks.push(this.children.body.children.week1);
-		this.weeks.push(this.children.body.children.week2);
-		this.weeks.push(this.children.body.children.week3);
-		this.weeks.push(this.children.body.children.week4);
-		this.weeks.push(this.children.body.children.week5);
-		this.weeks.push(this.children.body.children.week6);
-
-		this.weeks.forEach(function(row, index) {
-			row.onDaySelected = onDaySelected.bind(this, index);
-		}.bind(this));
-	};
-
-	proto.now = function() {
-		this.updateCalendar(this._calendarService.getCalendarMonth());
-		this._selectDay();
-	};
-
-	proto.addStyles = function(styles) {
-		this.styleContext(styles);
-	};
-	
-	proto.setDate = function(date) {
-		this.dispatch({
-			type: "resetDays"
-		});
-		const newDate = Object.assign({}, date);
-		const dateData = this._calendarService.getCalendarMonth(newDate);
-		this.updateCalendar(dateData);
-	};
-
-	proto.setSelectedDate = function(date) {
-		this.setDate(date);
-		const newDate = Object.assign({}, date);
-		const dateData = this._calendarService.getCalendarMonth(newDate);
-		this.updateCalendar(dateData);
-		this._selectDay(dateData);
-	};
-
-	proto._selectDay = function() {
-		const start = this.currentMonth.startDayOfMonth - 1;
-		const day = this.currentMonth.date.day - 1;
-		const index = (start + day) % 7;
-		const row = Math.ceil((start + day + 1) / 7);
-
-		this.weeks[row - 1].setSelectedIndex(index);
-	};
-
-	proto.updateCalendar = function(month) {
-		updateRows.call(this, month.days, month.date);
-		this.children.navbar.setLabel(month.longName);
-		this.children.calendarYear.setYear(month.localeDate.year);
-		this.currentMonth = month;
-
-		month.daysMin.forEach(function(day, index) {
-			this.children.calendarDays.children["dayName_" + index].text = day;
-		}.bind(this));
-	};
-
-	proto.onShow = function() {
-		this.updateCalendar(this.currentMonth);
-	};
-
-	proto.nextMonth = function() {
-		if(this.onBeforeMonthChange &&
-			 this.onBeforeMonthChange(this.currentMonth.nextMonth.normalizedDate) === false
-		){
-			return;
-		}
-		
-		if(this.currentMonth) {
-			this.dispatch({
-				type: "resetDays"
-			});
-
-			this.updateCalendar(this._calendarService.getCalendarMonth(this.currentMonth.nextMonth.normalizedDate));
-			this.onMonthChange && this.onMonthChange(this.currentMonth.nextMonth.normalizedDate);
-		}
-	};
-	
-	proto.subcribeContext = function(e){
-		alert(JSON.stringify(e));
-	};
-
-	proto.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
-		this.dispatch({
-			type: "resetDays"
-		});
-
-		this.dispatch({
-			type: "changeCalendar",
-			lang: lang,
-		});
-
-		this._specialDays = specialDays || this._specialDays;
-		this._calendarService = createService({
-			lang: lang,
-			type: type,
-			specialDays: specialDays
-		});
-
-		// this._calendarService = createService({lang: lang, type: type, specialDays: this._specialDays});
-		this.updateCalendar(this._calendarService.getCalendarMonth());
-	};
-	
-	/**
-	 * Disposes the Component instance
-	 */
-	proto.dispose = function() {
-		this.weeks = [];
-		this.styleContext(null);
-		this.dispatch = null;
-		this.styleContext = null;
-		this._calendarService = null;
-		this.currentMonth = null;
-		this.onChanged = null;
-	};
-	
-	proto.prevMonth = function() {
-		if(this.onBeforeMonthChange &&
-			 this.onBeforeMonthChange(this.currentMonth.previousMonth.normalizedDate) === false
-		){
-			return;
-		}
-		
-		if(this.currentMonth) {
-			this.dispatch({
-				type: "resetDays"
-			});
-
-			this.updateCalendar(this._calendarService.getCalendarMonth(this.currentMonth.previousMonth.normalizedDate));
-			this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
-		}
-	};
 };
 
-module && (module.exports = buildCalendar(CalendarDesign));
+/**
+ * Changes calendar creating new calendar data and resets view
+ * 
+ **Supported Calendars:**
+  - CalendarTypes.HIJRI
+  - CalendarTypes.GREGORIAN
+ * 
+ **Supported Languages:**
+  - Turkish : "tr"
+  - German : "de"
+  - French : "fr"
+  - Arabic: "ar"
+  - Arabic (Saudi): "ar-sa"
+  - Dutch : "nl"
+   and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
+ * 
+ * @param {string} [lang="en"] - Language code like 'en, en-US, tr, ar-SA etc.'
+ * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
+ * @param {(object|null)} [specialDays=null] - Specialdays objects
+ */
+ Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
+	this.dispatch({
+		type: "changeCalendar",
+		lang: lang
+	});
+	
+	this._calendarCore.changeCalendar(lang, type, specialDays);
+};
+
+/**
+ * Subscribes to calendar-core and renders calendar when state is changed
+ * @private
+ * @param {object} oldState
+ * @param {object} newState
+ */
+Calendar.prototype._updateCalendar = function(oldState, newState){
+	if((oldState.rangeSelectionMode === -1 && newState.rangeSelectionMode === 0)
+		|| (oldState.rangeSelectionMode === 1 && newState.rangeSelectionMode === -1)
+	){
+		this.dispatch({
+			type: "deselectDays"
+		});
+	}
+	
+	if(newState.month !== oldState.month){
+		this.dispatch({
+			type: "resetDays"
+		});
+		
+		this.currentMonth = newState.month;
+		updateRows.call(this, newState.month.days, newState.month.date);
+		this.children.navbar.setLabel(newState.month.longName+" "+newState.month.localeDate.year);
+		this._weeks.forEach((row, i) => {
+			row.invalidate();
+		});
+	
+	}
+	
+	newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1
+		? this._selectDay.bind(this)
+		: this._selectDayasRange.bind(this)
+	);
+
+	newState.month.daysMin.forEach((day, index) => {
+		this.children.calendarDays.children["dayName_" + index].text = day;
+	});
+	
+	this._weekMode && this.setWeekMode(this._weekMode) || this.children.body.applyLayout();
+	this.applyLayout();
+};
+
+/**
+ * Changes Calendar styles
+ * 
+ * @param {Object} styles - A style object
+ */
+Calendar.prototype.addStyles = function(styles) {
+	this._styleContext && this._styleContext(styles);
+};
+
+Calendar.prototype._selectDay = function({weekIndex, weekDayIndex}) {
+	weekIndex >= 0 && weekDayIndex != null
+		&& this._weeks[weekIndex].setSelectedIndex(weekDayIndex);
+};
+
+/**
+ * Returns calendar weekmode
+ * 
+ * @returns {boolean}
+ *
+ */
+Calendar.prototype.getWeekMode = function(){
+	return this._weekMode;
+};
+
+/**
+ * Displays only a week row
+ * 
+ * @param {boolean} value
+ */
+Calendar.prototype.setWeekMode = function(value){
+	this._weekMode = value;
+	const weekIndex = this._calendarCore.getState().weekIndex;
+	this.children.navbar.weekMode(value);
+
+	this._weeks.forEach((row, i) => {
+		const available = !(value & i !== weekIndex);
+		row.setAvailable(available);
+		row.invalidate();
+	});
+	
+	this.applyLayout();
+};
+
+Calendar.prototype._selectDayasRange = function({weekIndex, weekDayIndexes, weekDayIndex}) {
+	if(this._weeks[weekIndex] === undefined)
+		throw new TypeError(`${weekIndex} Week cannot be undefined`);
+	this._weeks[weekIndex].setRangeIndex(
+		weekDayIndexes 
+			? weekDayIndexes 
+			: weekDayIndex 
+				? [weekDayIndex]
+				: []
+		);
+};
+
+/**
+ * LongPress
+ * @event
+ * 
+ * @param {number} weekIndex
+ * @param {number} weekDayIndex
+ */
+Calendar.prototype.onLongPress = function(weekIndex, weekDayIndexes){};
+
+Calendar.prototype._onLongPress = function(weekIndex, weekDayIndexes) {
+	this.onLongPress && this.onLongPress(weekIndex, weekDayIndexes);
+};
+
+/**
+ * Sets calendar day without the day selection
+ * 
+ * @param {DateDTO} date
+ */
+Calendar.prototype.setDate = function(date) {
+	this.dispatch({
+		type: "deselectDays"
+	});
+	const newDate = Object.assign({}, date);
+	this._calendarCore.setDate(newDate);
+};
+
+/**
+ * Sets range dates
+ * 
+ * @param {DateDTO} start - Start date {@link DateDTO}
+ * @param {DateDTO} end - Final date {@link DateDTO}
+ */
+Calendar.prototype.setRangeDates = function(start, end) {
+	this.dispatch({
+		type: "deselectDays"
+	});
+	this._calendarCore.setRangeSelection(start, end);
+};
+
+/**
+ * Sets calendar date and highlight the day
+ * @param {DateDTO} date {@link DateDTO}
+ */
+Calendar.prototype.setSelectedDate = function(date) {
+	this.dispatch({
+		type: "deselectDays"
+	});
+	if(this.__options.useRangeSelection === false){
+		this._calendarCore.setSelectedDate(date);
+	} else {
+		this._calendarCore.startRangeSelection({date});
+	}
+};
+
+/**
+ * Disposes the Component instance
+ */
+Calendar.prototype.dispose = function() {
+	this._unsubsciber();
+	this._unsubsciber = null;
+	this._calendarCore = null;
+	this._weeks = [];
+	this._styleContext(null);
+	this.dispatch = null;
+	this._styleContext = null;
+	this._calendarService = null;
+	this.currentMonth = null;
+	this.onChanged = null;
+};
+
+/**
+ * @event
+ * @param {DateDTO} date
+ */
+Calendar.prototype.onBeforeMonthChange = function(date){};
+
+/**
+ * @event
+ * @params {DateDtO} date
+ */
+Calendar.prototype.onMonthChange = function(date){};
+
+/**
+ * Changes current to next month
+ * 
+ * @fires onBeforeMonthChange
+ * @fires onMonthChange
+ */
+Calendar.prototype.nextMonth = function() {
+	if(this.onBeforeMonthChange &&
+		 this.onBeforeMonthChange(this.currentMonth.nextMonth.normalizedDate) === false
+	){
+		return;
+	}
+	
+	if(this.currentMonth) {
+		this._calendarCore.nextMonth();
+		this.onMonthChange && this.onMonthChange(this.currentMonth.nextMonth.normalizedDate);
+	}
+};
+
+/**
+ * Changes selected date to now
+ */
+Calendar.prototype.now = function(){
+	this._calendarCore.now();
+};
+
+/**
+ * Changes current to previous month
+ * @fires onBeforeMonthChange
+ * @fires onMonthChange
+ */
+Calendar.prototype.prevMonth = function() {
+	if(this.onBeforeMonthChange &&
+		 this.onBeforeMonthChange(this.currentMonth.previousMonth.normalizedDate) === false
+	){
+		return;
+	}
+	
+	if(this.currentMonth) {
+		this._calendarCore.prevMonth();
+		this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
+	}
+};
+
+/**
+ * @event
+ * @param {Array.<DateInfoDTO>} date - Selected date
+ */
+Calendar.prototype.onDaySelect = function(date){};
+
+/**
+ * Selects a day by week and day index
+ * 
+ * @fires onDaySelect
+ * @param {number} weekIndex - Calendar row index
+ * @param {number} weekDayIndex - Calendar column index
+ * @param {boolean} [notify=true] - If fires selection event or not.
+ */
+Calendar.prototype.selectDay = function(weekIndex, weekDayIndex, notify=true){
+	this._calendarCore.selectDay(weekIndex, weekDayIndex);
+	notify && this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
+};
+// Calendar.$$_styleContext = {
+// 	'no-context': true
+// };
+
+
+module.exports = CalendarComp;

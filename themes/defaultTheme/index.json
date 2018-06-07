@@ -1,174 +1,24 @@
 {
-	"Defaults": {
-		"ActivityIndicator": ".activityIndicator",
-		"Button": ".button",
-		"FlexLayout": ".flexLayout",
-		"HeaderBar": ".headerBar",
-		"ImageView": ".imageView",
-		"Label": ".label",
-		"ListView": ".listView",
-		"MapView": ".mapView",
-		"Page": ".page",
-		"SearchView": ".searchView",
-		"Slider": ".slider",
-		"StatusBar": ".statusBar",
-		"Switch": ".switch",
-		"TextBox": ".textBox",
-		"TextArea": ".textArea",
-		"VideoView": ".videoView",
-		"WebView": ".webView",
-		"ScrollView": ".scrollView",
-		"ListViewItem": ".listViewItem"
-	},
-	"Components": {
-		"ActivityIndicator": {
-			"Sizes": {
-				"Default": ".activityIndicator",
-				"Small": ".activityIndicator-small",
-				"Medium": ".activityIndicator-medium",
-				"Large": ".activityIndicator-large"
-			}
-		},
-		"Button": {
-			"Sizes": {
-				"Default": ".button",
-				"Small": ".button-small",
-				"Medium": ".button-medium",
-				"Large": ".button-large"
-			},
-			"Highlights": {
-				"Default": ".button",
-				"Warning": ".button-warning",
-				"Error": ".button-error",
-				"Success": ".button-success"
-			}
-		},
-		"FlexLayout": {
-			"Sizes": {
-				"Default": ".flexLayout",
-				"Small": ".flexLayout-small",
-				"Medium": ".flexLayout-medium",
-				"Large": ".flexLayout-large"
-			}
-		},
-		"ScrollView": {
-			"Sizes": {
-				"Default": ".scrollView",
-				"Small": ".scrollView-small",
-				"Medium": ".scrollView-medium",
-				"Large": ".scrollView-large"
-			}
-		},
-		"HeaderBar": {
-			"HeaderBar": {
-				"Default": ".headerBar"
-			}
-		},
-		"ImageView": {
-			"Sizes": {
-				"Default": ".imageView",
-				"Small": ".imageView-small",
-				"Medium": ".imageView-medium",
-				"Large": ".imageView-large"
-			}
-		},
-		"Label": {
-			"Sizes": {
-				"Default": ".label",
-				"Small": ".label-small",
-				"Medium": ".label-medium",
-				"Large": ".label-large"
-			}
-		},
-		"ListView": {
-			"Sizes": {
-				"Default": ".listView",
-				"Small": ".listView-small",
-				"Medium": ".listView-medium",
-				"Large": ".listView-large"
-			}
-		},
-		"ListViewItem": {
-			"Sizes": {
-				"Default": ".listViewItem",
-				"Small": ".listViewItem-small",
-				"Medium": ".listViewItem-medium",
-				"Large": ".listViewItem-large"
-			}
-		},
-		"MapView": {
-			"Sizes": {
-				"Default": ".mapView",
-				"Small": ".mapView-small",
-				"Medium": ".mapView-medium",
-				"Large": ".mapView-large"
-			}
-		},
-		"Page": {
-			"Page": {
-				"Default": ".page"
-			}
-		},
-		"SearchView": {
-			"Sizes": {
-				"Default": ".searchView",
-				"Small": ".searchView-small",
-				"Medium": ".searchView-medium",
-				"Large": ".searchView-large"
-			}
-		},
-		"Slider": {
-			"Sizes": {
-				"Default": ".slider",
-				"Small": ".slider-small",
-				"Medium": ".slider-medium",
-				"Large": ".slider-large"
-			}
-		},
-		"StatusBar": {
-			"StatusBar": {
-				"Default": ".statusBar"
-			}
-		},
-		"Switch": {
-			"Sizes": {
-				"Default": ".switch",
-				"Small": ".switch-small",
-				"Medium": ".switch-medium",
-				"Large": ".switch-large"
-			}
-		},
-		"TextBox": {
-			"Sizes": {
-				"Default": ".textBox",
-				"Small": ".textBox-small",
-				"Medium": ".textBox-medium",
-				"Large": ".textBox-large"
-			}
-		},
-		"TextArea": {
-			"Sizes": {
-				"Default": ".textArea",
-				"Small": ".textArea-small",
-				"Medium": ".textArea-medium",
-				"Large": ".textArea-large"
-			}
-		},
-		"VideoView": {
-			"Sizes": {
-				"Default": ".videoView",
-				"Small": ".videoView-small",
-				"Medium": ".videoView-medium",
-				"Large": ".videoView-large"
-			}
-		},
-		"WebView": {
-			"Sizes": {
-				"Default": ".webView",
-				"Small": ".webView-small",
-				"Medium": ".webView-medium",
-				"Large": ".webView-large"
-			}
-		}
-	}
+    "Defaults": {
+        "ActivityIndicator": ".activityIndicator",
+        "Button": ".button",
+        "FlexLayout": ".flexLayout",
+        "HeaderBar": ".headerBar",
+        "ImageView": ".imageView",
+        "Label": ".label",
+        "ListView": ".listView",
+        "MapView": ".mapView",
+        "Page": ".page",
+        "SearchView": ".searchView",
+        "Slider": ".slider",
+        "StatusBar": ".statusBar",
+        "Switch": ".switch",
+        "TextBox": ".textBox",
+        "TextArea": ".textArea",
+        "TextView": ".textView",
+        "VideoView": ".videoView",
+        "WebView": ".webView",
+        "ScrollView": ".scrollView",
+        "ListViewItem": ".listViewItem"
+    }
 }

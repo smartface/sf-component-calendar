@@ -70,6 +70,7 @@ export default function createService({lang="en", type="gregorian", specialDays=
  * @returns {Object}
  */
 function getMonth(moment, service, dt) {
+	
 	const dateService = new service(moment, dt);
   
   return {

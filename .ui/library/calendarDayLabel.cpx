@@ -1,0 +1,28 @@
+{
+	"components": [
+		{
+			"className": ".label",
+			"hiddenComponent": false,
+			"id": "b59b-815d-e541-320e",
+			"props": {
+				"children": [],
+				"name": "calendarDayLabel",
+				"parent": "3365675e",
+				"text": "Label"
+			},
+			"source": {
+				"page": "__library__"
+			},
+			"type": "TextView",
+			"userProps": {
+				"borderRadius": 18,
+				"borderWidth": 1,
+				"flexProps": {},
+				"height": 61.66666622819572,
+				"left": 32.981083310883626,
+				"top": 457.61955524313043,
+				"width": 58.218390366126755
+			}
+		}
+	]
+}

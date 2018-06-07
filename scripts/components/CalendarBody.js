@@ -7,10 +7,26 @@ const CalendarBodyDesign = require('library/CalendarBody');
 
 const CalendarBody = extend(CalendarBodyDesign)(
 	//constructor
-	function(_super, props, pageName){
+	function CalendarBody(_super, props, pageName){
 		// initalizes super class for this scope
 		_super(this, props || {} );
 		this.pageName = pageName;
+	},
+	function(proto){
+		proto.componentDidEnter = function(dispatch){
+			this.dispatch = dispatch;
+			dispatch({
+				type: "changeUserStyle",
+				animated: true,
+				userStyle: (style) => {
+					style.height = null;
+					style.flexGrow = 0;
+					delete style.alignSelf;
+					
+					return style;
+				}
+			});
+		};
 	}
 	
 );

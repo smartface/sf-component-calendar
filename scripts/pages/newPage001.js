@@ -1,7 +1,3 @@
-/* 
-		You can modify its contents.
-*/
-
 const extend = require('js-base/core/extend');
 const NewPage001Design = require('ui/ui_newPage001');
 const benchmark = require("../benchmarks/CalendarServices");
@@ -298,7 +294,7 @@ var sample = {
 
 function changeCalendar(lang, calendar, sp){
 	this.calendar.changeCalendar(lang, calendar, sp);
-	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
+// 	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
 	this.calendar.applyLayout();
 }
 
@@ -316,40 +312,56 @@ const NewPage001 = extend(NewPage001Design)(
 		// overrides super.onLoad method
 		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-		this.calendar.onDaySelect = function(date){
+    this.calendar.onLongPress = () => {
+    	this.calendar.setWeekMode(true);
+    };
+    
+		this.calendar.onDaySelect = ([date]) => {
+		  if(!date)
+		    return;
+		    
 			this.children.label2.text = date.date.day+"/"+(date.date.month)+"/"+date.date.year;
 			this.children.label2_1.text = date.dayInfo.specialDay.length > 0 
 				? date.dayInfo.specialDay.join(" - ")
 				: "Ozel Gun Yok";
-		}.bind(this);
+		};
 		
-		this.children.buttonTR.onPress = function(){
+		this.children.buttonTR.onPress = () => {
 			changeCalendar.call(this, "tr", "gregorian", sample);
-		}.bind(this);
+			this.calendar.now();
+		};
 		
-		this.children.buttonEN.onPress = function(){
+		this.children.buttonRange.onPress = () => {
+		  this.calendar.setRangeDates({day: 21, month: 10, year: 2017}, {day: 12, month: 12, year: 2017});
+		};
+		
+		this.children.buttonEN.onPress = () => {
 			changeCalendar.call(this, "en", "gregorian", sample);
-		}.bind(this);
+		};
 		
-		this.children.buttonAR.onPress = function(){
+		this.children.buttonAR.onPress = () => {
 			changeCalendar.call(this, "ar-sa", "gregorian", sample);
-		}.bind(this);
+		};
 		
-		this.children.buttonHijri.onPress = function(){
+		this.children.buttonHijri.onPress = () => {
 			changeCalendar.call(this, "ar-sa", calendarTypes.HIJRI, sample);
-		}.bind(this);
+		};
 		
-		this.children.buttonGreg.onPress = function(){
+		this.children.buttonGreg.onPress = () => {
 			changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
-		}.bind(this);
+		};
 		
-		this.children.button3.onPress = function(){
+		this.children.nextPage.onPress = () => {
+			this.calendar.setWeekMode(!this.calendar.getWeekMode());
+		};
+		
+		this.children.button3.onPress = () => {
 			this.calendar.addStyles({
 				".calendar.header_navbar_monthLabel": {
 					"textColor": "#F10000"
 				}
-			})
-		}.bind(this);
+			});
+		};
 	}
 );
 
@@ -357,12 +369,11 @@ const NewPage001 = extend(NewPage001Design)(
 function onShow(superOnShow) {
   superOnShow();
   
-	changeCalendar.call(this, "ar-sa", "hijri", sample);
-	this.calendar.onDisplayChange = function(){
-	};
+	changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
+  
   this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
-	// this.calendar.now();
 	var fn = this.calendar.nextMonth.bind(this.calendar);
+	
 	// runner.add(fn, "nextMonth");
 	// runner.add(fn, "nextMonth2");
 	// runner.add(fn, "nextMonth3");
@@ -394,10 +405,11 @@ function onShow(superOnShow) {
 				// });
 			});
 		});
+		
 	// }
 	// , 3)
   // alert(JSON.stringify(benchmark()))
-  //console.log(benchmark());
+  // console.log(benchmark());
 }
 
 // Page.onLoad -> This event is called once when page is created.

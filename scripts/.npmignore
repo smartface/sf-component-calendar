@@ -5,6 +5,7 @@ node_modules/js-base
 benchmarks
 i18n
 ui
+.ui
 pages
 npm-debug.log
 .scripts
