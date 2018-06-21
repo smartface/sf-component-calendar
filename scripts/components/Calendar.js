@@ -61,9 +61,11 @@ function getOptions({
 			justCurrentDays=false,
 			calendarCore=null,
 			useContext=true,
+			useDaySelection=true
 		}){
 	
 	return {
+		useDaySelection,
 		justCurrentDays,
 		useRangeSelection,
 		theme,
@@ -102,6 +104,7 @@ function Calendar(_super, options) {
 	
 	const {
 		useRangeSelection,
+		useDaySelection,
 		justCurrentDays,
 		theme,
 		calendarCore,
@@ -127,11 +130,17 @@ function Calendar(_super, options) {
 	
 	this._weeks.forEach((row, weekIndex) => {
 		row.onDayLongPress = this._onLongPress.bind(this, weekIndex);
-		if(useRangeSelection === false) {
+		if(useDaySelection !== false) {
 			row.onDaySelect = this.selectDay.bind(this, weekIndex);
-		} else if(useRangeSelection !== false) {
-			row.onDaySelect = this._onSelectRange.bind(this, weekIndex);
+		} 
+		
+		if(useRangeSelection !== false) {
+			row.onDayLongPress = (weekDayIndex) => {
+				this._onSelectRange(weekIndex, weekDayIndex);
+				this._onLongPress(weekIndex, weekDayIndex);
+			}
 		}
+		
 	});
 	
 	this.children.navbar.children.nextWeek.onPress = () => {
