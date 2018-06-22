@@ -130,14 +130,21 @@ function Calendar(_super, options) {
 	
 	this._weeks.forEach((row, weekIndex) => {
 		row.onDayLongPress = this._onLongPress.bind(this, weekIndex);
-		if(useDaySelection !== false) {
+		if(useDaySelection === true) {
 			row.onDaySelect = this.selectDay.bind(this, weekIndex);
 		} 
 		
-		if(useRangeSelection !== false) {
-			row.onDayLongPress = (weekDayIndex) => {
-				this._onSelectRange(weekIndex, weekDayIndex);
-				this._onLongPress(weekIndex, weekDayIndex);
+		if(useRangeSelection === true) {
+			if(useDaySelection === true){
+				row.onDayLongPress = (weekDayIndex) => {
+					this._onSelectRange(weekIndex, weekDayIndex);
+					this._onLongPress(weekIndex, weekDayIndex);
+				};
+			} else {
+				row.onDaySelect = (weekDayIndex) => {
+					this._onSelectRange(weekIndex, weekDayIndex);
+					this._onLongPress(weekIndex, weekDayIndex);
+				};
 			}
 		}
 	});
@@ -368,10 +375,11 @@ Calendar.prototype.setSelectedDate = function(date) {
 	this.dispatch({
 		type: "deselectDays"
 	});
-	// if(this.__options.useRangeSelection === false){
-	// 	this._calendarCore.setSelectedDate(date);
+	if(this.__options.useDaySelection === true){
+		this._calendarCore.setSelectedDate(date);
+	}
 	// } else {
-		this._calendarCore.startRangeSelection({date});
+		// this._calendarCore.startRangeSelection({date});
 	// }
 };
 
@@ -380,6 +388,8 @@ Calendar.prototype.setSelectedDate = function(date) {
  */
 Calendar.prototype.dispose = function() {
 	this._unsubsciber();
+	this.onDaySelect = null;
+	this.onDayLongPress = null;
 	this._unsubsciber = null;
 	this._calendarCore = null;
 	this._weeks = [];

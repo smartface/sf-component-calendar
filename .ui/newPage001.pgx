@@ -270,7 +270,9 @@
 				"flexProps": {
 					"positionType": "ABSOLUTE"
 				},
-				"height": 300
+				"height": 300,
+				"left": 0,
+				"top": 0
 			}
 		},
 		{
@@ -288,9 +290,9 @@
 					"positionType": "ABSOLUTE"
 				},
 				"height": 46.66666666666667,
-				"left": 20,
+				"left": 20.000000657706426,
 				"text": "Week Toggle",
-				"top": 473.33333333333337,
+				"top": 473.33331930226296,
 				"width": 138.33333333333334
 			}
 		},
@@ -309,9 +311,9 @@
 					"positionType": "ABSOLUTE"
 				},
 				"height": 51.85185185185185,
-				"left": 20,
+				"left": 20.000000657706426,
 				"text": "Add Range",
-				"top": 410,
+				"top": 410.00000526165144,
 				"width": 135.1851851851852
 			}
 		}
