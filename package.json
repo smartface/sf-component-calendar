@@ -60,7 +60,7 @@
     "moment-hijri": "^2.0.1"
   },
   "dependencies": {
-    "@smartface/smartface.ui-editor": "^6.7.0"
+    "@smartface/smartface.ui-editor": "6.8.3-beta.5"
   },
   "config": {
     "commitizen": {

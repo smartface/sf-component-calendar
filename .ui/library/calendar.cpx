@@ -68,6 +68,7 @@
 			"className": ".calendar.header_dayNames_dayName.weekday",
 			"id": "99f994aa",
 			"props": {
+				"autoWidth": 20.689655172413794,
 				"children": [],
 				"name": "dayName_0",
 				"parent": "ef76084f",
@@ -77,12 +78,15 @@
 				"page": "__library__"
 			},
 			"type": "TextView",
-			"userProps": {}
+			"userProps": {
+				"autoWidth": 20.689655172413794
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames_dayName.weekday",
 			"id": "0e153410",
 			"props": {
+				"autoWidth": 22.413793103448278,
 				"children": [],
 				"name": "dayName_1",
 				"parent": "ef76084f",
@@ -92,12 +96,15 @@
 				"page": "__library__"
 			},
 			"type": "TextView",
-			"userProps": {}
+			"userProps": {
+				"autoWidth": 22.413793103448278
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames_dayName.weekday",
 			"id": "c7e0dc98",
 			"props": {
+				"autoWidth": 13.793103448275863,
 				"children": [],
 				"name": "dayName_2",
 				"parent": "ef76084f",
@@ -107,12 +114,15 @@
 				"page": "__library__"
 			},
 			"type": "TextView",
-			"userProps": {}
+			"userProps": {
+				"autoWidth": 13.793103448275863
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames_dayName.weekday",
 			"id": "b73efb53",
 			"props": {
+				"autoWidth": 22.413793103448278,
 				"children": [],
 				"name": "dayName_3",
 				"parent": "ef76084f",
@@ -122,12 +132,15 @@
 				"page": "__library__"
 			},
 			"type": "TextView",
-			"userProps": {}
+			"userProps": {
+				"autoWidth": 22.413793103448278
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames_dayName.weekday",
 			"id": "4c7e834e",
 			"props": {
+				"autoWidth": 18.965517241379313,
 				"children": [],
 				"name": "dayName_4",
 				"parent": "ef76084f",
@@ -137,12 +150,15 @@
 				"page": "__library__"
 			},
 			"type": "TextView",
-			"userProps": {}
+			"userProps": {
+				"autoWidth": 18.965517241379313
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames_dayName.weekday",
 			"id": "d7afd3c5",
 			"props": {
+				"autoWidth": 13.793103448275863,
 				"children": [],
 				"name": "dayName_5",
 				"parent": "ef76084f",
@@ -152,12 +168,15 @@
 				"page": "__library__"
 			},
 			"type": "TextView",
-			"userProps": {}
+			"userProps": {
+				"autoWidth": 13.793103448275863
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames_dayName.weekday",
 			"id": "6e63338a",
 			"props": {
+				"autoWidth": 17.24137931034483,
 				"children": [],
 				"name": "dayName_6",
 				"parent": "ef76084f",
@@ -167,7 +186,9 @@
 				"page": "__library__"
 			},
 			"type": "TextView",
-			"userProps": {}
+			"userProps": {
+				"autoWidth": 17.24137931034483
+			}
 		},
 		{
 			"className": ".flexLayout",

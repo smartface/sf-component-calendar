@@ -140,7 +140,6 @@ function Calendar(_super, options) {
 				this._onLongPress(weekIndex, weekDayIndex);
 			}
 		}
-		
 	});
 	
 	this.children.navbar.children.nextWeek.onPress = () => {
@@ -369,11 +368,11 @@ Calendar.prototype.setSelectedDate = function(date) {
 	this.dispatch({
 		type: "deselectDays"
 	});
-	if(this.__options.useRangeSelection === false){
-		this._calendarCore.setSelectedDate(date);
-	} else {
+	// if(this.__options.useRangeSelection === false){
+	// 	this._calendarCore.setSelectedDate(date);
+	// } else {
 		this._calendarCore.startRangeSelection({date});
-	}
+	// }
 };
 
 /**
