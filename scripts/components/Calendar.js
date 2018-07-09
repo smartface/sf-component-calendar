@@ -428,7 +428,7 @@ Calendar.prototype.nextMonth = function() {
 	
 	if(this.currentMonth) {
 		this._calendarCore.nextMonth();
-		this.onMonthChange && this.onMonthChange(this.currentMonth.nextMonth.normalizedDate);
+		this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
 	}
 };
 
