@@ -156,7 +156,7 @@
 			"&-selected": {
 				"backgroundColor": "rgba( 0, 185, 255, 1 )"
 			},
-			"backgroundColor": "rgba( 255, 255, 255, 0 )"
+			"backgroundColor": "rgba( 246, 7, 7, 0 )"
 		},
 		".day_label": {
 			"font": {
