@@ -15,6 +15,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var __id = 0;
 
 function addMiddleware(mware) {}
@@ -39,39 +41,23 @@ function createContext(actors, updater, middlewares) {
 
       _classCallCheck(this, Context);
 
-      Object.defineProperty(this, "setState", {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        value: function value(state) {
-          _this.state = Object.assign({}, state);
-        }
+      _defineProperty(this, "setState", function (state) {
+        _this.state = Object.assign({}, state);
       });
-      Object.defineProperty(this, "getState", {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        value: function value() {
-          return Object.assign({}, _this.state);
-        }
+
+      _defineProperty(this, "getState", function () {
+        return Object.assign({}, _this.state);
       });
-      Object.defineProperty(this, "dispatch", {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        value: function value(action, target) {
-          _this.setState(updater(_this, action, target));
-        }
+
+      _defineProperty(this, "dispatch", function (action, target) {
+        _this.setState(updater(_this, action, target));
       });
-      Object.defineProperty(this, "dispose", {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        value: function value() {
-          _this.state = null;
-          _this.actors = null;
-        }
+
+      _defineProperty(this, "dispose", function () {
+        _this.state = null;
+        _this.actors = null;
       });
+
       // this.__id            = __id++;
       // this._subscribers    = new WeakMap();
       // this._subscriberKeys = new Map();

@@ -61,7 +61,8 @@ function getOptions({
 			justCurrentDays=false,
 			calendarCore=null,
 			useContext=true,
-			useDaySelection=true
+			useDaySelection=true,
+			dayOfWeek=0
 		}){
 	
 	return {
@@ -70,7 +71,8 @@ function getOptions({
 		useRangeSelection,
 		theme,
 		calendarCore,
-		useContext
+		useContext,
+		dayOfWeek
 	};
 }
 
@@ -108,11 +110,12 @@ function Calendar(_super, options) {
 		justCurrentDays,
 		theme,
 		calendarCore,
-		useContext
+		useContext,
+		dayOfWeek
 	} = this.__options;
 	
 	this._styleContext = useContext ? calendarContext(this, "calendar", theme || themeFile) : null;
-	this._calendarCore = calendarCore || new CalendarCore();
+	this._calendarCore = calendarCore || new CalendarCore({dayOfWeek});
 	this._updateCalendar = this._updateCalendar.bind(this);
 	this._unsubsciber = this._calendarCore.subscribe(this._updateCalendar);
 	this._weeks = [];
@@ -222,13 +225,13 @@ Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
  * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
  * @param {(object|null)} [specialDays=null] - Specialdays objects
  */
- Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
+ Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null, dayOfWeek = 0) {
 	this.dispatch({
 		type: "changeCalendar",
 		lang: lang
 	});
 	
-	this._calendarCore.changeCalendar(lang, type, specialDays);
+	this._calendarCore.changeCalendar(lang, type, specialDays, dayOfWeek);
 };
 
 /**
@@ -268,6 +271,8 @@ Calendar.prototype._updateCalendar = function(oldState, newState){
 	newState.month.daysMin.forEach((day, index) => {
 		this.children.calendarDays.children["dayName_" + index].text = day;
 	});
+	
+	alert(newState.month.daysLong)
 	
 	this._weekMode && this.setWeekMode(this._weekMode) || this.children.body.applyLayout();
 	this.applyLayout();

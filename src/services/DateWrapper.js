@@ -4,6 +4,10 @@ function notValidDateThrowanError(date, strDate) {
 	}
 }
 
+function sortDays(days){
+	return (num) => days[num]
+}
+
 export default class DateService {
 	constructor(moment, date, format="DD-MM-YYYY"){
 		this._moment = moment;
@@ -24,6 +28,17 @@ export default class DateService {
 				this._date = moment();
 			}
 		}
+		
+		const firstDay = this.firstDayOfWeek();
+		this.daysMap = [0, 1, 2, 3, 4, 5, 6].reduce((acc, num, index) => {
+			if(index >= firstDay){
+				acc[index - firstDay] = num;
+			} else {
+				acc[6 - index] = num;
+			}
+			
+			return acc;
+		}, []);
 	}
 	
 	weekOfYear() {
@@ -36,6 +51,7 @@ export default class DateService {
 	
 	localeDate(){
 		var now = this._date.clone();
+		// const localeDate = {dayName: now.dayName(),day: now.format("D"), month: now.format("M"), year: now.format("YYYY")};
 		const localeDate = {day: now.format("D"), month: now.format("M"), year: now.format("YYYY")};
 		return {
 			setDay(day) {
@@ -113,15 +129,19 @@ export default class DateService {
 	}
 	
 	weekdaysShort() {
-		return this._moment.weekdaysShort();
+		return this.daysMap.map(sortDays(this._moment.localeData().weekdaysShort()));
 	}
 	
 	weekdaysMin() {
-		return this._moment.weekdaysMin();
+		return this.daysMap.map(sortDays(this._moment.localeData().weekdaysMin()));
 	}
 	
 	weekdaysLong() {
-		return this._moment.weekdays();
+		return this.daysMap.map(sortDays(this._moment.localeData().weekdays()));
+	}
+	
+	firstDayOfWeek() {
+		return this._moment.localeData().firstDayOfWeek();
 	}
 	
 	daysCount() {
@@ -135,7 +155,7 @@ export default class DateService {
 	}
 	
 	prevMonth() {
-		var newdate = this._date.clone()
+		var newdate = this._date.clone();
 		newdate.subtract(1, 'month');
 		return new DateService(this._moment, newdate);
 	}
@@ -143,6 +163,12 @@ export default class DateService {
 	prevYear() {}
 	
 	nextYear() {}
+	
+	isWeekend(day){
+	  const wd = this._date.clone().date(day).day();
+	  
+	  return wd === 0 || wd === 6;
+	}
 	
 	dateLang(sh = "en") {
 		this._moment.updateLocale(sh);

@@ -23,6 +23,12 @@ function notValidDateThrowanError(date, strDate) {
   }
 }
 
+function sortDays(days) {
+  return function (num) {
+    return days[num];
+  };
+}
+
 var DateService =
 /*#__PURE__*/
 function () {
@@ -49,6 +55,17 @@ function () {
         this._date = moment();
       }
     }
+
+    var firstDay = this.firstDayOfWeek();
+    this.daysMap = [0, 1, 2, 3, 4, 5, 6].reduce(function (acc, num, index) {
+      if (index >= firstDay) {
+        acc[index - firstDay] = num;
+      } else {
+        acc[6 - index] = num;
+      }
+
+      return acc;
+    }, []);
   }
 
   _createClass(DateService, [{
@@ -64,7 +81,8 @@ function () {
   }, {
     key: "localeDate",
     value: function localeDate() {
-      var now = this._date.clone();
+      var now = this._date.clone(); // const localeDate = {dayName: now.dayName(),day: now.format("D"), month: now.format("M"), year: now.format("YYYY")};
+
 
       var localeDate = {
         day: now.format("D"),
@@ -160,17 +178,22 @@ function () {
   }, {
     key: "weekdaysShort",
     value: function weekdaysShort() {
-      return this._moment.weekdaysShort();
+      return this.daysMap.map(sortDays(this._moment.localeData().weekdaysShort()));
     }
   }, {
     key: "weekdaysMin",
     value: function weekdaysMin() {
-      return this._moment.weekdaysMin();
+      return this.daysMap.map(sortDays(this._moment.localeData().weekdaysMin()));
     }
   }, {
     key: "weekdaysLong",
     value: function weekdaysLong() {
-      return this._moment.weekdays();
+      return this.daysMap.map(sortDays(this._moment.localeData().weekdays()));
+    }
+  }, {
+    key: "firstDayOfWeek",
+    value: function firstDayOfWeek() {
+      return this._moment.localeData().firstDayOfWeek();
     }
   }, {
     key: "daysCount",
@@ -199,6 +222,13 @@ function () {
   }, {
     key: "nextYear",
     value: function nextYear() {}
+  }, {
+    key: "isWeekend",
+    value: function isWeekend(day) {
+      var wd = this._date.clone().date(day).day();
+
+      return wd === 0 || wd === 6;
+    }
   }, {
     key: "dateLang",
     value: function dateLang() {

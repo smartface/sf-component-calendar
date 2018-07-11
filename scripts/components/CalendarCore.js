@@ -729,12 +729,14 @@ CalendarCore.prototype.setSelectedDate = function(date) {
  * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
  * @param {(object|null)} [specialDays=null] - Specialdays objects
  */
-CalendarCore.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null) {
+CalendarCore.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null, dayOfWeek = 0) {
+	alert(dayOfWeek)
 	this._specialDays = specialDays || this._specialDays;
 	this._calendarService = createService({
 		lang: lang,
 		type: type,
-		specialDays: specialDays
+		specialDays: specialDays,
+		dayOfWeek
 	});
 
 	const state = getInitialState();

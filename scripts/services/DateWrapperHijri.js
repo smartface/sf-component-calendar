@@ -27,7 +27,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function notValidDateThrowanError(moment, date) {
   if (moment(date).isValid()) {
@@ -45,7 +49,7 @@ function (_DateService) {
 
     _classCallCheck(this, HijriDateService);
 
-    return _possibleConstructorReturn(this, (HijriDateService.__proto__ || Object.getPrototypeOf(HijriDateService)).call(this, moment, date, format));
+    return _possibleConstructorReturn(this, _getPrototypeOf(HijriDateService).call(this, moment, date, format));
   }
 
   _createClass(HijriDateService, [{
@@ -102,6 +106,13 @@ function (_DateService) {
           return _objectSpread({}, localeDate);
         }
       }; // return this._date.format("D-M-YYYY").toObject();
+    }
+  }, {
+    key: "isWeekend",
+    value: function isWeekend(day) {
+      var wd = this._date.clone().iDate(day).day();
+
+      return wd === 4 || wd === 5;
     }
   }, {
     key: "startDayOfMonth",

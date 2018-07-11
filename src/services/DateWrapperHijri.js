@@ -58,6 +58,14 @@ export default class HijriDateService extends DateService {
 		// return this._date.format("D-M-YYYY").toObject();
 	}
 	
+		
+	isWeekend(day){
+	  const wd = this._date.clone().iDate(day).day();
+	  
+	  return wd === 4 || wd === 5;
+	}
+	
+	
 	startDayOfMonth() {
 		return this._date.clone().iDate(1).weekday() + 1;
 	}

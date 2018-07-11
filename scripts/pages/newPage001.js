@@ -292,8 +292,8 @@ var sample = {
   ]
 };
 
-function changeCalendar(lang, calendar, sp){
-	this.calendar.changeCalendar(lang, calendar, sp);
+function changeCalendar(lang, calendar, sp, dayOfWeek=0){
+	this.calendar.changeCalendar(lang, calendar, sp, dayOfWeek);
 // 	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
 	this.calendar.applyLayout();
 }
@@ -369,7 +369,7 @@ const NewPage001 = extend(NewPage001Design)(
 function onShow(superOnShow) {
   superOnShow();
   
-	changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
+	changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample, 2);
   
   this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
 	var fn = this.calendar.nextMonth.bind(this.calendar);

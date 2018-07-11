@@ -7,6 +7,7 @@ import specialDays from "./mock/specialDays";
 describe("Calendar Service", function() {
   
   var calendarService = createService({});
+  
   describe("Month", function() {
     it("should return current date if date is not set.", function() {
       var data = calendarService.getCalendarMonth();
@@ -15,6 +16,20 @@ describe("Calendar Service", function() {
       expect(data.daysCount).to.be.a('number');
       expect(data.startDayOfMonth).to.be.a('number');
       expect(data.date).to.be.a('object');
+    });
+    
+    it("should change day of week", function() {
+      let calendarService = createService({mmoment: moment(), dayOfWeek: 2});
+      var data = calendarService.getCalendarMonth({year: 2016, month: "02", day: "01"});
+      expect(data.daysLong).to.be.eql([
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+          'Monday'
+        ]);
     });
     
     it("should return all needed data for a month", function() {

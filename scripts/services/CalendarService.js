@@ -33,6 +33,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * @param {string} lang - Calendar language
  * @param {string} type - Calendar type
  * @param {Object} specialDays - Special days data
+ * @param {integer} dow - Day of week
  * 
  * @returns {Object}
  */
@@ -42,7 +43,10 @@ function createService(_ref) {
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? "gregorian" : _ref$type,
       _ref$specialDays = _ref.specialDays,
-      specialDays = _ref$specialDays === void 0 ? {} : _ref$specialDays;
+      specialDays = _ref$specialDays === void 0 ? {} : _ref$specialDays,
+      _ref$dayOfWeek = _ref.dayOfWeek,
+      dayOfWeek = _ref$dayOfWeek === void 0 ? 0 : _ref$dayOfWeek;
+
   var service;
   var current;
   service = _DateWrapper.default;
@@ -55,10 +59,11 @@ function createService(_ref) {
       break;
   }
 
-  current.locale(lang);
+  current.updateLocale(lang);
+  var weekdays = current.localeData().weekdays();
   current.updateLocale(lang, {
     week: {
-      dow: 0,
+      dow: dayOfWeek,
       doy: 6
     }
   });
@@ -123,6 +128,7 @@ function getCalendarMonth(moment, service, specialDaysService, dt) {
   var localeDays = [];
 
   for (var i = 1; i <= cellCount; i++) {
+    var isWeekend = false;
     var day = void 0;
 
     if (i <= startDay) {
@@ -130,6 +136,7 @@ function getCalendarMonth(moment, service, specialDaysService, dt) {
         day: ++prev,
         month: 'previous'
       };
+      isWeekend = prevMonth.isWeekend(day.day);
       day.specialDay = specialDaysService(_objectSpread({}, prevMonth.fromDay(day.day).toNormalizedObject()));
       day.localeDay = prevMonth.localeDate().setDay(day.day).getDate().day;
     } else if (i > startNext) {
@@ -137,6 +144,7 @@ function getCalendarMonth(moment, service, specialDaysService, dt) {
         day: next++,
         month: 'next'
       };
+      isWeekend = nextMonth.isWeekend(day.day);
       day.specialDay = specialDaysService(_objectSpread({}, nextMonth.fromDay(day.day).toNormalizedObject()));
       day.localeDay = nextMonth.localeDate().setDay(day.day).getDate().day;
     } else {
@@ -144,15 +152,14 @@ function getCalendarMonth(moment, service, specialDaysService, dt) {
         day: i - startDay,
         month: 'current'
       };
+      isWeekend = currentMonth.isWeekend(day.day);
       day.specialDay = specialDaysService(_objectSpread({}, currentMonth.fromDay(day.day).toNormalizedObject()));
       day.localeDay = currentMonth.localeDate().setDay(day.day).getDate().day;
     }
 
-    row.push(day);
-
-    if (row.length === 1 || row.length === 7) {
-      day.isWeekend = true;
-    }
+    isWeekend && (day.isWeekend = isWeekend);
+    row.push(day); // if(row.length === 1 || row.length === 7) {
+    // }
 
     if (i > 0 && i % 7 == 0 && i !== cellCount) {
       row = [];
@@ -161,6 +168,7 @@ function getCalendarMonth(moment, service, specialDaysService, dt) {
   }
 
   return {
+    // firstDayOfWeek: currentMonth.firstDayOfWeek(),
     longName: currentMonth.monthLong(),
     shortName: currentMonth.monthShort(),
     daysCount: currentMonth.daysCount(),
