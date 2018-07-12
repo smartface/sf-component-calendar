@@ -47,7 +47,6 @@
  * @property {Object} [theme=null] - Sets custom theme
  * @property {boolean} [justCurrentDays=false] - To display only the month days
  * @property {boolean} [useContext=true] - To use internal calendar-context
- * @property {integer} [firstDayOfWeek=0] - To change start day of weeks
  */
  
 const CalendarDesign = require('library/Calendar');
@@ -62,8 +61,7 @@ function getOptions({
 			justCurrentDays=false,
 			calendarCore=null,
 			useContext=true,
-			useDaySelection=true,
-			dayOfWeek=0
+			useDaySelection=true
 		}){
 	
 	return {
@@ -72,8 +70,7 @@ function getOptions({
 		useRangeSelection,
 		theme,
 		calendarCore,
-		useContext,
-		dayOfWeek
+		useContext
 	};
 }
 
@@ -112,11 +109,10 @@ function Calendar(_super, options) {
 		theme,
 		calendarCore,
 		useContext,
-		dayOfWeek
 	} = this.__options;
 	
 	this._styleContext = useContext ? calendarContext(this, "calendar", theme || themeFile) : null;
-	this._calendarCore = calendarCore || new CalendarCore({dayOfWeek});
+	this._calendarCore = calendarCore || new CalendarCore();
 	this._updateCalendar = this._updateCalendar.bind(this);
 	this._unsubsciber = this._calendarCore.subscribe(this._updateCalendar);
 	this._weeks = [];
@@ -226,13 +222,13 @@ Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
  * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
  * @param {(object|null)} [specialDays=null] - Specialdays objects
  */
- Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null, dayOfWeek = 0) {
+ Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null, firstDayOfWeek = 0) {
 	this.dispatch({
 		type: "changeCalendar",
 		lang: lang
 	});
 	
-	this._calendarCore.changeCalendar(lang, type, specialDays, dayOfWeek);
+	this._calendarCore.changeCalendar(lang, type, specialDays, firstDayOfWeek);
 };
 
 /**
