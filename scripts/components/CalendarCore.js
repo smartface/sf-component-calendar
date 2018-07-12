@@ -426,7 +426,6 @@ CalendarCore.prototype._getRange = function({ start, end, state = null }) {
 };
 
 CalendarCore.prototype.nextWeek = function() {
-	console.log("next week : "+this._state.weekIndex+" - "+ROWCOUNT);
 	if (this._state.weekIndex + 1 === ROWCOUNT) {
 		console.log("jump to next month");
 		const state = this._nextMonth();
@@ -728,15 +727,15 @@ CalendarCore.prototype.setSelectedDate = function(date) {
  * @param {string} [lang="en"] - Language code like 'en, en-US, tr, ar-SA etc.'
  * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
  * @param {(object|null)} [specialDays=null] - Specialdays objects
+ * @param {integer} [firstDayOfWeek=0] - First day of a week [0...6]
  */
-CalendarCore.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null, dayOfWeek = 0) {
-	alert(dayOfWeek)
+CalendarCore.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null, firstDayOfWeek = 0) {
 	this._specialDays = specialDays || this._specialDays;
 	this._calendarService = createService({
 		lang: lang,
 		type: type,
 		specialDays: specialDays,
-		dayOfWeek
+		firstDayOfWeek
 	});
 
 	const state = getInitialState();

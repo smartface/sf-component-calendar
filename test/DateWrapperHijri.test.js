@@ -1,8 +1,8 @@
 import DateService from "../src/services/DateWrapperHijri";
 import {expect} from "chai";
 import moment from "moment";
-import 'moment/locale/ar-sa';
 import momentHijri from "moment-hijri";
+import 'moment/locale/ar-sa';
 
 describe("DateWrapper Hijri", function() {
   describe("Week", function() {

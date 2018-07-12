@@ -19,7 +19,7 @@ import momentHijri from "moment-hijri";
  * 
  * @returns {Object}
  */
-export default function createService({lang="en", type="gregorian", specialDays={}, dayOfWeek=0}){
+export default function createService({lang="en", type="gregorian", specialDays={}, firstDayOfWeek=0}){
 	var service;
 	
 	var current;
@@ -34,12 +34,12 @@ export default function createService({lang="en", type="gregorian", specialDays=
 			break;
 	}
 	
-	current.updateLocale(lang);
+	current.locale(lang);
 	const weekdays = current.localeData().weekdays();
 	
 	current.updateLocale(lang, {
 		week : {
-      dow : dayOfWeek,
+      dow : firstDayOfWeek,
       doy: 6
     }
 	});

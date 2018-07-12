@@ -340,7 +340,7 @@ const NewPage001 = extend(NewPage001Design)(
 		};
 		
 		this.children.buttonAR.onPress = () => {
-			changeCalendar.call(this, "ar-sa", "gregorian", sample);
+			changeCalendar.call(this, "ar", "gregorian", sample);
 		};
 		
 		this.children.buttonHijri.onPress = () => {
@@ -348,7 +348,7 @@ const NewPage001 = extend(NewPage001Design)(
 		};
 		
 		this.children.buttonGreg.onPress = () => {
-			changeCalendar.call(this, "en", calendarTypes.GREGORIAN, sample);
+			changeCalendar.call(this, "fr", calendarTypes.GREGORIAN, sample);
 		};
 		
 		this.children.nextPage.onPress = () => {

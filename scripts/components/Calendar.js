@@ -272,8 +272,6 @@ Calendar.prototype._updateCalendar = function(oldState, newState){
 		this.children.calendarDays.children["dayName_" + index].text = day;
 	});
 	
-	alert(newState.month.daysLong)
-	
 	this._weekMode && this.setWeekMode(this._weekMode) || this.children.body.applyLayout();
 	this.applyLayout();
 };

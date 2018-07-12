@@ -44,9 +44,8 @@ function createService(_ref) {
       type = _ref$type === void 0 ? "gregorian" : _ref$type,
       _ref$specialDays = _ref.specialDays,
       specialDays = _ref$specialDays === void 0 ? {} : _ref$specialDays,
-      _ref$dayOfWeek = _ref.dayOfWeek,
-      dayOfWeek = _ref$dayOfWeek === void 0 ? 0 : _ref$dayOfWeek;
-
+      _ref$firstDayOfWeek = _ref.firstDayOfWeek,
+      firstDayOfWeek = _ref$firstDayOfWeek === void 0 ? 0 : _ref$firstDayOfWeek;
   var service;
   var current;
   service = _DateWrapper.default;
@@ -59,11 +58,11 @@ function createService(_ref) {
       break;
   }
 
-  current.updateLocale(lang);
+  current.locale(lang);
   var weekdays = current.localeData().weekdays();
   current.updateLocale(lang, {
     week: {
-      dow: dayOfWeek,
+      dow: firstDayOfWeek,
       doy: 6
     }
   });

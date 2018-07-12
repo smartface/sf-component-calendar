@@ -34,7 +34,7 @@ export default class DateService {
 			if(index >= firstDay){
 				acc[index - firstDay] = num;
 			} else {
-				acc[6 - index] = num;
+				acc[7 - firstDay + index] = num;
 			}
 			
 			return acc;

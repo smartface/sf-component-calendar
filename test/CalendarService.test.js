@@ -10,16 +10,17 @@ describe("Calendar Service", function() {
   
   describe("Month", function() {
     it("should return current date if date is not set.", function() {
+      let calendarService = createService({mmoment: moment(), firstDayOfWeek: 0});
       var data = calendarService.getCalendarMonth();
-      expect(data.longName).to.not.eql(undefined);
-      expect(data.shortName).to.not.eql(undefined);
+      expect(data.longName).to.not.equal(undefined);
+      expect(data.shortName).to.not.equal(undefined);
       expect(data.daysCount).to.be.a('number');
       expect(data.startDayOfMonth).to.be.a('number');
       expect(data.date).to.be.a('object');
     });
     
-    it("should change day of week", function() {
-      let calendarService = createService({mmoment: moment(), dayOfWeek: 2});
+    it("should change first day of week", function() {
+      let calendarService = createService({mmoment: moment(), firstDayOfWeek: 2});
       var data = calendarService.getCalendarMonth({year: 2016, month: "02", day: "01"});
       expect(data.daysLong).to.be.eql([
           'Tuesday',
@@ -33,6 +34,7 @@ describe("Calendar Service", function() {
     });
     
     it("should return all needed data for a month", function() {
+      let calendarService = createService({mmoment: moment(), firstDayOfWeek: 0});
       var data = calendarService.getMonth({year: 2016, month: "02", day: "01"});
       
       expect(data).to.eql({
@@ -54,7 +56,7 @@ describe("Calendar Service", function() {
     });
     
     it("should return all needed calendar data for a month of calendar", function() {
-      calendarService = createService({});
+      let calendarService = createService({mmoment: moment(), firstDayOfWeek: 0});
       var data = calendarService.getCalendarMonth({year: 2016, month: 2, day : 9});
       
       calendarService = createService({lang: "tr"});
@@ -68,7 +70,7 @@ describe("Calendar Service", function() {
         startDayOfMonth: data2.startDayOfMonth
       });
       
-      expect([ 
+      expect([
             'Pazar',
             'Pazartesi',
             'Salı',
