@@ -25,7 +25,7 @@ Smartface Calendar Component
         * [.setState(state)](#module_CalendarCore..CalendarCore+setState)
         * [.setDate(date)](#module_CalendarCore..CalendarCore+setDate)
         * [.setSelectedDate(date)](#module_CalendarCore..CalendarCore+setSelectedDate)
-        * [.changeCalendar([lang], [type], [specialDays])](#module_CalendarCore..CalendarCore+changeCalendar)
+        * [.changeCalendar([lang], [type], [specialDays], [firstDayOfWeek])](#module_CalendarCore..CalendarCore+changeCalendar)
         * [.prevMonth()](#module_CalendarCore..CalendarCore+prevMonth)
     * [~getInitialState()](#module_CalendarCore..getInitialState) ⇒ <code>object</code>
     * [~notify({Object), newState)](#module_CalendarCore..notify)
@@ -57,7 +57,7 @@ Smartface Calendar Component
     * [.setState(state)](#module_CalendarCore..CalendarCore+setState)
     * [.setDate(date)](#module_CalendarCore..CalendarCore+setDate)
     * [.setSelectedDate(date)](#module_CalendarCore..CalendarCore+setSelectedDate)
-    * [.changeCalendar([lang], [type], [specialDays])](#module_CalendarCore..CalendarCore+changeCalendar)
+    * [.changeCalendar([lang], [type], [specialDays], [firstDayOfWeek])](#module_CalendarCore..CalendarCore+changeCalendar)
     * [.prevMonth()](#module_CalendarCore..CalendarCore+prevMonth)
 
 <a name="new_module_CalendarCore..CalendarCore_new"></a>
@@ -208,7 +208,7 @@ Changes current selected month
 
 | Param | Type |
 | --- | --- |
-| date | <code>Calendar~DateDtO</code> | 
+| date | <code>Calendar~DateDTO</code> | 
 
 <a name="module_CalendarCore..CalendarCore+setSelectedDate"></a>
 
@@ -219,11 +219,11 @@ Changes current selected date
 
 | Param | Type |
 | --- | --- |
-| date | <code>Calendar~DateDtO</code> | 
+| date | <code>Calendar~DateDTO</code> | 
 
 <a name="module_CalendarCore..CalendarCore+changeCalendar"></a>
 
-#### calendarCore.changeCalendar([lang], [type], [specialDays])
+#### calendarCore.changeCalendar([lang], [type], [specialDays], [firstDayOfWeek])
 Changes calendar creating new calendar data and resets view
 
 *Supported Calendars:**
@@ -246,6 +246,7 @@ Changes calendar creating new calendar data and resets view
 | [lang] | <code>string</code> | <code>&quot;\&quot;en\&quot;&quot;</code> | Language code like 'en, en-US, tr, ar-SA etc.' |
 | [type] | <code>string</code> | <code>&quot;\&quot;gregorian\&quot;&quot;</code> | Calendar type, values can only be gregorian or hijri. |
 | [specialDays] | <code>object</code> \| <code>null</code> | <code></code> | Specialdays objects |
+| [firstDayOfWeek] | <code>integer</code> | <code>0</code> | First day of a week [0...6] |
 
 <a name="module_CalendarCore..CalendarCore+prevMonth"></a>
 

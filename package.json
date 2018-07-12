@@ -53,6 +53,7 @@
     "eslint-plugin-react": "^6.10.3",
     "install": "^0.10.1",
     "jase": "^1.2.0",
+    "jsdoc-to-markdown": "^4.0.1",
     "jsdox": "^0.4.10",
     "minimist": "^1.2.0",
     "mocha": "^3.3.0",

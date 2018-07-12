@@ -341,5 +341,6 @@ LongPress
 | [theme] | <code>Object</code> | <code></code> | Sets custom theme |
 | [justCurrentDays] | <code>boolean</code> | <code>false</code> | To display only the month days |
 | [useContext] | <code>boolean</code> | <code>true</code> | To use internal calendar-context |
+| [firstDayOfWeek] | <code>integer</code> | <code>0</code> | To change start day of weeks |
 
 
