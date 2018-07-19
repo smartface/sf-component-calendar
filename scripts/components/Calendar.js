@@ -221,6 +221,7 @@ Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
  * @param {string} [lang="en"] - Language code like 'en, en-US, tr, ar-SA etc.'
  * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
  * @param {(object|null)} [specialDays=null] - Specialdays objects
+ * @param {number} [firstDayOfWeek=0] - First day of a week [0...6]
  */
  Calendar.prototype.changeCalendar = function(lang = "en", type = "gregorian", specialDays = null, firstDayOfWeek = 0) {
 	this.dispatch({

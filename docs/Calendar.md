@@ -8,7 +8,7 @@ Smartface Calendar Component
 * [Calendar](#module_Calendar) : <code>class</code>
     * [~Calendar](#module_Calendar..Calendar)
         * [new Calendar(options)](#new_module_Calendar..Calendar_new)
-        * [.changeCalendar([lang], [type], [specialDays])](#module_Calendar..Calendar+changeCalendar)
+        * [.changeCalendar([lang], [type], [specialDays], [firstDayOfWeek])](#module_Calendar..Calendar+changeCalendar)
         * [.addStyles(styles)](#module_Calendar..Calendar+addStyles)
         * [.getWeekMode()](#module_Calendar..Calendar+getWeekMode) ⇒ <code>boolean</code>
         * [.setWeekMode(value)](#module_Calendar..Calendar+setWeekMode)
@@ -40,7 +40,7 @@ Smartface Calendar Component
 
 * [~Calendar](#module_Calendar..Calendar)
     * [new Calendar(options)](#new_module_Calendar..Calendar_new)
-    * [.changeCalendar([lang], [type], [specialDays])](#module_Calendar..Calendar+changeCalendar)
+    * [.changeCalendar([lang], [type], [specialDays], [firstDayOfWeek])](#module_Calendar..Calendar+changeCalendar)
     * [.addStyles(styles)](#module_Calendar..Calendar+addStyles)
     * [.getWeekMode()](#module_Calendar..Calendar+getWeekMode) ⇒ <code>boolean</code>
     * [.setWeekMode(value)](#module_Calendar..Calendar+setWeekMode)
@@ -88,7 +88,7 @@ myCalendar.setSelectedDate({month:2, year:2017, day:12});
 ```
 <a name="module_Calendar..Calendar+changeCalendar"></a>
 
-#### calendar.changeCalendar([lang], [type], [specialDays])
+#### calendar.changeCalendar([lang], [type], [specialDays], [firstDayOfWeek])
 Changes calendar creating new calendar data and resets view
 
 *Supported Calendars:**
@@ -111,6 +111,7 @@ Changes calendar creating new calendar data and resets view
 | [lang] | <code>string</code> | <code>&quot;\&quot;en\&quot;&quot;</code> | Language code like 'en, en-US, tr, ar-SA etc.' |
 | [type] | <code>string</code> | <code>&quot;\&quot;gregorian\&quot;&quot;</code> | Calendar type, values can only be gregorian or hijri. |
 | [specialDays] | <code>object</code> \| <code>null</code> | <code></code> | Specialdays objects |
+| [firstDayOfWeek] | <code>number</code> | <code>0</code> | First day of a week [0...6] |
 
 <a name="module_Calendar..Calendar+addStyles"></a>
 
@@ -341,6 +342,5 @@ LongPress
 | [theme] | <code>Object</code> | <code></code> | Sets custom theme |
 | [justCurrentDays] | <code>boolean</code> | <code>false</code> | To display only the month days |
 | [useContext] | <code>boolean</code> | <code>true</code> | To use internal calendar-context |
-| [firstDayOfWeek] | <code>integer</code> | <code>0</code> | To change start day of weeks |
 
 
