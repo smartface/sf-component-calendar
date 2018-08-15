@@ -36,7 +36,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"bottom": 0,

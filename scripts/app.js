@@ -14,15 +14,15 @@ Application.onUnhandledError = function(e) {
 	});
 };
 
-// require("sf-extension-utils");
+require("sf-extension-utils");
 
 const Router = require("sf-core/ui/router");
-const stylerBuilder = require("library/styler-builder");
+// const stylerBuilder = require("library/styler-builder");
 const settings = require("./settings.json");
-stylerBuilder.registerThemes(settings.config.theme.themes || "Defaults");
-stylerBuilder.setActiveTheme(settings.config.theme.currentTheme);
+// stylerBuilder.registerThemes(settings.config.theme.themes || "Defaults");
+// stylerBuilder.setActiveTheme(settings.config.theme.currentTheme);
 
 // Define routes and go to initial page of application
-Router.add("page1", require("./pages/newPage001"));
-Router.add("page3", require("./pages/newPage003"));
+Router.add("page1", "pages/newPage001");
+Router.add("page3", "pages/newPage003");
 Router.go("page1");

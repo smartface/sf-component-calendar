@@ -3,7 +3,7 @@
 .npm/*
 .tmp/*
 .pm2/*
-.templates/*
+.templates
 output/*
 plugin/*
 !output/Android/README.md

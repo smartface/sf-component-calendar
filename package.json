@@ -62,7 +62,7 @@
     "semver": "^5.3.0"
   },
   "dependencies": {
-    "@smartface/smartface.ui-editor": "6.9.0-beta.7"
+    "@smartface/smartface.ui-editor": "6.10.2"
   },
   "config": {
     "commitizen": {

@@ -77,7 +77,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"autoWidth": 20.689655172413794
 			}
@@ -95,7 +95,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"autoWidth": 22.413793103448278
 			}
@@ -113,7 +113,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"autoWidth": 13.793103448275863
 			}
@@ -131,7 +131,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"autoWidth": 22.413793103448278
 			}
@@ -149,7 +149,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"autoWidth": 18.965517241379313
 			}
@@ -167,7 +167,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"autoWidth": 13.793103448275863
 			}
@@ -185,7 +185,7 @@
 			"source": {
 				"page": "__library__"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"autoWidth": 17.24137931034483
 			}

@@ -48,10 +48,10 @@
     "moment-hijri": "2.1.1"
   },
   "devDependencies": {
-    "js-base": "^1.0.0",
     "@smartface/contx": "^1.2.0",
     "@smartface/styler": "^1.3.15",
-    "sf-extension-utils": "3.2.5",
-    "sf-core": "*"
+    "js-base": "^1.0.0",
+    "sf-core": "*",
+    "sf-extension-utils": "^4.0.0"
   }
 }

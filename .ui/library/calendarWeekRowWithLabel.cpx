@@ -47,7 +47,7 @@
 				"page": "__library__",
 				"id": "b59b-815d-e541-320e"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,
@@ -80,7 +80,7 @@
 				"page": "__library__",
 				"id": "b59b-815d-e541-320e"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,
@@ -113,7 +113,7 @@
 				"page": "__library__",
 				"id": "b59b-815d-e541-320e"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,
@@ -146,7 +146,7 @@
 				"page": "__library__",
 				"id": "b59b-815d-e541-320e"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,
@@ -179,7 +179,7 @@
 				"page": "__library__",
 				"id": "b59b-815d-e541-320e"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,
@@ -212,7 +212,7 @@
 				"page": "__library__",
 				"id": "b59b-815d-e541-320e"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,
@@ -245,7 +245,7 @@
 				"page": "__library__",
 				"id": "b59b-815d-e541-320e"
 			},
-			"type": "TextView",
+			"type": "Label",
 			"userProps": {
 				"borderRadius": 18,
 				"borderWidth": 1,

@@ -31,7 +31,7 @@
 				"orientation": "AUTO",
 				"safeAreaEnabled": true
 			},
-			"version": "6.9.0-beta.7"
+			"version": "6.10.2"
 		},
 		{
 			"className": ".statusBar",
