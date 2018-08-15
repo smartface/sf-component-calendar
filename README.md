@@ -218,13 +218,22 @@ Default style
 					"textColor": "#1775D0"
 				},
 				"&_arrow": {
-					"flexGrow": 1,
-					"textColor": "#B1B1B4",
+					"textColor": "rgba( 94, 94, 94, 1 )",
 					"backgroundColor": "rgba( 255, 255, 255, 0 )",
 					"bottom": 0,
 					"flexProps": {
 						"positionType": "ABSOLUTE"
-					}
+					},
+					"width": 20,
+					"top": 0,
+					"font": {
+						"size": 16,
+						"family": "FontAwesome5FreeSolid",
+						"style": null,
+						"bold": false,
+						"italic": false
+					},
+					"textAlignment": "MIDCENTER"
 				},
 				"&_label": {
 					"textColor": "#000000"
@@ -330,7 +339,7 @@ Default style
 			"&-selected": {
 				"backgroundColor": "rgba( 0, 185, 255, 1 )"
 			},
-			"backgroundColor": "rgba( 255, 255, 255, 0 )"
+			"backgroundColor": "rgba( 246, 7, 7, 0 )"
 		},
 		".day_label": {
 			"font": {
@@ -360,6 +369,18 @@ Default style
 				"borderWidth": 0,
 				"textColor": "#A3A3A3"
 			}
+		},
+		".weekNav": {
+			"flex": {
+				"positionType": 0,
+				"flexGrow": 1,
+				"flexDirection": 2,
+				"flexWrap": 1
+			},
+			"flexProps": {
+				"positionType": "RELATIVE",
+				"flexDirection": "ROW"
+			}
 		}
 	},
 	".calendarWeekly": {
@@ -368,7 +389,7 @@ Default style
 		},
 		"height": 100
 	}
-};
+}
 
 ```
 
