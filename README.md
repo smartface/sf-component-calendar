@@ -40,6 +40,20 @@ const myCalendar = new Calendar({theme: customTheme});
 
 ...
 
+// or
+
+const calendarContext = require('@smartface/sf-component-calendar/components/calendarContext');
+const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
+const specialDaysConf = require('./specialDays.json');
+
+const myCalendar = new Calendar({useContext: false});
+const calendarStyling = calendarContext(myCalendar, "my-calendar", customTheme);
+
+...
+// change styles at runtime
+calendarStyling({...});
+
+
 ```
 
 ## Component Configuration
