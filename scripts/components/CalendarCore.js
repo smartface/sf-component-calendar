@@ -587,7 +587,7 @@ CalendarCore.prototype.unsubscribe = function(cb) {
  *
  */
 CalendarCore.prototype.now = function() {
-	this.setSelectedDate(new Date());
+	this.setSelectedDate(this._state_month.date);
 };
 
 /**
