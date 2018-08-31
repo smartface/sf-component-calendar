@@ -344,6 +344,7 @@ CalendarCore.prototype.clearSelection = function() {
  * @param {{weekIndex: number, weekDayIndex: number}}
  */
 CalendarCore.prototype._selectDay = function({ weekIndex, weekDayIndex }) {
+	console.log(weekIndex+" : "+weekDayIndex);
 	return {
 		weekIndex,
 		selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
@@ -427,7 +428,6 @@ CalendarCore.prototype._getRange = function({ start, end, state = null }) {
 
 CalendarCore.prototype.nextWeek = function() {
 	if (this._state.weekIndex + 1 === ROWCOUNT) {
-		console.log("jump to next month");
 		const state = this._nextMonth();
 		state.weekIndex = 0;
 
@@ -596,7 +596,7 @@ CalendarCore.prototype.now = function() {
  * @returns {number}
  */
 CalendarCore.prototype.getWeekDay = function(date=null) {
-	const month = date && this._calendarService.getCalendarMonth(date) || null;
+	const month = date && this._calendarService.getCalendarMonth(getValidDate(date)) || null;
 	return date === null
 		? calculateDatePos(this._state.month.startDayOfMonth, this._state.month.date.day)
 		: calculateDatePos(month.startDayOfMonth, month.date.day);
@@ -704,8 +704,8 @@ CalendarCore.prototype.setDate = function(date) {
  * @param {Calendar~DateDTO} date
  */
 CalendarCore.prototype.setSelectedDate = function(date) {
-	this.setDate(date);
-	this.setState(this._selectDay(this.getWeekDay(date)));
+	const validDate = getValidDate(date);
+	this.setState(Object.assign(this._setDate(validDate), this._selectDay(this.getWeekDay(validDate))));
 };
 
 /**

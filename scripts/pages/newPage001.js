@@ -328,7 +328,7 @@ const NewPage001 = extend(NewPage001Design)(
 		
 		this.children.buttonTR.onPress = () => {
 			changeCalendar.call(this, "tr", "gregorian", sample);
-			this.calendar.now();
+			this.calendar.setSelectedDate(new Date());
 		};
 		
 		this.children.buttonRange.onPress = () => {

@@ -239,6 +239,7 @@ Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
  * @param {object} newState
  */
 Calendar.prototype._updateCalendar = function(oldState, newState){
+	// console.log(JSON.stringify(newState, " ", "\t"));
 	if((oldState.rangeSelectionMode === -1 && newState.rangeSelectionMode === 0)
 		|| (oldState.rangeSelectionMode === 1 && newState.rangeSelectionMode === -1)
 	){
