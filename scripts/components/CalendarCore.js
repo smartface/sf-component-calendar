@@ -344,7 +344,7 @@ CalendarCore.prototype.clearSelection = function() {
  * @param {{weekIndex: number, weekDayIndex: number}}
  */
 CalendarCore.prototype._selectDay = function({ weekIndex, weekDayIndex }) {
-	console.log(weekIndex+" : "+weekDayIndex);
+	//console.log(weekIndex+" : "+weekDayIndex);
 	return {
 		weekIndex,
 		selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
