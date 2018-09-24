@@ -309,7 +309,7 @@ CalendarCore.prototype.reset = function() {
  */
 CalendarCore.prototype.selectDay = function(weekIndex, weekDayIndex) {
 	if (this._state.rangeSelectionMode === RangeSelection.STARTED) {
-		this.completeRangeSelection({weekIndex, weekDayIndex});
+		// this.completeRangeSelection({weekIndex, weekDayIndex});
 	}
 	else if (this._state.rangeSelectionMode === RangeSelection.IDLE || this._state.rangeSelectionMode === RangeSelection.COMPLETED) {
 		this.setState({

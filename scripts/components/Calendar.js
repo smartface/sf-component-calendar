@@ -193,7 +193,7 @@ Calendar.prototype._onSelectRange = function (weekIndex, weekDayIndex) {
 	const state = this._calendarCore.getState();
 	
 	if(state.rangeSelectionMode === 0){
-		this.onRangeSelectionComplete 
+		this.onRangeSelectionStart 
 			&& this.onRangeSelectionStart(Object.assign({}, state.rangeSelection.start));
 	} else if(state.rangeSelectionMode === 1){
 		this.onRangeSelectionComplete 
