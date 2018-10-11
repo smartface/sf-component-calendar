@@ -31,7 +31,7 @@ myCalendar.setSelectedDate({month:2, year:2017, day:12});
 
 ```js
 // It must be based on theme.json below
-const custommTheme = { ... };
+const customTheme = { ... };
 
 const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
 const specialDaysConf = require('./specialDays.json');
