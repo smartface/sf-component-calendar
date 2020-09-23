@@ -1,8 +1,18 @@
 {
-  ".statusBar": {
-    "color": "#00A1F1",
-    "visible": true,
-    "font": {},
-    "flexProps": {}
-  }
+    ".sf-statusBar": {
+        "masksToBounds": true,
+        "android": {
+            "color": "#00A1F1"
+        },
+        "style": "LIGHTCONTENT",
+        "visible": true
+    },
+    ".statusBar": {
+        "masksToBounds": true,
+        "android": {
+            "color": "#00A1F1"
+        },
+        "style": "LIGHTCONTENT",
+        "visible": true
+    }
 }

@@ -4,6 +4,7 @@
 			"className": ".calendar.weekRow",
 			"hiddenComponent": false,
 			"id": "dd15823d",
+			"initialized": true,
 			"props": {
 				"children": [
 					"88c3-e710-2ceb-4dc9",

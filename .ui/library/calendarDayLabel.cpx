@@ -4,6 +4,7 @@
 			"className": ".label",
 			"hiddenComponent": false,
 			"id": "b59b-815d-e541-320e",
+			"initialized": true,
 			"props": {
 				"children": [],
 				"name": "calendarDayLabel",
@@ -19,8 +20,8 @@
 				"borderWidth": 1,
 				"flexProps": {},
 				"height": 61.66666622819572,
-				"left": 32.981083310883626,
-				"top": 457.61955524313043,
+				"left": 12,
+				"top": 438,
 				"width": 58.218390366126755
 			}
 		}

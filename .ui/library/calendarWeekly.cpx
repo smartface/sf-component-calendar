@@ -4,6 +4,7 @@
 			"className": ".calendarWeekly",
 			"hiddenComponent": false,
 			"id": "bebe-bb6a-d4f0-a386",
+			"initialized": true,
 			"props": {
 				"children": [
 					"f781-30f6-2530-67ea",

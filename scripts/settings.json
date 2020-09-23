@@ -1,23 +1,37 @@
 {
 	"config": {
 		"theme": {
-			"currentTheme": "workspaceTheme",
-			"baseTheme": "defaultTheme",
+			"currentTheme": "baseTheme",
+			"baseTheme": "workspaceTheme",
 			"themes": [
-				"calendarappTheme",
+				"workspaceTheme",
 				"defaultTheme",
-				"workspaceTheme"
+				"baseTheme",
+				"calendarappTheme"
 			]
 		},
 		"paths": {
 			"pgxFolder": ".ui",
-			"uiFolder": "scripts/ui",
+			"uiFolder": "scripts/generated/pages",
 			"pagesFolder": "scripts/pages",
-			"libraryUiFolder": "scripts/node_modules/library",
+			"libraryUiFolder": "scripts/generated/my-components",
 			"libraryUserFolder": "scripts/components",
 			"themesFolder": "themes",
-			"themesDistFolder": "scripts/themes"
+			"themesDistFolder": "scripts/generated/themes",
+			"output": {
+				"root": "dist",
+				"include": [
+					"node_modules",
+					"sf_modules"
+				],
+				"acceptedExtensions": [
+					".js",
+					".json",
+					".map"
+				]
+			}
 		},
-		"version": "6.10.2"
+		"version": "6.15.1",
+		"projectType": "ts"
 	}
 }

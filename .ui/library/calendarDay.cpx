@@ -4,6 +4,7 @@
 			"className": ".calendar.day",
 			"hiddenComponent": false,
 			"id": "2c9e-2356-2ac6-4bc1",
+			"initialized": true,
 			"props": {
 				"children": [
 					"0ac0-352d-b080-552b"

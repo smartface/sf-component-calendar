@@ -1,32 +1,49 @@
 {
-  ".slider": {
-    "touchEnabled": true,
-    "maxTrackColor": "#00FF00",
-    "minTrackColor": "#A9A9A9",
-    "thumbColor": "#D3D3D3",
-    "value": 50,
-    "maxValue": 100,
-    "minValue": 0,
-    "width": 300,
-    "visible": true,
-    "backgroundColor": "#FFFFFF",
-    "alpha": 1,
-    "borderColor": "rgba(0,0,0,1)",
-    "borderWidth": 0,
-    "font": {},
-    "flexProps": {
-      "alignSelf": "AUTO",
-      "positionType": "RELATIVE"
+    ".sf-slider": {
+        "maxTrackColor": "rgb(183,183,183)",
+        "minTrackColor": "#00a1f1",
+        "value": 60,
+        "maxValue": 100,
+        "minValue": 0,
+        "width": null,
+        "flexProps": {
+            "alignSelf": "AUTO",
+            "positionType": "RELATIVE"
+        },
+        "marginTop": 1,
+        "marginBottom": 1,
+        "height": 40,
+        "&-small": {
+            "width": 100
+        },
+        "&-medium": {
+            "width": 250
+        },
+        "&-large": {
+            "width": 350
+        }
     },
-    "minHeight": 23,
-    "&-small": {
-      "width": 100
-    },
-    "&-medium": {
-      "width": 250
-    },
-    "&-large": {
-      "width": 350
+    ".slider": {
+        "masksToBounds": true,
+        "maxTrackColor": "rgb(183,183,183)",
+        "minTrackColor": "#00a1f1",
+        "value": 60,
+        "maxValue": 100,
+        "minValue": 0,
+        "width": null,
+        "flexProps": {
+            "alignSelf": "AUTO",
+            "positionType": "RELATIVE"
+        },
+        "height": 40,
+        "&-small": {
+            "width": 100
+        },
+        "&-medium": {
+            "width": 250
+        },
+        "&-large": {
+            "width": 350
+        }
     }
-  }
 }

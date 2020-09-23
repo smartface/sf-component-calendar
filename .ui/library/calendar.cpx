@@ -4,6 +4,7 @@
 			"className": ".calendar-self",
 			"hiddenComponent": false,
 			"id": "940ab35f",
+			"initialized": true,
 			"props": {
 				"children": [
 					"cf78-2304-1947-1383",

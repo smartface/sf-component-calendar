@@ -4,6 +4,7 @@
 			"className": ".flexLayout",
 			"hiddenComponent": false,
 			"id": "0fa7-a5b2-8617-502b",
+			"initialized": true,
 			"props": {
 				"children": [
 					"0fd9-0eb0-b997-cfdb",
@@ -26,10 +27,10 @@
 					"flexDirection": "ROW"
 				},
 				"height": 63.28767227799925,
-				"left": 22.595281436525543,
+				"left": 16,
 				"paddingLeft": 3,
 				"paddingRight": 3,
-				"top": 460.949812264278,
+				"top": 519,
 				"width": 344.6575426075557
 			}
 		},

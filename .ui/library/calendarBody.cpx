@@ -4,6 +4,7 @@
 			"className": "",
 			"hiddenComponent": false,
 			"id": "7072-558c-2327-9bd4",
+			"initialized": true,
 			"props": {
 				"children": [
 					"160a-e3da-dd17-a04b",

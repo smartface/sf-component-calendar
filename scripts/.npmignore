@@ -1,7 +1,4 @@
-node_modules/moment
-node_modules/@smartface
-node_modules/sf-core
-node_modules/js-base
+node_modules
 benchmarks
 i18n
 ui
