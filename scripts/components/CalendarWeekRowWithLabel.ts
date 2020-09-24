@@ -1,4 +1,4 @@
-import CalendarWeekRowWithLabelDesign from 'generated/my-components/CalendarWeekRowWithLabel';
+import CalendarWeekRowWithLabelDesign from '../generated/my-components/CalendarWeekRowWithLabel';
 
 export default class CalendarWeekRowWithLabel extends CalendarWeekRowWithLabelDesign {
 	pageName?: string | undefined;

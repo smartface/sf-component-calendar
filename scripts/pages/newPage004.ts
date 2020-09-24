@@ -1,5 +1,7 @@
 import NewPage004Design from 'generated/pages/newPage004';
 import { Calendar } from '@smartface/sf-component-calendar';
+import Button = require('sf-core/ui/button');
+import pageContextPatch from '@smartface/contx/lib/smartface/pageContextPatch';
 
 export default class NewPage004 extends NewPage004Design {
     calendar = new Calendar();
@@ -10,8 +12,10 @@ export default class NewPage004 extends NewPage004Design {
 		// Overrides super.onLoad method
         this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
         
-        this.calendar.changeCalendar("tr");
-
+        // this.calendar.changeCalendar("tr");
+        // this.children.button = new Button();
+        // this.children.button.text = "Button";
+        // this.addChild(this.children.button, "button", ".sf-button");
 	}
 }
 
@@ -23,7 +27,8 @@ export default class NewPage004 extends NewPage004Design {
  */
 function onShow(superOnShow: () => void) {
     superOnShow();
-    this.addChild(this.calendar);
+    
+    // this.addChild(this.calendar);
     // 	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
     this.calendar.applyLayout();
 }

@@ -1,4 +1,4 @@
-import CalendarDayDesign from 'generated/my-components/CalendarDay';
+import CalendarDayDesign from '../generated/my-components/CalendarDay';
 import CalendarDayLabel from './CalendarDayLabel';
 
 export default class CalendarDay extends CalendarDayDesign {

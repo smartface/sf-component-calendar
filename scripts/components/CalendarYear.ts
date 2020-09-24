@@ -1,4 +1,4 @@
-import CalendarYearDesign from 'generated/my-components/CalendarYear';
+import CalendarYearDesign from '../generated/my-components/CalendarYear';
 
 export default class CalendarYear extends CalendarYearDesign {
 	pageName?: string | undefined;

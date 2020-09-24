@@ -1,4 +1,4 @@
-import CalendarWeekRowDesign from 'generated/my-components/CalendarWeekRow';
+import CalendarWeekRowDesign from '../generated/my-components/CalendarWeekRow';
 import CalendarDay from './CalendarDay';
 
 function onDayPress(index: number) {

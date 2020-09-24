@@ -17,4 +17,4 @@ import System = require("sf-core/device/system");
 import router from "./routes";
 import "./theme";
 require("sf-extension-utils");
-router.push("/pages/newPage004");
+router.push("/pages/newPage001");

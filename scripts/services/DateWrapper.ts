@@ -1,10 +1,9 @@
 import { Moment, isMoment, } from "moment";
 import moment = require("moment");
-import { DateObject } from "core/DateObject";
+import { DateObject } from "../core/DateObject";
 import { instanceofDateObject } from "./instanceofDateObject";
 
 function notValidDateThrowanError(date: Moment, strDate: string) {
-    console.log(date);
     if (!date.isValid()) {
         throw new Error(`[${strDate}] Specified date is not valid.`);
     }

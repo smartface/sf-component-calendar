@@ -5,10 +5,10 @@
  * @copyright Smartface 2018
 */
 
-import CalendarDesign from 'generated/my-components/Calendar';
-import CalendarCore, { CalendarState } from 'core/CalendarCore';
-import { CalendarPage } from 'services/CalendarService';
-import { DateObject } from 'core/DateObject';
+import CalendarDesign from '../generated/my-components/Calendar';
+import CalendarCore, { CalendarState } from '../core/CalendarCore';
+import { CalendarPage } from '../services/CalendarService';
+import { DateObject } from '../core/DateObject';
 import calendarContext from "./calendarContext";
 import CalendarWeekRow from './CalendarWeekRow';
 

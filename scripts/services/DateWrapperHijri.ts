@@ -1,6 +1,6 @@
 import DateService from "./DateWrapper";
 import { Moment } from "moment";
-import { DateObject } from "core/DateObject";
+import { DateObject } from "../core/DateObject";
 
 function notValidDateThrowanError(moment, date) {
 	if(moment(date)

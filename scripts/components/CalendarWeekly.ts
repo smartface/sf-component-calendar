@@ -1,9 +1,9 @@
-import CalendarWeeklyDesign from 'generated/my-components/CalendarWeekly';
+import CalendarWeeklyDesign from '../generated/my-components/CalendarWeekly';
 import createContext from './calendarContext';
-import CalendarCore, { CalendarState } from 'core/CalendarCore';
-import { CalendarPage } from 'services/CalendarService';
-import { DateObject } from 'core/DateObject';
-import { DateInfo } from 'core/DateInfo';
+import CalendarCore, { CalendarState } from '../core/CalendarCore';
+import { CalendarPage } from '../services/CalendarService';
+import { DateObject } from '../core/DateObject';
+import { DateInfo } from '../core/DateInfo';
 
 const themeFile = require("../theme.json");
 

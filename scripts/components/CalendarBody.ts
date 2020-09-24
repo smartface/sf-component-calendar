@@ -1,4 +1,4 @@
-import CalendarBodyDesign from 'generated/my-components/CalendarBody';
+import CalendarBodyDesign from '../generated/my-components/CalendarBody';
 
 export default class CalendarBody extends CalendarBodyDesign {
     pageName?: string | undefined;

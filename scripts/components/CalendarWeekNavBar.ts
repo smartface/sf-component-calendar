@@ -1,4 +1,4 @@
-import CalendarWeekNavBarDesign from 'generated/my-components/CalendarWeekNavBar';
+import CalendarWeekNavBarDesign from '../generated/my-components/CalendarWeekNavBar';
 
 export default class CalendarWeekNavBar extends CalendarWeekNavBarDesign {
 	pageName?: string | undefined;

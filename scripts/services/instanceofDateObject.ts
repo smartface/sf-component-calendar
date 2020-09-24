@@ -1,4 +1,4 @@
-import { DateObject } from "core/DateObject";
+import { DateObject } from "../core/DateObject";
 export function instanceofDateObject(date: Object): date is DateObject {
     return date.hasOwnProperty("year")
         && typeof date['year'] === 'number'
