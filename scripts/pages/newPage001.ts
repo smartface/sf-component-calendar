@@ -291,28 +291,37 @@ var sample = {
     ]
 };
 
+/**
+ * @this {NewPage001}
+ * @param lang 
+ * @param calendar 
+ * @param sp 
+ * @param dayOfWeek 
+ */
 function changeCalendar(lang, calendar, sp, dayOfWeek = 0) {
-    this.children.calendar.changeCalendar(lang, calendar, sp, dayOfWeek);
+    this.calendar.changeCalendar(lang, calendar, sp, dayOfWeek);
     // 	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
-    this.children.calendar.applyLayout();
+    this.calendar.applyLayout();
 }
 
 class NewPage001 extends NewPage001Design {
+    private calendar: Calendar = this.children.calendar;
     // Constructor
     constructor() {
         // Initalizes super class for this page scope
         super();
+        delete this.children.calendar;
 
         // overrides super.onShow method
         this.onShow = onShow.bind(this, this.onShow.bind(this));
         // overrides super.onLoad method
         this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-        (this.children.calendar as Calendar).onLongPress = () => {
-            this.children.calendar.setWeekMode(true);
-        }
+        // (this.calendar as Calendar).onLongPress = () => {
+        //     this.calendar.setWeekMode(true);
+        // }
 
-        this.children.calendar.onDaySelect = ([date]) => {
+        this.calendar.onDaySelect = ([date]) => {
             if (!date)
                 return;
 
@@ -324,11 +333,11 @@ class NewPage001 extends NewPage001Design {
 
         this.children.buttonTR.onPress = () => {
             changeCalendar.call(this, "tr", "gregorian", sample);
-            this.children.calendar.setSelectedDate(new Date());
+            this.calendar.setSelectedDate(new Date());
         };
 
         this.children.buttonRange.onPress = () => {
-            this.children.calendar.setRangeDates({ day: 21, month: 10, year: 2017 }, { day: 12, month: 12, year: 2017 });
+            this.calendar.setRangeDates({ day: 21, month: 10, year: 2017 }, { day: 12, month: 12, year: 2017 });
         };
 
         this.children.buttonEN.onPress = () => {
@@ -348,11 +357,11 @@ class NewPage001 extends NewPage001Design {
         };
 
         this.children.nextPage.onPress = () => {
-            this.children.calendar.setWeekMode(!this.children.calendar.getWeekMode());
+            this.calendar.setWeekMode(!this.calendar.getWeekMode());
         };
 
         this.children.button3.onPress = () => {
-            this.children.calendar.addStyles({
+            this.calendar.addStyles({
                 ".calendar.header_navbar_monthLabel": {
                     "textColor": "#F10000"
                 }
@@ -365,7 +374,7 @@ class NewPage001 extends NewPage001Design {
 function onShow(superOnShow: () => void) {
     superOnShow();
 
-    changeCalendar.call(this, "en", CalendarTypes.GREGORIAN, sample, 2);
+    changeCalendar.call(this, "en", CalendarTypes.GREGORIAN, sample, 1);
 
     this.calendar.setSelectedDate({ "month": 11, "year": 2017, "day": 1 });
     var fn = this.calendar.nextMonth.bind(this.calendar);

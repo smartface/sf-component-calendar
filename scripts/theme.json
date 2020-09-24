@@ -126,7 +126,15 @@
 			"height": 40
 		},
 		".day": {
+			"flexProps": {
+				"alignContent": "STRETCH",
+				"alignItems": "STRETCH",
+				"flexDirection": "ROW",
+				"positionType": "RELATIVE",
+                "flexGrow": 1
+			},
 			"borderWidth": 0,
+
 			"&_label": {
 				"backgroundColor": "rgba( 255, 255, 255, 0 )",
 				"textColor": "rgba( 71, 71, 71, 1 )",
@@ -134,9 +142,10 @@
 					"alignSelf": "CENTER",
 					"positionType": "RELATIVE"
 				},
-				"width": 26,
-				"height": 26,
-				"borderRadius": 13,
+				"minHeight": 40,
+				"minWidth": 40,
+                "flexGrow": 1,
+				"borderRadius": 2,
 				"font": {
 					"size": 14,
 					"bold": true,
@@ -145,13 +154,9 @@
 					"style": "b"
 				},
 				"&-rangeSelected": {
-					"textColor": "rgba( 255, 255, 255, 1 )"
+					"textColor": "rgba( 255, 255, 255, 1 )",
+					"backgroundColor": "rgba( 130, 159, 214, 1 )"
 				}
-			},
-			"flexProps": {
-				"justifyContent": "CENTER",
-				"flexGrow": 1,
-				"positionType": "RELATIVE"
 			},
 			"&-selected": {
 				"backgroundColor": "rgba( 0, 185, 255, 1 )"
@@ -180,7 +185,7 @@
 			},
 			"&-specialDay": {
 				"borderWidth": 0,
-				"backgroundColor": "#FF9F9F"
+				"backgroundColor": "rgba(255, 200, 13, 1)"
 			},
 			"&-weekend": {
 				"borderWidth": 0,

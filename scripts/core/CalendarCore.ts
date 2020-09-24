@@ -607,7 +607,7 @@ class CalendarCore {
      * 
      * @param {function} cb
      */
-    unsubscribe(cb: (...any) => void) {
+    unsubscribe(cb: (...params: any[]) => void) {
         const unload = this.subscribers.find(_cb => cb != _cb);
         unload && unload(null, null);
     };
@@ -646,13 +646,6 @@ class CalendarCore {
      * 
      * @private
      * 
-     * @returns {{
-     *	rangeSelection: Array, 
-     *	rangeSelectionMode: number, 
-     *	selectedDays: Array, 
-     *	month: Object,
-     *  selectedDaysByIndex: Array
-     * }}
      */
     _nextMonth() {
         const state = getInitialState();

@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": false,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "noEmit": false,
+        "target": "ES5",
+        "outDir": "./sf-component-calendar",
+        "moduleResolution": "Node",
+        "module": "CommonJS",
+        "resolveJsonModule": true,
+        "isolatedModules": false,
+        "typeRoots": [
+            "./scripts/node_modules/sf-core/device/system"
+        ],
+        "baseUrl": "scripts",
+        "rootDir": "scripts",
+        "lib": [
+            "ES2015",
+            "ES2017"
+        ],
+        "declaration": true,
+        "declarationMap": false
+    },
+    "files": [
+        "./typings.d.ts",
+        "./scripts/node_modules/sf-core/index.d.ts",
+        "./scripts/node_modules/sf-core/.types/typings.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "./dist",
+        "**/node_modules/*"
+    ],
+    "include": [
+        "./scripts/components",
+        "./scripts/core",
+        "./scripts/generated/my-components",
+        "./scripts/generated/services",
+        "./scripts/generated/core",
+        "./scripts/index.ts",
+        "./scripts/theme.json",
+        "./scripts/package.json"
+    ]
+}

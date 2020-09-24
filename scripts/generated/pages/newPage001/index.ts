@@ -210,10 +210,10 @@ class $ButtonEN extends Button implements Styleable {
 			backgroundColor: 'rgba( 208, 2, 27, 1 )',
 			flexProps: { positionType: 'ABSOLUTE' },
 			font: { size: 16, bold: false, italic: false, family: 'AbakuTLSymSans', style: 'n' },
-			height: 43.0379746835443,
+			height: 47.61904761904762,
 			left: 116.45569620253164,
 			top: 349.3670886075949,
-			width: 150.63291139240505
+			width: 157.14285714285714
 		}
 	};
 	constructor() {

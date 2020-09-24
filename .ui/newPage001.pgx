@@ -86,6 +86,32 @@
 			}
 		},
 		{
+			"className": ".label",
+			"id": "a101-2b49-bc6b-394b",
+			"props": {
+				"children": [],
+				"name": "label2_1",
+				"parent": "e876-9805-6b68-f0e4",
+				"text": "Ozel Gunler"
+			},
+			"type": "TextView",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"font": {
+					"size": 10
+				},
+				"height": 35,
+				"left": 206,
+				"right": 20,
+				"text": "Ozel Gunler",
+				"textAlignment": "MIDCENTER",
+				"top": 413,
+				"width": 145
+			}
+		},
+		{
 			"className": ".button",
 			"id": "3d1d-591a-b74f-4d71",
 			"props": {
@@ -105,6 +131,80 @@
 				"text": "Color",
 				"top": 302.53164556962025,
 				"width": 64.55696202531645
+			}
+		},
+		{
+			"className": ".button",
+			"id": "2bc0-3823-c50e-7518",
+			"props": {
+				"children": [],
+				"name": "buttonTR",
+				"parent": "e876-9805-6b68-f0e4",
+				"text": "TR"
+			},
+			"type": "Button",
+			"userProps": {
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"borderRadius": 20,
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 40,
+				"left": 20.253164556962023,
+				"text": "TR",
+				"top": 350.63291139240505,
+				"width": 40
+			}
+		},
+		{
+			"className": ".button",
+			"id": "26f3-9c60-60dc-4f1c",
+			"props": {
+				"children": [],
+				"name": "buttonEN",
+				"parent": "e876-9805-6b68-f0e4",
+				"text": "EN FontAwesome"
+			},
+			"type": "Button",
+			"userProps": {
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"font": {
+					"size": 16,
+					"bold": false,
+					"italic": false,
+					"family": "AbakuTLSymSans",
+					"style": "n"
+				},
+				"height": 47.61904761904762,
+				"left": 116.45569620253164,
+				"text": "EN FontAwesome",
+				"top": 349.3670886075949,
+				"width": 157.14285714285714
+			}
+		},
+		{
+			"className": ".button",
+			"id": "aa00-5c53-57c4-a625",
+			"props": {
+				"children": [],
+				"name": "buttonAR",
+				"parent": "e876-9805-6b68-f0e4",
+				"text": "AR"
+			},
+			"type": "Button",
+			"userProps": {
+				"backgroundColor": "rgba( 208, 2, 27, 1 )",
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 41.069793701171875,
+				"left": 287.34177215189874,
+				"text": "AR",
+				"top": 350.63291139240505,
+				"width": 64.40417641087582
 			}
 		},
 		{
@@ -153,130 +253,6 @@
 		},
 		{
 			"className": ".button",
-			"id": "2bc0-3823-c50e-7518",
-			"props": {
-				"children": [],
-				"name": "buttonTR",
-				"parent": "e876-9805-6b68-f0e4",
-				"text": "TR"
-			},
-			"type": "Button",
-			"userProps": {
-				"backgroundColor": "rgba( 208, 2, 27, 1 )",
-				"borderRadius": 20,
-				"flexProps": {
-					"positionType": "ABSOLUTE"
-				},
-				"height": 40,
-				"left": 20.253164556962023,
-				"text": "TR",
-				"top": 350.63291139240505,
-				"width": 40
-			}
-		},
-		{
-			"className": ".button",
-			"id": "26f3-9c60-60dc-4f1c",
-			"props": {
-				"children": [],
-				"name": "buttonEN",
-				"parent": "e876-9805-6b68-f0e4",
-				"text": "EN FontAwesome"
-			},
-			"type": "Button",
-			"userProps": {
-				"backgroundColor": "rgba( 208, 2, 27, 1 )",
-				"flexProps": {
-					"positionType": "ABSOLUTE"
-				},
-				"font": {
-					"size": 16,
-					"bold": false,
-					"italic": false,
-					"family": "AbakuTLSymSans",
-					"style": "n"
-				},
-				"height": 43.0379746835443,
-				"left": 116.45569620253164,
-				"text": "EN FontAwesome",
-				"top": 349.3670886075949,
-				"width": 150.63291139240505
-			}
-		},
-		{
-			"className": ".button",
-			"id": "aa00-5c53-57c4-a625",
-			"props": {
-				"children": [],
-				"name": "buttonAR",
-				"parent": "e876-9805-6b68-f0e4",
-				"text": "AR"
-			},
-			"type": "Button",
-			"userProps": {
-				"backgroundColor": "rgba( 208, 2, 27, 1 )",
-				"flexProps": {
-					"positionType": "ABSOLUTE"
-				},
-				"height": 41.069793701171875,
-				"left": 287.34177215189874,
-				"text": "AR",
-				"top": 350.63291139240505,
-				"width": 64.40417641087582
-			}
-		},
-		{
-			"className": ".label",
-			"id": "a101-2b49-bc6b-394b",
-			"props": {
-				"children": [],
-				"name": "label2_1",
-				"parent": "e876-9805-6b68-f0e4",
-				"text": "Ozel Gunler"
-			},
-			"type": "TextView",
-			"userProps": {
-				"flexProps": {
-					"positionType": "ABSOLUTE"
-				},
-				"font": {
-					"size": 10
-				},
-				"height": 35,
-				"left": 206,
-				"right": 20,
-				"text": "Ozel Gunler",
-				"textAlignment": "MIDCENTER",
-				"top": 413,
-				"width": 145
-			}
-		},
-		{
-			"className": ".calendar-self",
-			"hiddenComponent": false,
-			"id": "b4e0-f382-402e-f5bd",
-			"props": {
-				"children": [],
-				"name": "calendar",
-				"parent": "e876-9805-6b68-f0e4"
-			},
-			"source": {
-				"page": "__library__",
-				"type": "calendar",
-				"id": "940ab35f"
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"flexProps": {
-					"positionType": "ABSOLUTE"
-				},
-				"height": 300,
-				"left": 0,
-				"top": 0
-			}
-		},
-		{
-			"className": ".button",
 			"id": "950e-e811-c256-a3ed",
 			"props": {
 				"children": [],
@@ -315,6 +291,30 @@
 				"text": "Add Range",
 				"top": 410.00000526165144,
 				"width": 135.1851851851852
+			}
+		},
+		{
+			"className": ".calendar-self",
+			"hiddenComponent": false,
+			"id": "b4e0-f382-402e-f5bd",
+			"props": {
+				"children": [],
+				"name": "calendar",
+				"parent": "e876-9805-6b68-f0e4"
+			},
+			"source": {
+				"page": "__library__",
+				"type": "calendar",
+				"id": "940ab35f"
+			},
+			"type": "FlexLayout",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 300,
+				"left": 0,
+				"top": 0
 			}
 		}
 	]

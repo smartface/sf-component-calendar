@@ -1,12 +1,17 @@
 import NewPage004Design from 'generated/pages/newPage004';
+import { Calendar } from '@smartface/sf-component-calendar';
 
 export default class NewPage004 extends NewPage004Design {
+    calendar = new Calendar();
 	constructor() {
 		super();
 		// Overrides super.onShow method
 		this.onShow = onShow.bind(this, this.onShow.bind(this));
 		// Overrides super.onLoad method
-		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
+        this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
+        
+        this.calendar.changeCalendar("tr");
+
 	}
 }
 
@@ -17,7 +22,10 @@ export default class NewPage004 extends NewPage004Design {
  * @param {Object} parameters passed from Router.go function
  */
 function onShow(superOnShow: () => void) {
-	superOnShow();
+    superOnShow();
+    this.addChild(this.calendar);
+    // 	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
+    this.calendar.applyLayout();
 }
 
 /**

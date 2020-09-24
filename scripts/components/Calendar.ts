@@ -1,17 +1,3 @@
-import CalendarDesign from 'generated/my-components/Calendar';
-import CalendarCore, { CalendarState } from 'core/CalendarCore';
-import { CalendarPage } from 'services/CalendarService';
-import { DateObject } from 'core/DateObject';
-
-// export default class Calendar extends CalendarDesign {
-// 	pageName?: string | undefined;
-// 	constructor(props?: any, pageName?: string) {
-// 		// Initalizes super class for this scope
-// 		super(props);
-// 		this.pageName = pageName;
-// 	}
-// }
-
 /**
  * Smartface Calendar Component
  * @module Calendar
@@ -19,18 +5,13 @@ import { DateObject } from 'core/DateObject';
  * @copyright Smartface 2018
 */
 
+import CalendarDesign from 'generated/my-components/Calendar';
+import CalendarCore, { CalendarState } from 'core/CalendarCore';
+import { CalendarPage } from 'services/CalendarService';
+import { DateObject } from 'core/DateObject';
+import calendarContext from "./calendarContext";
+import CalendarWeekRow from './CalendarWeekRow';
 
-
-
-/** 
- * @typedef LocaleDateDTO
- * @property {string} day
- * @property {string} month
- * @property {string} year
- */
-
-
-const calendarContext = require("./calendarContext");
 const themeFile = require("../theme.json");
 
 type CalendarOptions = {
@@ -68,8 +49,8 @@ class Calendar extends CalendarDesign {
     private _styleContext;
     private _calendarCore = this.options && this.options.calendarCore || new CalendarCore();
     // private _updateCalendar = this._updateCalendar.bind(this);
-    private _unsubsciber: (...any) => void;
-    private _weeks = [];
+    private _unsubsciber: (...params: any[]) => void;
+    private _weeks: CalendarWeekRow[] = [];
     private _weekMode = false;
     protected currentMonth: CalendarPage;
 
@@ -93,6 +74,7 @@ class Calendar extends CalendarDesign {
             calendarCore,
             useContext,
         };
+        this._styleContext = useContext ? calendarContext(this, "calendar", theme || themeFile) : null;
         this._unsubsciber = this._calendarCore.subscribe((oldState: CalendarState, newState: CalendarState) => this._updateCalendar(oldState, newState));
         this.children.navbar.onNext = this.nextMonth.bind(this);
         this.children.navbar.onPrev = this.prevMonth.bind(this);
@@ -190,7 +172,7 @@ class Calendar extends CalendarDesign {
      * @param {(object|null)} [specialDays=null] - Specialdays objects
      * @param {number} [firstDayOfWeek=0] - First day of a week [0...6]
      */
-    changeCalendar(lang = "en", type = "gregorian", specialDays = null, firstDayOfWeek = 0) {
+    changeCalendar(lang = "en", type = "gregorian", specialDays = {}, firstDayOfWeek = 0) {
         this.dispatch({
             type: "changeCalendar",
             lang: lang
@@ -221,7 +203,7 @@ class Calendar extends CalendarDesign {
             });
 
             this.currentMonth = newState.month;
-            updateRows.call(this, newState.month.days, newState.month.date);
+            this.updateRows.call(this, newState.month.days, newState.month.date);
             this.children.navbar.setLabel(newState.month.longName + " " + newState.month.localeDate.year);
             this._weeks.forEach((row, i) => {
                 row.invalidate();
@@ -229,10 +211,10 @@ class Calendar extends CalendarDesign {
 
         }
 
-        // newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1
-        //     ? this._selectDay.bind(this)
-        //     : this._selectDayasRange.bind(this)
-        // );
+        newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1
+            ? this._selectDay.bind(this)
+            : this._selectDayasRange.bind(this)
+        );
 
         newState.month.daysMin.forEach((day, index) => {
             this.children.calendarDays.children["dayName_" + index].text = day;
@@ -304,7 +286,7 @@ class Calendar extends CalendarDesign {
      * @param {number} weekIndex
      * @param {number} weekDayIndex
      */
-    onLongPress:(weekIndex: number, weekDayIndexes: number) => void = null;
+    onLongPress: (weekIndex: number, weekDayIndexes: number) => void = null;
 
     private _onLongPress = function (weekIndex, weekDayIndexes) {
         this.onLongPress && this.onLongPress(weekIndex, weekDayIndexes);
@@ -446,18 +428,12 @@ class Calendar extends CalendarDesign {
         this._calendarCore.selectDay(weekIndex, weekDayIndex);
         notify && this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
     };
+
+    private updateRows(days, date) {
+        this._weeks.forEach((row, index) => {
+            row.setDays(days[index], this.options.justCurrentDays, true);
+        });
+    }
 }
-
-function updateRows(days, date) {
-    this._weeks.forEach((row, index) => {
-        row.setDays(days[index], this.__options.justCurrentDays, true);
-    });
-}
-
-
-// Calendar.$$_styleContext = {
-// 	'no-context': true
-// };
-
 
 export default Calendar;

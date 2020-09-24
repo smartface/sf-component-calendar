@@ -1,30 +1,22 @@
 import CalendarWeekRowDesign from 'generated/my-components/CalendarWeekRow';
-function selectDay(index) {
-	if (index === -1) {
-		throw new Error("Day index cannot be -1");
-	}
+import CalendarDay from './CalendarDay';
 
-	this.selectedIndex = index;
-	this.rangeIndexes = [];
-	this.children["weekDay" + (index + 1)].select();
-}
-
-function onDayPress(index) {
-	this.onDaySelect && this.onDaySelect(index);
+function onDayPress(index: number) {
+    this.onDaySelect && this.onDaySelect(index);
 }
 
 function selectRange(indexes) {
-	this.rangeIndexes.push(indexes);
-	indexes.forEach(index => this.children["weekDay" + (index + 1)].activate());
+    this.rangeIndexes.push(indexes);
+    indexes.forEach(index => this.children["weekDay" + (index + 1)].activate());
 }
 
 function onDayLongPress(index) {
-	this.onDayLongPress && this.onDayLongPress(index);
+    this.onDayLongPress && this.onDayLongPress(index);
 }
 
 function addDaySelectEvent(day, index) {
-	day.onPress = onDayPress.bind(this, index);
-	day.onLongPress = onDayLongPress.bind(this, index);
+    day.onPress = onDayPress.bind(this, index);
+    day.onLongPress = onDayLongPress.bind(this, index);
 }
 
 export default class CalendarWeekRow extends CalendarWeekRowDesign {
@@ -41,10 +33,24 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
         super(props);
         this.pageName = pageName;
 
-		this.init();
+        this.init();
     }
 
     onMove: null | ((index: number) => void);
+
+    onDayLongPress: null | ((index: number) => void) = null
+    onDaySelect: null | ((index: number) => void) = null
+
+    private selectDay(index: number) {
+        if (index === -1) {
+            throw new Error("Day index cannot be -1");
+        }
+
+        this.selectedIndex = index;
+        this.rangeIndexes = [];
+        (this.children["weekDay" + (index + 1)] as CalendarDay).select();
+    }
+
 
     setAvailable(mode) {
         this._available = mode;
@@ -74,9 +80,10 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
         return this._isEmpty !== false;
     };
 
-    setSelectedIndex(index) {
-        return selectDay.call(this, index);
+    setSelectedIndex(index: number) {
+        return this.selectDay(index);
     };
+
 
     setRangeIndex(index) {
         return selectRange.call(this, index);

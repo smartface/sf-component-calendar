@@ -4,6 +4,7 @@ import { DateObject } from "core/DateObject";
 import { instanceofDateObject } from "./instanceofDateObject";
 
 function notValidDateThrowanError(date: Moment, strDate: string) {
+    console.log(date);
     if (!date.isValid()) {
         throw new Error(`[${strDate}] Specified date is not valid.`);
     }
@@ -40,14 +41,13 @@ export default class DateService<T extends Moment = Moment> {
             this._date = date.clone() as T;
         } else {
             let dateStr: string;
-            if (instanceofDateObject(date)) {
-                // date.month--;
+            if (date === undefined) {
+                this._date = moment() as T;
+            } else if (instanceofDateObject(date)) {
                 date.day = date.day || 1;
                 this._date = moment(`${date.day}-${date.month}-${date.year}`, format) as T;
-                this._date = moment(date, format) as T;
+                // this._date = moment(date, format) as T;
                 notValidDateThrowanError(this._date, `${date.day}-${date.month}-${date.year}`);
-            } else if (date === undefined) {
-                this._date = moment() as T;
             } else {
                 throw new Error("Invalid date object");
             }
@@ -64,7 +64,6 @@ export default class DateService<T extends Moment = Moment> {
 
     localeDate() {
         var now = this._date.clone();
-        // const localeDate = {dayName: now.dayName(),day: now.format("D"), month: now.format("M"), year: now.format("YYYY")};
         const localeDate = { day: now.format("D"), month: now.format("M"), year: now.format("YYYY") };
         return {
             setDay(day) {

@@ -1,27 +1,29 @@
 import CalendarDayDesign from 'generated/my-components/CalendarDay';
+import CalendarDayLabel from './CalendarDayLabel';
 
 export default class CalendarDay extends CalendarDayDesign {
-	pageName?: string | undefined;
+    pageName?: string | undefined;
+    private dayNum: CalendarDayLabel = this.children.dayNum;
+
 	constructor(props?: any, pageName?: string) {
 		// Initalizes super class for this scope
 		super(props);
         this.pageName = pageName;
         
-        this.children.dayNum.onTouch = (e) => {
-			let timeout;
+        this.dayNum.onTouch = (e) => {
 			let isLongPress = false;
 			
 			this.onPress && this.onPress.call(this, e);
 			
-			timeout = setTimeout(() => {
+			let timeout = setTimeout(() => {
 				isLongPress = true;
 				isLongPress && this.onLongPress && this.onLongPress.call(this, e);
 			}, 300);
 
-			this.children.dayNum.onTouchEnded = () => {
+			this.dayNum.onTouchEnded = () => {
 				clearTimeout(timeout);
-				this.children.dayNum.onTouchEnded = function(){};
-				// !isLongPress && this.onPress && this.onPress.call(this, e);
+				this.dayNum.onTouchEnded = function(){};
+				!isLongPress && this.onPress && this.onPress.call(this, e);
 				isLongPress = false;
 			};
 		};
@@ -29,8 +31,8 @@ export default class CalendarDay extends CalendarDayDesign {
     onPress: () => {}
     onLongPress: () => {}
     setDay(data){
-        this.children.dayNum.text = data.localeDay;
-        this.children.dayNum.dispatch({
+        this.dayNum.text = data.localeDay;
+        this.dayNum.dispatch({
             type: "updateDayType",
             data: data
         });
@@ -41,14 +43,14 @@ export default class CalendarDay extends CalendarDayDesign {
             type: "pushClassNames",
             classNames: ".calendar.day-selected"
         });
-        this.children.dayNum.dispatch({
+        this.dayNum.dispatch({
             type: "pushClassNames",
             classNames: ".calendar.day_label-rangeSelected"
         });
     }
     
     select(){
-        this.children.dayNum.dispatch({
+        this.dayNum.dispatch({
             type: "daySelected"
         });
     };

@@ -17,3 +17,5 @@ node_modules
 npm-debug.log
 ui
 contxjs
+sf-component-calendar
+dist
