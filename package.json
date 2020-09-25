@@ -10,7 +10,8 @@
     "build:dev": "rm -rf ./scripts/node_modules/@smartface/sf-component-calendar && tsc --project tsconfig-build.dev.json",
     "dev": "babel ./src/services --out-dir -d ./scripts/services",
     "docs:create": "jsdox ./src -o docs",
-    "jase": "jase"
+    "jase": "jase",
+    "postinstall": "if [[ ${AC_APPCIRCLE} != true ]]; then sfMarketplaceService import library --packageFolder $(pwd) --wsPath $SMF_CIDE_WS_PATH else true; fi;"
   },
   "repository": {
     "type": "git",
