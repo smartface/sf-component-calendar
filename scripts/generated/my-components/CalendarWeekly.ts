@@ -6,16 +6,16 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 //
 //------------------------------------------------------------------------------
-import { Styleable } from '../core/Styleable';
+import { Styleable } from 'generated/core/Styleable';
 import View = require('sf-core/ui/view');
-import { ComponentStyleContext } from '../core/ComponentStyleContext';
+import { ComponentStyleContext } from 'generated/core/ComponentStyleContext';
 import System = require('sf-core/device/system');
 
 import FlexLayout = require('sf-core/ui/flexlayout');
 import Label = require('sf-core/ui/label');
 
-import CalendarNavBar from '../../components/CalendarNavBar';
-import CalendarWeekRow from '../../components/CalendarWeekRow';
+import CalendarNavBar from 'components/CalendarNavBar';
+import CalendarWeekRow from 'components/CalendarWeekRow';
 
 export default class CalendarWeekly extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;

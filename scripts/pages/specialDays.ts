@@ -9,7 +9,8 @@ export default  {
   		    "days": [
   		      // day 1st
     	      {
-    	        "day": 0,
+                "day": 0,
+                "className":".dayclass",
     	        "calendars": {
               	"gregorian": {
       	        	"availableLangs": "en,tr,~ar",
@@ -32,6 +33,7 @@ export default  {
         "days": [
           {
             "day": 0,
+            "className":".dayclass",
             "calendars": {
             	"gregorian": {
               	"availableLangs": "en,tr",

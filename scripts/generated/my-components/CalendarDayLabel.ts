@@ -6,9 +6,9 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 //
 //------------------------------------------------------------------------------
-import { Styleable } from '../core/Styleable';
+import { Styleable } from 'generated/core/Styleable';
 import View = require('sf-core/ui/view');
-import { ComponentStyleContext } from '../core/ComponentStyleContext';
+import { ComponentStyleContext } from 'generated/core/ComponentStyleContext';
 import System = require('sf-core/device/system');
 
 import Label = require('sf-core/ui/label');

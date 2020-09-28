@@ -11,12 +11,13 @@ var sample = {
             "month": 11,
             "days": [
                 {
+                    "className": ".day1className",
                     "day": 1,
                     "calendars": {
                         "*": {
                             "availableLangs": "*",
                             "text": {
-                                "*": "4"
+                                "*": "day1"
                             }
                         }
                     },
@@ -298,14 +299,14 @@ var sample = {
  * @param sp 
  * @param dayOfWeek 
  */
-function changeCalendar(lang, calendar, sp, dayOfWeek = 0) {
+function changeCalendar(this: NewPage001, lang: string, calendar: string, sp: any, dayOfWeek = 0) {
     this.calendar.changeCalendar(lang, calendar, sp, dayOfWeek);
     // 	this.calendar.setSelectedDate({"month":11,"year":2017,"day":1});
     this.calendar.applyLayout();
 }
 
 class NewPage001 extends NewPage001Design {
-    private calendar: Calendar = this.children.calendar;
+    calendar: Calendar = this.children.calendar;
     // Constructor
     constructor() {
         // Initalizes super class for this page scope
@@ -316,10 +317,6 @@ class NewPage001 extends NewPage001Design {
         this.onShow = onShow.bind(this, this.onShow.bind(this));
         // overrides super.onLoad method
         this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
-
-        // (this.calendar as Calendar).onLongPress = () => {
-        //     this.calendar.setWeekMode(true);
-        // }
 
         this.calendar.onDaySelect = ([date]) => {
             if (!date)
@@ -371,12 +368,17 @@ class NewPage001 extends NewPage001Design {
     }
 }
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
-function onShow(superOnShow: () => void) {
+function onShow(this: NewPage001, superOnShow: () => void) {
     superOnShow();
 
     changeCalendar.call(this, "en", CalendarTypes.GREGORIAN, sample, 1);
 
     this.calendar.setSelectedDate({ "month": 11, "year": 2017, "day": 1 });
+    this.calendar.addStyles({
+        ".day1className": {
+            "backgroundColor": "rgba(0,0,0,1)"
+        }
+    });
     var fn = this.calendar.nextMonth.bind(this.calendar);
 
     // runner.add(fn, "nextMonth");

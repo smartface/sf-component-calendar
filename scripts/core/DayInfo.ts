@@ -1,3 +1,5 @@
+import { SpecialDayResult } from "services/SpecialDaysService";
+
 /** 
  * @typedef DayInfo
  * @property {number} weekDay
@@ -9,5 +11,5 @@ export type DayInfo = {
     weekDay: number;
     longName: string;
     shortName: string;
-    specialDay: string[]
+    specialDay: SpecialDayResult[]
 }

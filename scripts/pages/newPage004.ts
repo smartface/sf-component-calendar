@@ -1,7 +1,7 @@
 import NewPage004Design from 'generated/pages/newPage004';
-import { Calendar } from '@smartface/sf-component-calendar';
 import Button = require('sf-core/ui/button');
 import pageContextPatch from '@smartface/contx/lib/smartface/pageContextPatch';
+import Calendar from 'components/Calendar';
 
 export default class NewPage004 extends NewPage004Design {
     calendar = new Calendar();

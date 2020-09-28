@@ -4,7 +4,8 @@ import createSpecialDaysService, { SpecialDays, SpecialDaysData, SpecialDaysServ
 import * as moment from "moment";
 import 'moment/locale/ar-sa';
 import momentHijri from "moment-hijri";
-import { DateObject } from "core/DateObject";
+import { DateObject } from "../core/DateObject";
+import { CalendarDayType } from "./CalendarDayType";
 
 type currentMonth = DateService;
 export type CalendarPageInnerMonth = {
@@ -23,7 +24,7 @@ export type CalendarPage = {
     daysLong: string[],
     daysShort: string[],
     daysMin: string[],
-    days,
+    days: CalendarDayType[][],
     date: DateObject,
     localeDate: DateObject<string>,
     normalizedDate: DateObject,
@@ -45,7 +46,7 @@ export type CalendarService = {
  * 
  * @returns {Object}
  */
-export default function buildCalendarService({lang = "en", type = "gregorian", specialDays = null, firstDayOfWeek = 0 }: { lang: string, type: string, specialDays: SpecialDaysData, firstDayOfWeek: number }): CalendarService {
+export default function buildCalendarService({ lang = "en", type = "gregorian", specialDays = null, firstDayOfWeek = 0 }: { lang: string, type: string, specialDays: SpecialDaysData, firstDayOfWeek: number }): CalendarService {
     let service: typeof DateService | typeof DateServiceHijri;
 
     let current: typeof moment;
@@ -116,7 +117,7 @@ function getCalendarMonth(service: DateService, specialDaysService: SpecialDaysS
     const prevMonth = service.prevMonth();
     const nextMonth = service.nextMonth();
 
-    const days = [];
+    const days: CalendarDayType[][] = [];
     const daysCount = service.daysCount();
     const startDay = service.startDayOfMonth() - 1;
 
@@ -124,7 +125,7 @@ function getCalendarMonth(service: DateService, specialDaysService: SpecialDaysS
     // 31 -> 1
     var prev = prevMonth.daysCount() - startDay;
     var next = 1;
-    var row = [];
+    var row: CalendarDayType[] = [];
     days.push(row);
 
     var maxCol = 7;
@@ -134,7 +135,7 @@ function getCalendarMonth(service: DateService, specialDaysService: SpecialDaysS
 
     for (var i = 1; i <= cellCount; i++) {
         let isWeekend = false;
-        let day;
+        let day: Partial<CalendarDayType>;
 
         if (i <= startDay) {
             day = {
@@ -166,11 +167,7 @@ function getCalendarMonth(service: DateService, specialDaysService: SpecialDaysS
 
         isWeekend && (day.isWeekend = isWeekend);
 
-        row.push(day);
-
-        // if(row.length === 1 || row.length === 7) {
-
-        // }
+        row.push(day as CalendarDayType);
 
         if (i > 0 && i % 7 == 0 && i !== cellCount) {
             row = [];

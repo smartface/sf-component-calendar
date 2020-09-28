@@ -373,7 +373,6 @@ class CalendarCore {
      * @param {{weekIndex: number, weekDayIndex: number}}
      */
     _selectDay({ weekIndex, weekDayIndex }) {
-        //console.log(weekIndex+" : "+weekDayIndex);
         return {
             weekIndex,
             selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
