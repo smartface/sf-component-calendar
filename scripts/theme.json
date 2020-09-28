@@ -16,7 +16,8 @@
 				"positionType": "ABSOLUTE",
 				"alignContent": "STRETCH",
 				"alignItems": "STRETCH"
-			}
+			},
+            "height": 300
 		},
 		"&_line": {
 			"height": 1,

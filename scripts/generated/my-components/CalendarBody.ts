@@ -19,9 +19,9 @@ export default class CalendarBody extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;
 	children: { [key: string]: any } = {};
 	static $$styleContext: ComponentStyleContext = {
-		classNames: '',
+		classNames: ' .calendar.body',
 		defaultClassNames: '.default_common .default_flexLayout',
-		userProps: { height: 247.3684210526316, width: 356.140350877193 }
+		userProps: {}
 	};
 
 	constructor(props?: ConstructorParameters<typeof FlexLayout>) {

@@ -1,7 +1,7 @@
 {
 	"components": [
 		{
-			"className": "",
+			"className": " .calendar.body",
 			"hiddenComponent": false,
 			"id": "7072-558c-2327-9bd4",
 			"initialized": true,
@@ -23,10 +23,8 @@
 			"type": "FlexLayout",
 			"userProps": {
 				"flexProps": {},
-				"height": 247.3684210526316,
 				"left": -3.0689634125808194,
-				"top": 263.41379099878776,
-				"width": 356.140350877193
+				"top": 263.41379099878776
 			}
 		},
 		{

@@ -21,7 +21,9 @@
 			},
 			"type": "FlexLayout",
 			"userProps": {
-				"height": 300
+				"flexProps": {},
+				"left": -7.142857142857143,
+				"top": 40.476190476190474
 			}
 		},
 		{

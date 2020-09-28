@@ -23,7 +23,7 @@ export default class Calendar extends FlexLayout implements Styleable {
 	static $$styleContext: ComponentStyleContext = {
 		classNames: '.calendar-self',
 		defaultClassNames: '.default_common .default_flexLayout',
-		userProps: { height: 300 }
+		userProps: {}
 	};
 
 	constructor(props?: ConstructorParameters<typeof FlexLayout>) {
