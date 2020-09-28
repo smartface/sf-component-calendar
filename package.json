@@ -1,6 +1,6 @@
 {
   "name": "@smartface/sf-component-calendar-dev",
-  "version": "3.0.0-beta.1",
+  "version": "3.0.0-beta.10",
   "description": "Calendar Component",
   "main": "index.js",
   "scripts": {
@@ -48,7 +48,7 @@
     "moment": "^2.22.2",
     "moment-hijri": "^2.1.1",
     "semver": "^5.3.0",
-     "@smartface/contx": "3.0.2",
+    "@smartface/contx": "3.0.2",
     "@smartface/html-to-text": "^1.1.1",
     "@smartface/router": "^1.5.1",
     "@smartface/styler": "^2.0.0"
