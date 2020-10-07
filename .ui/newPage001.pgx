@@ -312,6 +312,7 @@
 				"flexProps": {
 					"positionType": "ABSOLUTE"
 				},
+				"height": 300,
 				"left": 0,
 				"top": 0
 			}

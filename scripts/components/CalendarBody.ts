@@ -8,6 +8,14 @@ export default class CalendarBody extends CalendarBodyDesign {
         this.pageName = pageName;
     }
 
+    setTomonth(tomonth: boolean) {
+        if(tomonth){
+            this.dispatch({
+                type: "tomonth"
+            })
+        }
+    }
+
     componentDidEnter = function (dispatch) {
         this.dispatch = dispatch;
         dispatch({

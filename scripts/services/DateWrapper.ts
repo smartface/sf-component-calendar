@@ -21,7 +21,7 @@ export default class DateService<T extends Moment = Moment> {
     protected daysMap: any[];
     protected _lang: string = "en";
 
-    constructor(protected _moment: typeof moment, date: T | DateObject) {
+    constructor(protected _moment: typeof moment, date: T | DateObject, private _today: Date = new Date()) {
         this.setDate(date, "DD-MM-YYYY");
         const firstDay = this.firstDayOfWeek();
         this.daysMap = [0, 1, 2, 3, 4, 5, 6].reduce((acc, num, index) => {
@@ -33,6 +33,10 @@ export default class DateService<T extends Moment = Moment> {
 
             return acc;
         }, []);
+    }
+
+    today(){
+        return this._moment();
     }
 
     private setDate(date: DateObject | T | undefined, format = "DD-MM-YYYY") {
@@ -65,15 +69,15 @@ export default class DateService<T extends Moment = Moment> {
         var now = this._date.clone();
         const localeDate = { day: now.format("D"), month: now.format("M"), year: now.format("YYYY") };
         return {
-            setDay(day) {
+            setDay(day: number) {
                 localeDate.day = now.month(0).date(day).format("D");
                 return this;
             },
-            setMonth(month) {
+            setMonth(month: number) {
                 localeDate.month = now.month(month).format("M");
                 return this;
             },
-            setYear(year) {
+            setYear(year: number) {
                 localeDate.year = now.year(year).format("YYYY");
                 return this
             },

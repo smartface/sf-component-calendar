@@ -13,7 +13,7 @@ import System = require('sf-core/device/system');
 
 import FlexLayout = require('sf-core/ui/flexlayout');
 
-import CalendarWeekRow from 'components/CalendarWeekRow';
+import CalendarWeekRow from '../../components/CalendarWeekRow';
 
 export default class CalendarBody extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;

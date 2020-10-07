@@ -13,7 +13,7 @@ import System = require('sf-core/device/system');
 
 import FlexLayout = require('sf-core/ui/flexlayout');
 
-import CalendarDay from 'components/CalendarDay';
+import CalendarDay from '../../components/CalendarDay';
 
 export default class CalendarWeekRow extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;
@@ -200,9 +200,9 @@ class $CalendarWeekRow$$WeekDay7 extends CalendarDay implements Styleable {
 class $CalendarWeekRow$$Line extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;
 	static $$styleContext: ComponentStyleContext = {
-		classNames: '',
+		classNames: ' .calendar.weekRow_line',
 		defaultClassNames: '.default_common .default_flexLayout',
-		userProps: { backgroundColor: 'rgba( 228, 228, 228, 1 )', bottom: 1, flexProps: { positionType: 'ABSOLUTE' }, height: 1, left: 0, right: 0 }
+		userProps: {}
 	};
 	constructor() {
 		super();

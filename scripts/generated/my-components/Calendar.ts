@@ -14,8 +14,8 @@ import System = require('sf-core/device/system');
 import FlexLayout = require('sf-core/ui/flexlayout');
 import Label = require('sf-core/ui/label');
 
-import CalendarNavBar from 'components/CalendarNavBar';
-import CalendarBody from 'components/CalendarBody';
+import CalendarNavBar from '../../components/CalendarNavBar';
+import CalendarBody from '../../components/CalendarBody';
 
 export default class Calendar extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;
@@ -32,8 +32,8 @@ export default class Calendar extends FlexLayout implements Styleable {
 		this.addChildByName(new $Calendar$$Navbar(), 'navbar');
 		this.addChildByName(new $Calendar$$CalendarDays(), 'calendarDays');
 		this.addChildByName(new $Calendar$$Line1(), 'line1');
-		this.addChildByName(new $Calendar$$Line2(), 'line2');
 		this.addChildByName(new $Calendar$$Body(), 'body');
+		this.addChildByName(new $Calendar$$Line2(), 'line2');
 	}
 	addChildByName(child: View, name: string) {
 		this.children[name] = child;
@@ -61,7 +61,7 @@ class $Calendar$$Navbar extends CalendarNavBar implements Styleable {
 	static $$styleContext: ComponentStyleContext = {
 		classNames: '.calendar.header_navbar',
 		defaultClassNames: '.default_common .default_flexLayout',
-		userProps: { backgroundColor: 'rgba( 255, 255, 255, 1 )' }
+		userProps: {}
 	};
 	constructor() {
 		super();
@@ -254,29 +254,9 @@ class $Calendar$$CalendarDays$$DayName_6 extends Label implements Styleable {
 class $Calendar$$Line1 extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;
 	static $$styleContext: ComponentStyleContext = {
-		classNames: '.flexLayout',
+		classNames: '.calendar_line',
 		defaultClassNames: '.default_common .default_flexLayout',
-		userProps: { backgroundColor: 'rgba( 228, 228, 228, 1 )', height: 1, width: null }
-	};
-	constructor() {
-		super();
-	}
-
-	set testId(value: string) {
-		if (System.OS === 'iOS') {
-			this.nativeObject.setValueForKey(value, 'accessibilityIdentifier');
-		} else {
-			this.nativeObject.setContentDescription(value);
-		}
-	}
-}
-
-class $Calendar$$Line2 extends FlexLayout implements Styleable {
-	dispatch: (action: { [key: string]: any }) => void;
-	static $$styleContext: ComponentStyleContext = {
-		classNames: '.flexLayout',
-		defaultClassNames: '.default_common .default_flexLayout',
-		userProps: { alpha: 1, backgroundColor: 'rgba( 228, 228, 228, 1 )', height: 1, width: null }
+		userProps: {}
 	};
 	constructor() {
 		super();
@@ -295,6 +275,26 @@ class $Calendar$$Body extends CalendarBody implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;
 	static $$styleContext: ComponentStyleContext = {
 		classNames: '.calendar.body',
+		defaultClassNames: '.default_common .default_flexLayout',
+		userProps: {}
+	};
+	constructor() {
+		super();
+	}
+
+	set testId(value: string) {
+		if (System.OS === 'iOS') {
+			this.nativeObject.setValueForKey(value, 'accessibilityIdentifier');
+		} else {
+			this.nativeObject.setContentDescription(value);
+		}
+	}
+}
+
+class $Calendar$$Line2 extends FlexLayout implements Styleable {
+	dispatch: (action: { [key: string]: any }) => void;
+	static $$styleContext: ComponentStyleContext = {
+		classNames: '.calendar_line',
 		defaultClassNames: '.default_common .default_flexLayout',
 		userProps: {}
 	};

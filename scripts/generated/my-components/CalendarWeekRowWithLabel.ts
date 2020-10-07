@@ -14,7 +14,7 @@ import System = require('sf-core/device/system');
 import FlexLayout = require('sf-core/ui/flexlayout');
 import Label = require('sf-core/ui/label');
 
-import CalendarDayLabel from 'components/CalendarDayLabel';
+import CalendarDayLabel from '../../components/CalendarDayLabel';
 
 export default class CalendarWeekRowWithLabel extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;

@@ -367,7 +367,7 @@ class $Calendar extends Calendar implements Styleable {
 	static $$styleContext: ComponentStyleContext = {
 		classNames: '.calendar-self',
 		defaultClassNames: '.default_common .default_flexLayout',
-		userProps: { flexProps: { positionType: 'ABSOLUTE' }, left: 0, top: 0 }
+		userProps: { flexProps: { positionType: 'ABSOLUTE' }, height: 300, left: 0, top: 0 }
 	};
 	constructor() {
 		super();

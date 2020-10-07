@@ -1,5 +1,6 @@
 import CalendarDayDesign from '../generated/my-components/CalendarDay';
 import CalendarDayLabel from './CalendarDayLabel';
+import { CalendarDayType } from '../services/CalendarDayType';
 
 export default class CalendarDay extends CalendarDayDesign {
     pageName?: string | undefined;
@@ -12,9 +13,7 @@ export default class CalendarDay extends CalendarDayDesign {
         
         this.dayNum.onTouch = (e) => {
 			let isLongPress = false;
-			
-			this.onPress && this.onPress.call(this, e);
-			
+						
 			let timeout = setTimeout(() => {
 				isLongPress = true;
 				isLongPress && this.onLongPress && this.onLongPress.call(this, e);
@@ -30,7 +29,7 @@ export default class CalendarDay extends CalendarDayDesign {
     }
     onPress: () => {}
     onLongPress: () => {}
-    setDay(data){
+    setDay(data: CalendarDayType){
         this.dayNum.text = data.localeDay;
         this.dayNum.dispatch({
             type: "updateDayType",

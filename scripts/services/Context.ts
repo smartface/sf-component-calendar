@@ -11,14 +11,8 @@ export function createContext(actors, updater, middlewares, initialState = {}) {
         private actors: any;
         private state: any;
         constructor() {
-            // this.__id            = __id++;
-            // this._subscribers    = new WeakMap();
-            // this._subscriberKeys = new Map();
             this.actors = Object.assign({}, actors);
             this.state = Object.assign({}, initialState);
-            // this.dispatch = this.dispatch.bind(this);
-            // this.setState = this.setState.bind(this);
-            // this.getState = tbbbbbbbbbhis.getState.bind(this);
 
             this.dispatch({ type: INIT_CONTEXT_ACTION_TYPE });
         }

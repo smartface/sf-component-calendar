@@ -1,7 +1,7 @@
 export type SpecialDay = {
     day: number,
     calendars: { [key: string]: SpecialDayCalendar }
-    length: number;
+    length?: number;
     className?: string
 }
 
@@ -24,8 +24,8 @@ export type SpecialDayCalendar = {
 }
 
 export type SpecialDaysData = {
-    byYears: SpecialYear[],
-    byMonths: SpecialMonth[]
+    byYears?: SpecialYear[],
+    byMonths?: SpecialMonth[]
 }
 
 export type SpecialDaysBundle = { [key: string]: SpecialDaysBundle };

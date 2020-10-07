@@ -17,6 +17,7 @@ export type CalendarPageInnerMonth = {
     localeDate: DateObject<string>,
 };
 export type CalendarPage = {
+    tomonth: boolean,
     longName: string,
     shortName: string,
     daysCount: number,
@@ -33,7 +34,8 @@ export type CalendarPage = {
 }
 
 export type CalendarService = {
-    getCalendarMonth: (date?: DateObject) => CalendarPage;
+    setSpecialDaysService(specialDaysService: SpecialDaysData): void;
+    getCalendarMonth: (date?: DateObject, today?: Date) => CalendarPage;
     getMonth: any;
 };
 /**
@@ -46,7 +48,18 @@ export type CalendarService = {
  * 
  * @returns {Object}
  */
-export default function buildCalendarService({ lang = "en", type = "gregorian", specialDays = null, firstDayOfWeek = 0 }: { lang: string, type: string, specialDays: SpecialDaysData, firstDayOfWeek: number }): CalendarService {
+export default function buildCalendarService({
+    lang = "en",
+    type = "gregorian",
+    specialDays = null,
+    firstDayOfWeek = 0
+}: {
+    lang: string,
+    type: string,
+    specialDays: SpecialDaysData,
+    firstDayOfWeek: number
+}): CalendarService {
+
     let service: typeof DateService | typeof DateServiceHijri;
 
     let current: typeof moment;
@@ -71,14 +84,17 @@ export default function buildCalendarService({ lang = "en", type = "gregorian", 
         }
     });
 
-    const specialDaysService = createSpecialDaysService(specialDays);
+    let specialDaysService = createSpecialDaysService(specialDays);
 
     return {
+        setSpecialDaysService(specialDays: SpecialDaysData) {
+            specialDaysService = createSpecialDaysService(specialDays);
+        },
 		/**
 		 * Returns current calendar month data
 		 */
-        getCalendarMonth: (date: DateObject) => getCalendarMonth(
-            new service(current, date),
+        getCalendarMonth: (date: DateObject, today: Date = new Date()) => getCalendarMonth(
+            new service(current, date, today),
             (args: Parameters<ReturnType<typeof createSpecialDaysService>['getSpecialDay']>['0']) => {
                 args.lang = lang;
                 args.calendar = type;
@@ -121,53 +137,62 @@ function getCalendarMonth(service: DateService, specialDaysService: SpecialDaysS
     const daysCount = service.daysCount();
     const startDay = service.startDayOfMonth() - 1;
 
+    const today = service.today();
+
     const startNext = daysCount + startDay;
     // 31 -> 1
-    var prev = prevMonth.daysCount() - startDay;
-    var next = 1;
-    var row: CalendarDayType[] = [];
+    let prev = prevMonth.daysCount() - startDay;
+    let next = 1;
+    let row: CalendarDayType[] = [];
     days.push(row);
 
-    var maxCol = 7;
-    var maxRow = 6;
-    var cellCount = maxRow * maxCol;
-    var localeDays = [];
+    let maxCol = 7;
+    let maxRow = 6;
+    let cellCount = maxRow * maxCol;
+    let localeDays = [];
+    const current = service.toObject();
 
-    for (var i = 1; i <= cellCount; i++) {
+    for (let i = 1; i <= cellCount; i++) {
         let isWeekend = false;
-        let day: Partial<CalendarDayType>;
+        let dayData: CalendarDayType = {
+            day: 0,
+            isWeekend: false,
+            localeDay: "",
+            month: "current",
+            specialDay: [],
+            today: false
+        };
 
         if (i <= startDay) {
-            day = {
-                day: ++prev,
-                month: 'previous',
-            };
+            dayData.day = ++prev;
+            dayData.month = 'previous';
 
-            isWeekend = prevMonth.isWeekend(day.day);
-            day.specialDay = specialDaysService({ ...prevMonth.fromDay(day.day).toNormalizedObject() });
-            day.localeDay = prevMonth.localeDate().setDay(day.day).getDate().day;
+            isWeekend = prevMonth.isWeekend(dayData.day);
+            dayData.specialDay = specialDaysService({ ...prevMonth.fromDay(dayData.day).toNormalizedObject() });
+            dayData.localeDay = prevMonth.localeDate().setDay(dayData.day).getDate().day;
         } else if (i > startNext) {
-            day = {
-                day: next++,
-                month: 'next',
-            };
-            isWeekend = nextMonth.isWeekend(day.day);
-            day.specialDay = specialDaysService({ ...nextMonth.fromDay(day.day).toNormalizedObject() });
-            day.localeDay = nextMonth.localeDate().setDay(day.day).getDate().day;
-        } else {
-            day = {
-                day: i - startDay,
-                month: 'current',
-            };
+            dayData.day = next++;
+            dayData.month = "next";
 
-            isWeekend = service.isWeekend(day.day);
-            day.specialDay = specialDaysService({ ...service.fromDay(day.day).toNormalizedObject() });
-            day.localeDay = service.localeDate().setDay(day.day).getDate().day;
+            isWeekend = nextMonth.isWeekend(dayData.day);
+            dayData.specialDay = specialDaysService({ ...nextMonth.fromDay(dayData.day).toNormalizedObject() });
+            dayData.localeDay = nextMonth.localeDate().setDay(dayData.day).getDate().day;
+        } else {
+            dayData.day = i - startDay;
+            dayData.month = 'current';
+
+            isWeekend = service.isWeekend(dayData.day);
+            dayData.specialDay = specialDaysService({ ...service.fromDay(dayData.day).toNormalizedObject() });
+            dayData.localeDay = service.localeDate().setDay(dayData.day).getDate().day;
+
+            if (today.date() === dayData.day && today.month()+1 === current.month && today.year() === current.year) {
+                dayData.today = true;
+            }
         }
 
-        isWeekend && (day.isWeekend = isWeekend);
+        isWeekend && (dayData.isWeekend = isWeekend);
 
-        row.push(day as CalendarDayType);
+        row.push(dayData);
 
         if (i > 0 && i % 7 == 0 && i !== cellCount) {
             row = [];
@@ -177,6 +202,7 @@ function getCalendarMonth(service: DateService, specialDaysService: SpecialDaysS
 
     return {
         // firstDayOfWeek: currentMonth.firstDayOfWeek(),
+        tomonth: today.month()+1 === current.month,
         longName: service.monthLong(),
         shortName: service.monthShort(),
         daysCount: service.daysCount(),

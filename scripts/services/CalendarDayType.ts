@@ -5,6 +5,7 @@ export type CalendarDayType = {
         text: string;
         className: string;
     }[],
+    today: boolean;
     localeDay: string;
     isWeekend: boolean;
 }

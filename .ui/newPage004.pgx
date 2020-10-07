@@ -7,7 +7,8 @@
 			"props": {
 				"children": [
 					"4a18-30a6-76a5-7e91",
-					"daa4-3825-a561-f8cb"
+					"daa4-3825-a561-f8cb",
+					"4296-7036-8cbd-5476"
 				],
 				"name": "newPage004",
 				"orientation": "PORTRAIT",
@@ -41,6 +42,23 @@
 			"type": "HeaderBar",
 			"userProps": {
 				"title": "newPage004"
+			}
+		},
+		{
+			"className": ".sf-button",
+			"id": "4296-7036-8cbd-5476",
+			"props": {
+				"children": [],
+				"name": "button1",
+				"parent": "48f5-3a57-d24d-5392",
+				"text": "button1",
+				"usePageVariable": true
+			},
+			"type": "Button",
+			"userProps": {
+				"testId": "0aIEvVkTU",
+				"text": "button1",
+				"usePageVariable": true
 			}
 		}
 	]

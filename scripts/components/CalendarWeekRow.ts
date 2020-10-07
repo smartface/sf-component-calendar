@@ -1,5 +1,6 @@
 import CalendarWeekRowDesign from '../generated/my-components/CalendarWeekRow';
 import CalendarDay from './CalendarDay';
+import { CalendarDayType } from 'services/CalendarDayType';
 
 function onDayPress(index: number) {
     this.onDaySelect && this.onDaySelect(index);
@@ -146,7 +147,7 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
 			Object.assign(this, e.style);
 		};*/
 
-    setDays(days, justCurrentDays = false, force = false) {
+    setDays(days: CalendarDayType, justCurrentDays = false, force = false) {
         if (!force && (days === undefined || !this._available)) {
             return;
         }
@@ -159,9 +160,9 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
             } else if (days[index].month === "current") {
                 this._isEmpty = false;
             }
-
-            this.children[day].visible = true;
-            this.children[day].setDay(days[index]);
+            const dayView: CalendarDay = this.children[day];
+            dayView.visible = true;
+            dayView.setDay(days[index]);
         });
 
         this.invalidate();

@@ -14,6 +14,7 @@ import DateService from "services/DateWrapper";
 import { DayMonthInfo } from "./DayMonthInfo";
 
 import calendarServiceBuilder, { CalendarPage, CalendarService } from "../services/CalendarService";
+import { SpecialDaysService, SpecialDaysData } from "services/SpecialDaysService";
 
 export type CalendarState = {
     month: CalendarPage | null,
@@ -720,6 +721,10 @@ class CalendarCore {
         this.setState(this._setDate(date));
     };
 
+    isTomonth(){
+        this._state.month.tomonth;
+    }
+
     /**
      * Changes current selected date
      * 
@@ -765,6 +770,13 @@ class CalendarCore {
 
         this.setState(state);
     };
+
+    setSpecialDaysService(specialDays: SpecialDaysData){
+        this._calendarService.setSpecialDaysService(specialDays);
+        this.setState({
+            month: this._calendarService.getCalendarMonth(this._state.month.normalizedDate)
+        });
+    }
 
     /**
      * Returns state to change to previous month

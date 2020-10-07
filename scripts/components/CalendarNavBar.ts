@@ -18,6 +18,15 @@ export default class CalendarNavBar extends CalendarNavBarDesign {
 
     onNext: () => {}
     onPrev: () => {}
+
+    setTomonth(tomonth: boolean) {
+        if(tomonth){
+            this.children.monthLabel.dispatch({
+                type: "tomonth"
+            })
+        }
+    }
+
     weekMode(mode: boolean) {
         this.children.prevWeek.dispatch({
             type: "updateUserStyle",

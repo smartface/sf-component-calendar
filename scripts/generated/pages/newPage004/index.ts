@@ -13,6 +13,8 @@ import View = require('sf-core/ui/view');
 import { ComponentStyleContext } from 'generated/core/ComponentStyleContext';
 import System = require('sf-core/device/system');
 
+import Button = require('sf-core/ui/button');
+
 class $NewPage004 extends Page {
 	dispatch: (action: { [key: string]: any }) => void;
 	children: { [key: string]: any } = {};
@@ -32,7 +34,7 @@ class $NewPage004 extends Page {
 			userProps: {}
 		}
 	};
-
+	button1: StyleContextComponentType<$Button1>;
 	constructor(props?: any) {
 		super(
 			Object.assign(
@@ -46,7 +48,8 @@ class $NewPage004 extends Page {
 		);
 		this.children['statusBar'] = this.statusBar || {};
 		this.children['headerBar'] = this.headerBar || {};
-
+		this.addChildByName(new $Button1(), 'button1');
+		this.button1 = this.children.button1;
 		pageContextPatch(this, 'newPage004');
 	}
 	addChild(child: View, name?: string, classNames?: string, userProps?: { [key: string]: any }, defaultClassNames?: string): void {
@@ -70,3 +73,23 @@ class $NewPage004 extends Page {
 	}
 }
 export default $NewPage004;
+
+class $Button1 extends Button implements Styleable {
+	dispatch: (action: { [key: string]: any }) => void;
+	static $$styleContext: ComponentStyleContext = {
+		classNames: '.sf-button',
+		defaultClassNames: '.default_common .default_button',
+		userProps: { testId: '0aIEvVkTU' }
+	};
+	constructor() {
+		super({ text: 'button1' });
+	}
+
+	set testId(value: string) {
+		if (System.OS === 'iOS') {
+			this.nativeObject.setValueForKey(value, 'accessibilityIdentifier');
+		} else {
+			this.nativeObject.setContentDescription(value);
+		}
+	}
+}

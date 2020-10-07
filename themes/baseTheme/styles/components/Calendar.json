@@ -2,6 +2,18 @@
 	".calendar": {
 		".body": {
 			"height": 450
+		},
+		"&-self": {
+			"height": 300
+		},
+		".weekRow": {
+			"&_line": {
+				"flexProps": {},
+				"height": 1,
+				"bottom": 0,
+				"left": 0,
+				"right": 0
+			}
 		}
 	}
 }

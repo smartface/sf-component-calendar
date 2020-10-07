@@ -4,8 +4,8 @@ import System = require('sf-core/device/system');
 import styler from "@smartface/styler/lib/styler";
 import Context from "@smartface/contx/lib/core/Context";
 import Actor from "@smartface/contx/lib/core/Actor";
-import {Stylable} from "@smartface/contx/lib/styling/Stylable";
-import { CalendarDayType } from "services/CalendarDayType";
+import { Stylable } from "@smartface/contx/lib/styling/Stylable";
+import { CalendarDayType } from "../services/CalendarDayType";
 
 function raiseTargetNotfound(target) {
     return function (message = "Component cannot be found.") {
@@ -46,6 +46,7 @@ function deselectDays(actor: Stylable) {
 type ContextState = {
     selectedDay: string,
     days: string[],
+    tomonthTargets: string[]
 }
 
 type Actions = {
@@ -68,13 +69,14 @@ type Actions = {
     lang: string
 } | {
     type: "changeMonth"
+} | {
+    type: "tomonth"
 }
 
 // reducer for context's components
 function reducer(context: Context, action: Actions, target, state: ContextState) {
     const newState = Object.assign({}, state);
     let actor: Stylable | null;
-
     switch (action.type) {
         case INIT_CONTEXT_ACTION_TYPE:
             const reduer = (acc: string[], actor: Actor, name: string) => {
@@ -87,7 +89,11 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
             return newState;
         case "resetDays":
             context.map(resetDays as any);
-
+            (newState.tomonthTargets || []).forEach(element => {
+                actor = context.find(element as any, { pushClassNames: raiseTargetNotfound(target) }) as Stylable;
+                actor.removeClassName("#"+actor.getName() + "-tomonth");
+            });
+            newState.tomonthTargets = [];
             return newState;
         case "deselectDays":
             context.map(deselectDays as any);
@@ -104,9 +110,17 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
             actor.pushClassNames(".calendar.day_label-selected");
             newState.selectedDay = target;
 
-            return newState;
+            return newState; 
         case "clearSelectedDay":
             removeSelection(context, newState);
+
+            return newState;
+        case "tomonth":
+            actor = context.find(target, { pushClassNames: raiseTargetNotfound(target) }) as Stylable;
+            actor.pushClassNames("#"+actor.getName() + "-tomonth");
+            if(!newState.tomonthTargets)
+                newState.tomonthTargets = [];
+            newState.tomonthTargets.push(target);
             return newState;
         case "changeMonth":
             removeSelection(context, newState);
@@ -117,7 +131,6 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
                     raiseTargetNotfound(target);
 
                 const className = actor.getInitialClassName();
-
                 actor.resetClassNames([...className,
                     "#" + actor.getName(),
                     "#" + actor.getName() + "-lang--" + action.lang,
@@ -130,12 +143,12 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
             return newState;
         case "updateDayType":
             actor = context.find(target, null) as Stylable | null;
-            if(!actor)
+            if (!actor)
                 return state;
-            
+
             const data = action.data;
             const classNames: string[] = []
-            
+
             if (data.isWeekend) {
                 classNames.push(".calendar.day_label-weekend");
             }
@@ -147,6 +160,10 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
 
             if (data.month != "current") {
                 classNames.push(".calendar.day_label-deactiveDays");
+            }
+
+            if (data.today){
+                classNames.push(".calendar.day_label-today");
             }
 
             actor.pushClassNames(classNames);

@@ -10,8 +10,8 @@
 					"cf78-2304-1947-1383",
 					"ef76084f",
 					"f3fa-feb1-b214-9021",
-					"0863-4a0b-6e91-7a84",
-					"acb1-8636-d8ae-5237"
+					"acb1-8636-d8ae-5237",
+					"0863-4a0b-6e91-7a84"
 				],
 				"name": "calendar",
 				"parent": "3365675e"
@@ -40,9 +40,7 @@
 				"id": "7d0c86e9"
 			},
 			"type": "FlexLayout",
-			"userProps": {
-				"backgroundColor": "rgba( 255, 255, 255, 1 )"
-			}
+			"userProps": {}
 		},
 		{
 			"className": ".calendar.header_dayNames",
@@ -194,7 +192,8 @@
 			}
 		},
 		{
-			"className": ".flexLayout",
+			"className": ".calendar_line",
+			"hiddenComponent": false,
 			"id": "f3fa-feb1-b214-9021",
 			"props": {
 				"children": [],
@@ -205,31 +204,7 @@
 				"page": "__library__"
 			},
 			"type": "FlexLayout",
-			"userProps": {
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"height": 1,
-				"width": null
-			}
-		},
-		{
-			"className": ".flexLayout",
-			"hiddenComponent": false,
-			"id": "0863-4a0b-6e91-7a84",
-			"props": {
-				"children": [],
-				"name": "line2",
-				"parent": "940ab35f"
-			},
-			"source": {
-				"page": "__library__"
-			},
-			"type": "FlexLayout",
-			"userProps": {
-				"alpha": 1,
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"height": 1,
-				"width": null
-			}
+			"userProps": {}
 		},
 		{
 			"className": ".calendar.body",
@@ -243,6 +218,21 @@
 			"source": {
 				"page": "__library__",
 				"id": "7072-558c-2327-9bd4"
+			},
+			"type": "FlexLayout",
+			"userProps": {}
+		},
+		{
+			"className": ".calendar_line",
+			"hiddenComponent": false,
+			"id": "0863-4a0b-6e91-7a84",
+			"props": {
+				"children": [],
+				"name": "line2",
+				"parent": "940ab35f"
+			},
+			"source": {
+				"page": "__library__"
 			},
 			"type": "FlexLayout",
 			"userProps": {}

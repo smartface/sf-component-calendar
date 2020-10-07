@@ -11,6 +11,9 @@ import { CalendarPage } from '../services/CalendarService';
 import { DateObject } from '../core/DateObject';
 import calendarContext from "./calendarContext";
 import CalendarWeekRow from './CalendarWeekRow';
+import { SpecialDaysData } from '../services/SpecialDaysService';
+import CalendarBody from './CalendarBody';
+import CalendarNavBar from './CalendarNavBar';
 
 const themeFile = require("../theme.json");
 
@@ -115,10 +118,14 @@ class Calendar extends CalendarDesign {
         };
     }
 
+    setSpecialDays(specialDays: SpecialDaysData) {
+        this._calendarCore.setSpecialDaysService(specialDays);
+    }
+
     /**
- * @event
- * @param {DateInfoDTO} start - Range start date
- */
+     * @event
+     * @param {DateInfoDTO} start - Range start date
+     */
     onRangeSelectionStart = (start) => { };
 
     /**
@@ -169,10 +176,10 @@ class Calendar extends CalendarDesign {
      * 
      * @param {string} [lang="en"] - Language code like 'en, en-US, tr, ar-SA etc.'
      * @param {string} [type="gregorian"] - Calendar type, values can only be gregorian or hijri.
-     * @param {(object|null)} [specialDays=null] - Specialdays objects
+     * @param {SpecialDaysData} [specialDays={}] - Specialdays objects
      * @param {number} [firstDayOfWeek=0] - First day of a week [0...6]
      */
-    changeCalendar(lang = "en", type = "gregorian", specialDays = {}, firstDayOfWeek = 0) {
+    changeCalendar(lang = "en", type = "gregorian", specialDays: SpecialDaysData = {}, firstDayOfWeek = 0) {
         this.dispatch({
             type: "changeCalendar",
             lang: lang
@@ -220,7 +227,11 @@ class Calendar extends CalendarDesign {
             this.children.calendarDays.children["dayName_" + index].text = day;
         });
 
+        (this.children.body as CalendarBody).setTomonth(newState.month.tomonth);
+        (this.children.navbar as CalendarNavBar).setTomonth(newState.month.tomonth);
+
         this._weekMode ? this.setWeekMode(this._weekMode) : this.children.body.applyLayout();
+
         this.applyLayout();
     };
 

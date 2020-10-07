@@ -29,8 +29,8 @@
 					"flexDirection": "ROW"
 				},
 				"height": 40,
-				"left": 9.375,
-				"top": 303.125,
+				"left": 1.5,
+				"top": 349,
 				"width": 355
 			}
 		},
@@ -154,7 +154,8 @@
 			"userProps": {}
 		},
 		{
-			"className": "",
+			"className": " .calendar.weekRow_line",
+			"hiddenComponent": false,
 			"id": "2af5-9afa-a34c-83c6",
 			"props": {
 				"children": [],
@@ -165,16 +166,7 @@
 				"page": "__library__"
 			},
 			"type": "FlexLayout",
-			"userProps": {
-				"backgroundColor": "rgba( 228, 228, 228, 1 )",
-				"bottom": 1,
-				"flexProps": {
-					"positionType": "ABSOLUTE"
-				},
-				"height": 1,
-				"left": 0,
-				"right": 0
-			}
+			"userProps": {}
 		}
 	]
 }
