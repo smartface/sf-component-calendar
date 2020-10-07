@@ -1,6 +1,6 @@
 {
   "name": "@smartface/sf-component-calendar",
-  "version": "3.0.0-beta.15",
+  "version": "3.0.0-beta.17",
   "description": "Calendar component",
   "main": "components/calendar.js",
   "scripts": {},

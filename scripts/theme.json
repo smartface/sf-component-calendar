@@ -9,8 +9,22 @@
         },
         "&_navbar_monthLabel": {
             "textColor": "#1775D0",
+            "font": {
+                "size": 16,
+                "family": "FontAwesome5FreeSolid",
+                "style": null,
+                "bold": false,
+                "italic": false
+            },
             "&-tomonth": {
-                "textColor": "#ff0000"
+                "textColor": "#ff0000",
+                "font": {
+                    "size": 5,
+                    "family": "FontAwesome5FreeSolid",
+                    "style": null,
+                    "bold": false,
+                    "italic": false
+                }
             }
         }
 	},

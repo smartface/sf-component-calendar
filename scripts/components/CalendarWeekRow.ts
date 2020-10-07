@@ -49,7 +49,7 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
 
         this.selectedIndex = index;
         this.rangeIndexes = [];
-        (this.children["weekDay" + (index + 1)] as CalendarDay).select();
+        // (this.children["weekDay" + (index + 1)] as CalendarDay).select();
     }
 
 

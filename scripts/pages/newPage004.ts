@@ -15,8 +15,12 @@ export default class NewPage004 extends NewPage004Design {
         this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
         
         this.calendar.changeCalendar("tr");
+        
         this.addChild(this.calendar);
         this.calendar.top = 100;
+        this.calendar.onDaySelect = (data) => {
+            console.log(data);
+        };
         this.button1.onPress = () => {
             this.calendar.setSpecialDays(specialDays);
         };

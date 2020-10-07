@@ -90,9 +90,9 @@ class Calendar extends CalendarDesign {
         this._weeks.push(this.children.body.children.week6);
 
         this._weeks.forEach((row, weekIndex) => {
-            row.onDayLongPress = this._onLongPress.bind(this, weekIndex);
+            row.onDayLongPress = (weekDayIndex) => this._onLongPress(weekIndex, weekDayIndex);
             if (useDaySelection === true) {
-                row.onDaySelect = this.selectDay.bind(this, weekIndex);
+                row.onDaySelect = (weekDayIndex) => this.selectDay(weekIndex, weekDayIndex);
             }
 
             if (useRangeSelection === true) {
@@ -217,7 +217,7 @@ class Calendar extends CalendarDesign {
             });
 
         }
-
+        
         newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1
             ? this._selectDay.bind(this)
             : this._selectDayasRange.bind(this)
@@ -435,8 +435,9 @@ class Calendar extends CalendarDesign {
      * @param {number} weekDayIndex - Calendar column index
      * @param {boolean} [notify=true] - If fires selection event or not.
      */
-    selectDay(weekIndex, weekDayIndex, notify = true) {
+    selectDay(weekIndex: number, weekDayIndex: number, notify = true) {
         this._calendarCore.selectDay(weekIndex, weekDayIndex);
+        // this._calendarCore.getState().selectedDays.length > 0
         notify && this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
     };
 

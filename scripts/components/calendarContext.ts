@@ -79,19 +79,19 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
     let actor: Stylable | null;
     switch (action.type) {
         case INIT_CONTEXT_ACTION_TYPE:
-            const reduer = (acc: string[], actor: Actor, name: string) => {
+            const reducer = (acc: string[], actor: Actor, name: string) => {
                 if (name.indexOf("_weekDay") > 0)
                     acc.push(name);
                 return acc;
             };
-            newState.days = context.reduce(reduer as any, []) as string[];
+            newState.days = context.reduce(reducer as any, []) as string[];
 
             return newState;
         case "resetDays":
             context.map(resetDays as any);
             (newState.tomonthTargets || []).forEach(element => {
                 actor = context.find(element as any, { pushClassNames: raiseTargetNotfound(target) }) as Stylable;
-                actor.removeClassName("#"+actor.getName() + "-tomonth");
+                actor.removeClassName("#" + actor.getName() + "-tomonth");
             });
             newState.tomonthTargets = [];
             return newState;
@@ -102,23 +102,28 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
         case "daySelected":
             const selected = context.find(newState.selectedDay as any, null);
 
-            if (selected) {
-                removeSelection(context, newState);
+            if (newState.selectedDay) {
+                actor = context.find(newState.selectedDay as any, { pushClassNames: raiseTargetNotfound(target) }) as Stylable;
+                actor && actor.removeClassName(".calendar.day_label-selected");
             }
 
-            actor = context.find(target, { pushClassNames: raiseTargetNotfound(target) }) as Stylable;
-            actor.pushClassNames(".calendar.day_label-selected");
-            newState.selectedDay = target;
+            if (newState.selectedDay !== target) {
+                actor = context.find(target, { pushClassNames: raiseTargetNotfound(target) }) as Stylable;
+                actor.pushClassNames(".calendar.day_label-selected");
+                newState.selectedDay = target;
+            } else {
+                newState.selectedDay = null;
+            }
 
-            return newState; 
+            return newState;
         case "clearSelectedDay":
             removeSelection(context, newState);
 
             return newState;
         case "tomonth":
             actor = context.find(target, { pushClassNames: raiseTargetNotfound(target) }) as Stylable;
-            actor.pushClassNames("#"+actor.getName() + "-tomonth");
-            if(!newState.tomonthTargets)
+            actor.pushClassNames("#" + actor.getName() + "-tomonth");
+            if (!newState.tomonthTargets)
                 newState.tomonthTargets = [];
             newState.tomonthTargets.push(target);
             return newState;
@@ -132,9 +137,9 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
 
                 const className = actor.getInitialClassName();
                 actor.resetClassNames([...className,
-                    "#" + actor.getName(),
-                    "#" + actor.getName() + "-lang--" + action.lang,
-                    "#" + actor.getName() + "-os--" + System.OS
+                "#" + actor.getName(),
+                "#" + actor.getName() + "-lang--" + action.lang,
+                "#" + actor.getName() + "-os--" + System.OS
                 ]);
                 // actor.pushClassName("#"+actor.name+"-os_"+System.OS);
             };
@@ -162,7 +167,7 @@ function reducer(context: Context, action: Actions, target, state: ContextState)
                 classNames.push(".calendar.day_label-deactiveDays");
             }
 
-            if (data.today){
+            if (data.today) {
                 classNames.push(".calendar.day_label-today");
             }
 

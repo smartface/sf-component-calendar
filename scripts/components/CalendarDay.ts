@@ -23,7 +23,8 @@ export default class CalendarDay extends CalendarDayDesign {
 				clearTimeout(timeout);
 				this.dayNum.onTouchEnded = function(){};
 				!isLongPress && this.onPress && this.onPress.call(this, e);
-				isLongPress = false;
+                isLongPress = false;
+                this.select();
 			};
 		};
     }

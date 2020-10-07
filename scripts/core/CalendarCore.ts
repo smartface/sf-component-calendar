@@ -5,8 +5,6 @@
  * @copyright Smartface 2018
  */
 
-'use strict';
-
 import { DateObject } from "./DateObject";
 import { DateInfo } from "./DateInfo";
 import { DayInfo } from "./DayInfo";
@@ -22,7 +20,7 @@ export type CalendarState = {
     rangeSelection: { start: DateInfo, end: DateInfo } | null,
     rangeSelectionMode: RangeSelection,
     selectedDays: DateInfo[],
-    selectedDaysByIndex: {weekIndex: number, weekDayIndex: number}[],
+    selectedDaysByIndex: { weekIndex: number, weekDayIndex: number }[],
     weekIndex: number
 }
 /**
@@ -129,8 +127,6 @@ function getDateData(date: DateObject, month: CalendarPage) {
 
     return getDayData(pos.weekIndex, pos.weekDayIndex, month);
 }
-
-
 
 /**
  * Select specified day
@@ -339,16 +335,20 @@ class CalendarCore {
      */
     selectDay(weekIndex: number, weekDayIndex: number) {
         if (this._state.rangeSelectionMode === RangeSelection.STARTED) {
-            // this.completeRangeSelection({weekIndex, weekDayIndex});
+            this.completeRangeSelection({ weekIndex, weekDayIndex });
         }
         else if (this._state.rangeSelectionMode === RangeSelection.IDLE || this._state.rangeSelectionMode === RangeSelection.COMPLETED) {
-            this.setState({
-                rangeSelection: null,
-                rangeSelectionMode: RangeSelection.IDLE,
-                selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
-                selectedDaysByIndex: [{ weekIndex, weekDayIndex }],
-                weekIndex: weekIndex
-            });
+            this._state.selectedDays.length === 1
+            && this._state.selectedDaysByIndex[0]["weekIndex"] === weekIndex 
+            && this._state.selectedDaysByIndex[0]["weekDayIndex"] === weekDayIndex 
+                ? this.clearSelection()
+                : this.setState({
+                        rangeSelection: null,
+                        rangeSelectionMode: RangeSelection.IDLE,
+                        selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
+                        selectedDaysByIndex: [{ weekIndex, weekDayIndex }],
+                        weekIndex: weekIndex
+                    });
         }
     };
 
@@ -357,14 +357,14 @@ class CalendarCore {
      *
      */
     clearSelection() {
-        if (this._state.rangeSelection !== null) {
+        // if (this._state.rangeSelection !== null) {
             this.setState({
                 rangeSelection: null,
                 rangeSelectionMode: RangeSelection.IDLE,
                 selectedDaysByIndex: [],
                 selectedDays: []
             });
-        }
+        // }
     };
 
     /**
@@ -721,7 +721,7 @@ class CalendarCore {
         this.setState(this._setDate(date));
     };
 
-    isTomonth(){
+    isTomonth() {
         this._state.month.tomonth;
     }
 
@@ -771,7 +771,7 @@ class CalendarCore {
         this.setState(state);
     };
 
-    setSpecialDaysService(specialDays: SpecialDaysData){
+    setSpecialDaysService(specialDays: SpecialDaysData) {
         this._calendarService.setSpecialDaysService(specialDays);
         this.setState({
             month: this._calendarService.getCalendarMonth(this._state.month.normalizedDate)
