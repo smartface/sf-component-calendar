@@ -234,7 +234,7 @@ Changes the calendar's type
 ##### onChange(date:DateInfo) Event
 Called when user presses on a day on the calendar. Calendar injects to callback a selected date object is described above.
 
-##### onBeforeMonthChange(date:DateVO)
+##### onBeforeMonthChange(date:DateObject)
 Triggered before the Calendar month is changed. And if the hook returns **false** then it makes the month changing to be canceled.
 
 ```js
@@ -249,13 +249,13 @@ calendar.onBeforeMonthChange = function(date){
 #### onMonthChange(date:DateVO)
 Triggered when month is changed by the user.
 
-#### onDaySelect(date:Array.< DateInfoVO >)
+#### onDaySelect(date:DateInfo[])
 Triggered when a day or days range is selected by the user.
 
-#### onRangeSelectionStart(date:DateInfoVO)
+#### onRangeSelectionStart(date:DateInfo)
 Triggered when a day is selected by the user.
 
-#### onRangeSelectionComplete(start:DateInfoVO, end:DateInfoVO)
+#### onRangeSelectionComplete(start:DateInfo, end:DateInfo)
 Triggered when a day is selected by the user.
 
 ## Headless Calendar
