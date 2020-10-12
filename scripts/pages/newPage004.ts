@@ -6,7 +6,7 @@ import CalendarCore from 'core/CalendarCore';
 import specialDays from "./specialDays";
 
 export default class NewPage004 extends NewPage004Design {
-    calendar = new Calendar();
+    calendar = new Calendar({useRangeSelection: false});
 	constructor() {
 		super();
 		// Overrides super.onShow method

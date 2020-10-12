@@ -494,7 +494,7 @@ class CalendarCore {
      * @param {object} end
      *
      */
-    setRangeSelection(start, end) {
+    setRangeSelection(start: DateObject, end: DateObject) {
         const state: Partial<CalendarState> = this._setDate(Object.assign({}, start));
         start = getValidDate(start);
         end = getValidDate(end);
@@ -730,7 +730,7 @@ class CalendarCore {
      * 
      * @param {Calendar~DateDTO} date
      */
-    setSelectedDate(date) {
+    setSelectedDate(date: DateObject | Date) {
         const validDate = getValidDate(date);
         this.setState(Object.assign(this._setDate(validDate), this._selectDay(this.getWeekDay(validDate))));
     };

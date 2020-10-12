@@ -11,7 +11,7 @@
 ## Component Usage
 ```js 
 
-const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
+import Calendar from '@smartface/sf-component-calendar';
 const specialDaysConf = require('./specialDays.json');
 
 const myCalendar = new Calendar();
@@ -33,7 +33,7 @@ myCalendar.setSelectedDate({month:2, year:2017, day:12});
 // It must be based on theme.json below
 const customTheme = { ... };
 
-const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
+import {Calendar} from "@smartface/sf-component-calendar";
 const specialDaysConf = require('./specialDays.json');
 
 const myCalendar = new Calendar({theme: customTheme});
@@ -42,16 +42,12 @@ const myCalendar = new Calendar({theme: customTheme});
 
 // or
 
-const calendarContext = require('@smartface/sf-component-calendar/components/calendarContext');
-const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
+import {Calendar} from "@smartface/sf-component-calendar";
 const specialDaysConf = require('./specialDays.json');
 
-const myCalendar = new Calendar({useContext: false});
-const calendarStyling = calendarContext(myCalendar, "my-calendar", customTheme);
-
-...
-// change styles at runtime
-calendarStyling({...});
+const myCalendar = new Calendar();
+// Add and merge new styles
+myCalendar.addStyles(customTheme);
 
 
 ```
@@ -77,43 +73,28 @@ calendarStyling({...});
 
 ```js 
 
-const Calendar = require('@smartface/sf-component-calendar/components/Calendar');
-const calendarContext = require('@smartface/sf-component-calendar/components/calendarContext');
+import {Calendar} from "@smartface/sf-component-calendar";
 const specialDaysConf = require('./specialDays.json');
 const customTheme = require('./customTheme.json');
 
-const Page1 = extend(Page1Design)(
-    // Constructor
-    function(_super) {
-        // Initalizes super class for this page scope
-        _super(this);
-        
-        this.calendar = new Calendar({
-			useRangeSelection: true,
-			useDaySelection: true
-		});
-        
-        this.calendar.changeCalendar("en", "gregorian", {});
-        
-        this.layout.addChild(this.calendar);
-        // when user select a date
-        this.calendar.onDaySelect = function(dateInfo){
-          //...
-        }
-        
-        // Overrides super.onShow method
+export default class Page1 extends Page1Design {
+    router: any;
+	constructor () {
+        super();
+		// Overrides super.onShow method
         this.onShow = onShow.bind(this, this.onShow.bind(this));
-        // Overrides super.onLoad method
-        this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
-    });
-    
+		// Overrides super.onLoad method
+		this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
+        const container = new FlexLayout();
+        container.flexGrow = 1;
+        this.addChild(container);
+        const calendar = new Calendar();
+        calendar.addStyles(customTheme);
+        container.addChild(calendar);
+        calendar.changeCalendar("tr", "gregorian", days);
+    }
+}
 
-/**
- * @event onShow
- * This event is called when a page appears on the screen (everytime).
- * @param {function} superOnShow super onShow function
- * @param {Object} parameters passed from Router.go function
- */
 function onShow(superOnShow) {
     const page = this;
     superOnShow();
@@ -127,6 +108,9 @@ function onShow(superOnShow) {
 }
 
 // To create with custom context. It's only for advanced use.
+import createContext from "@smartface/sf-component-calendar/components/calendarContext";
+
+...
 
 const myCalendar = new Calendar({
   useRangeSelection: true,
@@ -135,7 +119,11 @@ const myCalendar = new Calendar({
   useDaySelection: false
 });
 
-const newContext = calendarContext(myCalendar, "calendar", customTheme);
+const newContext = calendarContext(myCalendar, "mycalendar", customTheme);
+
+// and add/merge new styles
+const newStyle = { ... };
+newContext(newStyles)
 
 ```
 ## Component maintainers (for Smartface Developers)
@@ -206,220 +194,7 @@ The Calendar component is consisted of several elements. Elements are :
 
 ## Styling
 
-Default style
-```js
-
-{
-	"#calendar": {
-		"flexProps": {
-			"direction": "LTR"
-		},
-		"&_line2": {}
-	},
-	".calendar": {
-		"direction": "LTR",
-		"&-self": {
-			"direction": "LTR",
-			"right": 0,
-			"left": 0,
-			"top": 0,
-			"flexProps": {
-				"positionType": "ABSOLUTE",
-				"alignContent": "STRETCH",
-				"alignItems": "STRETCH"
-			}
-		},
-		"&_line": {
-			"height": 1,
-			"width": null,
-			"backgroundColor": "rgba(228,228,228,1)"
-		},
-		"&_calendarYear": {
-			"&_yearLabel": {
-				"textColor": "#FF001F"
-			}
-		},
-		".header": {
-			"&_navbar": {
-				"direction": "LTR",
-				"&_monthLabel": {
-					"textColor": "#1775D0"
-				},
-				"&_arrow": {
-					"textColor": "rgba( 94, 94, 94, 1 )",
-					"backgroundColor": "rgba( 255, 255, 255, 0 )",
-					"bottom": 0,
-					"flexProps": {
-						"positionType": "ABSOLUTE"
-					},
-					"width": 20,
-					"top": 0,
-					"font": {
-						"size": 16,
-						"family": "FontAwesome5FreeSolid",
-						"style": null,
-						"bold": false,
-						"italic": false
-					},
-					"textAlignment": "MIDCENTER"
-				},
-				"&_label": {
-					"textColor": "#000000"
-				},
-				"flexProps": {
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE"
-				},
-				"height": 30,
-				"backgroundColor": "rgba(255,255,255,1)"
-			},
-			"&_dayNames": {
-				"direction": "LTR",
-				"backgroundColor": "rgba( 245, 245, 245, 1 )",
-				"height": 30,
-				"&-lang_ar": {
-					"direction": "RTL"
-				},
-				"&-lang_ar-sa": {
-					"direction": "RTL"
-				},
-				"&_dayName": {
-					"height": null,
-					"font": {
-						"size": 10,
-						"family": "Arial"
-					},
-					".weekday": {
-						"textColor": "rgba( 128, 128, 128, 1 )",
-						"flexProps": {
-							"positionType": "RELATIVE",
-							"flexGrow": 1,
-							"alignSelf": "STRETCH"
-						},
-						"textAlignment": "MIDCENTER"
-					},
-					".weekend": {
-						"textColor": "#808080"
-					}
-				},
-				"flexProps": {
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE"
-				}
-			}
-		},
-		".body": {
-			"flexProps": {
-				"positionType": "RELATIVE",
-				"alignSelf": "STRETCH",
-				"flexGrow": 1
-			},
-			"backgroundColor": "rgba(255,255,255,1)"
-		},
-		".weekRow": {
-			"direction": "LTR",
-			"backgroundColor": "rgba(0,0,0,0)",
-			"&-lang_ar-sa": {
-				"direction": "RTL"
-			},
-			"&-lang_ar": {
-				"direction": "RTL"
-			},
-			"&_line": {
-				"backgroundColor": "#C0C0C0"
-			},
-			"flexProps": {
-				"alignContent": "STRETCH",
-				"alignItems": "STRETCH",
-				"flexDirection": "ROW",
-				"positionType": "RELATIVE"
-			},
-			"height": 40
-		},
-		".day": {
-			"borderWidth": 0,
-			"&_label": {
-				"backgroundColor": "rgba( 255, 255, 255, 0 )",
-				"textColor": "rgba( 71, 71, 71, 1 )",
-				"flexProps": {
-					"alignSelf": "CENTER",
-					"positionType": "RELATIVE"
-				},
-				"width": 26,
-				"height": 26,
-				"borderRadius": 13,
-				"font": {
-					"size": 14,
-					"bold": true,
-					"italic": false,
-					"family": "Arial",
-					"style": "b"
-				},
-				"&-rangeSelected": {
-					"textColor": "rgba( 255, 255, 255, 1 )"
-				}
-			},
-			"flexProps": {
-				"justifyContent": "CENTER",
-				"flexGrow": 1,
-				"positionType": "RELATIVE"
-			},
-			"&-selected": {
-				"backgroundColor": "rgba( 0, 185, 255, 1 )"
-			},
-			"backgroundColor": "rgba( 246, 7, 7, 0 )"
-		},
-		".day_label": {
-			"font": {
-				"size": 14,
-				"bold": false,
-				"italic": false,
-				"family": "Arial"
-			},
-			"&_label": {},
-			"&-inrange": {
-				"textColor": "#000000"
-			},
-			"&-selected": {
-				"borderWidth": 0,
-				"backgroundColor": "rgba(0,185,255,42)",
-				"textColor": "#000000"
-			},
-			"&-deactiveDays": {
-				"borderWidth": 0,
-				"textColor": "#D6D6D6"
-			},
-			"&-specialDay": {
-				"borderWidth": 0,
-				"backgroundColor": "#FF9F9F"
-			},
-			"&-weekend": {
-				"borderWidth": 0,
-				"textColor": "#A3A3A3"
-			}
-		},
-		".weekNav": {
-			"flex": {
-				"positionType": 0,
-				"flexGrow": 1,
-				"flexDirection": 2,
-				"flexWrap": 1
-			},
-			"flexProps": {
-				"positionType": "RELATIVE",
-				"flexDirection": "ROW"
-			}
-		}
-	},
-	".calendarWeekly": {
-		"flexProps": {
-			"positionType": "RELATIVE"
-		},
-		"height": 100
-	}
-}
-
-```
+[Default Theme](./scripts/theme.json)
 
 ### Changing Styles
 
@@ -441,58 +216,14 @@ const newMonthLabelColorStyle = {
 const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
 const calendar = new Calendar();
 
-// changing calendar month label color to red
+// changes calendar month label color to red
 calendar.addStyles(newMonthLabelColorStyle);
 
-
 ```
 
-## Api
-### Types
-#### DateVO
-```js
-{
-  day:Number (1..31), 
-  month:Number (1..12), 
-  year:Number (1970 or greater)
-}
-```
-#### DateInfoVO
-```js
-{ 
-  localeDate: {
-    day: String (1..31),
-    month: String (1..12),
-    year: String
-  },
-  date: {
-    day: Number (1..12),
-    month: Number (1..31),
-    year: Number
-  },
-  dayInfo: {
-    weekDay: Number,
-    longName: String
-    shortName: String
-    specialDay: Array.<String>
-  },
-  monthInfo: {
-    longName: String
-    shortName: String
-  }
-}
+### Supported Languages and Calendars
 
-```
-
-### Calendar Api
-***
-#### Methods
-
-##### addStyles(styleObject:Object)
-
-Merges specified styles to current styles and updates the component
-
-##### changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
+##### Calendar.changeCalendar(lang:String: string="en", type:String:"gregorian"| "hijri", specialDays:Object={})
 
 Changes the calendar's type
 
@@ -509,36 +240,12 @@ Changes the calendar's type
   - Dutch : "nl"
    and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
 
-##### dispose()
-Disposes the calendar.
-
-##### nextMonth()
-Jumps to the next month
-
-##### now()
-Selects today.
-
-##### prevMonth()
-Jumps to the previous month
-
-##### setSelectedDate(date:Date|DateVO)
-Sets specified date object as the selected date.
-
-##### setDate(date:Date|DateVO)
-Sets a date without selection
-
-##### setRangeDates(start:DateVO, end:DateVO)
-Creates a range selection in the Calendar
-
-##### selectDay(weekIndex:(0..5), weekDayIndex:(0..6))
-Selects a day on the calendar by specified week and day indexes.
-
-#### Events
+### Events and Hooks
 ##### onChange(date:DateInfo) Event
 Called when user presses on a day on the calendar. Calendar injects to callback a selected date object is described above.
 
 ##### onBeforeMonthChange(date:DateVO)
-Triggered before the Calendar month is being changed. And if the eventlistener returns **false** then it makes the month changing to be canceled.
+Triggered before the Calendar month is changed. And if the hook returns **false** then it makes the month changing to be canceled.
 
 ```js
 var calendar = new Calendar();
@@ -549,95 +256,37 @@ calendar.onBeforeMonthChange = function(date){
 }
 ```
 
-##### onMonthChange(date:DateVO)
+#### onMonthChange(date:DateVO)
 Triggered when month is changed by the user.
 
-##### onDaySelect(date:Array.< DateInfoVO >)
+#### onDaySelect(date:Array.< DateInfoVO >)
 Triggered when a day or days range is selected by the user.
 
-##### onRangeSelectionStart(date:DateInfoVO)
+#### onRangeSelectionStart(date:DateInfoVO)
 Triggered when a day is selected by the user.
 
-##### onRangeSelectionComplete(start:DateInfoVO, end:DateInfoVO)
+#### onRangeSelectionComplete(start:DateInfoVO, end:DateInfoVO)
 Triggered when a day is selected by the user.
 
-### CalendarWeekly Api
-#### Methods
-##### addStyles(styleObject:Object)
+## Headless Calendar
 
-Merges specified styles to current styles and updates the component
+To use calendar logic viewless, please check out : [CalendarCore](./scripts/core/CalendarCore.ts)
 
-##### changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
+### Usage
 
-Changes the calendar's type
+```ts
 
-  **Supported Calendars:**
-  - CalendarTypes.HIJRI
-  - CalendarTypes.GREGORIAN
+import {CalendarCore} from "@smartface/sf-component-calendar";
 
- **Supported Languages:**
-  - Turkish : "tr"
-  - German : "de"
-  - French : "fr"
-  - Arabic: "ar"
-  - Arabic (Saudi): "ar-sa"
-  - Dutch : "nl"
-   and all languages that are supported by [moment.js](https://github.com/moment/moment/tree/develop/locale)
+const headlessCalendar = new CalendarCore();
+core.changeCalendar("tr");
+core.subscribe((oldState, newState) => {
+   ...         
+});
+core.nextMonth();
 
-##### dispose()
-Disposes the calendar.
+```
 
-##### nextMonth()
-Jumps to the next month
+## Examples
 
-##### nextWeek()
-Jumps to the next week. If the week is the last week then jumps to the next month and its first week.
-
-##### prevWeek()
-Jumps to the previous week. If the week is the first week then jumps to the previous month and its last week.
-
-##### now()
-Selects today.
-
-##### prevMonth()
-Jumps to the previous month
-
-##### selectDay(weekIndex:(0..5), weekDayIndex:(0..6))
-Selects a day on the calendar by specified week and day indexes.
-
-##### setSelectedDate(date:Date|DateVO)
-Sets specified date object as the selected date.
-
-##### setDate(date:Date|DateVO)
-Sets a date without selection
-
-#### Events
-##### onMonthChange(date:DateVO)
-Triggered when month is changed by the user.
-
-##### onDaySelect(date:Array.< DateInfoVO >)
-Triggered when a day or days range is selected by the user.
-
-### CalendarCore Api
-CalendarCore includes all calendar logic to manage the calendar state and create custom calendars.
-
-#### Methods
-##### reset()
-##### selectDay()
-##### clearSelection()
-##### nextWeek()
-##### prevWeek()
-##### setRangeSelection(start:DateVO, end:DateVO)
-##### rangeSelection(weekIndex:number, weekDayIndex:number)
-##### startRangeSelection(weekIndex:number, weekDayIndex:number)
-##### completeRangeSelection(weekIndex:number, weekDayIndex:number)
-##### subscribe(cb:function)
-##### unsubscribe(cb:function)
-##### now()
-##### getWeekDay()
-##### getState()
-##### setState(state:object)
-##### setDate(date:DateVO|Date)
-##### setSelectedDate(date:DateVO|Date)
-##### changeCalendar(lang:String="en", type:String="gregorian", specialDays:Object={})
-##### prevMonth()
+(Calendar usage example)[./scripts/pages/newPage004.ts]

@@ -319,10 +319,10 @@ class Calendar extends CalendarDesign {
     /**
      * Sets range dates
      * 
-     * @param {DateDTO} start - Start date {@link DateDTO}
-     * @param {DateDTO} end - Final date {@link DateDTO}
+     * @param {DateObject} start - Start date {@link DateObject}
+     * @param {DateObject} end - Final date {@link DateObject}
      */
-    setRangeDates(start, end) {
+    setRangeDates(start: DateObject, end: DateObject) {
         this.dispatch({
             type: "deselectDays"
         });
@@ -331,9 +331,9 @@ class Calendar extends CalendarDesign {
 
     /**
      * Sets calendar date and highlight the day
-     * @param {DateDTO} date {@link DateDTO}
+     * @param {DateObject} date {@link DateObject}
      */
-    setSelectedDate(date) {
+    setSelectedDate(date: DateObject | Date) {
         this.dispatch({
             type: "deselectDays"
         });

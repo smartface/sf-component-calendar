@@ -1,9 +1,11 @@
 {
   "name": "@smartface/sf-component-calendar",
-  "version": "3.0.0-beta.17",
+  "version": "3.0.0-beta.20",
   "description": "Calendar component",
   "main": "components/calendar.js",
-  "scripts": {},
+  "scripts": {
+      "postinstall": "chmod -R u+w ./node_modules/sf-core && rm -rf ./node_modules/sf-core 2> /dev/null || true"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smartface/sf-component-calendar.git"
