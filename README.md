@@ -42,13 +42,30 @@ const myCalendar = new Calendar({theme: customTheme});
 
 // or
 
-import {Calendar} from "@smartface/sf-component-calendar";
-const specialDaysConf = require('./specialDays.json');
-
 const myCalendar = new Calendar();
 // Add and merge new styles
 myCalendar.addStyles(customTheme);
 
+
+```
+
+### specialDays
+
+[Sample special-days](./scripts/pages/specialDays.ts)
+
+### Changeing specialDays at runtime
+
+```ts
+
+import {Calendar} from "@smartface/sf-component-calendar";
+const specialDaysConf = require('./specialDays.json');
+
+const myCalendar = new Calendar();
+myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
+
+...
+// Changes special days' data anywhere
+myCalendar.setSpecialDays(newSpecialDays)
 
 ```
 
@@ -126,33 +143,6 @@ const newStyle = { ... };
 newContext(newStyles)
 
 ```
-## Component maintainers (for Smartface Developers)
-
-Create new cloud workspace in the Smartface-Cloud with this repository url. Open Cloud IDE and switch to terminal in the scripts folder. Install dependencies via terminal:
-
-``` 
-    $ cd scripts
-    $ npm i sf-core
-    $ npm i @smartface/styler
-    $ npm i moment
-    $ npm i moment-hijri
-    $ npm i js-base
-```
-
-Then run command via terminal on the workspace root for TDD
-
-``` 
-  $ npm i 
-  $ npm run test:watch
-```
-
-and run command to build service layer
-
-``` $npm run dev ```
-
-Finally run commnand on the scripts folder to publish to npm:
-
-``` $ npm publish ```
 
 ### Component Elements
 
@@ -289,4 +279,32 @@ core.nextMonth();
 
 ## Examples
 
-(Calendar usage example)[./scripts/pages/newPage004.ts]
+[Calendar usage example](./scripts/pages/newPage004.ts)
+
+## Component maintainers (for Smartface Developers)
+
+Create new cloud workspace in the Smartface-Cloud with this repository url. Open Cloud IDE and switch to terminal in the scripts folder. Install dependencies via terminal:
+
+``` 
+    $ cd scripts
+    $ npm i sf-core
+    $ npm i @smartface/styler
+    $ npm i moment
+    $ npm i moment-hijri
+    $ npm i js-base
+```
+
+Then run command via terminal on the workspace root for TDD
+
+``` 
+  $ npm i 
+  $ npm run test:watch
+```
+
+and run command to build service layer
+
+``` $npm run dev ```
+
+Finally run commnand on the scripts folder to publish to npm:
+
+``` $ npm publish ```
