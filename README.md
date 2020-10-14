@@ -269,11 +269,11 @@ To use calendar logic viewless, please check out : [CalendarCore](./scripts/core
 import {CalendarCore} from "@smartface/sf-component-calendar";
 
 const headlessCalendar = new CalendarCore();
-core.changeCalendar("tr");
-core.subscribe((oldState, newState) => {
+headlessCalendar.changeCalendar("tr");
+headlessCalendar.subscribe((oldState, newState) => {
    ...         
 });
-core.nextMonth();
+headlessCalendar.nextMonth();
 
 ```
 
