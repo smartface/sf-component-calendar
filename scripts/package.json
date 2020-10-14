@@ -1,10 +1,9 @@
 {
   "name": "@smartface/sf-component-calendar",
-  "version": "3.0.0-beta.20",
+  "version": "3.0.0-rc.2",
   "description": "Calendar component",
-  "main": "components/calendar.js",
+  "main": "index.js",
   "scripts": {
-      "postinstall": "chmod -R u+w ./node_modules/sf-core && rm -rf ./node_modules/sf-core 2> /dev/null || true"
   },
   "repository": {
     "type": "git",
@@ -26,7 +25,6 @@
     "access": "public"
   },
   "dependencies": {
-    "sf-core": "^4.2.2",
     "moment": "^2.28.0",
     "moment-hijri": "2.1.2",
     "@smartface/contx": "3.0.2",
@@ -38,5 +36,13 @@
     "js-base": "^1.0.4",
     "source-map": "0.6.1",
     "sf-extension-utils": "^13.0.2"
+  },
+  "peerDependencies": {
+    "sf-core": "^4.2.2"
+  },
+  "peerDependenciesMeta": {
+    "sf-core": {
+      "optional": true
+    }
   }
 }
