@@ -11,7 +11,7 @@
 ## Component Usage
 ```js 
 
-import Calendar from '@smartface/sf-component-calendar';
+import {Calendar} from '@smartface/sf-component-calendar';
 const specialDaysConf = require('./specialDays.json');
 
 const myCalendar = new Calendar();
