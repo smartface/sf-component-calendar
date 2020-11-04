@@ -3,8 +3,7 @@
   "version": "3.0.0-rc.2",
   "description": "Calendar component",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smartface/sf-component-calendar.git"
@@ -25,10 +24,11 @@
     "access": "public"
   },
   "dependencies": {
+    "@smartface/contx": "3.0.2",
+    "@smartface/styler": "^2.0.0",
     "moment": "^2.28.0",
     "moment-hijri": "2.1.2",
-    "@smartface/contx": "3.0.2",
-    "@smartface/styler": "^2.0.0"
+    "sf-core": "^4.3.0-beta.10"
   },
   "devDependencies": {
     "@smartface/html-to-text": "^1.1.1",
