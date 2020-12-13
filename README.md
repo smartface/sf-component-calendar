@@ -4,7 +4,7 @@
 ## Component Architecture
 ![Component Architecture](diagram.png "Component Architecture")
 
-## Component Intallation
+## Component Installation
 ```shell
 (cd ~/workspace/scripts && npm i @smartface/sf-component-calendar)
 ```
@@ -19,8 +19,8 @@ const myCalendar = new Calendar();
 // Please use after Page:onShow is triggered.
 myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
 // when user select a date
-myCalendar.onDaySelect = function(dateInfo){
-  //...
+myCalendar.onDaySelect = (dateInfo) => {
+
 }
 
 // changing calendar date
@@ -31,14 +31,14 @@ myCalendar.setSelectedDate({month:2, year:2017, day:12});
 
 ```js
 // It must be based on theme.json below
-const customTheme = { ... };
+const customTheme = {
 
-import {Calendar} from "@smartface/sf-component-calendar";
+};
+
+import { Calendar } from "@smartface/sf-component-calendar";
 const specialDaysConf = require('./specialDays.json');
 
 const myCalendar = new Calendar({theme: customTheme});
-
-...
 
 // or
 
@@ -57,13 +57,13 @@ myCalendar.addStyles(customTheme);
 
 ```ts
 
-import {Calendar} from "@smartface/sf-component-calendar";
+import { Calendar } from "@smartface/sf-component-calendar";
 const specialDaysConf = require('./specialDays.json');
 
 const myCalendar = new Calendar();
 myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
 
-...
+
 // Changes special days' data anywhere
 myCalendar.setSpecialDays(newSpecialDays)
 
@@ -90,7 +90,7 @@ myCalendar.setSpecialDays(newSpecialDays)
 
 ```js 
 
-import {Calendar} from "@smartface/sf-component-calendar";
+import { Calendar } from "@smartface/sf-component-calendar";
 const specialDaysConf = require('./specialDays.json');
 const customTheme = require('./customTheme.json');
 
@@ -127,7 +127,7 @@ function onShow(superOnShow) {
 // To create with custom context. It's only for advanced use.
 import createContext from "@smartface/sf-component-calendar/components/calendarContext";
 
-...
+
 
 const myCalendar = new Calendar({
   useRangeSelection: true,
@@ -139,7 +139,9 @@ const myCalendar = new Calendar({
 const newContext = calendarContext(myCalendar, "mycalendar", customTheme);
 
 // and add/merge new styles
-const newStyle = { ... };
+const newStyle = {
+
+};
 newContext(newStyles)
 
 ```
@@ -239,8 +241,8 @@ Triggered before the Calendar month is changed. And if the hook returns **false*
 
 ```js
 var calendar = new Calendar();
-calendar.onBeforeMonthChange = function(date){
-  if(date.month < 6)
+calendar.onBeforeMonthChange = (date) => {
+  if (date.month < 6)
     return false;
   return true;
 }
@@ -266,12 +268,12 @@ To use calendar logic viewless, please check out : [CalendarCore](./scripts/core
 
 ```ts
 
-import {CalendarCore} from "@smartface/sf-component-calendar";
+import { CalendarCore } from "@smartface/sf-component-calendar";
 
 const headlessCalendar = new CalendarCore();
 headlessCalendar.changeCalendar("tr");
 headlessCalendar.subscribe((oldState, newState) => {
-   ...         
+    
 });
 headlessCalendar.nextMonth();
 
