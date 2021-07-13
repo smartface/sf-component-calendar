@@ -12,7 +12,7 @@
         "resolveJsonModule": true,
         "isolatedModules": false,
         "typeRoots": [
-            "./scripts/node_modules/sf-core/device/system"
+            "./scripts/node_modules/@smartface/native/device/system"
         ],
         "baseUrl": "scripts",
         "rootDir": "scripts",
@@ -23,8 +23,8 @@
     },
     "files": [
         "./typings.d.ts",
-        "./scripts/node_modules/sf-core/index.d.ts",
-        "./scripts/node_modules/sf-core/.types/typings.d.ts"
+        "./scripts/node_modules/@smartface/native/index.d.ts",
+        "./scripts/node_modules/@smartface/native/.types/typings.d.ts"
     ],
     "exclude": [
         "node_modules",
