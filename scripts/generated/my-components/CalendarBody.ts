@@ -7,11 +7,11 @@
 //
 //------------------------------------------------------------------------------
 import { Styleable } from 'generated/core/Styleable';
-import View = require('sf-core/ui/view');
+import View = require('@smartface/native/ui/view');
 import { ComponentStyleContext } from 'generated/core/ComponentStyleContext';
-import System = require('sf-core/device/system');
+import System = require('@smartface/native/device/system');
 
-import FlexLayout = require('sf-core/ui/flexlayout');
+import FlexLayout = require('@smartface/native/ui/flexlayout');
 
 import CalendarWeekRow from '../../components/CalendarWeekRow';
 

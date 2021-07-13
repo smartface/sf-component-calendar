@@ -7,13 +7,13 @@
 //
 //------------------------------------------------------------------------------
 import { Styleable } from 'generated/core/Styleable';
-import View = require('sf-core/ui/view');
+import View = require('@smartface/native/ui/view');
 import { ComponentStyleContext } from 'generated/core/ComponentStyleContext';
-import System = require('sf-core/device/system');
+import System = require('@smartface/native/device/system');
 
-import FlexLayout = require('sf-core/ui/flexlayout');
-import Label = require('sf-core/ui/label');
-import Button = require('sf-core/ui/button');
+import FlexLayout = require('@smartface/native/ui/flexlayout');
+import Label = require('@smartface/native/ui/label');
+import Button = require('@smartface/native/ui/button');
 
 export default class CalendarNavBar extends FlexLayout implements Styleable {
 	dispatch: (action: { [key: string]: any }) => void;

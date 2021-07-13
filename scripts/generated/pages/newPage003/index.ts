@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 import pageContextPatch from '@smartface/contx/lib/smartface/pageContextPatch';
 import { Styleable, ViewType } from 'generated/core/Styleable';
-import Page = require('sf-core/ui/page');
-import View = require('sf-core/ui/view');
+import Page = require('@smartface/native/ui/page');
+import View = require('@smartface/native/ui/view');
 import { ComponentStyleContext } from 'generated/core/ComponentStyleContext';
-import System = require('sf-core/device/system');
+import System = require('@smartface/native/device/system');
 
-import Button = require('sf-core/ui/button');
+import Button = require('@smartface/native/ui/button');
 
 import CalendarWeekly from 'components/CalendarWeekly';
 class $NewPage003 extends Page {

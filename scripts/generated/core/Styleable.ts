@@ -1,6 +1,6 @@
-import NavigationController = require('sf-core/ui/navigationcontroller');
-import Page = require('sf-core/ui/page');
-import View = require('sf-core/ui/view');
+import NavigationController = require('@smartface/native/ui/navigationcontroller');
+import Page = require('@smartface/native/ui/page');
+import View = require('@smartface/native/ui/view');
 import { ComponentStyleContext } from "./ComponentStyleContext";
 
 export declare abstract class Styleable {

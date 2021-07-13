@@ -1,6 +1,6 @@
 import createPageContext from "@smartface/contx/lib/smartface/pageContext";
 import { INIT_CONTEXT_ACTION_TYPE } from "../services/constants";
-import System = require('sf-core/device/system');
+import System = require('@smartface/native/device/system');
 import styler from "@smartface/styler/lib/styler";
 import Context from "@smartface/contx/lib/core/Context";
 import Actor from "@smartface/contx/lib/core/Actor";
