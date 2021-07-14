@@ -11,8 +11,7 @@ plugin/*
 !plugin/Android/README.md
 !plugin/iOS/README.md
 scripts/node_modules
-scripts/ui
-scripts/themes
+scripts/generated
 node_modules
 npm-debug.log
 ui
