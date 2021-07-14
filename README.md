@@ -290,16 +290,12 @@ Create new cloud workspace in the Smartface-Cloud with this repository url. Open
 
 ``` 
     $ cd scripts
-    $ yarn add @smartface/native
-    $ yarn add @smartface/styler
-    $ yarn add moment
-    $ yarn add moment-hijri
+    $ npm install
 ```
 
 Then run command via terminal on the workspace root for TDD
 
 ``` 
-  $ yarn add 
   $ yarn run test:watch
 ```
 
@@ -307,6 +303,14 @@ and run command to build service layer
 
 ``` $ yarn run dev ```
 
+Increment the version like:
+
+``` $ yarn version --patch ```
+
 Finally run commnand on the scripts folder to publish to npm:
 
 ``` $ yarn publish ```
+
+or
+
+Github actions will automatically publish the version for you, after merge.

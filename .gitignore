@@ -1,15 +1,4 @@
-.c9/*
-.smf/*
-.npm/*
-.tmp/*
-.pm2/*
 .templates
-output/*
-plugin/*
-!output/Android/README.md
-!output/iOS/README.md
-!plugin/Android/README.md
-!plugin/iOS/README.md
 scripts/node_modules
 scripts/generated
 node_modules
@@ -18,3 +7,5 @@ ui
 contxjs
 component-calendar
 dist
+.vscode
+.DS_STORE

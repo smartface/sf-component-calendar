@@ -1,7 +1,7 @@
 import DateService from "./DateWrapper";
 import DateServiceHijri, { MomentHijri } from "./DateWrapperHijri";
 import createSpecialDaysService, { SpecialDays, SpecialDaysData, SpecialDaysService } from "./SpecialDaysService";
-import * as moment from "moment";
+import moment from "moment";
 import 'moment/locale/ar-sa';
 import momentHijri from "moment-hijri";
 import { DateObject } from "../core/DateObject";

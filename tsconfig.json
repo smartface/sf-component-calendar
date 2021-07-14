@@ -10,6 +10,7 @@
         "moduleResolution": "Node",
         "module": "CommonJS",
         "resolveJsonModule": true,
+        "esModuleInterop": true,
         "isolatedModules": false,
         "typeRoots": [
             "./scripts/node_modules/@smartface/native/device/system"
