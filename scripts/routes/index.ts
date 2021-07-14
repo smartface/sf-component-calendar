@@ -1,11 +1,11 @@
-const buildExtender = require("sf-extension-utils/lib/router/buildExtender");
+const buildExtender = require("@smartface/extension-utils/lib/router/buildExtender");
 
 const {
     NativeRouter: Router,
     NativeStackRouter: StackRouter,
     Route
 } = require("@smartface/router");
-require("sf-extension-utils/lib/router/goBack"); // Implements onBackButtonPressed
+require("@smartface/extension-utils/lib/router/goBack"); // Implements onBackButtonPressed
 const router = Router.of({
     path: "/",
     isRoot: true,

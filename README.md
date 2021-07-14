@@ -1,18 +1,19 @@
 # Smartface Calendar Component
-[![Npm Status](https://img.shields.io/npm/v/@smartface/sf-component-calendar.svg?style=flat)](https://www.npmjs.com/package/@smartface/sf-component-calendar)
+[![Npm Status](https://img.shields.io/npm/v/@smartface/component-calendar.svg?style=flat)](https://www.npmjs.com/package/@smartface/component-calendar)
 
 ## Component Architecture
 ![Component Architecture](diagram.png "Component Architecture")
 
 ## Component Installation
+Run this on a terminal pathed to the root directory of project
 ```shell
-(cd ~/workspace/scripts && npm i @smartface/sf-component-calendar)
+(cd scripts && npm i @smartface/component-calendar)
 ```
 ## Component Usage
 ```js 
 
-import {Calendar} from '@smartface/sf-component-calendar';
-const specialDaysConf = require('./specialDays.json');
+import { Calendar } from '@smartface/component-calendar';
+import specialDaysConf from './specialDays.json';
 
 const myCalendar = new Calendar();
 
@@ -35,8 +36,8 @@ const customTheme = {
 
 };
 
-import { Calendar } from "@smartface/sf-component-calendar";
-const specialDaysConf = require('./specialDays.json');
+import { Calendar } from "@smartface/component-calendar";
+import specialDaysConf from './specialDays.json';
 
 const myCalendar = new Calendar({theme: customTheme});
 
@@ -57,8 +58,8 @@ myCalendar.addStyles(customTheme);
 
 ```ts
 
-import { Calendar } from "@smartface/sf-component-calendar";
-const specialDaysConf = require('./specialDays.json');
+import { Calendar } from "@smartface/component-calendar";
+import specialDaysConf from './specialDays.json';
 
 const myCalendar = new Calendar();
 myCalendar.changeCalendar("en", "gregorian", specialDaysConf)
@@ -90,9 +91,9 @@ myCalendar.setSpecialDays(newSpecialDays)
 
 ```js 
 
-import { Calendar } from "@smartface/sf-component-calendar";
-const specialDaysConf = require('./specialDays.json');
-const customTheme = require('./customTheme.json');
+import { Calendar } from "@smartface/component-calendar";
+import specialDaysConf from './specialDays.json';
+import customTheme from './customTheme.json';
 
 export default class Page1 extends Page1Design {
     router: any;
@@ -125,7 +126,7 @@ function onShow(superOnShow) {
 }
 
 // To create with custom context. It's only for advanced use.
-import createContext from "@smartface/sf-component-calendar/components/calendarContext";
+import createContext from "@smartface/component-calendar/components/calendarContext";
 
 
 
@@ -205,7 +206,7 @@ const newMonthLabelColorStyle = {
   }
 };
       
-const Calendar = require("@smartface/sf-calendar-component/components/Calendar");
+import Calendar from "@smartface/calendar-component/components/Calendar";
 const calendar = new Calendar();
 
 // changes calendar month label color to red
@@ -268,7 +269,7 @@ To use calendar logic viewless, please check out : [CalendarCore](./scripts/core
 
 ```ts
 
-import { CalendarCore } from "@smartface/sf-component-calendar";
+import { CalendarCore } from "@smartface/component-calendar";
 
 const headlessCalendar = new CalendarCore();
 headlessCalendar.changeCalendar("tr");
@@ -289,24 +290,27 @@ Create new cloud workspace in the Smartface-Cloud with this repository url. Open
 
 ``` 
     $ cd scripts
-    $ npm i sf-core
-    $ npm i @smartface/styler
-    $ npm i moment
-    $ npm i moment-hijri
-    $ npm i js-base
+    $ npm install
 ```
 
 Then run command via terminal on the workspace root for TDD
 
 ``` 
-  $ npm i 
-  $ npm run test:watch
+  $ yarn run test:watch
 ```
 
 and run command to build service layer
 
-``` $npm run dev ```
+``` $ yarn run dev ```
+
+Increment the version like:
+
+``` $ yarn version --patch ```
 
 Finally run commnand on the scripts folder to publish to npm:
 
-``` $ npm publish ```
+``` $ yarn publish ```
+
+or
+
+Github actions will automatically publish the version for you, after merge.

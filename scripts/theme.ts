@@ -1,10 +1,10 @@
-import Data = require("sf-core/data");
-import Application = require("sf-core/application");
+import Data = require("@smartface/native/data");
+import Application = require("@smartface/native/application");
 const { config } = require("./settings.json");
 const themeConfig = config.theme;
 const { createThemeContextBound } = require("@smartface/contx/lib/styling/ThemeContext");
 const currentTheme = Data.getStringVariable("currentTheme") || themeConfig.currentTheme;
-const { clearCache } = require("sf-extension-utils/lib/getCombinedStyle");
+const { clearCache } = require("@smartface/extension-utils/lib/getCombinedStyle");
 const themeSources = themeConfig.themes
     .map(name => ({
         name,
