@@ -25,16 +25,16 @@
     "access": "public"
   },
   "dependencies": {
-    "@smartface/contx": "3.0.2",
-    "@smartface/native": "^4.3.2-beta",
+    "@smartface/contx": "^4.0.0-rc",
     "@smartface/styler": "^2.0.0",
     "moment": "^2.28.0",
     "moment-hijri": "2.1.2"
   },
   "devDependencies": {
     "@smartface/html-to-text": "^1.1.1",
-    "@smartface/router": "^1.5.1",
+    "@smartface/router": "^2.0.0-rc",
     "source-map": "0.6.1",
-    "@smartface/extension-utils": "^13.0.2"
+    "@smartface/native": "^4.3.2-beta",
+    "@smartface/extension-utils": "^15.0.0-rc"
   }
 }

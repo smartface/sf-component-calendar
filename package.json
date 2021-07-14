@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --compilers js:@babel/register --debug ./test/**/*.test.js",
     "test:watch": "mocha --watch --compilers js:@babel/register --debug ./test/**/*.test.js",
-    "build": "rm -rf ./component-calendar && tsc --project tsconfig-build.json",
+    "build": "rm -rf ./component-calendar && yarn run build:sf && tsc --project tsconfig-build.json",
+    "build:sf": "ROOT_PATH=$PWD sfBuilder --standalone",
     "build:dev": "rm -rf ./scripts/node_modules/@smartface/component-calendar && tsc --project tsconfig-build.dev.json",
     "dev": "babel ./src/services --out-dir -d ./scripts/services",
     "docs:create": "jsdox ./src -o docs",
@@ -28,6 +29,14 @@
     "url": "https://github.com/smartface/sf-component-calendar/issues"
   },
   "homepage": "https://github.com/smartface/sf-component-calendar#readme",
+  "dependencies": {
+    "@smartface/transpiler": "^8.0.0-rc",
+    "@smartface/wsbuilder": "^3.0.0-rc",
+    "moment": "^2.22.2",
+    "moment-hijri": "^2.1.1",
+    "semver": "^5.3.0",
+    "typescript": "4.2.3"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "commitizen": "^2.9.6",
@@ -43,15 +52,6 @@
     "jsdox": "^0.4.10",
     "minimist": "^1.2.0",
     "mocha": "^3.3.0"
-  },
-  "dependencies": {
-    "moment": "^2.22.2",
-    "moment-hijri": "^2.1.1",
-    "semver": "^5.3.0",
-    "@smartface/contx": "3.0.2",
-    "@smartface/html-to-text": "^1.1.1",
-    "@smartface/router": "^1.5.1",
-    "@smartface/styler": "^2.0.0"
   },
   "config": {
     "commitizen": {

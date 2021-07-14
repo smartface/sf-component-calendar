@@ -25,7 +25,6 @@
     },
     "files": [
         "./typings.d.ts",
-        "./scripts/node_modules/@smartface/native/index.d.ts",
         "./scripts/node_modules/@smartface/native/.types/typings.d.ts"
     ],
     "exclude": [
