@@ -7,10 +7,11 @@
     "test": "mocha --compilers js:@babel/register --debug ./test/**/*.test.js",
     "test:watch": "mocha --watch --compilers js:@babel/register --debug ./test/**/*.test.js",
     "build": "rm -rf ./component-calendar && yarn run build:sf && tsc --project tsconfig-build.json",
-    "build:sf": "ROOT_PATH=$PWD sfBuilder --standalone",
+    "build:sf": "ROOT_PATH=$PWD sfBuilder --standalone && yarn run replace:generated",
     "build:dev": "rm -rf ./scripts/node_modules/@smartface/component-calendar && tsc --project tsconfig-build.dev.json",
     "dev": "babel ./src/services --out-dir -d ./scripts/services",
     "docs:create": "jsdox ./src -o docs",
+    "replace:generated": "find ./scripts/generated/ -name '*.ts' | xargs sed -i 's|components|../../components|g'",
     "jase": "jase"
   },
   "repository": {
