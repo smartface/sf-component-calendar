@@ -12,7 +12,11 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - run: yarn
+      - run: npm install
+        working-directory: ./scripts
+      - run: yarn run build
       - run: yarn publish
+        working-directory: ./component-calendar
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
-          working-directory: ./scripts
