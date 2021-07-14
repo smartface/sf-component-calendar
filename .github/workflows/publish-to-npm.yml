@@ -16,6 +16,7 @@ jobs:
       - run: npm install
         working-directory: ./scripts
       - run: yarn run build
+      - run: cp README.md ./component-calendar
       - run: yarn publish
         working-directory: ./component-calendar
         env:
