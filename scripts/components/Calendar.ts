@@ -30,8 +30,8 @@ type CalendarOptions = {
  * 
  * @example
  * 
- * const {Calendar} = require('@smartface/sf-component-calendar/components');
- * const specialDaysConf = require('./specialDays.json');
+ * import {Calendar} from '@smartface/component-calendar/components';
+ * import specialDaysConf from './specialDays.json';
  *	
  * const myCalendar = new Calendar();
  *	

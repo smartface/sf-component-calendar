@@ -14,7 +14,7 @@ function hooks(hooksList) {
 /**
  * Create styleContext tree from a SF Component and flat component tree to create actors
  * 
- * @param {Object} component - A sf-core component
+ * @param {Object} component - A Smartface Native component
  * @param {string} name - component name
  * @param {function} initialClassNameMap - classNames mapping with specified component and children
  * @param {?function} hookList - callback function to capture context's hooks

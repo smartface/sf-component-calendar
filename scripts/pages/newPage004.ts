@@ -1,5 +1,5 @@
 import NewPage004Design from 'generated/pages/newPage004';
-import Button = require('sf-core/ui/button');
+import Button = require('@smartface/native/ui/button');
 import pageContextPatch from '@smartface/contx/lib/smartface/pageContextPatch';
 import Calendar from 'components/Calendar';
 import CalendarCore from 'core/CalendarCore';

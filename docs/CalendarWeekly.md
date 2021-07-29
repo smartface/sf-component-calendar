@@ -44,8 +44,8 @@ Calendar Component
 
 **Example**  
 ```js
-const {CalendarWeekly:Calendar} = require('@smartface/sf-component-calendar/components/CalendarWeekly');
-const specialDaysConf = require('./specialDays.json');
+import { CalendarWeekly:Calendar } from '@smartface/component-calendar/components/CalendarWeekly';
+import specialDaysConf from './specialDays.json';
 	
 	const myCalendar = new Calendar();
 	

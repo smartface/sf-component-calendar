@@ -1,6 +1,6 @@
 {
-  "name": "@smartface/sf-component-calendar",
-  "version": "3.0.0-rc.2",
+  "name": "@smartface/component-calendar",
+  "version": "4.0.0",
   "description": "Calendar component",
   "main": "index.js",
   "scripts": {},
@@ -10,6 +10,7 @@
   },
   "keywords": [
     "javascript",
+    "smartface",
     "mobile",
     "styling",
     "style"
@@ -24,25 +25,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@smartface/contx": "3.0.2",
+    "@smartface/contx": "^4.0.0-rc",
+    "@smartface/extension-utils": "^15.0.0-rc",
+    "@smartface/html-to-text": "^1.1.1",
+    "@smartface/native": "^4.3.2-beta",
+    "@smartface/router": "^2.0.0-rc",
     "@smartface/styler": "^2.0.0",
     "moment": "^2.28.0",
     "moment-hijri": "2.1.2",
-    "sf-core": "^4.3.0-beta.10"
-  },
-  "devDependencies": {
-    "@smartface/html-to-text": "^1.1.1",
-    "@smartface/router": "^1.5.1",
-    "js-base": "^1.0.4",
-    "source-map": "0.6.1",
-    "sf-extension-utils": "^13.0.2"
-  },
-  "peerDependencies": {
-    "sf-core": "^4.2.2"
-  },
-  "peerDependenciesMeta": {
-    "sf-core": {
-      "optional": true
-    }
+    "source-map": "0.6.1"
   }
 }
