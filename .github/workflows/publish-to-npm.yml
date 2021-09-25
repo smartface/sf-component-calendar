@@ -13,7 +13,7 @@ jobs:
           node-version: 14
           registry-url: https://registry.npmjs.org/
       - run: yarn
-      - run: npm install
+      - run: yarn
         working-directory: ./scripts
       - run: yarn run build
       - run: cp README.md ./component-calendar
