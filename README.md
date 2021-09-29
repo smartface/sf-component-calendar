@@ -54,7 +54,7 @@ myCalendar.addStyles(customTheme);
 
 [Sample special-days](./scripts/pages/specialDays.ts)
 
-### Changeing specialDays at runtime
+### Changing specialDays at runtime
 
 ```ts
 
