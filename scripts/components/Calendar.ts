@@ -14,6 +14,7 @@ import CalendarWeekRow from './CalendarWeekRow';
 import { SpecialDaysData } from '../services/SpecialDaysService';
 import CalendarBody from './CalendarBody';
 import CalendarNavBar from './CalendarNavBar';
+import { DateInfo } from '../core/DateInfo';
 
 const themeFile = require("../theme.json");
 
@@ -78,7 +79,7 @@ class Calendar extends CalendarDesign {
             useContext,
         };
         this._styleContext = useContext ? calendarContext(this, "calendar", theme || themeFile) : null;
-        this._unsubsciber = this._calendarCore.subscribe((oldState: CalendarState, newState: CalendarState) => this._updateCalendar(oldState, newState));
+        this._unsubsciber = this._calendarCore.subscribe((oldState: CalendarState, newState: CalendarState) => this.doUpdateCalendar(oldState, newState));
         this.children.navbar.onNext = this.nextMonth.bind(this);
         this.children.navbar.onPrev = this.prevMonth.bind(this);
 
@@ -92,7 +93,7 @@ class Calendar extends CalendarDesign {
         this._weeks.forEach((row, weekIndex) => {
             row.onDayLongPress = (weekDayIndex) => this._onLongPress(weekIndex, weekDayIndex);
             if (useDaySelection === true) {
-                row.onDaySelect = (weekDayIndex) => this.selectDay(weekIndex, weekDayIndex);
+                row.onDaySelect = (weekDayIndex) => this.onDayPress(weekIndex, weekDayIndex)
             }
 
             if (useRangeSelection === true) {
@@ -116,6 +117,11 @@ class Calendar extends CalendarDesign {
         this.children.navbar.children.prevWeek.onPress = () => {
             this._calendarCore.prevWeek();
         };
+    }
+
+    private onDayPress = (weekIndex: number, weekDayIndex: number) => {
+        this._calendarCore.selectDay(weekIndex, weekDayIndex);
+        typeof this.onDaySelect === 'function' && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
     }
 
     setSpecialDays(specialDays: SpecialDaysData) {
@@ -154,7 +160,7 @@ class Calendar extends CalendarDesign {
         } else if (state.rangeSelectionMode === 1) {
             this.onRangeSelectionComplete
                 && this.onRangeSelectionComplete(Object.assign({}, state.rangeSelection.start), Object.assign({}, state.rangeSelection.end));
-            this.onDaySelect && this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
+            typeof this.onDaySelect === 'function' && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
         }
     };
 
@@ -194,8 +200,7 @@ class Calendar extends CalendarDesign {
      * @param {object} oldState
      * @param {object} newState
      */
-    private _updateCalendar(oldState: CalendarState, newState: CalendarState) {
-        // console.log(JSON.stringify(newState, " ", "\t"));
+    private doUpdateCalendar(oldState: CalendarState, newState: CalendarState) {
         if ((oldState.rangeSelectionMode === -1 && newState.rangeSelectionMode === 0)
             || (oldState.rangeSelectionMode === 1 && newState.rangeSelectionMode === -1)
         ) {
@@ -215,13 +220,7 @@ class Calendar extends CalendarDesign {
             this._weeks.forEach((row, i) => {
                 row.invalidate();
             });
-
         }
-        
-        newState.selectedDaysByIndex.map(newState.rangeSelectionMode === -1
-            ? this._selectDay.bind(this)
-            : this._selectDayasRange.bind(this)
-        );
 
         newState.month.daysMin.forEach((day, index) => {
             this.children.calendarDays.children["dayName_" + index].text = day;
@@ -229,6 +228,9 @@ class Calendar extends CalendarDesign {
 
         (this.children.body as CalendarBody).setTomonth(newState.month.tomonth);
         (this.children.navbar as CalendarNavBar).setTomonth(newState.month.tomonth);
+        // if(oldState.selectedDays.length > 0 && newState.selectedDays.length === 0){
+        //     this.onDaySelect([]);
+        // }
 
         this._weekMode ? this.setWeekMode(this._weekMode) : this.children.body.applyLayout();
 
@@ -244,7 +246,7 @@ class Calendar extends CalendarDesign {
         this._styleContext && this._styleContext(styles);
     };
 
-    private _selectDay({ weekIndex, weekDayIndex }) {
+    private _selectDay({ weekIndex, weekDayIndex }: { weekIndex: number, weekDayIndex: number }) {
         weekIndex >= 0 && weekDayIndex != null
             && this._weeks[weekIndex].setSelectedIndex(weekDayIndex);
     };
@@ -299,8 +301,8 @@ class Calendar extends CalendarDesign {
      */
     onLongPress: (weekIndex: number, weekDayIndexes: number) => void = null;
 
-    private _onLongPress = function (weekIndex, weekDayIndexes) {
-        this.onLongPress && this.onLongPress(weekIndex, weekDayIndexes);
+    private _onLongPress = (weekIndex: number, weekDayIndex: number) => {
+        this.onLongPress && this.onLongPress(weekIndex, weekDayIndex);
     };
 
     /**
@@ -308,12 +310,12 @@ class Calendar extends CalendarDesign {
      * 
      * @param {DateDTO} date
      */
-    setDate(date) {
+    setDate(date: DateObject | Date) {
         this.dispatch({
             type: "deselectDays"
         });
-        const newDate = Object.assign({}, date);
-        this._calendarCore.setDate(newDate);
+        this._calendarCore.clearSelection();
+        this._calendarCore.setDate(date);
     };
 
     /**
@@ -332,40 +334,34 @@ class Calendar extends CalendarDesign {
     /**
      * Sets calendar date and highlight the day
      * @param {DateObject} date {@link DateObject}
+     * @fires onDaySelect
      */
-    setSelectedDate(date: DateObject | Date) {
-        this.dispatch({
-            type: "deselectDays"
-        });
+    setSelectedDate(date: DateObject | Date, notify: boolean = true) {
         if (this.options.useDaySelection === true) {
+            this.dispatch({
+                type: "deselectDays"
+            });
             this._calendarCore.setSelectedDate(date);
+            const [selectedDate] = this._calendarCore.getState().selectedDaysByIndex;
+            selectedDate && this._selectDay(selectedDate);
+            notify && typeof this.onDaySelect === 'function' && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
         }
-        // } else {
-        // this._calendarCore.startRangeSelection({date});
-        // }
-    };
-
-    /**
-     * Disposes the Component instance
-     */
-    dispose() {
-        this._unsubsciber();
-        this.onDaySelect = null;
-        this.onDayLongPress = null;
-        this._unsubsciber = null;
-        this._calendarCore = null;
-        this._weeks = [];
-        this._styleContext(null);
-        this.dispatch = null;
-        this._styleContext = null;
-        // this._calendarService = null;
-        this.currentMonth = null;
-        // this.onChanged = null;
     };
 
     /**
      * @event
+     * @param date
+     */
+    shouldMonthChange = (date: DateObject<number | string>) => {
+        return true;
+    };
+
+    /**
+     * Use shouldMonthChange instead
+     * 
+     * @event
      * @param {DateDTO} date
+     * @deprecated
      */
     onBeforeMonthChange = (date: DateObject<number | string>) => {
         return true;
@@ -375,7 +371,7 @@ class Calendar extends CalendarDesign {
      * @event
      * @params {DateDtO} date
      */
-    onMonthChange = (date) => { };
+    onMonthChange = (date: DateObject<number>) => { };
 
     /**
      * Changes current to next month
@@ -386,6 +382,10 @@ class Calendar extends CalendarDesign {
     nextMonth() {
         if (this.onBeforeMonthChange &&
             this.onBeforeMonthChange(this.currentMonth.nextMonth.normalizedDate) === false
+        ) {
+            return;
+        } else  if (this.shouldMonthChange &&
+            this.shouldMonthChange(this.currentMonth.nextMonth.normalizedDate) === false
         ) {
             return;
         }
@@ -413,6 +413,10 @@ class Calendar extends CalendarDesign {
             this.onBeforeMonthChange(this.currentMonth.previousMonth.normalizedDate) === false
         ) {
             return;
+        } else  if (this.shouldMonthChange &&
+            this.shouldMonthChange(this.currentMonth.nextMonth.normalizedDate) === false
+        ) {
+            return;
         }
 
         if (this.currentMonth) {
@@ -425,20 +429,21 @@ class Calendar extends CalendarDesign {
      * @event
      * @param {Array.<DateInfoDTO>} date - Selected date
      */
-    onDaySelect = (date) => { };
+    onDaySelect = (date: DateInfo[]) => { };
 
     /**
      * Selects a day by week and day index
      * 
+     * @param weekIndex - Calendar row index
+     * @param weekDayIndex - Calendar column index
+     * @param notify - If fires selection event or not.
      * @fires onDaySelect
-     * @param {number} weekIndex - Calendar row index
-     * @param {number} weekDayIndex - Calendar column index
-     * @param {boolean} [notify=true] - If fires selection event or not.
      */
     selectDay(weekIndex: number, weekDayIndex: number, notify = true) {
-        this._calendarCore.selectDay(weekIndex, weekDayIndex);
-        // this._calendarCore.getState().selectedDays.length > 0
-        notify && this.onDaySelect && this.onDaySelect(this._calendarCore.getState().selectedDays || []);
+        this._selectDay({ weekIndex, weekDayIndex });
+        if (notify && typeof this.onDaySelect === 'function') {
+            this.onDaySelect(this._calendarCore.getState().selectedDays || [])
+        }
     };
 
     private updateRows(days, date) {
@@ -446,6 +451,26 @@ class Calendar extends CalendarDesign {
             row.setDays(days[index], this.options.justCurrentDays, true);
         });
     }
+
+    /**
+     * Disposes the Component instance
+     */
+    dispose() {
+        this._unsubsciber();
+        this.onDaySelect = null;
+        this.onDayLongPress = null;
+        this._unsubsciber = null;
+        this._calendarCore = null;
+        this._weeks.forEach(week => {
+            week.dispose();
+        })
+        this._weeks = [];
+        this._styleContext(null);
+        this.dispatch = null;
+        this._styleContext = null;
+        this.currentMonth = null;
+    };
+
 }
 
 export default Calendar;

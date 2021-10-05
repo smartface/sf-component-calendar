@@ -24,7 +24,8 @@
     },
     "files": [
         "./typings.d.ts",
-        "./scripts/node_modules/@smartface/native/.types/typings.d.ts"
+        "./scripts/node_modules/@smartface/native/.types/typings.d.ts",
+        "./scripts/core/RangeSelection.ts"
     ],
     "exclude": [
         "node_modules",

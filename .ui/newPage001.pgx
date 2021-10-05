@@ -18,7 +18,8 @@
 					"e948-c9ae-aacc-5e45",
 					"950e-e811-c256-a3ed",
 					"fc3f-1438-f726-c2a3",
-					"b4e0-f382-402e-f5bd"
+					"b4e0-f382-402e-f5bd",
+					"11a4-21a2-b325-080c"
 				],
 				"name": "newPage001",
 				"orientation": "AUTO",
@@ -90,6 +91,7 @@
 			"id": "a101-2b49-bc6b-394b",
 			"props": {
 				"children": [],
+				"html": "Ozel Gunler",
 				"name": "label2_1",
 				"parent": "e876-9805-6b68-f0e4",
 				"text": "Ozel Gunler"
@@ -103,6 +105,7 @@
 					"size": 10
 				},
 				"height": 35,
+				"html": "Ozel Gunler",
 				"left": 206,
 				"right": 20,
 				"text": "Ozel Gunler",
@@ -266,9 +269,9 @@
 					"positionType": "ABSOLUTE"
 				},
 				"height": 46.66666666666667,
-				"left": 20.000000657706426,
+				"left": 19,
 				"text": "Week Toggle",
-				"top": 473.33331930226296,
+				"top": 475,
 				"width": 138.33333333333334
 			}
 		},
@@ -315,6 +318,28 @@
 				"height": 300,
 				"left": 0,
 				"top": 0
+			}
+		},
+		{
+			"className": ".sf-button",
+			"id": "11a4-21a2-b325-080c",
+			"props": {
+				"children": [],
+				"name": "button1",
+				"parent": "e876-9805-6b68-f0e4",
+				"text": "Random Select a Day"
+			},
+			"type": "Button",
+			"userProps": {
+				"flexProps": {
+					"positionType": "ABSOLUTE"
+				},
+				"height": 39,
+				"left": 93,
+				"testId": "vHl6Ayxlr",
+				"text": "Random Select a Day",
+				"top": 544,
+				"width": 206
 			}
 		}
 	]

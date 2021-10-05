@@ -318,7 +318,9 @@ class NewPage001 extends NewPage001Design {
         // overrides super.onLoad method
         this.onLoad = onLoad.bind(this, this.onLoad.bind(this));
 
-        this.calendar.onDaySelect = ([date]) => {
+        this.calendar.onDaySelect = (res) => {
+            const [date] = res;
+            console.log("res : ", date);
             if (!date)
                 return;
 
@@ -326,6 +328,11 @@ class NewPage001 extends NewPage001Design {
             this.children.label2_1.text = date.dayInfo.specialDay.length > 0
                 ? date.dayInfo.specialDay.join(" - ")
                 : "Ozel Gun Yok";
+        };
+
+
+        this.children.button1.onPress = () => {
+            this.calendar.setSelectedDate(new Date());
         };
 
         this.children.buttonTR.onPress = () => {
@@ -366,6 +373,10 @@ class NewPage001 extends NewPage001Design {
         };
 
     }
+}
+
+function getRandom(maxNum: number){
+    return Math.floor(Math.random()*maxNum);
 }
 // Page.onShow -> This event is called when a page appears on the screen (everytime).
 function onShow(this: NewPage001, superOnShow: () => void) {

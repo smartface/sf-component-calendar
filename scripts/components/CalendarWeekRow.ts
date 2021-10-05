@@ -11,7 +11,7 @@ function selectRange(indexes) {
     indexes.forEach(index => this.children["weekDay" + (index + 1)].activate());
 }
 
-function onDayLongPress(index) {
+function onDayLongPress(index: number) {
     this.onDayLongPress && this.onDayLongPress(index);
 }
 
@@ -49,7 +49,7 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
 
         this.selectedIndex = index;
         this.rangeIndexes = [];
-        // (this.children["weekDay" + (index + 1)] as CalendarDay).select();
+        (this.children["weekDay" + (index + 1)] as CalendarDay).select();
     }
 
 
@@ -82,7 +82,7 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
     };
 
     setSelectedIndex(index: number) {
-        return this.selectDay(index);
+        this.selectDay(index);
     };
 
 
@@ -143,10 +143,6 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
         });
     };
 
-	/*	subscribeContext = function(e){
-			Object.assign(this, e.style);
-		};*/
-
     setDays(days: CalendarDayType, justCurrentDays = false, force = false) {
         if (!force && (days === undefined || !this._available)) {
             return;
@@ -167,4 +163,12 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
 
         this.invalidate();
     };
+
+    dispose(){
+        this.onTouchCancelled = null;
+        this.onTouchEnded = null;
+        this.onViewAdded = null;
+        this.onViewRemoved = null;
+        this.removeAll();
+    }
 }

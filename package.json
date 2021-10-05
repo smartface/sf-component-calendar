@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/smartface/sf-component-calendar#readme",
   "dependencies": {
-    "@smartface/marketplace-service": "^1.2.0-beta",
-    "@smartface/transpiler": "^8.0.0-rc",
+    "@smartface/marketplace-service": "^1.2.0-beta.5",
+    "@smartface/builder": "0.4.0-beta.7",
     "moment": "^2.22.2",
     "moment-hijri": "^2.1.1",
     "rimraf": "^3.0.2",
@@ -39,7 +39,7 @@
     "typescript": "4.2.3"
   },
   "devDependencies": {
-    "@smartface/dispatcher": "^0.4.0 || ^0.4.0-beta",
+    "@smartface/dispatcher": "^0.4.0-beta.1",
     "@smartface/image-processor": "^1.2.0",
     "@smartface/library-reader": "^0.3.0",
     "chai": "^4.1.2",

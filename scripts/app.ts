@@ -17,4 +17,4 @@ import System = require("@smartface/native/device/system");
 import router from "./routes";
 import "./theme";
 require("@smartface/extension-utils");
-router.push("/pages/newPage004");
+router.push("/pages/newPage001");

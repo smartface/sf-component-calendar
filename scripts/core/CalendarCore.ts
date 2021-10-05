@@ -8,11 +8,14 @@
 import { DateObject } from "./DateObject";
 import { DateInfo } from "./DateInfo";
 import { DayInfo } from "./DayInfo";
-import DateService from "services/DateWrapper";
 import { DayMonthInfo } from "./DayMonthInfo";
 
 import calendarServiceBuilder, { CalendarPage, CalendarService } from "../services/CalendarService";
-import { SpecialDaysService, SpecialDaysData } from "services/SpecialDaysService";
+import { SpecialDaysData } from "services/SpecialDaysService";
+import { ROWCOUNT, COLCOUNT } from "./constants";
+import { calculateDatePos } from "./calculateDatePos";
+import { getDatePos } from "./getDatePos";
+import { RangeSelection } from "./RangeSelection";
 
 export type CalendarState = {
     month: CalendarPage | null,
@@ -64,51 +67,7 @@ function getValidDate(date): DateObject {
     }
 }
 
-/**
- * Calcucalte given day's week and weekday index
- * 
- * @param {number} startDayOfMonth
- * @param {number} day
- */
-function calculateDatePos(startDayOfMonth: number, day: number) {
-    const start = startDayOfMonth - 1;
-    day = day - 1;
-    const weekDayIndex = (start + day) % WEEKDAYS;
-    const weekIndex = Math.ceil((start + day + 1) / WEEKDAYS) - 1;
-    return {
-        weekIndex,
-        weekDayIndex
-    };
-}
-
-const WEEKDAYS = 7;
-const COLCOUNT = WEEKDAYS - 1;
-const ROWCOUNT = 5;
-
-enum RangeSelection {
-    IDLE = -1,
-    STARTED = 0,
-    COMPLETED = 1
-};
-
-function calculateDatePosinNext(startDayOfCurrentMonth: number, daysCountofCurrentMonth: number, day: number) {
-    const start = daysCountofCurrentMonth - 1 + startDayOfCurrentMonth;
-    const weekDayIndex = (start + day - 1) % WEEKDAYS;
-    const weekIndex = Math.round((start + day + 1) / WEEKDAYS) - 1;
-
-    return {
-        weekIndex: weekIndex > ROWCOUNT ? -2 : weekIndex,
-        weekDayIndex: weekIndex > ROWCOUNT ? -2 : weekDayIndex
-    };
-}
-
-function calculateDatePosinPrev(startDayOfMonth, daysCountPrevMonth, day) {
-    const weekDayIndex = startDayOfMonth - 2 - (daysCountPrevMonth - day);
-    return {
-        weekIndex: weekDayIndex < 0 ? -2 : 0,
-        weekDayIndex: weekDayIndex < 0 ? 0 : weekDayIndex
-    };
-}
+;
 
 /**
  * Gets specified date's info data in specified month.
@@ -210,45 +169,6 @@ function getDayData(weekIndex: number, weekDayIndex: number, currentMonth: Calen
     return Object.seal(dayData);
 }
 
-/**
- * Calculates week and weekday indexes in the month
- * 
- * @param {object} date
- * @param {object} month
- * @param {object} notValue
- * @returns {({weekIndex:number, weekDayIndex:number}|*)}
- */
-function getDatePos(date: DateObject, month: CalendarPage, notValue: {
-    weekIndex: number;
-    weekDayIndex: number;
-} = null) {
-    const monthPos = (date.month === month.date.month && 'current') ||
-        (date.month === month.nextMonth.date.month && 'next') ||
-        (date.month === month.previousMonth.date.month && 'prev');
-
-    switch (monthPos) {
-        case 'current':
-            return calculateDatePos(month.startDayOfMonth, date.day);
-        case 'prev':
-            return calculateDatePosinPrev(
-                month.startDayOfMonth,
-                month.previousMonth.daysCount,
-                date.day
-            );
-        case 'next':
-            const posNext = calculateDatePosinNext(
-                month.startDayOfMonth,
-                month.daysCount,
-                date.day
-            );
-
-            return posNext;
-
-        default:
-            return notValue;
-    }
-}
-
 function validValueMaybe(value, notvalue = null) {
     return !value ?
         notvalue :
@@ -259,20 +179,25 @@ function isNotValid(value, notvalue = false) {
     return validValueMaybe(value, notvalue) === notvalue ? value : notvalue;
 }
 
-function hasSameMonth(date1, date2) {
+function hasSameMonth(date1: DateObject, date2: DateObject) {
     return date1.month === date2.month && date1.year === date2.year;
 }
 
-function inSameYear(date1, date2) {
+function inSameYear(date1: DateObject, date2: DateObject) {
     return date1.year === date2.year;
 }
 
-function isMonthGreater(date1, date2) {
+function isMonthGreater(date1: DateObject, date2: DateObject) {
     return date1.year > date2.year ||
         (date1.month < date2.month && date1.year === date2.year) ? date1 : date2;
 }
 
-function monthMin(date1, date2) {
+function isEqual(date1: DateObject, date2: DateObject) {
+    return date1.year === date2.year &&
+        date1.month === date2.month && date1.day === date2.day;
+}
+
+function monthMin(date1: DateObject, date2: DateObject) {
     return date1.year < date2.year ||
         (date1.year === date2.year && date1.month <= date2.month) ?
         date1 :
@@ -339,16 +264,16 @@ class CalendarCore {
         }
         else if (this._state.rangeSelectionMode === RangeSelection.IDLE || this._state.rangeSelectionMode === RangeSelection.COMPLETED) {
             this._state.selectedDays.length === 1
-            && this._state.selectedDaysByIndex[0]["weekIndex"] === weekIndex 
-            && this._state.selectedDaysByIndex[0]["weekDayIndex"] === weekDayIndex 
+                && this._state.selectedDaysByIndex[0]["weekIndex"] === weekIndex
+                && this._state.selectedDaysByIndex[0]["weekDayIndex"] === weekDayIndex
                 ? this.clearSelection()
                 : this.setState({
-                        rangeSelection: null,
-                        rangeSelectionMode: RangeSelection.IDLE,
-                        selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
-                        selectedDaysByIndex: [{ weekIndex, weekDayIndex }],
-                        weekIndex: weekIndex
-                    });
+                    rangeSelection: null,
+                    rangeSelectionMode: RangeSelection.IDLE,
+                    selectedDays: [getDayData(weekIndex, weekDayIndex, this._state.month)],
+                    selectedDaysByIndex: [{ weekIndex, weekDayIndex }],
+                    weekIndex: weekIndex
+                });
         }
     };
 
@@ -358,12 +283,12 @@ class CalendarCore {
      */
     clearSelection() {
         // if (this._state.rangeSelection !== null) {
-            this.setState({
-                rangeSelection: null,
-                rangeSelectionMode: RangeSelection.IDLE,
-                selectedDaysByIndex: [],
-                selectedDays: []
-            });
+        this.setState({
+            rangeSelection: null,
+            rangeSelectionMode: RangeSelection.IDLE,
+            selectedDaysByIndex: [],
+            selectedDays: []
+        });
         // }
     };
 
@@ -685,6 +610,9 @@ class CalendarCore {
     setState(state: Partial<CalendarState>) {
         const oldState = this._state;
         const newState = Object.assign({}, this._state, state);
+        // console.log(" set state 1 : ", this._state);
+        // console.log(" set state 2 : ", state);
+        // console.log(" set state 3 : ", newState);
         Object.freeze(newState);
         this._state = newState;
         notify.call(this, oldState, newState);
@@ -717,7 +645,7 @@ class CalendarCore {
      * 
      * @param {Calendar~DateDTO} date
      */
-    setDate(date) {
+    setDate(date: DateObject | Date) {
         this.setState(this._setDate(date));
     };
 
@@ -732,7 +660,8 @@ class CalendarCore {
      */
     setSelectedDate(date: DateObject | Date) {
         const validDate = getValidDate(date);
-        this.setState(Object.assign(this._setDate(validDate), this._selectDay(this.getWeekDay(validDate))));
+        if (isMonthGreater)
+            this.setState(Object.assign(this._setDate(validDate), this._selectDay(this.getWeekDay(validDate))));
     };
 
     /**
