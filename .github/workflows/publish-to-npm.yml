@@ -15,7 +15,12 @@ jobs:
       - run: yarn
       - run: yarn
         working-directory: ./scripts
-      - run: yarn run build
+      - name: Transpile the components
+        run: yarn run build:sf
+      - name: Replace Generated Imports - Replaces 'components' with '../components'
+        run: yarn run replace:generated
+      - name: Compile Typescript Code
+        run: yarn run build:tsc
       - run: cp README.md ./component-calendar
       - run: yarn publish
         working-directory: ./component-calendar

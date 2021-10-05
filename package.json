@@ -6,8 +6,9 @@
   "scripts": {
     "test": "mocha --compilers js:@babel/register --debug ./test/**/*.test.js",
     "test:watch": "mocha --watch --compilers js:@babel/register --debug ./test/**/*.test.js",
-    "build": "rimraf ./component-calendar && yarn run build:sf && tsc --project tsconfig-build.json",
-    "build:sf": "cross-env transpiler --standalone --rootPath=. && yarn run replace:generated",
+    "build": "yarn run build:sf && yarn run build:tsc",
+    "build:tsc": "tsc --project tsconfig-build.json",
+    "build:sf": "rimraf ./component-calendar && cross-env transpiler --standalone --rootPath=.",
     "build:dev": "rimraf ./scripts/node_modules/@smartface/component-calendar && tsc --project tsconfig-build.dev.json",
     "dev": "babel ./src/services --out-dir -d ./scripts/services",
     "docs:create": "jsdox ./src -o docs",
