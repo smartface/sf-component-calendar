@@ -1,97 +1,335 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="___library___MaterialTextBox" type="id"/>
+
     <item name="___library___PageTitleLayout" type="id"/>
+
     <item name="___library___Simple_gridviewItem" type="id"/>
+
     <item name="___library___Simple_listviewitem" type="id"/>
+
     <item name="___library___Simple_listviewitem_LblTitle" type="id"/>
+
     <item name="___library___PageTitleLayout_Logo" type="id"/>
+
     <item name="___library___Simple_gridviewItem_ImgPreview" type="id"/>
+
     <item name="___library___Simple_listviewitem_LblChevron" type="id"/>
+
     <item name="___library___Simple_gridviewItem_LblTitle" type="id"/>
+
     <item name="___library___Simple_gridviewItem_LblSubtitle" type="id"/>
+
     <item name="___library___Simple_listviewitem_FlLine" type="id"/>
+
     <item name="_Page1_Lbl" type="id"/>
+
     <item name="_Page1_BtnNext" type="id"/>
+
     <item name="_Page2_Lbl" type="id"/>
+
     <item name="_Page2_BtnSayHello" type="id"/>
+
     <item name="___library___Calendar" type="id"/>
+
     <item name="___library___CalendarBody" type="id"/>
+
     <item name="___library___CalendarDay" type="id"/>
+
     <item name="___library___CalendarDayLabel" type="id"/>
+
     <item name="___library___CalendarNavBar" type="id"/>
+
     <item name="___library___CalendarWeekly" type="id"/>
+
     <item name="___library___CalendarWeekNavBar" type="id"/>
+
     <item name="___library___CalendarWeekRow" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel" type="id"/>
+
     <item name="___library___CalendarYear" type="id"/>
+
     <item name="___library___Calendar_Navbar" type="id"/>
+
     <item name="___library___CalendarDay_DayNum" type="id"/>
+
     <item name="___library___CalendarBody_Week1" type="id"/>
+
     <item name="___library___CalendarNavBar_MonthLabel" type="id"/>
+
     <item name="___library___CalendarWeekNavBar_NextWeek" type="id"/>
+
     <item name="___library___CalendarWeekRow_WeekDay1" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel_WeekDayLabel1" type="id"/>
+
     <item name="___library___CalendarWeekly_Navbar" type="id"/>
+
     <item name="___library___CalendarYear_YearLabel" type="id"/>
+
     <item name="___library___Calendar_CalendarDays" type="id"/>
+
     <item name="___library___CalendarBody_Week2" type="id"/>
+
     <item name="___library___CalendarNavBar_PrevWeek" type="id"/>
+
     <item name="___library___CalendarWeekNavBar_PrevWeek" type="id"/>
+
     <item name="___library___CalendarWeekRow_WeekDay2" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel_WeekDayLabel2" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays" type="id"/>
+
     <item name="___library___Calendar_Line1" type="id"/>
+
     <item name="___library___CalendarBody_Week3" type="id"/>
+
     <item name="___library___CalendarNavBar_NextMonth" type="id"/>
+
     <item name="___library___CalendarWeekRow_WeekDay3" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel_WeekDayLabel3" type="id"/>
+
     <item name="___library___CalendarWeekly_Week" type="id"/>
+
     <item name="___library___Calendar_Body" type="id"/>
+
     <item name="___library___CalendarBody_Week4" type="id"/>
+
     <item name="___library___CalendarNavBar_NextWeek" type="id"/>
+
     <item name="___library___CalendarWeekRow_WeekDay4" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel_WeekDayLabel4" type="id"/>
+
     <item name="___library___Calendar_Line2" type="id"/>
+
     <item name="___library___CalendarBody_Week5" type="id"/>
+
     <item name="___library___CalendarNavBar_PrevMonth" type="id"/>
+
     <item name="___library___CalendarWeekRow_WeekDay5" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel_WeekDayLabel5" type="id"/>
+
     <item name="___library___CalendarBody_Week6" type="id"/>
+
     <item name="___library___CalendarWeekRow_WeekDay6" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel_WeekDayLabel6" type="id"/>
+
     <item name="___library___CalendarWeekRow_WeekDay7" type="id"/>
+
     <item name="___library___CalendarWeekRowWithLabel_WeekDayLabel7" type="id"/>
+
     <item name="___library___CalendarWeekRow_Line" type="id"/>
+
     <item name="___library___Calendar_CalendarDays_DayName_0" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays_DayName_0" type="id"/>
+
     <item name="___library___Calendar_CalendarDays_DayName_1" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays_DayName_1" type="id"/>
+
     <item name="___library___Calendar_CalendarDays_DayName_2" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays_DayName_2" type="id"/>
+
     <item name="___library___Calendar_CalendarDays_DayName_3" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays_DayName_3" type="id"/>
+
     <item name="___library___Calendar_CalendarDays_DayName_4" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays_DayName_4" type="id"/>
+
     <item name="___library___Calendar_CalendarDays_DayName_5" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays_DayName_5" type="id"/>
+
     <item name="___library___Calendar_CalendarDays_DayName_6" type="id"/>
+
     <item name="___library___CalendarWeekly_CalendarDays_DayName_6" type="id"/>
+
     <item name="_NewPage001_Label2" type="id"/>
+
     <item name="_NewPage001_Label2_1" type="id"/>
+
     <item name="_NewPage001_Button3" type="id"/>
+
     <item name="_NewPage001_ButtonTR" type="id"/>
+
     <item name="_NewPage001_ButtonEN" type="id"/>
+
     <item name="_NewPage001_ButtonAR" type="id"/>
+
     <item name="_NewPage001_ButtonHijri" type="id"/>
+
     <item name="_NewPage001_ButtonGreg" type="id"/>
+
     <item name="_NewPage001_NextPage" type="id"/>
+
     <item name="_NewPage001_ButtonRange" type="id"/>
+
     <item name="_NewPage001_Calendar" type="id"/>
+
     <item name="_NewPage003_CalendarWeekly" type="id"/>
+
     <item name="_NewPage003_Prev" type="id"/>
+
     <item name="_NewPage003_Next" type="id"/>
+
     <item name="_NewPage003_Now" type="id"/>
+
     <item name="_NewPage003_Back" type="id"/>
+
     <item name="_NewPage004_Button1" type="id"/>
+
+<item name="_NewPage001_Button1" type="id"/>
+<item name="_NewPage001_Calendar_Navbar" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays" type="id"/>
+<item name="_NewPage001_Calendar_Line1" type="id"/>
+<item name="_NewPage001_Calendar_Body" type="id"/>
+<item name="_NewPage001_Calendar_Line2" type="id"/>
+<item name="_NewPage001_Calendar_Navbar_MonthLabel" type="id"/>
+<item name="_NewPage001_Calendar_Navbar_PrevWeek" type="id"/>
+<item name="_NewPage001_Calendar_Navbar_NextMonth" type="id"/>
+<item name="_NewPage001_Calendar_Navbar_NextWeek" type="id"/>
+<item name="_NewPage001_Calendar_Navbar_PrevMonth" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays_DayName_0" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays_DayName_1" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays_DayName_2" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays_DayName_3" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays_DayName_4" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays_DayName_5" type="id"/>
+<item name="_NewPage001_Calendar_CalendarDays_DayName_6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay1" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay2" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay3" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay4" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay5" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay7" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_Line" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay1_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay2_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay3_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay4_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay5_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay6_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week1_WeekDay7_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay1" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay2" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay3" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay4" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay5" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay7" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_Line" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay1_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay2_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay3_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay4_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay5_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay6_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week2_WeekDay7_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay1" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay2" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay3" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay4" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay5" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay7" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_Line" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay1_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay2_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay3_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay4_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay5_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay6_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week3_WeekDay7_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay1" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay2" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay3" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay4" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay5" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay7" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_Line" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay1_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay2_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay3_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay4_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay5_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay6_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week4_WeekDay7_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay1" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay2" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay3" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay4" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay5" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay7" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_Line" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay1_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay2_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay3_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay4_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay5_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay6_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week5_WeekDay7_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay1" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay2" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay3" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay4" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay5" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay6" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay7" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_Line" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay1_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay2_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay3_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay4_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay5_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay6_DayNum" type="id"/>
+<item name="_NewPage001_Calendar_Body_Week6_WeekDay7_DayNum" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Navbar" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Navbar_MonthLabel" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Navbar_PrevWeek" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Navbar_NextMonth" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Navbar_NextWeek" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Navbar_PrevMonth" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays_DayName_0" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays_DayName_1" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays_DayName_2" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays_DayName_3" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays_DayName_4" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays_DayName_5" type="id"/>
+<item name="_NewPage003_CalendarWeekly_CalendarDays_DayName_6" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay1" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay2" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay3" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay4" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay5" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay6" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay7" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_Line" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay1_DayNum" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay2_DayNum" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay3_DayNum" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay4_DayNum" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay5_DayNum" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay6_DayNum" type="id"/>
+<item name="_NewPage003_CalendarWeekly_Week_WeekDay7_DayNum" type="id"/>
 </resources>
