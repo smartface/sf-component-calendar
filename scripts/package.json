@@ -31,14 +31,13 @@
   },
   "devDependencies": {
     "@smartface/contx": "^4.0.0 || ^4.0.0-rc",
-    "@smartface/extension-utils": "^16.0.0-rc || ^16.0.0",
+    "@smartface/extension-utils": "^16.0.0",
     "@smartface/html-to-text": "^1.0.0",
     "@smartface/native": "^4.3.4 || ^4.3.6-beta || ^4.3.6-alpha",
     "@smartface/router": "^2.0.0 || ^2.0.0-rc"
   },
   "peerDependencies": {
     "@smartface/contx": "^4.0.0 || ^4.0.0-rc",
-    "@smartface/extension-utils": "^16.0.0-rc || ^16.0.0",
     "@smartface/html-to-text": "^1.0.0",
     "@smartface/native": "^4.3.4 || ^4.3.6-beta || ^4.3.6-alpha",
     "@smartface/router": "^2.0.0 || ^2.0.0-rc"
