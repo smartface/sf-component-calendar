@@ -68,7 +68,8 @@
 				"children": [],
 				"name": "label2",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Label"
+				"text": "Label",
+				"usePageVariable": true
 			},
 			"type": "TextView",
 			"userProps": {
@@ -83,6 +84,7 @@
 				"right": 20,
 				"textAlignment": "MIDCENTER",
 				"top": 465,
+				"usePageVariable": true,
 				"width": 147
 			}
 		},
@@ -94,7 +96,8 @@
 				"html": "Ozel Gunler",
 				"name": "label2_1",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Ozel Gunler"
+				"text": "Ozel Gunler",
+				"usePageVariable": true
 			},
 			"type": "TextView",
 			"userProps": {
@@ -111,6 +114,7 @@
 				"text": "Ozel Gunler",
 				"textAlignment": "MIDCENTER",
 				"top": 413,
+				"usePageVariable": true,
 				"width": 145
 			}
 		},
@@ -121,7 +125,8 @@
 				"children": [],
 				"name": "button3",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Color"
+				"text": "Color",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -133,6 +138,7 @@
 				"left": 40.506329113924046,
 				"text": "Color",
 				"top": 302.53164556962025,
+				"usePageVariable": true,
 				"width": 64.55696202531645
 			}
 		},
@@ -143,7 +149,8 @@
 				"children": [],
 				"name": "buttonTR",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "TR"
+				"text": "TR",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -156,6 +163,7 @@
 				"left": 20.253164556962023,
 				"text": "TR",
 				"top": 350.63291139240505,
+				"usePageVariable": true,
 				"width": 40
 			}
 		},
@@ -166,7 +174,8 @@
 				"children": [],
 				"name": "buttonEN",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "EN FontAwesome"
+				"text": "EN FontAwesome",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -185,6 +194,7 @@
 				"left": 116.45569620253164,
 				"text": "EN FontAwesome",
 				"top": 349.3670886075949,
+				"usePageVariable": true,
 				"width": 157.14285714285714
 			}
 		},
@@ -195,7 +205,8 @@
 				"children": [],
 				"name": "buttonAR",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "AR"
+				"text": "AR",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -207,6 +218,7 @@
 				"left": 287.34177215189874,
 				"text": "AR",
 				"top": 350.63291139240505,
+				"usePageVariable": true,
 				"width": 64.40417641087582
 			}
 		},
@@ -217,7 +229,8 @@
 				"children": [],
 				"name": "buttonHijri",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Hijri"
+				"text": "Hijri",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -229,6 +242,7 @@
 				"left": 139.6551724137931,
 				"text": "Hijri",
 				"top": 303.448275862069,
+				"usePageVariable": true,
 				"width": 82.75862068965517
 			}
 		},
@@ -239,7 +253,8 @@
 				"children": [],
 				"name": "buttonGreg",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Gregoryen"
+				"text": "Gregoryen",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -251,6 +266,7 @@
 				"left": 262.0253164556962,
 				"text": "Gregoryen",
 				"top": 300,
+				"usePageVariable": true,
 				"width": 86.7725974635074
 			}
 		},
@@ -261,7 +277,8 @@
 				"children": [],
 				"name": "nextPage",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Week Toggle"
+				"text": "Week Toggle",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -272,6 +289,7 @@
 				"left": 19,
 				"text": "Week Toggle",
 				"top": 475,
+				"usePageVariable": true,
 				"width": 138.33333333333334
 			}
 		},
@@ -282,7 +300,8 @@
 				"children": [],
 				"name": "buttonRange",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Add Range"
+				"text": "Add Range",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -293,6 +312,7 @@
 				"left": 20.000000657706426,
 				"text": "Add Range",
 				"top": 410.00000526165144,
+				"usePageVariable": true,
 				"width": 135.1851851851852
 			}
 		},
@@ -303,7 +323,8 @@
 			"props": {
 				"children": [],
 				"name": "calendar",
-				"parent": "e876-9805-6b68-f0e4"
+				"parent": "e876-9805-6b68-f0e4",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__",
@@ -317,7 +338,8 @@
 				},
 				"height": 300,
 				"left": 0,
-				"top": 0
+				"top": 0,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -327,7 +349,8 @@
 				"children": [],
 				"name": "button1",
 				"parent": "e876-9805-6b68-f0e4",
-				"text": "Random Select a Day"
+				"text": "Random Select a Day",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -339,6 +362,7 @@
 				"testId": "vHl6Ayxlr",
 				"text": "Random Select a Day",
 				"top": 544,
+				"usePageVariable": true,
 				"width": 206
 			}
 		}

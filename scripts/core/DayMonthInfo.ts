@@ -4,6 +4,6 @@
  * @property {string} shortName
  */
 export type DayMonthInfo = {
-    longName: string,
-    shortName: string
-}
+  longName: string;
+  shortName: string;
+};

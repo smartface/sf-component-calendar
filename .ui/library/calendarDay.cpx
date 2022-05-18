@@ -31,13 +31,16 @@
 				"children": [],
 				"name": "dayNum",
 				"parent": "2c9e-2356-2ac6-4bc1",
-				"text": "2"
+				"text": "2",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Button",
-			"userProps": {}
+			"userProps": {
+				"usePageVariable": true
+			}
 		}
 	]
 }

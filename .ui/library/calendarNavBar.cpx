@@ -43,7 +43,8 @@
 				"children": [],
 				"name": "monthLabel",
 				"parent": "7d0c86e9",
-				"text": "Label"
+				"text": "Label",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
@@ -64,6 +65,7 @@
 				"right": 0,
 				"textAlignment": "MIDCENTER",
 				"top": 0,
+				"usePageVariable": true,
 				"width": null
 			}
 		},
@@ -74,7 +76,8 @@
 				"children": [],
 				"name": "prevWeek",
 				"parent": "7d0c86e9",
-				"text": ""
+				"text": "",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
@@ -84,6 +87,7 @@
 				"alpha": 1,
 				"left": 30,
 				"text": "",
+				"usePageVariable": true,
 				"visible": false,
 				"width": 30
 			}
@@ -95,7 +99,8 @@
 				"children": [],
 				"name": "nextMonth",
 				"parent": "7d0c86e9",
-				"text": ""
+				"text": "",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
@@ -103,7 +108,8 @@
 			"type": "Button",
 			"userProps": {
 				"right": 0,
-				"text": ""
+				"text": "",
+				"usePageVariable": true
 			}
 		},
 		{
@@ -113,7 +119,8 @@
 				"children": [],
 				"name": "nextWeek",
 				"parent": "7d0c86e9",
-				"text": ""
+				"text": "",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
@@ -125,6 +132,7 @@
 				},
 				"right": 30,
 				"text": "",
+				"usePageVariable": true,
 				"visible": false,
 				"width": 30
 			}
@@ -136,14 +144,16 @@
 				"children": [],
 				"name": "prevMonth",
 				"parent": "7d0c86e9",
-				"text": ""
+				"text": "",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Button",
 			"userProps": {
-				"text": ""
+				"text": "",
+				"usePageVariable": true
 			}
 		}
 	]

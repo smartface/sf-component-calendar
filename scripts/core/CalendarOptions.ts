@@ -7,8 +7,8 @@
  */
 
 export type CalendarOptions = {
-    useRangeSelection?: boolean,
-    theme?: Object | null,
-    justCurrentDays?: boolean,
-    useContext?: boolean;
-}
+  useRangeSelection?: boolean;
+  theme?: Object | null;
+  justCurrentDays?: boolean;
+  useContext?: boolean;
+};

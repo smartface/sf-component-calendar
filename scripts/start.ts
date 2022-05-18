@@ -1,4 +1,4 @@
-import "theme";
-import router from "routes";
+import 'theme';
+import router from 'routes';
 
-router.push("/pages/newPage001");
+router.push('/pages/newPage001');

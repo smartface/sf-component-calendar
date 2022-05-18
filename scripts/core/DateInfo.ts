@@ -1,8 +1,8 @@
-import { DateObject } from "./DateObject";
-import { DayInfo } from "./DayInfo";
-import { DayMonthInfo } from "./DayMonthInfo";
+import { DateObject } from './DateObject';
+import { DayInfo } from './DayInfo';
+import { DayMonthInfo } from './DayMonthInfo';
 
-/** 
+/**
  * @typedef {Object} DateInfo
  * @property {Calendar~DateObject} localeDate
  * @property {Calendar~DateObject} date
@@ -10,8 +10,8 @@ import { DayMonthInfo } from "./DayMonthInfo";
  * @property {Calendar~DayMonthInfo} daymonthInfo
  */
 export type DateInfo = {
-    localeDate: DateObject<string>,
-    date: DateObject,
-    dayInfo: DayInfo,
-    daymonthInfo: DayMonthInfo
-}
+  localeDate: DateObject<string>;
+  date: DateObject;
+  dayInfo: DayInfo;
+  daymonthInfo: DayMonthInfo;
+};

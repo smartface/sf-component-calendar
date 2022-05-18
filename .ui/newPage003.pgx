@@ -60,7 +60,8 @@
 			"props": {
 				"children": [],
 				"name": "calendarWeekly",
-				"parent": "6ceb-f32e-728f-fca9"
+				"parent": "6ceb-f32e-728f-fca9",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__",
@@ -68,7 +69,9 @@
 				"id": "bebe-bb6a-d4f0-a386"
 			},
 			"type": "FlexLayout",
-			"userProps": {}
+			"userProps": {
+				"usePageVariable": true
+			}
 		},
 		{
 			"className": ".button",
@@ -77,7 +80,8 @@
 				"children": [],
 				"name": "prev",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Onceki Hafta"
+				"text": "Onceki Hafta",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -88,6 +92,7 @@
 				"left": 16.666666666666668,
 				"text": "Onceki Hafta",
 				"top": 138.33333333333334,
+				"usePageVariable": true,
 				"width": 111.66666666666667
 			}
 		},
@@ -98,7 +103,8 @@
 				"children": [],
 				"name": "next",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Sonraki Hafta"
+				"text": "Sonraki Hafta",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -109,6 +115,7 @@
 				"left": 248.33333333333334,
 				"text": "Sonraki Hafta",
 				"top": 138.33333333333334,
+				"usePageVariable": true,
 				"width": 111.66666666666667
 			}
 		},
@@ -119,7 +126,8 @@
 				"children": [],
 				"name": "now",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Bugun"
+				"text": "Bugun",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -130,6 +138,7 @@
 				"left": 130.35713721965922,
 				"text": "Bugun",
 				"top": 235.77586206896552,
+				"usePageVariable": true,
 				"width": 111.66666666666667
 			}
 		},
@@ -140,7 +149,8 @@
 				"children": [],
 				"name": "back",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Aylik Takvim"
+				"text": "Aylik Takvim",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -149,7 +159,8 @@
 				},
 				"left": 66.66666885902143,
 				"text": "Aylik Takvim",
-				"top": 413.33334034886855
+				"top": 413.33334034886855,
+				"usePageVariable": true
 			}
 		}
 	]

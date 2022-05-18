@@ -33,14 +33,17 @@
 			"props": {
 				"children": [],
 				"name": "navbar",
-				"parent": "940ab35f"
+				"parent": "940ab35f",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__",
 				"id": "7d0c86e9"
 			},
 			"type": "FlexLayout",
-			"userProps": {}
+			"userProps": {
+				"usePageVariable": true
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames",
@@ -57,13 +60,16 @@
 					"6e63338a"
 				],
 				"name": "calendarDays",
-				"parent": "940ab35f"
+				"parent": "940ab35f",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "FlexLayout",
-			"userProps": {}
+			"userProps": {
+				"usePageVariable": true
+			}
 		},
 		{
 			"className": ".calendar.header_dayNames_dayName.weekday",
@@ -73,14 +79,16 @@
 				"children": [],
 				"name": "dayName_0",
 				"parent": "ef76084f",
-				"text": "Sun"
+				"text": "Sun",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Label",
 			"userProps": {
-				"autoWidth": 20.689655172413794
+				"autoWidth": 20.689655172413794,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -91,14 +99,16 @@
 				"children": [],
 				"name": "dayName_1",
 				"parent": "ef76084f",
-				"text": "Mon"
+				"text": "Mon",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Label",
 			"userProps": {
-				"autoWidth": 22.413793103448278
+				"autoWidth": 22.413793103448278,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -109,14 +119,16 @@
 				"children": [],
 				"name": "dayName_2",
 				"parent": "ef76084f",
-				"text": "Tu"
+				"text": "Tu",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Label",
 			"userProps": {
-				"autoWidth": 13.793103448275863
+				"autoWidth": 13.793103448275863,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -127,14 +139,16 @@
 				"children": [],
 				"name": "dayName_3",
 				"parent": "ef76084f",
-				"text": "Wed"
+				"text": "Wed",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Label",
 			"userProps": {
-				"autoWidth": 22.413793103448278
+				"autoWidth": 22.413793103448278,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -145,14 +159,16 @@
 				"children": [],
 				"name": "dayName_4",
 				"parent": "ef76084f",
-				"text": "Thu"
+				"text": "Thu",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Label",
 			"userProps": {
-				"autoWidth": 18.965517241379313
+				"autoWidth": 18.965517241379313,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -163,14 +179,16 @@
 				"children": [],
 				"name": "dayName_5",
 				"parent": "ef76084f",
-				"text": "Fri"
+				"text": "Fri",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Label",
 			"userProps": {
-				"autoWidth": 13.793103448275863
+				"autoWidth": 13.793103448275863,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -181,14 +199,16 @@
 				"children": [],
 				"name": "dayName_6",
 				"parent": "ef76084f",
-				"text": "Sat"
+				"text": "Sat",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__"
 			},
 			"type": "Label",
 			"userProps": {
-				"autoWidth": 17.24137931034483
+				"autoWidth": 17.24137931034483,
+				"usePageVariable": true
 			}
 		},
 		{
@@ -213,14 +233,17 @@
 			"props": {
 				"children": [],
 				"name": "body",
-				"parent": "940ab35f"
+				"parent": "940ab35f",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__",
 				"id": "7072-558c-2327-9bd4"
 			},
 			"type": "FlexLayout",
-			"userProps": {}
+			"userProps": {
+				"usePageVariable": true
+			}
 		},
 		{
 			"className": ".calendar_line",
