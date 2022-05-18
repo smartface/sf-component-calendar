@@ -1,33 +1,44 @@
-const buildExtender = require("@smartface/extension-utils/lib/router/buildExtender");
+import {
+  NativeRouter as Router,
+  NativeStackRouter as StackRouter,
+  Route,
+  BottomTabBarRouter,
+} from "@smartface/router";
+import NewPage001 from "pages/newPage001";
+import NewPage003 from "pages/newPage003";
+import NewPage004 from "pages/newPage004";
 
-const {
-    NativeRouter: Router,
-    NativeStackRouter: StackRouter,
-    Route
-} = require("@smartface/router");
-require("@smartface/extension-utils/lib/router/goBack"); // Implements onBackButtonPressed
 const router = Router.of({
-    path: "/",
-    isRoot: true,
-    routes: [
-        StackRouter.of({
-            path: "/pages",
-            routes: [
-                Route.of({
-                    path: "/pages/newPage001",
-                    build: buildExtender({ getPageClass: () => require("pages/newPage001").default, headerBarStyle: { visible: true } })
-                }),
-                Route.of({
-                    path: "/pages/newPage003",
-                    build: buildExtender({ getPageClass: () => require("pages/newPage003").default, headerBarStyle: { visible: true } })
-                }),
-                Route.of({
-                    path: "/pages/newPage004",
-                    build: buildExtender({ getPageClass: () => require("pages/newPage004").default, headerBarStyle: { visible: true } })
-                }),
-            ]
-        })
-    ]
+  path: "/",
+  isRoot: true,
+  routes: [
+    StackRouter.of({
+      path: "/pages",
+      routes: [
+        Route.of({
+          path: "/pages/newPage001",
+          build: (router, route) => {
+            const newPage001 = new NewPage001(router, route);
+            return newPage001;
+          },
+        }),
+        Route.of({
+          path: "/pages/newPage003",
+          build: (router, route) => {
+            const newPage001 = new NewPage003(router, route);
+            return newPage001;
+          },
+        }),
+        Route.of({
+          path: "/pages/newPage004",
+          build: (router, route) => {
+            const newPage001 = new NewPage004(router, route);
+            return newPage001;
+          },
+        }),
+      ],
+    }),
+  ],
 });
 
 export default router;

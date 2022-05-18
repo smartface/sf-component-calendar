@@ -30,16 +30,17 @@
     "source-map": "0.6.1"
   },
   "devDependencies": {
-    "@smartface/contx": "^4.0.0 || ^4.0.0-rc",
-    "@smartface/extension-utils": "^16.0.0",
-    "@smartface/html-to-text": "^1.0.0",
-    "@smartface/native": "^4.3.4 || ^4.3.6-beta || ^4.3.6-alpha",
-    "@smartface/router": "^2.0.0 || ^2.0.0-rc"
+    "@smartface/styling-context": "^5.0.0",
+    "@smartface/extension-utils": "^16.2.9",
+    "@smartface/native": "^5.0.0",
+    "@smartface/router": "^2.3.1",
+    "@smartface/source-map": "^5.0.0",
+    "@smartface/mixins": "^5.0.0"
   },
   "peerDependencies": {
-    "@smartface/contx": "^4.0.0 || ^4.0.0-rc",
-    "@smartface/html-to-text": "^1.0.0",
-    "@smartface/native": "^4.3.4 || ^4.3.6-beta || ^4.3.6-alpha",
-    "@smartface/router": "^2.0.0 || ^2.0.0-rc"
+    "@smartface/styling-context": "^5.0.0",
+    "@smartface/native": "^5.0.0",
+    "@smartface/mixins": "^5.0.0",
+    "@smartface/router": "^2.3.1"
   }
 }

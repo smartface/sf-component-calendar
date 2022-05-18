@@ -4,10 +4,10 @@
 			"currentTheme": "baseTheme",
 			"baseTheme": "workspaceTheme",
 			"themes": [
-				"baseTheme",
-				"calendarappTheme",
 				"defaultTheme",
-				"workspaceTheme"
+				"workspaceTheme",
+				"baseTheme",
+				"calendarappTheme"
 			]
 		},
 		"paths": {
