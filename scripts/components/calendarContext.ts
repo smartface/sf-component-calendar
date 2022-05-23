@@ -1,4 +1,4 @@
-import createPageContext from '@smartface/contx/lib/smartface/pageContext';
+import createPageContext from '@smartface/styling-context/lib/pageContext';
 import { INIT_CONTEXT_ACTION_TYPE } from '../services/constants';
 import styler from '@smartface/styler/lib/styler';
 import Context from '@smartface/contx/lib/core/Context';
@@ -8,7 +8,7 @@ import { CalendarDayType } from '../services/CalendarDayType';
 import System from '@smartface/native/device/system';
 
 function raiseTargetNotfound(target) {
-  return function (message = 'Component cannot be found.') {
+  return function(message = 'Component cannot be found.') {
     throw new Error(`[${target}] ${message}`);
   };
 }
