@@ -169,7 +169,7 @@
       "backgroundColor": "rgba( 255, 255, 255, 0 )",
       "textColor": "rgba( 71, 71, 71, 1 )",
       "flexProps": {
-        "alignSelf": "START",
+        "alignSelf": "FLEX_START",
         "positionType": "RELATIVE"
       },
       "top": 0,
@@ -190,7 +190,6 @@
         "family": "Arial"
       },
       "&_label": {},
-
       "&-inrange": {
         "textColor": "#000000"
       },

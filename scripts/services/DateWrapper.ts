@@ -1,5 +1,4 @@
-import { Moment, isMoment } from 'moment';
-import moment = require('moment');
+import moment, { Moment, isMoment } from 'moment';
 import { DateObject } from '../core/DateObject';
 import { instanceofDateObject } from './instanceofDateObject';
 
@@ -12,6 +11,7 @@ function notValidDateThrowanError(date: Moment, strDate: string) {
 function sortDays(days) {
   return (num) => days[num];
 }
+
 
 export interface iDateService {}
 export default class DateService<T extends Moment = Moment> {
@@ -37,7 +37,7 @@ export default class DateService<T extends Moment = Moment> {
     return this._moment();
   }
 
-  private setDate(date: DateObject | T | undefined, format = 'DD-MM-YYYY') {
+  protected setDate(date: DateObject | T | undefined, format = 'DD-MM-YYYY') {
     if (isMoment(date)) {
       this._date = date.clone() as T;
     } else {

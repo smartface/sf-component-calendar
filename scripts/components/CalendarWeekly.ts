@@ -23,7 +23,7 @@ export default class CalendarWeekly extends CalendarWeeklyDesign {
     this.navbar.onNext = () => this.nextMonth();
     this.navbar.onPrev = () => this.prevMonth();
 
-    this.week.onDaySelected = (weekIndex: number, weekDayIndex: number, notify?: boolean) => this.selectDay(weekIndex, weekDayIndex, notify);
+    this.week.onDaySelect = (weekIndex: number, weekDayIndex: number, notify?: boolean) => this.selectDay(weekIndex, weekDayIndex, notify);
   }
 
   onBeforeMonthChange: null | ((date: DateObject) => boolean) = null;

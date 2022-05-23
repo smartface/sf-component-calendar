@@ -1,9 +1,9 @@
 import DateService from './DateWrapper';
-import DateServiceHijri, { MomentHijri } from './DateWrapperHijri';
+import DateServiceHijri from './DateWrapperHijri';
 import createSpecialDaysService, { SpecialDays, SpecialDaysData, SpecialDaysService } from './SpecialDaysService';
 import moment from 'moment';
 import 'moment/locale/ar-sa';
-import momentHijri from 'moment-hijri';
+import MomentHijri from 'moment-hijri';
 import { DateObject } from '../core/DateObject';
 import { CalendarDayType } from './CalendarDayType';
 
@@ -68,8 +68,7 @@ export default function buildCalendarService({
   switch (type) {
     case 'hijri':
       service = DateServiceHijri;
-      current = momentHijri;
-
+      current = MomentHijri;
       break;
   }
 
@@ -109,7 +108,6 @@ export default function buildCalendarService({
  * Returns current month data
  *
  * @private
- * @returns {Object}
  */
 function getMonth(service: DateService) {
   return {

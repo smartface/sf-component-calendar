@@ -40,7 +40,7 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
   onMove: null | ((index: number) => void);
 
   onDayLongPress: null | ((index: number) => void) = null;
-  onDaySelect: null | ((index: number) => void) = null;
+  onDaySelect: null | ((index: number, weekDayIndex: number, notify?: boolean) => void) = null;
 
   private selectDay(index: number) {
     if (index === -1) {
@@ -140,7 +140,7 @@ export default class CalendarWeekRow extends CalendarWeekRowDesign {
     });
   }
 
-  setDays(days: CalendarDayType, justCurrentDays = false, force = false) {
+  setDays(days: CalendarDayType[], justCurrentDays = false, force = false) {
     if (!force && (days === undefined || !this._available)) {
       return;
     }
