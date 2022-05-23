@@ -1,6 +1,6 @@
-import { SpecialDayResult } from "services/SpecialDaysService";
+import { SpecialDayResult } from 'services/SpecialDaysService';
 
-/** 
+/**
  * @typedef DayInfo
  * @property {number} weekDay
  * @property {string} longName
@@ -8,8 +8,8 @@ import { SpecialDayResult } from "services/SpecialDaysService";
  * @property {Array<string>} specialDay
  */
 export type DayInfo = {
-    weekDay: number;
-    longName: string;
-    shortName: string;
-    specialDay: SpecialDayResult[]
-}
+  weekDay: number;
+  longName: string;
+  shortName: string;
+  specialDay: SpecialDayResult[];
+};

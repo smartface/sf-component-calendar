@@ -1,45 +1,16 @@
-import Data = require("@smartface/native/data");
-import Application = require("@smartface/native/application");
-const { config } = require("./settings.json");
+import Data from '@smartface/native/global/data';
+import Application from '@smartface/native/application';
+import { config } from 'settings.json';
+
+import { ThemeService } from '@smartface/styling-context/lib/ThemeService';
+
 const themeConfig = config.theme;
-const { createThemeContextBound } = require("@smartface/contx/lib/styling/ThemeContext");
-const currentTheme = Data.getStringVariable("currentTheme") || themeConfig.currentTheme;
-const { clearCache } = require("@smartface/extension-utils/lib/getCombinedStyle");
-const themeSources = themeConfig.themes
-    .map(name => ({
-        name,
-        rawStyles: require(`./generated/themes/${name}`),
-        isDefault: currentTheme === name
-    }));
-Application["theme"] = createThemeContextBound(themeSources);
-type ThemeListener = (themeName: string) => void;
+const currentTheme = Data.getStringVariable('currentTheme') || themeConfig.currentTheme;
+const themeSources = themeConfig.themes.map((name) => ({
+  name,
+  rawStyles: require(`./generated/themes/${name}`),
+  isDefault: currentTheme === name
+}));
 
-const themeListeners = new WeakMap<{}, ThemeListener>();
-const themeListenerKeys:{}[] = [];
-export const ThemeService = {
-    onChange(listener: ThemeListener) {
-        const key = {};
-        themeListenerKeys.push(key)
-        themeListeners.set(key, listener);
-        const deletionIndex = themeListenerKeys.length - 1;
-
-        return () => {
-            if(themeListeners.has(key)){
-                themeListeners.delete(key);
-                themeListenerKeys.splice(deletionIndex, 1);
-            }
-        }
-    },
-    changeTheme(name: string) {
-        Application["theme"]()({
-            type: "changeTheme",
-            theme: name
-        });
-        clearCache();
-        themeListenerKeys.forEach((key) => {
-            if(themeListeners.has(key)){
-                themeListeners.get(key)(name);
-            }
-        })
-    }
-}
+export const themeService = new ThemeService(themeSources);
+Application['theme'] = ThemeService.instance;

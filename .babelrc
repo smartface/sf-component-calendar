@@ -1,15 +1,16 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-         "ios": "10"
-      },
-      "modules": "commonjs",
-      "useBuiltIns": false,
-      "debug": false,
-    }],
-    "@babel/preset-react",
-    "@babel/preset-es2015",
-    ["@babel/preset-stage-0", {"decoratorsLegacy": true, "pipelineProposal": "minimal"}]
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "ios": "10"
+        },
+        "modules": "commonjs",
+        "useBuiltIns": false,
+        "debug": false,
+      }
+    ],
+    "@babel/preset-react"
   ]
 }

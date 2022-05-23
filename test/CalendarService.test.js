@@ -1,5 +1,5 @@
-import DateService from "../src/services/DateWrapper";
-import createService from "../src/services/CalendarService";
+import DateService from "../dist/services/DateWrapper";
+import createService from "../dist/services/CalendarService";
 import {expect} from "chai";
 import moment from "moment";
 import specialDays from "./mock/specialDays";

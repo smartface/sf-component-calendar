@@ -1,4 +1,4 @@
-import DateService from "../src/services/DateWrapperHijri";
+import DateService from "../dist/services/DateWrapperHijri";
 import {expect} from "chai";
 import moment from "moment";
 import momentHijri from "moment-hijri";

@@ -1,5 +1,5 @@
 export enum RangeSelection {
-    IDLE = -1,
-    STARTED = 0,
-    COMPLETED = 1
+  IDLE = -1,
+  STARTED = 0,
+  COMPLETED = 1
 }

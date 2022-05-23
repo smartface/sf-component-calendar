@@ -24,7 +24,8 @@
 					"positionType": "ABSOLUTE"
 				}
 			},
-			"version": "6.10.2"
+			"version": "6.10.2",
+			"degree": 0
 		},
 		{
 			"className": ".statusBar",
@@ -36,7 +37,8 @@
 				"parent": "6ceb-f32e-728f-fca9"
 			},
 			"type": "StatusBar",
-			"userProps": {}
+			"userProps": {},
+			"degree": 1
 		},
 		{
 			"className": ".headerBar",
@@ -51,7 +53,8 @@
 			"type": "HeaderBar",
 			"userProps": {
 				"title": "newPage003"
-			}
+			},
+			"degree": 1
 		},
 		{
 			"className": ".calendarWeekly",
@@ -60,7 +63,8 @@
 			"props": {
 				"children": [],
 				"name": "calendarWeekly",
-				"parent": "6ceb-f32e-728f-fca9"
+				"parent": "6ceb-f32e-728f-fca9",
+				"usePageVariable": true
 			},
 			"source": {
 				"page": "__library__",
@@ -68,7 +72,11 @@
 				"id": "bebe-bb6a-d4f0-a386"
 			},
 			"type": "FlexLayout",
-			"userProps": {}
+			"userProps": {
+				"usePageVariable": true,
+				"testId": "85PaMNOHeL"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -77,7 +85,8 @@
 				"children": [],
 				"name": "prev",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Onceki Hafta"
+				"text": "Onceki Hafta",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -88,8 +97,11 @@
 				"left": 16.666666666666668,
 				"text": "Onceki Hafta",
 				"top": 138.33333333333334,
-				"width": 111.66666666666667
-			}
+				"usePageVariable": true,
+				"width": 111.66666666666667,
+				"testId": "Jfzl9mW8KK"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -98,7 +110,8 @@
 				"children": [],
 				"name": "next",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Sonraki Hafta"
+				"text": "Sonraki Hafta",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -109,8 +122,11 @@
 				"left": 248.33333333333334,
 				"text": "Sonraki Hafta",
 				"top": 138.33333333333334,
-				"width": 111.66666666666667
-			}
+				"usePageVariable": true,
+				"width": 111.66666666666667,
+				"testId": "3p8U8av5GH"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -119,7 +135,8 @@
 				"children": [],
 				"name": "now",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Bugun"
+				"text": "Bugun",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -130,8 +147,11 @@
 				"left": 130.35713721965922,
 				"text": "Bugun",
 				"top": 235.77586206896552,
-				"width": 111.66666666666667
-			}
+				"usePageVariable": true,
+				"width": 111.66666666666667,
+				"testId": "Ydaw_4H5M-"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -140,7 +160,8 @@
 				"children": [],
 				"name": "back",
 				"parent": "6ceb-f32e-728f-fca9",
-				"text": "Aylik Takvim"
+				"text": "Aylik Takvim",
+				"usePageVariable": true
 			},
 			"type": "Button",
 			"userProps": {
@@ -149,8 +170,11 @@
 				},
 				"left": 66.66666885902143,
 				"text": "Aylik Takvim",
-				"top": 413.33334034886855
-			}
+				"top": 413.33334034886855,
+				"usePageVariable": true,
+				"testId": "IR7tjwlA5P"
+			},
+			"degree": 1
 		}
 	]
 }

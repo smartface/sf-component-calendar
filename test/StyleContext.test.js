@@ -2,11 +2,11 @@ import {
 	createStyleContext, 
 	makeStylable, 
 	fromSFComponent
-} from "../src/services/StyleContext";
+} from "../dist/services/StyleContext";
 import {expect} from "chai";
 import Component from "./mock/Component";
 import styler_ from "@smartface/styler/lib/styler";
-import { INIT_CONTEXT_ACTION_TYPE } from "../src/services/Context";
+import { INIT_CONTEXT_ACTION_TYPE } from "../dist/services/Context";
 
 
 const style = {

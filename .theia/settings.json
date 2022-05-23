@@ -4,8 +4,10 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
         "**/dist/**": true,
-        "**/scripts/generated/**": true
+        "**/scripts/generated/**": true,
+        "**/.ui/**": true
     },
     "editor.autoSave": "off",
-    "application.confirmExit": "off"
+    "application.confirmExit": "ifRequired",
+    "workspace.preserveWindow": true
 }
