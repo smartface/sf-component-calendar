@@ -27,7 +27,8 @@
   "dependencies": {
     "moment": "^2.28.0",
     "moment-hijri": "2.1.2",
-    "source-map": "0.6.1"
+    "source-map": "0.6.1",
+    "@types/moment-hijri": "^2.1.0"
   },
   "devDependencies": {
     "@smartface/extension-utils": "^16.2.9",
@@ -35,8 +36,7 @@
     "@smartface/native": "^5.0.1-alpha",
     "@smartface/router": "^2.3.1",
     "@smartface/source-map": "^5.0.0",
-    "@smartface/styling-context": "^5.0.0",
-    "@types/moment-hijri": "^2.1.0"
+    "@smartface/styling-context": "^5.0.0"
   },
   "peerDependencies": {
     "@smartface/mixins": "^5.0.0",
