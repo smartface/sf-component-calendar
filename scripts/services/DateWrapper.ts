@@ -1,212 +1,214 @@
-import { Moment, isMoment, } from "moment";
-import moment = require("moment");
-import { DateObject } from "../core/DateObject";
-import { instanceofDateObject } from "./instanceofDateObject";
+import moment, { Moment, isMoment } from 'moment';
+import { DateObject } from '../core/DateObject';
+import { instanceofDateObject } from './instanceofDateObject';
 
 function notValidDateThrowanError(date: Moment, strDate: string) {
-    if (!date.isValid()) {
-        throw new Error(`[${strDate}] Specified date is not valid.`);
-    }
+  if (!date.isValid()) {
+    throw new Error(`[${strDate}] Specified date is not valid.`);
+  }
 }
 
 function sortDays(days) {
-    return (num) => days[num]
+  return (num) => days[num];
 }
 
-export interface iDateService {
-    
-}
+
+export interface iDateService {}
 export default class DateService<T extends Moment = Moment> {
-    protected _date: T;
-    protected daysMap: any[];
-    protected _lang: string = "en";
+  protected _date: T;
+  protected daysMap: any[];
+  protected _lang: string = 'en';
 
-    constructor(protected _moment: typeof moment, date: T | DateObject, private _today: Date = new Date()) {
-        this.setDate(date, "DD-MM-YYYY");
-        const firstDay = this.firstDayOfWeek();
-        this.daysMap = [0, 1, 2, 3, 4, 5, 6].reduce((acc, num, index) => {
-            if (index >= firstDay) {
-                acc[index - firstDay] = num;
-            } else {
-                acc[7 - firstDay + index] = num;
-            }
+  constructor(protected _moment: typeof moment, date: T | DateObject, private _today: Date = new Date()) {
+    this.setDate(date, 'DD-MM-YYYY');
+    const firstDay = this.firstDayOfWeek();
+    this.daysMap = [0, 1, 2, 3, 4, 5, 6].reduce((acc, num, index) => {
+      if (index >= firstDay) {
+        acc[index - firstDay] = num;
+      } else {
+        acc[7 - firstDay + index] = num;
+      }
 
-            return acc;
-        }, []);
+      return acc;
+    }, []);
+  }
+
+  today() {
+    return this._moment();
+  }
+
+  protected setDate(date: DateObject | T | undefined, format = 'DD-MM-YYYY') {
+    if (isMoment(date)) {
+      this._date = date.clone() as T;
+    } else {
+      let dateStr: string;
+      if (date === undefined) {
+        this._date = moment() as T;
+      } else if (instanceofDateObject(date)) {
+        date.day = date.day || 1;
+        this._date = moment(`${date.day}-${date.month}-${date.year}`, format) as T;
+        // this._date = moment(date, format) as T;
+        notValidDateThrowanError(this._date, `${date.day}-${date.month}-${date.year}`);
+      } else {
+        throw new Error('Invalid date object');
+      }
     }
+  }
 
-    today(){
-        return this._moment();
-    }
+  weekOfYear() {
+    return this._date.weeks();
+  }
 
-    private setDate(date: DateObject | T | undefined, format = "DD-MM-YYYY") {
-        if (isMoment(date)) {
-            this._date = date.clone() as T;
-        } else {
-            let dateStr: string;
-            if (date === undefined) {
-                this._date = moment() as T;
-            } else if (instanceofDateObject(date)) {
-                date.day = date.day || 1;
-                this._date = moment(`${date.day}-${date.month}-${date.year}`, format) as T;
-                // this._date = moment(date, format) as T;
-                notValidDateThrowanError(this._date, `${date.day}-${date.month}-${date.year}`);
-            } else {
-                throw new Error("Invalid date object");
-            }
-        }
-    }
+  clone(): T {
+    return this._date.clone() as T;
+  }
 
-    weekOfYear() {
-        return this._date.weeks();
-    }
+  localeDate() {
+    var now = this._date.clone();
+    const localeDate = {
+      day: now.format('D'),
+      month: now.format('M'),
+      year: now.format('YYYY')
+    };
+    return {
+      setDay(day: number) {
+        localeDate.day = now.month(0).date(day).format('D');
+        return this;
+      },
+      setMonth(month: number) {
+        localeDate.month = now.month(month).format('M');
+        return this;
+      },
+      setYear(year: number) {
+        localeDate.year = now.year(year).format('YYYY');
+        return this;
+      },
+      getDate() {
+        return { ...localeDate };
+      }
+    };
+    // return this._date.format("D-M-YYYY").toObject();
+  }
 
-    clone(): T {
-        return this._date.clone() as T;
-    }
+  nextDay() {
+    var newdate = this._date.clone();
+    newdate.add(1, 'day');
+    return new DateService(this._moment, newdate);
+  }
 
-    localeDate() {
-        var now = this._date.clone();
-        const localeDate = { day: now.format("D"), month: now.format("M"), year: now.format("YYYY") };
-        return {
-            setDay(day: number) {
-                localeDate.day = now.month(0).date(day).format("D");
-                return this;
-            },
-            setMonth(month: number) {
-                localeDate.month = now.month(month).format("M");
-                return this;
-            },
-            setYear(year: number) {
-                localeDate.year = now.year(year).format("YYYY");
-                return this
-            },
-            getDate() {
-                return { ...localeDate };
-            }
-        }
-        // return this._date.format("D-M-YYYY").toObject();
-    }
+  prevDay() {
+    var newdate = this._date.clone();
+    newdate.subtract(1, 'day');
+    return new DateService(this._moment, newdate);
+  }
 
-    nextDay() {
-        var newdate = this._date.clone()
-        newdate.add(1, 'day');
-        return new DateService(this._moment, newdate);
-    }
+  fromDay(day) {
+    var newdate = this._date.clone().date(day);
+    return new DateService(this._moment, newdate);
+  }
 
-    prevDay() {
-        var newdate = this._date.clone();
-        newdate.subtract(1, 'day');
-        return new DateService(this._moment, newdate);
-    }
+  month() {
+    return this._date.format('M');
+  }
 
-    fromDay(day) {
-        var newdate = this._date.clone().date(day);
-        return new DateService(this._moment, newdate);
-    }
+  year() {
+    return this._date.format('YYYY');
+  }
 
-    month() {
-        return this._date.format("M");;
-    }
+  day() {
+    return this._date.format('D');
+  }
 
-    year() {
-        return this._date.format("YYYY");
-    }
+  startDayOfMonth() {
+    return this._date.clone().date(1).weekday() + 1;
+  }
 
-    day() {
-        return this._date.format("D");
-    }
+  monthsShort() {
+    return this._moment.monthsShort();
+  }
 
-    startDayOfMonth() {
-        return this._date.clone().date(1).weekday() + 1;
-    }
+  monthShort() {
+    return this._moment.monthsShort(this._date.month());
+  }
 
-    monthsShort() {
-        return this._moment.monthsShort();
-    }
+  monthLong() {
+    return this._moment.months(this._date.month());
+  }
 
-    monthShort() {
-        return this._moment.monthsShort(this._date.month());
-    }
+  monthsLong() {
+    return this._moment.months();
+  }
 
-    monthLong() {
-        return this._moment.months(this._date.month());
-    }
+  weekdaysShort() {
+    return this.daysMap.map(sortDays(this._moment.localeData().weekdaysShort()));
+  }
 
-    monthsLong() {
-        return this._moment.months();
-    }
+  weekdaysMin() {
+    return this.daysMap.map(sortDays(this._moment.localeData().weekdaysMin()));
+  }
 
-    weekdaysShort() {
-        return this.daysMap.map(sortDays(this._moment.localeData().weekdaysShort()));
-    }
+  weekdaysLong(): string[] {
+    return this.daysMap.map(sortDays(this._moment.localeData().weekdays()));
+  }
 
-    weekdaysMin() {
-        return this.daysMap.map(sortDays(this._moment.localeData().weekdaysMin()));
-    }
+  firstDayOfWeek() {
+    return this._moment.localeData().firstDayOfWeek();
+  }
 
-    weekdaysLong(): string[] {
-        return this.daysMap.map(sortDays(this._moment.localeData().weekdays()));
-    }
+  daysCount() {
+    return this._date.daysInMonth();
+  }
 
-    firstDayOfWeek() {
-        return this._moment.localeData().firstDayOfWeek();
-    }
+  nextMonth() {
+    var newdate = this._date.clone();
+    newdate.add(1, 'month');
+    return new DateService(this._moment, newdate);
+  }
 
-    daysCount() {
-        return this._date.daysInMonth();
-    }
+  prevMonth() {
+    var newdate = this._date.clone();
+    newdate.subtract(1, 'month');
+    return new DateService(this._moment, newdate);
+  }
 
-    nextMonth() {
-        var newdate = this._date.clone()
-        newdate.add(1, 'month');
-        return new DateService(this._moment, newdate)
-    }
+  prevYear() {}
 
-    prevMonth() {
-        var newdate = this._date.clone();
-        newdate.subtract(1, 'month');
-        return new DateService(this._moment, newdate);
-    }
+  nextYear() {}
 
-    prevYear() { }
+  isWeekend(day) {
+    const wd = this._date.clone().date(day).day();
 
-    nextYear() { }
+    return wd === 0 || wd === 6;
+  }
 
-    isWeekend(day) {
-        const wd = this._date.clone().date(day).day();
+  setDateLang(lang = 'en') {
+    this._lang = lang;
+    this._moment.updateLocale(lang, null);
+  }
 
-        return wd === 0 || wd === 6;
-    }
+  toObject(): DateObject {
+    var dateObject = this._date.toObject();
+    return {
+      year: dateObject.years,
+      day: dateObject.date,
+      month: ++dateObject.months
+    };
+  }
 
-    setDateLang(lang = "en") {
-        this._lang = lang;
-        this._moment.updateLocale(lang, null);
-    }
+  toNormalizedObject(): DateObject & { lang: string; calendar: string } {
+    var dateObject = this._date.toObject();
 
-    toObject(): DateObject {
-        var dateObject = this._date.toObject();
-        return {
-            year: dateObject.years,
-            day: dateObject.date,
-            month: ++dateObject.months
-        };
-    }
+    return {
+      year: dateObject.years,
+      day: dateObject.date,
+      month: ++dateObject.months,
+      calendar: 'gregorian',
+      lang: this._lang
+    };
+  }
 
-    toNormalizedObject(): DateObject & {lang: string, calendar: string} {
-        var dateObject = this._date.toObject();
-
-        return {
-            year: dateObject.years,
-            day: dateObject.date,
-            month: ++dateObject.months,
-            calendar: "gregorian",
-            lang: this._lang
-        };
-    }
-    
-    dispose() {
-        this._date = null;
-        this._moment = null;
-    }
+  dispose() {
+    this._date = null;
+    this._moment = null;
+  }
 }

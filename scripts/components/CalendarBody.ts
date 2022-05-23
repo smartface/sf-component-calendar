@@ -1,33 +1,34 @@
 import CalendarBodyDesign from '../generated/my-components/CalendarBody';
 
 export default class CalendarBody extends CalendarBodyDesign {
-    pageName?: string | undefined;
-    constructor(props?: any, pageName?: string) {
-        // Initalizes super class for this scope
-        super(props);
-        this.pageName = pageName;
+  pageName?: string | undefined;
+  constructor(props?: any, pageName?: string) {
+    // Initalizes super class for this scope
+    super(props);
+    this.pageName = pageName;
+  }
+
+  setTomonth(tomonth: boolean) {
+    if (tomonth) {
+      this.dispatch({
+        //@ts-ignore
+        type: 'tomonth'
+      });
     }
+  }
 
-    setTomonth(tomonth: boolean) {
-        if(tomonth){
-            this.dispatch({
-                type: "tomonth"
-            })
-        }
-    }
+  componentDidEnter = function (dispatch) {
+    this.dispatch = dispatch;
+    dispatch({
+      type: 'changeUserStyle',
+      animated: true,
+      userStyle: (style) => {
+        style.height = null;
+        style.flexGrow = 0;
+        delete style.alignSelf;
 
-    componentDidEnter = function (dispatch) {
-        this.dispatch = dispatch;
-        dispatch({
-            type: "changeUserStyle",
-            animated: true,
-            userStyle: (style) => {
-                style.height = null;
-                style.flexGrow = 0;
-                delete style.alignSelf;
-
-                return style;
-            }
-        });
-    };
+        return style;
+      }
+    });
+  };
 }

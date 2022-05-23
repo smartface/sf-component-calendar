@@ -1,6 +1,6 @@
 {
   "name": "@smartface/component-calendar",
-  "version": "4.1.2",
+  "version": "5.0.0",
   "description": "Calendar component",
   "main": "index.js",
   "scripts": {},
@@ -30,16 +30,18 @@
     "source-map": "0.6.1"
   },
   "devDependencies": {
-    "@smartface/contx": "^4.0.0 || ^4.0.0-rc",
-    "@smartface/extension-utils": "^16.0.0",
-    "@smartface/html-to-text": "^1.0.0",
-    "@smartface/native": "^4.3.4 || ^4.3.6-beta || ^4.3.6-alpha",
-    "@smartface/router": "^2.0.0 || ^2.0.0-rc"
+    "@smartface/extension-utils": "^16.2.9",
+    "@smartface/mixins": "^5.0.0",
+    "@smartface/native": "^5.0.1-alpha",
+    "@smartface/router": "^2.3.1",
+    "@smartface/source-map": "^5.0.0",
+    "@smartface/styling-context": "^5.0.0",
+    "@types/moment-hijri": "^2.1.0"
   },
   "peerDependencies": {
-    "@smartface/contx": "^4.0.0 || ^4.0.0-rc",
-    "@smartface/html-to-text": "^1.0.0",
-    "@smartface/native": "^4.3.4 || ^4.3.6-beta || ^4.3.6-alpha",
-    "@smartface/router": "^2.0.0 || ^2.0.0-rc"
+    "@smartface/mixins": "^5.0.0",
+    "@smartface/native": "^5.0.0",
+    "@smartface/router": "^2.3.1",
+    "@smartface/styling-context": "^5.0.0"
   }
 }

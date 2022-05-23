@@ -1,4 +1,4 @@
-import DateService from "../src/services/DateWrapper";
+import DateService from "../dist/services/DateWrapper";
 import {expect} from "chai";
 import moment from "moment";
 

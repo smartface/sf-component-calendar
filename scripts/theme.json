@@ -1,241 +1,237 @@
 {
-	"#calendar": {
-		"flexProps": {
-			"direction": "LTR"
-		},
-		"&_line2": {
-        },
-        "&_line1": {
-        },
-        "&_navbar_monthLabel": {
-            "textColor": "#1775D0",
-            "font": {
-                "size": 16,
-                "family": "FontAwesome5FreeSolid",
-                "style": null,
-                "bold": false,
-                "italic": false
-            },
-            "&-tomonth": {
-                "textColor": "#ff0000",
-                "font": {
-                    "size": 5,
-                    "family": "FontAwesome5FreeSolid",
-                    "style": null,
-                    "bold": false,
-                    "italic": false
-                }
-            }
+  "#calendar": {
+    "flexProps": {
+      "direction": "LTR"
+    },
+    "&_line2": {},
+    "&_line1": {},
+    "&_navbar_monthLabel": {
+      "textColor": "#1775D0",
+      "font": {
+        "size": 16,
+        "family": "FontAwesome5FreeSolid",
+        "style": null,
+        "bold": false,
+        "italic": false
+      },
+      "&-tomonth": {
+        "textColor": "#ff0000",
+        "font": {
+          "size": 5,
+          "family": "FontAwesome5FreeSolid",
+          "style": null,
+          "bold": false,
+          "italic": false
         }
-	},
-	".calendar": {
-		"direction": "LTR",
-		"&-self": {
-			"direction": "LTR",
-			"right": 0,
-			"left": 0,
-			"top": 0,
-			"flexProps": {
-				"positionType": "ABSOLUTE",
-				"alignContent": "STRETCH",
-				"alignItems": "STRETCH"
-			},
-            "height": 300
-		},
-		"&_line": {
-			"height": 1,
-			"width": null,
-			"backgroundColor": "rgba(228,228,228,1)"
-		},
-		"&_calendarYear": {
-			"&_yearLabel": {
-				"textColor": "#FF001F"
-			}
-		},
-		".header": {
-			"&_navbar": {
-				"direction": "LTR",
-				"&_monthLabel": {
-				},
-				"&_arrow": {
-					"textColor": "rgba( 94, 94, 94, 1 )",
-					"backgroundColor": "rgba( 255, 255, 255, 0 )",
-					"bottom": 0,
-					"flexProps": {
-						"positionType": "ABSOLUTE"
-					},
-					"width": 20,
-					"top": 0,
-					"font": {
-						"size": 16,
-						"family": "FontAwesome5FreeSolid",
-						"style": null,
-						"bold": false,
-						"italic": false
-					},
-					"textAlignment": "MIDCENTER"
-				},
-				"&_label": {
-					"textColor": "#000000"
-				},
-				"flexProps": {
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE"
-				},
-				"height": 30,
-				"backgroundColor": "rgba(255,255,255,1)"
-			},
-			"&_dayNames": {
-				"direction": "LTR",
-				"backgroundColor": "rgba( 245, 245, 245, 1 )",
-				"height": 30,
-				"&-lang_ar": {
-					"direction": "RTL"
-				},
-				"&-lang_ar-sa": {
-					"direction": "RTL"
-				},
-				"&_dayName": {
-					"height": null,
-					"font": {
-						"size": 10,
-						"family": "Arial"
-					},
-					".weekday": {
-						"textColor": "rgba( 128, 128, 128, 1 )",
-						"flexProps": {
-							"positionType": "RELATIVE",
-							"flexGrow": 1,
-							"alignSelf": "STRETCH"
-						},
-						"textAlignment": "MIDCENTER"
-					},
-					".weekend": {
-						"textColor": "#808080"
-					}
-				},
-				"flexProps": {
-					"flexDirection": "ROW",
-					"positionType": "RELATIVE"
-				}
-			}
-		},
-		".body": {
-            "&-tomonth": {},
-			"flexProps": {
-				"positionType": "RELATIVE",
-				"alignSelf": "STRETCH",
-				"flexGrow": 1
-			},
-			"backgroundColor": "rgba(255,255,255,1)"
-		},
-		".weekRow": {
-			"direction": "LTR",
-			"backgroundColor": "rgba(0,0,0,0)",
-			"&-lang_ar-sa": {
-				"direction": "RTL"
-			},
-			"&-lang_ar": {
-				"direction": "RTL"
-			},
-			"&_line": {
-				"backgroundColor": "#C0C0C0",
-                "height": 1,
-                "bottom": 0,
-                "left": 0,
-                "right": 0,
-                "positionType": "ABSOLUTE"
-			},
-			"flexProps": {
-				"alignContent": "STRETCH",
-				"alignItems": "STRETCH",
-				"flexDirection": "ROW",
-				"positionType": "RELATIVE"
-			},
-			"height": 40
-		},
-		".day": {
-			"flexProps": {
-				"alignContent": "STRETCH",
-				"alignItems": "STRETCH",
-				"flexDirection": "ROW",
-				"positionType": "RELATIVE",
-                "flexGrow": 1
-			},
-			"borderWidth": 0,
-			"&-selected": {
-				"backgroundColor": "rgba( 0, 185, 255, 1 )"
-			},
-			"backgroundColor": "rgba( 246, 7, 7, 0 )"
-		},
-		".day_label": {
-            "backgroundColor": "rgba( 255, 255, 255, 0 )",
-            "textColor": "rgba( 71, 71, 71, 1 )",
+      }
+    }
+  },
+  ".calendar": {
+    "direction": "LTR",
+    "&-self": {
+      "direction": "LTR",
+      "right": 0,
+      "left": 0,
+      "top": 0,
+      "flexProps": {
+        "positionType": "ABSOLUTE",
+        "alignContent": "STRETCH",
+        "alignItems": "STRETCH"
+      },
+      "height": 300
+    },
+    "&_line": {
+      "height": 1,
+      "width": null,
+      "backgroundColor": "rgba(228,228,228,1)"
+    },
+    "&_calendarYear": {
+      "&_yearLabel": {
+        "textColor": "#FF001F"
+      }
+    },
+    ".header": {
+      "&_navbar": {
+        "direction": "LTR",
+        "&_monthLabel": {},
+        "&_arrow": {
+          "textColor": "rgba( 94, 94, 94, 1 )",
+          "backgroundColor": "rgba( 255, 255, 255, 0 )",
+          "bottom": 0,
+          "flexProps": {
+            "positionType": "ABSOLUTE"
+          },
+          "width": 20,
+          "top": 0,
+          "font": {
+            "size": 16,
+            "family": "FontAwesome5FreeSolid",
+            "style": null,
+            "bold": false,
+            "italic": false
+          },
+          "textAlignment": "MIDCENTER"
+        },
+        "&_label": {
+          "textColor": "#000000"
+        },
+        "flexProps": {
+          "flexDirection": "ROW",
+          "positionType": "RELATIVE"
+        },
+        "height": 30,
+        "backgroundColor": "rgba(255,255,255,1)"
+      },
+      "&_dayNames": {
+        "direction": "LTR",
+        "backgroundColor": "rgba( 245, 245, 245, 1 )",
+        "height": 30,
+        "&-lang_ar": {
+          "direction": "RTL"
+        },
+        "&-lang_ar-sa": {
+          "direction": "RTL"
+        },
+        "&_dayName": {
+          "height": null,
+          "font": {
+            "size": 10,
+            "family": "Arial"
+          },
+          ".weekday": {
+            "textColor": "rgba( 128, 128, 128, 1 )",
             "flexProps": {
-                "alignSelf": "START",
-                "positionType": "RELATIVE"
+              "positionType": "RELATIVE",
+              "flexGrow": 1,
+              "alignSelf": "STRETCH"
             },
-            "top": 0,
-            "height": 39,
-            "minWidth": 40,
-            "flexGrow": 1,
-            "borderRadius": 2,
-            "&-rangeSelected": {
-                "textColor": "rgba( 255, 255, 255, 1 )",
-                "backgroundColor": "rgba( 130, 159, 214, 1 )"
-            },
-            "borderWidth": 0,
-            "borderColor": "rgba(255,255,255,0)",
-			"font": {
-				"size": 14,
-				"bold": false,
-				"italic": false,
-				"family": "Arial"
-			},
-			"&_label": {},
-
-			"&-inrange": {
-				"textColor": "#000000"
-			},
-            "&-today": {
-				"borderWidth": 1,
-                "borderColor": "rgba(0,185,255,1)"
-			},
-			"&-selected": {
-				"borderWidth": 0,
-				"backgroundColor": "rgba(0,185,255,1)",
-				"textColor": "#000000"
-			},
-			"&-deactiveDays": {
-				"borderWidth": 0,
-				"textColor": "#D6D6D6"
-			},
-			"&-specialDay": {
-				"borderWidth": 0,
-				"backgroundColor": "rgba(255, 200, 13, 1)"
-			},
-			"&-weekend": {
-				"borderWidth": 0,
-				"textColor": "#A3A3A3"
-			}
-		},
-		".weekNav": {
-			"flex": {
-				"positionType": 0,
-				"flexGrow": 1,
-				"flexDirection": 2,
-				"flexWrap": 1
-			},
-			"flexProps": {
-				"positionType": "RELATIVE",
-				"flexDirection": "ROW"
-			}
-		}
-	},
-	".calendarWeekly": {
-		"flexProps": {
-			"positionType": "RELATIVE"
-		},
-		"height": 100
-	}
+            "textAlignment": "MIDCENTER"
+          },
+          ".weekend": {
+            "textColor": "#808080"
+          }
+        },
+        "flexProps": {
+          "flexDirection": "ROW",
+          "positionType": "RELATIVE"
+        }
+      }
+    },
+    ".body": {
+      "&-tomonth": {},
+      "flexProps": {
+        "positionType": "RELATIVE",
+        "alignSelf": "STRETCH",
+        "flexGrow": 1
+      },
+      "backgroundColor": "rgba(255,255,255,1)"
+    },
+    ".weekRow": {
+      "direction": "LTR",
+      "backgroundColor": "rgba(0,0,0,0)",
+      "&-lang_ar-sa": {
+        "direction": "RTL"
+      },
+      "&-lang_ar": {
+        "direction": "RTL"
+      },
+      "&_line": {
+        "backgroundColor": "#C0C0C0",
+        "height": 1,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "positionType": "ABSOLUTE"
+      },
+      "flexProps": {
+        "alignContent": "STRETCH",
+        "alignItems": "STRETCH",
+        "flexDirection": "ROW",
+        "positionType": "RELATIVE"
+      },
+      "height": 40
+    },
+    ".day": {
+      "flexProps": {
+        "alignContent": "STRETCH",
+        "alignItems": "STRETCH",
+        "flexDirection": "ROW",
+        "positionType": "RELATIVE",
+        "flexGrow": 1
+      },
+      "borderWidth": 0,
+      "&-selected": {
+        "backgroundColor": "rgba( 0, 185, 255, 1 )"
+      },
+      "backgroundColor": "rgba( 246, 7, 7, 0 )"
+    },
+    ".day_label": {
+      "backgroundColor": "rgba( 255, 255, 255, 0 )",
+      "textColor": "rgba( 71, 71, 71, 1 )",
+      "flexProps": {
+        "alignSelf": "FLEX_START",
+        "positionType": "RELATIVE"
+      },
+      "top": 0,
+      "height": 39,
+      "minWidth": 40,
+      "flexGrow": 1,
+      "borderRadius": 2,
+      "&-rangeSelected": {
+        "textColor": "rgba( 255, 255, 255, 1 )",
+        "backgroundColor": "rgba( 130, 159, 214, 1 )"
+      },
+      "borderWidth": 0,
+      "borderColor": "rgba(255,255,255,0)",
+      "font": {
+        "size": 14,
+        "bold": false,
+        "italic": false,
+        "family": "Arial"
+      },
+      "&_label": {},
+      "&-inrange": {
+        "textColor": "#000000"
+      },
+      "&-today": {
+        "borderWidth": 1,
+        "borderColor": "rgba(0,185,255,1)"
+      },
+      "&-selected": {
+        "borderWidth": 0,
+        "backgroundColor": "rgba(0,185,255,1)",
+        "textColor": "#000000"
+      },
+      "&-deactiveDays": {
+        "borderWidth": 0,
+        "textColor": "#D6D6D6"
+      },
+      "&-specialDay": {
+        "borderWidth": 0,
+        "backgroundColor": "rgba(255, 200, 13, 1)"
+      },
+      "&-weekend": {
+        "borderWidth": 0,
+        "textColor": "#A3A3A3"
+      }
+    },
+    ".weekNav": {
+      "flex": {
+        "positionType": 0,
+        "flexGrow": 1,
+        "flexDirection": 2,
+        "flexWrap": 1
+      },
+      "flexProps": {
+        "positionType": "RELATIVE",
+        "flexDirection": "ROW"
+      }
+    }
+  },
+  ".calendarWeekly": {
+    "flexProps": {
+      "positionType": "RELATIVE"
+    },
+    "height": 100
+  }
 }
