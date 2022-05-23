@@ -24,7 +24,8 @@
 					"positionType": "ABSOLUTE"
 				}
 			},
-			"version": "6.10.2"
+			"version": "6.10.2",
+			"degree": 0
 		},
 		{
 			"className": ".statusBar",
@@ -36,7 +37,8 @@
 				"parent": "6ceb-f32e-728f-fca9"
 			},
 			"type": "StatusBar",
-			"userProps": {}
+			"userProps": {},
+			"degree": 1
 		},
 		{
 			"className": ".headerBar",
@@ -51,7 +53,8 @@
 			"type": "HeaderBar",
 			"userProps": {
 				"title": "newPage003"
-			}
+			},
+			"degree": 1
 		},
 		{
 			"className": ".calendarWeekly",
@@ -70,8 +73,10 @@
 			},
 			"type": "FlexLayout",
 			"userProps": {
-				"usePageVariable": true
-			}
+				"usePageVariable": true,
+				"testId": "85PaMNOHeL"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -93,8 +98,10 @@
 				"text": "Onceki Hafta",
 				"top": 138.33333333333334,
 				"usePageVariable": true,
-				"width": 111.66666666666667
-			}
+				"width": 111.66666666666667,
+				"testId": "Jfzl9mW8KK"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -116,8 +123,10 @@
 				"text": "Sonraki Hafta",
 				"top": 138.33333333333334,
 				"usePageVariable": true,
-				"width": 111.66666666666667
-			}
+				"width": 111.66666666666667,
+				"testId": "3p8U8av5GH"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -139,8 +148,10 @@
 				"text": "Bugun",
 				"top": 235.77586206896552,
 				"usePageVariable": true,
-				"width": 111.66666666666667
-			}
+				"width": 111.66666666666667,
+				"testId": "Ydaw_4H5M-"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -160,8 +171,10 @@
 				"left": 66.66666885902143,
 				"text": "Aylik Takvim",
 				"top": 413.33334034886855,
-				"usePageVariable": true
-			}
+				"usePageVariable": true,
+				"testId": "IR7tjwlA5P"
+			},
+			"degree": 1
 		}
 	]
 }

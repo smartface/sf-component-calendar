@@ -1,5 +1,5 @@
-import DateService from "../src/services/DateWrapperHijri";
-import createService from "../src/services/CalendarService";
+import DateService from "../dist/services/DateWrapperHijri";
+import createService from "../dist/services/CalendarService";
 import {expect} from "chai";
 var sample = {
   "byMonths":[

@@ -1,5 +1,5 @@
 import specialDaysData from "./mock/specialDays";
-import createSpecialDaysService, { getKey } from "../src/services/SpecialDaysService";
+import createSpecialDaysService, { getKey } from "../dist/services/SpecialDaysService";
 import {
 	expect
 } from "chai";

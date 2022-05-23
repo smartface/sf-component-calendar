@@ -32,7 +32,8 @@
 				"orientation": "AUTO",
 				"safeAreaEnabled": true
 			},
-			"version": "6.10.2"
+			"version": "6.10.2",
+			"degree": 0
 		},
 		{
 			"className": ".statusBar",
@@ -44,7 +45,8 @@
 				"parent": "e876-9805-6b68-f0e4"
 			},
 			"type": "StatusBar",
-			"userProps": {}
+			"userProps": {},
+			"degree": 1
 		},
 		{
 			"className": ".headerBar",
@@ -59,7 +61,8 @@
 			"type": "HeaderBar",
 			"userProps": {
 				"title": "newPage001"
-			}
+			},
+			"degree": 1
 		},
 		{
 			"className": ".label",
@@ -85,8 +88,10 @@
 				"textAlignment": "MIDCENTER",
 				"top": 465,
 				"usePageVariable": true,
-				"width": 147
-			}
+				"width": 147,
+				"testId": "PWav7iQaL"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".label",
@@ -115,8 +120,10 @@
 				"textAlignment": "MIDCENTER",
 				"top": 413,
 				"usePageVariable": true,
-				"width": 145
-			}
+				"width": 145,
+				"testId": "2AGT8W1qd6"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -139,8 +146,10 @@
 				"text": "Color",
 				"top": 302.53164556962025,
 				"usePageVariable": true,
-				"width": 64.55696202531645
-			}
+				"width": 64.55696202531645,
+				"testId": "Irjw6pt0BW"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -164,8 +173,10 @@
 				"text": "TR",
 				"top": 350.63291139240505,
 				"usePageVariable": true,
-				"width": 40
-			}
+				"width": 40,
+				"testId": "tB3_rplVPy"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -195,8 +206,10 @@
 				"text": "EN FontAwesome",
 				"top": 349.3670886075949,
 				"usePageVariable": true,
-				"width": 157.14285714285714
-			}
+				"width": 157.14285714285714,
+				"testId": "bo5QmsvF0p"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -219,8 +232,10 @@
 				"text": "AR",
 				"top": 350.63291139240505,
 				"usePageVariable": true,
-				"width": 64.40417641087582
-			}
+				"width": 64.40417641087582,
+				"testId": "0CyzhGO90Z"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -243,8 +258,10 @@
 				"text": "Hijri",
 				"top": 303.448275862069,
 				"usePageVariable": true,
-				"width": 82.75862068965517
-			}
+				"width": 82.75862068965517,
+				"testId": "WeGPqd-oif"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -267,8 +284,10 @@
 				"text": "Gregoryen",
 				"top": 300,
 				"usePageVariable": true,
-				"width": 86.7725974635074
-			}
+				"width": 86.7725974635074,
+				"testId": "AtC6JbNOvq"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -290,8 +309,10 @@
 				"text": "Week Toggle",
 				"top": 475,
 				"usePageVariable": true,
-				"width": 138.33333333333334
-			}
+				"width": 138.33333333333334,
+				"testId": "PBcig6JaVc"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".button",
@@ -313,8 +334,10 @@
 				"text": "Add Range",
 				"top": 410.00000526165144,
 				"usePageVariable": true,
-				"width": 135.1851851851852
-			}
+				"width": 135.1851851851852,
+				"testId": "5ZNofgLEwN"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".calendar-self",
@@ -339,8 +362,10 @@
 				"height": 300,
 				"left": 0,
 				"top": 0,
-				"usePageVariable": true
-			}
+				"usePageVariable": true,
+				"testId": "B1AdOJRpWk"
+			},
+			"degree": 1
 		},
 		{
 			"className": ".sf-button",
@@ -364,7 +389,8 @@
 				"top": 544,
 				"usePageVariable": true,
 				"width": 206
-			}
+			},
+			"degree": 1
 		}
 	]
 }
