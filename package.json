@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/smartface/sf-component-calendar#readme",
   "dependencies": {
+    "@smartface/builder": "^0.9.0",
     "@smartface/marketplace-service": "^1.2.0-beta.5",
     "moment": "^2.29.2",
     "moment-hijri": "^2.1.1",
