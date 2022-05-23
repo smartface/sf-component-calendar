@@ -83,6 +83,7 @@ export default class HijriDateService extends DateService<MomentHijriInstance> {
   }
 
   daysCount() {
+    //@ts-ignore build tsc gets mad at this.
     return this._moment.iDaysInMonth(this._date.year(), this._date.month());
   }
 
