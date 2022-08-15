@@ -576,10 +576,10 @@ class CalendarCore {
         const { start, end } = state.rangeSelection;
         Object.assign(state, this._getRange({ start, end, state }));
       }
-
-      state.weekIndex = (state.selectedDaysByIndex[0] && state.selectedDaysByIndex[0].weekIndex) || 0;
+      const weekIndex = (state.selectedDaysByIndex[0] && state.selectedDaysByIndex[0].weekIndex)
+      state.weekIndex = weekIndex >= 0 ? weekIndex  : 0;
+      
     }
-
     return state;
   }
 
@@ -724,8 +724,8 @@ class CalendarCore {
         const { start, end } = state.rangeSelection;
         Object.assign(state, this._getRange({ start, end, state }));
       }
-
-      state.weekIndex = (state.selectedDaysByIndex[0] && state.selectedDaysByIndex[0].weekIndex) || 0;
+      const weekIndex = (state.selectedDaysByIndex[0] && state.selectedDaysByIndex[0].weekIndex)
+      state.weekIndex = weekIndex >= 0 ? weekIndex  : 0;
     }
 
     return state;
