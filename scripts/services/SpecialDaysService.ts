@@ -119,10 +119,10 @@ export type SpecialDays = {
  * @returns {Object}
  */
 function denormalizeSpecialDays(specialDays: SpecialDaysData): SpecialDaysBundle {
-  const byYears = specialDays.byYears || [];
-  const byMonths = specialDays.byMonths || [];
+  const byYears = specialDays?.byYears || [];
+  const byMonths = specialDays?.byMonths || [];
   const acc = {};
-
+  
   byYears.forEach((year) => {
     year.months.forEach((month) => {
       month.days.forEach((day) => {
