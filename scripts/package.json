@@ -1,6 +1,6 @@
 {
   "name": "@smartface/component-calendar",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Calendar component",
   "main": "index.js",
   "scripts": {},
