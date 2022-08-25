@@ -11,7 +11,7 @@ import { DayInfo } from './DayInfo';
 import { DayMonthInfo } from './DayMonthInfo';
 
 import calendarServiceBuilder, { CalendarPage, CalendarService } from '../services/CalendarService';
-import { SpecialDaysData } from 'services/SpecialDaysService';
+import { SpecialDaysData } from '../services/SpecialDaysService';
 import { ROWCOUNT, COLCOUNT } from './constants';
 import { calculateDatePos } from './calculateDatePos';
 import { getDatePos } from './getDatePos';
@@ -615,13 +615,17 @@ class CalendarCore {
    */
   _setDate(date) {
     let dateObj = getValidDate(date);
-
-    const month = this._calendarService.getCalendarMonth(dateObj);
+    
+    let month = this._calendarService.getCalendarMonth(dateObj);
+    if(this._state.weekIndex == 0 || this._state.weekIndex == 4){
+      month = this._state.month;
+    }
     const selectedDaysByIndex = getDatePos(dateObj, month, null);
 
     return {
       month,
-      weekIndex: selectedDaysByIndex !== null ? selectedDaysByIndex.weekIndex : 0
+      weekIndex: selectedDaysByIndex !== null ? selectedDaysByIndex.weekIndex : 0,
+      selectedDaysByIndex: [selectedDaysByIndex]
     };
   }
 
@@ -644,8 +648,9 @@ class CalendarCore {
    * @param {Calendar~DateDTO} date
    */
   setSelectedDate(date: DateObject | Date) {
-    const validDate = getValidDate(date);
-    if (isMonthGreater) this.setState(Object.assign(this._setDate(validDate), this._selectDay(this.getWeekDay(validDate))));
+    const validDate = getValidDate(date); 
+    const selectedDaysByIndex = this._setDate(validDate).selectedDaysByIndex[0]
+    if (isMonthGreater) this.setState(Object.assign(this._setDate(validDate), this._selectDay(selectedDaysByIndex)));
   }
 
   /**
