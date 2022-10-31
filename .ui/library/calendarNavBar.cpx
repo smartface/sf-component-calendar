@@ -8,10 +8,10 @@
 			"props": {
 				"children": [
 					"5cc2-1e00-0417-3a7b",
+					"5c2c-01ba-a6d5-e0a8",
 					"60ab-accc-1c8c-7938",
 					"8a46-4b2f-e952-44aa",
-					"17e5-d47d-bb19-e744",
-					"ceee-b6c4-49c9-968f"
+					"17e5-d47d-bb19-e744"
 				],
 				"name": "calendarNavBar",
 				"parent": "3365675e"
@@ -67,6 +67,22 @@
 				"top": 0,
 				"usePageVariable": true,
 				"width": null
+			}
+		},
+		{
+			"className": ".calendar.header_navbar_arrow",
+			"id": "5c2c-01ba-a6d5-e0a8",
+			"props": {
+				"children": [],
+				"name": "prevMonth",
+				"parent": "7d0c86e9",
+				"text": "",
+				"usePageVariable": true
+			},
+			"type": "Button",
+			"userProps": {
+				"text": "",
+				"usePageVariable": true
 			}
 		},
 		{
@@ -135,25 +151,6 @@
 				"usePageVariable": true,
 				"visible": false,
 				"width": 30
-			}
-		},
-		{
-			"className": ".calendar.header_navbar_arrow",
-			"id": "ceee-b6c4-49c9-968f",
-			"props": {
-				"children": [],
-				"name": "prevMonth",
-				"parent": "7d0c86e9",
-				"text": "",
-				"usePageVariable": true
-			},
-			"source": {
-				"page": "__library__"
-			},
-			"type": "Button",
-			"userProps": {
-				"text": "",
-				"usePageVariable": true
 			}
 		}
 	]
