@@ -199,13 +199,13 @@ class Calendar extends CalendarDesign {
         type: 'deselectDays'
       });
     }
-
+    
     if (newState.month !== oldState.month) {
       this.dispatch({
         //@ts-ignore
         type: 'resetDays'
       });
-
+      this.onMonthChange && this.onMonthChange(newState.month.normalizedDate);
       this.currentMonth = newState.month;
       this.updateRows.call(this, newState.month.days, newState.month.date);
       this.navbar.setLabel(newState.month.longName + ' ' + newState.month.localeDate.year);
@@ -375,7 +375,7 @@ class Calendar extends CalendarDesign {
 
     if (this.currentMonth) {
       this._calendarCore.nextMonth();
-      this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
+      // this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
     }
   }
 
@@ -400,7 +400,7 @@ class Calendar extends CalendarDesign {
 
     if (this.currentMonth) {
       this._calendarCore.prevMonth();
-      this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
+      // this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
     }
   }
 
