@@ -299,10 +299,12 @@ export default class NewPage001 extends withDismissAndBackButton(NewPage001Desig
   constructor(private router?: Router, private route?: Route) {
     // Initalizes super class for this page scope
     super({});
-
+    this.calendar.onMonthChange = () => {
+       console.info('onmonthchange')
+    };
     this.calendar.onDaySelect = (res) => {
       const [date] = res;
-      console.log('res : ', date);
+      console.log('ondayselect : ', date);
       if (!date) return;
 
       this.label2.text = date.date.day + '/' + date.date.month + '/' + date.date.year;

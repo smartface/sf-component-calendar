@@ -14,6 +14,7 @@ import CalendarWeekRow from './CalendarWeekRow';
 import { SpecialDaysData } from '../services/SpecialDaysService';
 import CalendarBody from './CalendarBody';
 import CalendarNavBar from './CalendarNavBar';
+import { ROWCOUNT } from '../core/constants';
 import { DateInfo } from '../core/DateInfo';
 
 const themeFile = require('../theme.json');
@@ -105,10 +106,18 @@ class Calendar extends CalendarDesign {
     });
 
     this.navbar.children.nextWeek.onPress = () => {
+      // checks before state change that if we are about to change month
+      const shouldChangeMonth = this._calendarCore.getState().weekIndex + 1 === ROWCOUNT;
       this._calendarCore.nextWeek();
+      // Then triggers the event with the current(new) month
+      shouldChangeMonth && this.onMonthChange?.(this.currentMonth.normalizedDate);
     };
     this.navbar.children.prevWeek.onPress = () => {
+      // checks before state change that if we are about to change month
+      const shouldChangeMonth = this._calendarCore.getState().weekIndex === 0;
       this._calendarCore.prevWeek();
+      // Then triggers the event with the current(new) month
+      shouldChangeMonth && this.onMonthChange?.(this.currentMonth.normalizedDate);
     };
   }
 
@@ -199,13 +208,12 @@ class Calendar extends CalendarDesign {
         type: 'deselectDays'
       });
     }
-    
+
     if (newState.month !== oldState.month) {
       this.dispatch({
         //@ts-ignore
         type: 'resetDays'
       });
-      this.onMonthChange && this.onMonthChange(newState.month.normalizedDate);
       this.currentMonth = newState.month;
       this.updateRows.call(this, newState.month.days, newState.month.date);
       this.navbar.setLabel(newState.month.longName + ' ' + newState.month.localeDate.year);
@@ -375,7 +383,7 @@ class Calendar extends CalendarDesign {
 
     if (this.currentMonth) {
       this._calendarCore.nextMonth();
-      // this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
+      this.onMonthChange?.(this.currentMonth.normalizedDate);
     }
   }
 
@@ -400,7 +408,7 @@ class Calendar extends CalendarDesign {
 
     if (this.currentMonth) {
       this._calendarCore.prevMonth();
-      // this.onMonthChange && this.onMonthChange(this.currentMonth.normalizedDate);
+      this.onMonthChange?.(this.currentMonth.normalizedDate);
     }
   }
 
